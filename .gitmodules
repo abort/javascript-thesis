@@ -1,0 +1,4 @@
+[submodule "javascript-call-graph"]
+	path = javascript-call-graph
+	url = https://github.com/abort/javascript-call-graph.git
+	branch = release

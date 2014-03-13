@@ -181,8 +181,8 @@ syntax VariableDeclaration
   ;
 
 syntax VariableDeclarationNoIn
-  = Id "=" Expression!inn
-  | Id
+  = filledDeclaration: Id id "=" Expression!inn expression
+  | emptyDeclaration: Id id
   ;
 
 syntax CaseBlock 
@@ -248,7 +248,7 @@ syntax Expression
   | Expression "(" ")" //Can be on LHS of variableAssignment
   | member: Expression "[" Expression "]" //Can be on LHS of variableAssignment
   | "this"
-  | Id //Can be on LHS of variableAssignment
+  | id: Id //Can be on LHS of variableAssignment
   | Literal
   > "new" Expression
   > Expression !>> [\n\r] "++"

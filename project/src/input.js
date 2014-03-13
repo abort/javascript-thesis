@@ -1,18 +1,9 @@
 var leglobal = true;
 
-function stop() {
-    ownScope = 1;
-    var blub = 2;
-
+function stop(ownScope) {
     console.log('haha');
+    ownScope = 1; 
+    var blub = 2;
 }
 
-
-
-function go() {
-    var x = 1 == 1 ? 2 : 3;
-    
-    obj = {
-        apple: "apple"  
-    };
-}
+ownScope = 2;

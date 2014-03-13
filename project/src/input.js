@@ -1,12 +1,18 @@
+var leglobal = true;
+
+function stop() {
+    ownScope = 1;
+    var blub = 2;
+
+    console.log('haha');
+}
+
+
+
 function go() {
-    var x = 1;
+    var x = 1 == 1 ? 2 : 3;
     
-    //var x = 3;
-    for (var y = 0, z = 2; y < 0; y++) { 
-        // todo: var z = 0, does not reach the correct scope
-        1;
-     }
-     x = 3;
-     y=2;
-     z = 2;
+    obj = {
+        apple: "apple"  
+    };
 }

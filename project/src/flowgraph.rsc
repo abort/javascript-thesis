@@ -16,16 +16,10 @@ data Vertex = Exp(Position p) |
 			  Prop(str name) | // prop i not declared as a local variable
 			  Fun(Position p) | // function declaration
 			  Empty();
-			  
 data Position = Position(str filename, int line, int columnStart, int columnEnd);
 
-public void main(list[str] args) {
-	main();
-}
-
-public void main() {
-	println("Hi!");
-}
+public void main(list[str] args) = main();
+public void main() = println("Hi!");
 
 public node getAST(Tree t) = implode(#node, t);
 public node getAST(loc file) = implode(#node, parse(t));
@@ -39,6 +33,7 @@ public Vertex createVertex(Tree root, Tree fullTree) {
 	{
 		case (Id)`<Id id>`:{
 			println("finding variableDeclarations for <id>");
+			// findVariableUpwards(id, id);
 			foundDeclaration = findVariableDeclaration(id, fullTree);
 			if (foundDeclaration == nothing()) {
 				result = Prop("<id>");
@@ -64,6 +59,29 @@ public Vertex createVertex(Tree root, Tree fullTree) {
 	return result;
 }
 
+public Maybe[Tree] findVariableUpwards(Id variableId, Tree idPosition) {
+	bottom-up visit(idPosition) {
+		case Statement s: {
+			println("visit statement");
+			for (child <- getChildren(s)) {
+				println("children: <child>");
+			}
+		}
+	
+		case exp:(FunctionDeclaration)`function <Id _> ( <{Id ","}* params> ) <Block _>`: {
+			// found in params
+			for (id <- params) {
+				if (id == variableId) return just(id);
+			}
+		
+			// We do not have access outside the function scope :)
+			break;
+		}
+	}
+	
+	return nothing();
+}
+
 public Maybe[Tree] findVariableDeclaration(Id variableId, Tree currentPosition) {
 	// Redeclared vars do not affect initial declarance.... hence we need to always visit
 	top-down visit(currentPosition) {
@@ -72,6 +90,7 @@ public Maybe[Tree] findVariableDeclaration(Id variableId, Tree currentPosition) 
 			// TODO: apparently this is a prop, not a var:
 			// if (variableId == id) return just(exp);
 			for (param <- params) {
+				// TODO make sure we are in the same scope
 				if (param == variableId) {
 					println("params: <param>");
 				
@@ -81,7 +100,7 @@ public Maybe[Tree] findVariableDeclaration(Id variableId, Tree currentPosition) 
 			
 			// We already traversed block b due to recursive bottom-up visits :)
 		}	
-	
+		//case block:(Block)`{ 
 		case block:(Block)`{ <BlockStatement head> <BlockStatements tail> }`: {
 			return findVariableInBlock(variableId, head, just(tail));
 		}
@@ -92,7 +111,14 @@ public Maybe[Tree] findVariableDeclaration(Id variableId, Tree currentPosition) 
 	return nothing();
 }
 private Maybe[Statement] getStatement(BlockStatement stm) {
-	if (stm is newLine || stm is semiColon) {
+	if (stm is newLine || stm is semiColon || stm is statementContainingNested) {
+		return just(stm.stm);
+	}
+	return nothing();
+}
+
+private Maybe[FunctionDeclaration] getFunctionDeclaration(BlockStatement stm) {
+	if (stm is functionDecl) {
 		return just(stm.stm);
 	}
 	return nothing();
@@ -107,31 +133,35 @@ private &A unpack(Maybe[&A] m) {
 // TODO traverse variableNoIn etc
 private Maybe[Tree] findVariableInBlock(Id variableId, BlockStatement statement, Maybe[BlockStatements] statementsTail) {
 	actualStatement = getStatement(statement);
-	if (actualStatement != nothing() && ((Statement)`var <{VariableDeclaration ","}+ declarations>` := unpack(actualStatement)
-		|| (Statement)`var <{VariableDeclaration ","}+ declarations>;` := unpack(actualStatement))) { 	
-		println("found decl <unpack(actualStatement)>");
+	if (actualStatement != nothing() && (variableSemi(declarations) := unpack(actualStatement)
+		|| variableNoSemi(declarations) := unpack(actualStatement))) { 	
+		println("<unpack(actualStatement)>");
 		for (decl <- declarations) {
-			if ((VariableDeclaration)`<Id id> = <Expression _>` := decl) {
-				if (id == variableId) return just(decl);
+			// Use deep matching to ignore the literals like the comma (this wont hurt in this case)
+			if (/filledDeclaration(Id id, Expression expression) := decl || /emptyDeclaration(Id id) := decl) {
+				if (id == variableId) return just(id);
 			}
 		}
 	}
 	
-	if ((BlockStatement)`for ( var <{VariableDeclarationNoIn ","}+ declarations> ; <{Expression ","}* _> ; <{Expression ","}* _> ) <Statement stmnt>` := statement) {
+	/*
+	if (actualStatement != nothing() && (BlockStatement)`for ( var <{VariableDeclarationNoIn ","}+ declarations> ; <{Expression ","}* _> ; <{Expression ","}* _> ) <Statement stmnt>` := actualStatement) {
+	println("a2");
 		for (decl <- declarations) {
 			if ((VariableDeclarationNoIn)`<Id id> = <Expression _>` := decl) {
 				if (id == variableId) return just(statement);
 			} 
 		}
 	}
+	*/
 	if ((BlockStatement)`{ <BlockStatement head> <BlockStatements tail> }` := statement) {
 		// blocks also have no scoping, thus sibling blocks can affect variable instantiation :(
 		return findVariableInBlock(variableId, head, just(tail));
-	}
-	
+	}	
+
 	// Stop recursion here 
 	if (statementsTail := nothing()) return nothing();
-	
+
 	if (just(BlockStatements unboxedTail) := statementsTail) {
 		// recurse
 		if (blockStatements(BlockStatement head, BlockStatements tail) := unboxedTail) {
@@ -139,8 +169,10 @@ private Maybe[Tree] findVariableInBlock(Id variableId, BlockStatement statement,
 		}
 		if (blockStatementLast(LastBlockStatement head) := unboxedTail ||
 			tailEnd(BlockStatement head) := unboxedTail) {
+			// TODO lastblockstatement wont match correctly here
 			return findVariableInBlock(variableId, head, nothing()); 	
 		}
+		
 	}
 	
 	return nothing();
@@ -153,57 +185,79 @@ public rel[Vertex, Vertex] createFlowGraphFromTree(Tree root) {
 	Tree fullTree = root;
 	rel[Vertex, Vertex] result = {};
 	top-down visit (root) {
-		// TODO this sucks, because this does not match assignments ending with return or ; (how to interpret EOF here as thats a predicate)
-		
+		// TODO implement R1 for declaration in for loops etc		
 		// Type matching is better but returns nodes rather than tree? wtf.
+		case func(FunctionDeclaration f):{
+			result += <Fun(getNodePosition(f)), createVertex(f.name, fullTree)>;
+		}
+		case Statement s: {
+			// TODO checks if this counts for for do?
+			// R1 - declarations with fill are also assignments? :)
+			// TODO: not sure if i need this at all in this flow creation
+			if (variableSemi(declarations) := s || variableNoSemi(declarations) := s) {
+				for (declaration <- declarations) {				
+					// This only works on assigned variables (not on just declared ones)
+					// Use deep matching to ignore the literals like the comma (this wont hurt in this case)
+					if (/filledDeclaration(Id id, Expression expression) := declaration) {
+						Vertex rhsVertex = createVertex(expression, fullTree);
+						result += <rhsVertex, createVertex(id, fullTree)>;
+						result += <rhsVertex, Exp(getNodePosition(s))>; // maybe getnodeposition decl.id?
+					}					
+				}
+			}
+		}
 		case Expression e: {
+			// R1
 			if (variableAssignment(Expression lhs, Expression rhs) := e ||
 				variableAssignmentNoSemi(Expression lhs, Expression rhs) := e ||
 				variableAssignmentBlockEnd(Expression lhs, Expression rhs) := e ||
-				variableAssignmentLoose(Expression lhs, Expression rhs) := e) {
-				println("assign <lhs>");
+				variableAssignmentLoose(Expression lhs, Expression rhs) := e ||
+				variableAssignmentMulti(Expression lhs, Expression rhs) := e) {
+				// TODO this is not declaration!
 				Vertex rhsVertex = createVertex(rhs, fullTree);
 				result += <rhsVertex, createVertex(lhs, fullTree)>;
-				result += <rhsVertex, Exp(getNodePosition(e))>;						
+				result += <rhsVertex, Exp(getNodePosition(e))>;
+			}
+			// R3
+			elseif (ternary(Expression condition, Expression conditionSuccess, Expression conditionFail) := e) {
+				//println("ternary");
+				Vertex successVertex = createVertex(conditionSuccess, fullTree), failVertex = createVertex(conditionFail, fullTree);
+				
+				result += <successVertex, Exp(getNodePosition(e))>;
+				result += <failVertex, Exp(getNodePosition(e))>;							
+			}
+			// R2
+			elseif (disjunction(Expression lhs, Expression rhs) := e) {
+				Vertex lhsVertex = createVertex(lhs, fullTree), rhsVertex = createVertex(rhs, fullTree);
+				
+				result += <lhsVertex, Exp(getNodePosition(disjunction))>;
+				result += <rhsVertex, Exp(getNodePosition(disjunction))>;			
+			}
+			// R4
+			elseif (conjunction(Expression lhs, Expression rhs) := e) {
+				Vertex rhsVertex = createVertex(rhs, fullTree);
+	
+				result += <rhsVertex, Exp(getNodePosition(e))>;				
+			}
+			elseif (function(Id id, params) := e) {
+				Position p = getNodePosition(e);
+				result += <Fun(p), createVertex(id, fullTree)>;
 			}
 			else {
 				fail;
 			}
 		}
-		case assignment:(VariableDeclarationNoIn)`<Id id> = <Expression rhs>`: {
-			println("match");
-			Vertex rhsVertex = createVertex(rhs, fullTree);
-			result += <rhsVertex, createVertex(id, fullTree)>;
-			result += <rhsVertex, Exp(getNodePosition(assignment))>;
-		}		
-		case disjunction:(Expression)`<Expression lhs> || <Expression rhs>`: {
-			Vertex lhsVertex = createVertex(lhs, fullTree), rhsVertex = createVertex(rhs, fullTree);
-			
-			result += <lhsVertex, Exp(getNodePosition(disjunction))>;
-			result += <rhsVertex, Exp(getNodePosition(disjunction))>;
+		// R5
+		case PropertyAssignment p:{
+			if (property(PropertyName name, Expression exp) := p) {
+				// todo create vertex check?
+				println("property assignment");
+				result += <createVertex(exp, fullTree), Prop("<name>")>;			
+			}
+			else {
+				fail;
+			}
 		}
-		case ternary:(Expression)`<Expression _> ? <Expression conditionSuccess> : <Expression conditionFail>`: {
-			Vertex successVertex = createVertex(conditionSuccess, fullTree), failVertex = createVertex(conditionFail, fullTree);
-			
-			result += <successVertex, Exp(getNodePosition(ternary))>;
-			result += <failVertex, Exp(getNodePosition(ternary))>;			
-		}
-		case conjunction:(Expression)`<Expression lhs> && <Expression rhs>`:{
-			Vertex rhsVertex = createVertex(rhs, fullTree);
-
-			result += <rhsVertex, Exp(getNodePosition(conjunction))>;			
-		}
-		case propertyAssignment:(PropertyAssignment)`<PropertyName name> : <Expression e>`:{
-			result += <createVertex(e, fullTree), Prop(name)>;
-		}
-		case functionExpression:(Expression)`<Id id> ( <{Expression ","}* params> )`: {
-			Position p = getNodePosition(functionExpression);
-			result += <Fun(p), createVertex(id, fullTree)>; // TODO fix position PI instead of id position
-		}
-		case exp:(FunctionDeclaration)`function <Id id> ( <{Id ","}* params> ) <Block b>`: {
-			result += <Fun(getNodePosition(exp)), createVertex(id, fullTree)>;			
-		}
-		// TODO: why does this not traverse everything
 	}
 
 	return result;
@@ -229,13 +283,8 @@ public void printFlowGraph(rel[Vertex, Vertex] graph) {
 	}
 }
 
-private void printStringWithPosition(str string, Position p) {
-	print("<string>(<getPositionString(p)>)");
-}
-
-private str getPositionString(Position p) {
-	return "<p.filename>@<p.line>:<p.columnStart>-<p.columnEnd>";
-}
+private void printStringWithPosition(str string, Position p) = print("<string>(<getPositionString(p)>)");
+private str getPositionString(Position p) = "<p.filename>@<p.line>:<p.columnStart>-<p.columnEnd>";
 
 private void printVertex(Vertex v) {
 	visit (v) {

@@ -25,7 +25,7 @@ start syntax Source
 
 syntax SourceElement
   = stat:Statement
-  | FunctionDeclaration
+  | func:FunctionDeclaration
   ;
 
 syntax ZeroOrMoreSourceElements
@@ -34,7 +34,7 @@ syntax ZeroOrMoreSourceElements
 	;
 
 syntax FunctionDeclaration 
-  = "function" Id "(" {Id ","}* ")" Block NoNL ZeroOrMoreNewLines NoNL () !>> [\n]
+  = "function" Id name "(" {Id ","}* parameters ")" Block implementation NoNL ZeroOrMoreNewLines NoNL () !>> [\n]
   ;
   
 // TODO add EOF
@@ -78,7 +78,7 @@ syntax Statement
 
   | whileDo: "while" "(" Expression ")" Statement //TODO: WHY DOESNT THE ERROR OCCUR HERE?
   | forDo: "for" "(" {VariableDeclarationNoIn ","}* ";" {Expression ","}* ";" {Expression ","}* ")" Statement  //TODO: WHY DOESNT THE ERROR OCCUR HERE?
-  | forDo: "for" "(" "var" {VariableDeclarationNoIn ","}+ ";" {Expression ","}* ";" {Expression ","}* ")" Statement  //TODO: WHY DOESNT THE ERROR OCCUR HERE?
+  | forDoDeclarations: "for" "(" "var" {VariableDeclarationNoIn ","}+ ";" {Expression ","}* ";" {Expression ","}* ")" Statement  //TODO: WHY DOESNT THE ERROR OCCUR HERE?
   | forIn: "for" "(" Expression "in" Expression ")" Statement // left-hand side expr "in" ???
   | forIn: "for" "(" "var" Id "in" Expression ")" Statement
           
@@ -138,7 +138,7 @@ syntax BlockStatement
     | nestedBlock: Block
     // Excludes everything except statements containing blocks which in turn contain statements. These don't have to end in newlines or semicolons.
     | statementContainingNested: Statement!variableNoSemi!variableSemi!returnExp!returnExpNoSemi!returnExpNoSemiBlockEnd!returnNoExp!returnNoExpNoSemi!returnNoExpNoSemiBlockEnd!throwExp!throwExpNoSemi!throwExpNoSemiBlockEnd!throwNoExp!throwNoExpNoSemi!throwNoExpNoSemiBlockEnd!throwExp!throwExpNoSemi!throwExpNoSemiBlockEnd!throwNoExp!throwNoExpNoSemi!throwNoExpNoSemiBlockEnd!empty!emptyBlockEnd!expressionSemi!expressionLoose!expressionBlockEnd!expressionNL!breakLabel!breakNoLabel!breakLabelNoSemi!breakLabelNoSemiBlockEnd!breakNoLabelNoSemi!breakNoLabelNoSemiBlockEnd!continueNoLabel!continueLabelNoSemi!continueLabelNoSemiBlockEnd!continueNoLabelNoSemi!continueNoLabelNoSemiBlockEnd!labeled!debugger!tryBlock!switchCase!block!ifThen!ifThenElse!doWhile!doWhileLoose stm NoNL ZeroOrMoreNewLines NoNL () !>> [\n]
-    | functionDecl: FunctionDeclaration
+    | functionDecl: FunctionDeclaration decl
     | switchBlock: SwitchBlock
     | tryBlock: TryBlock
     //TODO: find out why this only seems necessary for ifs and if-elses
@@ -176,8 +176,8 @@ syntax NoElse
   ;
 
 syntax VariableDeclaration 
-  = Id "=" Expression!comma
-  | Id
+  = filledDeclaration: Id id "=" Expression!comma expression
+  | emptyDeclaration: Id id
   ;
 
 syntax VariableDeclarationNoIn
@@ -298,8 +298,8 @@ syntax Expression
   > right Expression "&" !>> [&=] Expression
   > right Expression "^" !>> [=] Expression
   > right Expression "|" !>> [|=] Expression
-  > left Expression "&&" Expression
-  > left Expression "||" Expression
+  > left conjunction: Expression "&&" Expression
+  > left disjunction: Expression "||" Expression
   > right (
 	//| variableAssignmentMultiNoSemi:{variableAssignmentLoose ","}+ NoNL () $
 	//| variableAssignmentMultiBlockEnd:{variableAssignmentLoose ","}+ NoNL () >> [}]    
@@ -323,7 +323,7 @@ syntax Expression
     | Expression "|=" Expression
   )
   > nestedExpression: "(" Expression ")" //Can be on LHS of variableAssignment
-  > right Expression "?" Expression ":" Expression
+  > right ternary: Expression "?" Expression ":" Expression
   // left comma: Expression "," Expression
   ;
 
@@ -342,7 +342,7 @@ syntax PropertyName
  ;
 
 syntax PropertyAssignment
-  = PropertyName ":" Expression
+  = property: PropertyName ":" Expression
   | "get" PropertyName "(" ")" Block
   | "set" PropertyName "(" Id ")" Block
   ;

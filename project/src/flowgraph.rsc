@@ -28,47 +28,31 @@ public node getAST(loc file) = implode(#node, parse(t));
 // Make sure these trees start with the expression type
 // TODO createVertex might still be broken, maybe due to expression not being the thing that is always inserted, change to visit id's etc instead of expressions
 public Vertex createVertex(Tree root, map[str, Tree] symbolTable) {
-	//assert(Expression := root);
-	
 	// TODO: make sure the symbol table's position of the variable is BEFORE the reference
-	
 	// TODO probably not top-down-break but returns are needed
-	top-down visit(root) 
-	{
-		case Id id: {
-			println("finding variableDeclarations for <id>");
-			foundDeclaration = findVariableDeclaration(id, symbolTable);
-			if (foundDeclaration == nothing()) {
-				return Prop("<id>");
-			}
-			else {				
-				if (just(Tree t) := foundDeclaration) { 
-					return Var("<id>", getNodePosition(t));
-				}
-			}				
-		}
-		case (Expression)`<Expression e> . <Id id>`: 
-			return Prop("<id>"); // We ignore the prefix expression
-		case exp:(FunctionDeclaration)`function <Id id> ( <{Id ","}* params> ) <Block b>`:
-			return Fun(getNodePosition(exp));
-		case exp:(Expression)`function ( <{Id ","}* params> ) <Block b>`:
-			return Fun(getNodePosition(exp));
-		case functionExpression:(Expression)`<Id id> ( <{Expression ","}* params> )`:
-			return Fun(getNodePosition(functionExpression));
-		default: return Exp(getNodePosition(root));
+	if ((Expression)`<Expression e> . <Id id>` := root) {
+		println("property match");
+		return Prop("<id>");
 	}
-	
-	return Exp(getNodePosition(root));
+	else if ((Expression e := root && id(Id id) := e) ||
+			 Id id := root) {
+			 // both top level expressions and id's will match
+		println("finding variableDeclarations for <id> in <domain(symbolTable)>");
+		foundDeclaration = findVariableDeclaration(id, symbolTable);
+		if (foundDeclaration == nothing()) return Prop("<id>");
+		else return Var("<id>", getNodePosition(unpack(foundDeclaration)));		
+	}
+
+	return Exp(getNodePosition(root)); 	
 }
 
 public Maybe[Tree] findVariableDeclaration(Id variableId, map[str, Tree] symbolTable) {
-	// TODO check location of declaration to be before the reference
 	if ("<variableId>" in symbolTable) {
-		println("found reference");
 		return just(symbolTable["<variableId>"]);
 	}
 	return nothing();
 }
+
 private Maybe[Statement] getStatement(BlockStatement stm) {
 	if (stm is newLine || stm is semiColon || stm is statementContainingNested) {
 		return just(stm.stm);
@@ -83,146 +67,169 @@ private Maybe[FunctionDeclaration] getFunctionDeclaration(BlockStatement stm) {
 	return nothing();
 }
 
-
 private &A unpack(Maybe[&A] m) {
 	if (just(val) := m) return val;
 	throw "Can not unpack nothing"; 
 }
 
-// do not forget: 
-// TODO   | forIn: "for" "(" "var" Id "in" Expression ")" Statement
-// Dangerous case that could be missed
-public rel[Vertex, Vertex] createFlowGraphFromTree(Tree root) {
-	Tree fullTree = root;
+public rel[Vertex, Vertex] createFlowGraph(Tree root) {
 	rel[Vertex, Vertex] result = {};
-	// Key: name, value: Tree
-	map[str, Tree] symbolTable = ();
-	top-down visit (root) {
-		// TODO implement R1 for declaration in for loops etc		
+	// symbolTable = ();
+	top-down-break visit (root) {
 		case func(FunctionDeclaration f):{
 			// TODO: make sure to clear it after leaving it and make sure that nested functions dont destroy the symbol table
 			// Reset symbol table
-			symbolTable = ();
-			for (param <- f.parameters) {
-				symbolTable += ("<param>" : f);
-			}
-
+			map[str, Tree] symbolTable = ("<p>" : p | p <- f.parameters);
+			println("Visiting <f.name> with scope: <domain(symbolTable)>");
+			
+			result += createFlowGraphFromTree(f.implementation, symbolTable);
 			result += <Fun(getNodePosition(f)), Var("<f.name>", getNodePosition(f.name))>;
 		}
-		case Statement s: {
-			// TODO checks if this counts for for do?
-			// R1 - declarations with fill are also assignments? :)
-			// Just add id's to symbol table, they will be filled by assignment expressions later thus the verteci are created afterwards		
-			if (forDoDeclarations(declarations, _, _, _) := s || variableSemi(declarations) := s || variableNoSemi(declarations) := s) {
-				for (declaration <- declarations) {
-					// This only works on assigned variables (not on just declared ones)
-					// Use deep matching to ignore the literals like the comma (this wont hurt in this case)
-					if (/filledDeclaration(Id id, Expression expression) := declaration) {
-						symbolTable += ("<id>" : id);
-						Vertex rhsVertex = createVertex(expression, symbolTable);
-						result += <rhsVertex, createVertex(id, symbolTable)>; // TODO check if this was incorrect for real?
-						result += <rhsVertex, Exp(getNodePosition(s))>; // maybe getnodeposition decl.id?
-						// result += <rhsVertex, Var("<id>", getNodePosition(id))>;
-					}					
-				}
-			}
-			else if (forInDeclaration(Id id, Statement _) := s) {
-				symbolTable += ("<id>" : id);
-				Vertex rhsVertex = createVertex(expression, symbolTable);	// TODO: make sure these rules ( like the above ones ) also count for this type of declaration :)
-				result += <rhsVertex, createVertex(id, symbolTable)>;
-				result += <rhsVertex, Exp(getNodePosition(s))>;
-			}
-		}
-		case Expression e: {
-			// R1
-			if (variableAssignment(Expression lhs, Expression rhs) := e ||
-				variableAssignmentNoSemi(Expression lhs, Expression rhs) := e ||
-				variableAssignmentBlockEnd(Expression lhs, Expression rhs) := e ||
-				variableAssignmentLoose(Expression lhs, Expression rhs) := e ||
-				variableAssignmentMulti(Expression lhs, Expression rhs) := e) {
-				// TODO this is not declaration!
-				println("assignment for <e>");
-				Vertex rhsVertex = createVertex(rhs, symbolTable);
-				result += <rhsVertex, createVertex(lhs, symbolTable)>;
-				result += <rhsVertex, Exp(getNodePosition(e))>;
-			}
-			// R3
-			elseif (ternary(Expression condition, Expression conditionSuccess, Expression conditionFail) := e) {
-				Vertex successVertex = createVertex(conditionSuccess, symbolTable), failVertex = createVertex(conditionFail, symbolTable);
-				
-				result += <successVertex, Exp(getNodePosition(e))>;
-				result += <failVertex, Exp(getNodePosition(e))>;							
-			}
-			// R2
-			elseif (disjunction(Expression lhs, Expression rhs) := e) {
-				Vertex lhsVertex = createVertex(lhs, symbolTable), rhsVertex = createVertex(rhs, symbolTable);
-				
-				result += <lhsVertex, Exp(getNodePosition(disjunction))>;
-				result += <rhsVertex, Exp(getNodePosition(disjunction))>;			
-			}
-			// R4
-			elseif (conjunction(Expression lhs, Expression rhs) := e) {
-				Vertex rhsVertex = createVertex(rhs, symbolTable);
-	
-				result += <rhsVertex, Exp(getNodePosition(e))>;				
-			}
-			// R6
-			elseif (function(Id id, params, block) := e) {
-				println("Function <id>");
-				result += <Fun(getNodePosition(e)), createVertex(id, symbolTable)>;  
-			}
-			elseif (functionAnonymous(params, block) := e) {
-				println("Function <e>");
-				result += <Fun(getNodePosition(e)), createVertex(e, symbolTable)>;
-			}
-			elseif (functionParams(Expression expression, _) := e) {
-				//Position p = getNodePosition(e);
-				//result += <Fun(p), createVertex(expression, symbolTable)>;
-				print("");
-			}
-			elseif (functionNoParams(Expression expression) := e) {
-				// result += <Fun(getNodePosition(e)), createVertex(expression, symbolTable)>;
-				print("");
-			}
-			else {
-				// Probably not necessary :)
-				fail;
-			}
-		}
-		// R5
-		case PropertyAssignment p:{
-			if (property(PropertyName name, Expression exp) := p) {
-				// todo create vertex check?
-				// println("property assignment");
-				result += <createVertex(exp, symbolTable), Prop("<name>")>;			
-			}
-			else {
-				fail;
-			}
-		}
-		case stat(Statement s):{ // Only matches on top level "SourceElements"
-			// Used to reset symbol table after leaving a function scope
-			// TODO global declarations -> prop
-			// TODO check nested functions and statements (e.g. check if we are in a function by line / char number
-			symbolTable = ();
-			println("Visiting statement <s>");
-			// Global scope
-			// TODO: verify
+		// R6
+		// global statement
+		case stat(Statement s):{
+			// TODO what to do for global for do's and properties
 			if (variableSemi(declarations) := s || variableNoSemi(declarations) := s || forDoDeclarations(declarations, _, _, _) := s) {
 				for (declaration <- declarations) {
 					if (/f:filledDeclaration(Id id, Expression expression) := declaration) {
-						symbolTable += ("<id>" : id);
-						Vertex rhsVertex = createVertex(expression, symbolTable);
-						result += <rhsVertex, createVertex(id, symbolTable)>;
+						// Global scope so we won't add an id
+						println("decl <id>");
+						Vertex rhsVertex = createVertex(expression, ());
+						result += <rhsVertex, createVertex(id, ())>;
 						result += <rhsVertex, Exp(getNodePosition(f))>; // maybe getnodeposition decl.id?
 						
-						println("\n\n");
+						createFlowGraphFromExpression(expression, ());						
 					}
 				}	
 			}
+			elseif (expressionSemi(Expression e) := s || expressionLoose(Expression e) := s ||
+					expressionBlockEnd(Expression e) := s || expressionNL(Expression e) := s) {
+				result += createFlowGraphFromExpression(e, ());
+			}
+			else {
+				throw "unidentified statement <s>";
+			}
+			
+		}
+	}
+	
+	return result;
+}
+
+private rel[Vertex, Vertex] createFlowGraphFromTree(Tree root, map[str, Tree] symbolTable) {
+	Tree fullTree = root;
+	rel[Vertex, Vertex] result = {};
+	
+	top-down visit (root) {
+		case Statement s: {
+			// R1 - declarations with fill are also assignments? :)
+			tuple[rel[Vertex, Vertex] relations, map[str, Tree] symbolTableAdditions] visitStatementResult = createFlowGraphFromStatement(s, symbolTable);
+			// Sadly enough the symbol table is appended by the sibblings :)
+			result += visitStatementResult.relations;
+			symbolTable += visitStatementResult.symbolTableAdditions;
 		}
 	}
 
+	return result;
+}
+
+private tuple[rel[Vertex, Vertex], map[str, Tree]] createFlowGraphFromStatement(Statement s, map[str, Tree] symbolTable) {
+	rel[Vertex, Vertex] result = {};
+	if (forDoDeclarations(declarations, _, _, _) := s || variableSemi(declarations) := s || variableNoSemi(declarations) := s) {
+		for (declaration <- declarations) {
+			// This only works on assigned variables (not on just declared ones)
+			// Use deep matching to ignore the literals like the comma (this wont hurt in this case)
+			if (/filledDeclaration(Id id, Expression expression) := declaration) {
+				symbolTable += ("<id>" : id);
+				Vertex rhsVertex = createVertex(expression, symbolTable);
+				result += <rhsVertex, createVertex(id, symbolTable)>; // TODO check if this was incorrect for real?
+				result += <rhsVertex, Exp(getNodePosition(s))>; // maybe getnodeposition decl.id?
+				
+				result += createFlowGraphFromExpression(expression, symbolTable);
+			}
+		}
+	}
+	else if (forInDeclaration(Id id, Statement _) := s) {
+		symbolTable += ("<id>" : id);
+		Vertex rhsVertex = createVertex(expression, symbolTable);	// TODO: make sure these rules ( like the above ones ) also count for this type of declaration :)
+		result += <rhsVertex, createVertex(id, symbolTable)>;
+		result += <rhsVertex, Exp(getNodePosition(s))>;
+	}
+	// TODO necessary?
+	elseif (expressionSemi(Expression e) := s || expressionLoose(Expression e) := s ||
+			expressionBlockEnd(Expression e) := s || expressionNL(Expression e) := s) {
+		result += createFlowGraphFromExpression(e, symbolTable);
+	}
+	else {
+		throw "unidentified statement <s>";
+	}
+			
+	return <result, symbolTable>;
+}
+
+private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str, Tree] symbolTable) {
+	rel[Vertex, Vertex] result = {};
+	if (variableAssignment(Expression lhs, Expression rhs) := e ||
+		variableAssignmentNoSemi(Expression lhs, Expression rhs) := e ||
+		variableAssignmentBlockEnd(Expression lhs, Expression rhs) := e ||
+		variableAssignmentLoose(Expression lhs, Expression rhs) := e ||
+		variableAssignmentMulti(Expression lhs, Expression rhs) := e) {
+		// TODO this is not declaration!
+		println("assignment for <e> with symbol table <domain(symbolTable)>");
+		Vertex rhsVertex = createVertex(rhs, symbolTable);
+		result += <rhsVertex, createVertex(lhs, symbolTable)>;
+		result += <rhsVertex, Exp(getNodePosition(e))>;
+	}
+	// R3
+	elseif (ternary(Expression condition, Expression conditionSuccess, Expression conditionFail) := e) {
+		Vertex successVertex = createVertex(conditionSuccess, symbolTable), failVertex = createVertex(conditionFail, symbolTable);
+		
+		result += <successVertex, Exp(getNodePosition(e))>;
+		result += <failVertex, Exp(getNodePosition(e))>;							
+	}
+	// R2
+	elseif (disjunction(Expression lhs, Expression rhs) := e) {
+		Vertex lhsVertex = createVertex(lhs, symbolTable), rhsVertex = createVertex(rhs, symbolTable);
+		
+		result += <lhsVertex, Exp(getNodePosition(disjunction))>;
+		result += <rhsVertex, Exp(getNodePosition(disjunction))>;			
+	}
+	// R4
+	elseif (conjunction(Expression lhs, Expression rhs) := e) {
+		Vertex rhsVertex = createVertex(rhs, symbolTable);
+
+		result += <rhsVertex, Exp(getNodePosition(e))>;				
+	}
+	// In function functions
+	elseif (function(Id id, {Id ","}* params, Block block) := e) {
+		println("Function <id>");
+		result += createFlowGraphFromTree(block, ("<p>" : p | p <- params) + symbolTable);
+		println("Visiting <id> with scope: <domain(("<p>" : p | p <- params) + symbolTable)>");				
+		result += <Fun(getNodePosition(e)), createVertex(id, symbolTable)>;  
+	}
+	elseif (functionAnonymous({Id ","}* params, Block block) := e) {
+		println("Anonymous function (new sym <domain(("<p>" : p | p <- params) + symbolTable)>)");
+		result += createFlowGraphFromTree(block, ("<p>" : p | p <- params) + symbolTable);
+		println("Visiting anonymous with scope: <domain(("<p>" : p | p <- params) + symbolTable)>");
+		result += <Fun(getNodePosition(e)), createVertex(e, symbolTable)>;
+	}
+	elseif (functionParams(Expression expression, _) := e) {
+		//Position p = getNodePosition(e);
+		//result += <Fun(p), createVertex(expression, symbolTable)>;
+		print("");
+	}
+	elseif (functionNoParams(Expression expression) := e) {
+		// result += <Fun(getNodePosition(e)), createVertex(expression, symbolTable)>;
+		print("");
+	}
+	elseif (PropertyAssignment(p) := e) {
+		if (property(PropertyName name, Expression exp) := p) {
+			// todo create vertex check?
+			println("property assignment");
+			result += <createVertex(exp, symbolTable), Prop("<name>")>;			
+		}
+	}
+	
 	return result;
 }
 
@@ -233,7 +240,7 @@ private rel[Vertex, Vertex] createFlowVariableAssignment(Tree parent, Expression
 	rel[Vertex, Vertex] result = {};
 	result += <rhsVertex, lhsVertex>;
 	result += <rhsVertex, Exp(getNodePosition(parent))>;
-	
+
 	return result;  
 }
 

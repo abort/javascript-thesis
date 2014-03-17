@@ -104,6 +104,7 @@ public rel[Vertex, Vertex] createFlowGraph(Tree root) {
 			}
 			elseif (expressionSemi(Expression e) := s || expressionLoose(Expression e) := s ||
 					expressionBlockEnd(Expression e) := s || expressionNL(Expression e) := s) {
+				println("Expressioooooon <e>");
 				result += createFlowGraphFromExpression(e, ());
 			}
 			else {
@@ -167,6 +168,8 @@ private tuple[rel[Vertex, Vertex], map[str, Tree]] createFlowGraphFromStatement(
 	return <result, symbolTable>;
 }
 
+
+// TODO check if propagations are necessary
 private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str, Tree] symbolTable) {
 	rel[Vertex, Vertex] result = {};
 	if (variableAssignment(Expression lhs, Expression rhs) := e ||
@@ -179,26 +182,43 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 		Vertex rhsVertex = createVertex(rhs, symbolTable);
 		result += <rhsVertex, createVertex(lhs, symbolTable)>;
 		result += <rhsVertex, Exp(getNodePosition(e))>;
+		
+		// propagate the expression flow creation
+		result += createFlowGraphFromExpression(lhs, symbolTable);
+		result += createFlowGraphFromExpression(rhs, symbolTable);		
 	}
 	// R3
 	elseif (ternary(Expression condition, Expression conditionSuccess, Expression conditionFail) := e) {
 		Vertex successVertex = createVertex(conditionSuccess, symbolTable), failVertex = createVertex(conditionFail, symbolTable);
 		
 		result += <successVertex, Exp(getNodePosition(e))>;
-		result += <failVertex, Exp(getNodePosition(e))>;							
+		result += <failVertex, Exp(getNodePosition(e))>;
+
+		// propagate the expression flow creation
+		result += createFlowGraphFromExpression(conditionSuccess, symbolTable);
+		result += createFlowGraphFromExpression(conditionFail, symbolTable);
+		result += createFlowGraphFromExpression(condition, symbolTable);
 	}
 	// R2
 	elseif (disjunction(Expression lhs, Expression rhs) := e) {
 		Vertex lhsVertex = createVertex(lhs, symbolTable), rhsVertex = createVertex(rhs, symbolTable);
 		
 		result += <lhsVertex, Exp(getNodePosition(disjunction))>;
-		result += <rhsVertex, Exp(getNodePosition(disjunction))>;			
+		result += <rhsVertex, Exp(getNodePosition(disjunction))>;
+		
+		// propagate the expression flow creation
+		result += createFlowGraphFromExpression(lhs, symbolTable);
+		result += createFlowGraphFromExpression(rhs, symbolTable);	
 	}
 	// R4
 	elseif (conjunction(Expression lhs, Expression rhs) := e) {
 		Vertex rhsVertex = createVertex(rhs, symbolTable);
 
-		result += <rhsVertex, Exp(getNodePosition(e))>;				
+		result += <rhsVertex, Exp(getNodePosition(e))>;
+		
+		// propagate
+		result += createFlowGraphFromExpression(lhs, symbolTable);
+		result += createFlowGraphFromExpression(rhs, symbolTable);				
 	}
 	// In function functions
 	elseif (function(Id id, {Id ","}* params, Block block) := e) {
@@ -226,8 +246,13 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 		if (property(PropertyName name, Expression exp) := p) {
 			// todo create vertex check?
 			println("property assignment");
-			result += <createVertex(exp, symbolTable), Prop("<name>")>;			
+			result += <createVertex(exp, symbolTable), Prop("<name>")>;	
+			
+			result += createFlowGraphFromExpression(exp, symbolTable);		
 		}
+	}
+	elseif (nestedExpression(Expression nested) := e) {
+		result += createFlowGraphFromExpression(nested, symbolTable);
 	}
 	
 	return result;

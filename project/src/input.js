@@ -1,9 +1,11 @@
 var leglobal = true;
 
 function stop(ownScope) {
-    console.log('haha');
     ownScope = 1; 
-    var blub = 2;
+    var blub = 2; 
+    var x = i * 2;
+    
 }
 
 ownScope = 2;
+

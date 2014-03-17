@@ -80,7 +80,7 @@ syntax Statement
   | forDo: "for" "(" {VariableDeclarationNoIn ","}* ";" {Expression ","}* ";" {Expression ","}* ")" Statement  //TODO: WHY DOESNT THE ERROR OCCUR HERE?
   | forDoDeclarations: "for" "(" "var" {VariableDeclarationNoIn ","}+ ";" {Expression ","}* ";" {Expression ","}* ")" Statement  //TODO: WHY DOESNT THE ERROR OCCUR HERE?
   | forIn: "for" "(" Expression "in" Expression ")" Statement // left-hand side expr "in" ???
-  | forIn: "for" "(" "var" Id "in" Expression ")" Statement
+  | forInDeclaration: "for" "(" "var" Id "in" Expression ")" Statement
           
   | continueLabel: "continue" NoNL Id NoNL ";"
   | continueNoLabel: "continue" NoNL ";"
@@ -241,11 +241,11 @@ syntax Expression
   | emptyArray: "[" "]"
   | "{" {PropertyAssignment ","}+ "," "}"
   | objectDefinition:"{" {PropertyAssignment ","}* "}"
-  > function: "function" Id "(" {Id ","}* ")" Block // Is that so? cant we just have expressions as params...
-  | functionAnonymous: "function" "(" {Id ","}* ")" Block
+  > function: "function" Id id "(" {Id ","}* parameters ")" Block block // Is that so? cant we just have expressions as params...
+  | functionAnonymous: "function" "(" {Id ","}* parameters ")" Block block
   | property: Expression "." Id //Can be on LHS of variableAssignment
-  > Expression "(" { Expression!comma ","}+ ")" //Can be on LHS of variableAssignment
-  | Expression "(" ")" //Can be on LHS of variableAssignment
+  > functionParams: Expression "(" { Expression!comma ","}+ ")" //Can be on LHS of variableAssignment
+  | functionNoParams: Expression "(" ")" //Can be on LHS of variableAssignment
   | member: Expression "[" Expression "]" //Can be on LHS of variableAssignment
   | "this"
   | id: Id //Can be on LHS of variableAssignment

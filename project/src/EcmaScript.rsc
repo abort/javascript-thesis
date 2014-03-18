@@ -47,16 +47,16 @@ syntax Statement
   | variableNoSemi: "var" {VariableDeclaration ","}+ NoNL () $
   | variableSemi: "var" {VariableDeclaration ","}+ NoNL ";"
 
-  | returnExp: "return" NoNL Expression NoNL ";"
-  | returnExpNoSemi: "return" NoNL Expression NoNL () $
-  | returnExpNoSemiBlockEnd: "return" NoNL Expression NoNL () >> [}]
+  | returnExp: "return" NoNL Expression expression NoNL ";"
+  | returnExpNoSemi: "return" NoNL Expression expression NoNL () $
+  | returnExpNoSemiBlockEnd: "return" NoNL Expression expression NoNL () >> [}]
   | returnNoExp: "return" NoNL ";"
   | returnNoExpNoSemi: "return" NoNL () $
   | returnNoExpNoSemiBlockEnd: "return" NoNL () >> [}]  
 
-  | throwExp: "throw" NoNL Expression NoNL ";"
-  | throwExpNoSemi: "throw" NoNL Expression NoNL () $
-  | throwExpNoSemiBlockEnd: "throw" NoNL Expression NoNL () >> [}]
+  | throwExp: "throw" NoNL Expression expression NoNL ";"
+  | throwExpNoSemi: "throw" NoNL Expression expression NoNL () $
+  | throwExpNoSemiBlockEnd: "throw" NoNL Expression expression NoNL () >> [}]
   | throwNoExp: "throw" NoNL ";"
   | throwNoExpNoSemi: "throw" NoNL () $
   | throwNoExpNoSemiBlockEnd: "throw" NoNL () >> [}]
@@ -68,19 +68,19 @@ syntax Statement
   | expressionBlockEnd: Expression!function!objectDefinition NoNL () !>> [\n] >> [}] >> ZeroOrMoreNewLines
   | expressionNL: Expression!function!objectDefinition NoNL OneOrMoreNewLines !>> [\n]
 
-  | ifThen: "if" "(" Expression ")" Statement!block !>> "else"
-  | ifThenBlock: "if" "(" Expression ")" Block !>> "else"
-  | ifThenElse: "if" "(" Expression ")" Statement "else" Statement!block //For if-then-else only the second block is revelant as it is the one adjacent to next statements.
-  | ifThenElseBlock: "if" "(" Expression ")" Statement "else" Block
+  | ifThen: "if" "(" Expression condition ")" Statement!block !>> "else"
+  | ifThenBlock: "if" "(" Expression condition ")" Block !>> "else"
+  | ifThenElse: "if" "(" Expression condition ")" Statement "else" Statement!block //For if-then-else only the second block is revelant as it is the one adjacent to next statements.
+  | ifThenElseBlock: "if" "(" Expression condition ")" Statement "else" Block
 
-  | doWhile: "do" Statement "while" "(" Expression ")" ";"
-  | doWhileLoose: "do" Statement "while" "(" Expression ")" !>> ";"
+  | doWhile: "do" Statement "while" "(" Expression condition ")" ";"
+  | doWhileLoose: "do" Statement "while" "(" Expression condition ")" !>> ";"
 
-  | whileDo: "while" "(" Expression ")" Statement //TODO: WHY DOESNT THE ERROR OCCUR HERE?
-  | forDo: "for" "(" {VariableDeclarationNoIn ","}* ";" {Expression ","}* ";" {Expression ","}* ")" Statement  //TODO: WHY DOESNT THE ERROR OCCUR HERE?
-  | forDoDeclarations: "for" "(" "var" {VariableDeclarationNoIn ","}+ ";" {Expression ","}* ";" {Expression ","}* ")" Statement  //TODO: WHY DOESNT THE ERROR OCCUR HERE?
-  | forIn: "for" "(" Expression "in" Expression ")" Statement // left-hand side expr "in" ???
-  | forInDeclaration: "for" "(" "var" Id "in" Expression ")" Statement
+  | whileDo: "while" "(" Expression condition ")" Statement //TODO: WHY DOESNT THE ERROR OCCUR HERE?
+  | forDo: "for" "(" {VariableDeclarationNoIn ","}* ";" {Expression ","}* conditions ";" {Expression ","}* loopOperations ")" Statement  //TODO: WHY DOESNT THE ERROR OCCUR HERE?
+  | forDoDeclarations: "for" "(" "var" {VariableDeclarationNoIn ","}+ ";" {Expression ","}* conditions ";" {Expression ","}* loopOperations ")" Statement  //TODO: WHY DOESNT THE ERROR OCCUR HERE?
+  | forIn: "for" "(" Expression expressionLeft "in" Expression expressionRight ")" Statement // left-hand side expr "in" ???
+  | forInDeclaration: "for" "(" "var" Id "in" Expression expressionRight ")" Statement
           
   | continueLabel: "continue" NoNL Id NoNL ";"
   | continueNoLabel: "continue" NoNL ";"
@@ -96,14 +96,14 @@ syntax Statement
   | breakNoLabelNoSemi: "break" NoNL () $
   | breakNoLabelNoSemiBlockEnd: "break" NoNL () >> [}]
   
-  | withDo: "with" "(" Expression ")" Statement
+  | withDo: "with" "(" Expression expression ")" Statement
   | switchCase: SwitchBlock //TODO: MAYBE EAT NEWLINES HERE TOO?
   | labeled: Spaces Id NoNL ":" Statement
   | tryBlock: TryBlock
   | debugger: "debugger" ";"?
   ;
 
-syntax SwitchBlock = "switch" "(" Expression ")" CaseBlock;
+syntax SwitchBlock = switchBlock: "switch" "(" Expression expression ")" CaseBlock block;
 
 
 syntax TryBlock =

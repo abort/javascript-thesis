@@ -86,11 +86,11 @@ private rel[Vertex, Vertex] createFlowGraphFromGlobalStatement(Statement s) {
 }
 private tuple[rel[Vertex, Vertex], map[str, Tree]] createFlowGraphFromStatement(Statement s, map[str, Tree] symbolTable, bool globalScope) {
 	rel[Vertex, Vertex] result = {};
-	
+
 	debug("statement: <s> new symbol table: <domain(symbolTable)>");
 	
 	// TODO: VERY IMPORTANT Why does this not match on variablenosemi (tested with a variable assignment with a object definition that did not end with a ;) but it does on variablesemi
-	if (forDoDeclarations(declarations, _, _, _) := s || variableNoSemi(declarations) := s || variableSemi(declarations) := s) {
+	if (forDoDeclarations(declarations, _, _, _) := s || variableNoSemi(declarations, _) := s || variableSemi(declarations) := s) {
 		debug("var declaration");
 		for (declaration <- declarations) {
 			// This only works on assigned variables (not on just declared ones)
@@ -99,8 +99,8 @@ private tuple[rel[Vertex, Vertex], map[str, Tree]] createFlowGraphFromStatement(
 				debug("var decl <id>");
 				if (!globalScope) symbolTable += ("<id>" : id);
 				Vertex rhsVertex = createVertex(expression, symbolTable);
-				result += <rhsVertex, createVertex(id, symbolTable)>; // TODO check if this was incorrect for real?
-				result += <rhsVertex, Exp(getNodePosition(id))>; // maybe getnodeposition decl.id?
+				result += <rhsVertex, createVertex(id, symbolTable)>;
+				result += <rhsVertex, Exp(getNodePosition(id))>;
 				debug("added for <id> creating node for <expression>");
 				result += createFlowGraphFromExpression(expression, symbolTable);
 			}
@@ -119,10 +119,7 @@ private tuple[rel[Vertex, Vertex], map[str, Tree]] createFlowGraphFromStatement(
 		result += createFlowGraphFromExpression(e, symbolTable);
 	} 
 
-	// TODO with() statement?
-	// TODO just add expression semi no semi and manually delegate there and it should work :)
-	
-	// TODO propagate to children that are top level expressions but NOT part of a statement, this is still incomplete; e.g. wont work with property assignments
+	// TODO with() statement?	
 	for (Expression e <- s.args) {
 		debug("Recursive statements -\> Propagating flow graph creation for expression <e> as direct child of <s>");
 		result += createFlowGraphFromExpression(e, symbolTable);

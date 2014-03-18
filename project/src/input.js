@@ -5,14 +5,16 @@ function stop(ownScope) {
     var blub = 2; 
     var y = function(blub) {
         ownScope = 10;
+        blub = true;
     };
     
     var obj = {
       f: function execute() {
         leglobal = false;
+        this.x = true;
       },
       x: function () { }
-    };
+    }
     
     blub = 7;
 }

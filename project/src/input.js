@@ -9,10 +9,9 @@ function stop(ownScope) {
     
     var obj = {
       f: function execute() {
-         console.log("Execution!");   
-        
+        leglobal = false;
       },
-      x: function () { execute(); }
+      x: function () { }
     };
     
     blub = 7;
@@ -20,7 +19,7 @@ function stop(ownScope) {
 
 function newFunction(ownScope) {
     ownScope = 2;
-    
+    blub = 2;
 }
 
 ownScope = false;

@@ -32,6 +32,7 @@ public rel[Vertex, Vertex] createFlowGraph(Tree root) {
 		// R7
 		case func(FunctionDeclaration f):{
 			// initialize symbolTable with parameters of the function declaration
+			// TODO: maybe add name of the function to scope
 			map[str, Tree] symbolTable = ("<p>" : p | p <- f.parameters);
 			debug("Visiting <f.name> with scope: <domain(symbolTable)>");
 			
@@ -55,8 +56,8 @@ private rel[Vertex, Vertex] createFlowGraphFromNestedStatements(Tree root, map[s
 private rel[Vertex, Vertex] createFlowGraphFromStatements(Tree root, map[str, Tree] symbolTable, bool globalScope) {
 	rel[Vertex, Vertex] result = {};
 	
-	// Visits all statements
-	top-down visit (root) {
+	// Visits all top-level statements
+	top-down-break visit (root) {
 		case Statement s:{
 			if (globalScope) {
 				rel[Vertex, Vertex] graph = createFlowGraphFromGlobalStatement(s);
@@ -84,37 +85,51 @@ private rel[Vertex, Vertex] createFlowGraphFromGlobalStatement(Statement s) {
 	return result.graph;
 }
 private tuple[rel[Vertex, Vertex], map[str, Tree]] createFlowGraphFromStatement(Statement s, map[str, Tree] symbolTable, bool globalScope) {
-	// TODO Recurse on direct expression children
 	rel[Vertex, Vertex] result = {};
-	if (forDoDeclarations(declarations, _, _, _) := s || variableSemi(declarations) := s || variableNoSemi(declarations) := s) {
+	
+	debug("statement: <s> new symbol table: <domain(symbolTable)>");
+	
+	// TODO: VERY IMPORTANT Why does this not match on variablenosemi (tested with a variable assignment with a object definition that did not end with a ;) but it does on variablesemi
+	if (forDoDeclarations(declarations, _, _, _) := s || variableNoSemi(declarations) := s || variableSemi(declarations) := s) {
+		debug("var declaration");
 		for (declaration <- declarations) {
 			// This only works on assigned variables (not on just declared ones)
 			// Use deep matching to ignore the literals like the comma (this wont hurt in this case)
-			if (/f:filledDeclaration(Id id, Expression expression) := declaration) {
+			for (/f:filledDeclaration(Id id, Expression expression) := declarations) {
+				debug("var decl <id>");
 				if (!globalScope) symbolTable += ("<id>" : id);
 				Vertex rhsVertex = createVertex(expression, symbolTable);
 				result += <rhsVertex, createVertex(id, symbolTable)>; // TODO check if this was incorrect for real?
 				result += <rhsVertex, Exp(getNodePosition(id))>; // maybe getnodeposition decl.id?
 				debug("added for <id> creating node for <expression>");
+				result += createFlowGraphFromExpression(expression, symbolTable);
 			}
 		}
 	}
-	else if (forInDeclaration(Id id, Expression e, Statement _) := s) {
+	elseif (forInDeclaration(Id id, Expression e, Statement _) := s) {
 		debug("forIn Decl");
 	
 		// Assumption to count as a simple declaration (so not R1, TODO: DOCUMENT!)
 		if (!globalScope) symbolTable += ("<id>" : id);
 		Vertex rhsVertex = createVertex(e, symbolTable);
 	}
+	elseif (sw:switchCase() := s) {
+		// Manually propagate expressions due to deeper nesting (SwitchBlock is a loose syntax thus an extra node)
+		debug("switchCase decl");
+		result += createFlowGraphFromExpression(e, symbolTable);
+	} 
+
+	// TODO with() statement?
+	// TODO just add expression semi no semi and manually delegate there and it should work :)
 	
-	// Propagate flowgraph creation to immediate expression children
+	// TODO propagate to children that are top level expressions but NOT part of a statement, this is still incomplete; e.g. wont work with property assignments
 	for (Expression e <- s.args) {
-		debug("Propagating flow graph creation for expression <e> as direct child of <s>");
+		debug("Recursive statements -\> Propagating flow graph creation for expression <e> as direct child of <s>");
 		result += createFlowGraphFromExpression(e, symbolTable);
 	}
 	for ({Expression ","}* expressions <- s.args) {
 		for (Expression e <- expressions) {
-			debug("Propagating flow graph creation for expression <e> as direct child of <s>");
+			debug("Recursive statements -\> Propagating flow graph creation for expression <e> as direct child of <s>");
 			result += createFlowGraphFromExpression(e, symbolTable);
 		}
 	}
@@ -146,6 +161,7 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 	}
 	// R3
 	elseif (ternary(Expression condition, Expression conditionSuccess, Expression conditionFail) := e) {
+		debug("ternary");
 		Vertex successVertex = createVertex(conditionSuccess, symbolTable), failVertex = createVertex(conditionFail, symbolTable);
 		
 		result += <successVertex, Exp(getNodePosition(e))>;
@@ -154,16 +170,21 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 	// R4
 	elseif (conjunction(Expression lhs, Expression rhs) := e) {
 		Vertex rhsVertex = createVertex(rhs, symbolTable);
-
+		println("conjunction!");
 		result += <rhsVertex, Exp(getNodePosition(e))>;		
 	}
 	// R5
-	elseif (objectDefinition({PropertyAssignment ","}* p) := e) {
+	elseif (objectDefinition(p) := e 
+		|| objectDefinitionCommaSuffix({PropertyAssignment ","}+ p) := e) {
+		debug("obj definition");
 		// TODO what to do with the get/set
 		for (/property(PropertyName name, Expression exp) := p) {
 			// todo create vertex check?
 			debug("property assignment <name>");
-			result += <createVertex(exp, symbolTable), Prop("<name>")>;	
+			result += <createVertex(exp, symbolTable), Prop("<name>")>;
+			
+			// Propagate manually as property assignments have a separate syntax block
+			result += createFlowGraphFromExpression(exp, symbolTable);	
 		}
 	}
 	// Functions declared in functions ;)
@@ -181,6 +202,7 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 
 		// No need for checking in the symbol table, R6 says this is always a var
 		result += <Fun(getNodePosition(e)), createVarVertex(id)>;  
+		// TODO: check when we refer to it on a global level it should be in the symbol table
 	}
 	elseif (functionParams(Expression expression, _) := e) {
 		//Position p = getNodePosition(e);
@@ -190,6 +212,18 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 	elseif (functionNoParams(Expression expression) := e) {
 		// result += <Fun(getNodePosition(e)), createVertex(expression, symbolTable)>;
 		print("");
+	}
+	
+	for (Expression subexpression <- e.args) {
+		if (id(id) := subexpression) continue; 
+		debug("Recursive expressions -\> Propagating flow graph creation for expression <subexpression> as direct child of <e>");
+		result += createFlowGraphFromExpression(subexpression, symbolTable);		
+	}
+	for ({Expression ","}* expressions <- e.args) {
+		for (Expression subexpression <- expressions) {
+			debug("Recursive expressions -\> Propagating flow graph creation for expression <subexpression> as direct child of <e>");
+			result += createFlowGraphFromExpression(subexpression, symbolTable);
+		}
 	}
 	
 	return result;

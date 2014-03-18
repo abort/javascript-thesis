@@ -1,29 +1,16 @@
-var x = false;
-for (var i = 0; i < 10; i++) {
-  i = x * 2;
-}
-
 function doSomething(doSomethingScope) {
-  var x = doSomethingScope * 2;
+  var x = 30;
   var objThatKnowsX = {
-    f: function leFunc() {
+    f: function leFunc(funScope) {
       x = 20;
-      leFunc = 1000;
+      z = 0;
+      leFunc = 1000; // this creates a weird 3rd ghost vertex
+      funScope = 5;
     },
-    y: function () {
-      f = 10;
-      doSomethingScope = 200;
-      iAmGlobalz = true;
-    }
-  }
+    y: function () {  }
+  };
   
-  for (var inTest in doSomethingScope) {
-    inTest = 10;
-  }
-  inTest = 1000;
+  leFunc = 20;
 }
-inTest = 1;
-
+doSomething = 10;
 doSomethingScope = 10;
-
-i = 20;

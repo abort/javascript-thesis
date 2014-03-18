@@ -44,8 +44,8 @@ lexical NoPrecedingEnters =
   
 syntax Statement 
   = block:Block NoNL ZeroOrMoreNewLines NoNL () !>> [\n]
-  | variableNoSemi: "var" {VariableDeclaration ","}+ NoNL () $
-  | variableSemi: "var" {VariableDeclaration ","}+ NoNL ";"
+  | variableNoSemi: "var" {VariableDeclaration ","}+ declarations NoNL () $
+  | variableSemi: "var" {VariableDeclaration ","}+ declarations NoNL ";"
 
   | returnExp: "return" NoNL Expression expression NoNL ";"
   | returnExpNoSemi: "return" NoNL Expression expression NoNL () $
@@ -239,7 +239,7 @@ syntax Expression
   = 
    array: "[" {Expression!comma ","}+ "]"
   | emptyArray: "[" "]"
-  | "{" {PropertyAssignment ","}+ "," "}"
+  | objectDefinitionCommaSuffix:"{" {PropertyAssignment ","}+ "," "}"
   | objectDefinition:"{" {PropertyAssignment ","}* "}"
   > function: "function" Id id "(" {Id ","}* parameters ")" Block block // Is that so? cant we just have expressions as params...
   | functionAnonymous: "function" "(" {Id ","}* parameters ")" Block block
@@ -326,14 +326,6 @@ syntax Expression
   > right ternary: Expression "?" Expression ":" Expression
   // left comma: Expression "," Expression
   ;
-
-syntax AssignmentExpression =
-  assignment: SubAssignment head "," AssignmentExpression tail
- | SubAssignment >> ()
- |
- ;
- 
-syntax SubAssignment = Expression "=" !>> "=" Expression;
 
 syntax PropertyName
  = Id

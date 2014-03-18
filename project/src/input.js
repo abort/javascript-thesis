@@ -7,8 +7,21 @@ function stop(ownScope) {
         ownScope = 10;
     };
     
+    var obj = {
+      f: function execute() {
+         console.log("Execution!");   
+        
+      },
+      x: function () { execute(); }
+    };
+    
     blub = 7;
 }
 
-bla = (1 == 1 ? 10 : 15);
+function newFunction(ownScope) {
+    ownScope = 2;
+    
+}
 
+ownScope = false;
+leglobal = 10;

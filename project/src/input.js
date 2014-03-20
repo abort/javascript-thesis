@@ -1,5 +1,5 @@
 function newFunction(ownScope) {
-    function() {
+    var y = function () {
         ownScope = 5;
     }
 }

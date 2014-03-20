@@ -244,7 +244,7 @@ syntax Expression
   | objectDefinitionCommaSuffix:"{" {PropertyAssignment ","}+ "," "}"
   | objectDefinition:"{" {PropertyAssignment ","}* "}"
   > function: "function" Id id "(" {Id ","}* parameters ")" Block block // Is that so? cant we just have expressions as params...
-  | functionAnonymous: Expression >> "function" "(" {Id ","}* parameters ")" Block block // must be preceded by a var decl or so (cant be loose)
+  | functionAnonymous: "function" "(" {Id ","}* parameters ")" Block block // must be preceded by a var decl or so (cant be loose) // TODO fix!
   | property: Expression "." Id //Can be on LHS of variableAssignment
   > functionParams: Expression "(" { Expression!comma ","}+ ")" //Can be on LHS of variableAssignment
   | functionNoParams: Expression "(" ")" //Can be on LHS of variableAssignment

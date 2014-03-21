@@ -80,8 +80,6 @@ private tuple[rel[Vertex, Vertex], map[str, Tree]] createFlowGraphFromStatements
 				result += visitStatementResult.graph;
 				symbolTable += visitStatementResult.symbolTableAdditions;
 			}
-			
-			result += createFlowGraphForExpressions(s, symbolTable);
 		}
 	}
 
@@ -116,8 +114,6 @@ private rel[Vertex, Vertex] createFlowGraphFromGlobalStatement(Statement s) {
 
 private tuple[rel[Vertex, Vertex], map[str, Tree]] createFlowGraphFromStatement(Statement s, map[str, Tree] symbolTable, bool globalScope) {
 	rel[Vertex, Vertex] result = {};
-
-	println("statement: <s> new symbol table: <domain(symbolTable)>");
 	
 	// TODO: VERY IMPORTANT Why does this not match on variablenosemi (tested with a variable assignment with a object definition that did not end with a ;) but it does on variablesemi
 	if (forDoDeclarations(declarations, _, _, _) := s || variableNoSemi(declarations, _) := s || variableSemi(declarations) := s) {
@@ -125,17 +121,24 @@ private tuple[rel[Vertex, Vertex], map[str, Tree]] createFlowGraphFromStatement(
 			// This only works on assigned variables (not on just declared ones)
 			// Use deep matching to ignore the literals like the comma (this wont hurt in this case)
 			for (/f:filledDeclaration(Id id, Expression expression) := declarations) {
-				if (!globalScope) symbolTable += ("<id>" : id);
+				// Variables can not be redeclared in the same scope
+				if (!globalScope && "<id>" notin symbolTable) symbolTable += ("<id>" : id);
 				Vertex rhsVertex = createVertex(expression, symbolTable);
-				result += <rhsVertex, createVertex(id, symbolTable)>;
+				result += <rhsVertex, createVertex(id, symbolTable)>;	// Does not occur in the provided script but we assume it to be the same as a declaration + expression R1
 				result += <rhsVertex, Exp(getNodePosition(id))>;
 				debug("variable declaration for <id> creating node for <expression>");
+			}
+			
+			// Add to symbol table
+			for (/e:emptyDeclaration(Id id) := declaration) {
+				// Variables can not be redeclared in the same scope
+				if (!globalScope && "<id>" notin symbolTable) symbolTable += ("<id>" : id);
 			}
 		}
 	}
 	elseif (forInDeclaration(Id id, Expression e, Statement _) := s) {
 		// Assumption to count as a simple declaration (so not R1, TODO: DOCUMENT!)
-		if (!globalScope) symbolTable += ("<id>" : id);
+		if (!globalScope && "<id>" notin symbolTable) symbolTable += ("<id>" : id);
 		Vertex rhsVertex = createVertex(e, symbolTable);
 	}
 	elseif (sw:switchCase() := s) {
@@ -147,11 +150,9 @@ private tuple[rel[Vertex, Vertex], map[str, Tree]] createFlowGraphFromStatement(
 		}
 		// TODO: recurse over statements in cases
 	}
-
 	// Recurse over blocks	
 	elseif (block(b:filledBlock(_), _, _) := s) {
-		debug("visiting nested block");
-		println("nested blzkx <b>");
+		debug("visiting nested block <b>");
 
 		// Recurse on blocks
 		tuple[rel[Vertex, Vertex] graph, map[str, Tree] symbolTableAdditions] recursionResult = createFlowGraphFromStatements(b.statements, symbolTable, globalScope);
@@ -159,14 +160,16 @@ private tuple[rel[Vertex, Vertex], map[str, Tree]] createFlowGraphFromStatement(
 		result += recursionResult.graph;
 		symbolTable += recursionResult.symbolTableAdditions;
 	}
-	
+
 	// Recurse over substatements
 	if (forDoDeclarations(_, _, _, Statement stmnt) := s || forDo(_, _, _, Statement stmnt) := s || 
 		ifThen(_, Statement stmnt) := s || ifThenElseBlock(_, Statement stmnt, _) := s || forIn(_, _, Statement stmnt) := s ||
 		forInDeclaration(_, _, Statement stmnt) := s
 		|| doWhile(Statement stmnt, _) := s || doWhileLoose(Statement stmnt, _) := s) {
 		println("Recursing statement for <s>");
-		tuple[rel[Vertex, Vertex] graph, map[str, Tree] symbolTableAdditions] recursionResult = createFlowGraphFromStatements(stmnt, symbolTable, globalScope);
+
+		// A statement that is not a block is also possible, which should still work here
+		tuple[rel[Vertex, Vertex] graph, map[str, Tree] symbolTableAdditions] recursionResult = createFlowGraphFromStatement(stmnt, symbolTable, globalScope);
 
 		result += recursionResult.graph;
 		symbolTable += recursionResult.symbolTableAdditions;		
@@ -174,15 +177,15 @@ private tuple[rel[Vertex, Vertex], map[str, Tree]] createFlowGraphFromStatement(
 
 	// Recurse over blocks	
 	if (ifThenBlock(_, Block b) := s || ifThenElseBlock(_, _, Block b) := s) {
-		if (f:filledBlock(_) := b) {
-			println("filled if block");
-			tuple[rel[Vertex, Vertex] graph, map[str, Tree] symbolTableAdditions] recursionResult = createFlowGraphFromStatements(b.statements, symbolTable, globalScope);
+		tuple[rel[Vertex, Vertex] graph, map[str, Tree] symbolTableAdditions] recursionResult = createFlowGraphFromStatement(b, symbolTable, globalScope);
 	
-			result += recursionResult.graph;
-			// Blocks affect the symbol table for their sibblings
-			symbolTable += recursionResult.symbolTableAdditions;				
-		}
+		result += recursionResult.graph;
+		// Blocks affect the symbol table for their sibblings
+		symbolTable += recursionResult.symbolTableAdditions;				
 	}
+	
+	// Recurse over expressions
+	result += createFlowGraphForExpressions(s, symbolTable);
 
 	// TODO with() statement?
 

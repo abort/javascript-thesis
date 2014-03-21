@@ -1,6 +1,8 @@
-function bl() {
+function bl(y) {
     var y = 0;
 }
+
+
 
 function doSomething(doSomethingScope) {
     {
@@ -20,7 +22,13 @@ function doSomething(doSomethingScope) {
             };
         }
         var x  =  5;
-   } 
+   }
+   
+   var z = {
+        leFunc: function() {
+            return 1+1;
+        }
+   };
     
     x = 10;
 }

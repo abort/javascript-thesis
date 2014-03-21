@@ -14,44 +14,15 @@ import Map;
 import util::Maybe;
 import Logger;
 
-// TODO use for redefinition
-data SymbolMapEntry = entry(Tree tree, bool overridable);
+// Entries are needed to know if certain entries in the symbol map are overridable
+private data SymbolMapEntry = entry(Tree tree, bool overridable);
+private SymbolMapEntry createEntry(Tree tree) = entry(tree, false);
 
-public rel[Vertex, Vertex] createFlowGraph(Source root) {
-	rel[Vertex, Vertex] result = {};
-	
-	// Start with visiting global scope
-	top-down-break visit (root) {
-		// R7
-		case func(FunctionDeclaration f):{
-			// initialize symbolMap with parameters of the function declaration
-			// TODO: maybe add name of the function to scope
-			map[str, SymbolMapEntry] symbolMap = ("<p>" : entry(p, false) | p <- f.parameters) + ("<f.name>" : entry(f, false));
-			debug("Visiting <f.name> with scope: <domain(symbolMap)>");
-			
-			// Discard the returned symbol table because it does not affect the global scope
-			tuple[rel[Vertex, Vertex] graph, map[str, SymbolMapEntry] _] visitStatementResult = createFlowGraphFromNestedStatements(f.implementation, symbolMap);
+public rel[Vertex, Vertex] createFlowGraph(Source root) = createFlowGraphFromGlobalStatements(root);
 
-			result += visitStatementResult.graph;
-			result += <Fun(getNodePosition(f)), Var("<f.name>", getNodePosition(f.name))>;
-		}
-		// global statements
-		case stat(Statement s):{
-			// TODO what to do for global for do's and properties
-			// R1 on global scope level
-			// No symbol table for global statements, thus we provide an empty map
-			result += createFlowGraphFromGlobalStatements(s);
-		}
-	}
-	
-	return result;
-}
+// Does not affect the scoping so we discard the returned symbol map
+private rel[Vertex, Vertex] createFlowGraphFromGlobalStatements(Tree root) = graph(createFlowGraphFromStatements(root, (), true));
 
-private rel[Vertex, Vertex] createFlowGraphFromGlobalStatements(Tree root) {
-	// Does not affect the scoping so we discard the returned symbol table
-	tuple[rel[Vertex, Vertex] graph, map[str, SymbolMapEntry] _] visitStatementResult = createFlowGraphFromStatements(root, (), true);
-	return visitStatementResult.graph;
-}   
 private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphFromNestedStatements(Tree root, map[str, SymbolMapEntry] symbolMap) = createFlowGraphFromStatements(root, symbolMap, false);
 private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphFromStatements(Tree root, map[str, SymbolMapEntry] symbolMap, bool globalScope) {
 	rel[Vertex, Vertex] result = {};
@@ -59,29 +30,27 @@ private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphFrom
 	// Visits all top-level statements
 	top-down-break visit (root) {
 		case FunctionDeclaration f:{
-			map[str, SymbolMapEntry] newSymbolMap = getOverridableSymbolMap(symbolMap) + ("<p>" : entry(p, false) | p <- f.parameters) + ("<f.name>" : entry(f, false));
-			println("Visiting nested function (in function) <f.name> with scope: <domain(newSymbolMap)>");
-			
-			tuple[rel[Vertex, Vertex] graph, map[str, SymbolMapEntry] _] visitFunctionResult = createFlowGraphFromNestedStatements(f.implementation, newSymbolMap);
-			
-			// Overall symbol table does not get affected
+			// functions symbol map: old symbol map (with overriding permission + parameters + name)
+			map[str, SymbolMapEntry] newSymbolMap = getOverridableSymbolMap(symbolMap) + ("<p>" :createEntry(p) | p <- f.parameters) + ("<f.name>" : createEntry(f));
+
+			debug("visiting function declaration <f.name> with scope: <domain(newSymbolMap)>");
+
+			// Overall symbol map does not get affected
 			// TODO: merge createFlowGraphFromStatements with createFlowGraph?
-			result += visitFunctionResult.graph;
+			result += graph(createFlowGraphFromNestedStatements(f.implementation, newSymbolMap));
 			result += <Fun(getNodePosition(f)), Var("<f.name>", getNodePosition(f.name))>;	
 		}
 		case Statement s:{
-			println("Visiting top level statement <s> with symbolMap <domain(symbolMap)>");
-			if (globalScope) {
-				rel[Vertex, Vertex] graph = createFlowGraphFromGlobalStatement(s);
-				result += graph;
-			}
+			debug ("visiting statement <s> with symbolMap <domain(symbolMap)>");
+
+			if (globalScope) result += createFlowGraphFromGlobalStatement(s);
 			else {
 				// Retrieve a correctly scoped graph
-				tuple[rel[Vertex, Vertex] graph, map[str, SymbolMapEntry] symbolMapAdditions] visitStatementResult = createFlowGraphFromNestedStatement(s, symbolMap); 
+				visitStatementResult = createFlowGraphFromNestedStatement(s, symbolMap); 
 	
-				// Sadly enough the symbol table is appended by the sibblings :)
-				result += visitStatementResult.graph;
-				symbolMap += visitStatementResult.symbolMapAdditions;
+				// Sadly enough the symbol map is appended by the sibblings :)
+				result += graph(visitStatementResult);
+				symbolMap += modifiedSymbolMap(visitStatementResult);
 			}
 		}
 	}
@@ -96,19 +65,15 @@ private rel[Vertex, Vertex] createFlowGraphForExpressions(Tree root, map[str, Sy
 	// Expressions will recurse themselves
 	top-down-break visit(root.args) {
 		case Statement s:{
-			debug("Sub statements are not necessary and we dont need their expressions just yet, so we stop here (halt recursion)");
+			debug("we dont need expressions of statements just yet (due to statements being recursive), so we stop at the branch over here (halt recursion)");
 		}
-		case Expression e:{
-			println("Expression <e> as child of <root>");
-			result += createFlowGraphFromExpression(e, symbolMap);
-		}
+		case Expression e: result += createFlowGraphFromExpression(e, symbolMap);
 	}
 	
 	return result;
 }
 
-// Propagation is not necessary to children that are statements, due to the createFlowGraphFromStatements handling such
-// Global scope boolean helps for not appending the symbol table and thus creating wrong vertices
+// Global scope boolean as parameter helps for not appending the symbol map and thus creating wrong vertices
 private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphFromNestedStatement(Statement s, map[str, SymbolMapEntry] symbolMap) = createFlowGraphFromStatement(s, symbolMap, false);
 private rel[Vertex, Vertex] createFlowGraphFromGlobalStatement(Statement s) {
 	tuple[rel[Vertex, Vertex] graph, map[str, SymbolMapEntry] _] result = createFlowGraphFromStatement(s, (), true);
@@ -118,26 +83,24 @@ private rel[Vertex, Vertex] createFlowGraphFromGlobalStatement(Statement s) {
 private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphFromStatement(Statement s, map[str, SymbolMapEntry] symbolMap, bool globalScope) {
 	rel[Vertex, Vertex] result = {};
 	
-	// TODO: VERY IMPORTANT Why does this not match on variablenosemi (tested with a variable assignment with a object definition that did not end with a ;) but it does on variablesemi
-	// TODO:  
 	if (forDoDeclarations({VariableDeclarationNoIn ","}+ declarations, _, _, _) := s || variableNoSemi({VariableDeclaration ","}+ declarations, _) := s
 		 || variableSemi({VariableDeclaration ","}+ declarations) := s) {
 		for (declaration <- declarations) {
-			println("declaration: <declaration>");
+			debug("declaration: <declaration>");
 			// This only works on assigned variables (not on just declared ones)
 			// Use deep matching to ignore the literals like the comma (this wont hurt in this case)
 			if (filledDeclaration(Id id, Expression expression) := declaration) {
-				println("Declaration <id>");
 				// Variables can not be redeclared in the same scope
 				if (!globalScope && isDeclarable("<id>", symbolMap)) symbolMap += ("<id>" : entry(id, false));
 				Vertex rhsVertex = createVertex(expression, symbolMap);
 				result += <rhsVertex, createVertex(id, symbolMap)>;	// Does not occur in the provided script but we assume it to be the same as a declaration + expression R1
 				result += <rhsVertex, Exp(getNodePosition(id))>;
-				debug("variable declaration for <id> creating node for <expression>");
+				debug("variable declaration for <id> (assigned to: <expression>)");
 			}
 			
-			// Add to symbol table
+			// Add to symbol map
 			if (emptyDeclaration(Id id) := declaration) {
+				debug("empty declaration for <id>");
 				// Variables can not be redeclared in the same scope
 				if (!globalScope && isDeclarable("<id>", symbolMap)) symbolMap += ("<id>" : entry(id, false));
 			}
@@ -148,62 +111,70 @@ private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphFrom
 		if (!globalScope && isDeclarable("<id>", symbolMap)) symbolMap += ("<id>" : entry(id, false));
 		Vertex rhsVertex = createVertex(e, symbolMap);
 	}
-	elseif (sw:switchCase() := s) {
+	elseif (sw:switchCase(switchBlock(_, c:cases(_))) := s) {
 		// Manually propagate expressions due to deeper nesting (SwitchBlock is a loose syntax thus an extra node)
 //		result += createFlowGraphFromExpression(sw.expression, symbolMap);
-		println("case block <sw.block>");
+		println("case block <c>");
 		if (c:cases(_) := sw.block) {
 			println("cases <c.clauses>");
 		}
 		// TODO: recurse over statements in cases
 	}
-	// Recurse over blocks	
-	elseif (block(b:filledBlock(_), _, _) := s) {
-		debug("visiting nested block <b>");
-		println("nested block visit");
 
-		// Recurse on blocks
-		tuple[rel[Vertex, Vertex] graph, map[str, SymbolMapEntry] symbolMapAdditions] recursionResult = createFlowGraphFromStatements(b.statements, symbolMap, globalScope);
+	// TODO with() statement?
+	// Recurse over expressions
+	result += createFlowGraphForExpressions(s, symbolMap);
+	
+	// Recurse over substatements and blocks (the reason this is after the expressions is because they can not affect expressions as direct children, symbolmap wise)
+	// I.e. we can not refer to a variable in an expression that is in a statement when it is defined in a substatement of that statement 
+	result += graph(createFlowGraphForSubStatementsAndBlocks(s, symbolMap, globalScope));	
+		
+	return <result, symbolMap>;
+}
 
-		result += recursionResult.graph;
-		symbolMap += recursionResult.symbolMapAdditions;
-	}
-
+private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphForSubStatementsAndBlocks(Statement s, map[str, SymbolMapEntry] symbolMap, bool globalScope) {
+	rel[Vertex, Vertex] result = {};
+	
+	// Sad but true: Blocks affect the symbol map for their sibblings
 	// Recurse over substatements
 	if (forDoDeclarations(_, _, _, Statement stmnt) := s || forDo(_, _, _, Statement stmnt) := s || 
 		ifThen(_, Statement stmnt) := s || ifThenElseBlock(_, Statement stmnt, _) := s || forIn(_, _, Statement stmnt) := s ||
 		forInDeclaration(_, _, Statement stmnt) := s
 		|| doWhile(Statement stmnt, _) := s || doWhileLoose(Statement stmnt, _) := s) {
-		println("Recursing statement for <s>");
+		debug("recursing on statement <stmnt>");
 
 		// A statement that is not a block is also possible, which should still work here
-		tuple[rel[Vertex, Vertex] graph, map[str, SymbolMapEntry] symbolMapAdditions] recursionResult = createFlowGraphFromStatement(stmnt, symbolMap, globalScope);
+		recursionResult = createFlowGraphFromStatement(stmnt, symbolMap, globalScope);
 
-		result += recursionResult.graph;
-		symbolMap += recursionResult.symbolMapAdditions;
+		result += graph(recursionResult);
+		symbolMap += modifiedSymbolMap(recursionResult);	// TODO this does not have to be a plus operation does it?
 	}
-
-	// Recurse over blocks	
+	// Recurse over blocks in if and then
 	elseif (ifThenBlock(_, Block b) := s || ifThenElseBlock(_, _, Block b) := s) {
-		tuple[rel[Vertex, Vertex] graph, map[str, SymbolMapEntry] symbolMapAdditions] recursionResult = createFlowGraphFromStatements(b.statements, symbolMap, globalScope);
+		debug("visiting nested block <b>");
+		recursionResult = createFlowGraphFromStatements(b.statements, symbolMap, globalScope);
 	
-		result += recursionResult.graph;
-		// Blocks affect the symbol table for their sibblings
-		symbolMap += recursionResult.symbolMapAdditions;				
+		result += graph(recursionResult);
+		symbolMap += modifiedSymbolMap(recursionResult);	// TODO this does not have to be a plus operation does it?
 	}
+	// Recurse over blocks	
+	elseif (block(b:filledBlock(_), _, _) := s) {
+		debug("visiting nested block <b>");
 
-	// TODO with() statement?
-	// Recurse over expressions
-	result += createFlowGraphForExpressions(s, symbolMap);	
-		
+		// Recurse on blocks
+		recursionResult = createFlowGraphFromStatements(b.statements, symbolMap, globalScope);
+
+		result += graph(recursionResult);
+		symbolMap += modifiedSymbolMap(recursionResult);
+	}
+	
 	return <result, symbolMap>;
 }
 
 // TODO check if propagations are necessary
 private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str, SymbolMapEntry] symbolMap) {
 	rel[Vertex, Vertex] result = {};
-	println("Flow grph: <e>");
-	
+
 	// Assignments, NOT DECLARATIONS!
 	// R1
 	if (variableAssignment(Expression lhs, Expression rhs) := e ||
@@ -212,7 +183,7 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 		variableAssignmentLoose(Expression lhs, Expression rhs) := e ||
 		variableAssignmentMulti(Expression lhs, Expression rhs) := e) {
 
-		debug("assignment for <e> with symbol table <domain(symbolMap)>");
+		debug("assignment for <e> with symbol map <domain(symbolMap)>");
 
 		Vertex rhsVertex = createVertex(rhs, symbolMap);
 		result += <rhsVertex, createVertex(lhs, symbolMap)>;
@@ -234,7 +205,7 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 	}
 	// R4
 	elseif (conjunction(Expression lhs, Expression rhs) := e) {
-		println("conjunction!");
+		debug("conjunction!");
 		result += <createVertex(rhs, symbolMap), Exp(getNodePosition(e))>;
 	}
 	// R5
@@ -242,9 +213,9 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 		debug("obj definition");
 		// TODO what to do with the get/set
 		for (p <- properties.args) {
-			println("Found property <p>");
+			println("	property <p>");
 			if (property(PropertyName name, Expression exp) := p) {
-				debug("property assignment <name>");
+				debug("		assignment <name>");
 				result += <createVertex(exp, symbolMap), Prop("<name>")>;
 			}
 		}
@@ -253,24 +224,23 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 	// R6
 	elseif (function(Id id, {Id ","}* params, Block block) := e || functionAnonymous({Id ","}* params, Block block) := e) {
 		map[str, SymbolMapEntry] inFunctionSymbolMap = getOverridableSymbolMap(symbolMap);
-		inFunctionSymbolMap += ("<p>" : entry(p, false) | p <- params);
+		inFunctionSymbolMap += ("<p>" : createEntry(p) | p <- params);
 		
 		// Non-anonymous functions need extra processing
 		if (function(_, _, _) := e) {
-			inFunctionSymbolMap += ("<id>" : entry(id, false));
+			inFunctionSymbolMap += ("<id>" : createEntry(id));
 
-			// No need for checking in the symbol table, R6 says this is always a var
+			// No need for checking in the symbol map, R6 says this is always a var
 			result += <Fun(getNodePosition(e)), createVarVertex(id)>;
 		}
 
 		// R6 rule #1 (Func -> Exp)
 		result += <Fun(getNodePosition(e)), createVertex(e, symbolMap)>;
-		println("Visiting function with scope: <domain(inFunctionSymbolMap)>");
+		debug("visiting function with scope: <domain(inFunctionSymbolMap)>");
 
 		// The function blocks do not affect the current scope of the wrapping context
 		// If there is an implementation, add the its graph to the current graph
-		tuple[rel[Vertex, Vertex] graph, map[str, SymbolMapEntry] symbolMapAdditions] recursionResult = createFlowGraphFromNestedStatements(block, inFunctionSymbolMap);
-		result += recursionResult.graph;
+		result += graph(createFlowGraphFromNestedStatements(block, inFunctionSymbolMap));
 	}
 	elseif (functionParams(Expression expression, _) := e) {
 		//Position p = getNodePosition(e);
@@ -304,7 +274,7 @@ private bool isDeclarable(str variableName, map[str, SymbolMapEntry] symbolMap) 
 	if (variableName notin symbolMap) return true;
 	else {
 		SymbolMapEntry entry = symbolMap["<variableName>"];
-		
+		debug("possible override of <variableName> originating from line #<symbolMap[variableName].tree@\loc.begin.line>");
 		return entry.overridable;
 	}
 }
@@ -318,7 +288,7 @@ private Vertex createVertex(Tree root, map[str, SymbolMapEntry] symbolMap) {
 	if ((Expression)`<Expression e> . <Id id>` := root) return Prop("<id>");
 	elseif ((Expression e := root && id(Id id) := e) || Id id := root) {
 		// both top level expressions and id's will match
-		debug("finding variableDeclarations for <id> in <domain(symbolMap)>");
+		debug("looking up <id> in symbol map: <domain(symbolMap)>");
 
 		foundDeclaration = findVariableDeclaration(id, symbolMap);
 		if (foundDeclaration == nothing()) return Prop("<id>");
@@ -337,3 +307,8 @@ private Position getNodePosition(Tree t) {
 	// We use the same formatting as in the original script	
 	return Position(filename, t@\loc.begin.line, t@\loc.offset, (t@\loc.offset + t@\loc.length));
 }
+
+private rel[Vertex, Vertex] graph(tuple[rel[Vertex, Vertex] graph, map[str, SymbolMapEntry] _] input) = fst(input);
+private map[str, SymbolMapEntry] modifiedSymbolMap(tuple[rel[Vertex, Vertex] _, map[str, SymbolMapEntry] symbolMap] input) = snd(input);
+private &T fst(tuple[&T, &U] input) = input[0];
+private &U snd(tuple[&T, &U] input) = input[1];

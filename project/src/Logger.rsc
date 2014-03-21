@@ -20,7 +20,7 @@ public int LOG_LEVEL_DEBUG      = 4;
 
 public int LOG_LEVEL_DEFAULT = LOG_LEVEL_INFO;
 
-public int logLevel = LOG_LEVEL_DEFAULT; 
+public int logLevel = LOG_LEVEL_DEBUG; 
 
 /*
  * Print the given message if the log level is higher than the given level

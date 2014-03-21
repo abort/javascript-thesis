@@ -65,6 +65,7 @@ private rel[Vertex, Vertex] createFlowGraphForExpressions(Tree root, map[str, Sy
 	// Expressions will recurse themselves
 	top-down-break visit(root.args) {
 		case Statement s:{
+			// Do not include the input item (in case its a statement, for convenience).... we need its children, hence why
 			debug("we dont need expressions of statements just yet (due to statements being recursive), so we stop at the branch over here (halt recursion)");
 		}
 		case Expression e: result += createFlowGraphFromExpression(e, symbolMap);
@@ -110,15 +111,6 @@ private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphFrom
 		// Assumption to count as a simple declaration (so not R1, TODO: DOCUMENT!)
 		if (!globalScope && isDeclarable("<id>", symbolMap)) symbolMap += ("<id>" : entry(id, false));
 		Vertex rhsVertex = createVertex(e, symbolMap);
-	}
-	elseif (sw:switchCase(switchBlock(_, c:cases(_))) := s) {
-		// Manually propagate expressions due to deeper nesting (SwitchBlock is a loose syntax thus an extra node)
-//		result += createFlowGraphFromExpression(sw.expression, symbolMap);
-		println("case block <c>");
-		if (c:cases(_) := sw.block) {
-			println("cases <c.clauses>");
-		}
-		// TODO: recurse over statements in cases
 	}
 
 	// TODO with() statement?
@@ -166,6 +158,35 @@ private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphForS
 
 		result += graph(recursionResult);
 		symbolMap += modifiedSymbolMap(recursionResult);
+	}
+	elseif (switchCase(switchBlock(Expression e, c:cases(_))) := s) {
+		// Due to deeper nesting we can not visit expressions automatically here
+		result += createFlowGraphFromExpression(e, symbolMap);
+		debug("switching on expression <e>");
+	
+		for (clause <- c.clauses) {
+			if (caseclause(filledCase(_, Statement+ statements)) := clause ||
+				defaultclause(filledDefault(Statement+ statements)) := clause) {
+				
+				debug("	clause: <clause>");
+				
+				// If it is a case expression; visit the expression that defines the "case"
+				if (caseclause(filledCase(Expression exp, Statement+ statements)) := clause) 
+					result += createFlowGraphFromExpression(exp, symbolMap);
+				
+				// Create a graph for each statement and add it to our results
+				for (Statement statement <- statements) {
+					recursionResult = createFlowGraphFromStatement(statement, symbolMap);
+				
+				//for (Statement statement <- statements) {
+					debug("		statement: <statements>");
+					result += graph(recursionResult);
+					symbolMap += modifiedSymbolMap(recursionResult);
+				}
+				//}
+			} 
+		}
+		// TODO: recurse over statements in cases
 	}
 	
 	return <result, symbolMap>;

@@ -199,25 +199,25 @@ syntax CaseClauses =
  //| caseclause: CaseOrDefaultClause >> [}]
 ;
 
-syntax CaseOrDefaultClause = CaseClause
-| DefaultClause
+syntax CaseOrDefaultClause = caseclause: CaseClause
+| defaultclause: DefaultClause
 ;
 
+// TODO cases do not allow for function declarations at the moment, but they should
 syntax CaseClause 
 =  //=  "case" Expression ":" Statement!breakNoLabelNoSemi* breakNoLabelNoSemi
   //| "case" Expression ":" Statement!breakNoLabelNoSemiBlockEnd* breakNoLabelNoSemiBlockEnd // only possible at block end
   //| "case" Expression ":" Statement!breakNoLabel* breakNoLabel
   // "case" Expression ":" CaseClause // fallthrough
  // | "case" Expression ":" DefaultClause // fallthrough
-   "case" Expression ":" Statement+
+   filledCase: "case" Expression ":" Statement+
    | emptyfallthrough: "case" Expression ":" !>> Statement 
   
   ;
 
-
 syntax DefaultClause 
-  = "default" ":" Statement+
-  | empty: "default" ":" !>> Statement
+  = filledDefault: "default" ":" Statement+
+  | emptyDefault: "default" ":" !>> Statement
   ;
 
 

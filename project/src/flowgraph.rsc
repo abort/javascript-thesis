@@ -176,7 +176,7 @@ private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphForS
 				
 				// Create a graph for each statement and add it to our results
 				for (Statement statement <- statements) {
-					recursionResult = createFlowGraphFromStatement(statement, symbolMap);
+					recursionResult = createFlowGraphFromStatement(statement, symbolMap, false);
 				
 				//for (Statement statement <- statements) {
 					debug("		statement: <statements>");

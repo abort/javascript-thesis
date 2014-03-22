@@ -66,10 +66,18 @@ private rel[Vertex, Vertex] createFlowGraphForExpressions(Tree root, map[str, Sy
 	top-down-break visit(root.args) {
 		case Statement s:{
 			// Do not include the input item (in case its a statement, for convenience).... we need its children, hence why
-			debug("we dont need expressions of statements just yet (due to statements being recursive), so we stop at the branch over here (halt recursion)");
+			debug("we dont need expressions of statements just yet (due to statements being recursive), so we stop at the branch over here (halt recursion) @ <s>");
 		}
-		case Expression e: result += createFlowGraphFromExpression(e, symbolMap);
+		case Expression e:{
+			debug("Exp <e>");		
+			result += createFlowGraphFromExpression(e, symbolMap);
+		}
 	}
+	
+	/*for (Expression e <- root.args) {
+		debug("expppp <e>");
+		result += createFlowGraphFromExpression(e, symbolMap);
+	}*/
 	
 	return result;
 }
@@ -92,11 +100,13 @@ private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphFrom
 			// Use deep matching to ignore the literals like the comma (this wont hurt in this case)
 			if (filledDeclaration(Id id, Expression expression) := declaration) {
 				// Variables can not be redeclared in the same scope
-				if (!globalScope && isDeclarable("<id>", symbolMap)) symbolMap += ("<id>" : entry(id, false));
+				if (!globalScope && isDeclarable("<id>", symbolMap)) symbolMap += ("<id>" : createEntry(id));
 				Vertex rhsVertex = createVertex(expression, symbolMap);
 				result += <rhsVertex, createVertex(id, symbolMap)>;	// Does not occur in the provided script but we assume it to be the same as a declaration + expression R1
 				result += <rhsVertex, Exp(getNodePosition(id))>;
 				debug("variable declaration for <id> (assigned to: <expression>)");
+				
+				// result += createFlowGraphFromExpression(expression, symbolMap);
 			}
 			
 			// Add to symbol map
@@ -118,8 +128,10 @@ private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphFrom
 	result += createFlowGraphForExpressions(s, symbolMap);
 	
 	// Recurse over substatements and blocks (the reason this is after the expressions is because they can not affect expressions as direct children, symbolmap wise)
-	// I.e. we can not refer to a variable in an expression that is in a statement when it is defined in a substatement of that statement 
-	result += graph(createFlowGraphForSubStatementsAndBlocks(s, symbolMap, globalScope));	
+	// I.e. we can not refer to a variable in an expression that is in a statement when it is defined in a substatement of that statement
+	nestedResult = createFlowGraphForSubStatementsAndBlocks(s, symbolMap, globalScope); 
+	result += graph(nestedResult);
+	symbolMap += modifiedSymbolMap(nestedResult);	
 		
 	return <result, symbolMap>;
 }
@@ -127,7 +139,7 @@ private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphFrom
 private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphForSubStatementsAndBlocks(Statement s, map[str, SymbolMapEntry] symbolMap, bool globalScope) {
 	rel[Vertex, Vertex] result = {};
 	
-	// Sad but true: Blocks affect the symbol map for their sibblings
+	// Sad but true: Inner block statements affect the symbol map for their sibblings
 	// Recurse over substatements
 	if (forDoDeclarations(_, _, _, Statement stmnt) := s || forDo(_, _, _, Statement stmnt) := s || 
 		ifThen(_, Statement stmnt) := s || ifThenElseBlock(_, Statement stmnt, _) := s || forIn(_, _, Statement stmnt) := s ||
@@ -149,6 +161,43 @@ private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphForS
 		result += graph(recursionResult);
 		symbolMap += modifiedSymbolMap(recursionResult);	// TODO this does not have to be a plus operation does it?
 	}
+	elseif (tryBlock(TryBlock trBlock) := s) {
+		debug("Try block");
+		if (tryCatch(Block tryBlock, Id id, Block catchBlock, _, _) := trBlock) {
+			//result += createFlowGraphFromExpression(id, symbolMap);
+			debug("Try catch block");
+			recursionResult = createFlowGraphFromStatements(tryBlock, symbolMap, globalScope);
+			result += graph(recursionResult);
+			symbolMap += modifiedSymbolMap(recursionResult);
+			
+			recursionResult = createFlowGraphFromStatements(catchBlock, symbolMap, globalScope);
+			result += graph(recursionResult);
+			symbolMap += modifiedSymbolMap(recursionResult);
+		}
+		elseif (tryFinally(Block tryBlock, Block finallyBlock, _, _) := trBlock) {
+			recursionResult = createFlowGraphFromStatements(tryBlock, symbolMap, globalScope);
+			result += graph(recursionResult);
+			symbolMap += modifiedSymbolMap(recursionResult);
+			
+			recursionResult = createFlowGraphFromStatements(finallyBlock, symbolMap, globalScope);
+			result += graph(recursionResult);
+			symbolMap += modifiedSymbolMap(recursionResult);		
+		}
+		elseif (tryCatchFinally(Block tryBlock, Id id, Block catchBlock, Block finallyBlock, _, _) := trBlock) {
+			// result += createFlowGraphFromExpression(id, symbolMap);
+			recursionResult = createFlowGraphFromStatements(tryBlock, symbolMap, globalScope);
+			result += graph(recursionResult);
+			symbolMap += modifiedSymbolMap(recursionResult);
+			
+			recursionResult = createFlowGraphFromStatements(catchBlock, symbolMap, globalScope);
+			result += graph(recursionResult);
+			symbolMap += modifiedSymbolMap(recursionResult);
+			
+			recursionResult = createFlowGraphFromStatements(finallyBlock, symbolMap, globalScope);
+			result += graph(recursionResult);
+			symbolMap += modifiedSymbolMap(recursionResult);			
+		}
+	}
 	// Recurse over blocks	
 	elseif (block(b:filledBlock(_), _, _) := s) {
 		debug("visiting nested block <b>");
@@ -158,6 +207,8 @@ private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphForS
 
 		result += graph(recursionResult);
 		symbolMap += modifiedSymbolMap(recursionResult);
+		
+		println("new symbol map: <domain(symbolMap)>");
 	}
 	elseif (switchCase(switchBlock(Expression e, c:cases(_))) := s) {
 		// Due to deeper nesting we can not visit expressions automatically here
@@ -171,12 +222,14 @@ private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphForS
 				debug("	clause: <clause>");
 				
 				// If it is a case expression; visit the expression that defines the "case"
-				if (caseclause(filledCase(Expression exp, Statement+ statements)) := clause) 
+				if (caseclause(filledCase(Expression exp, Statement+ statements)) := clause)
+				{ 
+					debug("Case clause: <exp>");
 					result += createFlowGraphFromExpression(exp, symbolMap);
-				
+				}
 				// Create a graph for each statement and add it to our results
 				for (Statement statement <- statements) {
-					recursionResult = createFlowGraphFromStatement(statement, symbolMap, false);
+					recursionResult = createFlowGraphFromStatement(statement, symbolMap, globalScope);
 				
 				//for (Statement statement <- statements) {
 					debug("		statement: <statements>");
@@ -212,8 +265,9 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 	}
 	// R2
 	elseif (disjunction(Expression lhs, Expression rhs) := e) {
-		result += <createVertex(lhs, symbolMap), Exp(getNodePosition(disjunction))>;
-		result += <createVertex(rhs, symbolMap), Exp(getNodePosition(disjunction))>;
+		debug("disjunction");
+		result += <createVertex(lhs, symbolMap), Exp(getNodePosition(e))>;
+		result += <createVertex(rhs, symbolMap), Exp(getNodePosition(e))>;
 	}
 	// R3
 	elseif (ternary(Expression condition, Expression conditionSuccess, Expression conditionFail) := e) {
@@ -238,6 +292,7 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 			if (property(PropertyName name, Expression exp) := p) {
 				debug("		assignment <name>");
 				result += <createVertex(exp, symbolMap), Prop("<name>")>;
+				// result += createFlowGraphFromExpression(exp, symbolMap);
 			}
 		}
 	}
@@ -261,7 +316,7 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 
 		// The function blocks do not affect the current scope of the wrapping context
 		// If there is an implementation, add the its graph to the current graph
-		result += graph(createFlowGraphFromNestedStatements(block, inFunctionSymbolMap));
+		result += graph(createFlowGraphFromStatements(block, inFunctionSymbolMap, false));
 	}
 	elseif (functionParams(Expression expression, _) := e) {
 		//Position p = getNodePosition(e);
@@ -271,6 +326,10 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 	elseif (functionNoParams(Expression expression) := e) {
 		// result += <Fun(getNodePosition(e)), createVertex(expression, symbolMap)>;
 		print("");
+	}
+	elseif (id(Id id) := e) {
+		// TODO: e.g. return does not do anything
+		debug("Just found an id, what now?");
 	}
 
 	// Recurse over top level subexpressions	

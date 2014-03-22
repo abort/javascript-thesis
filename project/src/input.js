@@ -8,6 +8,17 @@ function doSomething(doSomethingScope) {
     {
         var doSomethingScope = false;
         var x = 3;
+        for (var p = 0; p < 10; p++) {
+            function q() {
+                x = 5;
+                
+                var obj = {
+                    p: function x() {
+                        q = 1;
+                    }  
+                };
+            }
+        }
         function nested() {
             var x = "sub";
             
@@ -25,10 +36,30 @@ function doSomething(doSomethingScope) {
    }
    
    var z = {
-        leFunc: function() {
-            return 1+1;
+        leFunc: function aap() {
+            x = 5;
+            aap = 2;
         }
    };
+   var x = 5;
+   
+   switch (x) {
+    case (z == 5 && x):
+        var declNew = function bla(diffScope) {
+            x = 10;
+            diffScope = 5;
+        };
     
-    x = 10;
+   }
+   declNew = 20;
+   diffScope = (x || y);
+   
+   try {
+        var banana = 5;
+   }
+   catch (x) {
+        x = 5;
+   }
+   
+   banana = 2;
 }

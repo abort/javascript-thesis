@@ -68,16 +68,10 @@ private rel[Vertex, Vertex] createFlowGraphForExpressions(Tree root, map[str, Sy
 			// Do not include the input item (in case its a statement, for convenience).... we need its children, hence why
 			debug("we dont need expressions of statements just yet (due to statements being recursive), so we stop at the branch over here (halt recursion) @ <s>");
 		}
-		case Expression e:{
-			debug("Exp <e>");		
+		case Expression e:{		
 			result += createFlowGraphFromExpression(e, symbolMap);
 		}
 	}
-	
-	/*for (Expression e <- root.args) {
-		debug("expppp <e>");
-		result += createFlowGraphFromExpression(e, symbolMap);
-	}*/
 	
 	return result;
 }
@@ -105,8 +99,6 @@ private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphFrom
 				result += <rhsVertex, createVertex(id, symbolMap)>;	// Does not occur in the provided script but we assume it to be the same as a declaration + expression R1
 				result += <rhsVertex, Exp(getNodePosition(id))>;
 				debug("variable declaration for <id> (assigned to: <expression>)");
-				
-				// result += createFlowGraphFromExpression(expression, symbolMap);
 			}
 			
 			// Add to symbol map
@@ -164,7 +156,6 @@ private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphForS
 	elseif (tryBlock(TryBlock trBlock) := s) {
 		debug("Try block");
 		if (tryCatch(Block tryBlock, Id id, Block catchBlock, _, _) := trBlock) {
-			//result += createFlowGraphFromExpression(id, symbolMap);
 			debug("Try catch block");
 			recursionResult = createFlowGraphFromStatements(tryBlock, symbolMap, globalScope);
 			result += graph(recursionResult);
@@ -184,7 +175,6 @@ private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphForS
 			symbolMap += modifiedSymbolMap(recursionResult);		
 		}
 		elseif (tryCatchFinally(Block tryBlock, Id id, Block catchBlock, Block finallyBlock, _, _) := trBlock) {
-			// result += createFlowGraphFromExpression(id, symbolMap);
 			recursionResult = createFlowGraphFromStatements(tryBlock, symbolMap, globalScope);
 			result += graph(recursionResult);
 			symbolMap += modifiedSymbolMap(recursionResult);
@@ -292,7 +282,6 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 			if (property(PropertyName name, Expression exp) := p) {
 				debug("		assignment <name>");
 				result += <createVertex(exp, symbolMap), Prop("<name>")>;
-				// result += createFlowGraphFromExpression(exp, symbolMap);
 			}
 		}
 	}

@@ -1,0 +1,7 @@
+Func(redefinedscope.js@1) -> Var(x, redefinedscope.js@1)
+Expr(redefinedscope.js@3) -> Expr(redefinedscope.js@3)
+Expr(redefinedscope.js@3) -> Var(x, redefinedscope.js@2)
+Expr(redefinedscope.js@4) -> Expr(redefinedscope.js@4)
+Expr(redefinedscope.js@4) -> Var(x, redefinedscope.js@2)
+Expr(redefinedscope.js@7) -> Expr(redefinedscope.js@7)
+Expr(redefinedscope.js@7) -> Prop(x)

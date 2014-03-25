@@ -9,13 +9,22 @@ import IO;
 public void printFlowGraph(rel[Vertex, Vertex] graph) = printFlowGraph(graph, false);
 public void printSimpleFlowGraph(rel[Vertex, Vertex] graph) = printFlowGraph(graph, true);
 private void printFlowGraph(rel[Vertex, Vertex] graph, bool simplified) {
+	print(getFlowGraphString(graph, simplified));
+}
+
+public str getSimpleFlowGraph(rel[Vertex, Vertex] graph) = getFlowGraphString(graph, true);
+
+private str getFlowGraphString(rel[Vertex, Vertex] graph, bool simplified) {
 	list[tuple[Vertex, Vertex]] printable = [ <x,y> | <x, y> <- graph ];
+	str result = "";
 	for (<x, y> <- sort(printable, lessThanVertex)) {
-		printVertex(x, simplified);
-		print(" -\> ");
-		printVertex(y, simplified);
-		println();
+		result += getVertexString(x, simplified);
+		result += " -\> ";
+		result += getVertexString(y, simplified);
+		result += "\n";
 	}
+	
+	return result;
 }
 
 private bool lessThanVertex(tuple[Vertex x, Vertex _] vertex1, tuple[Vertex x, Vertex _] vertex2) {
@@ -29,11 +38,11 @@ private bool lessThanVertex(tuple[Vertex x, Vertex _] vertex1, tuple[Vertex x, V
 	return false;
 }
 
-private void printVertex(Vertex v, bool simplified) {
-	if (Exp(Position p) := v) printStringWithPosition("Expr", p, simplified);
-	elseif (Prop(str name) := v) print("Prop(<name>)");
-	elseif (Fun(Position p) := v) printStringWithPosition("Func", p, simplified);
-	elseif (Var(str name, Position p) := v) print("Var(<name>, <getPositionString(p, simplified)>)");
+private str getVertexString(Vertex v, bool simplified) {
+	if (Exp(Position p) := v) return getPrintStringWithPosition("Expr", p, simplified);
+	elseif (Prop(str name) := v) return "Prop(<name>)";
+	elseif (Fun(Position p) := v) return getPrintStringWithPosition("Func", p, simplified);
+	elseif (Var(str name, Position p) := v) return "Var(<name>, <getPositionString(p, simplified)>)";
 }
 
 private Position getPosition(Vertex v) {
@@ -44,7 +53,7 @@ private Position getPosition(Vertex v) {
 	return position;
 }
 
-private void printStringWithPosition(str string, Position p, bool simplified) = print("<string>(<getPositionString(p, simplified)>)");
+private str getPrintStringWithPosition(str string, Position p, bool simplified) = "<string>(<getPositionString(p, simplified)>)";
 private str getPositionString(Position p, bool simplified) {
 	if (simplified) return "<p.filename>@<p.line>";
 	else return "<p.filename>@<p.line>:<p.columnStart>-<p.columnEnd>";

@@ -17,6 +17,7 @@ import Logger;
 // Entries are needed to know if certain entries in the symbol map are overridable
 private data SymbolMapEntry = entry(Tree tree, bool overridable);
 private SymbolMapEntry createEntry(Tree tree) = entry(tree, false);
+private SymbolMapEntry createOverridableEntry(Tree tree) = entry(tree, true);
 
 public rel[Vertex, Vertex] createFlowGraph(Source root) = createFlowGraphFromGlobalStatements(root);
 
@@ -26,17 +27,18 @@ private rel[Vertex, Vertex] createFlowGraphFromGlobalStatements(Tree root) = gra
 private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphFromNestedStatements(Tree root, map[str, SymbolMapEntry] symbolMap) = createFlowGraphFromStatements(root, symbolMap, false);
 private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphFromStatements(Tree root, map[str, SymbolMapEntry] symbolMap, bool globalScope) {
 	rel[Vertex, Vertex] result = {};
-	
+
 	// Visits all top-level statements
 	top-down-break visit (root) {
 		case FunctionDeclaration f:{
 			// functions symbol map: old symbol map (with overriding permission + parameters + name)
-			map[str, SymbolMapEntry] newSymbolMap = getOverridableSymbolMap(symbolMap) + ("<p>" :createEntry(p) | p <- f.parameters) + ("<f.name>" : createEntry(f));
+			map[str, SymbolMapEntry] newSymbolMap = getOverridableSymbolMap(symbolMap) + ("<f.name>" : createOverridableEntry(f)) + ("<p>" : createEntry(p) | p <- f.parameters); // TODO name might be overridable by parameters or inside the function
 
 			debug("visiting function declaration <f.name> with scope: <domain(newSymbolMap)>");
 
-			// Overall symbol map does not get affected
-			// TODO: merge createFlowGraphFromStatements with createFlowGraph?
+			// In non-global scope, the symbol map gets appended
+			if (!globalScope) symbolMap += ("<f.name>" : createEntry(f));
+
 			result += graph(createFlowGraphFromNestedStatements(f.implementation, newSymbolMap));
 			result += <Fun(getNodePosition(f)), Var("<f.name>", getNodePosition(f.name))>;	
 		}
@@ -63,15 +65,18 @@ private rel[Vertex, Vertex] createFlowGraphForExpressions(Tree root, map[str, Sy
 
 	// Visit top level expressions that are children of statements
 	// Expressions will recurse themselves
-	top-down-break visit(root.args) {
-		case Statement s:{
-			// Do not include the input item (in case its a statement, for convenience).... we need its children, hence why
-			debug("we dont need expressions of statements just yet (due to statements being recursive), so we stop at the branch over here (halt recursion) @ <s>");
-		}
-		case Expression e:{		
-			result += createFlowGraphFromExpression(e, symbolMap);
+	try {
+		top-down-break visit(root.args) {
+			case Statement s:{
+				// Do not include the input item (in case its a statement, for convenience).... we need its children, hence why
+				debug("we dont need expressions of statements just yet (due to statements being recursive), so we stop at the branch over here (halt recursion) @ <s>");
+			}
+			case Expression e:{		
+				result += createFlowGraphFromExpression(e, symbolMap);
+			}
 		}
 	}
+	catch:return result;
 	
 	return result;
 }
@@ -244,14 +249,21 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 	if (variableAssignment(Expression lhs, Expression rhs) := e ||
 		variableAssignmentNoSemi(Expression lhs, Expression rhs) := e ||
 		variableAssignmentBlockEnd(Expression lhs, Expression rhs) := e ||
-		variableAssignmentLoose(Expression lhs, Expression rhs) := e ||
-		variableAssignmentMulti(Expression lhs, Expression rhs) := e) {
+		variableAssignmentLoose(Expression lhs, Expression rhs) := e) {
 
 		debug("assignment for <e> with symbol map <domain(symbolMap)>");
 
 		Vertex rhsVertex = createVertex(rhs, symbolMap);
 		result += <rhsVertex, createVertex(lhs, symbolMap)>;
 		result += <rhsVertex, Exp(getNodePosition(e))>;
+	}
+	elseif (variableAssignmentMulti({VariableAssignment ","}+ assignments) := e) {
+		debug("multi assignment <e> with symbol map <domain(symbolMap)>");
+		for (filledAssignment(Expression lhs, Expression rhs) <- assignments) {
+			Vertex rhsVertex = createVertex(rhs, symbolMap);
+			result += <rhsVertex, createVertex(lhs, symbolMap)>;
+			result += <rhsVertex, Exp(getNodePosition(e))>;
+		}
 	}
 	// R2
 	elseif (disjunction(Expression lhs, Expression rhs) := e) {
@@ -289,7 +301,6 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 	// R6
 	elseif (function(Id id, {Id ","}* params, Block block) := e || functionAnonymous({Id ","}* params, Block block) := e) {
 		map[str, SymbolMapEntry] inFunctionSymbolMap = getOverridableSymbolMap(symbolMap);
-		inFunctionSymbolMap += ("<p>" : createEntry(p) | p <- params);
 		
 		// Non-anonymous functions need extra processing
 		if (function(_, _, _) := e) {
@@ -298,6 +309,8 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 			// No need for checking in the symbol map, R6 says this is always a var
 			result += <Fun(getNodePosition(e)), createVarVertex(id)>;
 		}
+
+		inFunctionSymbolMap += ("<p>" : createEntry(p) | p <- params);
 
 		// R6 rule #1 (Func -> Exp)
 		result += <Fun(getNodePosition(e)), createVertex(e, symbolMap)>;

@@ -9,17 +9,14 @@ import String;
 import Set;
 import List;
 
-public test bool testNestedFunctions() {
-	return testFlowGraph(|project://thesis/src/tests/flowgraphs/nestedfunctions.js|);
-}
+public test bool testNestedFunctions() = testFlowGraph(|project://thesis/src/tests/flowgraphs/nestedfunctions.js|);
+public test bool testRedefinedScope() = testFlowGraph(|project://thesis/src/tests/flowgraphs/redefinedscope.js|);
+public test bool testNestedFunctionExpressions() = testFlowGraph(|project://thesis/src/tests/flowgraphs/nestedfunctionexpressions.js|);
+public test bool testTernary() = testFlowGraph(|project://thesis/src/tests/flowgraphs/ternary.js|);
+public test bool testProperties() = testFlowGraph(|project://thesis/src/tests/flowgraphs/properties.js|);
+public test bool testInnerExpressions() = testFlowGraph(|project://thesis/src/tests/flowgraphs/innerexpressions.js|);
+public test bool testConjunctionDisjunction() = testFlowGraph(|project://thesis/src/tests/flowgraphs/conjunctiondisjunction.js|);
 
-public test bool testRedefinedScope() {
-	return testFlowGraph(|project://thesis/src/tests/flowgraphs/redefinedscope.js|);
-}
-
-public test bool testNestedDeclarations() {
-	return testFlowGraph(|project://thesis/src/tests/flowgraphs/nestedfunctionexpressions.js|);
-}
 
 private list[str] importFlowGraph(loc input) = readFileLines(input);
 

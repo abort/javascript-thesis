@@ -65,18 +65,25 @@ private rel[Vertex, Vertex] createFlowGraphForExpressions(Tree root, map[str, Sy
 
 	// Visit top level expressions that are children of statements
 	// Expressions will recurse themselves
+	//if (!(root has args)) return {};
+	
+	//if ((appl(_, _) !:= root)) return {};
+
 	try {
 		top-down-break visit(root.args) {
 			case Statement s:{
 				// Do not include the input item (in case its a statement, for convenience).... we need its children, hence why
 				debug("we dont need expressions of statements just yet (due to statements being recursive), so we stop at the branch over here (halt recursion) @ <s>");
 			}
-			case Expression e:{		
+			case Expression e:{	
+				debug("le e: <e>");
+				if (e == root) fail;	
+				debug ("visitingx <e>");
 				result += createFlowGraphFromExpression(e, symbolMap);
 			}
 		}
 	}
-	catch:return result;
+	catch: return result;
 	
 	return result;
 }
@@ -256,9 +263,13 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 		Vertex rhsVertex = createVertex(rhs, symbolMap);
 		result += <rhsVertex, createVertex(lhs, symbolMap)>;
 		result += <rhsVertex, Exp(getNodePosition(e))>;
+
+		// TODO visiting subexpressions doesnt happen well here!
+		// result += createFlowGraphFromExpression(rhs, symbolMap);
 	}
-	elseif (variableAssignmentMulti({VariableAssignment ","}+ assignments) := e) {
+	elseif (variableAssignmentMulti(VariableAssignment assignment, {VariableAssignment ","}+ assignments) := e) {
 		debug("multi assignment <e> with symbol map <domain(symbolMap)>");
+		assignments += assignment;
 		for (filledAssignment(Expression lhs, Expression rhs) <- assignments) {
 			Vertex rhsVertex = createVertex(rhs, symbolMap);
 			result += <rhsVertex, createVertex(lhs, symbolMap)>;
@@ -336,7 +347,6 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 
 	// Recurse over top level subexpressions	
 	result += { retval | subtree <- e.args, retval <- createFlowGraphForExpressions(subtree, symbolMap) };
-	
 	return result;
 }
 

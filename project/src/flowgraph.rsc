@@ -1,6 +1,7 @@
 module flowgraph
 
 import EcmaScript;
+import SharedDataTypes;
 import FlowGraphDataTypes;
 import IO;
 import String;
@@ -13,6 +14,9 @@ import Node;
 import Map;
 import util::Maybe;
 import Logger;
+
+// TODO clean up
+// TODO stop storing trees but store node positions?
 
 // Entries are needed to know if certain entries in the symbol map are overridable
 private data SymbolMapEntry = entry(Tree tree, bool overridable);
@@ -32,7 +36,7 @@ private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphFrom
 	top-down-break visit (root) {
 		case FunctionDeclaration f:{
 			// functions symbol map: old symbol map (with overriding permission + parameters + name)
-			map[str, SymbolMapEntry] newSymbolMap = getOverridableSymbolMap(symbolMap) + ("<f.name>" : createOverridableEntry(f)) + ("<p>" : createEntry(p) | p <- f.parameters); // TODO name might be overridable by parameters or inside the function
+			map[str, SymbolMapEntry] newSymbolMap = getOverridableSymbolMap(symbolMap) + ("<f.name>" : createOverridableEntry(f)) + ("<p>" : createEntry(f) | p <- f.parameters); // TODO name might be overridable by parameters or inside the function
 
 			debug("visiting function declaration <f.name> with scope: <domain(newSymbolMap)>");
 
@@ -104,8 +108,8 @@ private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphFrom
 			if (filledDeclaration(Id id, Expression expression) := declaration) {
 				// Variables can not be redeclared in the same scope
 				if (!globalScope && isDeclarable("<id>", symbolMap)) symbolMap += ("<id>" : createEntry(id));
-				Vertex rhsVertex = createVertex(expression, symbolMap);
-				result += <rhsVertex, createVertex(id, symbolMap)>;	// Does not occur in the provided script but we assume it to be the same as a declaration + expression R1
+				Vertex rhsVertex = createVertex(expression, symbolMap, enclosingFunction);
+				result += <rhsVertex, createVertex(id, symbolMap, enclosingFunction)>;	// Does not occur in the provided script but we assume it to be the same as a declaration + expression R1
 				result += <rhsVertex, Exp(getNodePosition(id))>;
 				debug("variable declaration for <id> (assigned to: <expression>)");
 			}
@@ -121,13 +125,12 @@ private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphFrom
 	elseif (forInDeclaration(Id id, Expression e, Statement _) := s) {
 		// Assumption to count as a simple declaration (so not R1, TODO: DOCUMENT!)
 		if (!globalScope && isDeclarable("<id>", symbolMap)) symbolMap += ("<id>" : entry(id, false));
-		Vertex rhsVertex = createVertex(e, symbolMap);
+		Vertex rhsVertex = createVertex(e, symbolMap, enclosingFunction);
 	}
 	// R10
 	elseif (returnExp(Expression e) := s || returnExpNoSemi(Expression e) := s || returnExpNoSemiBlockEnd(Expression e) := s) {
 		debug("return expression");
-		// return enclosing function
-		result += <createVertex(e, symbolMap), Ret(enclosingFunction)>;
+		result += <createVertex(e, symbolMap, enclosingFunction), Ret(enclosingFunction)>;
 	}
 
 	// TODO with() statement?
@@ -213,7 +216,7 @@ private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphFrom
 		result += graph(recursionResult);
 		symbolMap += modifiedSymbolMap(recursionResult);
 		
-		println("new symbol map: <domain(symbolMap)>");
+		debug("new symbol map: <domain(symbolMap)>");
 	}
 	elseif (switchCase(switchBlock(Expression e, c:cases(_))) := s) {
 		// Due to deeper nesting we can not visit expressions automatically here
@@ -221,30 +224,25 @@ private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphFrom
 		debug("switching on expression <e>");
 	
 		for (clause <- c.clauses) {
-			if (caseclause(filledCase(_, Statement+ statements)) := clause ||
-				defaultclause(filledDefault(Statement+ statements)) := clause) {
+			if (caseclause(filledCase(_, Statement+ statements)) := clause || defaultclause(filledDefault(Statement+ statements)) := clause) {
 				
 				debug("	clause: <clause>");
 				
 				// If it is a case expression; visit the expression that defines the "case"
-				if (caseclause(filledCase(Expression exp, Statement+ statements)) := clause)
-				{ 
+				if (caseclause(filledCase(Expression exp, Statement+ statements)) := clause) { 
 					debug("Case clause: <exp>");
 					result += createFlowGraphFromExpression(exp, symbolMap, enclosingFunction);
 				}
+
 				// Create a graph for each statement and add it to our results
 				for (Statement statement <- statements) {
 					recursionResult = createFlowGraphFromStatement(statement, symbolMap, globalScope, enclosingFunction);
-				
-				//for (Statement statement <- statements) {
 					debug("		statement: <statements>");
 					result += graph(recursionResult);
 					symbolMap += modifiedSymbolMap(recursionResult);
 				}
-				//}
 			} 
 		}
-		// TODO: recurse over statements in cases
 	}
 	
 	return <result, symbolMap>;
@@ -264,8 +262,8 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 		debug("assignment for <e> with symbol map <domain(symbolMap)>");
 		debug("assignment -\> <rhs>");
 
-		Vertex rhsVertex = createVertex(rhs, symbolMap);
-		result += <rhsVertex, createVertex(lhs, symbolMap)>;
+		Vertex rhsVertex = createVertex(rhs, symbolMap, enclosingFunction);
+		result += <rhsVertex, createVertex(lhs, symbolMap, enclosingFunction)>;
 		result += <rhsVertex, Exp(getNodePosition(e))>;
 
 		// TODO visiting subexpressions doesnt happen well here!
@@ -276,22 +274,22 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 		debug("multi assignment <e> with symbol map <domain(symbolMap)>");
 		assignments += assignment;
 		for (filledAssignment(Expression lhs, Expression rhs) <- assignments) {
-			Vertex rhsVertex = createVertex(rhs, symbolMap);
-			result += <rhsVertex, createVertex(lhs, symbolMap)>;
+			Vertex rhsVertex = createVertex(rhs, symbolMap, enclosingFunction);
+			result += <rhsVertex, createVertex(lhs, symbolMap, enclosingFunction)>;
 			result += <rhsVertex, Exp(getNodePosition(e))>;
 		}
 	}
 	// R2
 	elseif (disjunction(Expression lhs, Expression rhs) := e) {
 		debug("disjunction");
-		result += <createVertex(lhs, symbolMap), Exp(getNodePosition(e))>;
-		result += <createVertex(rhs, symbolMap), Exp(getNodePosition(e))>;
+		result += <createVertex(lhs, symbolMap, enclosingFunction), Exp(getNodePosition(e))>;
+		result += <createVertex(rhs, symbolMap, enclosingFunction), Exp(getNodePosition(e))>;
 	}
 	// R3
 	elseif (ternary(Expression condition, Expression conditionSuccess, Expression conditionFail) := e) {
 		debug("ternary");
 
-		Vertex successVertex = createVertex(conditionSuccess, symbolMap), failVertex = createVertex(conditionFail, symbolMap);
+		Vertex successVertex = createVertex(conditionSuccess, symbolMap, enclosingFunction), failVertex = createVertex(conditionFail, symbolMap, enclosingFunction);
 		
 		result += <successVertex, Exp(getNodePosition(e))>;
 		result += <failVertex, Exp(getNodePosition(e))>;
@@ -299,17 +297,17 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 	// R4
 	elseif (conjunction(Expression lhs, Expression rhs) := e) {
 		debug("conjunction!");
-		result += <createVertex(rhs, symbolMap), Exp(getNodePosition(e))>;
+		result += <createVertex(rhs, symbolMap, enclosingFunction), Exp(getNodePosition(e))>;
 	}
 	// R5
 	elseif (objectDefinition({PropertyAssignment ","}* properties) := e || objectDefinitionCommaSuffix({PropertyAssignment ","}+ properties) := e) {
 		debug("obj definition");
 		// TODO what to do with the get/set
 		for (p <- properties.args) {
-			println("	property <p>");
+			debug("	property <p>");
 			if (property(PropertyName name, Expression exp) := p) {
 				debug("		assignment <name>");
-				result += <createVertex(exp, symbolMap), Prop("<name>")>;
+				result += <createVertex(exp, symbolMap, enclosingFunction), Prop("<name>")>;
 			}
 		}
 	}
@@ -326,10 +324,10 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 			result += <Fun(getNodePosition(e)), createVarVertex(id)>;
 		}
 
-		inFunctionSymbolMap += ("<p>" : createEntry(p) | p <- params);
+		inFunctionSymbolMap += ("<p>" : createEntry(e) | p <- params);
 
 		// R6 rule #1 (Func -> Exp)
-		result += <Fun(getNodePosition(e)), createVertex(e, symbolMap)>;
+		result += <Fun(getNodePosition(e)), createVertex(e, symbolMap, enclosingFunction)>;
 		debug("visiting function with scope: <domain(inFunctionSymbolMap)>");
 
 		// The function blocks do not affect the current scope of the wrapping context
@@ -337,26 +335,27 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 		result += graph(createFlowGraphFromStatements(block, inFunctionSymbolMap, false, getNodePosition(e)));
 	}
 	// R8
-	elseif (functionParams(Expression expression, { Expression!comma ","}+ params) := e) {
+	elseif (functionParams(Expression expression, { Expression!comma ","}+ params) := e || functionNoParams(Expression expression) := e) {
 		Position p = getNodePosition(e);
-		result += <createVertex(expression, symbolMap), Callee(getNodePosition(e))>;
+		result += <createVertex(expression, symbolMap, enclosingFunction), Callee(getNodePosition(e))>;
 
-		int argnum = 0;
-		for (Expression param <- params) {
-			argnum += 1;
-			result += <createVertex(param, symbolMap), Arg(getNodePosition(param), argnum)>;
+		if (e is functionParams) {
+			int argnum = 0;
+			for (Expression param <- params) {
+				argnum += 1;
+				result += <createVertex(param, symbolMap, enclosingFunction), Arg(getNodePosition(param), argnum)>;
+			}
+		}
+		else {
+			debug("<e> is a function without params but no worries :)!");
 		}
 		result += <Res(getNodePosition(e)), Exp(getNodePosition(e))>;
 		
 		// R9
 		if (property(Expression lhs, Id _) := expression) {
-			result += <createVertex(lhs, symbolMap), Arg(getNodePosition(e), 0)>;
+			result += <createVertex(lhs, symbolMap, enclosingFunction), Arg(getNodePosition(e), 0)>;
 		}
 		//result += <createVertex(expression, symbolMap), >;
-		print("");
-	}
-	elseif (functionNoParams(Expression expression) := e) {
-		// result += <Fun(getNodePosition(e)), createVertex(expression, symbolMap)>;
 		print("");
 	}
 	elseif (id(Id id) := e) {
@@ -365,7 +364,7 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 	}
 
 	// Recurse over top level subexpressions
-	result += createFlowGraphFromSubExpressions(e, symbolMap, enclosingFunction); //{ retval | subtree <- e.args, retval <- createFlowGraphFromSubExpressions(subtree, symbolMap) };
+	result += createFlowGraphFromSubExpressions(e, symbolMap, enclosingFunction); 
 	return result;
 }
 
@@ -395,18 +394,51 @@ private map[str, SymbolMapEntry] getOverridableSymbolMap(map[str, SymbolMapEntry
 
 // Creating vertices
 private Vertex createVarVertex(Id id) = Var("<id>", getNodePosition(id));
-public Vertex createVertex(Tree root, map[str, SymbolMapEntry] symbolMap) {
+private Vertex createVertex(Tree root, map[str, SymbolMapEntry] symbolMap, Position enclosingFunction) {
 	if ((Expression)`<Expression e> . <Id id>` := root) return Prop("<id>");
+	elseif (Expression e := root && this() := e) return Parm(enclosingFunction, 0);
 	elseif ((Expression e := root && id(Id id) := e) || Id id := root) {
 		// both top level expressions and id's will match
 		debug("looking up <id> in symbol map: <domain(symbolMap)>");
 
 		foundDeclaration = findVariableDeclaration(id, symbolMap);
 		if (foundDeclaration == nothing()) return Prop("<id>");
-		else return Var("<id>", getNodePosition(unpack(foundDeclaration).tree));		
+		else {
+			Tree originalDeclaration = unpack(foundDeclaration).tree;
+			Vertex parmAttempt = Empty();
+
+			// find out if its a function parameter
+			if (function(Id _, {Id ","}* params, Block _) := originalDeclaration 
+				|| functionAnonymous({Id ","}* params, Block_) := originalDeclaration) {
+				parmAttempt = createParm(getNodePosition(originalDeclaration), params, id);
+			}						
+			elseif (FunctionDeclaration f := originalDeclaration) {
+				parmAttempt = createParm(getNodePosition(originalDeclaration), f.parameters, id);
+			}
+			
+			// If we found it as parameter, return it, otherwise we fallback to var :)
+			if (parmAttempt !:= Empty()) return parmAttempt;
+			
+			return Var("<id>", getNodePosition(originalDeclaration));
+		}
 	}
+	
 
 	return Exp(getNodePosition(root)); 	
+}
+
+private Vertex createParm(Position variableOrigin, {Id ","}* functionParameters, Id paramName) {
+	int i = 1;
+	debug("looking for <paramName> in <functionParameters>");
+	for (Id id <- functionParameters) {
+		if (id == paramName) {
+			return Parm(variableOrigin, i);
+		}
+		i += 1;
+	}
+	
+	// This will only occur if we refered to the name of the function
+	return Empty();
 }
 
 // Retrieve the position of a node
@@ -419,7 +451,5 @@ public Position getNodePosition(Tree t) {
 	return Position(filename, t@\loc.begin.line, t@\loc.offset, (t@\loc.offset + t@\loc.length));
 }
 
-private rel[Vertex, Vertex] graph(tuple[rel[Vertex, Vertex] graph, map[str, SymbolMapEntry] _] input) = fst(input);
-private map[str, SymbolMapEntry] modifiedSymbolMap(tuple[rel[Vertex, Vertex] _, map[str, SymbolMapEntry] symbolMap] input) = snd(input);
-private &T fst(tuple[&T, &U] input) = input[0];
-private &U snd(tuple[&T, &U] input) = input[1];
+private rel[Vertex, Vertex] graph(tuple[rel[Vertex, Vertex] graph, map[str, SymbolMapEntry] _] input) = input[0];
+private map[str, SymbolMapEntry] modifiedSymbolMap(tuple[rel[Vertex, Vertex] _, map[str, SymbolMapEntry] symbolMap] input) = input[1];

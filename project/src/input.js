@@ -9,7 +9,7 @@ function doSomething(doSomethingScope) {
         var doSomethingScope = false;
         var x = 3;
         for (var p = 0; p < 10; p++) {
-            function q() {
+            function _q(q) {
                 x = 5;
                 
                 var obj = {

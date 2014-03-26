@@ -5,6 +5,7 @@ import flowgraph;
 import List;
 import Relation;
 import IO;
+import SharedDataTypes;
 
 public void printFlowGraph(rel[Vertex, Vertex] graph) = printFlowGraph(graph, false);
 public void printSimpleFlowGraph(rel[Vertex, Vertex] graph) = printFlowGraph(graph, true);
@@ -29,10 +30,11 @@ private str getFlowGraphString(rel[Vertex, Vertex] graph, bool simplified) {
 
 private bool lessThanVertex(tuple[Vertex x, Vertex _] vertex1, tuple[Vertex x, Vertex _] vertex2) {
 	Position p = getPosition(vertex1.x), q = getPosition(vertex2.x);
+
 	
 	if (p != Inexistent() && q != Inexistent()) {
 		if (p.line < q.line) return true;
-		if (p != Inexistent() && p.line == q.line) return (p.columnStart < q.columnStart);
+		if (p.line == q.line) return (p.columnStart < q.columnStart);
 	}
 	
 	return false;

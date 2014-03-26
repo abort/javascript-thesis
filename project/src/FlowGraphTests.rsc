@@ -8,6 +8,7 @@ import IO;
 import String;
 import Set;
 import List;
+import SharedDataTypes;
 
 public test bool testNestedFunctions() = testFlowGraph(|project://thesis/src/tests/flowgraphs/nestedfunctions.js|);
 public test bool testRedefinedScope() = testFlowGraph(|project://thesis/src/tests/flowgraphs/redefinedscope.js|);

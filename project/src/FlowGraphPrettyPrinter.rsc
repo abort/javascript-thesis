@@ -43,6 +43,11 @@ private str getVertexString(Vertex v, bool simplified) {
 	elseif (Prop(str name) := v) return "Prop(<name>)";
 	elseif (Fun(Position p) := v) return getPrintStringWithPosition("Func", p, simplified);
 	elseif (Var(str name, Position p) := v) return "Var(<name>, <getPositionString(p, simplified)>)";
+	elseif (Callee(Position p) := v) return getPrintStringWithPosition("Callee", p, simplified);
+	elseif (Arg(Position p, int i) := v) return "Arg(<getPositionString(p, simplified)>, <i>)";
+	elseif (Parm(Position p, int i) := v) return "Parm(<getPositionString(p, simplified)>, <i>)";
+	elseif (Ret(Position p) := v) return getPrintStringWithPosition("Ret", p, simplified);
+	elseif (Res(Position p) := v) return getPrintStringWithPosition("Res", p, simplified);
 }
 
 private Position getPosition(Vertex v) {

@@ -16,7 +16,7 @@ public test bool testTernary() = testFlowGraph(|project://thesis/src/tests/flowg
 public test bool testProperties() = testFlowGraph(|project://thesis/src/tests/flowgraphs/properties.js|);
 public test bool testInnerExpressions() = testFlowGraph(|project://thesis/src/tests/flowgraphs/innerexpressions.js|);
 public test bool testConjunctionDisjunction() = testFlowGraph(|project://thesis/src/tests/flowgraphs/conjunctiondisjunction.js|);
-
+public test bool testTryCatch() = testFlowGraph(|project://thesis/src/tests/flowgraphs/trycatch.js|);
 
 private list[str] importFlowGraph(loc input) = readFileLines(input);
 

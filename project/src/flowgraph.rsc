@@ -68,7 +68,7 @@ private rel[Vertex, Vertex] createFlowGraphForExpressions(Tree root, map[str, Sy
 	//if (!(root has args)) return {};
 	
 	//if ((appl(_, _) !:= root)) return {};
-
+	println("visiting ze: <root>");
 	try {
 		top-down-break visit(root.args) {
 			case Statement s:{
@@ -76,9 +76,7 @@ private rel[Vertex, Vertex] createFlowGraphForExpressions(Tree root, map[str, Sy
 				debug("we dont need expressions of statements just yet (due to statements being recursive), so we stop at the branch over here (halt recursion) @ <s>");
 			}
 			case Expression e:{	
-				debug("le e: <e>");
-				if (e == root) fail;	
-				debug ("visitingx <e>");
+				if (e == root) fail; // makes sure the top statement doesnt get visited in some way 
 				result += createFlowGraphFromExpression(e, symbolMap);
 			}
 		}
@@ -172,7 +170,7 @@ private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphForS
 			recursionResult = createFlowGraphFromStatements(tryBlock, symbolMap, globalScope);
 			result += graph(recursionResult);
 			symbolMap += modifiedSymbolMap(recursionResult);
-			
+
 			recursionResult = createFlowGraphFromStatements(catchBlock, symbolMap, globalScope);
 			result += graph(recursionResult);
 			symbolMap += modifiedSymbolMap(recursionResult);
@@ -259,12 +257,14 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 		variableAssignmentLoose(Expression lhs, Expression rhs) := e) {
 
 		debug("assignment for <e> with symbol map <domain(symbolMap)>");
+		debug("assignment -\> <rhs>");
 
 		Vertex rhsVertex = createVertex(rhs, symbolMap);
 		result += <rhsVertex, createVertex(lhs, symbolMap)>;
 		result += <rhsVertex, Exp(getNodePosition(e))>;
 
 		// TODO visiting subexpressions doesnt happen well here!
+		// TODO TEST MULTIASSIGNMENTS
 		// result += createFlowGraphFromExpression(rhs, symbolMap);
 	}
 	elseif (variableAssignmentMulti(VariableAssignment assignment, {VariableAssignment ","}+ assignments) := e) {
@@ -345,8 +345,8 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 		debug("Just found an id, what now?");
 	}
 
-	// Recurse over top level subexpressions	
-	result += { retval | subtree <- e.args, retval <- createFlowGraphForExpressions(subtree, symbolMap) };
+	// Recurse over top level subexpressions
+	result += createFlowGraphForExpressions(e, symbolMap); //{ retval | subtree <- e.args, retval <- createFlowGraphForExpressions(subtree, symbolMap) };
 	return result;
 }
 

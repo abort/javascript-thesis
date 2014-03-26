@@ -1,6 +1,6 @@
 function wrapper() {
 	var f = function(anonymousScope) {
-		anonymousScope = 1 == 1 && 2 == 2; // var declared at line 2
+		anonymousScope = (1 == 1 || 2 == 2); // var declared at line 2
 	};
 
 	anonymousScope = 0; // should be a prop

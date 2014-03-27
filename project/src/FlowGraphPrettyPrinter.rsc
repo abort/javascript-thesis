@@ -40,6 +40,10 @@ private bool lessThanVertex(tuple[Vertex x, Vertex _] vertex1, tuple[Vertex x, V
 	return false;
 }
 
+public void printVertexString(Vertex v) {
+	print(getVertexString(v, false));
+}
+
 private str getVertexString(Vertex v, bool simplified) {
 	if (Exp(Position p) := v) return getPrintStringWithPosition("Expr", p, simplified);
 	elseif (Prop(str name) := v) return "Prop(<name>)";
@@ -50,6 +54,7 @@ private str getVertexString(Vertex v, bool simplified) {
 	elseif (Parm(Position p, int i) := v) return "Parm(<getPositionString(p, simplified)>, <i>)";
 	elseif (Ret(Position p) := v) return getPrintStringWithPosition("Ret", p, simplified);
 	elseif (Res(Position p) := v) return getPrintStringWithPosition("Res", p, simplified);
+	elseif (Unknown() := v) return "Unknown";
 }
 
 private Position getPosition(Vertex v) {

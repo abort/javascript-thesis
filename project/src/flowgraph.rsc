@@ -43,8 +43,9 @@ private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphFrom
 			// In non-global scope, the symbol map gets appended
 			if (!globalScope) symbolMap += ("<f.name>" : createEntry(f));
 
+			// R7
 			result += graph(createFlowGraphFromNestedStatements(f.implementation, newSymbolMap, getNodePosition(f)));
-			result += <Fun(getNodePosition(f)), Var("<f.name>", getNodePosition(f.name))>;
+			result += <Fun(getNodePosition(f)), Var("<f.name>", getNodePosition(f))>; // get node position f instead of f.name?
 
 			// result += createVertex("<p>" : createEntry(p) | p <- f.parameters)
 			
@@ -321,7 +322,7 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 			inFunctionSymbolMap += ("<id>" : createEntry(id));
 
 			// No need for checking in the symbol map, R6 says this is always a var
-			result += <Fun(getNodePosition(e)), createVarVertex(id)>;
+			result += <Fun(getNodePosition(e)), Var("<id>", getNodePosition(e))>; // getNodePosition e instead of id?
 		}
 
 		inFunctionSymbolMap += ("<p>" : createEntry(e) | p <- params);
@@ -343,7 +344,7 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 			int argnum = 0;
 			for (Expression param <- params) {
 				argnum += 1;
-				result += <createVertex(param, symbolMap, enclosingFunction), Arg(getNodePosition(param), argnum)>;
+				result += <createVertex(param, symbolMap, enclosingFunction), Arg(getNodePosition(e), argnum)>; // TODO getNodePosition(e) or (param)?
 			}
 		}
 		else {
@@ -353,6 +354,7 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 		
 		// R9
 		if (property(Expression lhs, Id _) := expression) {
+			debug("lhs of function call is a property");
 			result += <createVertex(lhs, symbolMap, enclosingFunction), Arg(getNodePosition(e), 0)>;
 		}
 		//result += <createVertex(expression, symbolMap), >;
@@ -422,9 +424,8 @@ private Vertex createVertex(Tree root, map[str, SymbolMapEntry] symbolMap, Posit
 			return Var("<id>", getNodePosition(originalDeclaration));
 		}
 	}
-	
 
-	return Exp(getNodePosition(root)); 	
+	return Exp(getNodePosition(root));
 }
 
 private Vertex createParm(Position variableOrigin, {Id ","}* functionParameters, Id paramName) {

@@ -86,7 +86,7 @@ public rel[CallVertex, CallVertex] createPessimisticCallGraph(Source source) {
 	callGraph =	{ <y, x> | <x,y> <- optimisticTransitiveClosure, Fun(Position _) := x, Callee(Position _) := y };
 	
 	println("new flowgraph:\n");
-	printFlowGraph(flowGraph);
+	printFlowGraph(callGraph);
 	println();
 	
 	rel[Vertex, Vertex] escapedOutput = { <x, y> | <x, y> <- flowGraph+, Fun(Position _) := x, Unknown() := y };
@@ -136,7 +136,7 @@ private rel[Vertex, Vertex] addInterproceduralEdges(rel[CallVertex, CallVertex] 
 			int i = 1;
 			for (Expression arg <- args) {
 				println("Add arg <arg> to <unparse(tree(callRel.oneShotClosure))>");
-				flowGraph += <Arg(getNodePosition(arg), i), Parm(getNodePosition(tree(callRel.oneShotClosure)), i)>;
+				flowGraph += <Arg(getNodePosition(tree(callRel.oneShotCall)), i), Parm(getNodePosition(tree(callRel.oneShotClosure)), i)>;
 				i += 1;	
 			}
 		}
@@ -151,7 +151,7 @@ private rel[Vertex, Vertex] addInterproceduralEdges(rel[CallVertex, CallVertex] 
 		if (functionParams(Expression _, { Expression!comma ","}+ args) := unresolvedSite) {
 			int i = 1;
 			for (Expression arg <- args) {
-				flowGraph += <Arg(getNodePosition(arg), i), Unknown()>;
+				flowGraph += <Arg(getNodePosition(unresolvedSite), i), Unknown()>;
 				i += 1;	
 			}
 		}

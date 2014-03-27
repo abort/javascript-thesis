@@ -23,6 +23,10 @@ private data SymbolMapEntry = entry(Tree tree, bool overridable);
 private SymbolMapEntry createEntry(Tree tree) = entry(tree, false);
 private SymbolMapEntry createOverridableEntry(Tree tree) = entry(tree, true);
 
+public rel[Vertex, Vertex] createFlowGraphWithNativeFunctions(Source root) {
+	// TODO implement native constructs add
+	return createFlowGraph(source);
+}
 public rel[Vertex, Vertex] createFlowGraph(Source root) = createFlowGraphFromGlobalStatements(root);
 
 // Does not affect the scoping so we discard the returned symbol map

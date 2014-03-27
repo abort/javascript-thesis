@@ -79,22 +79,25 @@ public rel[CallVertex, CallVertex] createPessimisticCallGraph(Source source) {
 	rel[Vertex, Vertex] callGraph = {};
 	rel[Vertex, Vertex] optimisticTransitiveClosure = optimisticTransitiveClosure(flowGraph);
 	//println("\n\n\n");
-	println("optimistic transitive closure: <size(optimisticTransitiveClosure)>");
+	//println("optimistic transitive closure: <size(optimisticTransitiveClosure)>");
 	//printFlowGraph(optimisticTransitiveClosure);
 	
-	println("optimistic transitive closure without flowgraph: <size(optimisticTransitiveClosure - flowGraph)>");
+	//println("optimistic transitive closure without flowgraph: <size(optimisticTransitiveClosure - flowGraph)>");
 	callGraph =	{ <y, x> | <x,y> <- optimisticTransitiveClosure, Fun(Position _) := x, Callee(Position _) := y };
 	
-	println("new flowgraph:\n");
+	//println("new flowgraph:\n");
+	println("Flow graph: ");
 	printFlowGraph(callGraph);
 	println();
+	println("Uncertainties: ");
 	
 	rel[Vertex, Vertex] escapedOutput = { <x, y> | <x, y> <- flowGraph+, Fun(Position _) := x, Unknown() := y };
 	rel[Vertex, Vertex] unresolvedCallSitesOutput = { <x, y> | <x, y> <- flowGraph+, Unknown() := x, Callee(Position _) := y };
 	
-	callGraph += escapedOutput + unresolvedCallSitesOutput;
+	// callGraph += escapedOutput + unresolvedCallSitesOutput;
 	rel[Vertex, Vertex] output = { <x, y> | <x, y> <- callGraph, ((Fun(Position _) := x && Callee(Position _) := y) || (Fun(Position _) := x && Unknown() := y) || (Unknown() := x && Callee(Position _) := y)) }; 
-	printFlowGraph(callGraph);
+	printFlowGraph(escapedOutput);
+	printFlowGraph(unresolvedCallSitesOutput);
 
 	/*
 	for (escapedO <- escapedOutput) {
@@ -127,15 +130,12 @@ private rel[Vertex, Vertex] optimisticTransitiveClosure(rel[Vertex, Vertex] R) {
 private rel[Vertex, Vertex] addInterproceduralEdges(rel[CallVertex, CallVertex] initialCallGraph, set[Tree] escapingFunctions, set[Tree] unresolvedCallSites) {
 	rel[Vertex, Vertex] flowGraph = {};
 	
-	
-	
-	
 	// Algo 2 line #1-3
 	for (tuple[CallVertex oneShotCall, CallVertex oneShotClosure] callRel <- initialCallGraph) {
 		if (functionParams(Expression _, { Expression!comma ","}+ args) := tree(callRel.oneShotCall)) {
 			int i = 1;
 			for (Expression arg <- args) {
-				println("Add arg <arg> to <unparse(tree(callRel.oneShotClosure))>");
+				//println("Add arg <arg> to <unparse(tree(callRel.oneShotClosure))>");
 				flowGraph += <Arg(getNodePosition(tree(callRel.oneShotCall)), i), Parm(getNodePosition(tree(callRel.oneShotClosure)), i)>;
 				i += 1;	
 			}
@@ -147,7 +147,7 @@ private rel[Vertex, Vertex] addInterproceduralEdges(rel[CallVertex, CallVertex] 
 	
 	// Algo 2 line #4-6
 	for (Tree unresolvedSite <- unresolvedCallSites) {
-		println("Unresolved site: <unparse(unresolvedSite)> line (<getNodePosition(unresolvedSite).line>)");
+		//println("Unresolved site: <unparse(unresolvedSite)> line (<getNodePosition(unresolvedSite).line>)");
 		if (functionParams(Expression _, { Expression!comma ","}+ args) := unresolvedSite) {
 			int i = 1;
 			for (Expression arg <- args) {
@@ -161,7 +161,7 @@ private rel[Vertex, Vertex] addInterproceduralEdges(rel[CallVertex, CallVertex] 
 	
 	// Algo 2 line #7-9
 	for (Tree escapingFunction <- escapingFunctions) {
-		println("Escaping function: <unparse(escapingFunction)> line (<getNodePosition(escapingFunction).line>)");
+		// println("Escaping function: <unparse(escapingFunction)> line (<getNodePosition(escapingFunction).line>)");
 		if (function(Id id, {Id ","}* params, Block block) := escapingFunction) {
 			int i = 1;
 			for (Id param <- params) {
@@ -178,6 +178,4 @@ private rel[Vertex, Vertex] addInterproceduralEdges(rel[CallVertex, CallVertex] 
 }
 
 private Tree tree(CallVertex(Tree t)) = t;
-
-
 private CallVertex vtx(Tree t) = CallVertex(t);

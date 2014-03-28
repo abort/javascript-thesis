@@ -14,6 +14,7 @@ import Node;
 import Map;
 import util::Maybe;
 import Logger;
+import FlowGraphNativeImporter;
 
 // TODO clean up
 // TODO stop storing trees but store node positions?
@@ -23,10 +24,9 @@ private data SymbolMapEntry = entry(Tree tree, bool overridable);
 private SymbolMapEntry createEntry(Tree tree) = entry(tree, false);
 private SymbolMapEntry createOverridableEntry(Tree tree) = entry(tree, true);
 
-public rel[Vertex, Vertex] createFlowGraphWithNativeFunctions(Source root) {
-	// TODO implement native constructs add
-	return createFlowGraph(source);
-}
+public rel[Vertex, Vertex] createFlowGraphWithNativeFunctions(rel[Vertex, Vertex] nativeGraph, Source root) = nativeGraph + createFlowGraph(root);
+public rel[Vertex, Vertex] createFlowGraphWithNativeFunctions(loc nativeGraphLocation, Source root) = createFlowGraphWithNativeFunctions(createFlowGraphFromFunctionList(nativeGraphLocation), root);
+
 public rel[Vertex, Vertex] createFlowGraph(Source root) = createFlowGraphFromGlobalStatements(root);
 
 // Does not affect the scoping so we discard the returned symbol map
@@ -436,12 +436,9 @@ private Vertex createParm(Position variableOrigin, {Id ","}* functionParameters,
 	int i = 1;
 	debug("looking for <paramName> in <functionParameters>");
 	for (Id id <- functionParameters) {
-		if (id == paramName) {
-			return Parm(variableOrigin, i);
-		}
+		if (id == paramName) return Parm(variableOrigin, i);
 		i += 1;
 	}
-	
 	// This will only occur if we refered to the name of the function
 	return Empty();
 }

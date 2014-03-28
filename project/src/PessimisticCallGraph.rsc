@@ -31,7 +31,6 @@ public rel[CallVertex, CallVertex] createPessimisticCallGraph(Source source) {
 	rel[CallVertex, CallVertex] oneShotCalls = {}; // C in original algorithm
 	set[Tree] escapingFunctions = {};
 	set[Tree] unresolvedCallSites = {};
-	
 
 	top-down visit (source) {
 		case Expression e:{
@@ -75,7 +74,7 @@ public rel[CallVertex, CallVertex] createPessimisticCallGraph(Source source) {
 	
 	rel[Vertex, Vertex] flowGraph = addInterproceduralEdges(oneShotCalls, escapingFunctions, unresolvedCallSites);
 
-	flowGraph += createFlowGraph(source);	 
+	flowGraph += createFlowGraphWithNativeFunctions(|project://thesis/src/native-functions.txt|, source);	 
 	rel[Vertex, Vertex] callGraph = {};
 	rel[Vertex, Vertex] optimisticTransitiveClosure = optimisticTransitiveClosure(flowGraph);
 	//println("\n\n\n");

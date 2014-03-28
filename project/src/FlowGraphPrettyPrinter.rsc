@@ -55,6 +55,7 @@ private str getVertexString(Vertex v, bool simplified) {
 	elseif (Ret(Position p) := v) return getPrintStringWithPosition("Ret", p, simplified);
 	elseif (Res(Position p) := v) return getPrintStringWithPosition("Res", p, simplified);
 	elseif (Unknown() := v) return "Unknown";
+	elseif (Builtin(str canonicalName) := v) return "Builtin(<canonicalName>)"; 
 }
 
 private Position getPosition(Vertex v) {

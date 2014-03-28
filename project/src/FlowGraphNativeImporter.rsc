@@ -6,14 +6,20 @@ import Relation;
 import String;
 import Map;
 import flowgraph;
-import lang::csv::IO;
 
 public rel[Vertex, Vertex] createFlowGraphFromFunctionList(loc location) {
-	functions = readCSV(#list[str], location, ("header": "false")); // TODO BUG FOUND, expects a map of str to str, but crashes with "false" as value 
+	list[str] functionLines = readFileLines(location);
+	rel[Vertex, Vertex] nativeGraph = {};
 
-	println("functions:");
-	for (str f <- functions) {
-		println(f);
+	for (str line <- functionLines) {
+		list[str] splittedLine = split(":", line);
+		str name = replaceAll(trim(splittedLine[0]), "\"", "");
+		str functionName = replaceLast(replaceAll(trim(splittedLine[1]), "\"", ""), ",", "");
+
+		Vertex nativeFunctionVertex = Builtin(name);
+		Vertex nativeFunctionProp = Prop(functionName);
+		nativeGraph += <nativeFunctionVertex, nativeFunctionProp>;
 	}
-	return {};
+
+	return nativeGraph;
 }

@@ -6,6 +6,8 @@ import List;
 import Relation;
 import IO;
 import SharedDataTypes;
+import ParseTree;
+
 
 public void printFlowGraph(rel[Vertex, Vertex] graph) = printFlowGraph(graph, false);
 public void printSimpleFlowGraph(rel[Vertex, Vertex] graph) = printFlowGraph(graph, true);
@@ -45,17 +47,18 @@ public void printVertexString(Vertex v) {
 }
 
 private str getVertexString(Vertex v, bool simplified) {
-	if (Exp(Position p) := v) return getPrintStringWithPosition("Expr", p, simplified);
+	if (Exp(Position p, Tree _) := v) return getPrintStringWithPosition("Expr", p, simplified);
 	elseif (Prop(str name) := v) return "Prop(<name>)";
-	elseif (Fun(Position p) := v) return getPrintStringWithPosition("Func", p, simplified);
-	elseif (Var(str name, Position p) := v) return "Var(<name>, <getPositionString(p, simplified)>)";
-	elseif (Callee(Position p) := v) return getPrintStringWithPosition("Callee", p, simplified);
-	elseif (Arg(Position p, int i) := v) return "Arg(<getPositionString(p, simplified)>, <i>)";
-	elseif (Parm(Position p, int i) := v) return "Parm(<getPositionString(p, simplified)>, <i>)";
-	elseif (Ret(Position p) := v) return getPrintStringWithPosition("Ret", p, simplified);
-	elseif (Res(Position p) := v) return getPrintStringWithPosition("Res", p, simplified);
+	elseif (Fun(Position p, Tree _) := v) return getPrintStringWithPosition("Func", p, simplified);
+	elseif (Var(str name, Position p, Tree _) := v) return "Var(<name>, <getPositionString(p, simplified)>)";
+	elseif (Callee(Position p, Tree _) := v) return getPrintStringWithPosition("Callee", p, simplified);
+	elseif (Arg(Position p, int i, Tree _) := v) return "Arg(<getPositionString(p, simplified)>, <i>)";
+	elseif (Parm(Position p, int i, Tree _) := v) return "Parm(<getPositionString(p, simplified)>, <i>)";
+	elseif (Ret(Position p, Tree _) := v) return getPrintStringWithPosition("Ret", p, simplified);
+	elseif (Res(Position p, Tree _) := v) return getPrintStringWithPosition("Res", p, simplified);
 	elseif (Unknown() := v) return "Unknown";
 	elseif (Builtin(str canonicalName) := v) return "Builtin(<canonicalName>)"; 
+	elseif (Empty() := v) return "Empty(erroneous)";
 }
 
 private Position getPosition(Vertex v) {

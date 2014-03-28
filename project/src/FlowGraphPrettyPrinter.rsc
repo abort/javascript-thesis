@@ -28,15 +28,15 @@ private str getFlowGraphString(rel[Vertex, Vertex] graph, bool simplified) {
 	return result;
 }
 
-private bool lessThanVertex(tuple[Vertex x, Vertex _] vertex1, tuple[Vertex x, Vertex _] vertex2) {
+private bool lessThanVertex(tuple[Vertex x, Vertex y] vertex1, tuple[Vertex x, Vertex y] vertex2) {
 	Position p = getPosition(vertex1.x), q = getPosition(vertex2.x);
 
-	
 	if (p != Inexistent() && q != Inexistent()) {
 		if (p.line < q.line) return true;
 		if (p.line == q.line) return (p.columnStart < q.columnStart);
 	}
 	
+	if (p == Inexistent() && q != Inexistent()) return true;
 	return false;
 }
 

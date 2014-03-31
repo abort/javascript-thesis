@@ -47,10 +47,10 @@ public CallGraphResult createOptimisticCallGraph(Source source) {
 		rel[Vertex, Vertex] oldFlowGraph = flowGraph;
 
 		// Convert the old result to provide as a parameter to the add interprocedural edge function
-		rel[Tree, Tree] callGraphParam = { <x.tree, y.tree> | <x, y> <- callGraph };
+		rel[Tree, Tree] callGraphParam = { <x.tree, y.tree> | <x, y> <- callGraph, Fun(Position _, Tree _) := y, Callee(Position _, Tree _) := x };
 		flowGraph = addOptimisticInterproceduralEdges(flowGraph, callGraphParam, escapingFunctions, unresolvedCallSites);
 
-	 	callGraph = { <y, x> | <x,y> <- optimisticTransitiveClosure(flowGraph), Fun(Position _, Tree _) := x, Callee(Position _, Tree _) := y };	
+	 	callGraph = { <y, x> | <x,y> <- optimisticTransitiveClosure(flowGraph), (Fun(Position _, Tree _) := x || Builtin(str _) := x), Callee(Position _, Tree _) := y };	
 		escapedOutput = { <x, y> | <x, y> <- flowGraph+, Fun(Position _, Tree _) := x, Unknown() := y };
 		unresolvedCallSitesOutput = { <x, y> | <x, y> <- flowGraph+, Unknown() := x, Callee(Position _, Tree _) := y };
 		iterations += 1;
@@ -59,9 +59,6 @@ public CallGraphResult createOptimisticCallGraph(Source source) {
 		if (oldCallGraph == callGraph && oldEscapingFunctions == escapingFunctions && oldUnresolvedCallSites == unresolvedCallSites && oldFlowGraph == flowGraph)
 			fixpoint = true;
 	}
-
-	// Add native calls
-	callGraph += { <y,x> | <x,y> <- optimisticTransitiveClosure(flowGraph), Builtin(str _) := x, Callee(Position _, Tree _) := y };
 
 	debug("Fixpoint reached after <iterations> iterations");
 	return CallGraphResult(callGraph, getEscapingFunctionsAsRelation(flowGraph), getUnresolvedCallSitesAsRelation(flowGraph));

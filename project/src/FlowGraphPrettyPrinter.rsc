@@ -21,10 +21,10 @@ private str getFlowGraphString(rel[Vertex, Vertex] graph, bool simplified) {
 	list[tuple[Vertex, Vertex]] printable = [ <x,y> | <x, y> <- graph ];
 	str result = "";
 	for (<x, y> <- sort(printable, lessThanVertex)) {
-		result += getVertexString(x, simplified);
+		result += "\"" + getVertexString(x, simplified);
 		result += " -\> ";
 		result += getVertexString(y, simplified);
-		result += "\n";
+		result += "\"\n";
 	}
 	
 	return result;

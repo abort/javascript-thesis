@@ -111,7 +111,8 @@ private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphFrom
 			// Use deep matching to ignore the literals like the comma (this wont hurt in this case)
 			if (filledDeclaration(Id id, Expression expression) := declaration) {
 				// Variables can not be redeclared in the same scope
-				if (!globalScope && isDeclarable("<id>", symbolMap)) symbolMap += ("<id>" : createEntry(id));
+				if (!globalScope && isDeclarable("<id>", symbolMap)) 
+					symbolMap += ("<id>" : createEntry(id));
 				Vertex rhsVertex = createVertex(expression, symbolMap, enclosingFunction);
 				result += <rhsVertex, createVertex(id, symbolMap, enclosingFunction)>;	// Does not occur in the provided script but we assume it to be the same as a declaration + expression R1
 				result += <rhsVertex, Exp(getNodePosition(id), id)>;
@@ -341,7 +342,11 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 	// R8
 	// TODO does this not count for functions without parameters?
 	elseif (functionParams(Expression expression, { Expression!comma ","}+ params) := e || functionNoParams(Expression expression) := e) {
-		Position p = getNodePosition(e);
+		// In case of one shot closures, we have to consider the subexpression (nested) as the function being called
+		if (nestedExpression(Expression sub) := expression) {
+			expression = sub;
+		}
+
 		result += <createVertex(expression, symbolMap, enclosingFunction), Callee(getNodePosition(e), e)>;
 
 		if (e is functionParams) {
@@ -354,6 +359,7 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 		else {
 			debug("<e> is a function without params but no worries :)!");
 		}
+
 		result += <Res(getNodePosition(e), e), Exp(getNodePosition(e), e)>;
 		
 		// R9
@@ -368,7 +374,6 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 		// TODO: e.g. return does not do anything
 		debug("Just found an id, what now?");
 	}
-
 	// Recurse over top level subexpressions
 	result += createFlowGraphFromSubExpressions(e, symbolMap, enclosingFunction); 
 	return result;

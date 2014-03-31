@@ -4,6 +4,7 @@ import CallGraphDataTypes;
 import Relation;
 import FlowGraphDataTypes;
 import flowgraph;
+import IO;
 import Set;
 import Map;
 import ParseTree;
@@ -75,8 +76,12 @@ public rel[Vertex, Vertex] transitiveClosure(rel[Vertex, Vertex] R) {
 }
 
 public rel[Vertex, Vertex] optimisticTransitiveClosure(rel[Vertex, Vertex] R) {
-	rel[Vertex, Vertex] graphWithoutUnknown = { <x, y> | <x, y> <- R, !(y := Unknown()) };
-	return R + graphWithoutUnknown+;  
+	tc = R;
+	while (true) {
+		tc1 = tc;
+  		tc += {<x,y> | <x,y> <- tc, (y != Unknown()) } o R;
+  		if (tc1 == tc) return tc;
+	}
 }
 
 public rel[Vertex, Vertex] addInterproceduralEdges(rel[Tree, Tree] initialCallGraph, set[Tree] escapingFunctions, set[Tree] unresolvedCallSites) {
@@ -87,6 +92,7 @@ public rel[Vertex, Vertex] addInterproceduralEdges(rel[Tree, Tree] initialCallGr
 		if (functionParams(Expression _, { Expression!comma ","}+ args) := callRel.oneShotCall) {
 			int i = 1;
 			for (Expression arg <- args) {
+				debug("<getNodePosition(callRel.oneShotCall)> to <getNodePosition(callRel.oneShotClosure)>");
 				flowGraph += <Arg(getNodePosition(callRel.oneShotCall), i, callRel.oneShotCall), Parm(getNodePosition(callRel.oneShotClosure), i, callRel.oneShotClosure)>;
 				i += 1;	
 			}
@@ -112,7 +118,7 @@ public rel[Vertex, Vertex] addInterproceduralEdges(rel[Tree, Tree] initialCallGr
 	// Algo 2 line #7-9
 	for (Tree escapingFunction <- escapingFunctions) {
 		// println("Escaping function: <unparse(escapingFunction)> line (<getNodePosition(escapingFunction).line>)");
-		if (function(Id id, {Id ","}* params, Block block) := escapingFunction) {
+		if (function(Id id, {Id ","}* params, Block block) := escapingFunction || functionAnonymous({Id ","}* params, Block block) := escapingFunction) {
 			int i = 1;
 			for (Id param <- params) {
 				debug("Add param <param> to <escapingFunction>");
@@ -120,7 +126,14 @@ public rel[Vertex, Vertex] addInterproceduralEdges(rel[Tree, Tree] initialCallGr
 				i += 1;
 			}
 		}
-		
+		elseif (FunctionDeclaration f := escapingFunction) {
+			int i = 1;
+			for (Id param <- f.parameters) {
+				debug("Add param <param> to <escapingFunction>");
+				flowGraph += <Unknown(), Parm(getNodePosition(escapingFunction), i, escapingFunction)>;
+				i += 1;
+			}
+		}
 		flowGraph += <Ret(getNodePosition(escapingFunction), escapingFunction), Unknown()>;
 	}
 

@@ -50,15 +50,9 @@ public CallGraphResult createOptimisticCallGraph(Source source) {
 		rel[Tree, Tree] callGraphParam = { <x.tree, y.tree> | <x, y> <- callGraph };
 		flowGraph = addOptimisticInterproceduralEdges(flowGraph, callGraphParam, escapingFunctions, unresolvedCallSites);
 
-		// TODO line 36 -> line 2 is missing in jquerysubset.js, this is probably due to an insufficient transitive closure (maybe the input info in the transitive closure is not good)!
-		// TODO Line 21 -> line 29 is ok, like in the paper!
-		callGraph += { <y, x> | <x,y> <- optimisticTransitiveClosure(flowGraph), Fun(Position _, Tree _) := x, Callee(Position _, Tree _) := y };	
-		escapingFunctions += { x.tree | <x,y> <- flowGraph+, Fun(Position _, Tree tree) := x, Unknown() := y };
-		unresolvedCallSites += { y.tree | <x,y> <- flowGraph+, Unknown() := x, Callee(Position _, Tree tree) := y };
-		/*flowGraph += callGraph;
-		flowGraph += getEscapingFunctionsAsRelation(flowGraph);
-		flowGraph += getUnresolvedCallSitesAsRelation(flowGraph);
-		*/
+	 	callGraph = { <y, x> | <x,y> <- optimisticTransitiveClosure(flowGraph), Fun(Position _, Tree _) := x, Callee(Position _, Tree _) := y };	
+		escapedOutput = { <x, y> | <x, y> <- flowGraph+, Fun(Position _, Tree _) := x, Unknown() := y };
+		unresolvedCallSitesOutput = { <x, y> | <x, y> <- flowGraph+, Unknown() := x, Callee(Position _, Tree _) := y };
 		iterations += 1;
 
 		// Check whether something has changed or not to conclude
@@ -66,7 +60,10 @@ public CallGraphResult createOptimisticCallGraph(Source source) {
 			fixpoint = true;
 	}
 
-	println("Fixpoint reached after <iterations> iterations");
+	// Add native calls
+	callGraph += { <y,x> | <x,y> <- optimisticTransitiveClosure(flowGraph), Builtin(str _) := x, Callee(Position _, Tree _) := y };
+
+	debug("Fixpoint reached after <iterations> iterations");
 	return CallGraphResult(callGraph, getEscapingFunctionsAsRelation(flowGraph), getUnresolvedCallSitesAsRelation(flowGraph));
 }
 
@@ -100,8 +97,7 @@ public rel[Vertex, Vertex] addOptimisticInterproceduralEdges(rel[Vertex, Vertex]
 	
 	// Algo 2 line #7-9
 	for (Tree escapingFunction <- escapingFunctions) {
-		// println("Escaping function: <unparse(escapingFunction)> line (<getNodePosition(escapingFunction).line>)");
-		if (function(Id id, {Id ","}* params, Block block) := escapingFunction) {
+		if (function(Id id, {Id ","}* params, Block block) := escapingFunction || functionAnonymous({Id ","}* params, Block block) := escapingFunction) {
 			int i = 1;
 			for (Id param <- params) {
 				debug("Add param <param> to <escapingFunction>");
@@ -109,18 +105,14 @@ public rel[Vertex, Vertex] addOptimisticInterproceduralEdges(rel[Vertex, Vertex]
 				i += 1;
 			}
 		}
-		
-		// "function" Id name "(" {Id ","}* parameters ")" Block implementation NoNL ZeroOrMoreNewLines NoNL ()
-		if (FunctionDeclaration f := escapingFunction) {
+		elseif (FunctionDeclaration f := escapingFunction) {
 			int i = 1;
 			for (Id param <- f.parameters) {
-				debug("Add param <param> to <escapingFunction> (declared function)");
+				debug("Add param <param> to <escapingFunction>");
 				flowGraph += <Unknown(), Parm(getNodePosition(escapingFunction), i, escapingFunction)>;
 				i += 1;
 			}
 		}
-		
-		
 		flowGraph += <Ret(getNodePosition(escapingFunction), escapingFunction), Unknown()>;
 	}
 

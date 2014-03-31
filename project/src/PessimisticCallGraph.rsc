@@ -34,9 +34,9 @@ public CallGraphResult createPessimisticCallGraph(Source source) {
 
 	// Step #5 - Add interproedural edges
 	rel[Vertex, Vertex] flowGraph = addInterproceduralEdges(oneShotCalls, escapingFunctions, unresolvedCallSites);
-	flowGraph += createFlowGraphWithNativeFunctions(|project://thesis/src/native-functions.txt|, source);	 
+	flowGraph += createFlowGraphWithNativeFunctions(|project://thesis/src/native-functions.txt|, source); 
 
-	rel[Vertex, Vertex] callGraph = { <y, x> | <x,y> <- optimisticTransitiveClosure(flowGraph), Fun(Position _, Tree _) := x, Callee(Position _, Tree _) := y };	
+	rel[Vertex, Vertex] callGraph = { <y, x> | <x,y> <- optimisticTransitiveClosure(flowGraph), (Fun(Position _, Tree _) := x || Builtin(str _) := x), Callee(Position _, Tree _) := y };	
 	rel[Vertex, Vertex] escapedOutput = { <x, y> | <x, y> <- flowGraph+, Fun(Position _, Tree _) := x, Unknown() := y };
 	rel[Vertex, Vertex] unresolvedCallSitesOutput = { <x, y> | <x, y> <- flowGraph+, Unknown() := x, Callee(Position _, Tree _) := y };
 

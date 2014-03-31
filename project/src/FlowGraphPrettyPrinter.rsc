@@ -7,6 +7,7 @@ import Relation;
 import IO;
 import SharedDataTypes;
 import ParseTree;
+import String;
 
 
 public void printFlowGraph(rel[Vertex, Vertex] graph) = printFlowGraph(graph, false);
@@ -16,6 +17,18 @@ private void printFlowGraph(rel[Vertex, Vertex] graph, bool simplified) {
 }
 
 public str getSimpleFlowGraph(rel[Vertex, Vertex] graph) = getFlowGraphString(graph, true);
+public str getExtensiveFlowGraph(rel[Vertex, Vertex] graph) = getFlowGraphString(graph, false);
+public str getAlphabeticalFlowGraph(rel[Vertex, Vertex] graph) {
+	list[str] outputList = split("\n", getExtensiveFlowGraph(graph));
+	outputList = sort(outputList);
+	str output = "";
+	for (str out <- outputList) {
+		println("<out>");
+		output += "<out>\n";
+	}
+	
+	return output;
+}
 
 private str getFlowGraphString(rel[Vertex, Vertex] graph, bool simplified) {
 	list[tuple[Vertex, Vertex]] printable = [ <x,y> | <x, y> <- graph ];

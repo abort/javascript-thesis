@@ -1,0 +1,6 @@
+"Func(snippet-18.js@10:127-278) -> Var(ftektigvmeaern, snippet-18.js@10:127-278)"
+"Func(snippet-18.js@12:159-244) -> Var(ejfaveiczmqulr, snippet-18.js@12:159-244)"
+"Func(snippet-18.js@16:244-273) -> Var(hxjrhs, snippet-18.js@16:244-273)"
+"Func(snippet-18.js@22:278-337) -> Var(piyxwijeyc, snippet-18.js@22:278-337)"
+"Func(snippet-18.js@2:2-55) -> Var(jbla, snippet-18.js@2:2-55)"
+"Func(snippet-18.js@6:55-127) -> Var(vguxgujubnucqknksydxdg, snippet-18.js@6:55-127)"

@@ -1,0 +1,8 @@
+"Expr(snippet-8.js@1:29-39) -> Expr(snippet-8.js@1:4-26)"
+"Expr(snippet-8.js@1:29-39) -> Prop(gkrmyrcpkhylqiiybdpebc)"
+"Expr(snippet-8.js@9:183-193) -> Expr(snippet-8.js@9:183-206)"
+"Expr(snippet-8.js@9:183-206) -> Expr(snippet-8.js@9:159-180)"
+"Expr(snippet-8.js@9:183-206) -> Prop(ijhbolqzslqjsbwcwvngf)"
+"Expr(snippet-8.js@9:197-206) -> Expr(snippet-8.js@9:183-206)"
+"Func(snippet-8.js@2:42-155) -> Var(nvfib, snippet-8.js@2:42-155)"
+"Func(snippet-8.js@4:104-152) -> Var(zhtfy, snippet-8.js@4:104-152)"

@@ -1,0 +1,4 @@
+"Expr(snippet-12.js@1:20-67) -> Expr(snippet-12.js@1:4-17)"
+"Expr(snippet-12.js@1:20-67) -> Prop(vjplfaihmlvxa)"
+"Expr(snippet-12.js@1:46-55) -> Expr(snippet-12.js@1:20-67)"
+"Expr(snippet-12.js@1:58-67) -> Expr(snippet-12.js@1:20-67)"

@@ -1,0 +1,2 @@
+"Func(snippet-3.js@2:2-31) -> Var(geunkr, snippet-3.js@2:2-31)"
+"Func(snippet-3.js@6:31-115) -> Var(wioajql, snippet-3.js@6:31-115)"

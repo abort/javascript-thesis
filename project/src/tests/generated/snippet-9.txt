@@ -1,0 +1,5 @@
+"Expr(snippet-9.js@1:26-61) -> Expr(snippet-9.js@1:4-23)"
+"Expr(snippet-9.js@1:26-61) -> Prop(siioryxxahwpzvfxiom)"
+"Expr(snippet-9.js@1:38-48) -> Expr(snippet-9.js@1:26-61)"
+"Expr(snippet-9.js@1:51-61) -> Expr(snippet-9.js@1:26-61)"
+"Func(snippet-9.js@2:64-144) -> Var(snpyfuhqes, snippet-9.js@2:64-144)"

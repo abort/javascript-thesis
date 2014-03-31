@@ -49,3 +49,12 @@ private bool testFlowGraph(loc input) {
 	
 	return compareFlowGraph(getSimpleFlowGraph(createFlowGraph(parse(input))), importFlowGraph(expected));
 }
+
+public void storeFlowGraphsByDirectory(loc input) {
+	for (loc inputfile <- input.ls) {
+		str outputFile = substring(inputfile.file, 0, findLast(inputfile.file, ".")) + ".txt";
+		loc output = inputfile.parent + outputFile;
+		println("writing <inputfile> flowgraph to <outputFile>");
+		writeFile(output, getAlphabeticalFlowGraph(createFlowGraph(parse(inputfile))));
+	}
+}

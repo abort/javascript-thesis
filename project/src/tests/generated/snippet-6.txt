@@ -1,0 +1,6 @@
+"Expr(snippet-6.js@1:30-40) -> Expr(snippet-6.js@1:30-54)"
+"Expr(snippet-6.js@1:30-54) -> Expr(snippet-6.js@1:4-27)"
+"Expr(snippet-6.js@1:30-54) -> Prop(jgtqtfmpmspxaxtysukrnpm)"
+"Expr(snippet-6.js@1:44-54) -> Expr(snippet-6.js@1:30-54)"
+"Expr(snippet-6.js@1:75-85) -> Expr(snippet-6.js@1:59-72)"
+"Expr(snippet-6.js@1:75-85) -> Prop(gitfvscnxvzzx)"

@@ -115,7 +115,7 @@ private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphFrom
 					symbolMap += ("<id>" : createEntry(id));
 				Vertex rhsVertex = createVertex(expression, symbolMap, enclosingFunction);
 				result += <rhsVertex, createVertex(id, symbolMap, enclosingFunction)>;	// Does not occur in the provided script but we assume it to be the same as a declaration + expression R1
-				result += <rhsVertex, Exp(getNodePosition(id), id)>;
+				result += <rhsVertex, Exp(getNodePosition(declaration), declaration)>;
 				debug("variable declaration for <id> (assigned to: <expression>)");
 			}
 			

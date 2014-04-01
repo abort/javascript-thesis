@@ -1,1 +1,1 @@
-"Func(snippet-2.js@2:2-28) -> Var(lbaab, snippet-2.js@2:2-28)"
+"Func(snippet-2.js@2:2-28)" -> "Var(lbaab, snippet-2.js@2:2-28)"

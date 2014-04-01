@@ -23,7 +23,6 @@ public str getAlphabeticalFlowGraph(rel[Vertex, Vertex] graph) {
 	outputList = sort(outputList);
 	str output = "";
 	for (str out <- outputList) {
-		println("<out>");
 		output += "<out>\n";
 	}
 	
@@ -34,9 +33,9 @@ private str getFlowGraphString(rel[Vertex, Vertex] graph, bool simplified) {
 	list[tuple[Vertex, Vertex]] printable = [ <x,y> | <x, y> <- graph ];
 	str result = "";
 	for (<x, y> <- sort(printable, lessThanVertex)) {
-		result += "\"" + getVertexString(x, simplified);
+		result += "\"" + getVertexString(x, simplified) + "\"";
 		result += " -\> ";
-		result += getVertexString(y, simplified);
+		result += "\"" + getVertexString(y, simplified);
 		result += "\"\n";
 	}
 	

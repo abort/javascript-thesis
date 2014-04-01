@@ -1,4 +1,4 @@
-"Expr(snippet-23.js@1:28-51) -> Expr(snippet-23.js@1:4-25)"
-"Expr(snippet-23.js@1:28-51) -> Prop(dlbrcroyxhjifmgwgkasg)"
-"Expr(snippet-23.js@1:42-51) -> Expr(snippet-23.js@1:28-51)"
-"Func(snippet-23.js@2:54-106) -> Var(tcjbfabtoqswzqhsibu, snippet-23.js@2:54-106)"
+"Expr(snippet-23.js@1:28-51)" -> "Expr(snippet-23.js@1:4-51)"
+"Expr(snippet-23.js@1:28-51)" -> "Prop(dlbrcroyxhjifmgwgkasg)"
+"Expr(snippet-23.js@1:42-51)" -> "Expr(snippet-23.js@1:28-51)"
+"Func(snippet-23.js@2:54-106)" -> "Var(tcjbfabtoqswzqhsibu, snippet-23.js@2:54-106)"

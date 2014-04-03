@@ -59,6 +59,7 @@ function doSomething(doSomethingScope) {
    }
    catch (x) {
         x = 5;
+        bl(10);
    }
    
    banana = 2;

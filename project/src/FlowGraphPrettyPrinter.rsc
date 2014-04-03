@@ -29,6 +29,8 @@ public str getAlphabeticalFlowGraph(rel[Vertex, Vertex] graph) {
 	return output;
 }
 
+public void printAlphabeticalFlowGraph(rel[Vertex, Vertex] graph) = print(getAlphabeticalFlowGraph(graph));
+
 private str getFlowGraphString(rel[Vertex, Vertex] graph, bool simplified) {
 	list[tuple[Vertex, Vertex]] printable = [ <x,y> | <x, y> <- graph ];
 	str result = "";

@@ -16,16 +16,7 @@ import FlowGraphPrettyPrinter;
 import CallGraphDataTypes;
 import SharedCallGraphFunctions;
 
-public rel[Vertex, Vertex] createPessimisticCallGraph(loc location) = createPessimisticCallGraph(parse(location));
-
-public void printPessimisticCallGraph(loc location) {
-	CallGraphResult result = createPessimisticCallGraph(parse(location));
-	println("Pessimistic Call graph:");
-	printFlowGraph(result.graph);
-	println("\nUncertainties:");
-	printFlowGraph(result.escapingFunctions);
-	printFlowGraph(result.unresolvedCallSites);
-}
+public CallGraphResult createPessimisticCallGraph(loc location) = createPessimisticCallGraph(parse(location));
 
 public CallGraphResult createPessimisticCallGraph(Source source) {
 	rel[Tree, Tree] oneShotCalls = getOneShotCalls(source); // C in original algorithm

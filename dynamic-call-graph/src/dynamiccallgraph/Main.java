@@ -26,41 +26,37 @@ import org.chromium.sdk.wip.WipBrowserTab;
 
 
 public class Main {
-//	public static void main(String[] args) {
-//		 Context mContext = Context.enter();
-//		 ObservingDebugger observingDebugger = new ObservingDebugger();
-//		 mContext.setDebugger(observingDebugger, new Integer(0));
-//		 mContext.setGeneratingDebug(true);
-//		 mContext.setOptimizationLevel(-1);
-//		 
-//
-//		 Scriptable scope = mContext.initStandardObjects();
-//		 Object retval = mContext.evaluateString(scope, "var x = 0;\nfunction go() { x = 3; var y = 10; return x; }\ngo();", "code", 0, null);
-//		 mContext.exit();
-//		 System.out.println(retval.toString());
-//	}
-	
 	
 	public static void main(String[] args) throws IOException, MethodIsBlockingException, UnsupportedVersionException, InterruptedException {
-		(new Main()).start();
-			
+		new Main().start();
 	}
 	
 	public void start() throws IOException, MethodIsBlockingException, UnsupportedVersionException, InterruptedException {
-
-		WipBrowser browser = org.chromium.sdk.wip.WipBrowserFactory.INSTANCE
-				.createBrowser(new InetSocketAddress("localhost", 13337),
-						new MyLoggerFactory());
+		WipBrowser browser = org.chromium.sdk.wip.WipBrowserFactory.INSTANCE.createBrowser(
+		        new InetSocketAddress("localhost", 13337), new MyLoggerFactory());
 		WipBackend backend = new WipBackendFactory().create();
 		TabDebugEventListener listener = new SimpleTabListener();
 		WipBrowserTab tab = browser.getTabs(backend).get(0).attach(listener);
-		final Set<Script> scripts = new HashSet<Script>();
+		final Set<Script> scripts = getJavaScripts(tab);
+
+		for (Script s : scripts) {
+			tab.getJavascriptVm().setBreakpoint(new Breakpoint.Target.ScriptName(s.getName()), 1, 1, true, null, new BreakpointDelegate(), null);
+		}
+
+		while (true) {
+		    ((SimpleDebugListener) listener.getDebugEventListener()).getSemaphore().tryAcquire(5, TimeUnit.HOURS);
+		}
+	}
+
+    private Set<Script> getJavaScripts(WipBrowserTab tab) {
+        final Set<Script> scripts = new HashSet<Script>();
 		tab.getJavascriptVm().getScripts(new ScriptsCallback() {
 
 			@Override
 			public void success(Collection<Script> arg0) {
 				for (Script s : arg0) {
-					System.out.println(s.getSource());
+					//System.out.println(s.getSource());
+				    System.out.println("Added script: " + s.getName());
 					//if (s.getName().startsWith("http://"))
 						scripts.add(s);
 				}
@@ -71,14 +67,8 @@ public class Main {
 				return;
 			}
 		});
-
-		for (Script s : scripts) {
-			tab.getJavascriptVm().setBreakpoint(new Breakpoint.Target.ScriptName(s.getName()), 1, 1, true, null, new BreakpointDelegate(), null);
-		}
-
-		((SimpleDebugListener) listener.getDebugEventListener()).getSemaphore().tryAcquire(5, TimeUnit.HOURS);
-
-	}
+        return scripts;
+    }
 	
 	private class BreakpointDelegate implements BreakpointCallback {
 

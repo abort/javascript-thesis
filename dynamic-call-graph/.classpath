@@ -2,8 +2,9 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="/Users/jdijkstra/Downloads/org.chromium.sdk-wipbackends-0.3.8-0.1.10/lib.org.chromium.sdk.wipbackend.wk120709.jar"/>
-	<classpathentry kind="lib" path="/Users/jdijkstra/Downloads/org.chromium.sdk-lib-0.3.8/json_simple-1.1.jar"/>
-	<classpathentry kind="lib" path="/Users/jdijkstra/Downloads/org.chromium.sdk-lib-0.3.8/lib.org.chromium.sdk.jar"/>
+	<classpathentry kind="lib" path="libs/json_simple-1.1.jar"/>
+	<classpathentry kind="lib" path="libs/lib.org.chromium.sdk.jar"/>
+	<classpathentry kind="lib" path="libs/lib.org.chromium.sdk.wipbackend.wk120709.jar"/>
+	<classpathentry kind="lib" path="libs/js-14.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

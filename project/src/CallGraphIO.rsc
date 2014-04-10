@@ -27,6 +27,24 @@ public void printPessimisticCallGraph(loc location) {
 	printFlowGraph(result.unresolvedCallSites);
 }
 
+public void printAlphabeticalPessimisticCallGraph(loc location) {
+	CallGraphResult result = createPessimisticCallGraph(location);
+	println("Pessimistic Call graph:");
+	printAlphabeticalFlowGraph(result.graph);
+	println("\nUncertainties:");
+	printAlphabeticalFlowGraph(result.escapingFunctions);
+	printAlphabeticalFlowGraph(result.unresolvedCallSites);
+}
+
+public void printAlphabeticalOptimisticCallGraph(loc location) {
+	CallGraphResult result = createOptimisticCallGraph(location);
+	println("Optimistic Call graph:");
+	printAlphabeticalFlowGraph(result.graph);
+	println("\nUncertainties:");
+	printAlphabeticalFlowGraph(result.escapingFunctions);
+	printAlphabeticalFlowGraph(result.unresolvedCallSites);
+}
+
 public void storeOptimisticCallGraph(loc location) {
 	str outputFile = substring(inputfile.file, 0, findLast(inputfile.file, ".")) + ".txt";
 	loc output = inputfile.parent + outputFile;
@@ -36,8 +54,8 @@ public void storeOptimisticCallGraph(loc location) {
 }
 
 public void storePessimisticCallGraph(loc location) {
-	str outputFile = substring(inputfile.file, 0, findLast(inputfile.file, ".")) + ".txt";
-	loc output = inputfile.parent + outputFile;
+	str outputFile = substring(location.file, 0, findLast(location.file, ".")) + ".txt";
+	loc output = location.parent + outputFile;
 
 	CallGraphResult result = createPessimisticCallGraph(location);
 	storeFlowGraph(output, result.graph);

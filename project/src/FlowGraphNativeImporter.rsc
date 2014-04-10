@@ -23,3 +23,19 @@ public rel[Vertex, Vertex] createFlowGraphFromFunctionList(loc location) {
 
 	return nativeGraph;
 }
+
+public map[str, str] getNativeFunctionMap(loc location) {
+	list[str] functionLines = readFileLines(location);
+	map[str, str] natives = ();
+
+	for (str line <- functionLines) {
+		list[str] splittedLine = split(":", line);
+		str name = replaceAll(trim(splittedLine[0]), "\"", "");
+		str functionName = replaceLast(replaceAll(trim(splittedLine[1]), "\"", ""), ",", "");
+		
+		natives += (functionName : function);
+	}
+
+	return natives;
+}
+

@@ -2,17 +2,35 @@ package dynamiccallgraph;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.util.*;
-import java.util.concurrent.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.Semaphore;
 
-import org.chromium.sdk.*;
-import org.chromium.sdk.Breakpoint.Target.ScriptId;
-import org.chromium.sdk.DebugContext.StepAction;
+import org.chromium.sdk.Breakpoint;
+import org.chromium.sdk.BrowserFactory;
+import org.chromium.sdk.CallbackSemaphore;
+import org.chromium.sdk.ConnectionLogger;
+import org.chromium.sdk.DebugContext;
+import org.chromium.sdk.DebugEventListener;
+import org.chromium.sdk.JavascriptVm;
 import org.chromium.sdk.JavascriptVm.BreakpointCallback;
 import org.chromium.sdk.JavascriptVm.ScriptsCallback;
+import org.chromium.sdk.RelayOk;
+import org.chromium.sdk.Script;
+import org.chromium.sdk.StandaloneVm;
+import org.chromium.sdk.SyncCallback;
+import org.chromium.sdk.TabDebugEventListener;
+import org.chromium.sdk.UnsupportedVersionException;
 import org.chromium.sdk.util.MethodIsBlockingException;
-import org.chromium.sdk.wip.*;
 import org.chromium.sdk.wip.WipBrowserFactory.LoggerFactory;
+import org.chromium.sdk.wip.WipBrowserTab;
+import org.mozilla.javascript.ast.AstNode;
+import org.mozilla.javascript.ast.AstRoot;
 
 import dynamiccallgraph.BreakPointInfo.Type;
 
@@ -25,10 +43,22 @@ public class Main {
 	}
 	
 	public void start() throws IOException, MethodIsBlockingException, UnsupportedVersionException, InterruptedException {
-		WipBrowser browser = org.chromium.sdk.wip.WipBrowserFactory.INSTANCE.createBrowser(new InetSocketAddress("localhost", 13337), new MyLoggerFactory());
-		WipBackend backend = new WipBackendFactory().create();
+		//WipBrowser browser = org.chromium.sdk.wip.WipBrowserFactory.INSTANCE.createBrowser(new InetSocketAddress("localhost", 13337), new MyLoggerFactory());
+//		WipBackend backend = new WipBackendFactory().create();
 		TabDebugEventListener listener = new SimpleTabListener(breakpointMap);
-		WipBrowserTab tab = browser.getTabs(backend).get(0).attach(listener);
+//		WipBrowserTab tab = browser.getTabs(backend).get(0).attach(listener);
+		
+StandaloneVm standaloneVm =
+			    BrowserFactory.getInstance().createStandalone(new InetSocketAddress("localhost", 9222), null);
+//			standaloneVm.attach(listener);
+			JavascriptVm javascriptVm =  standaloneVm;
+		
+		// ChromeDevToolsHandshakeCRLF
+		// t.attach(listener);
+		
+		
+		Thread.sleep(100000);
+/*
 		
 		final Semaphore semaphore = new Semaphore(0);
 		semaphore.release();
@@ -71,6 +101,7 @@ public class Main {
 		    ((SimpleDebugListener)listener.getDebugEventListener()).getSemaphore().tryAcquire(5, TimeUnit.HOURS);
 		    ((SimpleDebugListener)listener.getDebugEventListener()).savedDebugContext.continueVm(StepAction.CONTINUE, 0, null, null);
 		}
+		*/
 	}
 	
 	
@@ -178,12 +209,15 @@ public class Main {
 		private final Semaphore semaphore = new Semaphore(0);
 		private final Map<Breakpoint, BreakPointInfo> breakpointMap;
 		private JavascriptVm vm = null;
+		private boolean hadEntryPoint = false;
+		private final ASTParser parser = new ASTParser();
 		private VmStatusListener listener = new VmStatusListener() {
             @Override
             public void busyStatusChanged(String arg0, int arg1) {
                                
             }
         };
+        private Set<Thread> threads = new HashSet<>();
 		
 		
 		public void setJavascriptVm(final JavascriptVm vm) {
@@ -255,29 +289,128 @@ public class Main {
 
 		@Override
 		public void scriptLoaded(Script arg0) {
-		    try {
-    		     final BreakpointCallback breakpointDelegate = new BreakpointDelegate(new Semaphore(100, true), breakpointMap);        
-    	         vm.setBreakpoint(new Breakpoint.Target.ScriptId(arg0.getId()), 0, 0, true, null, breakpointDelegate, null);
-    
     			// TODO Auto-generated method stub
+//				if (!threads.isEmpty()) {
+//					for (Thread t : threads) {
+//						if (!t.isAlive()) threads.remove(t);
+//						else {
+//							while (t.isAlive()) Thread.sleep(100);
+//						}
+//					}
+//				}
+				
     			System.out.println("Script loaded (" + arg0.getType() + "): " + arg0.getSource().toString() + " name: " + arg0.getName());
+//    			
+//    			System.out.println("Collected: " + arg0.isCollected());
+//    			System.out.println("Id: " + arg0.getId());
+    			//final Script script = arg0;
     			
-    			System.out.println("Collected: " + arg0.isCollected());
-    			System.out.println("Id: " + arg0.getId());
-		    }
-		    catch (InterruptedException e) {
-		        
-		    }
-			// TODO: Get all javascripts and parse new stuff
-			/*for (Script s : getJavaScripts(vm)) {
-			    System.out.println("Script: " + s.getName() + " src:\n" + s.getSource());
-			}*/
-		}
+    			Thread t = new Thread(new Runnable() {
+					
+					@Override
+					public void run() {
+						for (Script s : getJavaScripts(vm)) {
+							try {
+								final AstRoot root = parser.parse(s.getSource());
+			    				List<AstNode> functions = parser.getFunctions(root);
+			    				List<AstNode> calls = parser.getFunctionCalls(root);
+			    				
+			    				for (final AstNode f : functions) {
+			    					System.out.println("Add breakpoint for: " + f.toSource());
+				    				final LogicCallback logicCallback = new LogicCallback();
+				    				final SyncCallback syncCallback = new CallbackSemaphore();
+				    				Breakpoint.Target target;
+				    				if (s.getName() == null) target = new Breakpoint.Target.ScriptId(s.getId());
+				    				else target = new Breakpoint.Target.ScriptName(s.getName());
+				    				
+				    				RelayOk ok = vm.setBreakpoint(target, f.getLineno(), f.getPosition(), true, null, logicCallback, syncCallback);
+				    				((CallbackSemaphore)syncCallback).acquireDefault(ok);			    				
+				    				breakpointMap.put(logicCallback.result, new BreakPointInfo(f.getLineno(), f.getPosition(), Type.FunctionDeclaration));
+			    				}
+
+			    				for (final AstNode c : calls) {
+			    					System.out.println("Add breakpoint for: " + c.toSource() + " line #" + c.getLineno() + " column #" + c.getPosition() + 1);
+				    				final LogicCallback logicCallback = new LogicCallback();
+				    				final SyncCallback syncCallback = new CallbackSemaphore();
+				    				Breakpoint.Target target;
+				    				if (s.getName() == null) target = new Breakpoint.Target.ScriptId(s.getId());
+				    				else target = new Breakpoint.Target.ScriptName(s.getName());
+				    				RelayOk ok = vm.setBreakpoint(target, c.getLineno(), c.getPosition() + 1, true, null, logicCallback, syncCallback);
+				    				((CallbackSemaphore)syncCallback).acquireDefault(ok);			    				
+				    				breakpointMap.put(logicCallback.result, new BreakPointInfo(c.getLineno(), c.getPosition(), Type.FunctionDeclaration));
+			    				}			    				
+							}
+			    			catch(IOException e) {
+			    				e.printStackTrace();
+			    			}
+						}
+		    		}
+				});
+    			t.start();
+			}
+    			
+
+    			
+    			
+    			
+//    			for (final AstNode call : calls) {
+//    				// Global execution scope
+//    				
+//    				if (call.getEnclosingFunction() == null && arg0.getName() == null) {
+//    					
+//    				}
+//    				else {
+//    					final Script script = arg0;
+//    					Thread t = new Thread(new BreakPointInsertThread(script, call, vm, breakpointMap));
+//    					threads.add(t);
+//    					t.start();
+//    				}
+//    			}
+//    			
+//				if (!threads.isEmpty()) {
+//					for (Thread t : threads) {
+//						if (!t.isAlive()) threads.remove(t);
+//						else {
+//							while (t.isAlive()) Thread.sleep(100);
+//						}
+//					}
+//				}    			
+//    			
+//    			for (final AstNode f : functions) {
+//					final Script script = arg0;
+//					Thread t = new Thread(new BreakPointInsertThread(script, f, vm, breakpointMap));
+//					threads.add(t);
+//					t.start();
+//    			}
+//    			
+//    			System.out.println();
+//			}
+//			catch (IOException e) {
+//				e.printStackTrace();
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 		
 		public Semaphore getSemaphore() {
 			return semaphore;
 		}
 	}
+	
+	class LogicCallback implements BreakpointCallback {
+		Breakpoint result = null;
+
+		@Override
+		public void success(Breakpoint breakpoint) {
+			result = breakpoint;
+		}
+
+		@Override
+		public void failure(String errorMessage) {
+			if (!errorMessage.equals("[Breakpoint at specified location already exists.]"))
+				System.out.println("Error: " + errorMessage);
+		}
+	};
 	
 
     private Set<Script> getJavaScripts(final JavascriptVm vm) {
@@ -305,4 +438,39 @@ public class Main {
     private Set<Script> getJavaScripts(final WipBrowserTab tab) {
         return getJavaScripts(tab.getJavascriptVm());
     }
+    
+    private class BreakPointInsertThread implements Runnable {
+    	private final Script script;
+    	private final AstNode function;
+    	private final JavascriptVm vm;
+    	private final Map<Breakpoint, BreakPointInfo> breakpointMap;
+    	
+    	public BreakPointInsertThread(final Script script, final AstNode function, final JavascriptVm vm, final Map<Breakpoint, BreakPointInfo> breakpointMap) {
+    		this.script = script;
+    		this.function = function;
+    		this.vm = vm;
+    		this.breakpointMap = breakpointMap;
+    	}
+    	
+		@Override
+		public void run() {
+				System.out.println("Adding point to script");
+//				Semaphore sem = new Semaphore(0);
+//				sem.release();
+				//final BreakpointCallback breakpointDelegate = new BreakpointDelegate(sem, breakpointMap);
+				final LogicCallback logicCallback = new LogicCallback();
+				final SyncCallback syncCallback = new CallbackSemaphore();
+				RelayOk ok = vm.setBreakpoint(new Breakpoint.Target.ScriptId(script.getId()), function.getLineno(), function.getPosition(), true, null, logicCallback, syncCallback);
+				//sem.acquire();
+				((CallbackSemaphore)syncCallback).acquireDefault(ok);
+				//((BreakpointDelegate)breakpointDelegate).setPositionOfLastBreakpoint(function.getLineno(), function.getPosition(), function instanceof FunctionCall ? Type.FunctionCall : Type.FunctionDeclaration);
+				//sem.release();				
+				
+				System.out.println("Added breakpoint sir");
+				
+//				Set<Script> newScripts = getJavaScripts(vm);
+//				System.out.println("new scripts: " + newScripts.size());
+
+		}
+	}
 }

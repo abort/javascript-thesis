@@ -48,7 +48,6 @@ private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphFrom
 			if (!globalScope) symbolMap += ("<f.name>" : createEntry(f));
 
 			// R7
-			println("implementation: <f.implementation>");
 			result += graph(createFlowGraphFromNestedStatements(f.implementation, newSymbolMap, just(f)));
 			result += <Fun(getNodePosition(f), f), Var("<f.name>", getNodePosition(f), f)>; // get node position f instead of f.name?
 			// result += createVertex("<p>" : createEntry(p) | p <- f.parameters)

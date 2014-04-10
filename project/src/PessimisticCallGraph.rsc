@@ -26,15 +26,9 @@ public CallGraphResult createPessimisticCallGraph(Source source) {
 	// Step #5 - Add interproedural edges
 	rel[Vertex, Vertex] flowGraph = addInterproceduralEdges(oneShotCalls, escapingFunctions, unresolvedCallSites);
 
-	/* TEMP */
-	/*
 	flowGraph += createFlowGraph(source); 
 
-	println("original call graph");
-	printAlphabeticalFlowGraph(flowGraph);
-	println("\n\n\n\n");
-*/
-	flowGraph += createFlowGraphWithNativeFunctions(|project://thesis/src/native-functions.txt|, source); 
+	//flowGraph += createFlowGraphWithNativeFunctions(|project://thesis/src/native-functions.txt|, source); 
 	
 
 

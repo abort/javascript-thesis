@@ -56,11 +56,11 @@ private bool compareCallGraphsWithExpectancy(loc input, CallGraphResult optimist
 	if (!exists(expectedPessimistic)) throw "expected flow graph file (<expected>) does not exist";
 	
 	bool expectedResult = false;
-	expectedResult = compareFlowGraph(getExtensiveFlowGraph(optimisticResult.graph), importCallGraph(expectedOptimistic));
-	
+	expectedResult = compareFlowGraph(getExtensiveFlowGraph(pessimisticResult.graph), importCallGraph(expectedPessimistic));
 	if (!expectedResult) return false;
 
-	expectedResult = compareFlowGraph(getExtensiveFlowGraph(pessimisticResult.graph), importCallGraph(expectedPessimistic));
+	expectedResult = compareFlowGraph(getExtensiveFlowGraph(optimisticResult.graph), importCallGraph(expectedOptimistic));
+
 	
 	// Optimistic has more detail
 	if (optimisticResultLarger) {

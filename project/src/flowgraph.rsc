@@ -375,6 +375,24 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 	}
 	// R8
 	// TODO does this not count for functions without parameters?
+	elseif (new(Expression expression) := e) {
+		if (functionParams(Expression funcExpression, { Expression!comma ","}+ params) := expression
+			 || functionNoParams(Expression funcExpression) := expression) {
+			
+			result += <createVertex(expression, symbolMap, enclosingFunction), Callee(getNodePosition(e))>;
+
+			if (e is functionParams) {
+				int argnum = 0;
+				for (Expression param <- params) {
+					argnum += 1;
+					result += <createVertex(param, symbolMap, enclosingFunction), Arg(getNodePosition(e), argnum)>; // TODO getNodePosition(e) or (param)?
+					result += createFlowGraphFromExpression(param, symbolMap, enclosingFunction);	
+				}
+			}			 
+
+			result += <Res(getNodePosition(e)), Exp(getNodePosition(e))>;
+		}
+	}
 	elseif (functionParams(Expression expression, { Expression!comma ","}+ params) := e || functionNoParams(Expression expression) := e) {
 		// In case of one shot closures, we have to consider the subexpression (nested) as the function being called
 		if (nestedExpression(Expression sub) := expression) {
@@ -394,9 +412,10 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 
 		result += <Res(getNodePosition(e)), Exp(getNodePosition(e))>;
 		
+
 		// R9
 		if (property(Expression lhs, Id _) := expression) {
-//			debug("lhs of function call is a property");
+			// println("lhs of function call <expression> is a property <lhs>");
 			result += <createVertex(lhs, symbolMap, enclosingFunction), Arg(getNodePosition(e), 0)>;
 		}
 
@@ -413,8 +432,10 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 }
 
 // Find variable declaration in symbol map
-private Maybe[SymbolMapEntry] findVariableDeclaration(Id variableId, map[str, SymbolMapEntry] symbolMap) {
-	if ("<variableId>" in symbolMap) return just(symbolMap["<variableId>"]);
+private Maybe[SymbolMapEntry] findVariableDeclaration(Id variableId, map[str, SymbolMapEntry] symbolMap) = findVariableDeclaration("<variableId>", symbolMap);
+
+private Maybe[SymbolMapEntry] findVariableDeclaration(str variableId, map[str, SymbolMapEntry] symbolMap) {
+	if (variableId in symbolMap) return just(symbolMap[variableId]);
 	return nothing();
 }
 
@@ -438,9 +459,9 @@ private map[str, SymbolMapEntry] getOverridableSymbolMap(map[str, SymbolMapEntry
 
 // Creating vertices
 private Vertex createVertex(Tree root, map[str, SymbolMapEntry] symbolMap, Maybe[Position] enclosingFunction) {
-	if ((Expression)`<Expression e> . <Id id>` := root) return Prop("<id>");
+	if (property(Expression e, Id id) := root) return Prop("<id>");
 	elseif ((Expression e := root && id(Id id) := e) || Id id := root) {
-		// both top level expressions and id's will match
+		// both top level expressions and ids will match
 //		debug("looking up <id> in symbol map: <domain(symbolMap)>");
 
 		foundDeclaration = findVariableDeclaration(id, symbolMap);
@@ -455,7 +476,13 @@ private Vertex createVertex(Tree root, map[str, SymbolMapEntry] symbolMap, Maybe
 			return Var("<id>", e.position);
 		}
 	}
-
+	elseif (this() := root) {
+		foundDeclaration = findVariableDeclaration("this", symbolMap);
+		if (foundDeclaration != nothing()) {
+			return Parm(unpack(foundDeclaration).position, 0);
+		}
+	}
+	
 	return Exp(getNodePosition(root));
 }
 
@@ -466,7 +493,7 @@ public Position getNodePosition(Tree t) {
 	catch: filename = "stdin";
 
 	// We use the same formatting as in the original script	
-	return Position(filename, t@\loc.begin.line, t@\loc.offset, (t@\loc.offset + t@\loc.length));
+	return Position(filename, t@\loc.begin.line, t@\loc.offset, (t@\loc.offset + t@\loc.length), t@\loc);
 }
 
 private rel[Vertex, Vertex] graph(tuple[rel[Vertex, Vertex] graph, map[str, SymbolMapEntry] _] input) = input[0];

@@ -15,17 +15,15 @@ import Set;
 import FlowGraphPrettyPrinter;
 import CallGraphDataTypes;
 import SharedCallGraphFunctions;
-
-data CallGraphIntermediateResult = CallGraphIntermediateResult(rel[Vertex, Vertex] callGraph, set[Tree] escapingFunctions, set[Tree] unresolvedCallSites, rel[Vertex, Vertex] flowGraph);
-data CallGraphInput = CallGraphInput(rel[Tree, Tree] callGraph, set[Tree] escapingFunctions, set[Tree] unresolvedCallSites, rel[Vertex, Vertex] flowGraph);
-
+import Map;
+import Location;
 
 public CallGraphResult createOptimisticCallGraph(loc location) = createOptimisticCallGraph(parse(location));
 
 public CallGraphResult createOptimisticCallGraph(Source source) {
 	rel[Vertex, Vertex] callGraph = {};
-	set[Tree] escapingFunctions = {};
-	set[Tree] unresolvedCallSites = {};
+	set[EscapingFunction] escapingFunctions = {};
+	set[UnresolvedCallSite] unresolvedCallSites = {};
 	rel[Vertex, Vertex] flowGraph = createFlowGraphWithNativeFunctions(|project://thesis/src/native-functions.txt|, source);
 	
 	bool fixpoint = false;
@@ -33,17 +31,19 @@ public CallGraphResult createOptimisticCallGraph(Source source) {
 	while (!fixpoint) {
 		// Store old situation
 		rel[Vertex, Vertex] oldCallGraph = callGraph;
-		set[Tree] oldEscapingFunctions = escapingFunctions;
-		set[Tree] oldUnresolvedCallSites = unresolvedCallSites;
+		set[EscapingFunction] oldEscapingFunctions = escapingFunctions;
+		set[UnresolvedCallSite] oldUnresolvedCallSites = unresolvedCallSites;
+
 		rel[Vertex, Vertex] oldFlowGraph = flowGraph;
 
 		// Convert the old result to provide as a parameter to the add interprocedural edge function
-		rel[Tree, Tree] callGraphParam = { <x.tree, y.tree> | <x, y> <- callGraph, Fun(Position _, Tree _) := y, Callee(Position _, Tree _) := x };
+		set[OneShotCall] callGraphParam = { OneShotCall(px, py, getArguments(source, px)) | <x, y> <- callGraph, Fun(Position py) := y, Callee(Position px) := x };
 		flowGraph += addInterproceduralEdges(callGraphParam, escapingFunctions, unresolvedCallSites);
 
-	 	callGraph = { <y, x> | <x,y> <- optimisticTransitiveClosure(flowGraph), (Fun(Position _, Tree _) := x || Builtin(str _) := x), Callee(Position _, Tree _) := y };	
-		escapedOutput = { <x, y> | <x, y> <- flowGraph+, Fun(Position _, Tree _) := x, Unknown() := y };
-		unresolvedCallSitesOutput = { <x, y> | <x, y> <- flowGraph+, Unknown() := x, Callee(Position _, Tree _) := y };
+		rel[Vertex, Vertex] flowGraphTransitiveClosure = flowGraph+;
+	 	callGraph = { <y, x> | <x,y> <- optimisticTransitiveClosure(flowGraph), (Fun(Position _) := x || Builtin(str _) := x), Callee(Position _) := y };	
+		escapedOutput = { <x, y> | <x, y> <- flowGraphTransitiveClosure, Fun(Position _) := x, Unknown() := y };
+		unresolvedCallSitesOutput = { <x, y> | <x, y> <- flowGraphTransitiveClosure, Unknown() := x, Callee(Position _) := y };
 		iterations += 1;
 
 		// Check whether something has changed or not to conclude
@@ -51,6 +51,27 @@ public CallGraphResult createOptimisticCallGraph(Source source) {
 			fixpoint = true;
 	}
 
-	debug("Fixpoint reached after <iterations> iterations");
+	println("Fixpoint reached after <iterations> iterations");
 	return CallGraphResult(callGraph, getEscapingFunctionsAsRelation(flowGraph), getUnresolvedCallSitesAsRelation(flowGraph));
 }
+
+private set[Expression] getArguments(Source src, Position p) {
+	loc treeLoc = p.parseTreeLocation;
+	set[Expression] arguments = {};
+	TreeSearchResult[Tree] searchResult = treeAt(#Tree, treeLoc, src);
+	Tree tree;
+	if (treeFound(Tree foundTree) := searchResult) {
+		tree = foundTree;
+	}
+	else {
+		throw "The given position (loc) is not found in the tree";
+	}
+
+	if (Expression e := tree && functionParams(Expression _, { Expression!comma ","}+ args) := e) {
+		for (Expression arg <- args) 
+			arguments += arg;
+	}
+		
+	return arguments;
+}
+

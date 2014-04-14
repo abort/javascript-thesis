@@ -4,7 +4,7 @@ import OptimisticCallGraph;
 import PessimisticCallGraph;
 import IO;
 import String;
-import flowgraph;
+import FlowGraphFast;
 import FlowGraphPrettyPrinter;
 import CallGraphDataTypes;
 import FlowGraphIO;

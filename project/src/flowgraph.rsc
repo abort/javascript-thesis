@@ -115,7 +115,7 @@ private rel[Vertex, Vertex] createFlowGraphFromGlobalStatement(Statement s) {
 
 private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphFromStatement(Statement s, map[str, SymbolMapEntry] symbolMap, bool globalScope, Maybe[Position] enclosingFunction) {
 	rel[Vertex, Vertex] result = {};
-	
+	bool missed = false;
 	if (forDoDeclarations({VariableDeclarationNoIn ","}+ declarations, _, _, _) := s || variableNoSemi({VariableDeclaration ","}+ declarations, _) := s
 		 || variableSemi({VariableDeclaration ","}+ declarations) := s) {
 		for (declaration <- declarations) {
@@ -156,7 +156,12 @@ private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphFrom
 	else {
 	// TODO with() statement?
 	// Recurse over expressions
-		result += createFlowGraphFromSubExpressions(s, symbolMap, enclosingFunction);
+		rel[Vertex, Vertex] resultSubExpressions = createFlowGraphFromSubExpressions(s, symbolMap, enclosingFunction);
+	
+		result += resultSubExpressions;
+		//result += createFlowGraphFromSubExpressions(s, symbolMap, enclosingFunction);
+		if (size(resultSubExpressions) == 0) 
+			missed = true;
 	}
 	// Recurse over substatements and blocks (the reason this is after the expressions is because they can not affect expressions as direct children, symbolmap wise)
 	// I.e. we can not refer to a variable in an expression that is in a statement when it is defined in a substatement of that statement
@@ -164,6 +169,10 @@ private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphFrom
 	result += graph(nestedResult);
 	symbolMap += modifiedSymbolMap(nestedResult);	
 		
+	if (missed && size(graph(nestedResult)) == 0) {
+		println("Missed case <s>");
+	}		
+
 	return <result, symbolMap>;
 }
 
@@ -173,7 +182,7 @@ private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphFrom
 	// Sad but true: Inner block statements affect the symbol map for their sibblings
 	// Recurse over substatements
 	if (forDoDeclarations(_, _, _, Statement stmnt) := s || forDo(_, _, _, Statement stmnt) := s || 
-		ifThen(_, Statement stmnt) := s || ifThenElseBlock(_, Statement stmnt, _) := s || forIn(_, _, Statement stmnt) := s ||
+		ifThen(_, Statement stmnt) := s || ifThenElse(_, Statement stmnt) := s || forIn(_, _, Statement stmnt) := s ||
 		forInDeclaration(_, _, Statement stmnt) := s
 		|| doWhile(Statement stmnt, _) := s || doWhileLoose(Statement stmnt, _) := s) {
 //		debug("recursing on statement <stmnt>");
@@ -186,8 +195,9 @@ private tuple[rel[Vertex, Vertex], map[str, SymbolMapEntry]] createFlowGraphFrom
 	}
 	// Recurse over blocks in if and then
 	elseif (ifThenBlock(_, Block b) := s || ifThenElseBlock(_, _, Block b) := s) {
+		println("If then block....");
 //		debug("visiting nested block <b>");
-		recursionResult = createFlowGraphFromStatements(b.statements, symbolMap, globalScope, enclosingFunction);
+		recursionResult = createFlowGraphFromStatements(b, symbolMap, globalScope, enclosingFunction);
 	
 		result += graph(recursionResult);
 		symbolMap += modifiedSymbolMap(recursionResult);	// TODO this does not have to be a plus operation does it?
@@ -341,7 +351,14 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 			if (property(PropertyName name, Expression exp) := p) {
 //				debug("		assignment <name>");
 				result += <createVertex(exp, symbolMap, enclosingFunction), Prop("<name>")>;
-				result += createFlowGraphFromExpression(exp, symbolMap, enclosingFunction);				
+				result += createFlowGraphFromExpression(exp, symbolMap, enclosingFunction);
+			}
+			elseif (getProperty(PropertyName name, Block block) := p) {
+				result += <createVertex(block, symbolMap, enclosingFunction), Prop("<name>")>;
+				result += createFlowGraphFromSubStatementsAndBlock(block, symbolMap, enclosingFunction);			
+			}
+			elseif (setProperty(PropertyName name, Id _, Block block) := p) {			
+				result += createFlowGraphFromSubStatementsAndBlock(block, symbolMap, enclosingFunction);	
 			}
 		}
 	}
@@ -376,19 +393,23 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 	// R8
 	// TODO does this not count for functions without parameters?
 	elseif (new(Expression expression) := e) {
+		println("Something new :)");
+		result += createFlowGraphFromExpression(expression, symbolMap, enclosingFunction);
 		if (functionParams(Expression funcExpression, { Expression!comma ","}+ params) := expression
 			 || functionNoParams(Expression funcExpression) := expression) {
-			
+			if (nestedExpression(Expression sub) := expression) {
+				expression = sub;
+			}
 			result += <createVertex(expression, symbolMap, enclosingFunction), Callee(getNodePosition(e))>;
 
-			if (e is functionParams) {
+			if (expression is functionParams) {
 				int argnum = 0;
 				for (Expression param <- params) {
 					argnum += 1;
 					result += <createVertex(param, symbolMap, enclosingFunction), Arg(getNodePosition(e), argnum)>; // TODO getNodePosition(e) or (param)?
 					result += createFlowGraphFromExpression(param, symbolMap, enclosingFunction);	
 				}
-			}			 
+			}	
 
 			result += <Res(getNodePosition(e)), Exp(getNodePosition(e))>;
 		}
@@ -427,7 +448,11 @@ private rel[Vertex, Vertex] createFlowGraphFromExpression(Expression e, map[str,
 	elseif (Id(id) !:= e) {
 		// Recurse over top level subexpressions
 		result += createFlowGraphFromSubExpressions(e, symbolMap, enclosingFunction);				 
-	} 
+	}
+	else {
+		println("What to do with this?: <unparse(e)>");	
+	}
+
 	return result;
 }
 

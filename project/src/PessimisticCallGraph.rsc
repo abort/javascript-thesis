@@ -1,7 +1,7 @@
 module PessimisticCallGraph
 
 import FlowGraphDataTypes;
-import flowgraph;
+import FlowGraphFast;
 import Logger;
 import IO;
 import String;

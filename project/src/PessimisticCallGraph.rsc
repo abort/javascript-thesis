@@ -32,9 +32,9 @@ public CallGraphResult createPessimisticCallGraph(Source source) {
 	
 
 
-	rel[Vertex, Vertex] callGraph = { <y, x> | <x,y> <- optimisticTransitiveClosure(flowGraph), (Fun(Position _, Tree _) := x || Builtin(str _) := x), Callee(Position _, Tree _) := y };	
-	rel[Vertex, Vertex] escapedOutput = { <x, y> | <x, y> <- flowGraph+, Fun(Position _, Tree _) := x, Unknown() := y };
-	rel[Vertex, Vertex] unresolvedCallSitesOutput = { <x, y> | <x, y> <- flowGraph+, Unknown() := x, Callee(Position _, Tree _) := y };
-
-	return CallGraphResult(callGraph, escapedOutput, unresolvedCallSitesOutput);
+	rel[Vertex, Vertex] callGraph = { <y, x> | <x,y> <- optimisticTransitiveClosure(flowGraph), (Fun(Position _) := x || Builtin(str _) := x), Callee(Position _) := y };	
+	/*rel[Vertex, Vertex] escapedOutput = { <x, y> | <x, y> <- flowGraph+, Fun(Position _) := x, Unknown() := y };
+	rel[Vertex, Vertex] unresolvedCallSitesOutput = { <x, y> | <x, y> <- flowGraph+, Unknown() := x, Callee(Position _) := y };
+*/
+	return CallGraphResult(callGraph, {}, {}); // escapedOutput, unresolvedCallSitesOutput);
 }

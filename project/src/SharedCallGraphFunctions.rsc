@@ -12,8 +12,8 @@ import EcmaScript;
 import Logger;
 import SharedDataTypes;
 
-public rel[Vertex, Vertex] getEscapingFunctionsAsRelation(rel[Vertex, Vertex] flowGraph) = { <x, y> | <x, y> <- flowGraph+, Fun(Position _, Tree _) := x, Unknown() := y };
-public rel[Vertex, Vertex] getUnresolvedCallSitesAsRelation(rel[Vertex, Vertex] flowGraph) = { <x, y> | <x, y> <- flowGraph+, Unknown() := x, Callee(Position _, Tree _) := y };
+public rel[Vertex, Vertex] getEscapingFunctionsAsRelation(rel[Vertex, Vertex] flowGraph) = { <x, y> | <x, y> <- flowGraph+, Fun(Position _) := x, Unknown() := y };
+public rel[Vertex, Vertex] getUnresolvedCallSitesAsRelation(rel[Vertex, Vertex] flowGraph) = { <x, y> | <x, y> <- flowGraph+, Unknown() := x, Callee(Position _) := y };
 
 public set[Tree] addEscapeFunction(set[Tree] escapeFunctions, Tree t, rel[Tree, Tree] callGraph) {
 	// t never gets called
@@ -93,13 +93,13 @@ public rel[Vertex, Vertex] addInterproceduralEdges(rel[Tree, Tree] initialCallGr
 			int i = 1;
 			for (Expression arg <- args) {
 				debug("<getNodePosition(callRel.oneShotCall)> to <getNodePosition(callRel.oneShotClosure)>");
-				flowGraph += <Arg(getNodePosition(callRel.oneShotCall), i, callRel.oneShotCall), Parm(getNodePosition(callRel.oneShotClosure), i, callRel.oneShotClosure)>;
+				flowGraph += <Arg(getNodePosition(callRel.oneShotCall), i), Parm(getNodePosition(callRel.oneShotClosure), i)>;
 				i += 1;	
 			}
 		}
 
 		// Algo 2 line #3
-		flowGraph += <Ret(getNodePosition(callRel.oneShotClosure), callRel.oneShotClosure), Res(getNodePosition(callRel.oneShotCall), callRel.oneShotCall)>;		
+		flowGraph += <Ret(getNodePosition(callRel.oneShotClosure)), Res(getNodePosition(callRel.oneShotCall))>;		
 	}
 	
 	// Algo 2 line #4-6
@@ -107,12 +107,12 @@ public rel[Vertex, Vertex] addInterproceduralEdges(rel[Tree, Tree] initialCallGr
 		if (functionParams(Expression _, { Expression!comma ","}+ args) := unresolvedSite) {
 			int i = 1;
 			for (Expression arg <- args) {
-				flowGraph += <Arg(getNodePosition(unresolvedSite), i, unresolvedSite), Unknown()>;
+				flowGraph += <Arg(getNodePosition(unresolvedSite), i), Unknown()>;
 				i += 1;	
 			}
 		}
 
-		flowGraph += <Unknown(), Res(getNodePosition(unresolvedSite), unresolvedSite)>;	
+		flowGraph += <Unknown(), Res(getNodePosition(unresolvedSite))>;	
 	}
 	
 	// Algo 2 line #7-9
@@ -122,7 +122,7 @@ public rel[Vertex, Vertex] addInterproceduralEdges(rel[Tree, Tree] initialCallGr
 			int i = 1;
 			for (Id param <- params) {
 				debug("Add param <param> to <escapingFunction>");
-				flowGraph += <Unknown(), Parm(getNodePosition(escapingFunction), i, escapingFunction)>;
+				flowGraph += <Unknown(), Parm(getNodePosition(escapingFunction), i)>;
 				i += 1;
 			}
 		}
@@ -130,11 +130,11 @@ public rel[Vertex, Vertex] addInterproceduralEdges(rel[Tree, Tree] initialCallGr
 			int i = 1;
 			for (Id param <- f.parameters) {
 				debug("Add param <param> to <escapingFunction>");
-				flowGraph += <Unknown(), Parm(getNodePosition(escapingFunction), i, escapingFunction)>;
+				flowGraph += <Unknown(), Parm(getNodePosition(escapingFunction), i)>;
 				i += 1;
 			}
 		}
-		flowGraph += <Ret(getNodePosition(escapingFunction), escapingFunction), Unknown()>;
+		flowGraph += <Ret(getNodePosition(escapingFunction)), Unknown()>;
 	}
 
 	return flowGraph;

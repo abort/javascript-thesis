@@ -18,7 +18,7 @@ public rel[Vertex, Vertex] getUnresolvedCallSitesAsRelation(rel[Vertex, Vertex] 
 public set[OneShotCall] getOneShotCalls(Source source) {
 	set[OneShotCall] oneShotCalls = {};
 
-	top-down visit (source) {
+	bottom-up visit (source) {
 		case Expression e:{
 			if (functionNoParams(Expression expressionToCall) := e || functionParams(Expression expressionToCall, { Expression!comma ","}+ _) := e) {
 				if (nestedExpression(f:functionAnonymous({Id ","}* parameters, Block _)) := expressionToCall) {
@@ -40,7 +40,7 @@ public set[OneShotCall] getOneShotCalls(Source source) {
 public set[EscapingFunction] getEscapingFunctions(set[OneShotCall] oneShotCalls, Source source) {
 	set[EscapingFunction] escapingFunctions = {};
 
-	top-down visit(source) {
+	bottom-up visit(source) {
 		case FunctionDeclaration f:{
 			set[Id] params = {};
 			for (Id param <- f.parameters) params += param;
@@ -63,7 +63,7 @@ public set[EscapingFunction] getEscapingFunctions(set[OneShotCall] oneShotCalls,
 public set[UnresolvedCallSite] getUnresolvedCallSites(set[OneShotCall] oneShotCalls, Source source) {
 	set[UnresolvedCallSite] unresolvedCallSites = {};
 
-	top-down visit(source) {
+	bottom-up visit(source) {
 		case Expression e:{
 			if (functionNoParams(Expression expressionToCall) := e || functionParams(Expression expressionToCall, { Expression!comma ","}+ _) := e) {
 				Position p = getNodePosition(e);
@@ -76,7 +76,7 @@ public set[UnresolvedCallSite] getUnresolvedCallSites(set[OneShotCall] oneShotCa
 					unresolvedCallSites += UnresolvedCallSite(p, args);
 				}
 			}
-		}		
+		}
 	}
 	
 	return unresolvedCallSites;

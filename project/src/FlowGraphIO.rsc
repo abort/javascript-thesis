@@ -26,4 +26,5 @@ public void storeFlowGraphByFile(loc input) {
 	writeFile(output, getAlphabeticalFlowGraph(createFlowGraph(parse(input))));	
 }
 
-public void storeFlowGraph(loc output, rel[Vertex, Vertex] flowGraph) = writeFile(output, getAlphabeticalFlowGraph(flowGraph));
+public void storeFlowGraph(loc output, rel[Vertex, Vertex] flowGraph) = writeFile(output, getFlowGraph(flowGraph));
+public void storeAlphabeticalFlowGraph(loc output, rel[Vertex, Vertex] flowGraph) = writeFile(output, getAlphabeticalFlowGraph(flowGraph));

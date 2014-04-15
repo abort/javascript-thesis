@@ -50,7 +50,7 @@ public void storeOptimisticCallGraph(loc location) {
 	loc output = inputfile.parent + outputFile;
 
 	CallGraphResult result = createOptimisticCallGraph(location);
-	storeFlowGraph(output, result.graph);
+	storeAlphabeticalFlowGraph(output, result.graph);
 }
 
 public void storePessimisticCallGraph(loc location) {
@@ -58,5 +58,5 @@ public void storePessimisticCallGraph(loc location) {
 	loc output = location.parent + outputFile;
 
 	CallGraphResult result = createPessimisticCallGraph(location);
-	storeFlowGraph(output, result.graph);
+	storeAlphabeticalFlowGraph(output, result.graph);
 }

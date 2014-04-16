@@ -49,7 +49,7 @@ public set[EscapingFunction] getEscapingFunctions(set[OneShotCall] oneShotCalls,
 		}
 		case Expression e:{
 			Position position = getPosition(e);
-			if (position notin oneShotCalls && (function(Id id, {Id ","}* params, Block _) := e || functionAnonymous({Id ","}* params, Block _) := e)) {
+			if (position notin { x.expressionToCall | x <- oneShotCalls } && (function(Id id, {Id ","}* params, Block _) := e || functionAnonymous({Id ","}* params, Block _) := e)) {
 				set[Id] args = {};
 				for (Id param <- params) args += param;
 				escapingFunctions += EscapingFunction(position, args);

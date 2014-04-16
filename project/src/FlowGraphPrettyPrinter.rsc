@@ -1,14 +1,13 @@
 module FlowGraphPrettyPrinter
 
 import FlowGraphDataTypes;
-import flowgraph;
+import FlowGraphFast;
 import List;
 import Relation;
 import IO;
 import SharedDataTypes;
 import ParseTree;
 import String;
-
 
 public void printFlowGraph(rel[Vertex, Vertex] graph) = printFlowGraph(graph, false);
 public void printSimpleFlowGraph(rel[Vertex, Vertex] graph) = printFlowGraph(graph, true);
@@ -19,12 +18,12 @@ private void printFlowGraph(rel[Vertex, Vertex] graph, bool simplified) {
 public str getSimpleFlowGraph(rel[Vertex, Vertex] graph) = getFlowGraphString(graph, true);
 public str getExtensiveFlowGraph(rel[Vertex, Vertex] graph) = getFlowGraphString(graph, false);
 public str getAlphabeticalFlowGraph(rel[Vertex, Vertex] graph) {
-	list[str] outputList = split("\n", getExtensiveFlowGraph(graph));
-	outputList = sort(outputList);
+	list[str] outputList = [];
 	str output = "";
-	for (str out <- outputList) {
-		output += "<out>\n";
-	}
+	for (<x, y> <- graph)
+		outputList += "\"" + getVertexString(x, false) + "\" -\> \"" + getVertexString(y, false) + "\"\n";	
+
+	for (str line <- sort(outputList)) output += line;
 	
 	return output;
 }
@@ -34,25 +33,21 @@ public void printAlphabeticalFlowGraph(rel[Vertex, Vertex] graph) = print(getAlp
 private str getFlowGraphString(rel[Vertex, Vertex] graph, bool simplified) {
 	list[tuple[Vertex, Vertex]] printable = [ <x,y> | <x, y> <- graph ];
 	str result = "";
-	for (<x, y> <- sort(printable, lessThanVertex)) {
-		result += "\"" + getVertexString(x, simplified) + "\"";
-		result += " -\> ";
-		result += "\"" + getVertexString(y, simplified);
-		result += "\"\n";
-	}
-	
+	for (<x, y> <- sort(printable, lessThanVertex))
+		result += "\"" + getVertexString(x, simplified) + "\" -\> \"" + getVertexString(y, simplified) + "\"\n";
+
 	return result;
 }
 
 private bool lessThanVertex(tuple[Vertex x, Vertex y] vertex1, tuple[Vertex x, Vertex y] vertex2) {
-	Position p = getPosition(vertex1.x), q = getPosition(vertex2.x);
+	PrintablePosition p = getPosition(vertex1.x), q = getPosition(vertex2.x);
 
-	if (p != Inexistent() && q != Inexistent()) {
+	if (p != PrintableInexistentPosition() && q != PrintableInexistentPosition()) {
 		if (p.line < q.line) return true;
 		if (p.line == q.line) return (p.columnStart < q.columnStart);
 	}
 	
-	if (p == Inexistent() && q != Inexistent()) return true;
+	if (p == PrintableInexistentPosition() && q != PrintableInexistentPosition()) return true;
 	return false;
 }
 
@@ -75,16 +70,22 @@ private str getVertexString(Vertex v, bool simplified) {
 	elseif (Empty() := v) return "Empty(erroneous)";
 }
 
-private Position getPosition(Vertex v) {
-	Position position = Inexistent();
+private PrintablePosition getPosition(Vertex v) {
+	Position position = InexistentPosition();
 	if (Exp(Position p) := v) position = p;
 	elseif (Fun(Position p) := v) position = p;
 	elseif (Var(_, Position p) := v) position = p;
-	return position;
+	return getPrintablePosition(position);
 }
 
 private str getPrintStringWithPosition(str string, Position p, bool simplified) = "<string>(<getPositionString(p, simplified)>)";
-private str getPositionString(Position p, bool simplified) {
-	if (simplified) return "<p.filename>@<p.line>";
-	else return "<p.filename>@<p.line>:<p.columnStart>-<p.columnEnd>";
+private str getPositionString(Position inputPosition, bool simplified) {
+	if (inputPosition is ExistingPosition) {
+		PrintablePosition p = getPrintablePosition(inputPosition);
+		if (p is PrintableExistingPosition) {
+			if (simplified) return "<p.filename>@<p.line>";
+			else return "<p.filename>@<p.line>:<p.columnStart>-<p.columnEnd>";
+		}
+	}
+	return "Inexistent";
 }

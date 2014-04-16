@@ -28,19 +28,12 @@ public rel[Vertex, Vertex] createFlowGraph(loc input) = createFlowGraphWithNativ
 public rel[Vertex, Vertex] createFlowGraph(Source source) = createFlowGraph(source, global());
 
 // Retrieve the position of a node
-public Position getPosition(Tree t) {
-	str filename;
-	try	filename = t@\loc.file;
-	catch: filename = "stdin";
-
-	// We use the same formatting as in the original script	
-	return Position(filename, t@\loc.begin.line, t@\loc.offset, (t@\loc.offset + t@\loc.length), t@\loc);
-}
+public Position getPosition(Tree t) = ExistingPosition(t@\loc);
 
 public rel[Vertex, Vertex] createFlowGraph(Tree source, Scope scope) {
 	rel[Vertex, Vertex] flowGraph = {};
 	map[str, SymbolMapEntry] symbolMap = getSymbolMap(scope);
-	Position nextNodeToSkip = Inexistent();
+	Position nextNodeToSkip = InexistentPosition();
 
 	top-down-break visit (source) {
 		case FunctionDeclaration f:{
@@ -72,14 +65,14 @@ public rel[Vertex, Vertex] createFlowGraph(Tree source, Scope scope) {
 				flowGraph += createFlowGraph(e.block, scoped(inFunctionSymbolMap));				
 			}
 			else {
-				// Next node is used to skip underlying nodes (first check is done for short circuit evaluation to speed up the running time)
-				if (nextNodeToSkip != Inexistent() && nextNodeToSkip != getPosition(e)) {
+				// Next node is used to skip underlying nodes (use inexistent matching for short circuit evaluation to enhance speed)
+				if (nextNodeToSkip == InexistentPosition() || nextNodeToSkip != getPosition(e)) {
 					ScopedResult result = createFlowGraphFromExpression(e, scoped(symbolMap));
 					flowGraph += result.graph;
-					if (!(scope is global)) symbolMap += getSymbolMap(result.scope);
+					if (scope is scoped) symbolMap += getSymbolMap(result.scope);
 					nextNodeToSkip = result.nextNodeToSkip;
 				}
-				else nextNodeToSkip = Inexistent(); // reset the next node to skip after matching
+				else nextNodeToSkip = InexistentPosition(); // reset the next node to skip after matching
 				
 				fail; // continues to visit more deeply nested nodes (prevent breaking)
 			}
@@ -87,7 +80,7 @@ public rel[Vertex, Vertex] createFlowGraph(Tree source, Scope scope) {
 		case Statement s:{
 			ScopedResult result = createFlowGraphFromStatement(s, scoped(symbolMap));
 			flowGraph += result.graph;
-			if (!(scope is global)) symbolMap += getSymbolMap(result.scope);
+			if (scope is scoped) symbolMap += getSymbolMap(result.scope);
 		
 			fail; // continues to visit more deeply nested nodes (prevent breaking)
 		}
@@ -127,10 +120,10 @@ private ScopedResult createFlowGraphFromStatement(Statement statement, Scope sco
 	elseif (returnExp(Expression e) := statement || returnExpNoSemi(Expression e) := statement
 			 || returnExpNoSemiBlockEnd(Expression e) := statement) {
 		Position thisPosition = getThisPosition(scope);
-		if (thisPosition != Inexistent()) flowGraph += <createVertex(e, symbolMap), Ret(thisPosition)>;
+		if (thisPosition != InexistentPosition()) flowGraph += <createVertex(e, symbolMap), Ret(thisPosition)>;
 	}
 	
-	return result(flowGraph, scoped(symbolMap), Inexistent());
+	return result(flowGraph, scoped(symbolMap), InexistentPosition());
 }
 
 private rel[Vertex, Vertex] createFlowGraphFromAssignment(Tree lhs, Tree rhs, Tree assignment, map[str, SymbolMapEntry] symbolMap) {
@@ -143,13 +136,13 @@ private rel[Vertex, Vertex] createFlowGraphFromAssignment(Tree lhs, Tree rhs, Tr
 private Position getThisPosition(Scope scope) {
 	map[str, SymbolMapEntry] symbolMap = getSymbolMap(scope);
 	if (THIS_KEYWORD in symbolMap) return symbolMap[THIS_KEYWORD].position;
-	return Inexistent(); 
+	return InexistentPosition(); 
 }
 
 public ScopedResult createFlowGraphFromExpression(Expression e, Scope scope) {
 	rel[Vertex, Vertex] flowGraph = {};
 	map[str, SymbolMapEntry] symbolMap = getSymbolMap(scope);
-	Position nextNodeToSkip = Inexistent();
+	Position nextNodeToSkip = InexistentPosition();
 	
 	// R1
 	if (variableAssignment(Expression lhs, Expression rhs) := e ||

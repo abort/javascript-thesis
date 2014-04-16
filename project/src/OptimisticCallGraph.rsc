@@ -1,7 +1,7 @@
 module OptimisticCallGraph
 
 import FlowGraphDataTypes;
-import flowgraph;
+import FlowGraphFast;
 import Logger;
 import IO;
 import String;
@@ -56,7 +56,7 @@ public CallGraphResult createOptimisticCallGraph(Source source) {
 }
 
 private set[Expression] getArguments(Source src, Position p) {
-	loc treeLoc = p.parseTreeLocation;
+	loc treeLoc = p.position;
 	set[Expression] arguments = {};
 	TreeSearchResult[Tree] searchResult = treeAt(#Tree, treeLoc, src);
 	Tree tree;

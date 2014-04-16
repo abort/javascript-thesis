@@ -3,7 +3,7 @@ module SharedCallGraphFunctions
 import CallGraphDataTypes;
 import Relation;
 import FlowGraphDataTypes;
-import flowgraph;
+import FlowGraphFast;
 import IO;
 import Set;
 import Map;
@@ -28,7 +28,7 @@ public set[OneShotCall] getOneShotCalls(Source source) {
 						for (Expression arg <- args) 
 							expressions += arg;
 					}
-					oneShotCalls += OneShotCall(getNodePosition(e), getNodePosition(f), expressions);
+					oneShotCalls += OneShotCall(getPosition(e), getPosition(f), expressions);
 				}
 			}
 		}
@@ -45,10 +45,10 @@ public set[EscapingFunction] getEscapingFunctions(set[OneShotCall] oneShotCalls,
 			set[Id] params = {};
 			for (Id param <- f.parameters) params += param;
 			// these are per definition not in oneshot calls
-			escapingFunctions += EscapingFunction(getNodePosition(f), params);
+			escapingFunctions += EscapingFunction(getPosition(f), params);
 		}
 		case Expression e:{
-			Position position = getNodePosition(e);
+			Position position = getPosition(e);
 			if (position notin oneShotCalls && (function(Id id, {Id ","}* params, Block _) := e || functionAnonymous({Id ","}* params, Block _) := e)) {
 				set[Id] args = {};
 				for (Id param <- params) args += param;
@@ -66,7 +66,7 @@ public set[UnresolvedCallSite] getUnresolvedCallSites(set[OneShotCall] oneShotCa
 	bottom-up visit(source) {
 		case Expression e:{
 			if (functionNoParams(Expression expressionToCall) := e || functionParams(Expression expressionToCall, { Expression!comma ","}+ _) := e) {
-				Position p = getNodePosition(e);
+				Position p = getPosition(e);
 				if (e notin { x.oneShotCall | x <- oneShotCalls }) {
 					set[Expression] args = {};
 					// Add args
@@ -102,7 +102,7 @@ public rel[Vertex, Vertex] addInterproceduralEdges(set[OneShotCall] initialCallG
 	for (OneShotCall call <- initialCallGraph) {
 		int i = 1;
 		for (Expression arg <- call.args) {
-			// debug("<getNodePosition(callRel.oneShotCall)> to <getNodePosition(callRel.oneShotClosure)>");
+			// debug("<getPosition(callRel.oneShotCall)> to <getPosition(callRel.oneShotClosure)>");
 			flowGraph += <Arg(call.oneShotCall, i), Parm(call.expressionToCall, i)>;
 			i += 1;	
 		}
@@ -126,7 +126,6 @@ public rel[Vertex, Vertex] addInterproceduralEdges(set[OneShotCall] initialCallG
 	for (EscapingFunction escapingFunction <- escapingFunctions) {
 		int i = 1;
 		for (Id param <- escapingFunction.args) {
-			debug("Add param <param> to <escapingFunction>");
 			flowGraph += <Unknown(), Parm(escapingFunction.position, i)>;
 			i += 1;
 		}

@@ -46,8 +46,8 @@ public void printAlphabeticalOptimisticCallGraph(loc location) {
 }
 
 public void storeOptimisticCallGraph(loc location) {
-	str outputFile = substring(inputfile.file, 0, findLast(inputfile.file, ".")) + ".txt";
-	loc output = inputfile.parent + outputFile;
+	str outputFile = substring(location.file, 0, findLast(location.file, ".")) + ".txt";
+	loc output = location.parent + outputFile;
 
 	CallGraphResult result = createOptimisticCallGraph(location);
 	storeAlphabeticalFlowGraph(output, result.graph);

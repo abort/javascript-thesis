@@ -1,7 +1,7 @@
 module FlowGraphTests
 
 import EcmaScript;
-import flowgraph;
+import FlowGraphFast;
 import FlowGraphPrettyPrinter;
 import FlowGraphDataTypes;
 import IO;

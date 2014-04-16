@@ -20,79 +20,77 @@ private str THIS_KEYWORD = "this";
 
 private data SymbolMapEntry = parameterEntry(Position position, bool overridable, int parameter) | entry(Position position, bool overridable);
 private data Scope = global() | scoped(map[str, SymbolMapEntry] symbolMap); 
-private data ScopedResult = result(rel[Vertex, Vertex] graph, Scope scope);
-
-private map[str, SymbolMapEntry] getSymbolMap(Scope scope) {
-	if (scope is scoped) return scope.symbolMap; // In case of scoped
-	return (); // In case of global
-}
-
-private Position getEnclosingFunction(Scope scope) {
-	if (scope is scoped) return scope.symbolMap[THIS_KEYWORD];
-	else throw "No enclosing function to provide"; // should never be called
-}
-
-private SymbolMapEntry createEntry(Tree tree) = entry(getPosition(tree), false);
-private SymbolMapEntry createParameterEntry(Tree tree, int argnum) = createParameterEntry(getPosition(tree), argnum);
-private SymbolMapEntry createParameterEntry(Position position, int argnum) = parameterEntry(position, false, argnum);
-private SymbolMapEntry createOverridableEntry(Tree tree) = entry(getPosition(tree), true);
+private data ScopedResult = result(rel[Vertex, Vertex] graph, Scope scope, Position nextNodeToSkip);
 
 public rel[Vertex, Vertex] createFlowGraphWithNativeFunctions(loc nativeGraphLocation, loc input) = createFlowGraphWithNativeFunctions(nativeGraphLocation, parse(input));
 public rel[Vertex, Vertex] createFlowGraphWithNativeFunctions(loc nativeGraphLocation, Source source) = createFlowGraphFromFunctionList(nativeGraphLocation) + createFlowGraph(source);
 public rel[Vertex, Vertex] createFlowGraph(loc input) = createFlowGraphWithNativeFunctions(|project://thesis/src/native-functions.txt|, input); // default assumption that we need native functions
 public rel[Vertex, Vertex] createFlowGraph(Source source) = createFlowGraph(source, global());
+
+// Retrieve the position of a node
+public Position getPosition(Tree t) {
+	str filename;
+	try	filename = t@\loc.file;
+	catch: filename = "stdin";
+
+	// We use the same formatting as in the original script	
+	return Position(filename, t@\loc.begin.line, t@\loc.offset, (t@\loc.offset + t@\loc.length), t@\loc);
+}
+
 public rel[Vertex, Vertex] createFlowGraph(Tree source, Scope scope) {
 	rel[Vertex, Vertex] flowGraph = {};
 	map[str, SymbolMapEntry] symbolMap = getSymbolMap(scope);
+	Position nextNodeToSkip = Inexistent();
 
 	top-down-break visit (source) {
 		case FunctionDeclaration f:{
+			Position functionPosition = getPosition(f);
 			map[str, SymbolMapEntry] inFunctionSymbolMap = getOverridableSymbolMap(symbolMap);
 			inFunctionSymbolMap["<f.name>"] = createOverridableEntry(f);
-			inFunctionSymbolMap[THIS_KEYWORD] = createParameterEntry(f, 0);
-			inFunctionSymbolMap = addParametersToSymbolMap(inFunctionSymbolMap, f.parameters, getPosition(f));
+			inFunctionSymbolMap = addParametersToSymbolMap(inFunctionSymbolMap, f.parameters, functionPosition);
 			
-			if (scope is scoped && isDeclarable("<f.name>", symbolMap))
-				symbolMap["<f.name>"] = createEntry(f);
-			flowGraph += <Fun(getPosition(f)), Var("<f.name>", getPosition(f))>;
+			// Add the function to the current scope
+			if (isDeclarableInScope("<f.name>", symbolMap, scope)) symbolMap["<f.name>"] = createEntry(f);
 
-			// println("In function <f> symbol map: <domain(inFunctionSymbolMap)> (new symbol map: <domain(symbolMap)>)");				
+			flowGraph += <Fun(functionPosition), Var("<f.name>", functionPosition)>;
 			flowGraph += createFlowGraph(f.implementation, scoped(inFunctionSymbolMap));
 		}
 		case Expression e:{
-			if (function(_, {Id ","}* parameters, _) := e || functionAnonymous({Id ","}* parameters, _) := e) {			
+			if (e is function || e is functionAnonymous) {
+				Position functionPosition = getPosition(e);
 				map[str, SymbolMapEntry] inFunctionSymbolMap = getOverridableSymbolMap(symbolMap);
-				inFunctionSymbolMap[THIS_KEYWORD] = createParameterEntry(e, 0);
-				inFunctionSymbolMap = addParametersToSymbolMap(inFunctionSymbolMap, parameters, getPosition(e));
+				inFunctionSymbolMap = addParametersToSymbolMap(inFunctionSymbolMap, e.parameters, functionPosition);
+				
 				if (e is function) {
+					// Function name is available in the scope of the function
 					inFunctionSymbolMap["<e.id>"] = createOverridableEntry(e);
 					// No need for checking in the symbol map, R6 says this is always a var
-					flowGraph += <Fun(getPosition(e)), Var("<e.id>", getPosition(e))>;
+					flowGraph += <Fun(functionPosition), Var("<e.id>", functionPosition)>;
 				}
 				
-				flowGraph += <Fun(getPosition(e)), Exp(getPosition(e))>;
-				
-				// println("In function exp <e> symbol map: <domain(inFunctionSymbolMap)> (new symbol map: <domain(symbolMap)>)");				
+				flowGraph += <Fun(functionPosition), Exp(functionPosition)>;
 				flowGraph += createFlowGraph(e.block, scoped(inFunctionSymbolMap));				
 			}
 			else {
-				// No functions that have to be visited
-				ScopedResult result = createFlowGraphFromExpression(e, scoped(symbolMap));
-				flowGraph += result.graph;
-				symbolMap += getSymbolMap(result.scope);
+				// Next node is used to skip underlying nodes (first check is done for short circuit evaluation to speed up the running time)
+				if (nextNodeToSkip != Inexistent() && nextNodeToSkip != getPosition(e)) {
+					ScopedResult result = createFlowGraphFromExpression(e, scoped(symbolMap));
+					flowGraph += result.graph;
+					if (!(scope is global)) symbolMap += getSymbolMap(result.scope);
+					nextNodeToSkip = result.nextNodeToSkip;
+				}
+				else nextNodeToSkip = Inexistent(); // reset the next node to skip after matching
 				
-				// Do not break!
-				fail;
+				fail; // continues to visit more deeply nested nodes (prevent breaking)
 			}
 		}
 		case Statement s:{
 			ScopedResult result = createFlowGraphFromStatement(s, scoped(symbolMap));
 			flowGraph += result.graph;
-			symbolMap += getSymbolMap(result.scope); // TODO: or append?
+			if (!(scope is global)) symbolMap += getSymbolMap(result.scope);
 		
-			// Do not break!
-			fail;
-		}		
+			fail; // continues to visit more deeply nested nodes (prevent breaking)
+		}
 	}
 	
 	return flowGraph;
@@ -106,40 +104,40 @@ private ScopedResult createFlowGraphFromStatement(Statement statement, Scope sco
 	 	|| variableNoSemi({VariableDeclaration ","}+ declarations, _) := statement
 	 	|| variableSemi({VariableDeclaration ","}+ declarations) := statement) {
 		for (declaration <- declarations) {
-			// This only works on assigned variables (not on just declared ones)
-			// Use deep matching to ignore the literals like the comma (this wont hurt in this case)
 			if (filledDeclaration(Id id, Expression expression) := declaration) {
-				// Variables can not be redeclared in the same scope
-			//	println("For loop <id> (statement: <statement>)!");
-				if (scope is scoped && isDeclarable("<id>", symbolMap)) 
-					symbolMap["<id>"] = createEntry(id);
+				if (isDeclarableInScope("<id>", symbolMap, scope)) symbolMap["<id>"] = createEntry(id);
 
-				Vertex rhsVertex = createVertex(expression, symbolMap);
-				flowGraph += <rhsVertex, createVertex(id, symbolMap)>;
-				flowGraph += <rhsVertex, Exp(getPosition(declaration))>;
+				flowGraph += createFlowGraphFromAssignment(id, expression, declaration, symbolMap);
 			}
-			
-			// Add to symbol map
-			if (emptyDeclaration(Id id) := declaration) {
-				// Variables can not be redeclared in the same scope
-				if (scope is scoped && isDeclarable("<id>", symbolMap))
-					symbolMap["<id>"] = createEntry(id);
+			elseif (emptyDeclaration(Id id) := declaration) {
+				if (isDeclarableInScope("<id>", symbolMap, scope)) symbolMap["<id>"] = createEntry(id);
 			}
+		}
+	}
+	elseif (forDo({VariableDeclarationNoIn ","}* assignments, _, _, _) := statement) {
+		for (assignment <- assignments) {
+			if (filledDeclaration(Id id, Expression expression) := assignment)
+				flowGraph += createFlowGraphFromAssignment(id, expression, assignment, symbolMap);
 		}
 	}
 	elseif (forInDeclaration(Id id, Expression _, Statement _) := statement) {
 		// Assumption to count as a simple declaration (so not R1, TODO: DOCUMENT!)
-		if (scope is scoped && isDeclarable("<id>", symbolMap))
-			symbolMap["<id>"] = createEntry(id);	
+		if (isDeclarableInScope("<id>", symbolMap, scope)) symbolMap["<id>"] = createEntry(id);	
 	}
 	elseif (returnExp(Expression e) := statement || returnExpNoSemi(Expression e) := statement
 			 || returnExpNoSemiBlockEnd(Expression e) := statement) {
 		Position thisPosition = getThisPosition(scope);
-		if (thisPosition != Inexistent())
-			flowGraph += <createVertex(e, symbolMap), Ret(thisPosition)>;
+		if (thisPosition != Inexistent()) flowGraph += <createVertex(e, symbolMap), Ret(thisPosition)>;
 	}
 	
-	return result(flowGraph, scoped(symbolMap));
+	return result(flowGraph, scoped(symbolMap), Inexistent());
+}
+
+private rel[Vertex, Vertex] createFlowGraphFromAssignment(Tree lhs, Tree rhs, Tree assignment, map[str, SymbolMapEntry] symbolMap) {
+	Vertex rhsVertex = createVertex(rhs, symbolMap);
+	rel[Vertex, Vertex] flowGraph = { <rhsVertex, createVertex(lhs, symbolMap)> };
+	flowGraph += <rhsVertex, Exp(getPosition(assignment))>;
+	return flowGraph;
 }
 
 private Position getThisPosition(Scope scope) {
@@ -151,6 +149,7 @@ private Position getThisPosition(Scope scope) {
 public ScopedResult createFlowGraphFromExpression(Expression e, Scope scope) {
 	rel[Vertex, Vertex] flowGraph = {};
 	map[str, SymbolMapEntry] symbolMap = getSymbolMap(scope);
+	Position nextNodeToSkip = Inexistent();
 	
 	// R1
 	if (variableAssignment(Expression lhs, Expression rhs) := e ||
@@ -171,16 +170,17 @@ public ScopedResult createFlowGraphFromExpression(Expression e, Scope scope) {
 	}
 	// R2
 	elseif (disjunction(Expression lhs, Expression rhs) := e) {
-		flowGraph += <createVertex(lhs, symbolMap), Exp(getPosition(e))>;
-		flowGraph += <createVertex(rhs, symbolMap), Exp(getPosition(e))>;		
+		Position position = getPosition(e);
+		flowGraph += <createVertex(lhs, symbolMap), Exp(position)>;
+		flowGraph += <createVertex(rhs, symbolMap), Exp(position)>;		
 	}
 	// R3
 	elseif (ternary(Expression condition, Expression conditionSuccess, Expression conditionFail) := e) {
+		Position position = getPosition(e);
 		Vertex successVertex = createVertex(conditionSuccess, symbolMap);
 		Vertex failVertex = createVertex(conditionFail, symbolMap);
-		
-		flowGraph += <successVertex, Exp(getPosition(e))>;
-		flowGraph += <failVertex, Exp(getPosition(e))>;	
+		flowGraph += <successVertex, Exp(position)>;
+		flowGraph += <failVertex, Exp(position)>;	
 	}
 	// R4
 	elseif (conjunction(Expression lhs, Expression rhs) := e) {
@@ -197,17 +197,35 @@ public ScopedResult createFlowGraphFromExpression(Expression e, Scope scope) {
 			}
 		}
 	}
-	// R8
-	// TODO does this not count for functions without parameters?
 	elseif (new(Expression expression) := e) {
-		// TODO check if createFlowGraphFromFunctionCall does return something... if so make it break on in the top-down-break :)
-		flowGraph += createFlowGraphFromFunctionCall(expression, e, scope);
+		if (expression is functionParams || expression is functionNoParams) {
+			// R8
+			rel[Vertex, Vertex] functionCallFlowGraph = createFlowGraphFromFunctionCall(expression, e, scope);
+	
+			if (size(functionCallFlowGraph) != 0) {
+				flowGraph += functionCallFlowGraph;
+				nextNodeToSkip = getPosition(expression); // Stop visiting branch in case we have a new function call
+			}
+		}
 	}
-	elseif (functionParams(Expression expression, _) := e || functionNoParams(Expression expression) := e) {
+	elseif (e is functionParams || e is functionNoParams) {
+		// R8
 		flowGraph += createFlowGraphFromFunctionCall(e, e, scope);
+
+		// R9
+		if (property(Expression lhs, Id _) := getCallSite(e)) {
+			flowGraph += <createVertex(lhs, symbolMap), Arg(getPosition(e), 0)>;
+		}
 	}
 
-	return result(flowGraph, scoped(symbolMap));	
+	return result(flowGraph, scoped(symbolMap), nextNodeToSkip);	
+}
+
+private Expression getCallSite(Expression callExpression) {
+	if (functionParams(Expression funcExpression, _) := callExpression || functionNoParams(Expression funcExpression) := callExpression) {
+		return funcExpression;	 
+	}
+	throw "Could not retrieve call site"; // should never occur
 }
 
 private rel[Vertex, Vertex] createFlowGraphFromFunctionCall(Expression callExpression, Expression fullExpression, Scope scope) {
@@ -216,9 +234,7 @@ private rel[Vertex, Vertex] createFlowGraphFromFunctionCall(Expression callExpre
 	if (functionParams(Expression funcExpression, { Expression!comma ","}+ parameters) := callExpression
 		 || functionNoParams(Expression funcExpression) := callExpression) {
 		// In case of one shot closures, we have to consider the subexpression (nested) as the function being called
-		if (nestedExpression(Expression sub) := funcExpression) {
-			funcExpression = sub;
-		}
+		if (nestedExpression(Expression sub) := funcExpression) funcExpression = sub;
 
 		Position expressionPosition = getPosition(fullExpression);
 		flowGraph += <createVertex(funcExpression, symbolMap), Callee(expressionPosition)>;
@@ -226,74 +242,52 @@ private rel[Vertex, Vertex] createFlowGraphFromFunctionCall(Expression callExpre
 		if (callExpression is functionParams) {
 			int argnum = 1;
 			for (Expression parameter <- parameters) {
-				// println("Arg <parameter> on line <getPosition(parameter).line>");
-				flowGraph += <createVertex(parameter, symbolMap), Arg(expressionPosition, argnum)>; // TODO getPosition(e) or (param)?
+				flowGraph += <createVertex(parameter, symbolMap), Arg(expressionPosition, argnum)>;
 				argnum += 1;
 			}
 		}
 
 		flowGraph += <Res(expressionPosition), Exp(expressionPosition)>;
-		
-		// R9
-		// TODO: check
-		if (property(Expression lhs, Id _) := funcExpression) {
-			flowGraph += <createVertex(lhs, symbolMap), Arg(expressionPosition, 0)>;
-		}		
 	}
 	
 	return flowGraph;
 }
 
-
 private Vertex createVertex(Tree root, map[str, SymbolMapEntry] symbolMap) {
 	if (Expression e := root && property(_, Id id) := root) return Prop("<id>");
 	elseif ((Expression e := root && id(Id id) := e) || Id id := root) {
-		if (!inSymbolMap(id, symbolMap)) return Prop("<id>");
+		if ("<id>" notin symbolMap) return Prop("<id>");
 		else {
 			SymbolMapEntry mapValue = symbolMap["<id>"];
 			// find out if its a function parameter
-			if (mapValue is parameterEntry)
-				return Parm(mapValue.position, mapValue.parameter);
-				
+			if (mapValue is parameterEntry)	return Parm(mapValue.position, mapValue.parameter);
 			return Var("<id>", mapValue.position);
 		}
 	}
 	elseif (Expression e := root && this() := e) {
-		if (THIS_KEYWORD in symbolMap) {
-			return Parm(symbolMap[THIS_KEYWORD].position, 0);
-		}
-		else {
-			debug("Reference to this without a this scope... fallback");
-		}
+		if (THIS_KEYWORD in symbolMap) return Parm(symbolMap[THIS_KEYWORD].position, 0);
+		else debug("Reference to this without a this scope... fallback");
 	}
 	
 	return Exp(getPosition(root));
 }
 
-private bool inSymbolMap(Id id, map[str, SymbolMapEntry] symbolMap) = "<id>" in symbolMap;
-private bool isDeclarable(str variableName, map[str, SymbolMapEntry] symbolMap) {
-	if (variableName notin symbolMap) return true;
-	// Overridability should be returned from the table
-	return symbolMap["<variableName>"].overridable;
-}
-
 // SymbolMaps should be overridable because variables can be redefined in the new scope and the javascript convention does not allow double declarations in the same scope
 private map[str, SymbolMapEntry] getOverridableSymbolMap(map[str, SymbolMapEntry] symbolMap) {
 	map[str, SymbolMapEntry] newSymbolMap = ();
+
 	for (str entryName <- symbolMap) {
 		SymbolMapEntry entryValue = symbolMap[entryName];
-		if (entryValue is parameterEntry) {
-			newSymbolMap[entryName] = parameterEntry(entryValue.position, true, entryValue.parameter);
-		}
-		elseif (entryValue is entry) {
-			newSymbolMap[entryName] = entry(entryValue.position, true);
-		}	
+		if (entryValue is parameterEntry) newSymbolMap[entryName] = parameterEntry(entryValue.position, true, entryValue.parameter);
+		elseif (entryValue is entry) newSymbolMap[entryName] = entry(entryValue.position, true);
 	}
 
 	return newSymbolMap;	
 }
 
 private map[str, SymbolMapEntry] addParametersToSymbolMap(map[str, SymbolMapEntry] symbolMap, {Id ","}* parameters, Position position) {
+	symbolMap[THIS_KEYWORD] = createParameterEntry(position, 0);
+
 	int argnum = 1;
 	for (Id param <- parameters) {
 		symbolMap["<param>"] = createParameterEntry(position, argnum);
@@ -301,14 +295,17 @@ private map[str, SymbolMapEntry] addParametersToSymbolMap(map[str, SymbolMapEntr
 	}
 
 	return symbolMap;
-} 
-
-// Retrieve the position of a node
-public Position getPosition(Tree t) {
-	str filename = "";
-	try	filename = t@\loc.file;
-	catch: filename = "stdin";
-
-	// We use the same formatting as in the original script	
-	return Position(filename, t@\loc.begin.line, t@\loc.offset, (t@\loc.offset + t@\loc.length), t@\loc);
 }
+
+private bool isDeclarableInScope(str variableName, map[str, SymbolMapEntry] symbolMap, Scope scope) = scope is scoped && isDeclarable(variableName, symbolMap);
+private bool isDeclarable(str variableName, map[str, SymbolMapEntry] symbolMap) {
+	if (variableName notin symbolMap) return true;
+	// Overridability should be returned from the table
+	return symbolMap["<variableName>"].overridable;
+}
+private map[str, SymbolMapEntry] getSymbolMap(Scope scope) = scope is scoped ? scope.symbolMap : (); // returns an empty symbol map for global scope
+
+private SymbolMapEntry createEntry(Tree tree) = entry(getPosition(tree), false);
+private SymbolMapEntry createParameterEntry(Tree tree, int argnum) = createParameterEntry(getPosition(tree), argnum);
+private SymbolMapEntry createParameterEntry(Position position, int argnum) = parameterEntry(position, false, argnum);
+private SymbolMapEntry createOverridableEntry(Tree tree) = entry(getPosition(tree), true);

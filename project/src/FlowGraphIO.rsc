@@ -2,7 +2,7 @@ module FlowGraphIO
 
 import String;
 import IO;
-import flowgraph;
+import FlowGraphFast;
 import EcmaScript;
 import SharedDataTypes;
 import FlowGraphPrettyPrinter;

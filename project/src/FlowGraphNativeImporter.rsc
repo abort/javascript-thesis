@@ -33,7 +33,7 @@ public map[str, str] getNativeFunctionMap(loc location) {
 		str name = replaceAll(trim(splittedLine[0]), "\"", "");
 		str functionName = replaceLast(replaceAll(trim(splittedLine[1]), "\"", ""), ",", "");
 		
-		natives += (functionName : function);
+		natives += (functionName : name);
 	}
 
 	return natives;

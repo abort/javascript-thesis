@@ -41,6 +41,10 @@ public class ASTParser {
 		return nodes;
 	}
 	
+
+	public AstNode getEnclosingFunction(final AstRoot child) {
+	    return child.getEnclosingFunction();
+	}
 	
 	public List<AstNode> getFunctions(final AstRoot root) {
 		final List<AstNode> nodes = new ArrayList<AstNode>();

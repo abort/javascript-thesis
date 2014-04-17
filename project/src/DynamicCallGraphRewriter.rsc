@@ -17,6 +17,7 @@ import List;
 
 @javaClass{jsimpl.Encoder}
 public java str javascriptEscape(str input);
+private str readCallGraphInjectionSnippet() = readFile(|project://thesis/src/dynamic-callgraph-injection.js|);
 
 void rewriteJavascriptWithDynamicCallGraphBuilder(loc inputfile) {
 	loc nativeFunctionLocation = |project://thesis/src/native-functions.txt|;
@@ -80,17 +81,15 @@ void rewriteJavascriptWithDynamicCallGraphBuilder(loc inputfile) {
 }
 	" + unparse(rewrittenSource);
 	
-	str nativeFunctionVar = "var nativeFunctions = {";
-	for (k <- nativeFunctionMap) {
-		//nativeFunctionVar += "\"" + nativeFunctionMap[k];
-		// TODO add native to map
-		nativeFunctionVar += "";
-	}
-	nativeFunctionVar += "}";
 	
-	newsrc += "\nfunction replaceAll(find, replace, str) { return str.replace(new RegExp(find, \'g\'), replace); }";
-	//println("new source: <newsrc>");
-	src = parse(rewrittenSource); //parse(newsrc);
+	// TODO wrap ALL native function calls and log those
+	str nativeFunctionVar = "var nativeFunctions = {";
+	for (k <- nativeFunctions) {
+		nativeFunctionVar += "\"" + k + ":" + nativeFunctionMap[k] + "\"";
+		// TODO add native to map
+	}
+	nativeFunctionVar += "};";
+	src = parse(rewrittenSource);
 	println("rewritten to: " + unparse(src));
 }
 

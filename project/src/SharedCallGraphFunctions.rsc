@@ -82,10 +82,6 @@ public set[UnresolvedCallSite] getUnresolvedCallSites(set[OneShotCall] oneShotCa
 	return unresolvedCallSites;
 }
 
-public rel[Vertex, Vertex] transitiveClosure(rel[Vertex, Vertex] R) {
-	return R+;
-}
-
 public rel[Vertex, Vertex] optimisticTransitiveClosure(rel[Vertex, Vertex] R) {
 	tc = R;
 	while (true) {

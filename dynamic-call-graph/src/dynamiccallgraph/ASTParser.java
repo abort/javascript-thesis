@@ -37,6 +37,19 @@ public class ASTParser {
 	    return false;
 	}
 	
+	public FunctionCall getTopFunctionCallNode(final AstNode root) {
+	    if (root instanceof FunctionCall) return (FunctionCall)root;
+	    
+	    if (root instanceof ExpressionStatement) {
+		ExpressionStatement expressionStatement = (ExpressionStatement)root;
+		if (!(expressionStatement.getExpression() instanceof FunctionCall)) return null;
+
+		return (FunctionCall)expressionStatement.getExpression();
+	    }
+	    
+	    return null;	    
+	}
+	
 	public List<AstNode> getFunctionCalls(final AstNode root) {
 		final List<AstNode> nodes = new ArrayList<AstNode>();
 		root.visit(new NodeVisitor() {

@@ -5,7 +5,6 @@ import java.net.InetSocketAddress;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -24,6 +23,8 @@ import org.chromium.sdk.JavascriptVm;
 import org.chromium.sdk.JavascriptVm.BreakpointCallback;
 import org.chromium.sdk.JavascriptVm.ScriptsCallback;
 import org.chromium.sdk.JavascriptVm.SuspendCallback;
+import org.chromium.sdk.JsEvaluateContext.EvaluateCallback;
+import org.chromium.sdk.JsVariable;
 import org.chromium.sdk.RelayOk;
 import org.chromium.sdk.Script;
 import org.chromium.sdk.SyncCallback;
@@ -36,7 +37,6 @@ import org.chromium.sdk.wip.WipBackendFactory;
 import org.chromium.sdk.wip.WipBrowser;
 import org.chromium.sdk.wip.WipBrowserFactory.LoggerFactory;
 import org.chromium.sdk.wip.WipBrowserTab;
-import org.mozilla.javascript.Node;
 import org.mozilla.javascript.ast.AstNode;
 import org.mozilla.javascript.ast.AstRoot;
 import org.mozilla.javascript.ast.ExpressionStatement;
@@ -240,7 +240,7 @@ public class Main {
 	private final Semaphore semaphore = new Semaphore(0);
 	private JavascriptVm vm = null;
 	private Map<List<String>, String> callSitesToFunctionMap = new HashMap<>();
-	private int counter = 0;
+	private AstNode lastEnclosingFunction = null;
 
 	public void setJavascriptVm(final JavascriptVm vm) {
 	    this.vm = vm;
@@ -252,9 +252,6 @@ public class Main {
 	    // TODO add breakpoints for EACH statement on load or initially
 	    // TODO on suspend determine if we have a new call stack, then add it to a data structure
 	    savedDebugContext = debugContext;
-	    for (Breakpoint bp : debugContext.getBreakpointsHit()) {
-		bp.getLineNumber();
-	    }
 	    if (debugContext.getCallFrames() != null && debugContext.getCallFrames().size() != 0) {
 		final List<? extends CallFrame> callFrames = debugContext.getCallFrames();
 		final CallFrame lastFrame = callFrames.get(0);
@@ -273,8 +270,37 @@ public class Main {
 			    }
 			    System.out.print("Call frame #0: " + CallFrameUtil.getSensibleSource(statement) + " (" + statement.getLineno() + "," + statement.getAbsolutePosition()
 				    + "," + (statement.getAbsolutePosition() + statement.getLength()) + ") function call: " + parser.isFunctionCall(statement));
+			    Map<String, String> map = new HashMap<String, String>();
+			    map.put("f", parser.getTopFunctionCallNode(statement).getTarget().toSource());
+		//!!f && (typeof f).toLowerCase() == 'function' && (f === Function.prototype || /^\\s*function\\s*(\\b[a-z$_][a-z0-9$_]*\\b)*\\s*\\((|([a-z$_][a-z0-9$_]*)(\\s*,[a-z$_][a-z0-9$_]*)*)\\)\\s*{\\s*\\[native code\\]\\s*}\\s*$/i.test(String(f)))
+			    RelayOk ok = lastFrame.getEvaluateContext().evaluateAsync("var x = 1;", map, new EvaluateCallback() {
+			        
+			        @Override
+			        public void success(JsVariable var) {
+
+			    		System.out.println("native function " + var.getName() + " val: " + var.getValue());
+			    	
+			        }
+			        
+			        @Override
+			        public void failure(String error) {
+			    		System.out.println("error: " + error);
+			    	
+			        }
+			    }, synchronizationCallback) ;
+			    ((CallbackSemaphore)synchronizationCallback).acquireDefault(ok);
 			    
+			    // Add called
+			    if (debugContext.getBreakpointsHit() != null && !debugContext.getBreakpointsHit().isEmpty()) {
+				if (lastEnclosingFunction != null && !lastEnclosingFunction.equals(statement.getEnclosingFunction()) && statement.getEnclosingFunction() != null) {
+				    System.out.print(" new scope: " + statement.getEnclosingFunction().getName() + " (" + (statement.getEnclosingFunction().getLineno() + "," + (statement.getEnclosingFunction().getAbsolutePosition() + 1) + "," + (statement.getEnclosingFunction().getAbsolutePosition() + statement.getEnclosingFunction().getLength() + 1) + ")"));
+				}
+			    }
+			    
+			    lastEnclosingFunction = statement.getEnclosingFunction();
 			}
+			
+			
 		    }
 		    // RelayOk ok = savedDebugContext.continueVm(StepAction.IN,
 		    // 0, continueCallback, synchronizationCallback);
@@ -301,6 +327,9 @@ public class Main {
 			}
 		    }
 		    System.out.println("\n");
+		    
+
+
 		} catch (IOException e) {
 		    System.out.println("Exception: " + e.getMessage());
 		}

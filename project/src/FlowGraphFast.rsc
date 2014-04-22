@@ -191,6 +191,7 @@ public ScopedResult createFlowGraphFromExpression(Expression e, Scope scope) {
 		}
 	}
 	elseif (new(Expression expression) := e) {
+		println("new expression");
 		if (expression is functionParams || expression is functionNoParams) {
 			// R8
 			rel[Vertex, Vertex] functionCallFlowGraph = createFlowGraphFromFunctionCall(expression, e, scope);
@@ -200,6 +201,18 @@ public ScopedResult createFlowGraphFromExpression(Expression e, Scope scope) {
 				nextNodeToSkip = getPosition(expression); // Stop visiting branch in case we have a new function call
 			}
 		}
+		else {
+			// Syntactic sugar fix for new jQuery (which is the same as new jQuery());
+			Position expressionPosition = getPosition(e);
+			flowGraph += <createVertex(expression, symbolMap), Callee(expressionPosition)>;
+			flowGraph += <Res(expressionPosition), Exp(expressionPosition)>;
+			
+			println("Syntactic sugaaa");
+			
+			if (property(Expression lhs, Id _) := expression) {
+				flowGraph += <createVertex(lhs, symbolMap), Arg(getPosition(expression), 0)>;
+			}			
+		}
 	}
 	elseif (e is functionParams || e is functionNoParams) {
 		// R8
@@ -207,7 +220,7 @@ public ScopedResult createFlowGraphFromExpression(Expression e, Scope scope) {
 
 		// R9
 		if (property(Expression lhs, Id _) := getCallSite(e)) {
-			flowGraph += <createVertex(lhs, symbolMap), Arg(getPosition(e), 0)>;
+			flowGraph += <createVertex(lhs, symbolMap), Arg(getPosition(getCallSite(e)), 0)>;
 		}
 	}
 

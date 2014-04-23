@@ -45,6 +45,7 @@ public class SimpleDebugListener implements DebugEventListener {
     // Whether the last statement was a function call
     private boolean lastStatementFunctionCall = false;
     private AstNode lastFunctionCall = null;
+    private boolean initialCall = true;
 
     public void setJavascriptVm(final JavascriptVm vm) {
 	this.vm = vm;
@@ -89,45 +90,7 @@ public class SimpleDebugListener implements DebugEventListener {
 	    lastFunctionCall = null;
 	    return;	    
 	}
-	      final Semaphore semaphore = new Semaphore(0);
-//	      semaphore.release();
-//	      final JsVariable[] retval = new JsVariable[1];
-//	RelayOk ok = lastFrame.getEvaluateContext().evaluateAsync("(debug_value_1 = {a:2})", null, new EvaluateCallback() {
-//	    
-//	    @Override
-//	    public void success(JsVariable arg0) {
-//		try {
-//		    semaphore.acquire();
-//		    System.out.println("var: " + arg0.getValue().getValueString());
-//		    semaphore.release();
-//		    retval[0] = arg0;
-//		}
-//		catch(Exception e) {
-//			System.out.println("Error: " + arg0);		    
-//		}
-//	    }
-//	    
-//	    @Override
-//	    public void failure(String arg0) {
-//		try {
-//		    semaphore.acquire();
-//		    System.out.println("Error: " + arg0);
-//		    semaphore.release();
-//		}
-//		catch(Exception e) {
-//			System.out.println("Error: " + arg0);		    
-//		}	
-//	    }
-//	}, synchronizationCallback);
-//	try {
-//	    semaphore.tryAcquire(5, TimeUnit.SECONDS);
-//	}
-//	catch(Exception e) {
-//	    System.out.println("Failed to acquire semaphore");
-//	}
-//	
-	
-	//callbackSemaphore.tryAcquire(5, TimeUnit.DAYS);
+
 	
 	// Add called
 	final FunctionNode currentEnclosingFunction = statement.getEnclosingFunction();
@@ -142,6 +105,7 @@ public class SimpleDebugListener implements DebugEventListener {
 		// Last statement was a function call and we are in a new scope
 	    // TODO insert Last statement entry.....
 		logger.log(Level.INFO, "Non native call");
+
 	    final CallGraphEntry functionEntry = new CallGraphEntry(lastFrameScript.getName(), currentEnclosingFunction.getLineno(), functionAbsolutePosition,
 		    functionAbsoluteEndPosition);
 	    List<CallGraphEntry> functionCallsToFunction = functionsToFunctionCallsMap.get(functionEntry);
@@ -151,6 +115,7 @@ public class SimpleDebugListener implements DebugEventListener {
 		    statement.getAbsolutePosition() + 1, statement.getAbsolutePosition() + CallFrameUtil.getSensibleSource(statement).length() + 1);
 	    functionCallsToFunction.add(lastFunctionCallEntry);
 	    functionsToFunctionCallsMap.put(functionEntry, functionCallsToFunction);
+		logger.log(Level.INFO, "Added call to: " + parser.getFunctionCallTopExpressionNode(lastFunctionCall).getTarget().toString() + " from position: " + lastFunctionCallEntry.toString());
 	}
 	else if (lastStatementFunctionCall && lastEnclosingFunction.getAbsolutePosition() == currentEnclosingFunction.getAbsolutePosition()) {
 	    // if scope did not change on a new debug statement and we did call a function previously, its a native
@@ -159,15 +124,16 @@ public class SimpleDebugListener implements DebugEventListener {
 	    
 	    // native!
 	    addNativeEntry(lastFrameScript, statement);
-
-	    lastStatementFunctionCall = false;
-	    lastFunctionCall = null;
-	    return;
+	}
+	else if (lastStatementFunctionCall) {
+	    logger.log(Level.INFO, "Special case!");
 	}
 	
-	if (lastStatementFunctionCall && isRecursive(statement)) {
+	// TODO: fix recursive check
+	/*if (lastStatementFunctionCall && isRecursive(statement)) {
 	    System.out.print(" recursive ");
 	}
+	*/
 	
 	if (statement == null || !parser.isFunctionCall(statement)) {    
 	    // TODO if not a function call, possibly add ourselves as called
@@ -183,7 +149,7 @@ public class SimpleDebugListener implements DebugEventListener {
 	lastFunctionCall = statement;
 	    
 	System.out.print("Call frame #0: " + CallFrameUtil.getSensibleSource(statement) + " (" + statement.getLineno() + "," + statement.getAbsolutePosition()
-		+ "," + (statement.getAbsolutePosition() + statement.getLength()) + ")" + " function: " + CallFrameUtil.getSensibleSource(statement.getEnclosingFunction()));
+		+ "," + (statement.getAbsolutePosition() + statement.getLength()) + ")");
 	
 	lastEnclosingFunction = statement.getEnclosingFunction();
 
@@ -192,13 +158,17 @@ public class SimpleDebugListener implements DebugEventListener {
 	final Script calleeScript = callFrames.get(1).getScript();
 	AstRoot source = parser.parse(calleeScript.getSource());
 	TextStreamPosition calleeStreamPosition = callee.getStatementStartPosition();
-	// getFirstStatement(source,
-	// CallFrameUtil.calculateAbsolutePosition(script.getSource(),
-	// streamPosition.getLine() + 1, streamPosition.getColumn() +
-	// 1));
 	AstNode calleeStatement = parser.getStatementByAbsolutePosition(source,
 		CallFrameUtil.calculateAbsolutePosition(calleeScript.getSource(), calleeStreamPosition.getLine() + 1, calleeStreamPosition.getColumn() + 1));
 
+	/*
+	if (parser.isFunctionCall(calleeStatement) && initialCall) {
+	    // We do not care about the entry point
+	    initialCall = false;
+	    return;
+	}
+	*/
+	
 	// In case its not the entry point (it should not be
 	// empty)
 	if (calleeStatement != null) {
@@ -212,11 +182,32 @@ public class SimpleDebugListener implements DebugEventListener {
 	    System.out.print(" - called by: " + scope.trim());
 	}
 	System.out.println("\n");
+	
+	if (callFrames.size() < 3) return;
+	final CallFrame callee2 = callFrames.get(2);
+	final Script callee2Script = callFrames.get(2).getScript();
+	AstRoot source2 = parser.parse(callee2Script.getSource());
+	TextStreamPosition callee2StreamPosition = callee2.getStatementStartPosition();
+	AstNode callee2Statement = parser.getStatementByAbsolutePosition(source2,
+		CallFrameUtil.calculateAbsolutePosition(callee2Script.getSource(), callee2StreamPosition.getLine() + 1, callee2StreamPosition.getColumn() + 1));
+
+	// In case its not the entry point (it should not be
+	// empty)
+	if (callee2Statement != null) {
+	    System.out.printf("\nCall frame #2: %s (%d,%d,%d)", callee2Statement instanceof FunctionNode ? ((FunctionNode) callee2Statement).getName()
+		    : CallFrameUtil.getSensibleSource(callee2Statement), callee2Statement.getLineno(), callee2Statement.getAbsolutePosition(), (callee2Statement
+		    .getAbsolutePosition() + callee2Statement.getLength()));
+
+	    final FunctionNode wrappingFunction = callee2Statement.getEnclosingFunction();
+	    String scope = wrappingFunction == null ? "global" : wrappingFunction.getName() + "(" + wrappingFunction.getLineno() + ","
+		    + (wrappingFunction.getAbsolutePosition() + 1) + "," + (wrappingFunction.getAbsolutePosition() + 1 + wrappingFunction.getLength()) + ")";
+	    System.out.print(" - called by: " + scope.trim());
+	}
     }
 
     private void addNativeEntry(final Script lastFrameScript, final AstNode statement) {
 	CallGraphEntry nativeEntry = new CallGraphNativeEntry(parser.getFunctionCallTopExpressionNode(lastFunctionCall).getTarget().toSource());
-
+	logger.log(Level.INFO, "Native add: " + CallFrameUtil.getSensibleSource(lastFunctionCall));
 	List<CallGraphEntry> functionCallsToFunction = functionsToFunctionCallsMap.get(nativeEntry);
 	if (functionCallsToFunction == null || functionCallsToFunction.isEmpty()) 
 		functionCallsToFunction = new ArrayList<CallGraphEntry>();
@@ -311,4 +302,34 @@ public class SimpleDebugListener implements DebugEventListener {
     public Semaphore getSemaphore() {
 	return semaphore;
     }
+    /*
+    private boolean checkNativeFunction() {
+	      final JsVariable[] retval = new JsVariable[1];
+	      Thread t = new Thread(new Runnable() {
+        
+        	    @Override
+        	    public void run() {
+        		lastFrame.getEvaluateContext().evaluateAsync("(debug_value_1 = {a:2})", null, new EvaluateCallback() {
+        		    @Override
+        		    public void success(JsVariable arg0) {
+        			    //System.out.println("var: " + arg0.getValue().getValueString());
+        			    retval[0] = arg0;
+        		    }
+        
+        		    @Override
+        		    public void failure(String arg0) {
+        			    System.out.println("Error: " + arg0);
+        		    }
+        		}, synchronizationCallback);
+        	    }
+        	});
+	      t.start();
+	try {
+	      t.join();
+	} catch (Exception e) {
+	    System.out.println("Failed to acquire semaphore");
+	} 		
+    }
+    
+    */
 }

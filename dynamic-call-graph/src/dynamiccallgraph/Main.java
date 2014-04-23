@@ -96,13 +96,18 @@ public class Main {
 //		System.out.println("src: " + script.getSource());
 //	    }
 	    
+	    /*
 	    AstRoot root = parser.parse(script.getSource());
 	    Set<AstNode> functions = parser.getFunctions(root);
 	    for (AstNode f : functions) {
 		// BP to make sure (column number does not matter
-		vm.setBreakpoint(target, f.getLineno(), Breakpoint.EMPTY_VALUE, true, null, bpCallback, synchronizationCallback);
+	    }*/
+	    if (script.hasSource()) {
+		int line = 1;
+        	for (String lineString : script.getSource().split("\n")) {
+        	    vm.setBreakpoint(target, line++, Breakpoint.EMPTY_VALUE, true, null, bpCallback, synchronizationCallback);
+        	}
 	    }
-
 	    // vm.setBreakpoint(new
 	    // Breakpoint.Target.ScriptName(script.getName()), 2,
 	    // Breakpoint.EMPTY_VALUE, true, null, bpCallback,
@@ -259,6 +264,7 @@ public class Main {
 		    if (lastFrame.getScript().hasSource()) {
 			final AstRoot lastSource = parser.parse(lastFrame.getScript().getSource());
 			final TextStreamPosition streamPosition = lastFrame.getStatementStartPosition();
+			
 			final AstNode statement = getFirstStatement(lastSource, CallFrameUtil.calculateAbsolutePosition(lastFrame.getScript().getSource(), streamPosition.getLine() + 1,
 					streamPosition.getColumn() + 1));
 			if (statement != null) {
@@ -271,25 +277,9 @@ public class Main {
 			    System.out.print("Call frame #0: " + CallFrameUtil.getSensibleSource(statement) + " (" + statement.getLineno() + "," + statement.getAbsolutePosition()
 				    + "," + (statement.getAbsolutePosition() + statement.getLength()) + ") function call: " + parser.isFunctionCall(statement));
 			    Map<String, String> map = new HashMap<String, String>();
-			    map.put("f", parser.getTopFunctionCallNode(statement).getTarget().toSource());
+			    //map.put("f", parser.getTopFunctionCallNode(statement).getTarget().toSource());
 		//!!f && (typeof f).toLowerCase() == 'function' && (f === Function.prototype || /^\\s*function\\s*(\\b[a-z$_][a-z0-9$_]*\\b)*\\s*\\((|([a-z$_][a-z0-9$_]*)(\\s*,[a-z$_][a-z0-9$_]*)*)\\)\\s*{\\s*\\[native code\\]\\s*}\\s*$/i.test(String(f)))
-			    RelayOk ok = lastFrame.getEvaluateContext().evaluateAsync("var x = 1;", map, new EvaluateCallback() {
-			        
-			        @Override
-			        public void success(JsVariable var) {
-
-			    		System.out.println("native function " + var.getName() + " val: " + var.getValue());
-			    	
-			        }
-			        
-			        @Override
-			        public void failure(String error) {
-			    		System.out.println("error: " + error);
-			    	
-			        }
-			    }, synchronizationCallback) ;
-			    ((CallbackSemaphore)synchronizationCallback).acquireDefault(ok);
-			    
+			    			    
 			    // Add called
 			    if (debugContext.getBreakpointsHit() != null && !debugContext.getBreakpointsHit().isEmpty()) {
 				if (lastEnclosingFunction != null && !lastEnclosingFunction.equals(statement.getEnclosingFunction()) && statement.getEnclosingFunction() != null) {
@@ -297,7 +287,15 @@ public class Main {
 				}
 			    }
 			    
+				    int statementPosition = statement.getAbsolutePosition();
+				    if (lastEnclosingFunction != null && statementPosition >= lastEnclosingFunction.getAbsolutePosition() && statementPosition <= lastEnclosingFunction.getAbsolutePosition() + lastEnclosingFunction.getLength()) {
+					System.out.println(" recursive ");
+				    }
+			    
 			    lastEnclosingFunction = statement.getEnclosingFunction();
+			}
+			else {
+			    System.out.println("A.Call Frame #0: " + lastFrame.getScript().getSource().split("\n")[streamPosition.getLine()].substring(streamPosition.getColumn()));
 			}
 			
 			
@@ -325,6 +323,7 @@ public class Main {
 				    + (wrappingFunction.getAbsolutePosition() + 1 + wrappingFunction.getLength()) + ")";
 			    System.out.print(" - called by: " + scope.trim());
 			}
+			
 		    }
 		    System.out.println("\n");
 		    

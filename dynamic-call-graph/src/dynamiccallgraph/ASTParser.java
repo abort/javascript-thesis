@@ -115,7 +115,7 @@ public class ASTParser {
     }
 
     public AstNode getFirstStatement(final AstRoot root, final int absolutePosition) {
-	final AstNode[] retval = new AstNode[1];
+	final AstNode[] retval = new AstNode[]{ null };
 	// final AstNode[] closestSibling = new AstNode[]{ null };
 	root.visit(new NodeVisitor() {
 	    @Override
@@ -137,10 +137,29 @@ public class ASTParser {
 		return true;
 	    }
 	});
+	
+	if (retval[0] != null) return retval[0];
+	
+	// fallback, get the innermost enclosing node :)
+	root.visit(new NodeVisitor() {
+	    
+	    @Override
+	    public boolean visit(AstNode node) {
+		final int nodeStartPosition = node.getAbsolutePosition();
+		final int nodeEndPosition = nodeStartPosition + node.getLength(); 
+		if (absolutePosition > nodeStartPosition && absolutePosition < nodeEndPosition) {
+		    // its in between :)
+		    retval[0] = node;
+		    return true; // keep traversing for the innermost node
+		}
 
-	if (retval[0] != null)
-	    return retval[0];
-	return null;
+		return true;
+	    }
+	});
+
+	// TODO maybe get the larger expression statement instead of the expression itself (get parent blabla)
+	
+	return retval[0];
     }
 
 }

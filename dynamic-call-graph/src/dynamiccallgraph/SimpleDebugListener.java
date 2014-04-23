@@ -1,12 +1,12 @@
 package dynamiccallgraph;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.Semaphore;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,9 +17,6 @@ import org.chromium.sdk.DebugContext.ContinueCallback;
 import org.chromium.sdk.DebugContext.StepAction;
 import org.chromium.sdk.DebugEventListener;
 import org.chromium.sdk.JavascriptVm;
-import org.chromium.sdk.JsEvaluateContext.EvaluateCallback;
-import org.chromium.sdk.JsVariable;
-import org.chromium.sdk.RelayOk;
 import org.chromium.sdk.Script;
 import org.chromium.sdk.SyncCallback;
 import org.chromium.sdk.TextStreamPosition;
@@ -37,15 +34,13 @@ public class SimpleDebugListener implements DebugEventListener {
     private DebugContext savedDebugContext = null;
     private final Semaphore semaphore = new Semaphore(0);
     private JavascriptVm vm = null;
-    private Map<CallGraphEntry, List<CallGraphEntry>> functionsToFunctionCallsMap = new HashMap<>();
+    private Map<CallGraphEntry, Set<CallGraphEntry>> functionsToFunctionCallsMap = new HashMap<>();
     private AstNode lastEnclosingFunction = null;
     private ASTParser parser = new ASTParser();
     private final SyncCallback synchronizationCallback = new CallbackSemaphore();
     private final ContinueCallback continueCallback = new ContinueDelegate();
     // Whether the last statement was a function call
-    private boolean lastStatementFunctionCall = false;
-    private AstNode lastFunctionCall = null;
-    private boolean initialCall = true;
+    private CallFrame lastCallFrame = null;
 
     public void setJavascriptVm(final JavascriptVm vm) {
 	this.vm = vm;
@@ -72,26 +67,114 @@ public class SimpleDebugListener implements DebugEventListener {
 	return (statementAbsolutePosition >= functionAbsolutePosition && statementAbsolutePosition <= functionAbsoluteEndPosition);	
     }
     
+    private AstNode getCallFrameNode(final CallFrame frame) throws IOException {
+	if (frame == null) return null;
+	if (!frame.getScript().hasSource()) return null;
+	
+	final AstRoot source = parser.parse(frame.getScript().getSource());
+	final TextStreamPosition framePosition = frame.getStatementStartPosition();
+	final AstNode frameNode = parser.getFirstStatement(source , CallFrameUtil.calculateAbsolutePosition(frame.getScript().getSource(), framePosition.getLine() + 1, framePosition.getColumn() + 1));
+	
+	return frameNode;	
+    }
+    
+    private boolean hasDifferentFunctionParent(final AstNode node, final Script nodeScript, final AstNode otherNode, final Script otherNodeScript) {
+	assert(node != null);
+	assert(otherNode != null);
+	assert(nodeScript != null);
+	assert(otherNodeScript != null);
+	
+	if (!nodeScript.equals(otherNodeScript)) {
+	    final FunctionNode functionOfNode = node.getEnclosingFunction();
+		final FunctionNode functionOfOtherNode = otherNode.getEnclosingFunction();
+		if ((functionOfNode == null && functionOfOtherNode != null) || (functionOfNode != null && functionOfOtherNode == null)) return true;
+		else if (functionOfNode == null && functionOfOtherNode == null) return false;
+		
+		// True per definition; function parents both not null and the scripts differ
+		return true;
+	}
+	else {
+	    return hasDifferentFunctionParent(node, otherNode);
+	}
+    }
+    
+    private boolean hasDifferentFunctionParent(final AstNode node, final AstNode otherNode) {
+	assert(node != null);
+	assert(otherNode != null);
+	
+	final FunctionNode functionOfNode = node.getEnclosingFunction();
+	final FunctionNode functionOfOtherNode = otherNode.getEnclosingFunction();
+	if ((functionOfNode == null && functionOfOtherNode != null) || (functionOfNode != null && functionOfOtherNode == null)) return true;
+	else if (functionOfNode == null && functionOfOtherNode == null) return false;
+	
+	// Compare positions as equals does not work
+	return (functionOfNode.getAbsolutePosition() != functionOfOtherNode.getAbsolutePosition());
+    }
+    
+    private void addFunctionCallToMap(final AstNode callee, final String calleeScriptName, final AstNode childOfFunction, final String childOfFunctionScriptName) {
+	assert(callee != null);
+	assert(childOfFunction != null);	
+	
+	final FunctionNode functionNode = childOfFunction.getEnclosingFunction();
+	if (functionNode == null) return;
+
+	final int functionAbsoluteStartPosition = functionNode.getAbsolutePosition() + 1;
+	final int functionAbsoluteEndPosition = functionAbsoluteStartPosition + CallFrameUtil.getSensibleSource(functionNode).length() + 1;
+	
+	final CallGraphEntry functionEntry = new CallGraphEntry(childOfFunctionScriptName, functionNode.getLineno(), functionAbsoluteStartPosition, functionAbsoluteEndPosition);
+	Set<CallGraphEntry> functionCallsToFunction = functionsToFunctionCallsMap.get(functionEntry);
+
+	if (functionCallsToFunction == null || functionCallsToFunction.isEmpty())
+	    functionCallsToFunction = new HashSet<CallGraphEntry>();
+
+	final int calleeAbsoluteStartPosition = callee.getAbsolutePosition() + 1;
+	final int calleeAbsoluteEndPosition = calleeAbsoluteStartPosition + CallFrameUtil.getSensibleSource(functionNode).length() + 1;
+
+	final CallGraphEntry lastFunctionCallEntry = new CallGraphEntry(calleeScriptName, callee.getLineno(), calleeAbsoluteStartPosition, calleeAbsoluteEndPosition);
+	functionCallsToFunction.add(lastFunctionCallEntry);
+	functionsToFunctionCallsMap.put(functionEntry, functionCallsToFunction);
+	
+	logger.log(Level.INFO, "added function call to map");
+    }
+    
     private void handleMultipleCallFrames(final List<? extends CallFrame> callFrames, final DebugContext debugContext) throws IOException {
-	final CallFrame lastFrame = callFrames.get(0);
-	final Script lastFrameScript = lastFrame.getScript();
+	int i = 0;
+	for (CallFrame frame : callFrames) {
 
-	if (!lastFrameScript.hasSource()) {
-	    lastStatementFunctionCall = false;
-	    lastFunctionCall = null;
-	    return;
+	   System.out.println("Frame #" + (i++) + ": " + CallFrameUtil.getSensibleSource(getCallFrameNode(frame)) +  " (" + (frame.getStatementStartPosition().getLine() + 1) + ")");
 	}
-	final AstRoot lastSource = parser.parse(lastFrameScript.getSource());
-	final TextStreamPosition streamPosition = lastFrame.getStatementStartPosition();
-	final AstNode statement = parser.getFirstStatement(lastSource, CallFrameUtil.calculateAbsolutePosition(lastFrameScript.getSource(), streamPosition.getLine() + 1, streamPosition.getColumn() + 1));
-	
-	if (statement == null) {
-	    lastStatementFunctionCall = false;
-	    lastFunctionCall = null;
-	    return;	    
-	}
+	System.out.println("\n\n");
 
 	
+	AstNode previousNode = getCallFrameNode(callFrames.get(1));
+	if (previousNode != null && parser.isFunctionCall(previousNode)) {
+	    boolean functionCallAddedToMap = false;
+	    final AstNode currentNode = getCallFrameNode(callFrames.get(0));
+	    if (hasDifferentFunctionParent(previousNode, callFrames.get(1).getScript(), currentNode, callFrames.get(0).getScript())) {
+		addFunctionCallToMap(previousNode, callFrames.get(1).getScript().getName(), currentNode, callFrames.get(0).getScript().getName());
+		functionCallAddedToMap = true;
+	    }
+	    
+	    // We potentially miss the last native call with this method :)
+	    if (!functionCallAddedToMap) {
+		if (lastCallFrame != null && !lastCallFrame.equals(callFrames.get(1))) {
+		    // Due to StepIn continue the last call frame will be forgotten, thus if we are not in a new scope we certainly called a native function
+		    addNativeEntry(lastCallFrame.getScript().getName(), getCallFrameNode(lastCallFrame));
+		}
+		else {
+		    // Potential recursive.....
+		    
+		}
+	    }
+	    
+	    // TODO detect recursion
+	    
+	}
+	
+	// TODO: dont always fill this in
+	lastCallFrame = callFrames.get(0);
+
+	/*
 	// Add called
 	final FunctionNode currentEnclosingFunction = statement.getEnclosingFunction();
 	// TODO also check if its the same file... in addition to the position
@@ -101,7 +184,6 @@ public class SimpleDebugListener implements DebugEventListener {
 		
 	/*	System.out.print("new scope: " + currentEnclosingFunction.getName() + " ("
 			+ (currentEnclosingFunction.getLineno() + "," + functionAbsolutePosition + "," + functionAbsoluteEndPosition + ")"));
-	*/	
 		// Last statement was a function call and we are in a new scope
 	    // TODO insert Last statement entry.....
 		logger.log(Level.INFO, "Non native call");
@@ -116,33 +198,6 @@ public class SimpleDebugListener implements DebugEventListener {
 	    functionCallsToFunction.add(lastFunctionCallEntry);
 	    functionsToFunctionCallsMap.put(functionEntry, functionCallsToFunction);
 		logger.log(Level.INFO, "Added call to: " + parser.getFunctionCallTopExpressionNode(lastFunctionCall).getTarget().toString() + " from position: " + lastFunctionCallEntry.toString());
-	}
-	else if (lastStatementFunctionCall && lastEnclosingFunction.getAbsolutePosition() == currentEnclosingFunction.getAbsolutePosition()) {
-	    // if scope did not change on a new debug statement and we did call a function previously, its a native
-	    logger.log(Level.INFO, "Native detected");
-
-	    
-	    // native!
-	    addNativeEntry(lastFrameScript, statement);
-	}
-	else if (lastStatementFunctionCall) {
-	    logger.log(Level.INFO, "Special case!");
-	}
-	
-	// TODO: fix recursive check
-	/*if (lastStatementFunctionCall && isRecursive(statement)) {
-	    System.out.print(" recursive ");
-	}
-	*/
-	
-	if (statement == null || !parser.isFunctionCall(statement)) {    
-	    // TODO if not a function call, possibly add ourselves as called
-	    // function... find a smart checkz
-	    lastStatementFunctionCall = false;
-	    lastFunctionCall = null;
-	    logger.log(Level.INFO, "Skipping non function call");
-	    logger.log(Level.FINEST, "Skipping non function call (" + (statement != null ? statement.toSource() : "no source available") + ")");
-	    return;
 	}
 	
 	lastStatementFunctionCall = true;
@@ -160,7 +215,7 @@ public class SimpleDebugListener implements DebugEventListener {
 	TextStreamPosition calleeStreamPosition = callee.getStatementStartPosition();
 	AstNode calleeStatement = parser.getStatementByAbsolutePosition(source,
 		CallFrameUtil.calculateAbsolutePosition(calleeScript.getSource(), calleeStreamPosition.getLine() + 1, calleeStreamPosition.getColumn() + 1));
-
+*/
 	/*
 	if (parser.isFunctionCall(calleeStatement) && initialCall) {
 	    // We do not care about the entry point
@@ -171,6 +226,8 @@ public class SimpleDebugListener implements DebugEventListener {
 	
 	// In case its not the entry point (it should not be
 	// empty)
+	
+	/*
 	if (calleeStatement != null) {
 	    System.out.printf("\nCall frame #1: %s (%d,%d,%d)", calleeStatement instanceof FunctionNode ? ((FunctionNode) calleeStatement).getName()
 		    : CallFrameUtil.getSensibleSource(calleeStatement), calleeStatement.getLineno(), calleeStatement.getAbsolutePosition(), (calleeStatement
@@ -203,14 +260,27 @@ public class SimpleDebugListener implements DebugEventListener {
 		    + (wrappingFunction.getAbsolutePosition() + 1) + "," + (wrappingFunction.getAbsolutePosition() + 1 + wrappingFunction.getLength()) + ")";
 	    System.out.print(" - called by: " + scope.trim());
 	}
+	
+	*/
     }
+    
+    private void addNativeEntry(final String scriptName, final AstNode functionCall) {
+	CallGraphEntry nativeEntry = new CallGraphNativeEntry(parser.getFunctionCallTopExpressionNode(functionCall).getTarget().toSource());
+	logger.log(Level.INFO, "Native add: " + CallFrameUtil.getSensibleSource(lastFunctionCall));
+	Set<CallGraphEntry> functionCallsToFunction = functionsToFunctionCallsMap.get(nativeEntry);
+	if (functionCallsToFunction == null || functionCallsToFunction.isEmpty()) 
+		functionCallsToFunction = new HashSet<CallGraphEntry>();
+	final CallGraphEntry lastFunctionCallEntry = new CallGraphEntry(scriptName, functionCall.getLineno(), functionCall.getAbsolutePosition() + 1, functionCall.getAbsolutePosition() + CallFrameUtil.getSensibleSource(functionCall).length() + 1);
+	functionCallsToFunction.add(lastFunctionCallEntry);
+	functionsToFunctionCallsMap.put(nativeEntry, functionCallsToFunction);
+    }    
 
     private void addNativeEntry(final Script lastFrameScript, final AstNode statement) {
 	CallGraphEntry nativeEntry = new CallGraphNativeEntry(parser.getFunctionCallTopExpressionNode(lastFunctionCall).getTarget().toSource());
 	logger.log(Level.INFO, "Native add: " + CallFrameUtil.getSensibleSource(lastFunctionCall));
-	List<CallGraphEntry> functionCallsToFunction = functionsToFunctionCallsMap.get(nativeEntry);
+	Set<CallGraphEntry> functionCallsToFunction = functionsToFunctionCallsMap.get(nativeEntry);
 	if (functionCallsToFunction == null || functionCallsToFunction.isEmpty()) 
-		functionCallsToFunction = new ArrayList<CallGraphEntry>();
+		functionCallsToFunction = new HashSet<CallGraphEntry>();
 	final CallGraphEntry lastFunctionCallEntry = new CallGraphEntry(lastFrameScript.getName(), statement.getLineno(), statement.getAbsolutePosition() + 1, statement.getAbsolutePosition() + CallFrameUtil.getSensibleSource(statement).length() + 1);
 	functionCallsToFunction.add(lastFunctionCallEntry);
 	functionsToFunctionCallsMap.put(nativeEntry, functionCallsToFunction);

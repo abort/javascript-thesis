@@ -78,6 +78,13 @@ public class SimpleDebugListener implements DebugEventListener {
 	return frameNode;	
     }
     
+    private String getCallFrameSource(final CallFrame frame) throws IOException {
+	if (frame == null) return null;
+	if (!frame.getScript().hasSource()) return null;
+	
+	return frame.getScript().getSource();
+    }
+    
     private boolean hasDifferentFunctionParent(final AstNode node, final Script nodeScript, final AstNode otherNode, final Script otherNodeScript) {
 	assert(node != null);
 	assert(otherNode != null);
@@ -111,7 +118,7 @@ public class SimpleDebugListener implements DebugEventListener {
 	return (functionOfNode.getAbsolutePosition() != functionOfOtherNode.getAbsolutePosition());
     }
     
-    private void addFunctionCallToMap(final AstNode callee, final String calleeScriptName, final AstNode childOfFunction, final String childOfFunctionScriptName) {
+    private void addFunctionCallToMap(final String source, final AstNode callee, final String calleeScriptName, final AstNode childOfFunction, final String childOfFunctionScriptName) {
 	assert(callee != null);
 	assert(childOfFunction != null);	
 	
@@ -128,14 +135,16 @@ public class SimpleDebugListener implements DebugEventListener {
 	    functionCallsToFunction = new HashSet<CallGraphEntry>();
 
 	final int calleeAbsoluteStartPosition = callee.getAbsolutePosition() + 1;
-	final int calleeAbsoluteEndPosition = calleeAbsoluteStartPosition + CallFrameUtil.getSensibleSource(functionNode).length() + 1;
+	final int calleeAbsoluteEndPosition = calleeAbsoluteStartPosition + CallFrameUtil.getSensibleSource(callee).length() + 1;
 
-	final CallGraphEntry lastFunctionCallEntry = new CallGraphEntry(calleeScriptName, callee.getLineno(), calleeAbsoluteStartPosition, calleeAbsoluteEndPosition);
+	final CallGraphEntry lastFunctionCallEntry = new CallGraphEntry(calleeScriptName, CallFrameUtil.getLineNumberByAbsolutePosition(source, calleeAbsoluteStartPosition), calleeAbsoluteStartPosition, calleeAbsoluteEndPosition);
 	functionCallsToFunction.add(lastFunctionCallEntry);
 	functionsToFunctionCallsMap.put(functionEntry, functionCallsToFunction);
 	
 	logger.log(Level.INFO, "added function call to map");
     }
+    
+    
     
     private void handleMultipleCallFrames(final List<? extends CallFrame> callFrames, final DebugContext debugContext) throws IOException {
 	int i = 0;
@@ -143,36 +152,52 @@ public class SimpleDebugListener implements DebugEventListener {
 
 	   System.out.println("Frame #" + (i++) + ": " + CallFrameUtil.getSensibleSource(getCallFrameNode(frame)) +  " (" + (frame.getStatementStartPosition().getLine() + 1) + ")");
 	}
-	System.out.println("\n\n");
 
 	
-	AstNode previousNode = getCallFrameNode(callFrames.get(1));
+	final AstNode currentNode = getCallFrameNode(callFrames.get(0));
+	
+	boolean functionCallAddedToMap = false;
+	final AstNode previousNode = getCallFrameNode(callFrames.get(1));
 	if (previousNode != null && parser.isFunctionCall(previousNode)) {
-	    boolean functionCallAddedToMap = false;
-	    final AstNode currentNode = getCallFrameNode(callFrames.get(0));
+	    final String calleeSource = getCallFrameSource(callFrames.get(1));
 	    if (hasDifferentFunctionParent(previousNode, callFrames.get(1).getScript(), currentNode, callFrames.get(0).getScript())) {
-		addFunctionCallToMap(previousNode, callFrames.get(1).getScript().getName(), currentNode, callFrames.get(0).getScript().getName());
+		addFunctionCallToMap(calleeSource, previousNode, callFrames.get(1).getScript().getName(), currentNode, callFrames.get(0).getScript().getName());
 		functionCallAddedToMap = true;
-	    }
-	    
-	    // We potentially miss the last native call with this method :)
-	    if (!functionCallAddedToMap) {
-		if (lastCallFrame != null && !lastCallFrame.equals(callFrames.get(1))) {
-		    // Due to StepIn continue the last call frame will be forgotten, thus if we are not in a new scope we certainly called a native function
-		    addNativeEntry(lastCallFrame.getScript().getName(), getCallFrameNode(lastCallFrame));
-		}
-		else {
-		    // Potential recursive.....
-		    
-		}
-	    }
-	    
+	    }	    
 	    // TODO detect recursion
 	    
 	}
 	
+	
+	// The previous call frame will not equal the last 'call' frame due to it being lost with stepping in
+	if (lastCallFrame != null && !lastCallFrame.equals(callFrames.get(1))) {
+	    final AstNode lastCallFrameNode = getCallFrameNode(lastCallFrame);
+	    if (!hasDifferentFunctionParent(lastCallFrameNode, lastCallFrame.getScript(), currentNode, callFrames.get(0).getScript())) {
+		
+		
+		System.out.println("potential native!" + getCallFrameNode(lastCallFrame).toSource());
+	    
+		    // Due to StepIn continue the last call frame will be forgotten,
+		    // thus if we are not in a new scope we certainly called a
+		    // native function
+		    addNativeEntry(lastCallFrame.getScript().getName(), getCallFrameNode(lastCallFrame));		
+	    }  
+	} else {
+	    // Potential recursive.....
+
+	}
+
 	// TODO: dont always fill this in
-	lastCallFrame = callFrames.get(0);
+	final AstNode lastCallFrameNode = getCallFrameNode(callFrames.get(0));
+	if (lastCallFrameNode != null && parser.isFunctionCall(lastCallFrameNode)) {
+	    lastCallFrame = callFrames.get(0);
+	}
+	else {
+	    lastCallFrame = null;
+	}
+	
+	
+	System.out.println("\n\n");
 
 	/*
 	// Add called
@@ -266,7 +291,7 @@ public class SimpleDebugListener implements DebugEventListener {
     
     private void addNativeEntry(final String scriptName, final AstNode functionCall) {
 	CallGraphEntry nativeEntry = new CallGraphNativeEntry(parser.getFunctionCallTopExpressionNode(functionCall).getTarget().toSource());
-	logger.log(Level.INFO, "Native add: " + CallFrameUtil.getSensibleSource(lastFunctionCall));
+	logger.log(Level.INFO, "Native add: " + CallFrameUtil.getSensibleSource(functionCall));
 	Set<CallGraphEntry> functionCallsToFunction = functionsToFunctionCallsMap.get(nativeEntry);
 	if (functionCallsToFunction == null || functionCallsToFunction.isEmpty()) 
 		functionCallsToFunction = new HashSet<CallGraphEntry>();
@@ -274,7 +299,7 @@ public class SimpleDebugListener implements DebugEventListener {
 	functionCallsToFunction.add(lastFunctionCallEntry);
 	functionsToFunctionCallsMap.put(nativeEntry, functionCallsToFunction);
     }    
-
+/*
     private void addNativeEntry(final Script lastFrameScript, final AstNode statement) {
 	CallGraphEntry nativeEntry = new CallGraphNativeEntry(parser.getFunctionCallTopExpressionNode(lastFunctionCall).getTarget().toSource());
 	logger.log(Level.INFO, "Native add: " + CallFrameUtil.getSensibleSource(lastFunctionCall));
@@ -285,7 +310,7 @@ public class SimpleDebugListener implements DebugEventListener {
 	functionCallsToFunction.add(lastFunctionCallEntry);
 	functionsToFunctionCallsMap.put(nativeEntry, functionCallsToFunction);
     }
-
+*/
     public void printDynamicCallGraph() {
 	for (CallGraphEntry function : functionsToFunctionCallsMap.keySet()) {
 	    for (CallGraphEntry functionCall : functionsToFunctionCallsMap.get(function)) {

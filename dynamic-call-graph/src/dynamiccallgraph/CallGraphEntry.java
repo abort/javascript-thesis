@@ -69,6 +69,6 @@ public class CallGraphEntry {
 
     @Override
     public String toString() {
-	return String.format("%s@%d:%d-%d", filename == null ? "n/a" : filename, line, absolutePositionStart, absolutePositionEnd);
+	return String.format("%s@%d:%d-%d", filename == null ? "dynamic" : filename, line, absolutePositionStart, absolutePositionEnd);
     }    
 }

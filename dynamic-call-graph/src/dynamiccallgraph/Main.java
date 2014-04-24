@@ -1,11 +1,12 @@
 package dynamiccallgraph;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.InetSocketAddress;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 import org.chromium.sdk.Breakpoint;
 import org.chromium.sdk.CallbackSemaphore;
@@ -52,9 +53,20 @@ public class Main {
         	}
 	    }
 	}
-	
-	((SimpleDebugListener) listener.getDebugEventListener()).setJavascriptVm(vm);    
-	((SimpleDebugListener)listener.getDebugEventListener()).getSemaphore().tryAcquire(5, TimeUnit.HOURS);
+
+        final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+	while (true) {
+	   final String input = reader.readLine();
+	   if (input.equals("print")) {
+	       ((SimpleDebugListener)listener.getDebugEventListener()).printDynamicCallGraph();
+	   }
+	   else if (input.equals("count") || input.equals("amount")) {
+	       System.out.println("dynamic call graph size: " + ((SimpleDebugListener)listener.getDebugEventListener()).getDynamicCallGraphSize());
+	   }
+	   else if (input.equals("nonnatives")) {
+	       System.out.println("dynamic call graph size: " + ((SimpleDebugListener)listener.getDebugEventListener()).getDynamicCallGraphNonNativeSize());	       
+	   }
+	}
     }
 
     private Breakpoint.Target getBreakpointTarget(final Script script) {

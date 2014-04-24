@@ -5,14 +5,24 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.InetSocketAddress;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
 
 import org.chromium.sdk.Breakpoint;
+import org.chromium.sdk.CallFrame;
 import org.chromium.sdk.CallbackSemaphore;
+import org.chromium.sdk.DebugContext.ContinueCallback;
+import org.chromium.sdk.DebugContext.StepAction;
 import org.chromium.sdk.JavascriptVm;
 import org.chromium.sdk.JavascriptVm.BreakpointCallback;
 import org.chromium.sdk.JavascriptVm.ScriptsCallback;
+import org.chromium.sdk.JsEvaluateContext;
+import org.chromium.sdk.JsEvaluateContext.EvaluateCallback;
+import org.chromium.sdk.JsVariable;
 import org.chromium.sdk.Script;
 import org.chromium.sdk.SyncCallback;
 import org.chromium.sdk.TabDebugEventListener;
@@ -30,6 +40,8 @@ public class Main {
     private static final String CHROME_DEBUGGING_HOST = "localhost";
     private static final String NEW_LINE_CHARACTER = "\n";
   
+    private static final String JAVASCRIPT_NATIVE_FUNCTION_CHECK = "";
+    
     private final SyncCallback synchronizationCallback = new CallbackSemaphore();
 
     public static void main(String[] args) throws Exception {
@@ -43,6 +55,15 @@ public class Main {
 	final WipBrowserTab tab = browser.getTabs(backend).get(0).attach(listener);
 	final JavascriptVm vm = tab.getJavascriptVm();
 	final BreakpointCallback bpCallback = new BreakPointDelegate();
+        final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        final EvaluateCallback evaluationCallback = new JavascriptEvaluationDelegate();
+
+
+	((SimpleDebugListener)listener.getDebugEventListener()).setJavascriptVm(vm);
+	
+	vm.suspend(SuspendDelegate.getInstance());
+	((SimpleDebugListener)listener.getDebugEventListener()).setStarted(true);
+	System.out.println("Starting debugging");
 
 	for (Script script : getJavaScripts(vm)) {
 	    final Breakpoint.Target target = getBreakpointTarget(script);
@@ -54,19 +75,68 @@ public class Main {
 	    }
 	}
 
-        final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-	while (true) {
-	   final String input = reader.readLine();
-	   if (input.equals("print")) {
-	       ((SimpleDebugListener)listener.getDebugEventListener()).printDynamicCallGraph();
-	   }
-	   else if (input.equals("count") || input.equals("amount")) {
-	       System.out.println("dynamic call graph size: " + ((SimpleDebugListener)listener.getDebugEventListener()).getDynamicCallGraphSize());
-	   }
-	   else if (input.equals("nonnatives")) {
-	       System.out.println("dynamic call graph size: " + ((SimpleDebugListener)listener.getDebugEventListener()).getDynamicCallGraphNonNativeSize());	       
-	   }
+	final SimpleDebugListener simpleDebugger = ((SimpleDebugListener) listener.getDebugEventListener());
+	final Semaphore debuggerSemaphore = simpleDebugger.getSemaphore();
+	final ContinueCallback continueCallback = new ContinueDelegate();
+	
+	Thread inputThread = new Thread(new Runnable() {
+
+	    @Override
+	    public void run() {
+		try {
+		    while (true) {
+			final String input = reader.readLine();
+			if (input.equals("print")) {
+			    detectAndAddNativeFunctionCalls(evaluationCallback, simpleDebugger);
+			    simpleDebugger.printDynamicCallGraph();
+			} else if (input.equals("count") || input.equals("amount")) {
+			    detectAndAddNativeFunctionCalls(evaluationCallback, simpleDebugger);
+			    System.out.println("dynamic call graph size: " + ((SimpleDebugListener) listener.getDebugEventListener()).getDynamicCallGraphSize());
+			} else if (input.equals("clear")) {
+			    simpleDebugger.clearCallGraph();
+			}
+		    }
+		} catch (IOException e) {
+
+		}
+	    }
+	});
+	inputThread.start();
+
+	while (simpleDebugger.getStarted()) {
+	    debuggerSemaphore.tryAcquire(1, TimeUnit.DAYS);
+	    simpleDebugger.getSavedDebugContext().continueVm(StepAction.IN, 0, continueCallback, synchronizationCallback);
 	}
+    }
+
+    private void detectAndAddNativeFunctionCalls(final EvaluateCallback evaluationCallback, final SimpleDebugListener simpleDebugger) {
+	final JsEvaluateContext evaluationContext = simpleDebugger.getSavedDebugContext().getGlobalEvaluateContext();
+	final Set<CallFrameNode> callsDone = simpleDebugger.getFunctionCallsDone();
+	for (CallFrameNode callFrame : callsDone) {
+	    // We processed it
+//	    callsDone.remove(callFrame);
+	    
+	    System.out.println("Potential native: " + CallFrameUtil.getSensibleSource(callFrame.getNode()));
+	    
+	    final String callTarget = ASTParser.getFunctionCallTopExpressionNode(callFrame.getNode()).getTarget().toSource();
+	    if (callTarget == null || callTarget.equals("")) continue;
+
+	    evaluationContext.evaluateSync(getJavascriptNativeFunctionCheckCode(callTarget), null, evaluationCallback);
+	    JsVariable result = ((JavascriptEvaluationDelegate) evaluationCallback).getEvaluationResult();
+	    if (extractBooleanFromJavascriptResult(result)) {
+		simpleDebugger.addNativeEntry(callFrame.getScriptName(), callFrame.getNode());
+	    }
+	    else {
+		System.out.println("Call frame was not native, probably already processed (" + CallFrameUtil.getSensibleSource(callFrame.getNode()) + ")");
+	    }
+	}
+	
+	callsDone.clear();
+    }
+    
+    private boolean extractBooleanFromJavascriptResult(final JsVariable result) {
+	if (result == null || result.getValue() == null) return false;
+	return Boolean.parseBoolean(result.getValue().getValueString());
     }
 
     private Breakpoint.Target getBreakpointTarget(final Script script) {
@@ -97,5 +167,11 @@ public class Main {
 	});
 
 	return scripts;
+    }
+    
+    private String getJavascriptNativeFunctionCheckCode(final String functionName) {
+	return String.format("!!%s && (typeof %s).toLowerCase() == 'function' && (%s === Function.prototype ||"
+		+ " /^\\s*function\\s*(\\b[a-z$_][a-z0-9$_]*\\b)*\\s*\\((|([a-z$_][a-z0-9$_]*)(\\s*,[a-z$_][a-z0-9$_]*)*)\\)\\s*{\\s*\\[native code\\]\\s*}\\s*$/i"
+		+ ".test(String(%s)));", functionName, functionName, functionName, functionName);	
     }
 }

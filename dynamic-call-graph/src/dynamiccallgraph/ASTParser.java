@@ -39,7 +39,7 @@ public class ASTParser {
 	return false;
     }
 
-    public FunctionCall getFunctionCallTopExpressionNode(final AstNode root) {
+    public static FunctionCall getFunctionCallTopExpressionNode(final AstNode root) {
 	if (root instanceof FunctionCall)
 	    return (FunctionCall) root;
 
@@ -52,6 +52,27 @@ public class ASTParser {
 	}
 
 	return null;
+    }
+    
+    public List<AstNode> getFunctionCallsInScope(final AstNode root, final AstNode enclosingFunction) {
+	final List<AstNode> nodes = new ArrayList<AstNode>();
+	if (enclosingFunction == null) return nodes; // we only wanted scoped ones
+
+	root.visit(new NodeVisitor() {
+
+	    @Override
+	    public boolean visit(AstNode node) {
+		if (node instanceof FunctionCall) {
+		    final AstNode nodeEnclosingFunction = node.getEnclosingFunction();
+		    if (nodeEnclosingFunction != null && nodeEnclosingFunction.getAbsolutePosition() == enclosingFunction.getAbsolutePosition()) {
+			nodes.add(node);
+		    }
+		}
+
+		return true;
+	    }
+	});
+	return nodes;	
     }
 
     public List<AstNode> getFunctionCalls(final AstNode root) {
@@ -101,7 +122,7 @@ public class ASTParser {
 
 	    @Override
 	    public boolean visit(AstNode node) {
-		final int nodePosition = node.getAbsolutePosition() + 1; // 1-based
+		final int nodePosition = node.getAbsolutePosition(); // 1-based
 		if (absolutePosition >= nodePosition && absolutePosition <= nodePosition + node.getLength()) {
 		    // System.out.println("Found node by abs position");
 		    nodes[0] = node;
@@ -113,6 +134,29 @@ public class ASTParser {
 	});
 	return nodes[0];
     }
+    
+    public AstNode getAccurateFunctionCall(final AstRoot root, final int absolutePosition) {
+	final AstNode[] retval = new AstNode[]{ null };
+
+	root.visit(new NodeVisitor() {
+	    
+	    @Override
+	    public boolean visit(AstNode node) {
+		final int nodeStartPosition = node.getAbsolutePosition();
+		final int nodeEndPosition = nodeStartPosition + node.getLength(); 
+		if (absolutePosition >= nodeStartPosition && absolutePosition <= nodeEndPosition) {
+		    if (isFunctionCall(node))
+			retval[0] = node;
+		    return true; // keep traversing for the innermost function call
+		}
+
+		return true;
+	    }
+	});
+	
+	return retval[0];
+    }
+    
 
     public AstNode getFirstStatement(final AstRoot root, final int absolutePosition) {
 	final AstNode[] retval = new AstNode[]{ null };

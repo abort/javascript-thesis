@@ -25,6 +25,8 @@ import org.mozilla.javascript.ast.AstNode;
 import org.mozilla.javascript.ast.AstRoot;
 import org.mozilla.javascript.ast.FunctionNode;
 
+
+// TODO: only have breakpoints on function calls and continue after we are done stepping in
 public class SimpleDebugListener implements DebugEventListener {
     private static final Logger logger = Logger.getLogger(SimpleDebugListener.class.getName());
 
@@ -80,8 +82,9 @@ public class SimpleDebugListener implements DebugEventListener {
 	// Store function calls to process later (see if they are natives)
 	if (currentNode != null && parser.isFunctionCall(currentNode)) {
 	    // Check if the callee is already in the map (this is to prevent the last call frame to add a function call again, even if its already processed, this occurs due to step in)
-	    if (!isCalleeAlreadyInMap(currentNode))
-		functionCallsDone.add(new CallFrameNode(callFrame, callFrame.getScript().getName(), currentNode));
+	    final AstNode functionCallNode = ASTParser.getFunctionCallTopExpressionNode(currentNode);
+	    if (!isCalleeAlreadyInMap(functionCallNode))
+		functionCallsDone.add(new CallFrameNode(callFrame, callFrame.getScript().getName(), functionCallNode));
 	}
     }
 

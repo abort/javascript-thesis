@@ -76,6 +76,7 @@ public class Main {
 	final SimpleDebugListener simpleDebugger = ((SimpleDebugListener) listener.getDebugEventListener());
 	final Semaphore debuggerSemaphore = simpleDebugger.getSemaphore();
 	final ContinueCallback continueCallback = new ContinueDelegate();
+	debuggerSemaphore.release();
 	
 	Thread inputThread = new Thread(new Runnable() {
 

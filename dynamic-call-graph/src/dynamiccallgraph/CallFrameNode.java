@@ -1,5 +1,6 @@
 package dynamiccallgraph;
 
+import org.apache.commons.lang3.StringUtils;
 import org.chromium.sdk.CallFrame;
 import org.chromium.sdk.TextStreamPosition;
 import org.mozilla.javascript.ast.AstNode;
@@ -53,7 +54,7 @@ public class CallFrameNode {
     public boolean equals(Object obj) {
 	if (!(obj instanceof CallFrameNode)) return false;
 	CallFrameNode otherCallFrameNode = (CallFrameNode)obj;
-	if (!scriptName.equals(otherCallFrameNode.getScriptName())) return false;
+	if (!StringUtils.equals(scriptName, otherCallFrameNode.getScriptName())) return false;
 	if (otherCallFrameNode.getNode().getAbsolutePosition() == getNode().getAbsolutePosition()) {
 	    if (!isStreamPositionEqual(otherCallFrameNode)) return false;
 	    

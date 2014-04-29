@@ -85,11 +85,13 @@ public class SimpleDebugListener implements DebugEventListener {
 	final AstNode currentNode = getCallFrameNode(callFrame);
 	
 	// Store function calls to process later (see if they are natives)
-	if (currentNode != null && parser.isFunctionCall(currentNode)) {
+	if (currentNode != null && parser.isFunctionCall(currentNode) &&  !(new CallFrameNode(callFrame, callFrame.getScript().getName(), currentNode).equals(lastCalleeAdded))) {
 	    // Check if the callee is already in the map (this is to prevent the last call frame to add a function call again, even if its already processed, this occurs due to step in)
 	    final AstNode functionCallNode = ASTParser.getFunctionCallTopExpressionNode(currentNode);
-	    if (!isCalleeAlreadyInMap(callFrame.getScript().getName(), functionCallNode))
+	    if (!isCalleeAlreadyInMap(callFrame.getScript().getName(), functionCallNode)) {
 		functionCallsDone.add(new CallFrameNode(callFrame, callFrame.getScript().getName(), functionCallNode));
+		lastCalleeAdded = new CallFrameNode(callFrame, callFrame.getScript().getName(), currentNode);
+	    }
 	}
     }
 

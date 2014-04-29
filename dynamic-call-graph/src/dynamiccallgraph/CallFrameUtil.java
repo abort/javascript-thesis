@@ -1,5 +1,6 @@
 package dynamiccallgraph;
 
+import org.apache.commons.lang3.StringUtils;
 import org.chromium.sdk.CallFrame;
 import org.mozilla.javascript.ast.AstNode;
 
@@ -12,20 +13,25 @@ public class CallFrameUtil {
     }
 
     public static int calculateAbsolutePosition(final String source, final int line, final int column) {
+	StringBuilder builder = new StringBuilder();
 	int abs = 0;
 	int currentLine = 0;
 	final String[] splittedSource = source.split(NEW_LINE_CHARACTER_STRING);
 	for (String sourceLine : splittedSource) {
+
 	    currentLine++;
 	    if (currentLine == line) {
-		abs += column;
+		// abs += column - 1;
+		builder.append(sourceLine.substring(0, column - 1));
 		break;
 	    }
+	    builder.append(sourceLine);
+	    builder.append('\n');
 	    abs += sourceLine.length();
-	    abs++; // for the new line char
 	}
+	
 
-	return (abs > 0 ? abs - 1 : abs);
+	return builder.length();
     }
     
     public static int getLineNumberByAbsolutePosition(final String source, final int absolutePosition) {
@@ -46,9 +52,9 @@ public class CallFrameUtil {
 	String source = node.toSource();
 	if (source == null) return "";
 	
-	source = source.trim();
+	source = StringUtils.strip(source);
 	while (source.endsWith(NEW_LINE_CHARACTER_STRING))
 	    source = source.substring(0, source.length() - 2);
-	return source;
+	return StringUtils.strip(source);
     }
 }

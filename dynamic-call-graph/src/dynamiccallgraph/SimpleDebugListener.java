@@ -23,6 +23,7 @@ import org.chromium.sdk.SyncCallback;
 import org.chromium.sdk.TextStreamPosition;
 import org.mozilla.javascript.ast.AstNode;
 import org.mozilla.javascript.ast.AstRoot;
+import org.mozilla.javascript.ast.Block;
 import org.mozilla.javascript.ast.FunctionNode;
 
 
@@ -37,6 +38,9 @@ public class SimpleDebugListener implements DebugEventListener {
     private final SyncCallback synchronizationCallback = new CallbackSemaphore();
     private JavascriptVm vm = null;
     private boolean started = false;
+    
+    private Set<FunctionCallNode> processedFunctionCalls = new HashSet<FunctionCallNode>();
+    private CallFrameNode lastCalleeAdded = null; // prevent double add of functions
     
     // Function calls done
     private final Set<CallFrameNode> functionCallsDone = new HashSet<CallFrameNode>();
@@ -56,13 +60,14 @@ public class SimpleDebugListener implements DebugEventListener {
 	functionsToFunctionCallsMap.clear();
     }
     
-    private boolean isCalleeAlreadyInMap(final AstNode node) {
+    // TODO the smallest expression at a position is always evaluated first (due to chaining), we can use this heuristic 
+    private boolean isCalleeAlreadyInMap(final String scriptName, final AstNode node) {
 	assert(node != null);
 	for (Entry<CallGraphEntry, Set<CallGraphEntry>> functionToCallees : functionsToFunctionCallsMap.entrySet()) {
 	    final Set<CallGraphEntry> callees = functionToCallees.getValue();
 	    for (CallGraphEntry callee : callees) {
 		// It already contains a similar callee node
-		if (callee.equals(node)) {
+		if (callee.equals(createCallGraphFunctionCallEntry(scriptName, node))) {
 		    logger.log(Level.INFO, "callee already found in function call map (" + CallFrameUtil.getSensibleSource(node) + ")");
 		    return true;
 		}
@@ -78,12 +83,12 @@ public class SimpleDebugListener implements DebugEventListener {
     
     private void handleInitialCallFrame(final CallFrame callFrame, final DebugContext debugContext) throws IOException {
 	final AstNode currentNode = getCallFrameNode(callFrame);
-
+	
 	// Store function calls to process later (see if they are natives)
 	if (currentNode != null && parser.isFunctionCall(currentNode)) {
 	    // Check if the callee is already in the map (this is to prevent the last call frame to add a function call again, even if its already processed, this occurs due to step in)
 	    final AstNode functionCallNode = ASTParser.getFunctionCallTopExpressionNode(currentNode);
-	    if (!isCalleeAlreadyInMap(functionCallNode))
+	    if (!isCalleeAlreadyInMap(callFrame.getScript().getName(), functionCallNode))
 		functionCallsDone.add(new CallFrameNode(callFrame, callFrame.getScript().getName(), functionCallNode));
 	}
     }
@@ -94,7 +99,14 @@ public class SimpleDebugListener implements DebugEventListener {
 
 	final AstRoot source = parser.parse(frame.getScript().getSource());
 	final TextStreamPosition framePosition = frame.getStatementStartPosition();
-	final AstNode frameNode = parser.getStatementByAbsolutePosition(source , CallFrameUtil.calculateAbsolutePosition(frame.getScript().getSource(), framePosition.getLine() + 1, framePosition.getColumn() + 1));
+	
+//	System.out.println("looking for : " + (framePosition.getLine() + 1) + " column: " + (framePosition.getColumn() + 1));
+	AstNode frameNode = parser.getStatementByAbsolutePosition(source, CallFrameUtil.calculateAbsolutePosition(frame.getScript().getSource(), framePosition.getLine() + 1, framePosition.getColumn() + 1));
+	if (frameNode instanceof Block) {
+	    frameNode = (AstNode)((Block)frameNode).getFirstChild();
+	}
+	
+	// TODO: fix
 	//final AstNode frameNode = parser.getFirstStatement(source , CallFrameUtil.calculateAbsolutePosition(frame.getScript().getSource(), framePosition.getLine() + 1, framePosition.getColumn() + 1));
 	return frameNode;	
     }
@@ -105,8 +117,9 @@ public class SimpleDebugListener implements DebugEventListener {
 
 	final AstRoot source = parser.parse(frame.getScript().getSource());
 	final TextStreamPosition framePosition = frame.getStatementStartPosition();
-	final AstNode frameNode = parser.getAccurateFunctionCall(source , CallFrameUtil.calculateAbsolutePosition(frame.getScript().getSource(), framePosition.getLine() + 1, framePosition.getColumn() + 1));
+	final AstNode frameNode = parser.getAccurateFunctionCall(source, CallFrameUtil.calculateAbsolutePosition(frame.getScript().getSource(), framePosition.getLine() + 1, framePosition.getColumn() + 1), framePosition.getLine() + 1, processedFunctionCalls);
 	
+	// if (frameNode != null) System.out.println("Callee: " + frameNode.toSource());
 	return frameNode;	
     }
     
@@ -126,10 +139,11 @@ public class SimpleDebugListener implements DebugEventListener {
 	
 	if (!nodeScript.equals(otherNodeScript)) {
 	    final FunctionNode functionOfNode = node.getEnclosingFunction();
-		final FunctionNode functionOfOtherNode = otherNode.getEnclosingFunction();
-		if ((functionOfNode == null && functionOfOtherNode != null) || (functionOfNode != null && functionOfOtherNode == null)) return true;
-		else if (functionOfNode == null && functionOfOtherNode == null) return false;
-		
+	    final FunctionNode functionOfOtherNode = otherNode.getEnclosingFunction();
+	    if ((functionOfNode == null && functionOfOtherNode != null) || (functionOfNode != null && functionOfOtherNode == null))
+		return true;
+	    else if (functionOfNode == null && functionOfOtherNode == null)
+		return false;
 		// True per definition; function parents both not null and the scripts differ
 		return true;
 	}
@@ -148,7 +162,8 @@ public class SimpleDebugListener implements DebugEventListener {
 	else if (functionOfNode == null && functionOfOtherNode == null) return false;
 	
 	// Compare positions as equals does not work
-	return (functionOfNode.getAbsolutePosition() != functionOfOtherNode.getAbsolutePosition());
+	return (functionOfNode.getAbsolutePosition() != functionOfOtherNode.getAbsolutePosition() &&
+		functionOfNode.getEncodedSourceEnd() != functionOfOtherNode.getEncodedSourceEnd());
     }
     
     private String getFilename(final String scriptName) {
@@ -165,8 +180,9 @@ public class SimpleDebugListener implements DebugEventListener {
 	final FunctionNode functionNode = childOfFunction.getEnclosingFunction();
 	if (functionNode == null) return;
 
-	final int functionAbsoluteStartPosition = functionNode.getAbsolutePosition();
-	final int functionAbsoluteEndPosition = functionAbsoluteStartPosition + CallFrameUtil.getSensibleSource(functionNode).length();
+	final int functionAbsoluteStartPosition = functionNode.getEncodedSourceStart();	
+	final int functionAbsoluteEndPosition = functionNode.getEncodedSourceEnd(); //functionAbsoluteStartPosition + CallFrameUtil.getSensibleSource(functionNode).length() - 1;
+
 	
 	final CallGraphEntry functionEntry = new CallGraphEntry(getFilename(childOfFunctionScriptName), functionNode.getBaseLineno(), functionAbsoluteStartPosition, functionAbsoluteEndPosition);
 	Set<CallGraphEntry> functionCallsToFunction = functionsToFunctionCallsMap.get(functionEntry);
@@ -176,32 +192,45 @@ public class SimpleDebugListener implements DebugEventListener {
 
 	final int calleeAbsoluteStartPosition = callee.getAbsolutePosition();
 	final int calleeAbsoluteEndPosition = calleeAbsoluteStartPosition + CallFrameUtil.getSensibleSource(callee).length();
+	
+	processedFunctionCalls.add(new FunctionCallNode(callee));
 
+	// System.out.println("Add: " + callee.toSource());
+	
 	final CallGraphEntry lastFunctionCallEntry = new CallGraphEntry(getFilename(calleeScriptName), CallFrameUtil.getLineNumberByAbsolutePosition(calleeSource, calleeAbsoluteStartPosition), calleeAbsoluteStartPosition, calleeAbsoluteEndPosition);
 	functionCallsToFunction.add(lastFunctionCallEntry);
 	functionsToFunctionCallsMap.put(functionEntry, functionCallsToFunction);
 	
-	logger.log(Level.INFO, "added function call to map");
+	logger.log(Level.INFO, "added function call to map (from " + CallFrameUtil.getLineNumberByAbsolutePosition(calleeSource, calleeAbsoluteStartPosition) + " to " + functionEntry.getLine());
+	
+	System.out.println("function call: " + callee.toSource());
     }
     
     private void handleMultipleCallFrames(final List<? extends CallFrame> callFrames, final DebugContext debugContext) throws IOException {	
 	final AstNode currentNode = getCallFrameNode(callFrames.get(0));
 	final AstNode previousNode = getCalleeFrameNode(callFrames.get(1));
-	
+
 	boolean removedLastFunctionCall = false;
-	if (previousNode != null && parser.isFunctionCall(previousNode)) {
+	final String calleeScriptName = callFrames.get(1).getScript().getName();
+	if (previousNode != null) System.out.println("previous node: " + previousNode.toSource());
+	if (previousNode != null && parser.isFunctionCall(previousNode) && !(new CallFrameNode(callFrames.get(1), calleeScriptName, getCallFrameNode(callFrames.get(1))).equals(lastCalleeAdded))) {
 	    final String calleeSource = getCallFrameSource(callFrames.get(1));
+	    System.out.println("Check for different parents");
 	    if (hasDifferentFunctionParent(previousNode, callFrames.get(1).getScript(), currentNode, callFrames.get(0).getScript())) {
+		System.out.println("diff parents: " + CallFrameUtil.getSensibleSource(currentNode) + " and " + CallFrameUtil.getSensibleSource(previousNode));
 		addFunctionCallToMap(calleeSource, previousNode, callFrames.get(1).getScript().getName(), callFrames.get(0).getScript().getSource(), currentNode, callFrames.get(0).getScript().getName());
 		removedLastFunctionCall = functionCallsDone.remove(new CallFrameNode(callFrames.get(1), callFrames.get(1).getScript().getName(), previousNode));
+		lastCalleeAdded = new CallFrameNode(callFrames.get(1), calleeScriptName, getCallFrameNode(callFrames.get(1)));
+		processedFunctionCalls.add(new FunctionCallNode(previousNode));
 	    }
 
 	    // Same file, last function call is not removed, the previous frame in the stack is a function call and that function call has the same enclosing function (same scope) -> recursion
 	    // This does not match on native functions because they are removed from the call stack as previous frame, due to not being the previous call in step in
 	    if (!removedLastFunctionCall && callFrames.get(0).getScript().getId().equals(callFrames.get(1).getScript().getId()) && !hasDifferentFunctionParent(currentNode, previousNode)) {
 		System.out.println("Either recursive or native: " + CallFrameUtil.getSensibleSource(previousNode));
-		addFunctionCallToMap(calleeSource, previousNode, callFrames.get(1).getScript().getName(), callFrames.get(0).getScript().getSource(), currentNode, callFrames.get(0).getScript().getName());
+		addFunctionCallToMap(calleeSource, ASTParser.getFunctionCallTopExpressionNode(previousNode), callFrames.get(1).getScript().getName(), callFrames.get(0).getScript().getSource(), currentNode, callFrames.get(0).getScript().getName());
 		removedLastFunctionCall = functionCallsDone.remove(new CallFrameNode(callFrames.get(1), callFrames.get(1).getScript().getName(), previousNode));		
+		processedFunctionCalls.add(new FunctionCallNode(previousNode));
 	    }
 	}
 	
@@ -221,9 +250,13 @@ public class SimpleDebugListener implements DebugEventListener {
 	Set<CallGraphEntry> functionCallsToFunction = functionsToFunctionCallsMap.get(nativeEntry);
 	if (functionCallsToFunction == null || functionCallsToFunction.isEmpty()) 
 		functionCallsToFunction = new HashSet<CallGraphEntry>();
-	final CallGraphEntry lastFunctionCallEntry = new CallGraphEntry(getFilename(scriptName), functionCall.getLineno(), functionCall.getAbsolutePosition(), functionCall.getAbsolutePosition() + CallFrameUtil.getSensibleSource(functionCall).length());
+	final CallGraphEntry lastFunctionCallEntry = createCallGraphFunctionCallEntry(scriptName, functionCall);
 	functionCallsToFunction.add(lastFunctionCallEntry);
 	functionsToFunctionCallsMap.put(nativeEntry, functionCallsToFunction);
+    }
+
+    private CallGraphEntry createCallGraphFunctionCallEntry(final String scriptName, final AstNode functionCall) {
+	return new CallGraphEntry(getFilename(scriptName), functionCall.getLineno(), functionCall.getAbsolutePosition(), functionCall.getAbsolutePosition() + CallFrameUtil.getSensibleSource(functionCall).length());
     }    
 
     public Set<CallFrameNode> getFunctionCallsDone() {
@@ -249,7 +282,8 @@ public class SimpleDebugListener implements DebugEventListener {
     private void outputCallFrames(final List<? extends CallFrame> callFrames) throws IOException {
 	int i = 0;
 	for (CallFrame frame : callFrames) {
-	   System.out.println("Frame #" + (i++) + ": " + CallFrameUtil.getSensibleSource(getCallFrameNode(frame)) +  " (" + (frame.getStatementStartPosition().getLine() + 1) + ", " + (frame.getStatementStartPosition().getColumn() + 1) + ")");
+	   System.out.println("Frame #" + (i) + ": " + CallFrameUtil.getSensibleSource(getCallFrameNode(frame)) +  " (" + (frame.getStatementStartPosition().getLine() + 1) + ", " + (frame.getStatementStartPosition().getColumn() + 1) + ")");
+	   if (getCallFrameNode(frame) != null) System.out.println("Type #: " + (i++) + getCallFrameNode(frame).getClass().getName());
 	}
 	
 	System.out.println("\n\n");

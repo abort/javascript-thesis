@@ -22,8 +22,8 @@ private str readCallGraphInjectionSnippet() = readFile(|project://thesis/src/dyn
 void rewriteJavascriptWithDynamicCallGraphBuilder(loc inputfile) {
 	loc nativeFunctionLocation = |project://thesis/src/native-functions.txt|;
 	map[str, str] nativeFunctions = getNativeFunctionMap(nativeFunctionLocation);
-	str outputFile = substring(inputfile.file, 0, findLast(inputfile.file, ".")) + ".dcg.js";
-	println(nativeFunctions);
+	str outputFile = substring(inputfile.uri, 0, findLast(inputfile.uri, ".")) + ".dcg.js";
+	println("output file: <outputFile>");
 	loc output = inputfile.parent + outputFile;
 	bool inserted = false;
 	Source src = parse(inputfile);
@@ -40,7 +40,7 @@ void rewriteJavascriptWithDynamicCallGraphBuilder(loc inputfile) {
 				lhsStrParam = "\"" + replaceAll(lhsStrParam, "\'", "\\\'") + "\"";
 				print("To insert: ");
 				println(lhsStrParam);
-				str toInsert = "dynamicCallGraphWrap(\"<inputfile.file>\", <e>, <e@\loc.begin.line>, <e@\loc.offset>, <(e@\loc.offset + e@\loc.length)>, <lhs>, \"<lhsPropParam>\")";
+				str toInsert = "setLastFunctionCall(\"<inputfile.file>\", <e@\loc.begin.line>, <e@\loc.offset>, <(e@\loc.offset + e@\loc.length)>, <e>)";
 			
 				//println("Replace with <toInsert>");
 				// println("trying to insert:\n\n<toInsert>");
@@ -59,44 +59,17 @@ void rewriteJavascriptWithDynamicCallGraphBuilder(loc inputfile) {
 		}
 	};
 	
-	newsrc = "var dynamicalCallGraph = [];\n" +
-	"function dynamicCallGraphWrap(file, callFunc, line, startOffset, endOffset, func, funcRepresentation) {
-	// Ignore manual invokes
-	if (dynamicalCallGraph.length == 0) return callFunc;
-	if (nativeFunc(func)) {
-		 console.log(\"native func!\");
-		 dynamicalCallGraph.push(file + \"@\" + line + \",\" + startOffset + \",\" + endOffset + \" -\> \" + nativeFunctions[funcRepresentation]);
-		 return callFunc;
-	}
-	var currentValue = dynamicalCallGraph[dynamicalCallGraph.length - 1];
-	dynamicalCallGraph[dynamicalCallGraph.length - 1] = currentValue + \" -\> \" + file + \"@\" + line + \",\" + startOffset + \",\" + endOffset;
-	console.log(\"call: \" + file + \"@\" + line + \",\" + startOffset + \",\" + endOffset);
-	// function has returned something :)
-	return callFunc;
-	}\n\n
+	str newsrc = readFile(|project://thesis/src/dynamiccode.js|) + unparse(rewrittenSource);
+	src = parse(newsrc);
+//	println("rewritten to: " + unparse(src));
 	
-	function dynamicCallGraphAppend(file, line, startOffset, endOffset) {
-	dynamicalCallGraph.push(file + \"@\" + line + \",\" + startOffset + \",\" + endOffset);
-	console.log(\"called: \" + file + \"@\" + line + \",\" + startOffset + \",\" + endOffset);
-}
-	" + unparse(rewrittenSource);
-	
-	
-	// TODO wrap ALL native function calls and log those
-	str nativeFunctionVar = "var nativeFunctions = {";
-	for (k <- nativeFunctions) {
-		nativeFunctionVar += "\"" + k + ":" + nativeFunctionMap[k] + "\"";
-		// TODO add native to map
-	}
-	nativeFunctionVar += "};";
-	src = parse(rewrittenSource);
-	println("rewritten to: " + unparse(src));
+	writeFile(toLocation(outputFile), newsrc);
 }
 
 Tree newFuncInsert(str filename, Tree e) {
 	return top-down-break visit (e) {
 		case Block b:{
-			str toInsert = "dynamicCallGraphAppend(\"<filename>\", <e@\loc.begin.line>, <e@\loc.offset>, <(e@\loc.offset + e@\loc.length)>);";
+			str toInsert = "addFunctionToMap(\"<filename>\", <e@\loc.begin.line>, <e@\loc.offset>, <(e@\loc.offset + e@\loc.length)>);";
 			insert parse(#Block, "{\n" + toInsert + "\n" + replaceFirst(unparse(b), "{", ""));			
 		}
 	}

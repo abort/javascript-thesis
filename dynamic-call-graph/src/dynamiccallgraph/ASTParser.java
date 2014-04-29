@@ -9,14 +9,16 @@ import java.util.Set;
 
 import org.mozilla.javascript.CompilerEnvirons;
 import org.mozilla.javascript.IRFactory;
+import org.mozilla.javascript.Node;
 import org.mozilla.javascript.ast.AstNode;
 import org.mozilla.javascript.ast.AstRoot;
+import org.mozilla.javascript.ast.Block;
 import org.mozilla.javascript.ast.ExpressionStatement;
 import org.mozilla.javascript.ast.FunctionCall;
 import org.mozilla.javascript.ast.FunctionNode;
 import org.mozilla.javascript.ast.NodeVisitor;
 
-public class ASTParser {
+public class ASTParser {   
     public AstRoot parse(String source) throws IOException {
 	CompilerEnvirons env = new CompilerEnvirons();
 	env.setRecoverFromErrors(true);
@@ -35,11 +37,15 @@ public class ASTParser {
 	if (root instanceof ExpressionStatement) {
 	    return (((ExpressionStatement) root).getExpression() instanceof FunctionCall);
 	}
+	
+	if (root instanceof Block && !getFunctionCalls(root).isEmpty()) {
+	    return true;
+	}
 
 	return false;
     }
 
-    public static FunctionCall getFunctionCallTopExpressionNode(final AstNode root) {
+    public static FunctionCall getFunctionCallTopExpressionNode(final Node root) {
 	if (root instanceof FunctionCall)
 	    return (FunctionCall) root;
 
@@ -50,6 +56,8 @@ public class ASTParser {
 
 	    return (FunctionCall) expressionStatement.getExpression();
 	}
+	
+	if (root instanceof Block) return getFunctionCallTopExpressionNode(((Block)root).getFirstChild());
 
 	return null;
     }
@@ -123,38 +131,86 @@ public class ASTParser {
 	    @Override
 	    public boolean visit(AstNode node) {
 		final int nodePosition = node.getAbsolutePosition(); // 1-based
-		if (absolutePosition >= nodePosition && absolutePosition <= nodePosition + node.getLength()) {
+		/*
+		if (absolutePosition >= nodePosition && absolutePosition <= (nodePosition + node.getLength() - 1)) {
 		    // System.out.println("Found node by abs position");
 		    nodes[0] = node;
 		    return true; // Go on with traversal so we find the smallest
 				 // node
 		}
-		return true;
-	    }
-	});
-	return nodes[0];
-    }
-    
-    public AstNode getAccurateFunctionCall(final AstRoot root, final int absolutePosition) {
-	final AstNode[] retval = new AstNode[]{ null };
-
-	root.visit(new NodeVisitor() {
-	    
-	    @Override
-	    public boolean visit(AstNode node) {
-		final int nodeStartPosition = node.getAbsolutePosition();
-		final int nodeEndPosition = nodeStartPosition + node.getLength(); 
-		if (absolutePosition >= nodeStartPosition && absolutePosition <= nodeEndPosition) {
-		    if (isFunctionCall(node))
-			retval[0] = node;
-		    return true; // keep traversing for the innermost function call
+		*/
+		if (absolutePosition == nodePosition) {
+		    //if (nodes[0] == null || nodes[0].getLength() < node.getLength()) {
+			nodes[0] = node;
+//			return false;
+//		    }
+//			
+		    //nodes[0] = node;
+		    return false;
 		}
 
 		return true;
 	    }
 	});
 	
+	// some small fallback mechanism
+	return nodes[0] == null ? getNodeAtAbsolutePosition(root, absolutePosition) : nodes[0];
+    }
+    
+    public AstNode getNodeAtAbsolutePosition(final AstRoot root, final int absolutePosition) {
+	final AstNode[] nodes = new AstNode[] { null };
+	root.visit(new NodeVisitor() {
+
+	    @Override
+	    public boolean visit(AstNode node) {
+		final int nodePosition = node.getAbsolutePosition(); //root.getEncodedSourceStart() + node.getAbsolutePosition(); // 1-based
+		if (absolutePosition > nodePosition && absolutePosition <= (nodePosition + node.getLength())) {
+		    nodes[0] = node;
+		    return true; // Go on with traversal so we find the smallest
+				 // node
+		}
+
+		return true;
+	    }
+	});
+	
+	// some small fallback mechanism
+	return nodes[0];
+    }
+    
+    
+    public AstNode getAccurateFunctionCall(final AstRoot root, final int absolutePosition, final int line, final Set<FunctionCallNode> processedFunctionCalls) {
+	final AstNode[] retval = new AstNode[]{ null };
+	
+	root.visit(new NodeVisitor() {
+	    
+	    @Override
+	    public boolean visit(AstNode node) {
+		final int nodeStartPosition = node.getAbsolutePosition();
+		final int nodeEndPosition = nodeStartPosition + node.getLength(); 
+		if (absolutePosition >= nodeStartPosition && absolutePosition <= nodeEndPosition && node.getLineno() == line ) {
+		    if (node instanceof FunctionCall) {
+			if (isProcessedCall(node, processedFunctionCalls)) {
+			    return true; // keep on going for the larger one
+			}
+			retval[0] = node;
+			if (getFunctionCalls(node).size() != 0) return true;
+			else return false;
+		    }
+			
+		    return true; // keep traversing for the innermost function call
+		}
+
+		return true;
+	    }
+	});
+
+	
 	return retval[0];
+    }
+    
+    private boolean isProcessedCall(final AstNode node, final Set<FunctionCallNode> processedFunctionCalls) {
+	return processedFunctionCalls.contains(new FunctionCallNode(node));
     }
     
 
@@ -205,5 +261,4 @@ public class ASTParser {
 	
 	return retval[0];
     }
-
 }

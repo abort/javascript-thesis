@@ -30,6 +30,7 @@ import org.chromium.sdk.wip.WipBackendFactory;
 import org.chromium.sdk.wip.WipBrowser;
 import org.chromium.sdk.wip.WipBrowserFactory;
 import org.chromium.sdk.wip.WipBrowserTab;
+import org.mozilla.javascript.ast.FunctionCall;
 
 public class Main {
     // Constants
@@ -115,7 +116,9 @@ public class Main {
 	    
 	    System.out.println("Potential native: " + CallFrameUtil.getSensibleSource(callFrame.getNode()));
 	    
-	    final String callTarget = ASTParser.getFunctionCallTopExpressionNode(callFrame.getNode()).getTarget().toSource();
+	    final FunctionCall call = ASTParser.getFunctionCallTopExpressionNode(callFrame.getNode());
+	    if (call == null) continue;
+	    final String callTarget = call.getTarget().toSource();
 	    if (callTarget == null || callTarget.equals("")) continue;
 
 	    evaluationContext.evaluateSync(getJavascriptNativeFunctionCheckCode(callTarget), null, evaluationCallback);

@@ -14,6 +14,12 @@ public class CallFrameNode {
 	this.scriptName = scriptName;
 	this.node = node;
     }
+    
+    public CallFrameNode(final CallFrame callFrame, final String scriptName) {
+	this.callFrame = callFrame;
+	this.scriptName = scriptName;
+	this.node = null;
+    }
 
     public CallFrame getCallFrame() {
         return callFrame;

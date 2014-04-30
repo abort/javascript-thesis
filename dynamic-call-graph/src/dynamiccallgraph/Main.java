@@ -30,7 +30,10 @@ import org.chromium.sdk.wip.WipBackendFactory;
 import org.chromium.sdk.wip.WipBrowser;
 import org.chromium.sdk.wip.WipBrowserFactory;
 import org.chromium.sdk.wip.WipBrowserTab;
+import org.mozilla.javascript.ast.AstNode;
+import org.mozilla.javascript.ast.AstRoot;
 import org.mozilla.javascript.ast.FunctionCall;
+import org.mozilla.javascript.ast.FunctionNode;
 
 public class Main {
     // Constants
@@ -63,20 +66,31 @@ public class Main {
 	((SimpleDebugListener)listener.getDebugEventListener()).setStarted(true);
 	System.out.println("Starting debugging");
 
+	final ASTParser p = new ASTParser();
 	for (Script script : getJavaScripts(vm)) {
 	    final Breakpoint.Target target = getBreakpointTarget(script);
 	    if (script.hasSource()) {
-		final String[] sourceLines = script.getSource().split(NEW_LINE_CHARACTER);
+		final AstRoot root = p.parse(script.getSource());
+		
+		for (AstNode n : p.getFunctionCalls(root)) {
+        	    vm.setBreakpoint(target, n.getLineno(), Breakpoint.EMPTY_VALUE, true, null, bpCallback, synchronizationCallback);
+		}
+		
+		for (FunctionNode f : p.getFunctions(root)) {
+        	    vm.setBreakpoint(target, f.getBaseLineno(), Breakpoint.EMPTY_VALUE, true, null, bpCallback, synchronizationCallback);
+		}
+		
+		
+		/*final String[] sourceLines = script.getSource().split(NEW_LINE_CHARACTER);
         	for (int line = 1; line < sourceLines.length; line++) {
         	    vm.setBreakpoint(target, line, Breakpoint.EMPTY_VALUE, true, null, bpCallback, synchronizationCallback);
-        	}
+        	}*/
 	    }
 	}
 
 	final SimpleDebugListener simpleDebugger = ((SimpleDebugListener) listener.getDebugEventListener());
 	final Semaphore debuggerSemaphore = simpleDebugger.getSemaphore();
 	final ContinueCallback continueCallback = new ContinueDelegate();
-	debuggerSemaphore.release();
 	
 	Thread inputThread = new Thread(new Runnable() {
 

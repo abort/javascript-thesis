@@ -105,8 +105,8 @@ public class ASTParser {
 	return child.getEnclosingFunction();
     }
 
-    public Set<AstNode> getFunctions(final AstRoot root) {
-	final Set<AstNode> nodes = new HashSet<AstNode>();
+    public Set<FunctionNode> getFunctions(final AstRoot root) {
+	final Set<FunctionNode> nodes = new HashSet<FunctionNode>();
 	root.visit(new NodeVisitor() {
 
 	    @Override
@@ -115,7 +115,7 @@ public class ASTParser {
 		    // System.out.println("Added function expression/declaration: "
 		    // + node.toSource() + " type: " + node.getType());
 
-		    nodes.add(node);
+		    nodes.add((FunctionNode)node);
 		}
 
 		return true;

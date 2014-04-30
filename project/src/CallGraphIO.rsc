@@ -8,6 +8,9 @@ import FlowGraphFast;
 import FlowGraphPrettyPrinter;
 import CallGraphDataTypes;
 import FlowGraphIO;
+import EcmaScript;
+import SharedDataTypes;
+import FlowGraphDataTypes;
 
 public void printOptimisticCallGraph(loc location) {
 	CallGraphResult result = createOptimisticCallGraph(location);
@@ -46,11 +49,20 @@ public void printAlphabeticalOptimisticCallGraph(loc location) {
 }
 
 public void storeOptimisticCallGraph(loc location) {
-	str outputFile = substring(location.file, 0, findLast(location.file, ".")) + ".txt";
-	loc output = location.parent + outputFile;
+	str outputFile = substring(location.file, 0, findLast(location.file, "."));
+	loc output = location.parent + outputFile + "1.txt";
+	loc output2 = location.parent + outputFile + "2.txt";
 
-	CallGraphResult result = createOptimisticCallGraph(location);
+	Source source = parse(location);
+	rel[Vertex, Vertex] flowGraph = createFlowGraphWithNativeFunctions(|project://thesis/src/native-functions.txt|, source);
+	
+	CallGraphResult result = createOptimisticCallGraph(flowGraph, source);
 	storeAlphabeticalFlowGraph(output, result.graph);
+	
+	CallGraphResult result2 = createOptimisticCallGraph2(flowGraph, source);
+	storeAlphabeticalFlowGraph(output2, result2.graph);
+	
+	println("Result equality: <result == result2>");
 }
 
 public void storePessimisticCallGraph(loc location) {

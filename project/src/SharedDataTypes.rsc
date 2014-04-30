@@ -8,7 +8,7 @@ data Position = ExistingPosition(loc position) | InexistentPosition();
 data PrintablePosition = PrintableExistingPosition(str filename, int line, int columnStart, int columnEnd) | PrintableInexistentPosition();
 data OneShotCall = OneShotCall(Position oneShotCall, Position expressionToCall, set[Expression] args);
 data EscapingFunction = EscapingFunction(Position position, set[Id] args);
-data UnresolvedCallSite = UnresolvedCallSite(Position position, set[Expression] args);
+data UnresolvedCallSite = UnresolvedCallSite(Position position, int args);
 
 public PrintablePosition getPrintablePosition(Position p) {
 	if (p is ExistingPosition) {

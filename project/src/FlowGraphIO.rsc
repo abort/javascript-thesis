@@ -26,5 +26,13 @@ public void storeFlowGraphByFile(loc input) {
 	writeFile(output, getAlphabeticalFlowGraph(createFlowGraph(parse(input))));	
 }
 
+public void storeFlowGraphWithNativesByFile(loc input) {
+	if (input.extension != "js") continue;
+	str outputFile = substring(input.file, 0, findLast(input.file, ".")) + ".txt";
+	loc output = input.parent + outputFile;
+	println("writing <input> flowgraph to <outputFile>");
+	writeFile(output, getAlphabeticalFlowGraph(createFlowGraphWithNativeFunctions(|project://thesis/src/native-functions.txt|, parse(input))));	
+}
+
 public void storeFlowGraph(loc output, rel[Vertex, Vertex] flowGraph) = writeFile(output, getFlowGraph(flowGraph));
 public void storeAlphabeticalFlowGraph(loc output, rel[Vertex, Vertex] flowGraph) = writeFile(output, getAlphabeticalFlowGraph(flowGraph));

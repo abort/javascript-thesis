@@ -65,13 +65,16 @@ public set[UnresolvedCallSite] getUnresolvedCallSites(set[OneShotCall] oneShotCa
 
 	bottom-up visit(source) {
 		case Expression e:{
-			if (functionNoParams(Expression expressionToCall) := e || functionParams(Expression expressionToCall, { Expression!comma ","}+ _) := e) {
+			if (functionNoParams(Expression expressionToCall) := e || functionParams(Expression expressionToCall, { Expression!comma ","}+ functionArgs) := e) {
 				Position p = getPosition(e);
 				if (e notin { x.oneShotCall | x <- oneShotCalls }) {
-					set[Expression] args = {};
+					int args = 0;
 					// Add args
-					if (functionParams(Expression _, { Expression!comma ","}+ functionArgs) := e)
-						 args += functionArgs;
+					if (e is functionParams) {
+						for (Expression _ <- functionArgs) {
+							args += 1;
+						}
+					}
 	
 					unresolvedCallSites += UnresolvedCallSite(p, args);
 				}
@@ -82,6 +85,22 @@ public set[UnresolvedCallSite] getUnresolvedCallSites(set[OneShotCall] oneShotCa
 	return unresolvedCallSites;
 }
 
+public set[Tree] getFunctions(Tree tree) {
+	set[Tree] functions = {};
+	top-down visit(tree) {
+		case Expression e:{
+			if (function(Id _, {Id ","}* params, Block _) := e || functionAnonymous({Id ","}* _, Block _) := e) {
+				functions += e;
+			}
+		}
+		case FunctionDeclaration f:{
+			functions += f;
+		}
+	}
+	
+	return functions;
+}
+
 public rel[Vertex, Vertex] optimisticTransitiveClosure(rel[Vertex, Vertex] R) {
 	tc = R;
 	while (true) {
@@ -90,6 +109,15 @@ public rel[Vertex, Vertex] optimisticTransitiveClosure(rel[Vertex, Vertex] R) {
   		if (tc1 == tc) return tc;
 	}
 }
+
+public rel[Vertex, Vertex] sanderOptimisticTransitiveClosure(rel[Vertex, Vertex] graph) {
+    rel[Vertex, Vertex] unknownNodes = {tup | tuple[Vertex from, Vertex to] tup <- graph, isUnknown(tup.from) || isUnknown(tup.to) };
+    rel[Vertex, Vertex] knownNodes = graph - unknownNodes;
+   	rel[Vertex, Vertex] knownTransitiveClosure = knownNodes+;
+    return knownTransitiveClosure + unknownNodes;
+}
+
+private bool isUnknown(Vertex vertex) = vertex := Unknown();
 
 public rel[Vertex, Vertex] addInterproceduralEdges(set[OneShotCall] initialCallGraph, set[EscapingFunction] escapingFunctions, set[UnresolvedCallSite] unresolvedCallSites) {
 	rel[Vertex, Vertex] flowGraph = {};
@@ -107,17 +135,21 @@ public rel[Vertex, Vertex] addInterproceduralEdges(set[OneShotCall] initialCallG
 		flowGraph += <Ret(call.expressionToCall), Res(call.oneShotCall)>;		
 	}
 	
+	println("added one shot calls");
+	
 	// Algo 2 line #4-6
 	for (UnresolvedCallSite unresolvedSite <- unresolvedCallSites) {
 		int i = 1;
-		for (Expression arg <- unresolvedSite.args) {
-			flowGraph += <Arg(unresolvedSite, i), Unknown()>;
-			i += 1;	
+		while (i <= unresolvedSite.args) {
+			// println("arg to unknown");
+			flowGraph += <Arg(unresolvedSite.position, i), Unknown()>;
+ 			i += 1;
 		}
 
 		flowGraph += <Unknown(), Res(unresolvedSite.position)>;	
 	}
 	
+	println("added unresolved call sites");
 	// Algo 2 line #7-9
 	for (EscapingFunction escapingFunction <- escapingFunctions) {
 		int i = 1;

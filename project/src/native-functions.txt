@@ -584,6 +584,7 @@
 "Node_prototype_replaceChild": "replaceChild",
 "Node_prototype_isEqualNode": "isEqualNode",
 "Node_prototype_appendChild": "appendChild",
+"Node_prototype_write": "write",
 "NodeList": "NodeList",
 "NodeList_toString": "toString",
 "NodeList_prototype_item": "item",

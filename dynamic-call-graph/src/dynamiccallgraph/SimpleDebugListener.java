@@ -21,6 +21,9 @@ import org.chromium.sdk.JavascriptVm;
 import org.chromium.sdk.Script;
 import org.chromium.sdk.SyncCallback;
 import org.chromium.sdk.TextStreamPosition;
+import org.chromium.sdk.DebugContext.ContinueCallback;
+import org.chromium.sdk.DebugContext.StepAction;
+import org.chromium.sdk.JavascriptVm.BreakpointCallback;
 import org.mozilla.javascript.ast.AstNode;
 import org.mozilla.javascript.ast.AstRoot;
 import org.mozilla.javascript.ast.Block;
@@ -38,6 +41,10 @@ public class SimpleDebugListener implements DebugEventListener {
     private final SyncCallback synchronizationCallback = new CallbackSemaphore();
     private JavascriptVm vm = null;
     private boolean started = false;
+    private boolean releaseSemaphore = false;
+    
+    private BreakpointCallback bpCallback = new BreakPointDelegate(); 
+    private ContinueCallback continueCallback = new ContinueDelegate();
     
     private Set<FunctionCallNode> processedFunctionCalls = new HashSet<FunctionCallNode>();
     private CallFrameNode lastCalleeAdded = null; // prevent double add of functions
@@ -91,8 +98,13 @@ public class SimpleDebugListener implements DebugEventListener {
 	    if (!isCalleeAlreadyInMap(callFrame.getScript().getName(), functionCallNode)) {
 		functionCallsDone.add(new CallFrameNode(callFrame, callFrame.getScript().getName(), functionCallNode));
 		lastCalleeAdded = new CallFrameNode(callFrame, callFrame.getScript().getName(), currentNode);
+		releaseSemaphore = false;
+		debugContext.continueVm(StepAction.CONTINUE, 0, continueCallback, null);
+		return;
 	    }
 	}
+	
+	releaseSemaphore = true;
     }
 
     private AstNode getCallFrameNode(final CallFrame frame) throws IOException {
@@ -140,6 +152,7 @@ public class SimpleDebugListener implements DebugEventListener {
 	assert(otherNodeScript != null);
 	
 	if (!nodeScript.equals(otherNodeScript)) {
+	    if (otherNode == null) return false;
 	    final FunctionNode functionOfNode = node.getEnclosingFunction();
 	    final FunctionNode functionOfOtherNode = otherNode.getEnclosingFunction();
 	    if ((functionOfNode == null && functionOfOtherNode != null) || (functionOfNode != null && functionOfOtherNode == null))
@@ -213,12 +226,14 @@ public class SimpleDebugListener implements DebugEventListener {
 	final AstNode previousNode = getCalleeFrameNode(callFrames.get(1));
 
 	boolean removedLastFunctionCall = false;
+	boolean enteredNewScope = false;
 	final String calleeScriptName = callFrames.get(1).getScript().getName();
 	if (previousNode != null) System.out.println("previous node: " + previousNode.toSource());
 	if (previousNode != null && parser.isFunctionCall(previousNode) && !(new CallFrameNode(callFrames.get(1), calleeScriptName, getCallFrameNode(callFrames.get(1))).equals(lastCalleeAdded))) {
 	    final String calleeSource = getCallFrameSource(callFrames.get(1));
 	    System.out.println("Check for different parents");
 	    if (hasDifferentFunctionParent(previousNode, callFrames.get(1).getScript(), currentNode, callFrames.get(0).getScript())) {
+		enteredNewScope = true;
 		System.out.println("diff parents: " + CallFrameUtil.getSensibleSource(currentNode) + " and " + CallFrameUtil.getSensibleSource(previousNode));
 		addFunctionCallToMap(calleeSource, previousNode, callFrames.get(1).getScript().getName(), callFrames.get(0).getScript().getSource(), currentNode, callFrames.get(0).getScript().getName());
 		removedLastFunctionCall = functionCallsDone.remove(new CallFrameNode(callFrames.get(1), callFrames.get(1).getScript().getName(), previousNode));
@@ -240,10 +255,20 @@ public class SimpleDebugListener implements DebugEventListener {
 	if (currentNode != null) {
 	    // We have to do traverse this, because of native call frames getting lost
 	    // TODO: what about for loops etc (blocks)
-	    for (AstNode functionCall : parser.getFunctionCallsInScope(currentNode, currentNode.getEnclosingFunction())) {
+	    final List<AstNode> calls = parser.getFunctionCallsInScope(currentNode, currentNode.getEnclosingFunction());
+	    for (AstNode functionCall : calls) {
 		functionCallsDone.add(new CallFrameNode(callFrames.get(0), callFrames.get(0).getScript().getName(), functionCall));
 	    }
+	    
+	    if (calls.isEmpty() && enteredNewScope) {
+		// we can safely continue to the next breakpoint
+		debugContext.continueVm(StepAction.CONTINUE, 0, continueCallback, null);
+		releaseSemaphore = false;
+		return;
+	    }
 	}
+	
+	releaseSemaphore = true;
     }
     
     public void addNativeEntry(final String scriptName, final AstNode functionCall) {
@@ -304,7 +329,7 @@ public class SimpleDebugListener implements DebugEventListener {
 	if (debugContext.getCallFrames() == null || debugContext.getCallFrames().size() == 0) return;
 	final List<? extends CallFrame> callFrames = debugContext.getCallFrames();
 	try {
-	    outputCallFrames(callFrames);
+	    // outputCallFrames(callFrames);
 	    
 	    if (callFrames.size() == 1) handleInitialCallFrame(callFrames.get(0), debugContext);
 	    else if (callFrames.size() >= 2) handleMultipleCallFrames(callFrames, debugContext);
@@ -313,7 +338,7 @@ public class SimpleDebugListener implements DebugEventListener {
 	    logger.log(Level.WARNING, "IO Exception: " + e.getMessage());
 	}
 	
-	semaphore.release();
+	if (releaseSemaphore) semaphore.release();
     }
 
     @Override
@@ -356,13 +381,31 @@ public class SimpleDebugListener implements DebugEventListener {
     public void scriptLoaded(Script script) {
 	if (!started) return;
 
-	final Breakpoint.Target target = getBreakpointTarget(script);
+	try {
+	    final Breakpoint.Target target = getBreakpointTarget(script);
+	    if (!script.hasSource())
+		return;
+	    final AstRoot root = parser.parse(script.getSource());
+	    for (AstNode n : parser.getFunctionCalls(root)) {
+		vm.setBreakpoint(target, n.getLineno(), Breakpoint.EMPTY_VALUE, true, null, bpCallback, synchronizationCallback);
+	    }
+
+	    for (FunctionNode f : parser.getFunctions(root)) {
+		vm.setBreakpoint(target, f.getBaseLineno(), Breakpoint.EMPTY_VALUE, true, null, bpCallback, synchronizationCallback);
+	    }
+	}
+	catch (IOException e) {
+	    logger.log(Level.WARNING, "Parsing error on script load", e);
+	}
+		
+	/*
 	if (script.hasSource()) {
 	    final String[] sourceLines = script.getSource().split("\n");
 	    for (int line = 1; line < sourceLines.length; line++) {
 		getJavascriptVm().setBreakpoint(target, line, Breakpoint.EMPTY_VALUE, true, null, new BreakPointDelegate(), synchronizationCallback);
 	    }
 	}
+	*/
     }
 
     private Breakpoint.Target getBreakpointTarget(final Script script) {

@@ -1,21 +1,19 @@
-var lastCall = [];
-var callMap = new Map();
+var lastCall = {};
+var callMap = {};
 
 function addFunctionToMap(file, line, startPosition, endPosition) {
-	if (!firstCallDone) return;
-
 	var thisFunction = {
 		file: file,
 		line: line,
 		start: startPosition,
 		end: endPosition
 	};
-	var currentArray = callMap.get(thisFunction);
+	var currentArray = callMap[thisFunction];
 	if (currentArray == null) {
 		currentArray = [];
 	}
 	currentArray.push(lastCall);
-	callMap.set(thisFunction, currentArray);
+	callMap[thisFunction] = currentArray;
 }
 
 function setLastFunctionCall(file, line, startPosition, endPosition, result) {
@@ -25,8 +23,6 @@ function setLastFunctionCall(file, line, startPosition, endPosition, result) {
 		start: startPosition,
 		endd: endPosition
 	};
-	
-	firstCallDone = true;
 
 	return result;
 }

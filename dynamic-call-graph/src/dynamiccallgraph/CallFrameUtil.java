@@ -22,8 +22,7 @@ public class CallFrameUtil {
 	    currentLine++;
 	    if (currentLine == line) {
 		// abs += column - 1;
-		builder.append(sourceLine.substring(0, column - 1));
-		break;
+		return builder.length() + column;
 	    }
 	    builder.append(sourceLine);
 	    builder.append('\n');
@@ -31,7 +30,7 @@ public class CallFrameUtil {
 	}
 	
 
-	return builder.length();
+	return -1;
     }
     
     public static int getLineNumberByAbsolutePosition(final String source, final int absolutePosition) {

@@ -117,9 +117,10 @@ private ScopedResult createFlowGraphFromStatement(Statement statement, Scope sco
 		// Assumption to count as a simple declaration (so not R1, TODO: DOCUMENT!)
 		if (isDeclarableInScope("<id>", symbolMap, scope)) symbolMap["<id>"] = createEntry(id);	
 	}
-	elseif (returnExp(Expression e) := statement || returnExpNoSemi(Expression e) := statement
-			 || returnExpNoSemiBlockEnd(Expression e) := statement) {
-		Position thisPosition = getThisPosition(scope);
+	// TODO normal forIn not necessary?
+	elseif (returnExp(Expression e) := statement || returnExpNoSemi(Expression e, _) := statement
+			 || returnExpNoSemiBlockEnd(Expression e, _) := statement) {
+		Position thisPosition = getThisPosition(symbolMap);
 		if (thisPosition != InexistentPosition()) flowGraph += <createVertex(e, symbolMap), Ret(thisPosition)>;
 	}
 	
@@ -133,8 +134,7 @@ private rel[Vertex, Vertex] createFlowGraphFromAssignment(Tree lhs, Tree rhs, Tr
 	return flowGraph;
 }
 
-private Position getThisPosition(Scope scope) {
-	map[str, SymbolMapEntry] symbolMap = getSymbolMap(scope);
+private Position getThisPosition(map[str, SymbolMapEntry] symbolMap) {
 	if (THIS_KEYWORD in symbolMap) return symbolMap[THIS_KEYWORD].position;
 	return InexistentPosition(); 
 }
@@ -147,7 +147,7 @@ public ScopedResult createFlowGraphFromExpression(Expression e, Scope scope) {
 	// R1
 	if (variableAssignment(Expression lhs, Expression rhs) := e ||
 		variableAssignmentNoSemi(Expression lhs, Expression rhs) := e ||
-		variableAssignmentBlockEnd(Expression lhs, Expression rhs) := e ||
+		variableAssignmentBlockEnd(Expression lhs, Expression rhs, _) := e ||
 		variableAssignmentLoose(Expression lhs, Expression rhs) := e) {
 		Vertex rhsVertex = createVertex(rhs, symbolMap);
 		flowGraph += <rhsVertex, createVertex(lhs, symbolMap)>;
@@ -181,8 +181,9 @@ public ScopedResult createFlowGraphFromExpression(Expression e, Scope scope) {
 	}
 	// R5
 	elseif (objectDefinition({PropertyAssignment ","}* properties) := e || objectDefinitionCommaSuffix({PropertyAssignment ","}+ properties) := e) {
-		for (p <- properties.args) {
+		for (PropertyAssignment p <- properties) {
 			if (property(PropertyName name, Expression exp) := p) {
+				// println("property assignment");
 				flowGraph += <createVertex(exp, symbolMap), Prop("<name>")>;
 			}
 			elseif (getProperty(PropertyName name, Block block) := p) {
@@ -191,7 +192,6 @@ public ScopedResult createFlowGraphFromExpression(Expression e, Scope scope) {
 		}
 	}
 	elseif (new(Expression expression) := e) {
-		println("new expression");
 		if (expression is functionParams || expression is functionNoParams) {
 			// R8
 			rel[Vertex, Vertex] functionCallFlowGraph = createFlowGraphFromFunctionCall(expression, e, scope);
@@ -207,10 +207,10 @@ public ScopedResult createFlowGraphFromExpression(Expression e, Scope scope) {
 			flowGraph += <createVertex(expression, symbolMap), Callee(expressionPosition)>;
 			flowGraph += <Res(expressionPosition), Exp(expressionPosition)>;
 			
-			println("Syntactic sugaaa");
-			
 			if (property(Expression lhs, Id _) := expression) {
-				flowGraph += <createVertex(lhs, symbolMap), Arg(getPosition(expression), 0)>;
+				// TODO: changed 29 april... to be checked 
+				flowGraph += <createVertex(lhs, symbolMap), Arg(expressionPosition, 0)>;		
+//				flowGraph += <createVertex(lhs, symbolMap), Arg(getPosition(expression), 0)>;
 			}			
 		}
 	}
@@ -220,7 +220,9 @@ public ScopedResult createFlowGraphFromExpression(Expression e, Scope scope) {
 
 		// R9
 		if (property(Expression lhs, Id _) := getCallSite(e)) {
-			flowGraph += <createVertex(lhs, symbolMap), Arg(getPosition(getCallSite(e)), 0)>;
+			// TODO: changed 29 april... to be checked 
+			flowGraph += <createVertex(lhs, symbolMap), Arg(getPosition(e), 0)>;
+			//flowGraph += <createVertex(lhs, symbolMap), Arg(getPosition(getCallSite(e)), 0)>;
 		}
 	}
 
@@ -270,7 +272,7 @@ private Vertex createVertex(Tree root, map[str, SymbolMapEntry] symbolMap) {
 			return Var("<id>", mapValue.position);
 		}
 	}
-	elseif (Expression e := root && this() := e) {
+	elseif (Expression e := root && e is this) {
 		if (THIS_KEYWORD in symbolMap) return Parm(symbolMap[THIS_KEYWORD].position, 0);
 		else debug("Reference to this without a this scope... fallback");
 	}

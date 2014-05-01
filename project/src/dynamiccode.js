@@ -43,7 +43,12 @@ function callFunctionString(f) {
 }
 
 function doesArrayContain(array, call) {
-	return (array[call] != null);
+	for (var callee in array) {
+		console.log("compare " + callee + " to " + call);
+		if (callee == call) return true;
+	}
+	
+	return false;
 }
 
 function printCallMap() {

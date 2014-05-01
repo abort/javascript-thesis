@@ -21,7 +21,8 @@ public set[OneShotCall] getOneShotCalls(Source source) {
 	bottom-up visit (source) {
 		case Expression e:{
 			if (functionNoParams(Expression expressionToCall) := e || functionParams(Expression expressionToCall, { Expression!comma ","}+ _) := e) {
-				if (nestedExpression(f:functionAnonymous({Id ","}* parameters, Block _)) := expressionToCall) {
+				if (nestedExpression(f:functionAnonymous({Id ","}* parameters, Block _)) := expressionToCall
+					|| nestedExpression(f:function(Id name, {Id ","}* parameters, Block _)) := expressionToCall) {
 					set[Expression] expressions = {};
 					// Add params
 					if (functionParams(Expression _, { Expression!comma ","}+ args) := e) {
@@ -67,7 +68,7 @@ public set[UnresolvedCallSite] getUnresolvedCallSites(set[OneShotCall] oneShotCa
 		case Expression e:{
 			if (functionNoParams(Expression expressionToCall) := e || functionParams(Expression expressionToCall, { Expression!comma ","}+ functionArgs) := e) {
 				Position p = getPosition(e);
-				if (e notin { x.oneShotCall | x <- oneShotCalls }) {
+				if (getPosition(e) notin { x.oneShotCall | x <- oneShotCalls }) {
 					int args = 0;
 					// Add args
 					if (e is functionParams) {

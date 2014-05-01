@@ -84,36 +84,56 @@ public rel[Vertex, Vertex] createFlowGraph(Tree source, Scope scope) {
 		
 			fail; // continues to visit more deeply nested nodes (prevent breaking)
 		}
+		case VariableDeclarationNoIn v:{
+			// Declaration + R1
+			ScopedResult result = createFlowGraphFromVariableDeclaration(v, scoped(symbolMap));
+			flowGraph += result.graph;
+			if (scope is scoped) symbolMap += getSymbolMap(result.scope);
+
+			fail;
+		}
+		case VariableDeclaration v:{
+			// Declaration + R1
+			ScopedResult result = createFlowGraphFromVariableDeclaration(v, scoped(symbolMap));
+			flowGraph += result.graph;
+			if (scope is scoped) symbolMap += getSymbolMap(result.scope);
+
+			fail;
+		}
+		case VariableAssignment v:{
+			// R1
+			if (filledAssignment(Expression lhs, Expression rhs) := v) 
+				flowGraph += createFlowGraphFromAssignment(lhs, rhs, v, symbolMap);		
+
+			fail;
+		}		 
 	}
 	
 	return flowGraph;
 }
 
+private ScopedResult createFlowGraphFromVariableDeclaration(Tree declaration, Scope scope) {
+ 	rel[Vertex, Vertex] flowGraph = {};
+ 	map[str, SymbolMapEntry] symbolMap = getSymbolMap(scope);
+
+	if (filledDeclaration(Id id, Expression expression) := declaration) {
+		if (isDeclarableInScope("<id>", symbolMap, scope)) symbolMap["<id>"] = createEntry(id);
+
+		flowGraph += createFlowGraphFromAssignment(id, expression, declaration, symbolMap);
+	}
+	elseif (emptyDeclaration(Id id) := declaration) {
+		if (isDeclarableInScope("<id>", symbolMap, scope)) symbolMap["<id>"] = createEntry(id);
+	}
+	
+	return result(flowGraph, scope is global ? global : scoped(symbolMap), InexistentPosition());
+}  
+
 private ScopedResult createFlowGraphFromStatement(Statement statement, Scope scope) {
 	rel[Vertex, Vertex] flowGraph = {};
 	map[str, SymbolMapEntry] symbolMap = getSymbolMap(scope);
 	
-	if (forDoDeclarations({VariableDeclarationNoIn ","}+ declarations, _, _, _) := statement
-	 	|| variableNoSemi({VariableDeclaration ","}+ declarations, _) := statement
-	 	|| variableSemi({VariableDeclaration ","}+ declarations) := statement) {
-		for (declaration <- declarations) {
-			if (filledDeclaration(Id id, Expression expression) := declaration) {
-				if (isDeclarableInScope("<id>", symbolMap, scope)) symbolMap["<id>"] = createEntry(id);
-
-				flowGraph += createFlowGraphFromAssignment(id, expression, declaration, symbolMap);
-			}
-			elseif (emptyDeclaration(Id id) := declaration) {
-				if (isDeclarableInScope("<id>", symbolMap, scope)) symbolMap["<id>"] = createEntry(id);
-			}
-		}
-	}
-	elseif (forDo({VariableDeclarationNoIn ","}* assignments, _, _, _) := statement) {
-		for (assignment <- assignments) {
-			if (filledDeclaration(Id id, Expression expression) := assignment)
-				flowGraph += createFlowGraphFromAssignment(id, expression, assignment, symbolMap);
-		}
-	}
-	elseif (forInDeclaration(Id id, Expression _, Statement _) := statement) {
+	// Considered as a single variable declaration
+	if (forInDeclaration(Id id, Expression _, Statement _) := statement) {
 		// Assumption to count as a simple declaration (so not R1, TODO: DOCUMENT!)
 		if (isDeclarableInScope("<id>", symbolMap, scope)) symbolMap["<id>"] = createEntry(id);	
 	}
@@ -143,23 +163,13 @@ public ScopedResult createFlowGraphFromExpression(Expression e, Scope scope) {
 	rel[Vertex, Vertex] flowGraph = {};
 	map[str, SymbolMapEntry] symbolMap = getSymbolMap(scope);
 	Position nextNodeToSkip = InexistentPosition();
-	
+
 	// R1
 	if (variableAssignment(Expression lhs, Expression rhs) := e ||
 		variableAssignmentNoSemi(Expression lhs, Expression rhs) := e ||
 		variableAssignmentBlockEnd(Expression lhs, Expression rhs, _) := e ||
 		variableAssignmentLoose(Expression lhs, Expression rhs) := e) {
-		Vertex rhsVertex = createVertex(rhs, symbolMap);
-		flowGraph += <rhsVertex, createVertex(lhs, symbolMap)>;
-		flowGraph += <rhsVertex, Exp(getPosition(e))>;
-	}
-	elseif (variableAssignmentMulti(VariableAssignment assignment, {VariableAssignment ","}+ assignments) := e) {
-		assignments += assignment;
-		for (f:filledAssignment(Expression lhs, Expression rhs) <- assignments) {
-			Vertex rhsVertex = createVertex(rhs, symbolMap);
-			flowGraph += <rhsVertex, createVertex(lhs, symbolMap)>;
-			flowGraph += <rhsVertex, Exp(getPosition(f))>;	
-		}
+			flowGraph += createFlowGraphFromAssignment(lhs, rhs, e, symbolMap);
 	}
 	// R2
 	elseif (disjunction(Expression lhs, Expression rhs) := e) {

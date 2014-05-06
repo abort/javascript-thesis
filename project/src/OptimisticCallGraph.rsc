@@ -42,7 +42,7 @@ public CallGraphResult createOptimisticCallGraph(rel[Vertex, Vertex] flowGraph, 
 		flowGraph += addInterproceduralEdges(callGraphParam, escapingFunctions, unresolvedCallSites);
 
 		rel[Vertex, Vertex] flowGraphTransitiveClosure = flowGraph+;
-	 	callGraph = { <y, x> | <x,y> <- optimisticTransitiveClosure(flowGraph), (Fun(Position _) := x || Builtin(str _) := x), Callee(Position _) := y };	
+	 	callGraph = { <y, x> | <x,y> <- sanderOptimisticTransitiveClosure(flowGraph), (Fun(Position _) := x || Builtin(str _) := x), Callee(Position _) := y };	
 		escapedOutput = { <x, y> | <x, y> <- flowGraphTransitiveClosure, Fun(Position _) := x, Unknown() := y };
 		unresolvedCallSitesOutput = { <x, y> | <x, y> <- flowGraphTransitiveClosure, Unknown() := x, Callee(Position _) := y };
 		iterations += 1;
@@ -94,11 +94,12 @@ public CallGraphResult createOptimisticCallGraph2(rel[Vertex, Vertex] flowGraph,
 	}
 
 	println("Optimistic2: Fixpoint reached after <iterations> iterations");
+	newFlowGraph = sanderOptimisticTransitiveClosure(flowGraph);
+	flowGraph = flowGraph + newFlowGraph;
 	
 	
+	rel[Vertex, Vertex] callGraph = { <y, x> | <x,y> <- newFlowGraph, (Fun(Position _) := x || Builtin(str _) := x), Callee(Position _) := y };
 	
-	rel[Vertex, Vertex] callGraph = { <y, x> | <x,y> <- sanderOptimisticTransitiveClosure(flowGraph), (Fun(Position _) := x || Builtin(str _) := x), Callee(Position _) := y };
-	// { <y,x> | <x,y> <- flowGraph, (Fun(Position _) := x || Builtin(str _) := x), Callee(Position _) := y }
 	return CallGraphResult(callGraph, {}, {});
 }
 public CallGraphResult createOptimisticCallGraph2(Source source) {

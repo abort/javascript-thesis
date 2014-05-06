@@ -9,16 +9,6 @@ import FlowGraphNativeImporter;
 import Set;
 import List;
 
-/*private str jsEscape(Expression input) {
-	str retval = escape(unparse(input), ("\\": "\\\\", "\\\"": "\\\\\"", "\\\'": "\\\\\'", "\"": "\\\"", "\'": "\\\'"));
-	//retval =  
-}*/
-
-
-@javaClass{jsimpl.Encoder}
-public java str javascriptEscape(str input);
-private str readCallGraphInjectionSnippet() = readFile(|project://thesis/src/dynamic-callgraph-injection.js|);
-
 // TODO: rewrite multiple files, let them include 1 js
 // TODO interpret new separately
 Expression getRewrittenFunctionCall(Expression call, loc inputfile) {
@@ -72,7 +62,6 @@ void rewriteJavascriptWithDynamicCallGraphBuilder(loc inputfile) {
 	
 	str newsrc = readFile(|project://thesis/src/dynamiccode.js|) + "\n\n" + unparse(rewrittenSource);
 	src = parse(newsrc);
-//	println("rewritten to: " + unparse(src));
 	
 	writeFile(toLocation(outputFile), newsrc);
 }

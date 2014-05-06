@@ -34,6 +34,14 @@ public rel[Vertex, Vertex] createFlowGraph(Tree source, Scope scope) {
 	rel[Vertex, Vertex] flowGraph = {};
 	map[str, SymbolMapEntry] symbolMap = getSymbolMap(scope);
 	Position nextNodeToSkip = InexistentPosition();
+	/*
+	if (scope is scoped) {
+		for (FunctionDeclaration f <- source) {
+			println("Function <f.name>");
+			if (isDeclarableInScope("<f.name>", symbolMap, scope)) symbolMap["<f.name>"] = createEntry(f);	
+		}
+	}
+	*/
 
 	top-down-break visit (source) {
 		case FunctionDeclaration f:{
@@ -44,8 +52,13 @@ public rel[Vertex, Vertex] createFlowGraph(Tree source, Scope scope) {
 			
 			// Add the function to the current scope
 			if (isDeclarableInScope("<f.name>", symbolMap, scope)) symbolMap["<f.name>"] = createEntry(f);
+			symbolMap["<f.name>"] = createEntry(f);	// TODO should we actually do this in global scope
 
-			flowGraph += <Fun(functionPosition), Var("<f.name>", functionPosition)>;
+			Vertex v;
+			if (scope is scoped) v = Var("<f.name>", functionPosition);
+			else v = Prop("<f.name>");
+
+			flowGraph += <Fun(functionPosition), v>;
 			flowGraph += createFlowGraph(f.implementation, scoped(inFunctionSymbolMap));
 		}
 		case Expression e:{
@@ -253,6 +266,8 @@ private rel[Vertex, Vertex] createFlowGraphFromFunctionCall(Expression callExpre
 		 || functionNoParams(Expression funcExpression) := callExpression) {
 		// In case of one shot closures, we have to consider the subexpression (nested) as the function being called
 		if (nestedExpression(Expression sub) := funcExpression) funcExpression = sub;
+
+			//println("looking up <funcExpression> in (<domain(symbolMap)>)"); 
 
 		Position expressionPosition = getPosition(fullExpression);
 		flowGraph += <createVertex(funcExpression, symbolMap), Callee(expressionPosition)>;

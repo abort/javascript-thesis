@@ -90,7 +90,7 @@ public set[Tree] getFunctions(Tree tree) {
 	set[Tree] functions = {};
 	top-down visit(tree) {
 		case Expression e:{
-			if (function(Id _, {Id ","}* params, Block _) := e || functionAnonymous({Id ","}* _, Block _) := e) {
+			if (e is function || e is functionAnonymous) {
 				functions += e;
 			}
 		}

@@ -25,8 +25,8 @@ Expression getRewrittenInstantiativeFunctionCall(Expression call, Expression ful
 
 
 void rewriteJavascriptWithDynamicCallGraphBuilder(loc inputfile) {
-	loc nativeFunctionLocation = |project://thesis/src/native-functions.txt|;
-	map[str, str] nativeFunctions = getNativeFunctionMap(nativeFunctionLocation);
+	//loc nativeFunctionLocation = |project://thesis/src/native-functions.txt|;
+	//map[str, str] nativeFunctions = getNativeFunctionMap(nativeFunctionLocation);
 	str outputFile = substring(inputfile.uri, 0, findLast(inputfile.uri, ".")) + ".dcg.js";
 	println("output file: <outputFile>");
 	loc output = inputfile.parent + outputFile;
@@ -35,6 +35,7 @@ void rewriteJavascriptWithDynamicCallGraphBuilder(loc inputfile) {
 	set[loc] expressionsToSkip = {}; 
 	Source rewrittenSource = top-down visit (src) {
 		case Expression e:{
+			println("visit exp");
 			if (new(Expression newExp) := e) {
 				if (functionParams(Expression lhs, { Expression!comma ","}+ _) := newExp || functionNoParams(Expression lhs) := newExp) {
 					expressionsToSkip += newExp@\loc;
@@ -70,7 +71,7 @@ private tuple[str, str] getPossibleNativeCallSite(Expression callExpression) {
 	if (functionParams(Expression funcExpression, _) := callExpression || functionNoParams(Expression funcExpression) := callExpression) {
 		if (isPossibleNativeCallSite(funcExpression)) return <"<funcExpression>", "<funcExpression>">;
 		if (nestedExpression(Expression subExpression) := callExpression) {
-			return getPossibleNativeCallSite(subExpression);
+			return <"<subExpression>", "<subExpression>">;
 		}
 		return <"null", "">; 
 	}

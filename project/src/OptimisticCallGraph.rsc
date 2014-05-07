@@ -41,8 +41,8 @@ public CallGraphResult createOptimisticCallGraph(rel[Vertex, Vertex] flowGraph, 
 		set[OneShotCall] callGraphParam = { OneShotCall(px, py, getArguments(source, px)) | <x, y> <- callGraph, Fun(Position py) := y, Callee(Position px) := x };
 		flowGraph += addInterproceduralEdges(callGraphParam, escapingFunctions, unresolvedCallSites);
 
-		rel[Vertex, Vertex] flowGraphTransitiveClosure = flowGraph+;
-	 	callGraph = { <y, x> | <x,y> <- sanderOptimisticTransitiveClosure(flowGraph), (Fun(Position _) := x || Builtin(str _) := x), Callee(Position _) := y };	
+		// rel[Vertex, Vertex] flowGraphTransitiveClosure = flowGraph+;
+	 	callGraph = /*flowGraph+ + */{ <y, x> | <x,y> <- optimisticTransitiveClosure(flowGraph), (Fun(Position _) := x || Builtin(str _) := x), Callee(Position _) := y };	
 		escapedOutput = { <x, y> | <x, y> <- flowGraphTransitiveClosure, Fun(Position _) := x, Unknown() := y };
 		unresolvedCallSitesOutput = { <x, y> | <x, y> <- flowGraphTransitiveClosure, Unknown() := x, Callee(Position _) := y };
 		iterations += 1;
@@ -79,7 +79,11 @@ public CallGraphResult createOptimisticCallGraph2(rel[Vertex, Vertex] flowGraph,
 				
 				int argnum = 1;
 	
-				for (Expression _ <- getArguments(source, p)) {
+				set[Id] parameters = getParameters(source, function);
+				set[Expression] arguments = getArguments(source, p);
+				int args = (size(parameters) > size(arguments)) ? size(parameters) : size(arguments); 
+				//for (Expression _ <- getArguments(source, p)) {
+				while (argnum <= args) {
 					tuple[Vertex, Vertex] argCandidate = <Arg(p, argnum), Parm(getPosition(function), argnum)>;
 					if (argCandidate notin flowGraph) {
 						// println("Added argument");
@@ -98,13 +102,25 @@ public CallGraphResult createOptimisticCallGraph2(rel[Vertex, Vertex] flowGraph,
 	flowGraph = flowGraph + newFlowGraph;
 	
 	
-	rel[Vertex, Vertex] callGraph = { <y, x> | <x,y> <- newFlowGraph, (Fun(Position _) := x || Builtin(str _) := x), Callee(Position _) := y };
+	rel[Vertex, Vertex] callGraph = { <y, x> | <x,y> <- flowGraph, (Fun(Position _) := x || Builtin(str _) := x), Callee(Position _) := y };
 	
 	return CallGraphResult(callGraph, {}, {});
 }
 public CallGraphResult createOptimisticCallGraph2(Source source) {
 	rel[Vertex, Vertex] flowGraph = createFlowGraphWithNativeFunctions(|project://thesis/src/native-functions.txt|, source);	
 	return createOptimisticCallGraph2(flowGraph, source);
+}
+
+private set[Id] getParameters(Source src, Tree tree) {
+	if (tree is functionAnonymous) return {};
+	set[Id] retval = {};
+	// println("function or function decl");
+	for (Id id <- tree.parameters) {
+		retval += id;
+	}
+	//if (size(retval) == 0) println("weird");
+	
+	return retval;
 }
 
 private set[Expression] getArguments(Source src, Position p) {
@@ -120,8 +136,11 @@ private set[Expression] getArguments(Source src, Position p) {
 	}
 
 	if (Expression e := tree && functionParams(Expression _, { Expression!comma ","}+ args) := e) {
+		// println("func params");
 		for (Expression arg <- args) 
 			arguments += arg;
+			
+		// if (size(arguments) == 0) println("weird 2");
 	}
 		
 	return arguments;

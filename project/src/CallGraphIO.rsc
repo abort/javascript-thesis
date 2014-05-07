@@ -53,13 +53,14 @@ public void storeOptimisticCallGraph(loc location) {
 	loc output = location.parent + outputFile + "1.txt";
 	loc output2 = location.parent + outputFile + "2.txt";
 
-	Source source = parse(location);
+/*	Source source = parse(location);
 	rel[Vertex, Vertex] flowGraph = createFlowGraphWithNativeFunctions(|project://thesis/src/native-functions.txt|, source);
-	
+*/
+/*
 	CallGraphResult result = createOptimisticCallGraph(flowGraph, source);
 	storeAlphabeticalFlowGraph(output, result.graph);
-	
-	CallGraphResult result2 = createOptimisticCallGraph2(flowGraph, source);
+*/	
+	CallGraphResult result2 = createOptimisticCallGraph2(location);
 	storeAlphabeticalFlowGraph(output2, result2.graph);
 	
 	println("Result equality: <result == result2>");

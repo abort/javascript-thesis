@@ -30,18 +30,52 @@ public rel[Vertex, Vertex] createFlowGraph(Source source) = createFlowGraph(sour
 // Retrieve the position of a node
 public Position getPosition(Tree t) = ExistingPosition(t@\loc);
 
+// Hoisting support
+public map[str, SymbolMapEntry] getDeclaredVariablesInScope(Tree source, Scope scope) {
+	assert(scope is scoped);
+	map[str, SymbolMapEntry] symbolMap = getSymbolMap(scope);
+	Position blockNotToVisit = InexistentPosition();
+	
+	top-down-break visit(source) {
+		case FunctionDeclaration f:{
+			// Add the function to the current scope
+			if (isDeclarableInScope("<f.name>", symbolMap, scope)) symbolMap["<f.name>"] = createEntry(f);
+			// Stop visiting function scope
+		}
+		case VariableDeclarationNoIn v:{
+			// Declaration + R1
+			symbolMap += appendVariableDeclarationToScope(v, scoped(symbolMap));
+			fail;
+		}
+		case VariableDeclaration v:{
+			// Declaration + R1
+			symbolMap += appendVariableDeclarationToScope(v, scoped(symbolMap));
+			fail;
+		}
+		case Statement s:{
+			// Considered as a single variable declaration
+			if (forInDeclaration(Id id, Expression _, Statement _) := s) {
+				// Assumption to count as a simple declaration (so not R1, TODO: DOCUMENT!)
+				if (isDeclarableInScope("<id>", symbolMap, scope)) symbolMap["<id>"] = createEntry(id);	
+			}
+			fail;		
+		}
+		case Expression e:{
+			if (!(e is function || e is functionAnonymous)) fail;
+			// Stop visiting function scope
+		}
+	}
+	
+	return symbolMap;
+}
+
 public rel[Vertex, Vertex] createFlowGraph(Tree source, Scope scope) {
 	rel[Vertex, Vertex] flowGraph = {};
 	map[str, SymbolMapEntry] symbolMap = getSymbolMap(scope);
 	Position nextNodeToSkip = InexistentPosition();
-	/*
-	if (scope is scoped) {
-		for (FunctionDeclaration f <- source) {
-			println("Function <f.name>");
-			if (isDeclarableInScope("<f.name>", symbolMap, scope)) symbolMap["<f.name>"] = createEntry(f);	
-		}
-	}
-	*/
+	
+	// Variable hoisting
+	if (scope is scoped) symbolMap = getDeclaredVariablesInScope(source, scope);
 
 	top-down-break visit (source) {
 		case FunctionDeclaration f:{
@@ -49,10 +83,6 @@ public rel[Vertex, Vertex] createFlowGraph(Tree source, Scope scope) {
 			map[str, SymbolMapEntry] inFunctionSymbolMap = getOverridableSymbolMap(symbolMap);
 			inFunctionSymbolMap["<f.name>"] = createOverridableEntry(f);
 			inFunctionSymbolMap = addParametersToSymbolMap(inFunctionSymbolMap, f.parameters, functionPosition);
-			
-			// Add the function to the current scope
-			if (isDeclarableInScope("<f.name>", symbolMap, scope)) symbolMap["<f.name>"] = createEntry(f);
-			symbolMap["<f.name>"] = createEntry(f);	// TODO should we actually do this in global scope
 
 			Vertex v;
 			if (scope is scoped) v = Var("<f.name>", functionPosition);
@@ -99,25 +129,18 @@ public rel[Vertex, Vertex] createFlowGraph(Tree source, Scope scope) {
 		}
 		case VariableDeclarationNoIn v:{
 			// Declaration + R1
-			ScopedResult result = createFlowGraphFromVariableDeclaration(v, scoped(symbolMap));
-			flowGraph += result.graph;
-			if (scope is scoped) symbolMap += getSymbolMap(result.scope);
-
+			flowGraph += createFlowGraphFromVariableDeclaration(v, scoped(symbolMap));
 			fail;
 		}
 		case VariableDeclaration v:{
 			// Declaration + R1
-			ScopedResult result = createFlowGraphFromVariableDeclaration(v, scoped(symbolMap));
-			flowGraph += result.graph;
-			if (scope is scoped) symbolMap += getSymbolMap(result.scope);
-
+			flowGraph += createFlowGraphFromVariableDeclaration(v, scoped(symbolMap));
 			fail;
 		}
 		case VariableAssignment v:{
 			// R1
 			if (filledAssignment(Expression lhs, Expression rhs) := v) 
 				flowGraph += createFlowGraphFromAssignment(lhs, rhs, v, symbolMap);		
-
 			fail;
 		}		 
 	}
@@ -125,33 +148,29 @@ public rel[Vertex, Vertex] createFlowGraph(Tree source, Scope scope) {
 	return flowGraph;
 }
 
-private ScopedResult createFlowGraphFromVariableDeclaration(Tree declaration, Scope scope) {
+private map[str, SymbolMapEntry] appendVariableDeclarationToScope(Tree declaration, Scope scope) {
+	map[str, SymbolMapEntry] symbolMap = getSymbolMap(scope); 
+	if (filledDeclaration(Id id, Expression expression) := declaration || emptyDeclaration(Id id) := declaration)
+		if (isDeclarableInScope("<id>", symbolMap, scope)) symbolMap["<id>"] = createEntry(id);	
+		
+	return symbolMap;
+}
+
+private rel[Vertex, Vertex] createFlowGraphFromVariableDeclaration(Tree declaration, Scope scope) {
  	rel[Vertex, Vertex] flowGraph = {};
- 	map[str, SymbolMapEntry] symbolMap = getSymbolMap(scope);
 
-	if (filledDeclaration(Id id, Expression expression) := declaration) {
-		if (isDeclarableInScope("<id>", symbolMap, scope)) symbolMap["<id>"] = createEntry(id);
-
-		flowGraph += createFlowGraphFromAssignment(id, expression, declaration, symbolMap);
-	}
-	elseif (emptyDeclaration(Id id) := declaration) {
-		if (isDeclarableInScope("<id>", symbolMap, scope)) symbolMap["<id>"] = createEntry(id);
-	}
+	if (filledDeclaration(Id id, Expression expression) := declaration)
+		flowGraph = createFlowGraphFromAssignment(id, expression, declaration, getSymbolMap(scope));
 	
-	return result(flowGraph, scope is global ? global : scoped(symbolMap), InexistentPosition());
+	return flowGraph;
 }  
 
 private ScopedResult createFlowGraphFromStatement(Statement statement, Scope scope) {
 	rel[Vertex, Vertex] flowGraph = {};
 	map[str, SymbolMapEntry] symbolMap = getSymbolMap(scope);
-	
-	// Considered as a single variable declaration
-	if (forInDeclaration(Id id, Expression _, Statement _) := statement) {
-		// Assumption to count as a simple declaration (so not R1, TODO: DOCUMENT!)
-		if (isDeclarableInScope("<id>", symbolMap, scope)) symbolMap["<id>"] = createEntry(id);	
-	}
+
 	// TODO normal forIn not necessary?
-	elseif (returnExp(Expression e) := statement || returnExpNoSemi(Expression e, _) := statement
+	if (returnExp(Expression e) := statement || returnExpNoSemi(Expression e, _) := statement
 			 || returnExpNoSemiBlockEnd(Expression e, _) := statement) {
 		Position thisPosition = getThisPosition(symbolMap);
 		if (thisPosition != InexistentPosition()) flowGraph += <createVertex(e, symbolMap), Ret(thisPosition)>;

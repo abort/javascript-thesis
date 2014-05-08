@@ -11,10 +11,11 @@ import List;
 
 // TODO: rewrite multiple files, let them include 1 js
 // TODO interpret new separately
-Expression getRewrittenFunctionCall(Expression call, loc inputfile) {
+str getRewrittenFunctionCall(Expression call, loc inputfile) {
 	tuple[str element, str representation] nativeCallSite = getPossibleNativeCallSite(call);
-	str toInsert = "((function() {\nvar callSite = <nativeCallSite.element>;\n if (callSite != null && isNative(callSite)) {\n addNativeFunctionToMap(\"<inputfile.file>\", <call@\loc.begin.line>, <call@\loc.offset>, <(call@\loc.offset + call@\loc.length)>, \"<nativeCallSite.representation>\");\n}\nelse {\nvar oldLastCall = lastCall;\nsetLastFunctionCall(\"<inputfile.file>\", <call@\loc.begin.line>, <call@\loc.offset>, <(call@\loc.offset + call@\loc.length)>);\n}\nvar result = <call>;\nlastCall = oldLastCall;\nreturn result;\n}).apply(this))";
-	return parse(#Expression, toInsert);
+	str toInsert = "((function() {\nvar callSite = <nativeCallSite.element>;\n if (callSite != null && isNative(callSite)) {\n addNativeFunctionToMap(\"<inputfile.file>\", <call@\loc.begin.line>, <call@\loc.offset>, <(call@\loc.offset + call@\loc.length)>, \"<nativeCallSite.representation>\");\n}\n";
+	toInsert += "else {\nvar oldLastCall = lastCall;\nsetLastFunctionCall(\"<inputfile.file>\", <call@\loc.begin.line>, <call@\loc.offset>, <(call@\loc.offset + call@\loc.length)>);\n}\nvar result = <unparse(call)>;\nlastCall = oldLastCall;\nreturn result;\n}).apply(this))";
+	return toInsert;
 }
 
 Expression getRewrittenInstantiativeFunctionCall(Expression call, Expression fullExpression, loc inputfile) {
@@ -35,7 +36,7 @@ void rewriteJavascriptWithDynamicCallGraphBuilder(loc inputfile) {
 	set[loc] expressionsToSkip = {}; 
 	Source rewrittenSource = top-down visit (src) {
 		case Expression e:{
-			println("visit exp");
+			//println("visit exp");
 			if (new(Expression newExp) := e) {
 				if (functionParams(Expression lhs, { Expression!comma ","}+ _) := newExp || functionNoParams(Expression lhs) := newExp) {
 					expressionsToSkip += newExp@\loc;
@@ -46,7 +47,7 @@ void rewriteJavascriptWithDynamicCallGraphBuilder(loc inputfile) {
 				}
 			}
 			elseif (functionParams(Expression lhs, { Expression!comma ","}+ _) := e || functionNoParams(Expression lhs) := e) {
-				if (e@\loc notin expressionsToSkip)	insert getRewrittenFunctionCall(e, inputfile);
+				if (e@\loc notin expressionsToSkip)	insert parse(#Expression, getRewrittenFunctionCall(e, inputfile));
 					// TODO: first set function call, THEN do the call..
 				
 				//println("Replace with <toInsert>");
@@ -62,8 +63,9 @@ void rewriteJavascriptWithDynamicCallGraphBuilder(loc inputfile) {
 	};
 	
 	str newsrc = readFile(|project://thesis/src/dynamiccode.js|) + "\n\n" + unparse(rewrittenSource);
-	src = parse(newsrc);
+	//src = parse(newsrc);
 	
+	//writeFile(toLocation(outputFile), newsrc);
 	writeFile(toLocation(outputFile), newsrc);
 }
 

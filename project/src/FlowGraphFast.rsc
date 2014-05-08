@@ -87,7 +87,7 @@ public rel[Vertex, Vertex] createFlowGraph(Tree source, Scope scope) {
 			Vertex v;
 			if (scope is scoped) v = Var("<f.name>", functionPosition);
 			else v = Prop("<f.name>");
-
+	
 			flowGraph += <Fun(functionPosition), v>;
 			flowGraph += createFlowGraph(f.implementation, scoped(inFunctionSymbolMap));
 		}
@@ -318,7 +318,10 @@ private Vertex createVertex(Tree root, map[str, SymbolMapEntry] symbolMap) {
 	}
 	elseif (Expression e := root && e is this) {
 		if (THIS_KEYWORD in symbolMap) return Parm(symbolMap[THIS_KEYWORD].position, 0);
-		else debug("Reference to this without a this scope... fallback");
+		else {
+			debug("Reference to this without a this scope... fallback");
+			return Prop("this");
+		}
 	}
 	
 	return Exp(getPosition(root));

@@ -28,15 +28,16 @@ public CallGraphResult createPessimisticCallGraph(Source source) {
 	// flowGraph += createFlowGraph(source);
 	flowGraph += createFlowGraphWithNativeFunctions(|project://thesis/src/native-functions.txt|, source); 
 	println("done with adding interprocedural flow");
-	rel[Vertex, Vertex] callGraph = { <y, x> | <x,y> <- sanderOptimisticTransitiveClosure(flowGraph), (Fun(Position _) := x || Builtin(str _) := x), Callee(Position _) := y };
+	rel[Vertex, Vertex] callGraph = { <y, x> | <x,y> <- optimisticTransitiveClosure(flowGraph), (Fun(Position _) := x || Builtin(str _) := x), Callee(Position _) := y };
 	println("producing non optimistic transitive closure");
 	// Commented out due to performance issues
+	/*
 	rel[Vertex, Vertex] flowGraphTransitiveClosure = flowGraph+; 	
 	rel[Vertex, Vertex] escapedOutput = { <x, y> | <x, y> <- flowGraphTransitiveClosure, Fun(Position _) := x, Unknown() := y };
 	rel[Vertex, Vertex] unresolvedCallSitesOutput = { <x, y> | <x, y> <- flowGraphTransitiveClosure, Unknown() := x, Callee(Position _) := y };
-
+*/
 	// return CallGraphResult(flowGraph, escapedOutput, unresolvedCallSitesOutput);
 	
 	//return CallGraphResult(flowGraph, {}, {});
-	return CallGraphResult(optimisticTransitiveClosure(flowGraph), {}, {});
+	return CallGraphResult(callGraph, {}, {});
 }

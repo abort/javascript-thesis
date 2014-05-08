@@ -8,13 +8,18 @@ import ParseTree;
 import FlowGraphNativeImporter;
 import Set;
 import List;
+import util::ShellExec;
+
+str COPY_PATH = "/bin/cp";
+
 
 // TODO: rewrite multiple files, let them include 1 js
 // TODO interpret new separately
 str getRewrittenFunctionCall(Expression call, loc inputfile) {
 	tuple[str element, str representation] nativeCallSite = getPossibleNativeCallSite(call);
-	str toInsert = "((function() {\nvar callSite = <nativeCallSite.element>;\n if (callSite != null && isNative(callSite)) {\n addNativeFunctionToMap(\"<inputfile.file>\", <call@\loc.begin.line>, <call@\loc.offset>, <(call@\loc.offset + call@\loc.length)>, \"<nativeCallSite.representation>\");\n}\n";
-	toInsert += "else {\nvar oldLastCall = lastCall;\nsetLastFunctionCall(\"<inputfile.file>\", <call@\loc.begin.line>, <call@\loc.offset>, <(call@\loc.offset + call@\loc.length)>);\n}\nvar result = <unparse(call)>;\nlastCall = oldLastCall;\nreturn result;\n}).apply(this))";
+	str toInsert = "((function() {\nvar callSite = <nativeCallSite.element>;\n if (callSite != null && isNative(callSite)) {\n addNativeFunctionToMap(\"<inputfile.file>\", <call@\loc.begin.line>, <call@\loc.offset>, <(call@\loc.offset + call@\loc.length)>, \"<nativeCallSite.representation>\");\n}"; 
+	toInsert += "\nelse {\nvar oldLastCall = lastCall;\nsetLastFunctionCall(\"<inputfile.file>\", <call@\loc.begin.line>, <call@\loc.offset>, <(call@\loc.offset + call@\loc.length)>);\n}\nvar result = <unparse(call)>;\nlastCall = oldLastCall;\nreturn result;\n}).apply(this))";
+	println("Rewritten call: <toInsert>\n");
 	return toInsert;
 }
 
@@ -24,34 +29,92 @@ Expression getRewrittenInstantiativeFunctionCall(Expression call, Expression ful
 	return parse(#Expression, toInsert);
 }
 
-
-void rewriteJavascriptWithDynamicCallGraphBuilder(loc inputfile) {
-	//loc nativeFunctionLocation = |project://thesis/src/native-functions.txt|;
-	//map[str, str] nativeFunctions = getNativeFunctionMap(nativeFunctionLocation);
-	str outputFile = substring(inputfile.uri, 0, findLast(inputfile.uri, ".")) + ".dcg.js";
-	println("output file: <outputFile>");
-	loc output = inputfile.parent + outputFile;
-	bool inserted = false;
-	Source src = parse(inputfile);
-	set[loc] expressionsToSkip = {}; 
-	Source rewrittenSource = top-down visit (src) {
+tuple[Source, set[loc]] rewriteAndGetNewFunctionCalls(Source src, loc inputfile) {
+	set[loc] expressionsToSkip = {};
+	Source retval = visit(src) {
 		case Expression e:{
-			//println("visit exp");
 			if (new(Expression newExp) := e) {
 				if (functionParams(Expression lhs, { Expression!comma ","}+ _) := newExp || functionNoParams(Expression lhs) := newExp) {
-					expressionsToSkip += newExp@\loc;
 					insert getRewrittenInstantiativeFunctionCall(newExp, e, inputfile);
 				}
 				else {
-					insert getRewrittenInstantiativeFunctionCall(parse(#Expression, unparse(newExp) + "()"), e, inputfile); // remove syntactic suga
+					insert getRewrittenInstantiativeFunctionCall(parse(#Expression, unparse(newExp) + "()"), e, inputfile);
 				}
 			}
-			elseif (functionParams(Expression lhs, { Expression!comma ","}+ _) := e || functionNoParams(Expression lhs) := e) {
-				if (e@\loc notin expressionsToSkip)	insert parse(#Expression, getRewrittenFunctionCall(e, inputfile));
-					// TODO: first set function call, THEN do the call..
-				
-				//println("Replace with <toInsert>");
-				
+		}
+	};
+	
+	visit (retval) {
+		case Expression e:{
+			if (new(Expression newExp) := e) {
+				expressionsToSkip += newExp@\loc;
+			}
+		}
+	}
+	
+	return <retval, expressionsToSkip>;
+}
+
+public void rewriteJavaScripts(loc path) {
+	assert(isDirectory(path));
+	loc rewritePath = createRewrittenDirectory(path);
+	rewriteScripts(path, rewritePath, false);
+}
+private void rewriteScripts(loc originalPath, loc rewriteDirectory, bool inSubDirectory) {
+	list[loc] sublocations = originalPath.ls;
+	for (loc sublocation <- sublocations) {
+		if (isDirectory(sublocation)) {
+			
+			loc subRewriteDirectory = toLocation(rewriteDirectory.scheme + "://" + rewriteDirectory.path + "/" + getDeepestDirectory(sublocation));
+			rewriteScripts(sublocation, subRewriteDirectory, true);
+		}
+		elseif (isFile(sublocation)) {
+			loc rewrittenLocation = toLocation(rewriteDirectory.scheme + "://" + rewriteDirectory.path + "/" + sublocation.file); // inSubDirectory ? toLocation(rewriteDirectory.path + getDeepestDirectory(originalPath)) : rewriteDirectory;
+			if (isJavaScriptFile(sublocation)) {
+				rewriteJavascriptWithDynamicCallGraphBuilder(sublocation, rewrittenLocation);
+			}
+			else {
+				// Rascal lacks copy file, hence we do it so :)
+				list[int] bytes = readFileBytes(toLocation(originalPath.scheme + "://" + originalPath.path + "/" + sublocation.file));
+				writeFileBytes(rewrittenLocation, bytes);
+			}
+		}
+	}
+} 
+
+private str getDeepestDirectory(loc path) {
+	if (isDirectory(path)) {
+		if (endsWith(path.uri, "/")) path = toLocation(path.scheme + "://" + replaceLast(path.uri, "/", "")); 
+		return path.file;
+	}
+	return path.parent.file;
+}
+
+private void rewriteJavascript(loc location, loc rewriteLocation) { }
+
+private bool isJavaScriptFile(loc location) = location.extension == "js";
+private loc createRewrittenDirectory(loc path) {
+	loc parentDirectory = path.parent;
+	str rewrittenDirectoryName;
+	if (endsWith(path.uri, "/")) rewrittenDirectoryName = replaceLast(path.uri, "/", "");
+	else rewrittenDirectoryName = path.uri;
+	rewrittenDirectoryName = toLocation(rewrittenDirectoryName).file + "-rewritten";
+
+	loc rewritePath = toLocation(parentDirectory.uri + "/" + rewrittenDirectoryName);
+	mkDirectory(rewritePath);
+	
+	return rewritePath;
+}
+
+void rewriteJavascriptWithDynamicCallGraphBuilder(loc inputfile) = rewriteJavascriptWithDynamicCallGraphBuilder(inputfile, inputfile.parent + substring(inputfile.uri, 0, findLast(inputfile.uri, ".")) + ".dcg.js");
+void rewriteJavascriptWithDynamicCallGraphBuilder(loc inputfile, loc outputfile) = rewriteJavascriptWithDynamicCallGraphBuilder(inputfile, outputfile, false);
+void rewriteJavascriptWithDynamicCallGraphBuilder(loc inputfile, loc outputfile, bool includeInstrumentation) {
+	tuple[Source src, set[loc] expressionsToSkip] preprocessedSource = rewriteAndGetNewFunctionCalls(parse(inputfile), inputfile);
+	Source rewrittenSource = bottom-up visit (preprocessedSource.src) {
+		case Expression e:{
+			if (functionParams(Expression lhs, { Expression!comma ","}+ _) := e || functionNoParams(Expression lhs) := e) {
+				if (e@\loc notin preprocessedSource.expressionsToSkip) insert parse(#Expression, getRewrittenFunctionCall(e, inputfile));	
+					// TODO: first set function call, THEN do the call..				
 			}
 			elseif (function(Id id, {Id ","}* parameters, Block b) := e || functionAnonymous({Id ","}* parameters, Block b) := e) {
 				insert newFuncInsert("<inputfile.file>", e);
@@ -62,18 +125,18 @@ void rewriteJavascriptWithDynamicCallGraphBuilder(loc inputfile) {
 		}
 	};
 	
-	str newsrc = readFile(|project://thesis/src/dynamiccode.js|) + "\n\n" + unparse(rewrittenSource);
-	//src = parse(newsrc);
+	str newSourceCode = "";
+	if (includeInstrumentation) newSourceCode += readFile(|project://thesis/src/dynamiccode.js|) + "\n\n";
+	newSourceCode += unparse(rewrittenSource);
 	
-	//writeFile(toLocation(outputFile), newsrc);
-	writeFile(toLocation(outputFile), newsrc);
+	writeFile(outputfile, newSourceCode);
 }
 
 private tuple[str, str] getPossibleNativeCallSite(Expression callExpression) {
 	if (functionParams(Expression funcExpression, _) := callExpression || functionNoParams(Expression funcExpression) := callExpression) {
 		if (isPossibleNativeCallSite(funcExpression)) return <"<funcExpression>", "<funcExpression>">;
 		if (nestedExpression(Expression subExpression) := callExpression) {
-			return <"<subExpression>", "<subExpression>">;
+			return getPossibleNativeCallSite(subExpression);
 		}
 		return <"null", "">; 
 	}

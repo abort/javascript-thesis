@@ -1,8 +1,20 @@
 var lastCall = null;
 var callMap = {};
 
-
 function addNativeFunctionToMap(file, line, startPosition, endPosition, nativeFunction) {
+	var nativeFunctionSubStrings = nativeFunction.split('.');
+	var type;
+	if (nativeFunctionSubStrings.length > 1) {
+		var nativeFunctionSub = nativeFunctionSubStrings[nativeFunctionSubStrings.length - 1];
+		type = nativeFunctionSubStrings[nativeFunctionSubStrings.length - 2];
+
+		nativeFunction =  Object.prototype.toString.call(type) + "." + nativeFunction; 
+	}
+	else {
+		type = nativeFunction;
+	}
+	
+
 	var currentArray = callMap[nativeFunction];
 	if (currentArray == null) {
 		currentArray = new Array();
@@ -33,7 +45,7 @@ function addFunctionToMap(file, line, startPosition, endPosition) {
 	}
 	if (!doesArrayContain(currentArray, lastCall)) 
 		currentArray.push(lastCall);
-	console.log("call: " + lastCall);
+	//console.log("call: " + lastCall);
 	callMap[thisFunction] = currentArray;
 	lastCall = null; // reset
 }
@@ -44,8 +56,7 @@ function callFunctionString(f) {
 
 function doesArrayContain(array, call) {
 	for (var callee in array) {
-		console.log("compare " + callee + " to " + call);
-		if (callee == call) return true;
+		if (array[callee] == call) return true;
 	}
 	
 	return false;

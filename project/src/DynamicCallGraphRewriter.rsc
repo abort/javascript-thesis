@@ -10,14 +10,27 @@ import Set;
 import List;
 import util::ShellExec;
 
-str COPY_PATH = "/bin/cp";
-
+str extractObject(str exp) {
+	list[str] subs = split(".", exp);
+	
+	if (size(subs) == 1) return "null";
+	
+	int i = 0;
+	str obj = "";
+	for (str sub <- subs) {
+		if (i == size(subs) - 1) break;
+		obj += sub + ".";
+		i += 1;
+	}
+	
+	return substring(obj, 0, size(obj) - 1);
+}
 
 // TODO: rewrite multiple files, let them include 1 js
 // TODO interpret new separately
 str getRewrittenFunctionCall(Expression call, loc inputfile) {
 	tuple[str element, str representation] nativeCallSite = getPossibleNativeCallSite(call);
-	str toInsert = "((function() {\nvar callSite = <nativeCallSite.element>;\n if (callSite != null && isNative(callSite)) {\n addNativeFunctionToMap(\"<inputfile.file>\", <call@\loc.begin.line>, <call@\loc.offset>, <(call@\loc.offset + call@\loc.length)>, \"<nativeCallSite.representation>\");\n}"; 
+	str toInsert = "((function() {\nvar callSite = <nativeCallSite.element>;\n if (callSite != null && isNative(callSite)) {\n addNativeFunctionToMap(\"<inputfile.file>\", <call@\loc.begin.line>, <call@\loc.offset>, <(call@\loc.offset + call@\loc.length)>, \"<nativeCallSite.representation>\", <extractObject(nativeCallSite.representation)>);\n}"; 
 	toInsert += "\nelse {\nvar oldLastCall = lastCall;\nsetLastFunctionCall(\"<inputfile.file>\", <call@\loc.begin.line>, <call@\loc.offset>, <(call@\loc.offset + call@\loc.length)>);\n}\nvar result = <unparse(call)>;\nlastCall = oldLastCall;\nreturn result;\n}).apply(this))";
 	println("Rewritten call: <toInsert>\n");
 	return toInsert;
@@ -25,7 +38,7 @@ str getRewrittenFunctionCall(Expression call, loc inputfile) {
 
 Expression getRewrittenInstantiativeFunctionCall(Expression call, Expression fullExpression, loc inputfile) {
 	tuple[str element, str representation] nativeCallSite = getPossibleNativeCallSite(call);
-	str toInsert = "((function() {\nvar callSite = <nativeCallSite.element>;\n if (callSite != null && isNative(callSite)) {\n addNativeFunctionToMap(\"<inputfile.file>\", <fullExpression@\loc.begin.line>, <fullExpression@\loc.offset>, <(fullExpression@\loc.offset + fullExpression@\loc.length)>, \"<nativeCallSite.representation>\");\n}\nelse {\nvar oldLastCall = lastCall;\nsetLastFunctionCall(\"<inputfile.file>\", <fullExpression@\loc.begin.line>, <fullExpression@\loc.offset>, <(fullExpression@\loc.offset + fullExpression@\loc.length)>);\n}\nvar result = <fullExpression>;\nlastCall = oldLastCall;\nreturn result;\n}).apply())";
+	str toInsert = "((function() {\nvar callSite = <nativeCallSite.element>;\n if (callSite != null && isNative(callSite)) {\n addNativeFunctionToMap(\"<inputfile.file>\", <fullExpression@\loc.begin.line>, <fullExpression@\loc.offset>, <(fullExpression@\loc.offset + fullExpression@\loc.length)>, \"<nativeCallSite.representation>\", \"<extractObject(nativeCallSite.representation)>\");\n}\nelse {\nvar oldLastCall = lastCall;\nsetLastFunctionCall(\"<inputfile.file>\", <fullExpression@\loc.begin.line>, <fullExpression@\loc.offset>, <(fullExpression@\loc.offset + fullExpression@\loc.length)>);\n}\nvar result = <fullExpression>;\nlastCall = oldLastCall;\nreturn result;\n}).apply())";
 	return parse(#Expression, toInsert);
 }
 

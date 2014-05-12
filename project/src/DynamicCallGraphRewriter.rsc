@@ -10,6 +10,7 @@ import Set;
 import List;
 import util::ShellExec;
 
+// Extract the prototype of the function
 str extractObject(str exp) {
 	list[str] subs = split(".", exp);
 	
@@ -32,7 +33,7 @@ str getRewrittenFunctionCall(Expression call, loc inputfile) {
 	tuple[str element, str representation] nativeCallSite = getPossibleNativeCallSite(call);
 	str toInsert = "((function() {\nvar callSite = <nativeCallSite.element>;\n if (callSite != null && isNative(callSite)) {\n addNativeFunctionToMap(\"<inputfile.file>\", <call@\loc.begin.line>, <call@\loc.offset>, <(call@\loc.offset + call@\loc.length)>, \"<nativeCallSite.representation>\", <extractObject(nativeCallSite.representation)>);\n}"; 
 	toInsert += "\nelse {\nvar oldLastCall = lastCall;\nsetLastFunctionCall(\"<inputfile.file>\", <call@\loc.begin.line>, <call@\loc.offset>, <(call@\loc.offset + call@\loc.length)>);\n}\nvar result = <unparse(call)>;\nlastCall = oldLastCall;\nreturn result;\n}).apply(this))";
-	println("Rewritten call: <toInsert>\n");
+	//println("Rewritten call: <toInsert>\n");
 	return toInsert;
 }
 

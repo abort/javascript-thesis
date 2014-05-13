@@ -178,7 +178,7 @@ void rewriteJavaScript(loc inputfile, loc outputfile, bool includeInstrumentatio
 }
 
 
-void rewriteJavaScript(loc inputfile) = rewriteJavaScript(inputfile, inputfile.parent + substring(inputfile.uri, 0, findLast(inputfile.uri, ".")) + ".dcg.js");
+void rewriteJavaScript(loc inputfile) = rewriteJavaScript(inputfile, toLocation(substring(inputfile.uri, 0, findLast(inputfile.uri, ".")) + ".dcg.js"));
 void rewriteJavaScript(loc inputfile, loc outputfile) = rewriteJavaScript(inputfile, outputfile, false);
 /*void rewriteJavaScript(loc inputfile, loc outputfile, bool includeInstrumentation) {
 

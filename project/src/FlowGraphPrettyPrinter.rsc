@@ -17,6 +17,35 @@ private void printFlowGraph(rel[Vertex, Vertex] graph, bool simplified) {
 
 public str getSimpleFlowGraph(rel[Vertex, Vertex] graph) = getFlowGraphString(graph, true);
 public str getExtensiveFlowGraph(rel[Vertex, Vertex] graph) = getFlowGraphString(graph, false);
+public set[str] getFlowGraphSet(rel[Vertex, Vertex] graph) {
+	str graphString = getAlphabeticalFlowGraph(graph);
+	set[str] result = {};
+	
+	for (connection <- split("\n", graphString)) {
+		if (!isEmpty(connection)) result += connection;
+	}
+	
+	return result;
+}
+
+public set[str] getCallGraphRangeSet(rel[Vertex, Vertex] graph) {
+	set[str] outputSet = {};
+	for (<_, y> <- graph) {
+		outputSet += getUnmodifiedPositionString(y);
+	}
+	
+	return outputSet;
+}
+
+public set[str] getCallGraphSet(rel[Vertex, Vertex] graph) {
+	set[str] outputSet = {};
+	for (<x, y> <- graph) {
+		outputSet += getUnmodifiedPositionString(x) + " -\> " + getUnmodifiedPositionString(y);	
+	}
+	
+	return outputSet;
+}
+
 public str getAlphabeticalFlowGraph(rel[Vertex, Vertex] graph) {
 	list[str] outputList = [];
 	str output = "";
@@ -88,4 +117,20 @@ private str getPositionString(Position inputPosition, bool simplified) {
 		}
 	}
 	return "Inexistent";
+}
+
+public str getUnmodifiedPositionString(Vertex v) {
+	if (v has p) return getPositionString(v.p, false);
+// 	println("v has no position");
+	if (Builtin(str canonicalName) := v) return canonicalName;
+	return getVertexString(v, false);
+}
+
+private bool hasPosition(Vertex v) {
+	visit (v) {
+		case Position p:
+			if (p is ExistingPosition) return true;
+	}
+	
+	return false;
 }

@@ -41,3 +41,15 @@ public CallGraphResult createPessimisticCallGraph(Source source) {
 	//return CallGraphResult(flowGraph, {}, {});
 	return CallGraphResult(callGraph, {}, {});
 }
+
+public CallGraphResult createPessimisticCallGraph(list[Source] sources, list[loc] files) {
+	set[OneShotCall] oneShotCalls = union({ getOneShotCalls(source) | source <- sources });
+	set[EscapingFunction] escapingFunctions = union({ getEscapingFunctions(oneShotCalls, source) | source <- sources });
+	set[UnresolvedCallSite] unresolvedCallSites = union({ getUnresolvedCallSites(oneShotCalls, source) | source <- sources });
+	
+	rel[Vertex, Vertex] flowGraph = addInterproceduralEdges(oneShotCalls, escapingFunctions, unresolvedCallSites);
+	flowGraph += createFlowGraphWithNativeFunctionsFromMultipleFiles(files); 
+	rel[Vertex, Vertex] callGraph = { <y, x> | <x,y> <- optimisticTransitiveClosure(flowGraph), (Fun(Position _) := x || Builtin(str _) := x), Callee(Position _) := y };
+	
+	return CallGraphResult(callGraph, {}, {});
+}

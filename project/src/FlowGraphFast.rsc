@@ -22,6 +22,11 @@ private data SymbolMapEntry = parameterEntry(Position position, bool overridable
 private data Scope = global() | scoped(map[str, SymbolMapEntry] symbolMap); 
 private data ScopedResult = result(rel[Vertex, Vertex] graph, Scope scope, Position nextNodeToSkip);
 
+public rel[Vertex, Vertex] createFlowGraphWithNativeFunctionsFromMultipleFiles(list[loc] files) {
+	rel[Vertex, Vertex] flowGraph = createFlowGraphFromFunctionList(|project://thesis/src/native-functions.txt|);
+	for (f <- files) flowGraph += createFlowGraph(flowGraph, parse(f));	
+	return flowGraph;
+}
 public rel[Vertex, Vertex] createFlowGraphWithNativeFunctions(loc nativeGraphLocation, loc input) = createFlowGraphWithNativeFunctions(nativeGraphLocation, parse(input));
 public rel[Vertex, Vertex] createFlowGraphWithNativeFunctions(loc nativeGraphLocation, Source source) = createFlowGraphFromFunctionList(nativeGraphLocation) + createFlowGraph(source);
 public rel[Vertex, Vertex] createFlowGraph(loc input) = createFlowGraphWithNativeFunctions(|project://thesis/src/native-functions.txt|, input); // default assumption that we need native functions
@@ -68,9 +73,9 @@ public map[str, SymbolMapEntry] getDeclaredVariablesInScope(Tree source, Scope s
 	
 	return symbolMap;
 }
-
-public rel[Vertex, Vertex] createFlowGraph(Tree source, Scope scope) {
-	rel[Vertex, Vertex] flowGraph = {};
+public rel[Vertex, Vertex] createFlowGraph(rel[Vertex, Vertex] flowGraph, Tree source) = createFlowGraph(flowGraph, source, global());
+public rel[Vertex, Vertex] createFlowGraph(Tree source, Scope scope) = createFlowGraph({}, source, scope);
+public rel[Vertex, Vertex] createFlowGraph(rel[Vertex, Vertex] flowGraph, Tree source, Scope scope) {
 	map[str, SymbolMapEntry] symbolMap = getSymbolMap(scope);
 	Position nextNodeToSkip = InexistentPosition();
 	

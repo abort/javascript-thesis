@@ -68,7 +68,7 @@ A different edge is added for function declarations in global scope (R7), in ord
 The $V$ function as referred to in figure 1, represents a function that maps expressions to corresponding flow graph vertices:
 \begin{equation*}
   V(t^\pi) = \begin{cases}
-    \hspace*{0.2cm} \textbf{Var($\pi$)} & \text{if~} t \equiv x \text{~and~} \lambda(\pi, x) = \pi' \\
+    \hspace*{0.2cm} \textbf{Var($\pi'$)} & \text{if~} t \equiv x \text{~and~} \lambda(\pi, x) = \pi' \\
     \hspace*{0.2cm} \textbf{Prop($\pi$)} & \text{if~} t \equiv x \text{~and~} \lambda(\pi, x) = undefined\\
     \hspace*{0.2cm} \textbf{Prop($f$)} & \text{if~} t \equiv e.f \\
     \hspace*{0.2cm} \textbf{Exp($\pi$)} &\text{otherwise}
@@ -77,7 +77,14 @@ The $V$ function as referred to in figure 1, represents a function that maps exp
 The mapping function $V$ is dependent on a symbol map. This symbol map stores which variables are declared at which position in the local scope.
 
 \subsection{Scoping}
+Scoping is important for the mapping function $V$ which uses $\lambda(\pi, x)$ to find variable $x$ for position $\pi$. An accurate lookup implies a more accurate flow graph. % todo better explanation 
+Scope in a programming language controls the visibility and lifetimes of variables and parameters \cite[p.36]{Crockford:2008:JGP}. JavaScript has two types of scoping. It has \textit{global} scope, which means that a global variable is defined everywhere in your JavaScript code. The second type of scoping in
+JavaScript is limited to the scope of a function. Variables declared within a functions are only defined within a functions body. These are called local variables and also entail the function its parameters \cite[p.53]{flanagan2011javascript}. Therefore this scope is known as \textit{local} scope. Even though JavaScript does support block syntax, it does not contain block scoping \cite[p.36]{Crockford:2008:JGP}.
+For creating the flow graph these scopes have been taken into account. This 
+
 \subsubsection{Hoisting}
+
+
 \subsubsection{Overriding}
 
 

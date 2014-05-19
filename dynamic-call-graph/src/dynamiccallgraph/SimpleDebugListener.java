@@ -126,7 +126,7 @@ public class SimpleDebugListener implements DebugEventListener {
     }
     
     private AstNode getCalleeFrameNode(final CallFrame frame) throws IOException {
-	if (frame == null) return null;
+	if (frame == null || frame.getScript() == null) return null;
 	if (!frame.getScript().hasSource()) return null;
 
 	final AstRoot source = parser.parse(frame.getScript().getSource());
@@ -145,7 +145,7 @@ public class SimpleDebugListener implements DebugEventListener {
 	return frame.getScript().getSource();
     }
     
-    private boolean hasDifferentFunctionParent(final AstNode node, final Script nodeScript, final AstNode otherNode, final Script otherNodeScript) {
+    private boolean hasDifferentFunctionParent(final AstNode node, final Script nodeScript, final AstNode otherNode, final Script otherNodeScript) throws Exception {
 	assert(node != null);
 	assert(otherNode != null);
 	assert(nodeScript != null);
@@ -167,9 +167,10 @@ public class SimpleDebugListener implements DebugEventListener {
 	}
     }
     
-    private boolean hasDifferentFunctionParent(final AstNode node, final AstNode otherNode) {
+    private boolean hasDifferentFunctionParent(final AstNode node, final AstNode otherNode) throws Exception {
 	assert(node != null);
 	assert(otherNode != null);
+	if (node == null || otherNode == null) throw new Exception("missing");
 	
 	final FunctionNode functionOfNode = node.getEnclosingFunction();
 	final FunctionNode functionOfOtherNode = otherNode.getEnclosingFunction();
@@ -225,47 +226,65 @@ public class SimpleDebugListener implements DebugEventListener {
 	final AstNode currentNode = getCallFrameNode(callFrames.get(0));
 	final AstNode previousNode = getCalleeFrameNode(callFrames.get(1));
 
-	boolean removedLastFunctionCall = false;
-	boolean enteredNewScope = false;
-	final String calleeScriptName = callFrames.get(1).getScript().getName();
-	if (previousNode != null) System.out.println("previous node: " + previousNode.toSource());
-	if (previousNode != null && parser.isFunctionCall(previousNode) && !(new CallFrameNode(callFrames.get(1), calleeScriptName, getCallFrameNode(callFrames.get(1))).equals(lastCalleeAdded))) {
-	    final String calleeSource = getCallFrameSource(callFrames.get(1));
-	    System.out.println("Check for different parents");
-	    if (hasDifferentFunctionParent(previousNode, callFrames.get(1).getScript(), currentNode, callFrames.get(0).getScript())) {
-		enteredNewScope = true;
-		System.out.println("diff parents: " + CallFrameUtil.getSensibleSource(currentNode) + " and " + CallFrameUtil.getSensibleSource(previousNode));
-		addFunctionCallToMap(calleeSource, previousNode, callFrames.get(1).getScript().getName(), callFrames.get(0).getScript().getSource(), currentNode, callFrames.get(0).getScript().getName());
-		removedLastFunctionCall = functionCallsDone.remove(new CallFrameNode(callFrames.get(1), callFrames.get(1).getScript().getName(), previousNode));
-		lastCalleeAdded = new CallFrameNode(callFrames.get(1), calleeScriptName, getCallFrameNode(callFrames.get(1)));
-		processedFunctionCalls.add(new FunctionCallNode(previousNode));
+	try {
+	    boolean removedLastFunctionCall = false;
+	    boolean enteredNewScope = false;
+	    final String calleeScriptName = callFrames.get(1).getScript().getName();
+	    if (previousNode != null)
+		System.out.println("previous node: " + previousNode.toSource());
+	    if (previousNode != null && parser.isFunctionCall(previousNode)
+		    && !(new CallFrameNode(callFrames.get(1), calleeScriptName, getCallFrameNode(callFrames.get(1))).equals(lastCalleeAdded))) {
+		final String calleeSource = getCallFrameSource(callFrames.get(1));
+		System.out.println("Check for different parents");
+		if (hasDifferentFunctionParent(previousNode, callFrames.get(1).getScript(), currentNode, callFrames.get(0).getScript())) {
+		    enteredNewScope = true;
+		    System.out.println("diff parents: " + CallFrameUtil.getSensibleSource(currentNode) + " and "
+			    + CallFrameUtil.getSensibleSource(previousNode));
+		    addFunctionCallToMap(calleeSource, previousNode, callFrames.get(1).getScript().getName(), callFrames.get(0).getScript().getSource(),
+			    currentNode, callFrames.get(0).getScript().getName());
+		    removedLastFunctionCall = functionCallsDone.remove(new CallFrameNode(callFrames.get(1), callFrames.get(1).getScript().getName(),
+			    previousNode));
+		    lastCalleeAdded = new CallFrameNode(callFrames.get(1), calleeScriptName, getCallFrameNode(callFrames.get(1)));
+		    processedFunctionCalls.add(new FunctionCallNode(previousNode));
+		}
+
+		// Same file, last function call is not removed, the previous
+		// frame in the stack is a function call and that function call
+		// has the same enclosing function (same scope) -> recursion
+		// This does not match on native functions because they are
+		// removed from the call stack as previous frame, due to not
+		// being the previous call in step in
+		if (!removedLastFunctionCall && callFrames.get(0).getScript().getId().equals(callFrames.get(1).getScript().getId())
+			&& !hasDifferentFunctionParent(currentNode, previousNode)) {
+		    System.out.println("Either recursive or native: " + CallFrameUtil.getSensibleSource(previousNode));
+		    addFunctionCallToMap(calleeSource, ASTParser.getFunctionCallTopExpressionNode(previousNode), callFrames.get(1).getScript().getName(),
+			    callFrames.get(0).getScript().getSource(), currentNode, callFrames.get(0).getScript().getName());
+		    removedLastFunctionCall = functionCallsDone.remove(new CallFrameNode(callFrames.get(1), callFrames.get(1).getScript().getName(),
+			    previousNode));
+		    processedFunctionCalls.add(new FunctionCallNode(previousNode));
+		}
 	    }
 
-	    // Same file, last function call is not removed, the previous frame in the stack is a function call and that function call has the same enclosing function (same scope) -> recursion
-	    // This does not match on native functions because they are removed from the call stack as previous frame, due to not being the previous call in step in
-	    if (!removedLastFunctionCall && callFrames.get(0).getScript().getId().equals(callFrames.get(1).getScript().getId()) && !hasDifferentFunctionParent(currentNode, previousNode)) {
-		System.out.println("Either recursive or native: " + CallFrameUtil.getSensibleSource(previousNode));
-		addFunctionCallToMap(calleeSource, ASTParser.getFunctionCallTopExpressionNode(previousNode), callFrames.get(1).getScript().getName(), callFrames.get(0).getScript().getSource(), currentNode, callFrames.get(0).getScript().getName());
-		removedLastFunctionCall = functionCallsDone.remove(new CallFrameNode(callFrames.get(1), callFrames.get(1).getScript().getName(), previousNode));		
-		processedFunctionCalls.add(new FunctionCallNode(previousNode));
+	    // Store function calls to process later (see if they are natives)
+	    if (currentNode != null) {
+		// We have to do traverse this, because of native call frames
+		// getting lost
+		// TODO: what about for loops etc (blocks)
+		final List<AstNode> calls = parser.getFunctionCallsInScope(currentNode, currentNode.getEnclosingFunction());
+		for (AstNode functionCall : calls) {
+		    functionCallsDone.add(new CallFrameNode(callFrames.get(0), callFrames.get(0).getScript().getName(), functionCall));
+		}
+
+		if (calls.isEmpty() && enteredNewScope) {
+		    // we can safely continue to the next breakpoint
+		    debugContext.continueVm(StepAction.CONTINUE, 0, continueCallback, null);
+		    releaseSemaphore = false;
+		    return;
+		}
 	    }
 	}
+	catch (Exception e) {
 	
-	// Store function calls to process later (see if they are natives)
-	if (currentNode != null) {
-	    // We have to do traverse this, because of native call frames getting lost
-	    // TODO: what about for loops etc (blocks)
-	    final List<AstNode> calls = parser.getFunctionCallsInScope(currentNode, currentNode.getEnclosingFunction());
-	    for (AstNode functionCall : calls) {
-		functionCallsDone.add(new CallFrameNode(callFrames.get(0), callFrames.get(0).getScript().getName(), functionCall));
-	    }
-	    
-	    if (calls.isEmpty() && enteredNewScope) {
-		// we can safely continue to the next breakpoint
-		debugContext.continueVm(StepAction.CONTINUE, 0, continueCallback, null);
-		releaseSemaphore = false;
-		return;
-	    }
 	}
 	
 	releaseSemaphore = true;

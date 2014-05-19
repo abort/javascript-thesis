@@ -20,17 +20,21 @@ import ParseTree;
 import Map;
 
 
-public set[str] importCallGraph(loc fileLocation) {
+public set[str] importCallGraph(loc fileLocation, bool ignoreNatives, str frameworkFilter) {
 	val = parse(#JSONText, fileLocation);
 	ast = buildAST(val);
 	set[str] retval = {};
+	bool filterFrameworkCalls = (frameworkFilter != ""); 
 	if (object(map[str memberName, Value memberValue] members) := ast) {
 		for (str memberName <- members) {
 			//println("memb: <members[memberName]>");
 			if (array(list[Value] arrayValues) := members[memberName]) {
 				for (string(str target) <- arrayValues) {
+					if (ignoreNatives && !contains(memberName, "@")) continue;
+					//if (filterFrameworkCalls && startsWith(target, frameworkFilter + "@")) continue; 
 					// println("<memberName> to <target>");
-					retval += "<memberName> -\> <target>";
+					//retval += "<target> -\> <memberName>";
+					retval += "<memberName>";
 				}
 			}
 		} 
@@ -52,7 +56,6 @@ public set[str] importCallGraphFromPlainText(loc fileLocation, bool ignoreNative
 	return retval;
 }
 
-
 public set[str] convertCallGraphResultToStrings(CallGraphResult result) {
 	rel[Vertex, Vertex] callGraph = result.graph;
 	return getFlowGraphSet(callGraph);
@@ -61,7 +64,7 @@ public set[str] convertCallGraphResultToStrings(CallGraphResult result) {
 public set[str] convertCallGraphResultToNonNativeStrings(CallGraphResult result) {
 	rel[Vertex, Vertex] callGraph = { <x,y> | <x,y> <- result.graph, !(y is Builtin) };
 	set[str] retval = {};
-	for (<x, y> <- callGraph) retval += /*getUnmodifiedPositionString(x) + " -\> " + */ getUnmodifiedPositionString(y);
+	for (<x, y> <- callGraph) retval += /* getUnmodifiedPositionString(x) + " -\> " + */ getUnmodifiedPositionString(y);
 	return retval;
 }
 
@@ -78,11 +81,11 @@ public tuple[num, num] calculateStatistics(set[str] dynamicCallGraph, set[str] s
 }
 
 
-public CallGraphResult createPessimisticCallGraphByPath(loc path) {
+public rel[Vertex, Vertex] createPessimisticCallGraphByPath(loc path) {
 	assert(isDirectory(path));
 	list[loc] files = getJavaScripts(path);
 	list[Source] sources = [ parse(source) | source <- files ];
-	return createPessimisticCallGraph(sources, files);
+	return createPessimisticCallGraph(sources, files).graph;
 }
 
 private list[loc] getJavaScripts(loc path) {

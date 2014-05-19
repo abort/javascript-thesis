@@ -29,17 +29,22 @@ str extractObject(str exp) {
 
 // TODO: rewrite multiple files, let them include 1 js
 // TODO interpret new separately
-str getRewrittenFunctionCall(Expression call, loc inputfile) {
+str getRewrittenFunctionCall(Expression call, loc inputfile, loc originalLocation) {
 	tuple[str element, str representation] nativeCallSite = getPossibleNativeCallSite(call);
-	str toInsert = "((function() {\nvar callSite = <nativeCallSite.element>;\n if (callSite != null && isNative(callSite)) {\n addNativeFunctionToMap(\"<inputfile.file>\", <call@\loc.begin.line>, <call@\loc.offset>, <(call@\loc.offset + call@\loc.length)>, \"<nativeCallSite.representation>\", <extractObject(nativeCallSite.representation)>);\n}"; 
-	toInsert += "\nelse {\nvar oldLastCall = lastCall;\nsetLastFunctionCall(\"<inputfile.file>\", <call@\loc.begin.line>, <call@\loc.offset>, <(call@\loc.offset + call@\loc.length)>);\n}\nvar result = <unparse(call)>;\nlastCall = oldLastCall;\nreturn result;\n}).apply(this))";
+	str toInsert = "((function() {\nvar callSite = <nativeCallSite.element>;\n if (callSite != null && isNative(callSite)) {\n addNativeFunctionToMap(\"<inputfile.file>\", <originalLocation.begin.line>, <originalLocation.offset>, <(originalLocation.offset + originalLocation.length)>, \"<nativeCallSite.representation>\", <extractObject(nativeCallSite.representation)>);\n}"; 
+	toInsert += "\nelse {\nvar oldLastCall = lastCall;\nsetLastFunctionCall(\"<inputfile.file>\", <originalLocation.begin.line>, <originalLocation.offset>, <(originalLocation.offset + originalLocation.length)>);\n}\nvar result = <unparse(call)>;\nlastCall = oldLastCall;\nreturn result;\n}).call(this))";
 	//println("Rewritten call: <toInsert>\n");
 	return toInsert;
 }
 
-Expression getRewrittenInstantiativeFunctionCall(Expression call, Expression fullExpression, loc inputfile) {
+Expression getRewrittenInstantiativeFunctionCall(Expression call, Expression fullExpression, loc inputfile, loc originalLocation) {
 	tuple[str element, str representation] nativeCallSite = getPossibleNativeCallSite(call);
-	str toInsert = "((function() {\nvar callSite = <nativeCallSite.element>;\n if (callSite != null && isNative(callSite)) {\n addNativeFunctionToMap(\"<inputfile.file>\", <fullExpression@\loc.begin.line>, <fullExpression@\loc.offset>, <(fullExpression@\loc.offset + fullExpression@\loc.length)>, \"<nativeCallSite.representation>\", \"<extractObject(nativeCallSite.representation)>\");\n}\nelse {\nvar oldLastCall = lastCall;\nsetLastFunctionCall(\"<inputfile.file>\", <fullExpression@\loc.begin.line>, <fullExpression@\loc.offset>, <(fullExpression@\loc.offset + fullExpression@\loc.length)>);\n}\nvar result = <fullExpression>;\nlastCall = oldLastCall;\nreturn result;\n}).apply())";
+	str toInsert = "((function() {\nvar callSite = <nativeCallSite.element>;\n if (callSite != null && isNative(callSite)) {\n addNativeFunctionToMap(\"<inputfile.file>\", <originalLocation.begin.line>, <originalLocation.offset>, <(originalLocation.offset + originalLocation.length)>, \"<nativeCallSite.representation>\", \"<extractObject(nativeCallSite.representation)>\");\n}\nelse {\nvar oldLastCall = lastCall;\nsetLastFunctionCall(\"<inputfile.file>\", <originalLocation.begin.line>, <originalLocation.offset>, <(originalLocation.offset + originalLocation.length)>);\n}\nvar result = <fullExpression>;\nlastCall = oldLastCall;\nreturn result;\n}).call(this))";
+	return parse(#Expression, toInsert);
+}
+
+Expression getRewrittenInstantiativeFunctionCall(Expression fullExpression, loc inputfile, loc originalLocation) {
+	str toInsert = "((function() {\nvar oldLastCall = lastCall;\nsetLastFunctionCall(\"<inputfile.file>\", <originalLocation.begin.line>, <originalLocation.offset>, <(originalLocation.offset + originalLocation.length)>);\nvar result = <fullExpression>;\nlastCall = oldLastCall;\nreturn result;\n}).call(this))";
 	return parse(#Expression, toInsert);
 }
 
@@ -53,7 +58,7 @@ tuple[Source, set[loc]] rewriteAndGetNewFunctionCalls(Source src, loc inputfile)
 					insert getRewrittenInstantiativeFunctionCall(newExp, e, inputfile);
 				}
 				else {
-					insert getRewrittenInstantiativeFunctionCall(parse(#Expression, unparse(newExp) + "()"), e, inputfile);
+					insert getRewrittenInstantiativeFunctionCall(e, e, inputfile);
 				}
 			}
 		}
@@ -70,16 +75,16 @@ tuple[Source, set[loc]] rewriteAndGetNewFunctionCalls(Source src, loc inputfile)
 	return <retval, expressionsToSkip>;
 }
 
-public void rewriteJavaScripts(loc path) {
+public void rewriteJavaScripts(loc path, bool rewriteCalls) {
 	assert(isDirectory(path));
 	loc rewritePath = createRewrittenDirectory(path);
-	rewriteScripts(path, rewritePath, false);
+	rewriteScripts(path, rewritePath, false, rewriteCalls);
 	
 	list[int] bytes = readFileBytes(|project://thesis/src/dynamiccode.js|);
 	writeFileBytes(toLocation(rewritePath.scheme + "://" + rewritePath.path + "/instrumentation.js"), bytes);	
 }
 
-private void rewriteScripts(loc originalPath, loc rewriteDirectory, bool inSubDirectory) {
+private void rewriteScripts(loc originalPath, loc rewriteDirectory, bool inSubDirectory, bool rewriteCalls) {
 	list[loc] sublocations = originalPath.ls;
 	for (loc sublocation <- sublocations) {
 		if (isDirectory(sublocation)) {
@@ -90,7 +95,7 @@ private void rewriteScripts(loc originalPath, loc rewriteDirectory, bool inSubDi
 		elseif (isFile(sublocation)) {
 			loc rewrittenLocation = toLocation(rewriteDirectory.scheme + "://" + rewriteDirectory.path + "/" + sublocation.file); // inSubDirectory ? toLocation(rewriteDirectory.path + getDeepestDirectory(originalPath)) : rewriteDirectory;
 			if (isJavaScriptFile(sublocation)) {
-				rewriteJavaScript(sublocation, rewrittenLocation);
+				rewriteJavaScript(sublocation, rewrittenLocation, rewriteCalls);
 			}
 			else {
 				// Rascal lacks file copy functionality, hence we do it ourselves :)
@@ -134,41 +139,87 @@ bool isFunctionCall(TreeSearchResult[&T] result) {
 	return false;
 }
 
-void rewriteJavaScript(loc inputfile, loc outputfile, bool includeInstrumentation) {
-	Source originalSource = parse(inputfile);
-	set[loc] expressionsToSkip = {}; 
-	
-	visit (originalSource) {
-		case Expression e:{
-			if (new(Expression newExp) := e) {
-				expressionsToSkip += newExp@\loc;
+bool isPartOfNewExpression(Expression e, Source src) {
+	visit(src) {
+		case Expression visitedExp:{
+			if (new(Expression subExpression) := visitedExp) {
+				if (subExpression == e) return true;
 			}
-		}		
+		}
 	}
 	
+	return false;
+}
+
+anno loc Tree@location;
+void rewriteJavaScript(loc inputfile, loc outputfile, bool includeInstrumentation, bool rewriteCalls) {
+
+	Source originalSource = parse(inputfile);
+	set[loc] expressionsToSkip = {}; 
+	set[Expression] insertedExpressions = {};
+	map[loc, Expression] expressionsToInsert = ();
+	map[loc, FunctionDeclaration] functionDeclarationsToInsert = ();
 	
-	Source rewrittenSource = visit (originalSource) {
-		case Expression e:{
-			if (new(Expression newExp) := e) {
-				if (functionParams(Expression lhs, { Expression!comma ","}+ _) := newExp || functionNoParams(Expression lhs) := newExp) {
-					insert getRewrittenInstantiativeFunctionCall(newExp, e, inputfile);
-				}
-				else {
-					insert getRewrittenInstantiativeFunctionCall(parse(#Expression, unparse(newExp) + "()"), e, inputfile);
-				}
-			}		
-			elseif (functionParams(Expression lhs, { Expression!comma ","}+ _) := e || functionNoParams(Expression lhs) := e) {
-				if (e@\loc notin expressionsToSkip)	insert parse(#Expression, getRewrittenFunctionCall(e, inputfile));	
-					// TODO: first set function call, THEN do the call..				
+
+	rewrittenSource = visit (originalSource) {
+		case Tree t => t[@location=t@\loc] when t@\loc?
+	};
+
+	rewrittenSource = visit (rewrittenSource) {
+		case Expression e:{	
+			if (function(Id id, {Id ","}* parameters, Block b) := e || functionAnonymous({Id ","}* parameters, Block b) := e) {
+				insert newFuncInsert("<inputfile.file>", e, e@location);
 			}
-			elseif (function(Id id, {Id ","}* parameters, Block b) := e || functionAnonymous({Id ","}* parameters, Block b) := e) {
-				insert newFuncInsert("<inputfile.file>", e);
-			}
+			else {
+				if (new(Expression newExp) := e) {
+					expressionsToSkip += newExp@location;
+				}
+			}			
 		}
 		case FunctionDeclaration f:{
-			insert newFuncInsert("<inputfile.file>", f);
+			insert newFuncInsert("<inputfile.file>", f, f@location);
 		}
 	};
+
+	
+	tempSource = rewrittenSource;
+	rewrittenSource = visit (rewrittenSource) {
+		case Expression e:{
+				if (new(Expression newExp) := e) {
+					if (functionParams(Expression lhs, { Expression!comma ","}+ _) := newExp || functionNoParams(Expression lhs) := newExp) {
+						insert getRewrittenInstantiativeFunctionCall(newExp, e, inputfile, e@location);
+					}
+					else {
+						insert getRewrittenInstantiativeFunctionCall(e, inputfile, e@location);
+					}
+				}
+				elseif (functionParams(Expression lhs, { Expression!comma ","}+ _) := e || functionNoParams(Expression lhs) := e) {
+					if (e@location?) {
+						if (!(e@location in expressionsToSkip)) {
+							insert parse(#Expression, getRewrittenFunctionCall(e, inputfile, e@location));
+						}
+						else {
+							println("skipping");
+						}	
+					}
+					else insert parse(#Expression, getRewrittenFunctionCall(e, inputfile, e@\loc));
+				}				
+		}
+	}
+	//
+	//Source rewrittenSource = bottom-up visit (originalSource) {
+	//	case Expression e:{
+	//		if (e@original@\loc in expressionsToInsert) {
+	//			println("insert");
+	//			insert expressionsToInsert[e@original@\loc];
+	//		}
+	//	}
+	//	case FunctionDeclaration f:{
+	//		if (f@original@\loc in functionDeclarationsToInsert) {
+	//			insert functionDeclarationsToInsert[f@original@\loc];
+	//		}			
+	//	}
+	//};
 	
 	str newSourceCode = "";
 	if (includeInstrumentation) newSourceCode += readFile(|project://thesis/src/dynamiccode.js|) + "\n\n";
@@ -178,8 +229,8 @@ void rewriteJavaScript(loc inputfile, loc outputfile, bool includeInstrumentatio
 }
 
 
-void rewriteJavaScript(loc inputfile) = rewriteJavaScript(inputfile, toLocation(substring(inputfile.uri, 0, findLast(inputfile.uri, ".")) + ".dcg.js"));
-void rewriteJavaScript(loc inputfile, loc outputfile) = rewriteJavaScript(inputfile, outputfile, false);
+void rewriteJavaScript(loc inputfile) = rewriteJavaScript(inputfile, toLocation(substring(inputfile.uri, 0, findLast(inputfile.uri, ".")) + ".dcg.js"), true);
+void rewriteJavaScript(loc inputfile, loc outputfile, bool rewriteCalls) = rewriteJavaScript(inputfile, outputfile, false, rewriteCalls);
 /*void rewriteJavaScript(loc inputfile, loc outputfile, bool includeInstrumentation) {
 
 	Source originalSource = parse(inputfile);
@@ -231,34 +282,10 @@ private bool isSimpleProperty(Expression p) {
 	return false;
 } 
 
-Tree replaceThisReferences(Tree expression) {
-	return top-down visit(expression) {
-		case Expression e:{
-			if (e is functionParams || e is functionNoParams) {
-				; // break here
-			}
-			elseif (e is this) {
-				insert parse(#Expression, "_this");
-				fail; // go on
-			}
-		}
-	}; // no need to break because all this will be replaced with _this in all closures
-}
-
-Tree newThisFuncInsert(str filename, Tree e) {
+Tree newFuncInsert(str filename, Tree e, loc location) {
 	return top-down-break visit (e) {
 		case Block b:{
-			str toInsert = "var _this = this;\naddFunctionToMap(\"<filename>\", <e@\loc.begin.line>, <e@\loc.offset>, <(e@\loc.offset + e@\loc.length)>);";
-			insert parse(#Block, "{\n" + toInsert + "\n" + replaceFirst(unparse(b), "{", ""));			
-		}
-	}
-}
-
-
-Tree newFuncInsert(str filename, Tree e) {
-	return top-down-break visit (e) {
-		case Block b:{
-			str toInsert = "addFunctionToMap(\"<filename>\", <e@\loc.begin.line>, <e@\loc.offset>, <(e@\loc.offset + e@\loc.length)>);";
+			str toInsert = "\naddFunctionToMap(\"<filename>\", <location.begin.line>, <location.offset>, <(location.offset + location.length)>);";
 			insert parse(#Block, "{\n" + toInsert + "\n" + replaceFirst(unparse(b), "{", ""));			
 		}
 	}

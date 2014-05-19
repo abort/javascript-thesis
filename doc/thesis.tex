@@ -6,7 +6,7 @@
 \bgroup
 \def\arraystretch{1.11}
 
-\documentclass[journal,10pt]{IEEEtran}
+\documentclass[journal,10pt]{IEEEtran} % fleqn (left aligns equations)
 \usepackage{url}
 \usepackage{float}
 
@@ -30,8 +30,30 @@
 
 \maketitle
 
+% \tableofcontents
+
 %\begin{abstract}
 %\end{abstract}
+
+\section*{Preface}
+Thank you coffee machine.
+
+% Chapter 1.
+% An introduction and overview of your thesis. Be sure to structure your thesis such that you do not have to repeat yourself later. In this section you do not cover details, but you give the reader an idea of the context, a brief overview of the research, and how the remainder of the thesis is structured.
+
+% Chapter 2
+% This section describes in detail what problem the research is addressing, and what the motivation is to address this problem.
+% There is a concise and objective statement of the research questions (or hypotheses you are testing) and goals. It is made clear why these questions and goals are important and relevant to the outside world (i.e., the field of research or industry that you are addressing). You can already split the main research question into sub questions in this chapter.
+% This section also describes an analysis of the problem: where does it occur and how, how often, and what are the consequences?
+% An important part is also to scope to research: what aspects are included and what aspects are deliberately left out, and why?
+% An example introduction can be found on Paul Klint?s homepage.
+
+% Chapter 3
+% This section describes the methods used to answer the research questions. A good structure of this section often follows the sub questions by providing a method for each.
+% The research method can be based on the ?Scientific method?, but more creative solutions could be defined as well. In any case, the method needs a thorough motivation grounded in theory in order to be acceptable.
+% As part of the method a number of hypotheses are described. These hypotheses will be tested by the research, using the methods described here.
+% An important part of this section is validation. How will you evaluate and validate the outcomes of the research?
+% You can look at Paul Klint?s homepage for examples of this section as well.
 
 \section{Introduction}
 \IEEEPARstart{C}{}all graphs are indispensable graphs for programming languages.
@@ -68,11 +90,13 @@ R7 & function declaration & if it is in scope: \textbf{Fun}($\pi$) $\to$ \textbf
 A different edge is added for function declarations in global scope (R7), in order to handle function declarations in global scope. This is not documented by Sch\"{a}fer et al., but it is assumed that they had this intraprocedural as well. This edge is necessary in order to provide a more complete call graph, which will be explained more in depth in section X. \\ %TODO refer to section 
 
 The basic set of intraprocedural vertices consists of four different types:
-\begin{equation*}
-\begin{aligned}
-V~::=~\textbf{Exp($\pi$)}~~~\text{expression at position $\pi$}
-\end{aligned}
-\end{equation*}
+\setlength{\grammarindent}{2cm}
+\begin{grammar}
+<V> ::= \textbf{Exp($\pi$)} \text{expression at position $\pi$}\\
+| \textbf{Var($\pi$)} \text{variable declared at position $\pi$} \\
+| \textbf{Prop($f$)} \text{property of name $f$} \\
+| \textbf{Fun($\pi$)} \text{function declaration/expression at $\pi$}
+\end{grammar}
 
 The $V$ function as referred to in figure 1, represents a function that maps expressions to corresponding flow graph vertices:
 \begin{equation*}

@@ -17,6 +17,8 @@ public class Rewriter {
 
     private ASTParser parser = new ASTParser();
     public static void main(String[] args) throws Exception {
+	System.out.println((int)'\n');
+	if (JS_FILES.length > 0) return;
 	new Rewriter(new File(args[0]));
     }
     

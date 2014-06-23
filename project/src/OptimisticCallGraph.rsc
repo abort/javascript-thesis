@@ -23,6 +23,50 @@ import analysis::graphs::Graph;
 public CallGraphResult createOptimisticCallGraph(loc location) = createOptimisticCallGraph(parse(location));
 public CallGraphResult createOptimisticCallGraph2(loc location) = createOptimisticCallGraph2(parse(location));
 
+public CallGraphResult createOptimisticCallGraphWithoutNatives(list[Source] sources, list[loc] files) {
+	rel[Vertex, Vertex] callGraph = {};
+	set[EscapingFunction] escapingFunctions = {};
+	set[UnresolvedCallSite] unresolvedCallSites = {};
+	
+	rel[Vertex, Vertex] flowGraph = createFlowGraphFromMultipleFiles(files); 
+
+	bool fixpoint = false;
+	int iterations = 0;
+	while (!fixpoint) {
+		// Store old situation
+		rel[Vertex, Vertex] oldCallGraph = callGraph;
+		rel[Vertex, Vertex] oldFlowGraph = flowGraph;
+
+		// Convert the old result to provide as a parameter to the add interprocedural edge function
+		set[OneShotCall] callGraphParam = { OneShotCall(px, py, getArguments(getSourceFromPosition(sources, px), px)) | <x, y> <- callGraph, Fun(Position py) := y, Callee(Position px) := x };
+		flowGraph += addInterproceduralEdges(callGraphParam, escapingFunctions, unresolvedCallSites);
+
+	 	//rel[Vertex, Vertex] flowGraphTransitiveClosure = flowGraph+;
+	 	callGraph = { <y, x> | <x,y> <- optimisticTransitiveClosure(flowGraph), (Fun(Position _) := x || Builtin(str _) := x), Callee(Position _) := y };	
+		//escapedOutput = { <x, y> | <x, y> <- flowGraphTransitiveClosure, Fun(Position _) := x, Unknown() := y };
+		//unresolvedCallSitesOutput = { <x, y> | <x, y> <- flowGraphTransitiveClosure, Unknown() := x, Callee(Position _) := y };
+		iterations += 1;
+
+		// Check whether something has changed or not to conclude
+		if (oldCallGraph == callGraph && oldFlowGraph == flowGraph)
+			fixpoint = true;
+	}
+
+	println("Fixpoint reached after <iterations> iterations");
+	
+	return CallGraphResult(callGraph, getEscapingFunctionsAsRelation(flowGraph), getUnresolvedCallSitesAsRelation(flowGraph));
+}
+
+private Source getSourceFromPosition(list[Source] sources, Position position) {
+	for (Source src <- sources) {
+		if (ExistingPosition(loc location) := position) {
+			if (location.path == src@\loc.path) return src;
+		} 
+	}
+	
+	throw "Impossibru";
+}
+
 public CallGraphResult createOptimisticCallGraph(rel[Vertex, Vertex] flowGraph, Source source) {
 	rel[Vertex, Vertex] callGraph = {};
 	set[EscapingFunction] escapingFunctions = {};

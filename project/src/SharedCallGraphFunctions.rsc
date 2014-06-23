@@ -11,6 +11,7 @@ import ParseTree;
 import EcmaScript;
 import Logger;
 import SharedDataTypes;
+import String;
 
 public rel[Vertex, Vertex] getEscapingFunctionsAsRelation(rel[Vertex, Vertex] flowGraph) = { <x, y> | <x, y> <- flowGraph+, Fun(Position _) := x, Unknown() := y };
 public rel[Vertex, Vertex] getUnresolvedCallSitesAsRelation(rel[Vertex, Vertex] flowGraph) = { <x, y> | <x, y> <- flowGraph+, Unknown() := x, Callee(Position _) := y };
@@ -111,12 +112,23 @@ public rel[Vertex, Vertex] optimisticTransitiveClosure(rel[Vertex, Vertex] R) {
 	}
 }
 
-public rel[Vertex, Vertex] sanderOptimisticTransitiveClosure(rel[Vertex, Vertex] graph) {
-    rel[Vertex, Vertex] unknownNodes = {tup | tuple[Vertex from, Vertex to] tup <- graph, isUnknown(tup.from) || isUnknown(tup.to) };
-    rel[Vertex, Vertex] knownNodes = graph - unknownNodes;
-   	rel[Vertex, Vertex] knownTransitiveClosure = knownNodes+;
-    return knownTransitiveClosure + unknownNodes;
+public rel[Vertex, Vertex] optimisticTransitiveClosureWithFileFilter(rel[Vertex, Vertex] R, str fromFileToIgnore, str toFileToIgnore) {
+	tc = R;
+	while (true) {
+		tc1 = tc;
+  		tc += { <x,y> | <x,y> <- tc, y != Unknown(), !(hasSourceFile(x, toFileToIgnore) && hasSourceFile(y, toFileToIgnore)) } o R;
+  		if (tc1 == tc) return tc;
+	}
 }
+private bool hasSourceFile(Vertex v, str filenameToIgnore) {
+	if (isUnknown(v) || Empty() := v || Builtin(str _) := v || Prop(str _) := v) return false;
+	if (isEmpty(filenameToIgnore)) return false;
+	
+	Position p = v.p;
+	if (p is InexistentPosition) return false;
+	return (p.position.file == filenameToIgnore);
+}
+
 
 private bool isUnknown(Vertex vertex) = vertex := Unknown();
 

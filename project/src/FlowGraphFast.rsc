@@ -27,6 +27,12 @@ public rel[Vertex, Vertex] createFlowGraphWithNativeFunctionsFromMultipleFiles(l
 	for (f <- files) flowGraph += createFlowGraph(flowGraph, parse(f));	
 	return flowGraph;
 }
+
+public rel[Vertex, Vertex] createFlowGraphFromMultipleFiles(list[loc] files) {
+	rel[Vertex, Vertex] flowGraph = {};
+	for (f <- files) flowGraph += createFlowGraph(flowGraph, parse(f));	
+	return flowGraph;
+}
 public rel[Vertex, Vertex] createFlowGraphWithNativeFunctions(loc nativeGraphLocation, loc input) = createFlowGraphWithNativeFunctions(nativeGraphLocation, parse(input));
 public rel[Vertex, Vertex] createFlowGraphWithNativeFunctions(loc nativeGraphLocation, Source source) = createFlowGraphFromFunctionList(nativeGraphLocation) + createFlowGraph(source);
 public rel[Vertex, Vertex] createFlowGraph(loc input) = createFlowGraphWithNativeFunctions(|project://thesis/src/native-functions.txt|, input); // default assumption that we need native functions

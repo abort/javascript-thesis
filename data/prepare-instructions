@@ -1,0 +1,1 @@
+pacman: move index.html first javascript code block to main.js, move the second block to main2.js and include those files in the appropriate places. Delete both js files that are not for chrome (pacman10-hp.2.js and pacman10-hp.js)

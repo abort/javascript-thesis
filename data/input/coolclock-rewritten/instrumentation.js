@@ -45,13 +45,37 @@ function _wrap_calculateFunctionCoverageWithScriptExclude(script) {
 
   var nonNativeFunctions = _wrap_getNonNativeFunctions();
   if (script !== null && script !== undefined && typeof script === "string") {
-    var scriptLen = script.length;
     nonNativeFunctions = nonNativeFunctions
         .filter(function(el) {
           // filter out script
-          return (el.length > scriptLen && !(el.substring(0,
-              scriptLen) === script));
+          return (el.indexOf(script + "@") !== 0);
         });
+  }
+
+  return (nonNativeFunctions.length / total) * 100;
+}
+
+function _wrap_calculateFunctionCoverageWithScriptsExclude(scripts) {
+  var total = 0;
+  for (var i in _wrap_staticMeasuredFunctions) {
+    if (!_wrap_staticMeasuredFunctions.hasOwnProperty(i)) continue;
+    var doContinue = false
+    for (var j = 0; j < scripts.length; j++) {
+      if (scripts[j] === i) doContinue = true;
+    }
+    if (doContinue) continue;
+    total += _wrap_staticMeasuredFunctions[i];
+  }
+
+  var nonNativeFunctions = _wrap_getNonNativeFunctions();
+  if (scripts !== null && scripts !== undefined) {
+    for (var i = 0; i < scripts.length; i++) {
+      var script = scripts[i];
+      nonNativeFunctions = nonNativeFunctions.filter(function(el) {
+          // filter out script
+          return (el.indexOf(script + "@") !== 0);
+        });
+    }
   }
 
   return (nonNativeFunctions.length / total) * 100;

@@ -3,21 +3,6 @@ var _wrap_allCalls = [];
 var _wrap_staticMeasuredFunctions = {};
 var _wrap_staticMeasuredCalls = {};
 var _wrap_lastCall = null;
-var _wrap_lastAssignment = null;
-var _wrap_lastPropertyReference = null;
-var _wrap_lastOperation = null; // 1 = assignment, 2 = reference, 3 = call
-
-function _wrap_setLastAssignment(file, line, startPosition, endPosition) {
-  _wrap_lastAssignment = file + "@" + line + ":" + startPosition + "-" + endPosition;
-  _wrap_lastOperation = 1;
-  return false;
-}
-
-function _wrap_setLastPropertyReference(file, line, startPosition, endPosition) {
-  _wrap_lastPropertyReference = file + "@" + line + ":" + startPosition + "-" + endPosition;
-  _wrap_lastOperation = 2;
-  return false;
-}
 
 function _wrap_getNonNativeFunctions() {
     var r = [];
@@ -60,13 +45,37 @@ function _wrap_calculateFunctionCoverageWithScriptExclude(script) {
 
   var nonNativeFunctions = _wrap_getNonNativeFunctions();
   if (script !== null && script !== undefined && typeof script === "string") {
-    var scriptLen = script.length;
     nonNativeFunctions = nonNativeFunctions
         .filter(function(el) {
           // filter out script
-          return (el.length > scriptLen && !(el.substring(0,
-              scriptLen) === script));
+          return (el.indexOf(script + "@") !== 0);
         });
+  }
+
+  return (nonNativeFunctions.length / total) * 100;
+}
+
+function _wrap_calculateFunctionCoverageWithScriptsExclude(scripts) {
+  var total = 0;
+  for (var i in _wrap_staticMeasuredFunctions) {
+    if (!_wrap_staticMeasuredFunctions.hasOwnProperty(i)) continue;
+    var doContinue = false
+    for (var j = 0; j < scripts.length; j++) {
+      if (scripts[j] === i) doContinue = true;
+    }
+    if (doContinue) continue;
+    total += _wrap_staticMeasuredFunctions[i];
+  }
+
+  var nonNativeFunctions = _wrap_getNonNativeFunctions();
+  if (scripts !== null && scripts !== undefined) {
+    for (var i = 0; i < scripts.length; i++) {
+      var script = scripts[i];
+      nonNativeFunctions = nonNativeFunctions.filter(function(el) {
+          // filter out script
+          return (el.indexOf(script + "@") !== 0);
+        });
+    }
   }
 
   return (nonNativeFunctions.length / total) * 100;
@@ -84,7 +93,7 @@ function _wrap_calculateCallCoverage() {
 }
 
 function _wrap_addFunctionToMap(file, line, startPosition, endPosition) {
-  if (_wrap_lastCall == null) _wrap_lastCall = "native";
+  if (_wrap_lastCall == null) return;
   var thisFunction = file + "@" + line + ":" + startPosition + "-" + endPosition;
   var currentArray = _wrap_callMap[thisFunction];
   if (currentArray == null) {
@@ -99,74 +108,6 @@ function _wrap_addFunctionToMap(file, line, startPosition, endPosition) {
     _wrap_allCalls.splice(index, 1);
   }
   _wrap_lastCall = null; // reset
-  _wrap_lastOperation = null;
-}
-
-function _wrap_addGetterFunctionToMap(file, line, startPosition, endPosition) {
-  var thisFunction = file + "@" + line + ":" + startPosition + "-" + endPosition;
-  var currentArray = _wrap_callMap[thisFunction];
-  if (currentArray == null) {
-    currentArray = [];
-  }
-
-  var callee = null;
-  if (_wrap_lastOperation == 2) {
-    callee = _wrap_lastPropertyReference;
-    _wrap_lastPropertyReference = null;
-    _wrap_lastOperation = null;
-  }
-  else if (_wrap_lastOperation == 3) {
-    callee = _wrap_lastCall;
-    _wrap_lastCall = null;
-    _wrap_lastOperation = null;
-  }
-  else {
-    callee = "native/dynamic"; // could be native or by dynamic code
-    _wrap_lastOperation = null;
-  }
-
-  if (!_wrap_doesArrayContain(currentArray, callee))
-    currentArray.push(callee);
-
-  _wrap_callMap[thisFunction] = currentArray;
-  var index = _wrap_allCalls.indexOf(callee);
-  if (index > -1) {
-    _wrap_allCalls.splice(index, 1);
-  }
-}
-
-
-function _wrap_addSetterFunctionToMap(file, line, startPosition, endPosition) {
-  var thisFunction = file + "@" + line + ":" + startPosition + "-" + endPosition;
-  var currentArray = _wrap_callMap[thisFunction];
-  if (currentArray == null) {
-    currentArray = [];
-  }
-
-  var callee = null;
-  if (_wrap_lastOperation == 1) {
-    callee = _wrap_lastAssignment;
-    _wrap_lastAssignment = null;
-    _wrap_lastOperation = null;
-  }
-  else if (_wrap_lastOperation == 3) {
-    callee = _wrap_lastCall;
-    _wrap_lastCall = null;
-    _wrap_lastOperation = null;
-  }
-  else {
-    callee = "native/dynamic"; // could be native or by dynamic code
-    _wrap_lastOperation = null;
-  }
-
-  if (!_wrap_doesArrayContain(currentArray, callee))
-    currentArray.push(callee);
-
-  _wrap_callMap[thisFunction] = currentArray;
-  var index = _wrap_allCalls.indexOf(callee);
-  if (index > -1) {
-    _wrap_allCalls.splice(index, 1);
-  }
 }
 
 function _wrap_doesArrayContain(array, call) {
@@ -218,7 +159,6 @@ function _wrap_setLastFunctionCall(file, line, startPosition, endPosition) {
   var newCall = file + "@" + line + ":" + startPosition + "-" + endPosition;
   _wrap_lastCall = newCall;
   if (!_wrap_doesArrayContain(_wrap_allCalls, newCall)) _wrap_allCalls.push(newCall);
-  _wrap_lastOperation = 3;
   return false;
 }
 

@@ -267,12 +267,12 @@ public ScopedResult createFlowGraphFromExpression(Expression e, Scope scope) {
 			}			
 		}
 	}
-	elseif (e is functionParams || e is functionNoParams) {
+	elseif (functionParams(Expression funcExpression, _) := e || functionNoParams(Expression funcExpression) := e) {
 		// R8
 		flowGraph += createFlowGraphFromFunctionCall(e, e, scope);
 
 		// R9
-		if (property(Expression lhs, Id _) := getCallSite(e)) {
+		if (property(Expression lhs, Id _) := funcExpression) {
 			// TODO: changed 29 april... to be checked 
 			flowGraph += <createVertex(lhs, symbolMap), Arg(getPosition(e), 0)>;
 			//flowGraph += <createVertex(lhs, symbolMap), Arg(getPosition(getCallSite(e)), 0)>;

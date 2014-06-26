@@ -1,7 +1,7 @@
 window.parent._wrap_staticMeasuredFunctions['negative.js'] = 1;
 window.parent._wrap_staticMeasuredCalls['negative.js'] =11;
 (window.parent._wrap_setLastFunctionCall("negative.js",4,51,1530) || document.observe('dom:loaded', function() {
-window.parent._wrap_addFunctionToMap('negative.js', 4, 82,1529);
+window.parent._wrap_addFunctionToMap('negative.js', 4, 82,1529, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var d0 = [];
   var d1 = [];

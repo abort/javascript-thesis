@@ -1,7 +1,7 @@
 window.parent._wrap_staticMeasuredFunctions['basic-axis.js'] = 2;
 window.parent._wrap_staticMeasuredCalls['basic-axis.js'] =12;
 (window.parent._wrap_setLastFunctionCall("basic-axis.js",4,107,1469) || document.observe('dom:loaded', function() {
-window.parent._wrap_addFunctionToMap('basic-axis.js', 4, 138,1468);
+window.parent._wrap_addFunctionToMap('basic-axis.js', 4, 138,1468, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var d1 = [];
   var d2 = [];
@@ -18,7 +18,7 @@ window.parent._wrap_addFunctionToMap('basic-axis.js', 4, 138,1468);
     }
   }
   var f = (window.parent._wrap_setLastFunctionCall("basic-axis.js",27,593,1462) || Flotr.draw((window.parent._wrap_setLastFunctionCall("basic-axis.js",28,610,624) || $('container')), [{data: d1, label: 'y = 4 + x^(1.5)', lines: {fill: true}}, {data: d2, label: 'y = x^3'}, {data: d3, label: 'y = 5x + 3sin(4x)'}, {data: d4, label: 'y = x'}, {data: d5, label: 'y = 2x', lines: {show: true}, points: {show: true}}], {xaxis: {noTicks: 7, tickFormatter: function(n) {
-window.parent._wrap_addFunctionToMap('basic-axis.js', 37, 961,993);
+window.parent._wrap_addFunctionToMap('basic-axis.js', 37, 961,993, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return '(' + n + ')';
 }, min: 1, max: 7.5}, yaxis: {ticks: [[0, "Lower"], 10, 20, 30, [40, "Upper"]], max: 40}, grid: {verticalLines: false}, legend: {position: 'nw'}, title: 'Basic Axis example', subtitle: 'This is a subtitle'}));

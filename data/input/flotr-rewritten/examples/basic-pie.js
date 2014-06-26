@@ -1,7 +1,7 @@
 window.parent._wrap_staticMeasuredFunctions['basic-pie.js'] = 1;
 window.parent._wrap_staticMeasuredCalls['basic-pie.js'] =3;
 (window.parent._wrap_setLastFunctionCall("basic-pie.js",1,0,606) || document.observe('dom:loaded', function() {
-window.parent._wrap_addFunctionToMap('basic-pie.js', 1, 31,605);
+window.parent._wrap_addFunctionToMap('basic-pie.js', 1, 31,605, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var d1 = [[0, 4]];
   var d2 = [[0, 3]];

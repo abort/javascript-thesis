@@ -1,20 +1,20 @@
 _wrap_staticMeasuredFunctions['fullcalendar.js'] = 375;
 _wrap_staticMeasuredCalls['fullcalendar.js'] =1479;
 ((_wrap_setLastFunctionCall("fullcalendar.js",1,1,148424) || function($, undefined) {
-_wrap_addFunctionToMap('fullcalendar.js', 1, 1,148416);
+_wrap_addFunctionToMap('fullcalendar.js', 1, 1,148416, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var defaults = {defaultView: 'month', aspectRatio: 1.35, header: {left: 'title', center: '', right: 'today prev,next'}, weekends: true, allDayDefault: true, ignoreTimezone: true, lazyFetching: true, startParam: 'start', endParam: 'end', titleFormat: {month: 'MMMM yyyy', week: 'MMM d[ yyyy]{ \'&#8212;\'[ MMM] d yyyy}', day: 'dddd, MMM d, yyyy'}, columnFormat: {month: 'ddd', week: 'ddd M/d', day: 'dddd M/d'}, timeFormat: {'': 'h(:mm)t'}, isRTL: false, firstDay: 0, monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'], monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], buttonText: {prev: '&nbsp;&#9668;&nbsp;', next: '&nbsp;&#9658;&nbsp;', prevYear: '&nbsp;&lt;&lt;&nbsp;', nextYear: '&nbsp;&gt;&gt;&nbsp;', today: 'today', month: 'month', week: 'week', day: 'day'}, theme: false, buttonIcons: {prev: 'circle-triangle-w', next: 'circle-triangle-e'}, unselectAuto: true, dropAccept: '*'};
   var rtlDefaults = {header: {left: 'next,prev today', center: '', right: 'title'}, buttonText: {prev: '&nbsp;&#9658;&nbsp;', next: '&nbsp;&#9668;&nbsp;', prevYear: '&nbsp;&gt;&gt;&nbsp;', nextYear: '&nbsp;&lt;&lt;&nbsp;'}, buttonIcons: {prev: 'circle-triangle-e', next: 'circle-triangle-w'}};
   var fc = $.fullCalendar = {version: '1.5.3'};
   var fcViews = fc.views = {};
   $.fn.fullCalendar = function(options) {
-_wrap_addFunctionToMap('fullcalendar.js', 112, 3175,4565);
+_wrap_addFunctionToMap('fullcalendar.js', 112, 3175,4565, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (typeof options == 'string') {
     var args = (_wrap_setLastFunctionCall("fullcalendar.js",114,3261,3301) || Array.prototype.slice.call(arguments, 1));
     var res;
 (_wrap_setLastFunctionCall("fullcalendar.js",116,3336,3819) ||     this.each(function() {
-_wrap_addFunctionToMap('fullcalendar.js', 116, 3346,3818);
+_wrap_addFunctionToMap('fullcalendar.js', 116, 3346,3818, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var calendar = (_wrap_setLastFunctionCall("fullcalendar.js",117,3391,3419) || $.data(this, 'fullCalendar'));
   if (calendar && (_wrap_setLastFunctionCall("fullcalendar.js",118,3453,3484) || $.isFunction(calendar[options]))) {
@@ -40,7 +40,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 116, 3346,3818);
   }
   options = (_wrap_setLastFunctionCall("fullcalendar.js",139,4167,4287) || $.extend(true, {}, defaults, options.isRTL || options.isRTL === undefined && defaults.isRTL ? rtlDefaults : {}, options));
 (_wrap_setLastFunctionCall("fullcalendar.js",140,4297,4537) ||   this.each(function(i, _element) {
-_wrap_addFunctionToMap('fullcalendar.js', 140, 4307,4536);
+_wrap_addFunctionToMap('fullcalendar.js', 140, 4307,4536, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var element = (_wrap_setLastFunctionCall("fullcalendar.js",141,4358,4369) || $(_element));
   var calendar = (_wrap_setLastFunctionCall("fullcalendar.js",142,4398,4442) || new Calendar(element, options, eventSources));
@@ -50,12 +50,12 @@ _wrap_addFunctionToMap('fullcalendar.js', 140, 4307,4536);
   return this;
 };
   function setDefaults(d) {
-_wrap_addFunctionToMap('fullcalendar.js', 148, 4571,4639);
+_wrap_addFunctionToMap('fullcalendar.js', 148, 4571,4639, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",149,4605,4632) ||     $.extend(true, defaults, d));
   }
   function Calendar(element, options, eventSources) {
-_wrap_addFunctionToMap('fullcalendar.js', 151, 4644,16838);
+_wrap_addFunctionToMap('fullcalendar.js', 151, 4644,16838, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var t = this;
     t.options = options;
@@ -76,12 +76,12 @@ _wrap_addFunctionToMap('fullcalendar.js', 151, 4644,16838);
     t.gotoDate = gotoDate;
     t.incrementDate = incrementDate;
     t.formatDate = function(format, date) {
-_wrap_addFunctionToMap('fullcalendar.js', 170, 5296,5385);
+_wrap_addFunctionToMap('fullcalendar.js', 170, 5296,5385, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (_wrap_setLastFunctionCall("fullcalendar.js",171,5341,5374) || formatDate(format, date, options));
 };
     t.formatDates = function(format, date1, date2) {
-_wrap_addFunctionToMap('fullcalendar.js', 173, 5411,5517);
+_wrap_addFunctionToMap('fullcalendar.js', 173, 5411,5517, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (_wrap_setLastFunctionCall("fullcalendar.js",174,5464,5506) || formatDates(format, date1, date2, options));
 };
@@ -109,7 +109,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 173, 5411,5517);
     var _dragElement;
 (_wrap_setLastFunctionCall("fullcalendar.js",198,6198,6253) ||     setYMD(date, options.year, options.month, options.date));
     function render(inc) {
-_wrap_addFunctionToMap('fullcalendar.js', 199, 6263,6521);
+_wrap_addFunctionToMap('fullcalendar.js', 199, 6263,6521, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if (!content) {
 (_wrap_setLastFunctionCall("fullcalendar.js",201,6330,6345) ||         initialRender());
@@ -121,7 +121,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 199, 6263,6521);
       }
     }
     function initialRender() {
-_wrap_addFunctionToMap('fullcalendar.js', 209, 6530,7288);
+_wrap_addFunctionToMap('fullcalendar.js', 209, 6530,7288, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       tm = options.theme ? 'ui' : 'fc';
 (_wrap_setLastFunctionCall("fullcalendar.js",211,6615,6637) ||       element.addClass('fc'));
@@ -144,10 +144,10 @@ _wrap_addFunctionToMap('fullcalendar.js', 209, 6530,7288);
       }
     }
     function lateRender() {
-_wrap_addFunctionToMap('fullcalendar.js', 230, 7297,7497);
+_wrap_addFunctionToMap('fullcalendar.js', 230, 7297,7497, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",231,7333,7486) ||       setTimeout(function() {
-_wrap_addFunctionToMap('fullcalendar.js', 231, 7344,7482);
+_wrap_addFunctionToMap('fullcalendar.js', 231, 7344,7482, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (!currentView.start && (_wrap_setLastFunctionCall("fullcalendar.js",232,7400,7413) || bodyVisible())) {
 (_wrap_setLastFunctionCall("fullcalendar.js",233,7437,7449) ||     renderView());
@@ -155,7 +155,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 231, 7344,7482);
 }, 0));
     }
     function destroy() {
-_wrap_addFunctionToMap('fullcalendar.js', 237, 7506,7706);
+_wrap_addFunctionToMap('fullcalendar.js', 237, 7506,7706, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",238,7539,7579) ||       (_wrap_setLastFunctionCall("fullcalendar.js",238,7539,7548) || $(window)).unbind('resize', windowResize));
 (_wrap_setLastFunctionCall("fullcalendar.js",239,7593,7609) ||       header.destroy());
@@ -163,17 +163,17 @@ _wrap_addFunctionToMap('fullcalendar.js', 237, 7506,7706);
 (_wrap_setLastFunctionCall("fullcalendar.js",241,7653,7695) ||       element.removeClass('fc fc-rtl ui-widget'));
     }
     function elementVisible() {
-_wrap_addFunctionToMap('fullcalendar.js', 243, 7715,7799);
+_wrap_addFunctionToMap('fullcalendar.js', 243, 7715,7799, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return _element.offsetWidth !== 0;
     }
     function bodyVisible() {
-_wrap_addFunctionToMap('fullcalendar.js', 246, 7808,7893);
+_wrap_addFunctionToMap('fullcalendar.js', 246, 7808,7893, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return (_wrap_setLastFunctionCall("fullcalendar.js",247,7852,7861) || $('body'))[0].offsetWidth !== 0;
     }
     function changeView(newViewName) {
-_wrap_addFunctionToMap('fullcalendar.js', 249, 7902,9400);
+_wrap_addFunctionToMap('fullcalendar.js', 249, 7902,9400, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if (!currentView || newViewName != currentView.name) {
         ignoreWindowResize++;
@@ -210,7 +210,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 249, 7902,9400);
       }
     }
     function renderView(inc) {
-_wrap_addFunctionToMap('fullcalendar.js', 284, 9409,10911);
+_wrap_addFunctionToMap('fullcalendar.js', 284, 9409,10911, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if ((_wrap_setLastFunctionCall("fullcalendar.js",285,9452,9468) || elementVisible())) {
         ignoreWindowResize++;
@@ -247,7 +247,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 284, 9409,10911);
       }
     }
     function updateSize() {
-_wrap_addFunctionToMap('fullcalendar.js', 319, 10920,11256);
+_wrap_addFunctionToMap('fullcalendar.js', 319, 10920,11256, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",320,10956,10972) ||       markSizesDirty());
       if ((_wrap_setLastFunctionCall("fullcalendar.js",321,10990,11006) || elementVisible())) {
@@ -260,16 +260,16 @@ _wrap_addFunctionToMap('fullcalendar.js', 319, 10920,11256);
       }
     }
     function markSizesDirty() {
-_wrap_addFunctionToMap('fullcalendar.js', 330, 11265,11412);
+_wrap_addFunctionToMap('fullcalendar.js', 330, 11265,11412, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",331,11305,11401) ||       $.each(viewInstances, function(i, inst) {
-_wrap_addFunctionToMap('fullcalendar.js', 331, 11327,11400);
+_wrap_addFunctionToMap('fullcalendar.js', 331, 11327,11400, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   inst.sizeDirty = true;
 }));
     }
     function calcSize() {
-_wrap_addFunctionToMap('fullcalendar.js', 335, 11421,11853);
+_wrap_addFunctionToMap('fullcalendar.js', 335, 11421,11853, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if (options.contentHeight) {
         suggestedViewHeight = options.contentHeight;
@@ -280,7 +280,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 335, 11421,11853);
       }
     }
     function setSize(dateChanged) {
-_wrap_addFunctionToMap('fullcalendar.js', 344, 11862,12266);
+_wrap_addFunctionToMap('fullcalendar.js', 344, 11862,12266, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       ignoreWindowResize++;
 (_wrap_setLastFunctionCall("fullcalendar.js",346,11940,11995) ||       currentView.setHeight(suggestedViewHeight, dateChanged));
@@ -292,13 +292,13 @@ _wrap_addFunctionToMap('fullcalendar.js', 344, 11862,12266);
       ignoreWindowResize--;
     }
     function windowResize() {
-_wrap_addFunctionToMap('fullcalendar.js', 354, 12275,13077);
+_wrap_addFunctionToMap('fullcalendar.js', 354, 12275,13077, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if (!ignoreWindowResize) {
         if (currentView.start) {
           var uid = ++resizeUID;
 (_wrap_setLastFunctionCall("fullcalendar.js",358,12444,12975) ||           setTimeout(function() {
-_wrap_addFunctionToMap('fullcalendar.js', 358, 12455,12969);
+_wrap_addFunctionToMap('fullcalendar.js', 358, 12455,12969, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (uid == resizeUID && !ignoreWindowResize && (_wrap_setLastFunctionCall("fullcalendar.js",359,12540,12556) || elementVisible())) {
     if (elementOuterWidth != (elementOuterWidth = (_wrap_setLastFunctionCall("fullcalendar.js",360,12634,12654) || element.outerWidth()))) {
@@ -315,7 +315,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 358, 12455,12969);
       }
     }
     function updateEvents(forceRender) {
-_wrap_addFunctionToMap('fullcalendar.js', 373, 13086,13351);
+_wrap_addFunctionToMap('fullcalendar.js', 373, 13086,13351, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if (!options.lazyFetching || (_wrap_setLastFunctionCall("fullcalendar.js",374,13164,13219) || isFetchNeeded(currentView.visStart, currentView.visEnd))) {
 (_wrap_setLastFunctionCall("fullcalendar.js",375,13239,13254) ||         refetchEvents());
@@ -324,23 +324,23 @@ _wrap_addFunctionToMap('fullcalendar.js', 373, 13086,13351);
       }
     }
     function refetchEvents() {
-_wrap_addFunctionToMap('fullcalendar.js', 380, 13360,13463);
+_wrap_addFunctionToMap('fullcalendar.js', 380, 13360,13463, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",381,13399,13452) ||       fetchEvents(currentView.visStart, currentView.visEnd));
     }
     function reportEvents(_events) {
-_wrap_addFunctionToMap('fullcalendar.js', 383, 13472,13574);
+_wrap_addFunctionToMap('fullcalendar.js', 383, 13472,13574, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       events = _events;
 (_wrap_setLastFunctionCall("fullcalendar.js",385,13547,13563) ||       rerenderEvents());
     }
     function reportEventChange(eventID) {
-_wrap_addFunctionToMap('fullcalendar.js', 387, 13583,13667);
+_wrap_addFunctionToMap('fullcalendar.js', 387, 13583,13667, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",388,13633,13656) ||       rerenderEvents(eventID));
     }
     function rerenderEvents(modifiedEventID) {
-_wrap_addFunctionToMap('fullcalendar.js', 390, 13676,13968);
+_wrap_addFunctionToMap('fullcalendar.js', 390, 13676,13968, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",391,13731,13748) ||       markEventsDirty());
       if ((_wrap_setLastFunctionCall("fullcalendar.js",392,13766,13782) || elementVisible())) {
@@ -350,56 +350,56 @@ _wrap_addFunctionToMap('fullcalendar.js', 390, 13676,13968);
       }
     }
     function markEventsDirty() {
-_wrap_addFunctionToMap('fullcalendar.js', 398, 13977,14127);
+_wrap_addFunctionToMap('fullcalendar.js', 398, 13977,14127, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",399,14018,14116) ||       $.each(viewInstances, function(i, inst) {
-_wrap_addFunctionToMap('fullcalendar.js', 399, 14040,14115);
+_wrap_addFunctionToMap('fullcalendar.js', 399, 14040,14115, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   inst.eventsDirty = true;
 }));
     }
     function select(start, end, allDay) {
-_wrap_addFunctionToMap('fullcalendar.js', 403, 14136,14265);
+_wrap_addFunctionToMap('fullcalendar.js', 403, 14136,14265, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",404,14186,14254) ||       currentView.select(start, end, allDay === undefined ? true : allDay));
     }
     function unselect() {
-_wrap_addFunctionToMap('fullcalendar.js', 406, 14274,14390);
+_wrap_addFunctionToMap('fullcalendar.js', 406, 14274,14390, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if (currentView) {
 (_wrap_setLastFunctionCall("fullcalendar.js",408,14343,14365) ||         currentView.unselect());
       }
     }
     function prev() {
-_wrap_addFunctionToMap('fullcalendar.js', 411, 14399,14454);
+_wrap_addFunctionToMap('fullcalendar.js', 411, 14399,14454, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",412,14429,14443) ||       renderView(-1));
     }
     function next() {
-_wrap_addFunctionToMap('fullcalendar.js', 414, 14463,14517);
+_wrap_addFunctionToMap('fullcalendar.js', 414, 14463,14517, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",415,14493,14506) ||       renderView(1));
     }
     function prevYear() {
-_wrap_addFunctionToMap('fullcalendar.js', 417, 14526,14615);
+_wrap_addFunctionToMap('fullcalendar.js', 417, 14526,14615, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",418,14560,14578) ||       addYears(date, -1));
 (_wrap_setLastFunctionCall("fullcalendar.js",419,14592,14604) ||       renderView());
     }
     function nextYear() {
-_wrap_addFunctionToMap('fullcalendar.js', 421, 14624,14712);
+_wrap_addFunctionToMap('fullcalendar.js', 421, 14624,14712, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",422,14658,14675) ||       addYears(date, 1));
 (_wrap_setLastFunctionCall("fullcalendar.js",423,14689,14701) ||       renderView());
     }
     function today() {
-_wrap_addFunctionToMap('fullcalendar.js', 425, 14721,14806);
+_wrap_addFunctionToMap('fullcalendar.js', 425, 14721,14806, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       date = (_wrap_setLastFunctionCall("fullcalendar.js",426,14759,14769) || new Date());
 (_wrap_setLastFunctionCall("fullcalendar.js",427,14783,14795) ||       renderView());
     }
     function gotoDate(year, month, dateOfMonth) {
-_wrap_addFunctionToMap('fullcalendar.js', 429, 14815,15067);
+_wrap_addFunctionToMap('fullcalendar.js', 429, 14815,15067, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if (year instanceof Date) {
         date = (_wrap_setLastFunctionCall("fullcalendar.js",431,14924,14939) || cloneDate(year));
@@ -409,7 +409,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 429, 14815,15067);
 (_wrap_setLastFunctionCall("fullcalendar.js",435,15044,15056) ||       renderView());
     }
     function incrementDate(years, months, days) {
-_wrap_addFunctionToMap('fullcalendar.js', 437, 15076,15433);
+_wrap_addFunctionToMap('fullcalendar.js', 437, 15076,15433, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if (years !== undefined) {
 (_wrap_setLastFunctionCall("fullcalendar.js",439,15177,15198) ||         addYears(date, years));
@@ -423,17 +423,17 @@ _wrap_addFunctionToMap('fullcalendar.js', 437, 15076,15433);
 (_wrap_setLastFunctionCall("fullcalendar.js",447,15410,15422) ||       renderView());
     }
     function getDate() {
-_wrap_addFunctionToMap('fullcalendar.js', 449, 15442,15508);
+_wrap_addFunctionToMap('fullcalendar.js', 449, 15442,15508, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return (_wrap_setLastFunctionCall("fullcalendar.js",450,15482,15497) || cloneDate(date));
     }
     function getView() {
-_wrap_addFunctionToMap('fullcalendar.js', 452, 15517,15579);
+_wrap_addFunctionToMap('fullcalendar.js', 452, 15517,15579, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return currentView;
     }
     function option(name, value) {
-_wrap_addFunctionToMap('fullcalendar.js', 455, 15588,15890);
+_wrap_addFunctionToMap('fullcalendar.js', 455, 15588,15890, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if (value === undefined) {
         return options[name];
@@ -444,7 +444,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 455, 15588,15890);
       }
     }
     function trigger(name, thisObj) {
-_wrap_addFunctionToMap('fullcalendar.js', 464, 15899,16096);
+_wrap_addFunctionToMap('fullcalendar.js', 464, 15899,16096, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if (options[name]) {
         return (_wrap_setLastFunctionCall("fullcalendar.js",466,15989,16071) || options[name].apply(thisObj || _element, (_wrap_setLastFunctionCall("fullcalendar.js",466,16030,16070) || Array.prototype.slice.call(arguments, 2))));
@@ -452,7 +452,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 464, 15899,16096);
     }
     if (options.droppable) {
 (_wrap_setLastFunctionCall("fullcalendar.js",480,16142,16821) ||       (_wrap_setLastFunctionCall("fullcalendar.js",470,16142,16610) || (_wrap_setLastFunctionCall("fullcalendar.js",470,16142,16153) || $(document)).bind('dragstart', function(ev, ui) {
-_wrap_addFunctionToMap('fullcalendar.js', 470, 16172,16609);
+_wrap_addFunctionToMap('fullcalendar.js', 470, 16172,16609, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var _e = ev.target;
   var e = (_wrap_setLastFunctionCall("fullcalendar.js",472,16252,16257) || $(_e));
@@ -464,7 +464,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 470, 16172,16609);
     }
   }
 })).bind('dragstop', function(ev, ui) {
-_wrap_addFunctionToMap('fullcalendar.js', 480, 16628,16820);
+_wrap_addFunctionToMap('fullcalendar.js', 480, 16628,16820, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (_dragElement) {
 (_wrap_setLastFunctionCall("fullcalendar.js",482,16704,16746) ||     currentView.dragStop(_dragElement, ev, ui));
@@ -474,7 +474,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 480, 16628,16820);
     }
   }
   function Header(calendar, options) {
-_wrap_addFunctionToMap('fullcalendar.js', 488, 16843,21995);
+_wrap_addFunctionToMap('fullcalendar.js', 488, 16843,21995, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var t = this;
     t.render = render;
@@ -487,7 +487,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 488, 16843,21995);
     var element = (_wrap_setLastFunctionCall("fullcalendar.js",497,17187,17192) || $([]));
     var tm;
     function render() {
-_wrap_addFunctionToMap('fullcalendar.js', 499, 17218,17604);
+_wrap_addFunctionToMap('fullcalendar.js', 499, 17218,17604, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       tm = options.theme ? 'ui' : 'fc';
       var sections = options.header;
@@ -497,25 +497,25 @@ _wrap_addFunctionToMap('fullcalendar.js', 499, 17218,17604);
       }
     }
     function destroy() {
-_wrap_addFunctionToMap('fullcalendar.js', 507, 17613,17673);
+_wrap_addFunctionToMap('fullcalendar.js', 507, 17613,17673, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",508,17646,17662) ||       element.remove());
     }
     function renderSection(position) {
-_wrap_addFunctionToMap('fullcalendar.js', 510, 17682,21310);
+_wrap_addFunctionToMap('fullcalendar.js', 510, 17682,21310, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var e = (_wrap_setLastFunctionCall("fullcalendar.js",511,17737,17784) || $('<td class=\'fc-header-' + position + '\'/>'));
       var buttonStr = options.header[position];
       if (buttonStr) {
 (_wrap_setLastFunctionCall("fullcalendar.js",514,17885,21263) ||         $.each((_wrap_setLastFunctionCall("fullcalendar.js",514,17892,17912) || buttonStr.split(' ')), function(i) {
-_wrap_addFunctionToMap('fullcalendar.js', 514, 17914,21262);
+_wrap_addFunctionToMap('fullcalendar.js', 514, 17914,21262, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (i > 0) {
 (_wrap_setLastFunctionCall("fullcalendar.js",516,17986,18031) ||     e.append('<span class=\'fc-header-space\'/>'));
   }
   var prevButton;
 (_wrap_setLastFunctionCall("fullcalendar.js",519,18111,21116) ||   $.each((_wrap_setLastFunctionCall("fullcalendar.js",519,18118,18133) || this.split(',')), function(j, buttonName) {
-_wrap_addFunctionToMap('fullcalendar.js', 519, 18135,21115);
+_wrap_addFunctionToMap('fullcalendar.js', 519, 18135,21115, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (buttonName == 'title') {
 (_wrap_setLastFunctionCall("fullcalendar.js",521,18243,18309) ||     e.append('<span class=\'fc-header-title\'><h2>&nbsp;</h2></span>'));
@@ -529,7 +529,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 519, 18135,21115);
       buttonClick = calendar[buttonName];
     } else if (fcViews[buttonName]) {
       buttonClick = function() {
-_wrap_addFunctionToMap('fullcalendar.js', 531, 18819,19012);
+_wrap_addFunctionToMap('fullcalendar.js', 531, 18819,19012, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",532,18869,18908) ||   button.removeClass(tm + '-state-hover'));
 (_wrap_setLastFunctionCall("fullcalendar.js",533,18946,18977) ||   calendar.changeView(buttonName));
@@ -541,25 +541,25 @@ _wrap_addFunctionToMap('fullcalendar.js', 531, 18819,19012);
       var button = (_wrap_setLastFunctionCall("fullcalendar.js",539,19340,19708) || $('<span class=\'fc-button fc-button-' + buttonName + ' ' + tm + '-state-default\'>' + '<span class=\'fc-button-inner\'>' + '<span class=\'fc-button-content\'>' + (icon ? '<span class=\'fc-icon-wrap\'>' + '<span class=\'ui-icon ui-icon-' + icon + '\'/>' + '</span>' : text) + '</span>' + '<span class=\'fc-button-effect\'><span></span></span>' + '</span>' + '</span>'));
       if (button) {
 (_wrap_setLastFunctionCall("fullcalendar.js",553,19792,20774) ||         (_wrap_setLastFunctionCall("fullcalendar.js",549,19792,20762) || (_wrap_setLastFunctionCall("fullcalendar.js",547,19792,20393) || (_wrap_setLastFunctionCall("fullcalendar.js",545,19792,20252) || (_wrap_setLastFunctionCall("fullcalendar.js",541,19792,20046) || button.click(function() {
-_wrap_addFunctionToMap('fullcalendar.js', 541, 19805,20045);
+_wrap_addFunctionToMap('fullcalendar.js', 541, 19805,20045, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (!(_wrap_setLastFunctionCall("fullcalendar.js",542,19864,19903) || button.hasClass(tm + '-state-disabled'))) {
 (_wrap_setLastFunctionCall("fullcalendar.js",543,19951,19964) ||     buttonClick());
   }
 })).mousedown(function() {
-_wrap_addFunctionToMap('fullcalendar.js', 545, 20057,20251);
+_wrap_addFunctionToMap('fullcalendar.js', 545, 20057,20251, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",546,20111,20212) ||   (_wrap_setLastFunctionCall("fullcalendar.js",546,20111,20183) || (_wrap_setLastFunctionCall("fullcalendar.js",546,20111,20149) || button.not('.' + tm + '-state-active')).not('.' + tm + '-state-disabled')).addClass(tm + '-state-down'));
 })).mouseup(function() {
-_wrap_addFunctionToMap('fullcalendar.js', 547, 20261,20392);
+_wrap_addFunctionToMap('fullcalendar.js', 547, 20261,20392, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",548,20315,20353) ||   button.removeClass(tm + '-state-down'));
 })).hover(function() {
-_wrap_addFunctionToMap('fullcalendar.js', 549, 20400,20595);
+_wrap_addFunctionToMap('fullcalendar.js', 549, 20400,20595, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",550,20454,20556) ||   (_wrap_setLastFunctionCall("fullcalendar.js",550,20454,20526) || (_wrap_setLastFunctionCall("fullcalendar.js",550,20454,20492) || button.not('.' + tm + '-state-active')).not('.' + tm + '-state-disabled')).addClass(tm + '-state-hover'));
 }, function() {
-_wrap_addFunctionToMap('fullcalendar.js', 551, 20597,20761);
+_wrap_addFunctionToMap('fullcalendar.js', 551, 20597,20761, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",552,20651,20722) ||   (_wrap_setLastFunctionCall("fullcalendar.js",552,20651,20690) || button.removeClass(tm + '-state-hover')).removeClass(tm + '-state-down'));
 })).appendTo(e));
@@ -579,27 +579,27 @@ _wrap_addFunctionToMap('fullcalendar.js', 551, 20597,20761);
       return e;
     }
     function updateTitle(html) {
-_wrap_addFunctionToMap('fullcalendar.js', 569, 21319,21400);
+_wrap_addFunctionToMap('fullcalendar.js', 569, 21319,21400, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",570,21360,21389) ||       (_wrap_setLastFunctionCall("fullcalendar.js",570,21360,21378) || element.find('h2')).html(html));
     }
     function activateButton(buttonName) {
-_wrap_addFunctionToMap('fullcalendar.js', 572, 21409,21545);
+_wrap_addFunctionToMap('fullcalendar.js', 572, 21409,21545, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",573,21459,21534) ||       (_wrap_setLastFunctionCall("fullcalendar.js",573,21459,21503) || element.find('span.fc-button-' + buttonName)).addClass(tm + '-state-active'));
     }
     function deactivateButton(buttonName) {
-_wrap_addFunctionToMap('fullcalendar.js', 575, 21554,21695);
+_wrap_addFunctionToMap('fullcalendar.js', 575, 21554,21695, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",576,21606,21684) ||       (_wrap_setLastFunctionCall("fullcalendar.js",576,21606,21650) || element.find('span.fc-button-' + buttonName)).removeClass(tm + '-state-active'));
     }
     function disableButton(buttonName) {
-_wrap_addFunctionToMap('fullcalendar.js', 578, 21704,21841);
+_wrap_addFunctionToMap('fullcalendar.js', 578, 21704,21841, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",579,21753,21830) ||       (_wrap_setLastFunctionCall("fullcalendar.js",579,21753,21797) || element.find('span.fc-button-' + buttonName)).addClass(tm + '-state-disabled'));
     }
     function enableButton(buttonName) {
-_wrap_addFunctionToMap('fullcalendar.js', 581, 21850,21989);
+_wrap_addFunctionToMap('fullcalendar.js', 581, 21850,21989, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",582,21898,21978) ||       (_wrap_setLastFunctionCall("fullcalendar.js",582,21898,21942) || element.find('span.fc-button-' + buttonName)).removeClass(tm + '-state-disabled'));
     }
@@ -609,7 +609,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 581, 21850,21989);
   var ajaxDefaults = {dataType: 'json', cache: false};
   var eventGUID = 1;
   function EventManager(options, _sources) {
-_wrap_addFunctionToMap('fullcalendar.js', 592, 22173,33192);
+_wrap_addFunctionToMap('fullcalendar.js', 592, 22173,33192, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var t = this;
     t.isFetchNeeded = isFetchNeeded;
@@ -635,12 +635,12 @@ _wrap_addFunctionToMap('fullcalendar.js', 592, 22173,33192);
 (_wrap_setLastFunctionCall("fullcalendar.js",614,23011,23039) ||       _addEventSource(_sources[i]));
     }
     function isFetchNeeded(start, end) {
-_wrap_addFunctionToMap('fullcalendar.js', 616, 23059,23177);
+_wrap_addFunctionToMap('fullcalendar.js', 616, 23059,23177, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return !rangeStart || start < rangeStart || end > rangeEnd;
     }
     function fetchEvents(start, end) {
-_wrap_addFunctionToMap('fullcalendar.js', 619, 23186,23545);
+_wrap_addFunctionToMap('fullcalendar.js', 619, 23186,23545, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       rangeStart = start;
       rangeEnd = end;
@@ -653,10 +653,10 @@ _wrap_addFunctionToMap('fullcalendar.js', 619, 23186,23545);
       }
     }
     function fetchEventSource(source, fetchID) {
-_wrap_addFunctionToMap('fullcalendar.js', 630, 23554,24213);
+_wrap_addFunctionToMap('fullcalendar.js', 630, 23554,24213, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",631,23611,24202) ||       _fetchEventSource(source, function(events) {
-_wrap_addFunctionToMap('fullcalendar.js', 631, 23637,24201);
+_wrap_addFunctionToMap('fullcalendar.js', 631, 23637,24201, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (fetchID == currentFetchID) {
     if (events) {
@@ -674,7 +674,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 631, 23637,24201);
 }));
     }
     function _fetchEventSource(source, callback) {
-_wrap_addFunctionToMap('fullcalendar.js', 647, 24222,26940);
+_wrap_addFunctionToMap('fullcalendar.js', 647, 24222,26940, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var i;
       var fetchers = fc.sourceFetchers;
@@ -693,7 +693,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 647, 24222,26940);
         if ((_wrap_setLastFunctionCall("fullcalendar.js",662,24799,24819) || $.isFunction(events))) {
 (_wrap_setLastFunctionCall("fullcalendar.js",663,24843,24856) ||           pushLoading());
 (_wrap_setLastFunctionCall("fullcalendar.js",664,24878,25051) ||           events((_wrap_setLastFunctionCall("fullcalendar.js",664,24885,24906) || cloneDate(rangeStart)), (_wrap_setLastFunctionCall("fullcalendar.js",664,24908,24927) || cloneDate(rangeEnd)), function(events) {
-_wrap_addFunctionToMap('fullcalendar.js', 664, 24929,25050);
+_wrap_addFunctionToMap('fullcalendar.js', 664, 24929,25050, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",665,24973,24989) ||   callback(events));
 (_wrap_setLastFunctionCall("fullcalendar.js",666,25015,25027) ||   popLoading());
@@ -720,7 +720,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 664, 24929,25050);
           }
 (_wrap_setLastFunctionCall("fullcalendar.js",688,25970,25983) ||           pushLoading());
 (_wrap_setLastFunctionCall("fullcalendar.js",689,26005,26840) ||           $.ajax((_wrap_setLastFunctionCall("fullcalendar.js",689,26012,26839) || $.extend({}, ajaxDefaults, source, {data: data, success: function(events) {
-_wrap_addFunctionToMap('fullcalendar.js', 691, 26118,26460);
+_wrap_addFunctionToMap('fullcalendar.js', 691, 26118,26460, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   events = events || [];
   var res = (_wrap_setLastFunctionCall("fullcalendar.js",693,26227,26261) || applyAll(success, this, arguments));
@@ -729,12 +729,12 @@ _wrap_addFunctionToMap('fullcalendar.js', 691, 26118,26460);
   }
 (_wrap_setLastFunctionCall("fullcalendar.js",697,26417,26433) ||   callback(events));
 }, error: function() {
-_wrap_addFunctionToMap('fullcalendar.js', 699, 26493,26634);
+_wrap_addFunctionToMap('fullcalendar.js', 699, 26493,26634, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",700,26535,26567) ||   applyAll(error, this, arguments));
 (_wrap_setLastFunctionCall("fullcalendar.js",701,26597,26607) ||   callback());
 }, complete: function() {
-_wrap_addFunctionToMap('fullcalendar.js', 703, 26670,26816);
+_wrap_addFunctionToMap('fullcalendar.js', 703, 26670,26816, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",704,26712,26747) ||   applyAll(complete, this, arguments));
 (_wrap_setLastFunctionCall("fullcalendar.js",705,26777,26789) ||   popLoading());
@@ -745,7 +745,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 703, 26670,26816);
       }
     }
     function addEventSource(source) {
-_wrap_addFunctionToMap('fullcalendar.js', 713, 26949,27172);
+_wrap_addFunctionToMap('fullcalendar.js', 713, 26949,27172, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       source = (_wrap_setLastFunctionCall("fullcalendar.js",714,27004,27027) || _addEventSource(source));
       if (source) {
@@ -754,7 +754,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 713, 26949,27172);
       }
     }
     function _addEventSource(source) {
-_wrap_addFunctionToMap('fullcalendar.js', 720, 27181,27608);
+_wrap_addFunctionToMap('fullcalendar.js', 720, 27181,27608, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if ((_wrap_setLastFunctionCall("fullcalendar.js",721,27232,27252) || $.isFunction(source)) || (_wrap_setLastFunctionCall("fullcalendar.js",721,27256,27273) || $.isArray(source))) {
         source = {events: source};
@@ -768,22 +768,22 @@ _wrap_addFunctionToMap('fullcalendar.js', 720, 27181,27608);
       }
     }
     function removeEventSource(source) {
-_wrap_addFunctionToMap('fullcalendar.js', 732, 27617,27943);
+_wrap_addFunctionToMap('fullcalendar.js', 732, 27617,27943, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       sources = (_wrap_setLastFunctionCall("fullcalendar.js",733,27676,27776) || $.grep(sources, function(src) {
-_wrap_addFunctionToMap('fullcalendar.js', 733, 27692,27775);
+_wrap_addFunctionToMap('fullcalendar.js', 733, 27692,27775, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return !(_wrap_setLastFunctionCall("fullcalendar.js",734,27733,27760) || isSourcesEqual(src, source));
 }));
       cache = (_wrap_setLastFunctionCall("fullcalendar.js",736,27798,27899) || $.grep(cache, function(e) {
-_wrap_addFunctionToMap('fullcalendar.js', 736, 27812,27898);
+_wrap_addFunctionToMap('fullcalendar.js', 736, 27812,27898, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return !(_wrap_setLastFunctionCall("fullcalendar.js",737,27851,27883) || isSourcesEqual(e.source, source));
 }));
 (_wrap_setLastFunctionCall("fullcalendar.js",739,27913,27932) ||       reportEvents(cache));
     }
     function updateEvent(event) {
-_wrap_addFunctionToMap('fullcalendar.js', 741, 27952,29328);
+_wrap_addFunctionToMap('fullcalendar.js', 741, 27952,29328, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var i, len = cache.length, e, defaultEventEnd = (_wrap_setLastFunctionCall("fullcalendar.js",742,28042,28051) || getView()).defaultEventEnd, startDelta = event.start - event._start, endDelta = event.end ? event.end - (event._end || (_wrap_setLastFunctionCall("fullcalendar.js",742,28160,28182) || defaultEventEnd(event))) : 0;
       for (i = 0; i < len; i++) {
@@ -815,7 +815,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 741, 27952,29328);
 (_wrap_setLastFunctionCall("fullcalendar.js",769,29298,29317) ||       reportEvents(cache));
     }
     function renderEvent(event, stick) {
-_wrap_addFunctionToMap('fullcalendar.js', 771, 29337,29682);
+_wrap_addFunctionToMap('fullcalendar.js', 771, 29337,29682, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",772,29386,29407) ||       normalizeEvent(event));
       if (!event.source) {
@@ -828,7 +828,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 771, 29337,29682);
 (_wrap_setLastFunctionCall("fullcalendar.js",780,29652,29671) ||       reportEvents(cache));
     }
     function removeEvents(filter) {
-_wrap_addFunctionToMap('fullcalendar.js', 782, 29691,30567);
+_wrap_addFunctionToMap('fullcalendar.js', 782, 29691,30567, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if (!filter) {
         cache = [];
@@ -841,7 +841,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 782, 29691,30567);
         if (!(_wrap_setLastFunctionCall("fullcalendar.js",791,30023,30043) || $.isFunction(filter))) {
           var id = filter + '';
           filter = function(e) {
-_wrap_addFunctionToMap('fullcalendar.js', 793, 30118,30198);
+_wrap_addFunctionToMap('fullcalendar.js', 793, 30118,30198, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return e._id == id;
 };
@@ -856,14 +856,14 @@ _wrap_addFunctionToMap('fullcalendar.js', 793, 30118,30198);
 (_wrap_setLastFunctionCall("fullcalendar.js",804,30537,30556) ||       reportEvents(cache));
     }
     function clientEvents(filter) {
-_wrap_addFunctionToMap('fullcalendar.js', 806, 30576,30922);
+_wrap_addFunctionToMap('fullcalendar.js', 806, 30576,30922, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if ((_wrap_setLastFunctionCall("fullcalendar.js",807,30624,30644) || $.isFunction(filter))) {
         return (_wrap_setLastFunctionCall("fullcalendar.js",808,30671,30692) || $.grep(cache, filter));
       } else if (filter) {
         filter += '';
         return (_wrap_setLastFunctionCall("fullcalendar.js",811,30780,30871) || $.grep(cache, function(e) {
-_wrap_addFunctionToMap('fullcalendar.js', 811, 30794,30870);
+_wrap_addFunctionToMap('fullcalendar.js', 811, 30794,30870, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return e._id == filter;
 }));
@@ -871,21 +871,21 @@ _wrap_addFunctionToMap('fullcalendar.js', 811, 30794,30870);
       return cache;
     }
     function pushLoading() {
-_wrap_addFunctionToMap('fullcalendar.js', 817, 30931,31062);
+_wrap_addFunctionToMap('fullcalendar.js', 817, 30931,31062, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if (!loadingLevel++) {
 (_wrap_setLastFunctionCall("fullcalendar.js",819,31007,31037) ||         trigger('loading', null, true));
       }
     }
     function popLoading() {
-_wrap_addFunctionToMap('fullcalendar.js', 822, 31071,31202);
+_wrap_addFunctionToMap('fullcalendar.js', 822, 31071,31202, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if (!--loadingLevel) {
 (_wrap_setLastFunctionCall("fullcalendar.js",824,31146,31177) ||         trigger('loading', null, false));
       }
     }
     function normalizeEvent(event) {
-_wrap_addFunctionToMap('fullcalendar.js', 827, 31211,32399);
+_wrap_addFunctionToMap('fullcalendar.js', 827, 31211,32399, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var source = event.source || {};
       var ignoreTimezone = (_wrap_setLastFunctionCall("fullcalendar.js",829,31322,31381) || firstDefined(source.ignoreTimezone, options.ignoreTimezone));
@@ -914,7 +914,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 827, 31211,32399);
       }
     }
     function normalizeSource(source) {
-_wrap_addFunctionToMap('fullcalendar.js', 854, 32408,32874);
+_wrap_addFunctionToMap('fullcalendar.js', 854, 32408,32874, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if (source.className) {
         if (typeof source.className == 'string') {
@@ -929,12 +929,12 @@ _wrap_addFunctionToMap('fullcalendar.js', 854, 32408,32874);
       }
     }
     function isSourcesEqual(source1, source2) {
-_wrap_addFunctionToMap('fullcalendar.js', 867, 32883,33037);
+_wrap_addFunctionToMap('fullcalendar.js', 867, 32883,33037, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return source1 && source2 && (_wrap_setLastFunctionCall("fullcalendar.js",868,32968,32995) || getSourcePrimitive(source1)) == (_wrap_setLastFunctionCall("fullcalendar.js",868,32999,33026) || getSourcePrimitive(source2));
     }
     function getSourcePrimitive(source) {
-_wrap_addFunctionToMap('fullcalendar.js', 870, 33046,33186);
+_wrap_addFunctionToMap('fullcalendar.js', 870, 33046,33186, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return (typeof source == 'object' ? source.events || source.url : '') || source;
     }
@@ -948,7 +948,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 870, 33046,33186);
   fc.formatDates = formatDates;
   var dayIDs = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'], DAY_MS = 86400000, HOUR_MS = 3600000, MINUTE_MS = 60000;
   function addYears(d, n, keepTime) {
-_wrap_addFunctionToMap('fullcalendar.js', 890, 33634,33798);
+_wrap_addFunctionToMap('fullcalendar.js', 890, 33634,33798, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",891,33678,33712) ||     d.setFullYear((_wrap_setLastFunctionCall("fullcalendar.js",891,33692,33707) || d.getFullYear()) + n));
     if (!keepTime) {
@@ -957,7 +957,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 890, 33634,33798);
     return d;
   }
   function addMonths(d, n, keepTime) {
-_wrap_addFunctionToMap('fullcalendar.js', 897, 33803,34244);
+_wrap_addFunctionToMap('fullcalendar.js', 897, 33803,34244, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     if (+d) {
       var m = (_wrap_setLastFunctionCall("fullcalendar.js",899,33878,33890) || d.getMonth()) + n, check = (_wrap_setLastFunctionCall("fullcalendar.js",899,33904,33916) || cloneDate(d));
@@ -974,7 +974,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 897, 33803,34244);
     return d;
   }
   function addDays(d, n, keepTime) {
-_wrap_addFunctionToMap('fullcalendar.js', 912, 34249,34588);
+_wrap_addFunctionToMap('fullcalendar.js', 912, 34249,34588, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     if (+d) {
       var dd = (_wrap_setLastFunctionCall("fullcalendar.js",914,34323,34334) || d.getDate()) + n, check = (_wrap_setLastFunctionCall("fullcalendar.js",914,34348,34360) || cloneDate(d));
@@ -989,7 +989,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 912, 34249,34588);
     return d;
   }
   function fixDate(d, check) {
-_wrap_addFunctionToMap('fullcalendar.js', 925, 34593,34786);
+_wrap_addFunctionToMap('fullcalendar.js', 925, 34593,34786, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     if (+d) {
       while ((_wrap_setLastFunctionCall("fullcalendar.js",927,34659,34670) || d.getDate()) != (_wrap_setLastFunctionCall("fullcalendar.js",927,34674,34689) || check.getDate())) {
@@ -998,13 +998,13 @@ _wrap_addFunctionToMap('fullcalendar.js', 925, 34593,34786);
     }
   }
   function addMinutes(d, n) {
-_wrap_addFunctionToMap('fullcalendar.js', 932, 34791,34884);
+_wrap_addFunctionToMap('fullcalendar.js', 932, 34791,34884, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",933,34827,34859) ||     d.setMinutes((_wrap_setLastFunctionCall("fullcalendar.js",933,34840,34854) || d.getMinutes()) + n));
     return d;
   }
   function clearTime(d) {
-_wrap_addFunctionToMap('fullcalendar.js', 936, 34889,35039);
+_wrap_addFunctionToMap('fullcalendar.js', 936, 34889,35039, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",937,34921,34934) ||     d.setHours(0));
 (_wrap_setLastFunctionCall("fullcalendar.js",938,34944,34959) ||     d.setMinutes(0));
@@ -1013,7 +1013,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 936, 34889,35039);
     return d;
   }
   function cloneDate(d, dontKeepTime) {
-_wrap_addFunctionToMap('fullcalendar.js', 943, 35044,35198);
+_wrap_addFunctionToMap('fullcalendar.js', 943, 35044,35198, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     if (dontKeepTime) {
       return (_wrap_setLastFunctionCall("fullcalendar.js",945,35129,35152) || clearTime((_wrap_setLastFunctionCall("fullcalendar.js",945,35139,35151) || new Date(+d))));
@@ -1021,7 +1021,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 943, 35044,35198);
     return (_wrap_setLastFunctionCall("fullcalendar.js",947,35179,35191) || new Date(+d));
   }
   function zeroDate() {
-_wrap_addFunctionToMap('fullcalendar.js', 949, 35203,35355);
+_wrap_addFunctionToMap('fullcalendar.js', 949, 35203,35355, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var i = 0, d;
     do {
@@ -1030,7 +1030,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 949, 35203,35355);
     return d;
   }
   function skipWeekend(date, inc, excl) {
-_wrap_addFunctionToMap('fullcalendar.js', 956, 35360,35588);
+_wrap_addFunctionToMap('fullcalendar.js', 956, 35360,35588, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     inc = inc || 1;
     while (!(_wrap_setLastFunctionCall("fullcalendar.js",958,35440,35453) || date.getDay()) || (excl && (_wrap_setLastFunctionCall("fullcalendar.js",958,35466,35479) || date.getDay()) == 1 || !excl && (_wrap_setLastFunctionCall("fullcalendar.js",958,35497,35510) || date.getDay()) == 6)) {
@@ -1039,12 +1039,12 @@ _wrap_addFunctionToMap('fullcalendar.js', 956, 35360,35588);
     return date;
   }
   function dayDiff(d1, d2) {
-_wrap_addFunctionToMap('fullcalendar.js', 963, 35593,35706);
+_wrap_addFunctionToMap('fullcalendar.js', 963, 35593,35706, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     return (_wrap_setLastFunctionCall("fullcalendar.js",964,35635,35699) || Math.round(((_wrap_setLastFunctionCall("fullcalendar.js",964,35647,35666) || cloneDate(d1, true)) - (_wrap_setLastFunctionCall("fullcalendar.js",964,35669,35688) || cloneDate(d2, true))) / DAY_MS));
   }
   function setYMD(date, y, m, d) {
-_wrap_addFunctionToMap('fullcalendar.js', 966, 35711,36103);
+_wrap_addFunctionToMap('fullcalendar.js', 966, 35711,36103, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     if (y !== undefined && y != (_wrap_setLastFunctionCall("fullcalendar.js",967,35780,35798) || date.getFullYear())) {
 (_wrap_setLastFunctionCall("fullcalendar.js",968,35814,35829) ||       date.setDate(1));
@@ -1060,7 +1060,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 966, 35711,36103);
     }
   }
   function parseDate(s, ignoreTimezone) {
-_wrap_addFunctionToMap('fullcalendar.js', 980, 36108,36667);
+_wrap_addFunctionToMap('fullcalendar.js', 980, 36108,36667, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     if (typeof s == 'object') {
       return s;
@@ -1080,7 +1080,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 980, 36108,36667);
     return null;
   }
   function parseISO8601(s, ignoreTimezone) {
-_wrap_addFunctionToMap('fullcalendar.js', 998, 36672,38157);
+_wrap_addFunctionToMap('fullcalendar.js', 998, 36672,38157, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var m = (_wrap_setLastFunctionCall("fullcalendar.js",999,36731,36875) || s.match(/^([0-9]{4})(-([0-9]{2})(-([0-9]{2})([T ]([0-9]{2}):([0-9]{2})(:([0-9]{2})(\.([0-9]+))?)?(Z|(([-+])([0-9]{2})(:?([0-9]{2}))?))?)?)?)?$/));
     if (!m) {
@@ -1123,7 +1123,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 998, 36672,38157);
     return date;
   }
   function parseTime(s) {
-_wrap_addFunctionToMap('fullcalendar.js', 1039, 38162,38716);
+_wrap_addFunctionToMap('fullcalendar.js', 1039, 38162,38716, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     if (typeof s == 'number') {
       return s * 60;
@@ -1144,12 +1144,12 @@ _wrap_addFunctionToMap('fullcalendar.js', 1039, 38162,38716);
     }
   }
   function formatDate(date, format, options) {
-_wrap_addFunctionToMap('fullcalendar.js', 1058, 38721,38828);
+_wrap_addFunctionToMap('fullcalendar.js', 1058, 38721,38828, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     return (_wrap_setLastFunctionCall("fullcalendar.js",1059,38781,38821) || formatDates(date, null, format, options));
   }
   function formatDates(date1, date2, format, options) {
-_wrap_addFunctionToMap('fullcalendar.js', 1061, 38833,41395);
+_wrap_addFunctionToMap('fullcalendar.js', 1061, 38833,41395, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     options = options || defaults;
     var date = date1, otherDate = date2, i, len = format.length, c, i2, formatter, res = '';
@@ -1219,99 +1219,99 @@ _wrap_addFunctionToMap('fullcalendar.js', 1061, 38833,41395);
   }
   ;
   var dateFormatters = {s: function(d) {
-_wrap_addFunctionToMap('fullcalendar.js', 1130, 41444,41511);
+_wrap_addFunctionToMap('fullcalendar.js', 1130, 41444,41511, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (_wrap_setLastFunctionCall("fullcalendar.js",1131,41482,41496) || d.getSeconds());
 }, ss: function(d) {
-_wrap_addFunctionToMap('fullcalendar.js', 1133, 41529,41605);
+_wrap_addFunctionToMap('fullcalendar.js', 1133, 41529,41605, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (_wrap_setLastFunctionCall("fullcalendar.js",1134,41567,41590) || zeroPad((_wrap_setLastFunctionCall("fullcalendar.js",1134,41575,41589) || d.getSeconds())));
 }, m: function(d) {
-_wrap_addFunctionToMap('fullcalendar.js', 1136, 41622,41689);
+_wrap_addFunctionToMap('fullcalendar.js', 1136, 41622,41689, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (_wrap_setLastFunctionCall("fullcalendar.js",1137,41660,41674) || d.getMinutes());
 }, mm: function(d) {
-_wrap_addFunctionToMap('fullcalendar.js', 1139, 41707,41783);
+_wrap_addFunctionToMap('fullcalendar.js', 1139, 41707,41783, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (_wrap_setLastFunctionCall("fullcalendar.js",1140,41745,41768) || zeroPad((_wrap_setLastFunctionCall("fullcalendar.js",1140,41753,41767) || d.getMinutes())));
 }, h: function(d) {
-_wrap_addFunctionToMap('fullcalendar.js', 1142, 41800,41876);
+_wrap_addFunctionToMap('fullcalendar.js', 1142, 41800,41876, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (_wrap_setLastFunctionCall("fullcalendar.js",1143,41838,41850) || d.getHours()) % 12 || 12;
 }, hh: function(d) {
-_wrap_addFunctionToMap('fullcalendar.js', 1145, 41894,41979);
+_wrap_addFunctionToMap('fullcalendar.js', 1145, 41894,41979, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (_wrap_setLastFunctionCall("fullcalendar.js",1146,41932,41964) || zeroPad((_wrap_setLastFunctionCall("fullcalendar.js",1146,41940,41952) || d.getHours()) % 12 || 12));
 }, H: function(d) {
-_wrap_addFunctionToMap('fullcalendar.js', 1148, 41996,42061);
+_wrap_addFunctionToMap('fullcalendar.js', 1148, 41996,42061, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (_wrap_setLastFunctionCall("fullcalendar.js",1149,42034,42046) || d.getHours());
 }, HH: function(d) {
-_wrap_addFunctionToMap('fullcalendar.js', 1151, 42079,42153);
+_wrap_addFunctionToMap('fullcalendar.js', 1151, 42079,42153, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (_wrap_setLastFunctionCall("fullcalendar.js",1152,42117,42138) || zeroPad((_wrap_setLastFunctionCall("fullcalendar.js",1152,42125,42137) || d.getHours())));
 }, d: function(d) {
-_wrap_addFunctionToMap('fullcalendar.js', 1154, 42170,42234);
+_wrap_addFunctionToMap('fullcalendar.js', 1154, 42170,42234, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (_wrap_setLastFunctionCall("fullcalendar.js",1155,42208,42219) || d.getDate());
 }, dd: function(d) {
-_wrap_addFunctionToMap('fullcalendar.js', 1157, 42252,42325);
+_wrap_addFunctionToMap('fullcalendar.js', 1157, 42252,42325, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (_wrap_setLastFunctionCall("fullcalendar.js",1158,42290,42310) || zeroPad((_wrap_setLastFunctionCall("fullcalendar.js",1158,42298,42309) || d.getDate())));
 }, ddd: function(d, o) {
-_wrap_addFunctionToMap('fullcalendar.js', 1160, 42344,42427);
+_wrap_addFunctionToMap('fullcalendar.js', 1160, 42344,42427, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return o.dayNamesShort[(_wrap_setLastFunctionCall("fullcalendar.js",1161,42401,42411) || d.getDay())];
 }, dddd: function(d, o) {
-_wrap_addFunctionToMap('fullcalendar.js', 1163, 42447,42525);
+_wrap_addFunctionToMap('fullcalendar.js', 1163, 42447,42525, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return o.dayNames[(_wrap_setLastFunctionCall("fullcalendar.js",1164,42499,42509) || d.getDay())];
 }, M: function(d) {
-_wrap_addFunctionToMap('fullcalendar.js', 1166, 42542,42611);
+_wrap_addFunctionToMap('fullcalendar.js', 1166, 42542,42611, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (_wrap_setLastFunctionCall("fullcalendar.js",1167,42580,42592) || d.getMonth()) + 1;
 }, MM: function(d) {
-_wrap_addFunctionToMap('fullcalendar.js', 1169, 42629,42707);
+_wrap_addFunctionToMap('fullcalendar.js', 1169, 42629,42707, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (_wrap_setLastFunctionCall("fullcalendar.js",1170,42667,42692) || zeroPad((_wrap_setLastFunctionCall("fullcalendar.js",1170,42675,42687) || d.getMonth()) + 1));
 }, MMM: function(d, o) {
-_wrap_addFunctionToMap('fullcalendar.js', 1172, 42726,42813);
+_wrap_addFunctionToMap('fullcalendar.js', 1172, 42726,42813, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return o.monthNamesShort[(_wrap_setLastFunctionCall("fullcalendar.js",1173,42785,42797) || d.getMonth())];
 }, MMMM: function(d, o) {
-_wrap_addFunctionToMap('fullcalendar.js', 1175, 42833,42915);
+_wrap_addFunctionToMap('fullcalendar.js', 1175, 42833,42915, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return o.monthNames[(_wrap_setLastFunctionCall("fullcalendar.js",1176,42887,42899) || d.getMonth())];
 }, yy: function(d) {
-_wrap_addFunctionToMap('fullcalendar.js', 1178, 42933,43021);
+_wrap_addFunctionToMap('fullcalendar.js', 1178, 42933,43021, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (_wrap_setLastFunctionCall("fullcalendar.js",1179,42972,43006) || ((_wrap_setLastFunctionCall("fullcalendar.js",1179,42972,42987) || d.getFullYear()) + '').substring(2));
 }, yyyy: function(d) {
-_wrap_addFunctionToMap('fullcalendar.js', 1181, 43041,43109);
+_wrap_addFunctionToMap('fullcalendar.js', 1181, 43041,43109, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (_wrap_setLastFunctionCall("fullcalendar.js",1182,43079,43094) || d.getFullYear());
 }, t: function(d) {
-_wrap_addFunctionToMap('fullcalendar.js', 1184, 43126,43208);
+_wrap_addFunctionToMap('fullcalendar.js', 1184, 43126,43208, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (_wrap_setLastFunctionCall("fullcalendar.js",1185,43164,43176) || d.getHours()) < 12 ? 'a' : 'p';
 }, tt: function(d) {
-_wrap_addFunctionToMap('fullcalendar.js', 1187, 43226,43310);
+_wrap_addFunctionToMap('fullcalendar.js', 1187, 43226,43310, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (_wrap_setLastFunctionCall("fullcalendar.js",1188,43264,43276) || d.getHours()) < 12 ? 'am' : 'pm';
 }, T: function(d) {
-_wrap_addFunctionToMap('fullcalendar.js', 1190, 43327,43409);
+_wrap_addFunctionToMap('fullcalendar.js', 1190, 43327,43409, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (_wrap_setLastFunctionCall("fullcalendar.js",1191,43365,43377) || d.getHours()) < 12 ? 'A' : 'P';
 }, TT: function(d) {
-_wrap_addFunctionToMap('fullcalendar.js', 1193, 43427,43511);
+_wrap_addFunctionToMap('fullcalendar.js', 1193, 43427,43511, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (_wrap_setLastFunctionCall("fullcalendar.js",1194,43465,43477) || d.getHours()) < 12 ? 'AM' : 'PM';
 }, u: function(d) {
-_wrap_addFunctionToMap('fullcalendar.js', 1196, 43528,43626);
+_wrap_addFunctionToMap('fullcalendar.js', 1196, 43528,43626, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (_wrap_setLastFunctionCall("fullcalendar.js",1197,43566,43611) || formatDate(d, 'yyyy-MM-dd\'T\'HH:mm:ss\'Z\''));
 }, S: function(d) {
-_wrap_addFunctionToMap('fullcalendar.js', 1199, 43643,43952);
+_wrap_addFunctionToMap('fullcalendar.js', 1199, 43643,43952, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var date = (_wrap_setLastFunctionCall("fullcalendar.js",1200,43685,43696) || d.getDate());
   if (date > 10 && date < 20) {
@@ -1321,7 +1321,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1199, 43643,43952);
 }};
   fc.applyAll = applyAll;
   function exclEndDay(event) {
-_wrap_addFunctionToMap('fullcalendar.js', 1212, 43996,44194);
+_wrap_addFunctionToMap('fullcalendar.js', 1212, 43996,44194, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     if (event.end) {
       return (_wrap_setLastFunctionCall("fullcalendar.js",1214,44069,44105) || _exclEndDay(event.end, event.allDay));
@@ -1330,23 +1330,23 @@ _wrap_addFunctionToMap('fullcalendar.js', 1212, 43996,44194);
     }
   }
   function _exclEndDay(end, allDay) {
-_wrap_addFunctionToMap('fullcalendar.js', 1219, 44199,44366);
+_wrap_addFunctionToMap('fullcalendar.js', 1219, 44199,44366, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     end = (_wrap_setLastFunctionCall("fullcalendar.js",1220,44249,44263) || cloneDate(end));
     return allDay || (_wrap_setLastFunctionCall("fullcalendar.js",1221,44290,44304) || end.getHours()) || (_wrap_setLastFunctionCall("fullcalendar.js",1221,44308,44324) || end.getMinutes()) ? (_wrap_setLastFunctionCall("fullcalendar.js",1221,44327,44342) || addDays(end, 1)) : (_wrap_setLastFunctionCall("fullcalendar.js",1221,44345,44359) || clearTime(end));
   }
   function segCmp(a, b) {
-_wrap_addFunctionToMap('fullcalendar.js', 1223, 44371,44482);
+_wrap_addFunctionToMap('fullcalendar.js', 1223, 44371,44482, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     return (b.msLength - a.msLength) * 100 + (a.event.start - b.event.start);
   }
   function segsCollide(seg1, seg2) {
-_wrap_addFunctionToMap('fullcalendar.js', 1226, 44487,44590);
+_wrap_addFunctionToMap('fullcalendar.js', 1226, 44487,44590, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     return seg1.end > seg2.start && seg1.start < seg2.end;
   }
   function sliceSegs(events, visEventEnds, start, end) {
-_wrap_addFunctionToMap('fullcalendar.js', 1229, 44595,45780);
+_wrap_addFunctionToMap('fullcalendar.js', 1229, 44595,45780, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var segs = [], i, len = events.length, event, eventStart, eventEnd, segStart, segEnd, isStart, isEnd;
     for (i = 0; i < len; i++) {
@@ -1374,7 +1374,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1229, 44595,45780);
     return (_wrap_setLastFunctionCall("fullcalendar.js",1260,45756,45773) || segs.sort(segCmp));
   }
   function stackSegs(segs) {
-_wrap_addFunctionToMap('fullcalendar.js', 1262, 45785,46636);
+_wrap_addFunctionToMap('fullcalendar.js', 1262, 45785,46636, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var levels = [], i, len = segs.length, seg, j, collide, k;
     for (i = 0; i < len; i++) {
@@ -1405,10 +1405,10 @@ _wrap_addFunctionToMap('fullcalendar.js', 1262, 45785,46636);
     return levels;
   }
   function lazySegBind(container, segs, bindHandlers) {
-_wrap_addFunctionToMap('fullcalendar.js', 1291, 46641,47208);
+_wrap_addFunctionToMap('fullcalendar.js', 1291, 46641,47208, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",1292,46703,47201) ||     (_wrap_setLastFunctionCall("fullcalendar.js",1292,46703,46732) || container.unbind('mouseover')).mouseover(function(ev) {
-_wrap_addFunctionToMap('fullcalendar.js', 1292, 46743,47200);
+_wrap_addFunctionToMap('fullcalendar.js', 1292, 46743,47200, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var parent = ev.target, e, i, seg;
   while (parent != this) {
@@ -1425,7 +1425,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1292, 46743,47200);
 }));
   }
   function setOuterWidth(element, width, includeMargins) {
-_wrap_addFunctionToMap('fullcalendar.js', 1307, 47213,47439);
+_wrap_addFunctionToMap('fullcalendar.js', 1307, 47213,47439, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     for (var i = 0, e; i < element.length; i++) {
       e = (_wrap_setLastFunctionCall("fullcalendar.js",1309,47340,47353) || $(element[i]));
@@ -1433,7 +1433,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1307, 47213,47439);
     }
   }
   function setOuterHeight(element, height, includeMargins) {
-_wrap_addFunctionToMap('fullcalendar.js', 1313, 47444,47674);
+_wrap_addFunctionToMap('fullcalendar.js', 1313, 47444,47674, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     for (var i = 0, e; i < element.length; i++) {
       e = (_wrap_setLastFunctionCall("fullcalendar.js",1315,47573,47586) || $(element[i]));
@@ -1441,76 +1441,76 @@ _wrap_addFunctionToMap('fullcalendar.js', 1313, 47444,47674);
     }
   }
   function hsides(element, includeMargins) {
-_wrap_addFunctionToMap('fullcalendar.js', 1319, 47679,47824);
+_wrap_addFunctionToMap('fullcalendar.js', 1319, 47679,47824, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     return (_wrap_setLastFunctionCall("fullcalendar.js",1320,47737,47754) || hpadding(element)) + (_wrap_setLastFunctionCall("fullcalendar.js",1320,47757,47774) || hborders(element)) + (includeMargins ? (_wrap_setLastFunctionCall("fullcalendar.js",1320,47795,47812) || hmargins(element)) : 0);
   }
   function hpadding(element) {
-_wrap_addFunctionToMap('fullcalendar.js', 1322, 47829,48004);
+_wrap_addFunctionToMap('fullcalendar.js', 1322, 47829,48004, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     return ((_wrap_setLastFunctionCall("fullcalendar.js",1323,47874,47927) || parseFloat((_wrap_setLastFunctionCall("fullcalendar.js",1323,47885,47926) || $.curCSS(element[0], 'paddingLeft', true)))) || 0) + ((_wrap_setLastFunctionCall("fullcalendar.js",1323,47937,47991) || parseFloat((_wrap_setLastFunctionCall("fullcalendar.js",1323,47948,47990) || $.curCSS(element[0], 'paddingRight', true)))) || 0);
   }
   function hmargins(element) {
-_wrap_addFunctionToMap('fullcalendar.js', 1325, 48009,48182);
+_wrap_addFunctionToMap('fullcalendar.js', 1325, 48009,48182, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     return ((_wrap_setLastFunctionCall("fullcalendar.js",1326,48054,48106) || parseFloat((_wrap_setLastFunctionCall("fullcalendar.js",1326,48065,48105) || $.curCSS(element[0], 'marginLeft', true)))) || 0) + ((_wrap_setLastFunctionCall("fullcalendar.js",1326,48116,48169) || parseFloat((_wrap_setLastFunctionCall("fullcalendar.js",1326,48127,48168) || $.curCSS(element[0], 'marginRight', true)))) || 0);
   }
   function hborders(element) {
-_wrap_addFunctionToMap('fullcalendar.js', 1328, 48187,48370);
+_wrap_addFunctionToMap('fullcalendar.js', 1328, 48187,48370, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     return ((_wrap_setLastFunctionCall("fullcalendar.js",1329,48232,48289) || parseFloat((_wrap_setLastFunctionCall("fullcalendar.js",1329,48243,48288) || $.curCSS(element[0], 'borderLeftWidth', true)))) || 0) + ((_wrap_setLastFunctionCall("fullcalendar.js",1329,48299,48357) || parseFloat((_wrap_setLastFunctionCall("fullcalendar.js",1329,48310,48356) || $.curCSS(element[0], 'borderRightWidth', true)))) || 0);
   }
   function vsides(element, includeMargins) {
-_wrap_addFunctionToMap('fullcalendar.js', 1331, 48375,48520);
+_wrap_addFunctionToMap('fullcalendar.js', 1331, 48375,48520, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     return (_wrap_setLastFunctionCall("fullcalendar.js",1332,48433,48450) || vpadding(element)) + (_wrap_setLastFunctionCall("fullcalendar.js",1332,48453,48470) || vborders(element)) + (includeMargins ? (_wrap_setLastFunctionCall("fullcalendar.js",1332,48491,48508) || vmargins(element)) : 0);
   }
   function vpadding(element) {
-_wrap_addFunctionToMap('fullcalendar.js', 1334, 48525,48700);
+_wrap_addFunctionToMap('fullcalendar.js', 1334, 48525,48700, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     return ((_wrap_setLastFunctionCall("fullcalendar.js",1335,48570,48622) || parseFloat((_wrap_setLastFunctionCall("fullcalendar.js",1335,48581,48621) || $.curCSS(element[0], 'paddingTop', true)))) || 0) + ((_wrap_setLastFunctionCall("fullcalendar.js",1335,48632,48687) || parseFloat((_wrap_setLastFunctionCall("fullcalendar.js",1335,48643,48686) || $.curCSS(element[0], 'paddingBottom', true)))) || 0);
   }
   function vmargins(element) {
-_wrap_addFunctionToMap('fullcalendar.js', 1337, 48705,48878);
+_wrap_addFunctionToMap('fullcalendar.js', 1337, 48705,48878, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     return ((_wrap_setLastFunctionCall("fullcalendar.js",1338,48750,48801) || parseFloat((_wrap_setLastFunctionCall("fullcalendar.js",1338,48761,48800) || $.curCSS(element[0], 'marginTop', true)))) || 0) + ((_wrap_setLastFunctionCall("fullcalendar.js",1338,48811,48865) || parseFloat((_wrap_setLastFunctionCall("fullcalendar.js",1338,48822,48864) || $.curCSS(element[0], 'marginBottom', true)))) || 0);
   }
   function vborders(element) {
-_wrap_addFunctionToMap('fullcalendar.js', 1340, 48883,49066);
+_wrap_addFunctionToMap('fullcalendar.js', 1340, 48883,49066, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     return ((_wrap_setLastFunctionCall("fullcalendar.js",1341,48928,48984) || parseFloat((_wrap_setLastFunctionCall("fullcalendar.js",1341,48939,48983) || $.curCSS(element[0], 'borderTopWidth', true)))) || 0) + ((_wrap_setLastFunctionCall("fullcalendar.js",1341,48994,49053) || parseFloat((_wrap_setLastFunctionCall("fullcalendar.js",1341,49005,49052) || $.curCSS(element[0], 'borderBottomWidth', true)))) || 0);
   }
   function setMinHeight(element, height) {
-_wrap_addFunctionToMap('fullcalendar.js', 1343, 49071,49330);
+_wrap_addFunctionToMap('fullcalendar.js', 1343, 49071,49330, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     height = typeof height == 'number' ? height + 'px' : height;
 (_wrap_setLastFunctionCall("fullcalendar.js",1345,49189,49323) ||     element.each(function(i, _element) {
-_wrap_addFunctionToMap('fullcalendar.js', 1345, 49202,49322);
+_wrap_addFunctionToMap('fullcalendar.js', 1345, 49202,49322, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   _element.style.cssText += ';min-height:' + height + ';_height:' + height;
 }));
   }
   function noop() {
-_wrap_addFunctionToMap('fullcalendar.js', 1349, 49335,49358);
+_wrap_addFunctionToMap('fullcalendar.js', 1349, 49335,49358, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   }
   function cmp(a, b) {
-_wrap_addFunctionToMap('fullcalendar.js', 1351, 49363,49411);
+_wrap_addFunctionToMap('fullcalendar.js', 1351, 49363,49411, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     return a - b;
   }
   function arrayMax(a) {
-_wrap_addFunctionToMap('fullcalendar.js', 1354, 49416,49484);
+_wrap_addFunctionToMap('fullcalendar.js', 1354, 49416,49484, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     return (_wrap_setLastFunctionCall("fullcalendar.js",1355,49454,49477) || Math.max.apply(Math, a));
   }
   function zeroPad(n) {
-_wrap_addFunctionToMap('fullcalendar.js', 1357, 49489,49556);
+_wrap_addFunctionToMap('fullcalendar.js', 1357, 49489,49556, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     return (n < 10 ? '0' : '') + n;
   }
   function smartProperty(obj, name) {
-_wrap_addFunctionToMap('fullcalendar.js', 1360, 49561,49943);
+_wrap_addFunctionToMap('fullcalendar.js', 1360, 49561,49943, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     if (obj[name] !== undefined) {
       return obj[name];
@@ -1525,40 +1525,40 @@ _wrap_addFunctionToMap('fullcalendar.js', 1360, 49561,49943);
     return obj[''];
   }
   function htmlEscape(s) {
-_wrap_addFunctionToMap('fullcalendar.js', 1373, 49948,50136);
+_wrap_addFunctionToMap('fullcalendar.js', 1373, 49948,50136, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     return (_wrap_setLastFunctionCall("fullcalendar.js",1374,49988,50129) || (_wrap_setLastFunctionCall("fullcalendar.js",1374,49988,50104) || (_wrap_setLastFunctionCall("fullcalendar.js",1374,49988,50080) || (_wrap_setLastFunctionCall("fullcalendar.js",1374,49988,50056) || (_wrap_setLastFunctionCall("fullcalendar.js",1374,49988,50034) || (_wrap_setLastFunctionCall("fullcalendar.js",1374,49988,50012) || s.replace(/&/g, '&amp;')).replace(/</g, '&lt;')).replace(/>/g, '&gt;')).replace(/'/g, '&#039;')).replace(/"/g, '&quot;')).replace(/\n/g, '<br />'));
   }
   function cssKey(_element) {
-_wrap_addFunctionToMap('fullcalendar.js', 1376, 50141,50318);
+_wrap_addFunctionToMap('fullcalendar.js', 1376, 50141,50318, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     return _element.id + '/' + _element.className + '/' + (_wrap_setLastFunctionCall("fullcalendar.js",1377,50231,50311) || _element.style.cssText.replace(/(^|;)\s*(top|left|width|height)\s*:[^;]*/gi, ''));
   }
   function disableTextSelection(element) {
-_wrap_addFunctionToMap('fullcalendar.js', 1379, 50323,50516);
+_wrap_addFunctionToMap('fullcalendar.js', 1379, 50323,50516, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",1380,50372,50509) ||     (_wrap_setLastFunctionCall("fullcalendar.js",1380,50372,50435) || (_wrap_setLastFunctionCall("fullcalendar.js",1380,50372,50406) || element.attr('unselectable', 'on')).css('MozUserSelect', 'none')).bind('selectstart.ui', function() {
-_wrap_addFunctionToMap('fullcalendar.js', 1380, 50459,50508);
+_wrap_addFunctionToMap('fullcalendar.js', 1380, 50459,50508, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return false;
 }));
   }
   function markFirstLast(e) {
-_wrap_addFunctionToMap('fullcalendar.js', 1384, 50521,50700);
+_wrap_addFunctionToMap('fullcalendar.js', 1384, 50521,50700, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",1385,50557,50693) ||     (_wrap_setLastFunctionCall("fullcalendar.js",1385,50557,50673) || (_wrap_setLastFunctionCall("fullcalendar.js",1385,50557,50651) || (_wrap_setLastFunctionCall("fullcalendar.js",1385,50557,50645) || (_wrap_setLastFunctionCall("fullcalendar.js",1385,50557,50624) || (_wrap_setLastFunctionCall("fullcalendar.js",1385,50557,50601) || (_wrap_setLastFunctionCall("fullcalendar.js",1385,50557,50569) || e.children()).removeClass('fc-first fc-last')).filter(':first-child')).addClass('fc-first')).end()).filter(':last-child')).addClass('fc-last'));
   }
   function setDayID(cell, date) {
-_wrap_addFunctionToMap('fullcalendar.js', 1387, 50705,50891);
+_wrap_addFunctionToMap('fullcalendar.js', 1387, 50705,50891, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",1388,50745,50884) ||     cell.each(function(i, _cell) {
-_wrap_addFunctionToMap('fullcalendar.js', 1388, 50755,50883);
+_wrap_addFunctionToMap('fullcalendar.js', 1388, 50755,50883, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   _cell.className = (_wrap_setLastFunctionCall("fullcalendar.js",1389,50807,50872) || _cell.className.replace(/^fc-\w*/, 'fc-' + dayIDs[(_wrap_setLastFunctionCall("fullcalendar.js",1389,50857,50870) || date.getDay())]));
 }));
   }
   function getSkinCss(event, opt) {
-_wrap_addFunctionToMap('fullcalendar.js', 1392, 50896,51835);
+_wrap_addFunctionToMap('fullcalendar.js', 1392, 50896,51835, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var source = event.source || {};
     var eventColor = event.color;
@@ -1580,7 +1580,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1392, 50896,51835);
     return (_wrap_setLastFunctionCall("fullcalendar.js",1410,51808,51828) || statements.join(';'));
   }
   function applyAll(functions, thisObj, args) {
-_wrap_addFunctionToMap('fullcalendar.js', 1412, 51840,52207);
+_wrap_addFunctionToMap('fullcalendar.js', 1412, 51840,52207, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     if ((_wrap_setLastFunctionCall("fullcalendar.js",1413,51898,51921) || $.isFunction(functions))) {
       functions = [functions];
@@ -1595,7 +1595,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1412, 51840,52207);
     }
   }
   function firstDefined() {
-_wrap_addFunctionToMap('fullcalendar.js', 1425, 52212,52403);
+_wrap_addFunctionToMap('fullcalendar.js', 1425, 52212,52403, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     for (var i = 0; i < arguments.length; i++) {
       if (arguments[i] !== undefined) {
@@ -1605,7 +1605,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1425, 52212,52403);
   }
   fcViews.month = MonthView;
   function MonthView(element, calendar) {
-_wrap_addFunctionToMap('fullcalendar.js', 1433, 52439,53911);
+_wrap_addFunctionToMap('fullcalendar.js', 1433, 52439,53911, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var t = this;
     t.render = render;
@@ -1614,7 +1614,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1433, 52439,53911);
     var renderBasic = t.renderBasic;
     var formatDate = calendar.formatDate;
     function render(date, delta) {
-_wrap_addFunctionToMap('fullcalendar.js', 1440, 52703,53905);
+_wrap_addFunctionToMap('fullcalendar.js', 1440, 52703,53905, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if (delta) {
 (_wrap_setLastFunctionCall("fullcalendar.js",1442,52775,52797) ||         addMonths(date, delta));
@@ -1648,7 +1648,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1440, 52703,53905);
   }
   fcViews.basicWeek = BasicWeekView;
   function BasicWeekView(element, calendar) {
-_wrap_addFunctionToMap('fullcalendar.js', 1472, 53955,55036);
+_wrap_addFunctionToMap('fullcalendar.js', 1472, 53955,55036, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var t = this;
     t.render = render;
@@ -1657,7 +1657,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1472, 53955,55036);
     var renderBasic = t.renderBasic;
     var formatDates = calendar.formatDates;
     function render(date, delta) {
-_wrap_addFunctionToMap('fullcalendar.js', 1479, 54229,55030);
+_wrap_addFunctionToMap('fullcalendar.js', 1479, 54229,55030, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if (delta) {
 (_wrap_setLastFunctionCall("fullcalendar.js",1481,54301,54325) ||         addDays(date, delta * 7));
@@ -1681,7 +1681,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1479, 54229,55030);
   }
   fcViews.basicDay = BasicDayView;
   function BasicDayView(element, calendar) {
-_wrap_addFunctionToMap('fullcalendar.js', 1501, 55078,55810);
+_wrap_addFunctionToMap('fullcalendar.js', 1501, 55078,55810, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var t = this;
     t.render = render;
@@ -1690,7 +1690,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1501, 55078,55810);
     var renderBasic = t.renderBasic;
     var formatDate = calendar.formatDate;
     function render(date, delta) {
-_wrap_addFunctionToMap('fullcalendar.js', 1508, 55348,55804);
+_wrap_addFunctionToMap('fullcalendar.js', 1508, 55348,55804, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if (delta) {
 (_wrap_setLastFunctionCall("fullcalendar.js",1510,55420,55440) ||         addDays(date, delta));
@@ -1706,7 +1706,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1508, 55348,55804);
   }
 (_wrap_setLastFunctionCall("fullcalendar.js",1521,55815,55849) ||   setDefaults({weekMode: 'fixed'}));
   function BasicView(element, calendar, viewName) {
-_wrap_addFunctionToMap('fullcalendar.js', 1522, 55855,68384);
+_wrap_addFunctionToMap('fullcalendar.js', 1522, 55855,68384, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var t = this;
     t.renderBasic = renderBasic;
@@ -1721,7 +1721,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1522, 55855,68384);
     t.dragStop = dragStop;
     t.defaultEventEnd = defaultEventEnd;
     t.getHoverListener = function() {
-_wrap_addFunctionToMap('fullcalendar.js', 1535, 56397,56454);
+_wrap_addFunctionToMap('fullcalendar.js', 1535, 56397,56454, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return hoverListener;
 };
@@ -1731,29 +1731,29 @@ _wrap_addFunctionToMap('fullcalendar.js', 1535, 56397,56454);
     t.dateCell = dateCell;
     t.cellDate = cellDate;
     t.cellIsAllDay = function() {
-_wrap_addFunctionToMap('fullcalendar.js', 1543, 56670,56718);
+_wrap_addFunctionToMap('fullcalendar.js', 1543, 56670,56718, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return true;
 };
     t.allDayRow = allDayRow;
     t.allDayBounds = allDayBounds;
     t.getRowCnt = function() {
-_wrap_addFunctionToMap('fullcalendar.js', 1548, 56814,56864);
+_wrap_addFunctionToMap('fullcalendar.js', 1548, 56814,56864, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return rowCnt;
 };
     t.getColCnt = function() {
-_wrap_addFunctionToMap('fullcalendar.js', 1551, 56888,56938);
+_wrap_addFunctionToMap('fullcalendar.js', 1551, 56888,56938, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return colCnt;
 };
     t.getColWidth = function() {
-_wrap_addFunctionToMap('fullcalendar.js', 1554, 56964,57016);
+_wrap_addFunctionToMap('fullcalendar.js', 1554, 56964,57016, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return colWidth;
 };
     t.getDaySegmentContainer = function() {
-_wrap_addFunctionToMap('fullcalendar.js', 1557, 57053,57116);
+_wrap_addFunctionToMap('fullcalendar.js', 1557, 57053,57116, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return daySegmentContainer;
 };
@@ -1790,7 +1790,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1557, 57053,57116);
     var colFormat;
 (_wrap_setLastFunctionCall("fullcalendar.js",1591,58061,58110) ||     disableTextSelection((_wrap_setLastFunctionCall("fullcalendar.js",1591,58082,58109) || element.addClass('fc-grid'))));
     function renderBasic(maxr, r, c, showNumbers) {
-_wrap_addFunctionToMap('fullcalendar.js', 1592, 58120,58470);
+_wrap_addFunctionToMap('fullcalendar.js', 1592, 58120,58470, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       rowCnt = r;
       colCnt = c;
@@ -1804,7 +1804,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1592, 58120,58470);
 (_wrap_setLastFunctionCall("fullcalendar.js",1602,58437,58459) ||       updateCells(firstTime));
     }
     function updateOptions() {
-_wrap_addFunctionToMap('fullcalendar.js', 1604, 58479,58888);
+_wrap_addFunctionToMap('fullcalendar.js', 1604, 58479,58888, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       rtl = (_wrap_setLastFunctionCall("fullcalendar.js",1605,58524,58536) || opt('isRTL'));
       if (rtl) {
@@ -1820,7 +1820,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1604, 58479,58888);
       colFormat = (_wrap_setLastFunctionCall("fullcalendar.js",1616,58858,58877) || opt('columnFormat'));
     }
     function buildSkeleton(maxRowCnt, showNumbers) {
-_wrap_addFunctionToMap('fullcalendar.js', 1618, 58897,60626);
+_wrap_addFunctionToMap('fullcalendar.js', 1618, 58897,60626, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var s;
       var headerClass = tm + '-widget-header';
@@ -1855,7 +1855,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1618, 58897,60626);
       daySegmentContainer = (_wrap_setLastFunctionCall("fullcalendar.js",1649,60535,60615) || (_wrap_setLastFunctionCall("fullcalendar.js",1649,60535,60597) || $('<div style=\'position:absolute;z-index:8;top:0;left:0\'/>')).appendTo(element));
     }
     function updateCells(firstTime) {
-_wrap_addFunctionToMap('fullcalendar.js', 1651, 60635,62331);
+_wrap_addFunctionToMap('fullcalendar.js', 1651, 60635,62331, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var dowDirty = firstTime || rowCnt == 1;
       var month = (_wrap_setLastFunctionCall("fullcalendar.js",1653,60746,60764) || t.start.getMonth());
@@ -1865,7 +1865,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1651, 60635,62331);
       var row;
       if (dowDirty) {
 (_wrap_setLastFunctionCall("fullcalendar.js",1659,60922,61157) ||         headCells.each(function(i, _cell) {
-_wrap_addFunctionToMap('fullcalendar.js', 1659, 60937,61156);
+_wrap_addFunctionToMap('fullcalendar.js', 1659, 60937,61156, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   cell = (_wrap_setLastFunctionCall("fullcalendar.js",1660,60986,60994) || $(_cell));
   date = (_wrap_setLastFunctionCall("fullcalendar.js",1661,61023,61035) || indexDate(i));
@@ -1874,7 +1874,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1659, 60937,61156);
 }));
       }
 (_wrap_setLastFunctionCall("fullcalendar.js",1666,61185,61890) ||       bodyCells.each(function(i, _cell) {
-_wrap_addFunctionToMap('fullcalendar.js', 1666, 61200,61889);
+_wrap_addFunctionToMap('fullcalendar.js', 1666, 61200,61889, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   cell = (_wrap_setLastFunctionCall("fullcalendar.js",1667,61245,61253) || $(_cell));
   date = (_wrap_setLastFunctionCall("fullcalendar.js",1668,61278,61290) || indexDate(i));
@@ -1894,7 +1894,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1666, 61200,61889);
   }
 }));
 (_wrap_setLastFunctionCall("fullcalendar.js",1684,61904,62320) ||       bodyRows.each(function(i, _row) {
-_wrap_addFunctionToMap('fullcalendar.js', 1684, 61918,62319);
+_wrap_addFunctionToMap('fullcalendar.js', 1684, 61918,62319, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   row = (_wrap_setLastFunctionCall("fullcalendar.js",1685,61961,61968) || $(_row));
   if (i < rowCnt) {
@@ -1910,7 +1910,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1684, 61918,62319);
 }));
     }
     function setHeight(height) {
-_wrap_addFunctionToMap('fullcalendar.js', 1698, 62340,63131);
+_wrap_addFunctionToMap('fullcalendar.js', 1698, 62340,63131, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       viewHeight = height;
       var bodyHeight = viewHeight - (_wrap_setLastFunctionCall("fullcalendar.js",1700,62444,62457) || head.height());
@@ -1924,7 +1924,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1698, 62340,63131);
         rowHeightLast = bodyHeight - rowHeight * (rowCnt - 1);
       }
 (_wrap_setLastFunctionCall("fullcalendar.js",1710,62859,63120) ||       bodyFirstCells.each(function(i, _cell) {
-_wrap_addFunctionToMap('fullcalendar.js', 1710, 62879,63119);
+_wrap_addFunctionToMap('fullcalendar.js', 1710, 62879,63119, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (i < rowCnt) {
     cell = (_wrap_setLastFunctionCall("fullcalendar.js",1712,62962,62970) || $(_cell));
@@ -1933,7 +1933,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1710, 62879,63119);
 }));
     }
     function setWidth(width) {
-_wrap_addFunctionToMap('fullcalendar.js', 1717, 63140,63364);
+_wrap_addFunctionToMap('fullcalendar.js', 1717, 63140,63364, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       viewWidth = width;
 (_wrap_setLastFunctionCall("fullcalendar.js",1719,63210,63237) ||       colContentPositions.clear());
@@ -1941,12 +1941,12 @@ _wrap_addFunctionToMap('fullcalendar.js', 1717, 63140,63364);
 (_wrap_setLastFunctionCall("fullcalendar.js",1721,63306,63353) ||       setOuterWidth((_wrap_setLastFunctionCall("fullcalendar.js",1721,63320,63342) || headCells.slice(0, -1)), colWidth));
     }
     function dayBind(days) {
-_wrap_addFunctionToMap('fullcalendar.js', 1723, 63373,63474);
+_wrap_addFunctionToMap('fullcalendar.js', 1723, 63373,63474, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",1724,63410,63463) ||       (_wrap_setLastFunctionCall("fullcalendar.js",1724,63410,63430) || days.click(dayClick)).mousedown(daySelectionMousedown));
     }
     function dayClick(ev) {
-_wrap_addFunctionToMap('fullcalendar.js', 1726, 63483,63751);
+_wrap_addFunctionToMap('fullcalendar.js', 1726, 63483,63751, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if (!(_wrap_setLastFunctionCall("fullcalendar.js",1727,63524,63541) || opt('selectable'))) {
         var index = (_wrap_setLastFunctionCall("fullcalendar.js",1728,63573,63622) || parseInt((_wrap_setLastFunctionCall("fullcalendar.js",1728,63582,63618) || this.className.match(/fc\-day(\d+)/))[1]));
@@ -1955,7 +1955,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1726, 63483,63751);
       }
     }
     function renderDayOverlay(overlayStart, overlayEnd, refreshCoordinateGrid) {
-_wrap_addFunctionToMap('fullcalendar.js', 1733, 63760,64904);
+_wrap_addFunctionToMap('fullcalendar.js', 1733, 63760,64904, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if (refreshCoordinateGrid) {
 (_wrap_setLastFunctionCall("fullcalendar.js",1735,63894,63916) ||         coordinateGrid.build());
@@ -1981,38 +1981,38 @@ _wrap_addFunctionToMap('fullcalendar.js', 1733, 63760,64904);
       }
     }
     function renderCellOverlay(row0, col0, row1, col1) {
-_wrap_addFunctionToMap('fullcalendar.js', 1757, 64913,65101);
+_wrap_addFunctionToMap('fullcalendar.js', 1757, 64913,65101, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var rect = (_wrap_setLastFunctionCall("fullcalendar.js",1758,64989,65041) || coordinateGrid.rect(row0, col0, row1, col1, element));
       return (_wrap_setLastFunctionCall("fullcalendar.js",1759,65062,65090) || renderOverlay(rect, element));
     }
     function defaultSelectionEnd(startDate, allDay) {
-_wrap_addFunctionToMap('fullcalendar.js', 1761, 65110,65210);
+_wrap_addFunctionToMap('fullcalendar.js', 1761, 65110,65210, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return (_wrap_setLastFunctionCall("fullcalendar.js",1762,65179,65199) || cloneDate(startDate));
     }
     function renderSelection(startDate, endDate, allDay) {
-_wrap_addFunctionToMap('fullcalendar.js', 1764, 65219,65362);
+_wrap_addFunctionToMap('fullcalendar.js', 1764, 65219,65362, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",1765,65286,65351) ||       renderDayOverlay(startDate, (_wrap_setLastFunctionCall("fullcalendar.js",1765,65314,65344) || addDays((_wrap_setLastFunctionCall("fullcalendar.js",1765,65322,65340) || cloneDate(endDate)), 1)), true));
     }
     function clearSelection() {
-_wrap_addFunctionToMap('fullcalendar.js', 1767, 65371,65437);
+_wrap_addFunctionToMap('fullcalendar.js', 1767, 65371,65437, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",1768,65411,65426) ||       clearOverlays());
     }
     function reportDayClick(date, allDay, ev) {
-_wrap_addFunctionToMap('fullcalendar.js', 1770, 65446,65667);
+_wrap_addFunctionToMap('fullcalendar.js', 1770, 65446,65667, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var cell = (_wrap_setLastFunctionCall("fullcalendar.js",1771,65513,65527) || dateCell(date));
       var _element = bodyCells[cell.row * colCnt + cell.col];
 (_wrap_setLastFunctionCall("fullcalendar.js",1773,65609,65656) ||       trigger('dayClick', _element, date, allDay, ev));
     }
     function dragStart(_dragElement, ev, ui) {
-_wrap_addFunctionToMap('fullcalendar.js', 1775, 65676,65956);
+_wrap_addFunctionToMap('fullcalendar.js', 1775, 65676,65956, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",1776,65731,65945) ||       hoverListener.start(function(cell) {
-_wrap_addFunctionToMap('fullcalendar.js', 1776, 65751,65940);
+_wrap_addFunctionToMap('fullcalendar.js', 1776, 65751,65940, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",1777,65785,65800) ||   clearOverlays());
   if (cell) {
@@ -2021,7 +2021,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1776, 65751,65940);
 }, ev));
     }
     function dragStop(_dragElement, ev, ui) {
-_wrap_addFunctionToMap('fullcalendar.js', 1783, 65965,66232);
+_wrap_addFunctionToMap('fullcalendar.js', 1783, 65965,66232, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var cell = (_wrap_setLastFunctionCall("fullcalendar.js",1784,66030,66050) || hoverListener.stop());
 (_wrap_setLastFunctionCall("fullcalendar.js",1785,66064,66079) ||       clearOverlays());
@@ -2031,16 +2031,16 @@ _wrap_addFunctionToMap('fullcalendar.js', 1783, 65965,66232);
       }
     }
     function defaultEventEnd(event) {
-_wrap_addFunctionToMap('fullcalendar.js', 1791, 66241,66327);
+_wrap_addFunctionToMap('fullcalendar.js', 1791, 66241,66327, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return (_wrap_setLastFunctionCall("fullcalendar.js",1792,66294,66316) || cloneDate(event.start));
     }
     coordinateGrid = (_wrap_setLastFunctionCall("fullcalendar.js",1794,66353,67094) || new CoordinateGrid(function(rows, cols) {
-_wrap_addFunctionToMap('fullcalendar.js', 1794, 66372,67093);
+_wrap_addFunctionToMap('fullcalendar.js', 1794, 66372,67093, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var e, n, p;
 (_wrap_setLastFunctionCall("fullcalendar.js",1796,66433,66672) ||   headCells.each(function(i, _e) {
-_wrap_addFunctionToMap('fullcalendar.js', 1796, 66448,66671);
+_wrap_addFunctionToMap('fullcalendar.js', 1796, 66448,66671, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   e = (_wrap_setLastFunctionCall("fullcalendar.js",1797,66487,66492) || $(_e));
   n = (_wrap_setLastFunctionCall("fullcalendar.js",1798,66514,66524) || e.offset()).left;
@@ -2052,7 +2052,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1796, 66448,66671);
 }));
   p[1] = n + (_wrap_setLastFunctionCall("fullcalendar.js",1805,66697,66711) || e.outerWidth());
 (_wrap_setLastFunctionCall("fullcalendar.js",1806,66725,67042) ||   bodyRows.each(function(i, _e) {
-_wrap_addFunctionToMap('fullcalendar.js', 1806, 66739,67041);
+_wrap_addFunctionToMap('fullcalendar.js', 1806, 66739,67041, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (i < rowCnt) {
     e = (_wrap_setLastFunctionCall("fullcalendar.js",1808,66816,66821) || $(_e));
@@ -2068,58 +2068,58 @@ _wrap_addFunctionToMap('fullcalendar.js', 1806, 66739,67041);
 }));
     hoverListener = (_wrap_setLastFunctionCall("fullcalendar.js",1819,67120,67153) || new HoverListener(coordinateGrid));
     colContentPositions = (_wrap_setLastFunctionCall("fullcalendar.js",1820,67185,67286) || new HorizontalPositionCache(function(col) {
-_wrap_addFunctionToMap('fullcalendar.js', 1820, 67213,67285);
+_wrap_addFunctionToMap('fullcalendar.js', 1820, 67213,67285, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (_wrap_setLastFunctionCall("fullcalendar.js",1821,67249,67274) || bodyCellTopInners.eq(col));
 }));
     function colContentLeft(col) {
-_wrap_addFunctionToMap('fullcalendar.js', 1823, 67296,67386);
+_wrap_addFunctionToMap('fullcalendar.js', 1823, 67296,67386, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return (_wrap_setLastFunctionCall("fullcalendar.js",1824,67346,67375) || colContentPositions.left(col));
     }
     function colContentRight(col) {
-_wrap_addFunctionToMap('fullcalendar.js', 1826, 67395,67487);
+_wrap_addFunctionToMap('fullcalendar.js', 1826, 67395,67487, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return (_wrap_setLastFunctionCall("fullcalendar.js",1827,67446,67476) || colContentPositions.right(col));
     }
     function dateCell(date) {
-_wrap_addFunctionToMap('fullcalendar.js', 1829, 67496,67680);
+_wrap_addFunctionToMap('fullcalendar.js', 1829, 67496,67680, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return {row: (_wrap_setLastFunctionCall("fullcalendar.js",1831,67564,67605) || Math.floor((_wrap_setLastFunctionCall("fullcalendar.js",1831,67575,67600) || dayDiff(date, t.visStart)) / 7)), col: (_wrap_setLastFunctionCall("fullcalendar.js",1832,67628,67655) || dayOfWeekCol((_wrap_setLastFunctionCall("fullcalendar.js",1832,67641,67654) || date.getDay())))};
     }
     function cellDate(cell) {
-_wrap_addFunctionToMap('fullcalendar.js', 1835, 67689,67774);
+_wrap_addFunctionToMap('fullcalendar.js', 1835, 67689,67774, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return (_wrap_setLastFunctionCall("fullcalendar.js",1836,67734,67763) || _cellDate(cell.row, cell.col));
     }
     function _cellDate(row, col) {
-_wrap_addFunctionToMap('fullcalendar.js', 1838, 67783,67901);
+_wrap_addFunctionToMap('fullcalendar.js', 1838, 67783,67901, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return (_wrap_setLastFunctionCall("fullcalendar.js",1839,67833,67890) || addDays((_wrap_setLastFunctionCall("fullcalendar.js",1839,67841,67862) || cloneDate(t.visStart)), row * 7 + col * dis + dit));
     }
     function indexDate(index) {
-_wrap_addFunctionToMap('fullcalendar.js', 1841, 67910,68021);
+_wrap_addFunctionToMap('fullcalendar.js', 1841, 67910,68021, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return (_wrap_setLastFunctionCall("fullcalendar.js",1842,67957,68010) || _cellDate((_wrap_setLastFunctionCall("fullcalendar.js",1842,67967,67993) || Math.floor(index / colCnt)), index % colCnt));
     }
     function dayOfWeekCol(dayOfWeek) {
-_wrap_addFunctionToMap('fullcalendar.js', 1844, 68030,68162);
+_wrap_addFunctionToMap('fullcalendar.js', 1844, 68030,68162, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return (dayOfWeek - (_wrap_setLastFunctionCall("fullcalendar.js",1845,68097,68120) || Math.max(firstDay, nwe)) + colCnt) % colCnt * dis + dit;
     }
     function allDayRow(i) {
-_wrap_addFunctionToMap('fullcalendar.js', 1847, 68171,68239);
+_wrap_addFunctionToMap('fullcalendar.js', 1847, 68171,68239, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return (_wrap_setLastFunctionCall("fullcalendar.js",1848,68214,68228) || bodyRows.eq(i));
     }
     function allDayBounds(i) {
-_wrap_addFunctionToMap('fullcalendar.js', 1850, 68248,68378);
+_wrap_addFunctionToMap('fullcalendar.js', 1850, 68248,68378, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return {left: 0, right: viewWidth};
     }
   }
   function BasicEventRenderer() {
-_wrap_addFunctionToMap('fullcalendar.js', 1857, 68389,72575);
+_wrap_addFunctionToMap('fullcalendar.js', 1857, 68389,72575, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var t = this;
     t.renderEvents = renderEvents;
@@ -2146,19 +2146,19 @@ _wrap_addFunctionToMap('fullcalendar.js', 1857, 68389,72575);
     var renderDaySegs = t.renderDaySegs;
     var resizableDayEvent = t.resizableDayEvent;
     function renderEvents(events, modifiedEventId) {
-_wrap_addFunctionToMap('fullcalendar.js', 1882, 69446,69603);
+_wrap_addFunctionToMap('fullcalendar.js', 1882, 69446,69603, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",1883,69507,69527) ||       reportEvents(events));
 (_wrap_setLastFunctionCall("fullcalendar.js",1884,69541,69592) ||       renderDaySegs((_wrap_setLastFunctionCall("fullcalendar.js",1884,69555,69574) || compileSegs(events)), modifiedEventId));
     }
     function clearEvents() {
-_wrap_addFunctionToMap('fullcalendar.js', 1886, 69612,69724);
+_wrap_addFunctionToMap('fullcalendar.js', 1886, 69612,69724, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",1887,69649,69667) ||       reportEventClear());
 (_wrap_setLastFunctionCall("fullcalendar.js",1888,69681,69713) ||       (_wrap_setLastFunctionCall("fullcalendar.js",1888,69681,69705) || getDaySegmentContainer()).empty());
     }
     function compileSegs(events) {
-_wrap_addFunctionToMap('fullcalendar.js', 1890, 69733,70539);
+_wrap_addFunctionToMap('fullcalendar.js', 1890, 69733,70539, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var rowCnt = (_wrap_setLastFunctionCall("fullcalendar.js",1891,69789,69800) || getRowCnt()), colCnt = (_wrap_setLastFunctionCall("fullcalendar.js",1891,69811,69822) || getColCnt()), d1 = (_wrap_setLastFunctionCall("fullcalendar.js",1891,69829,69850) || cloneDate(t.visStart)), d2 = (_wrap_setLastFunctionCall("fullcalendar.js",1891,69857,69887) || addDays((_wrap_setLastFunctionCall("fullcalendar.js",1891,69865,69878) || cloneDate(d1)), colCnt)), visEventsEnds = (_wrap_setLastFunctionCall("fullcalendar.js",1891,69905,69930) || $.map(events, exclEndDay)), i, row, j, level, k, seg, segs = [];
       for (i = 0; i < rowCnt; i++) {
@@ -2178,7 +2178,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1890, 69733,70539);
       return segs;
     }
     function bindDaySeg(event, eventElement, seg) {
-_wrap_addFunctionToMap('fullcalendar.js', 1908, 70548,70904);
+_wrap_addFunctionToMap('fullcalendar.js', 1908, 70548,70904, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if ((_wrap_setLastFunctionCall("fullcalendar.js",1909,70612,70635) || isEventDraggable(event))) {
 (_wrap_setLastFunctionCall("fullcalendar.js",1910,70655,70693) ||         draggableDayEvent(event, eventElement));
@@ -2189,17 +2189,17 @@ _wrap_addFunctionToMap('fullcalendar.js', 1908, 70548,70904);
 (_wrap_setLastFunctionCall("fullcalendar.js",1915,70852,70893) ||       eventElementHandlers(event, eventElement));
     }
     function draggableDayEvent(event, eventElement) {
-_wrap_addFunctionToMap('fullcalendar.js', 1917, 70913,72569);
+_wrap_addFunctionToMap('fullcalendar.js', 1917, 70913,72569, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var hoverListener = (_wrap_setLastFunctionCall("fullcalendar.js",1918,70995,71013) || getHoverListener());
       var dayDelta;
 (_wrap_setLastFunctionCall("fullcalendar.js",1920,71053,72558) ||       eventElement.draggable({zIndex: 9, delay: 50, opacity: (_wrap_setLastFunctionCall("fullcalendar.js",1923,71157,71175) || opt('dragOpacity')), revertDuration: (_wrap_setLastFunctionCall("fullcalendar.js",1924,71209,71234) || opt('dragRevertDuration')), start: function(ev, ui) {
-_wrap_addFunctionToMap('fullcalendar.js', 1925, 71259,72045);
+_wrap_addFunctionToMap('fullcalendar.js', 1925, 71259,72045, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",1926,71299,71353) ||   trigger('eventDragStart', eventElement, event, ev, ui));
 (_wrap_setLastFunctionCall("fullcalendar.js",1927,71375,71406) ||   hideEvents(event, eventElement));
 (_wrap_setLastFunctionCall("fullcalendar.js",1928,71428,72026) ||   hoverListener.start(function(cell, origCell, rowDelta, colDelta) {
-_wrap_addFunctionToMap('fullcalendar.js', 1928, 71448,72013);
+_wrap_addFunctionToMap('fullcalendar.js', 1928, 71448,72013, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",1929,71520,71595) ||   eventElement.draggable('option', 'revert', !cell || !rowDelta && !colDelta));
 (_wrap_setLastFunctionCall("fullcalendar.js",1930,71621,71636) ||   clearOverlays());
@@ -2211,7 +2211,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1928, 71448,72013);
   }
 }, ev, 'drag'));
 }, stop: function(ev, ui) {
-_wrap_addFunctionToMap('fullcalendar.js', 1939, 72069,72543);
+_wrap_addFunctionToMap('fullcalendar.js', 1939, 72069,72543, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",1940,72109,72129) ||   hoverListener.stop());
 (_wrap_setLastFunctionCall("fullcalendar.js",1941,72151,72166) ||   clearOverlays());
@@ -2227,7 +2227,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1939, 72069,72543);
   }
   fcViews.agendaWeek = AgendaWeekView;
   function AgendaWeekView(element, calendar) {
-_wrap_addFunctionToMap('fullcalendar.js', 1954, 72621,73695);
+_wrap_addFunctionToMap('fullcalendar.js', 1954, 72621,73695, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var t = this;
     t.render = render;
@@ -2236,7 +2236,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1954, 72621,73695);
     var renderAgenda = t.renderAgenda;
     var formatDates = calendar.formatDates;
     function render(date, delta) {
-_wrap_addFunctionToMap('fullcalendar.js', 1961, 72900,73689);
+_wrap_addFunctionToMap('fullcalendar.js', 1961, 72900,73689, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if (delta) {
 (_wrap_setLastFunctionCall("fullcalendar.js",1963,72972,72996) ||         addDays(date, delta * 7));
@@ -2260,7 +2260,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1961, 72900,73689);
   }
   fcViews.agendaDay = AgendaDayView;
   function AgendaDayView(element, calendar) {
-_wrap_addFunctionToMap('fullcalendar.js', 1983, 73739,74520);
+_wrap_addFunctionToMap('fullcalendar.js', 1983, 73739,74520, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var t = this;
     t.render = render;
@@ -2269,7 +2269,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1983, 73739,74520);
     var renderAgenda = t.renderAgenda;
     var formatDate = calendar.formatDate;
     function render(date, delta) {
-_wrap_addFunctionToMap('fullcalendar.js', 1990, 74014,74514);
+_wrap_addFunctionToMap('fullcalendar.js', 1990, 74014,74514, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if (delta) {
 (_wrap_setLastFunctionCall("fullcalendar.js",1992,74086,74106) ||         addDays(date, delta));
@@ -2287,7 +2287,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 1990, 74014,74514);
   }
 (_wrap_setLastFunctionCall("fullcalendar.js",2005,74525,74842) ||   setDefaults({allDaySlot: true, allDayText: 'all-day', firstHour: 6, slotMinutes: 30, defaultEventMinutes: 120, axisFormat: 'h(:mm)tt', timeFormat: {agenda: 'h:mm{ - h:mm}'}, dragOpacity: {agenda: 0.5}, minTime: 0, maxTime: 24}));
   function AgendaView(element, calendar, viewName) {
-_wrap_addFunctionToMap('fullcalendar.js', 2017, 74848,98446);
+_wrap_addFunctionToMap('fullcalendar.js', 2017, 74848,98446, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var t = this;
     t.renderAgenda = renderAgenda;
@@ -2304,54 +2304,54 @@ _wrap_addFunctionToMap('fullcalendar.js', 2017, 74848,98446);
     t.allDayRow = getAllDayRow;
     t.allDayBounds = allDayBounds;
     t.getHoverListener = function() {
-_wrap_addFunctionToMap('fullcalendar.js', 2032, 75420,75477);
+_wrap_addFunctionToMap('fullcalendar.js', 2032, 75420,75477, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return hoverListener;
 };
     t.colContentLeft = colContentLeft;
     t.colContentRight = colContentRight;
     t.getDaySegmentContainer = function() {
-_wrap_addFunctionToMap('fullcalendar.js', 2037, 75602,75665);
+_wrap_addFunctionToMap('fullcalendar.js', 2037, 75602,75665, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return daySegmentContainer;
 };
     t.getSlotSegmentContainer = function() {
-_wrap_addFunctionToMap('fullcalendar.js', 2040, 75703,75767);
+_wrap_addFunctionToMap('fullcalendar.js', 2040, 75703,75767, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return slotSegmentContainer;
 };
     t.getMinMinute = function() {
-_wrap_addFunctionToMap('fullcalendar.js', 2043, 75794,75847);
+_wrap_addFunctionToMap('fullcalendar.js', 2043, 75794,75847, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return minMinute;
 };
     t.getMaxMinute = function() {
-_wrap_addFunctionToMap('fullcalendar.js', 2046, 75874,75927);
+_wrap_addFunctionToMap('fullcalendar.js', 2046, 75874,75927, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return maxMinute;
 };
     t.getBodyContent = function() {
-_wrap_addFunctionToMap('fullcalendar.js', 2049, 75956,76011);
+_wrap_addFunctionToMap('fullcalendar.js', 2049, 75956,76011, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return slotContent;
 };
     t.getRowCnt = function() {
-_wrap_addFunctionToMap('fullcalendar.js', 2052, 76035,76080);
+_wrap_addFunctionToMap('fullcalendar.js', 2052, 76035,76080, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return 1;
 };
     t.getColCnt = function() {
-_wrap_addFunctionToMap('fullcalendar.js', 2055, 76104,76154);
+_wrap_addFunctionToMap('fullcalendar.js', 2055, 76104,76154, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return colCnt;
 };
     t.getColWidth = function() {
-_wrap_addFunctionToMap('fullcalendar.js', 2058, 76180,76232);
+_wrap_addFunctionToMap('fullcalendar.js', 2058, 76180,76232, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return colWidth;
 };
     t.getSlotHeight = function() {
-_wrap_addFunctionToMap('fullcalendar.js', 2061, 76260,76314);
+_wrap_addFunctionToMap('fullcalendar.js', 2061, 76260,76314, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return slotHeight;
 };
@@ -2417,7 +2417,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2061, 76260,76314);
     var colFormat;
 (_wrap_setLastFunctionCall("fullcalendar.js",2124,78205,78256) ||     disableTextSelection((_wrap_setLastFunctionCall("fullcalendar.js",2124,78226,78255) || element.addClass('fc-agenda'))));
     function renderAgenda(c) {
-_wrap_addFunctionToMap('fullcalendar.js', 2125, 78266,78510);
+_wrap_addFunctionToMap('fullcalendar.js', 2125, 78266,78510, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       colCnt = c;
 (_wrap_setLastFunctionCall("fullcalendar.js",2127,78329,78344) ||       updateOptions());
@@ -2429,7 +2429,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2125, 78266,78510);
 (_wrap_setLastFunctionCall("fullcalendar.js",2133,78486,78499) ||       updateCells());
     }
     function updateOptions() {
-_wrap_addFunctionToMap('fullcalendar.js', 2135, 78519,79013);
+_wrap_addFunctionToMap('fullcalendar.js', 2135, 78519,79013, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       tm = (_wrap_setLastFunctionCall("fullcalendar.js",2136,78563,78575) || opt('theme')) ? 'ui' : 'fc';
       nwe = (_wrap_setLastFunctionCall("fullcalendar.js",2137,78609,78624) || opt('weekends')) ? 0 : 1;
@@ -2446,7 +2446,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2135, 78519,79013);
       colFormat = (_wrap_setLastFunctionCall("fullcalendar.js",2148,78983,79002) || opt('columnFormat'));
     }
     function buildSkeleton() {
-_wrap_addFunctionToMap('fullcalendar.js', 2150, 79022,83547);
+_wrap_addFunctionToMap('fullcalendar.js', 2150, 79022,83547, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var headerClass = tm + '-widget-header';
       var contentClass = tm + '-widget-content';
@@ -2511,7 +2511,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2150, 79022,83547);
       axisFirstCells = (_wrap_setLastFunctionCall("fullcalendar.js",2211,83490,83536) || axisFirstCells.add((_wrap_setLastFunctionCall("fullcalendar.js",2211,83509,83535) || slotTable.find('th:first'))));
     }
     function updateCells() {
-_wrap_addFunctionToMap('fullcalendar.js', 2213, 83556,84263);
+_wrap_addFunctionToMap('fullcalendar.js', 2213, 83556,84263, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var i;
       var headCell;
@@ -2532,7 +2532,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2213, 83556,84263);
       }
     }
     function setHeight(height, dateChanged) {
-_wrap_addFunctionToMap('fullcalendar.js', 2232, 84272,85020);
+_wrap_addFunctionToMap('fullcalendar.js', 2232, 84272,85020, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if (height === undefined) {
         height = viewHeight;
@@ -2551,13 +2551,13 @@ _wrap_addFunctionToMap('fullcalendar.js', 2232, 84272,85020);
       }
     }
     function setWidth(width) {
-_wrap_addFunctionToMap('fullcalendar.js', 2249, 85029,85859);
+_wrap_addFunctionToMap('fullcalendar.js', 2249, 85029,85859, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       viewWidth = width;
 (_wrap_setLastFunctionCall("fullcalendar.js",2251,85099,85126) ||       colContentPositions.clear());
       axisWidth = 0;
 (_wrap_setLastFunctionCall("fullcalendar.js",2253,85167,85331) ||       setOuterWidth((_wrap_setLastFunctionCall("fullcalendar.js",2253,85181,85319) || (_wrap_setLastFunctionCall("fullcalendar.js",2253,85181,85205) || axisFirstCells.width('')).each(function(i, _cell) {
-_wrap_addFunctionToMap('fullcalendar.js', 2253, 85211,85318);
+_wrap_addFunctionToMap('fullcalendar.js', 2253, 85211,85318, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   axisWidth = (_wrap_setLastFunctionCall("fullcalendar.js",2254,85261,85303) || Math.max(axisWidth, (_wrap_setLastFunctionCall("fullcalendar.js",2254,85281,85302) || (_wrap_setLastFunctionCall("fullcalendar.js",2254,85281,85289) || $(_cell)).outerWidth())));
 })), axisWidth));
@@ -2573,14 +2573,14 @@ _wrap_addFunctionToMap('fullcalendar.js', 2253, 85211,85318);
 (_wrap_setLastFunctionCall("fullcalendar.js",2265,85798,85848) ||       setOuterWidth((_wrap_setLastFunctionCall("fullcalendar.js",2265,85812,85837) || dayHeadCells.slice(0, -1)), colWidth));
     }
     function resetScroll() {
-_wrap_addFunctionToMap('fullcalendar.js', 2267, 85868,86234);
+_wrap_addFunctionToMap('fullcalendar.js', 2267, 85868,86234, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var d0 = (_wrap_setLastFunctionCall("fullcalendar.js",2268,85914,85924) || zeroDate());
       var scrollDate = (_wrap_setLastFunctionCall("fullcalendar.js",2269,85955,85968) || cloneDate(d0));
 (_wrap_setLastFunctionCall("fullcalendar.js",2270,85982,86019) ||       scrollDate.setHours((_wrap_setLastFunctionCall("fullcalendar.js",2270,86002,86018) || opt('firstHour'))));
       var top = (_wrap_setLastFunctionCall("fullcalendar.js",2271,86043,86071) || timePosition(d0, scrollDate)) + 1;
       function scroll() {
-_wrap_addFunctionToMap('fullcalendar.js', 2272, 86089,86167);
+_wrap_addFunctionToMap('fullcalendar.js', 2272, 86089,86167, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",2273,86125,86152) ||         slotScroller.scrollTop(top));
       }
@@ -2588,27 +2588,27 @@ _wrap_addFunctionToMap('fullcalendar.js', 2272, 86089,86167);
 (_wrap_setLastFunctionCall("fullcalendar.js",2276,86202,86223) ||       setTimeout(scroll, 0));
     }
     function beforeHide() {
-_wrap_addFunctionToMap('fullcalendar.js', 2278, 86243,86331);
+_wrap_addFunctionToMap('fullcalendar.js', 2278, 86243,86331, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       savedScrollTop = (_wrap_setLastFunctionCall("fullcalendar.js",2279,86296,86320) || slotScroller.scrollTop());
     }
     function afterShow() {
-_wrap_addFunctionToMap('fullcalendar.js', 2281, 86340,86424);
+_wrap_addFunctionToMap('fullcalendar.js', 2281, 86340,86424, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",2282,86375,86413) ||       slotScroller.scrollTop(savedScrollTop));
     }
     function dayBind(cells) {
-_wrap_addFunctionToMap('fullcalendar.js', 2284, 86433,86537);
+_wrap_addFunctionToMap('fullcalendar.js', 2284, 86433,86537, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",2285,86471,86526) ||       (_wrap_setLastFunctionCall("fullcalendar.js",2285,86471,86493) || cells.click(slotClick)).mousedown(daySelectionMousedown));
     }
     function slotBind(cells) {
-_wrap_addFunctionToMap('fullcalendar.js', 2287, 86546,86652);
+_wrap_addFunctionToMap('fullcalendar.js', 2287, 86546,86652, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",2288,86585,86641) ||       (_wrap_setLastFunctionCall("fullcalendar.js",2288,86585,86607) || cells.click(slotClick)).mousedown(slotSelectionMousedown));
     }
     function slotClick(ev) {
-_wrap_addFunctionToMap('fullcalendar.js', 2290, 86661,87448);
+_wrap_addFunctionToMap('fullcalendar.js', 2290, 86661,87448, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if (!(_wrap_setLastFunctionCall("fullcalendar.js",2291,86703,86720) || opt('selectable'))) {
         var col = (_wrap_setLastFunctionCall("fullcalendar.js",2292,86750,86842) || Math.min(colCnt - 1, (_wrap_setLastFunctionCall("fullcalendar.js",2292,86771,86841) || Math.floor((ev.pageX - (_wrap_setLastFunctionCall("fullcalendar.js",2292,86794,86811) || dayTable.offset()).left - axisWidth) / colWidth))));
@@ -2626,7 +2626,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2290, 86661,87448);
       }
     }
     function renderDayOverlay(startDate, endDate, refreshCoordinateGrid) {
-_wrap_addFunctionToMap('fullcalendar.js', 2306, 87457,88242);
+_wrap_addFunctionToMap('fullcalendar.js', 2306, 87457,88242, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if (refreshCoordinateGrid) {
 (_wrap_setLastFunctionCall("fullcalendar.js",2308,87585,87607) ||         coordinateGrid.build());
@@ -2647,13 +2647,13 @@ _wrap_addFunctionToMap('fullcalendar.js', 2306, 87457,88242);
       }
     }
     function renderCellOverlay(row0, col0, row1, col1) {
-_wrap_addFunctionToMap('fullcalendar.js', 2325, 88251,88443);
+_wrap_addFunctionToMap('fullcalendar.js', 2325, 88251,88443, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var rect = (_wrap_setLastFunctionCall("fullcalendar.js",2326,88327,88381) || coordinateGrid.rect(row0, col0, row1, col1, slotLayer));
       return (_wrap_setLastFunctionCall("fullcalendar.js",2327,88402,88432) || renderOverlay(rect, slotLayer));
     }
     function renderSlotOverlay(overlayStart, overlayEnd) {
-_wrap_addFunctionToMap('fullcalendar.js', 2329, 88452,89389);
+_wrap_addFunctionToMap('fullcalendar.js', 2329, 88452,89389, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var dayStart = (_wrap_setLastFunctionCall("fullcalendar.js",2330,88534,88555) || cloneDate(t.visStart));
       var dayEnd = (_wrap_setLastFunctionCall("fullcalendar.js",2331,88582,88613) || addDays((_wrap_setLastFunctionCall("fullcalendar.js",2331,88590,88609) || cloneDate(dayStart)), 1));
@@ -2674,11 +2674,11 @@ _wrap_addFunctionToMap('fullcalendar.js', 2329, 88452,89389);
       }
     }
     coordinateGrid = (_wrap_setLastFunctionCall("fullcalendar.js",2348,89415,90589) || new CoordinateGrid(function(rows, cols) {
-_wrap_addFunctionToMap('fullcalendar.js', 2348, 89434,90588);
+_wrap_addFunctionToMap('fullcalendar.js', 2348, 89434,90588, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var e, n, p;
 (_wrap_setLastFunctionCall("fullcalendar.js",2350,89495,89737) ||   dayHeadCells.each(function(i, _e) {
-_wrap_addFunctionToMap('fullcalendar.js', 2350, 89513,89736);
+_wrap_addFunctionToMap('fullcalendar.js', 2350, 89513,89736, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   e = (_wrap_setLastFunctionCall("fullcalendar.js",2351,89552,89557) || $(_e));
   n = (_wrap_setLastFunctionCall("fullcalendar.js",2352,89579,89589) || e.offset()).left;
@@ -2698,7 +2698,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2350, 89513,89736);
   var slotScrollerTop = (_wrap_setLastFunctionCall("fullcalendar.js",2369,90097,90118) || slotScroller.offset()).top;
   var slotScrollerBottom = slotScrollerTop + (_wrap_setLastFunctionCall("fullcalendar.js",2370,90179,90205) || slotScroller.outerHeight());
   function constrain(n) {
-_wrap_addFunctionToMap('fullcalendar.js', 2371, 90219,90339);
+_wrap_addFunctionToMap('fullcalendar.js', 2371, 90219,90339, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     return (_wrap_setLastFunctionCall("fullcalendar.js",2372,90266,90324) || Math.max(slotScrollerTop, (_wrap_setLastFunctionCall("fullcalendar.js",2372,90292,90323) || Math.min(slotScrollerBottom, n))));
   }
@@ -2708,27 +2708,27 @@ _wrap_addFunctionToMap('fullcalendar.js', 2371, 90219,90339);
 }));
     hoverListener = (_wrap_setLastFunctionCall("fullcalendar.js",2381,90615,90648) || new HoverListener(coordinateGrid));
     colContentPositions = (_wrap_setLastFunctionCall("fullcalendar.js",2382,90680,90781) || new HorizontalPositionCache(function(col) {
-_wrap_addFunctionToMap('fullcalendar.js', 2382, 90708,90780);
+_wrap_addFunctionToMap('fullcalendar.js', 2382, 90708,90780, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (_wrap_setLastFunctionCall("fullcalendar.js",2383,90744,90769) || dayBodyCellInners.eq(col));
 }));
     function colContentLeft(col) {
-_wrap_addFunctionToMap('fullcalendar.js', 2385, 90791,90881);
+_wrap_addFunctionToMap('fullcalendar.js', 2385, 90791,90881, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return (_wrap_setLastFunctionCall("fullcalendar.js",2386,90841,90870) || colContentPositions.left(col));
     }
     function colContentRight(col) {
-_wrap_addFunctionToMap('fullcalendar.js', 2388, 90890,90982);
+_wrap_addFunctionToMap('fullcalendar.js', 2388, 90890,90982, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return (_wrap_setLastFunctionCall("fullcalendar.js",2389,90941,90971) || colContentPositions.right(col));
     }
     function dateCell(date) {
-_wrap_addFunctionToMap('fullcalendar.js', 2391, 90991,91175);
+_wrap_addFunctionToMap('fullcalendar.js', 2391, 90991,91175, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return {row: (_wrap_setLastFunctionCall("fullcalendar.js",2393,91059,91100) || Math.floor((_wrap_setLastFunctionCall("fullcalendar.js",2393,91070,91095) || dayDiff(date, t.visStart)) / 7)), col: (_wrap_setLastFunctionCall("fullcalendar.js",2394,91123,91150) || dayOfWeekCol((_wrap_setLastFunctionCall("fullcalendar.js",2394,91136,91149) || date.getDay())))};
     }
     function cellDate(cell) {
-_wrap_addFunctionToMap('fullcalendar.js', 2397, 91184,91521);
+_wrap_addFunctionToMap('fullcalendar.js', 2397, 91184,91521, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var d = (_wrap_setLastFunctionCall("fullcalendar.js",2398,91230,91247) || colDate(cell.col));
       var slotIndex = cell.row;
@@ -2741,22 +2741,22 @@ _wrap_addFunctionToMap('fullcalendar.js', 2397, 91184,91521);
       return d;
     }
     function colDate(col) {
-_wrap_addFunctionToMap('fullcalendar.js', 2408, 91530,91631);
+_wrap_addFunctionToMap('fullcalendar.js', 2408, 91530,91631, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return (_wrap_setLastFunctionCall("fullcalendar.js",2409,91573,91620) || addDays((_wrap_setLastFunctionCall("fullcalendar.js",2409,91581,91602) || cloneDate(t.visStart)), col * dis + dit));
     }
     function cellIsAllDay(cell) {
-_wrap_addFunctionToMap('fullcalendar.js', 2411, 91640,91730);
+_wrap_addFunctionToMap('fullcalendar.js', 2411, 91640,91730, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return (_wrap_setLastFunctionCall("fullcalendar.js",2412,91689,91706) || opt('allDaySlot')) && !cell.row;
     }
     function dayOfWeekCol(dayOfWeek) {
-_wrap_addFunctionToMap('fullcalendar.js', 2414, 91739,91871);
+_wrap_addFunctionToMap('fullcalendar.js', 2414, 91739,91871, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return (dayOfWeek - (_wrap_setLastFunctionCall("fullcalendar.js",2415,91806,91829) || Math.max(firstDay, nwe)) + colCnt) % colCnt * dis + dit;
     }
     function timePosition(day, time) {
-_wrap_addFunctionToMap('fullcalendar.js', 2417, 91880,92651);
+_wrap_addFunctionToMap('fullcalendar.js', 2417, 91880,92651, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       day = (_wrap_setLastFunctionCall("fullcalendar.js",2418,91933,91953) || cloneDate(day, true));
       if (time < (_wrap_setLastFunctionCall("fullcalendar.js",2419,91978,92015) || addMinutes((_wrap_setLastFunctionCall("fullcalendar.js",2419,91989,92003) || cloneDate(day)), minMinute))) {
@@ -2772,17 +2772,17 @@ _wrap_addFunctionToMap('fullcalendar.js', 2417, 91880,92651);
       return (_wrap_setLastFunctionCall("fullcalendar.js",2429,92551,92640) || Math.max(0, (_wrap_setLastFunctionCall("fullcalendar.js",2429,92563,92639) || Math.round(slotTop - 1 + slotHeight * (minutes % slotMinutes / slotMinutes)))));
     }
     function allDayBounds() {
-_wrap_addFunctionToMap('fullcalendar.js', 2431, 92660,92811);
+_wrap_addFunctionToMap('fullcalendar.js', 2431, 92660,92811, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return {left: axisWidth, right: viewWidth - gutterWidth};
     }
     function getAllDayRow(index) {
-_wrap_addFunctionToMap('fullcalendar.js', 2437, 92820,92890);
+_wrap_addFunctionToMap('fullcalendar.js', 2437, 92820,92890, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return allDayRow;
     }
     function defaultEventEnd(event) {
-_wrap_addFunctionToMap('fullcalendar.js', 2440, 92899,93132);
+_wrap_addFunctionToMap('fullcalendar.js', 2440, 92899,93132, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var start = (_wrap_setLastFunctionCall("fullcalendar.js",2441,92957,92979) || cloneDate(event.start));
       if (event.allDay) {
@@ -2791,7 +2791,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2440, 92899,93132);
       return (_wrap_setLastFunctionCall("fullcalendar.js",2445,93076,93121) || addMinutes(start, (_wrap_setLastFunctionCall("fullcalendar.js",2445,93094,93120) || opt('defaultEventMinutes'))));
     }
     function defaultSelectionEnd(startDate, allDay) {
-_wrap_addFunctionToMap('fullcalendar.js', 2447, 93141,93358);
+_wrap_addFunctionToMap('fullcalendar.js', 2447, 93141,93358, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if (allDay) {
         return (_wrap_setLastFunctionCall("fullcalendar.js",2449,93240,93260) || cloneDate(startDate));
@@ -2799,7 +2799,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2447, 93141,93358);
       return (_wrap_setLastFunctionCall("fullcalendar.js",2451,93295,93347) || addMinutes((_wrap_setLastFunctionCall("fullcalendar.js",2451,93306,93326) || cloneDate(startDate)), (_wrap_setLastFunctionCall("fullcalendar.js",2451,93328,93346) || opt('slotMinutes'))));
     }
     function renderSelection(startDate, endDate, allDay) {
-_wrap_addFunctionToMap('fullcalendar.js', 2453, 93367,93695);
+_wrap_addFunctionToMap('fullcalendar.js', 2453, 93367,93695, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if (allDay) {
         if ((_wrap_setLastFunctionCall("fullcalendar.js",2455,93468,93485) || opt('allDaySlot'))) {
@@ -2810,7 +2810,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2453, 93367,93695);
       }
     }
     function renderSlotSelection(startDate, endDate) {
-_wrap_addFunctionToMap('fullcalendar.js', 2462, 93704,95914);
+_wrap_addFunctionToMap('fullcalendar.js', 2462, 93704,95914, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var helperOption = (_wrap_setLastFunctionCall("fullcalendar.js",2463,93786,93805) || opt('selectHelper'));
 (_wrap_setLastFunctionCall("fullcalendar.js",2464,93819,93841) ||       coordinateGrid.build());
@@ -2851,7 +2851,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2462, 93704,95914);
       }
     }
     function clearSelection() {
-_wrap_addFunctionToMap('fullcalendar.js', 2507, 95923,96120);
+_wrap_addFunctionToMap('fullcalendar.js', 2507, 95923,96120, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",2508,95963,95978) ||       clearOverlays());
       if (selectionHelper) {
@@ -2860,13 +2860,13 @@ _wrap_addFunctionToMap('fullcalendar.js', 2507, 95923,96120);
       }
     }
     function slotSelectionMousedown(ev) {
-_wrap_addFunctionToMap('fullcalendar.js', 2514, 96129,97443);
+_wrap_addFunctionToMap('fullcalendar.js', 2514, 96129,97443, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if (ev.which == 1 && (_wrap_setLastFunctionCall("fullcalendar.js",2515,96200,96217) || opt('selectable'))) {
 (_wrap_setLastFunctionCall("fullcalendar.js",2516,96237,96249) ||         unselect(ev));
         var dates;
 (_wrap_setLastFunctionCall("fullcalendar.js",2518,96294,97025) ||         hoverListener.start(function(cell, origCell) {
-_wrap_addFunctionToMap('fullcalendar.js', 2518, 96314,97020);
+_wrap_addFunctionToMap('fullcalendar.js', 2518, 96314,97020, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",2519,96362,96378) ||   clearSelection());
   if (cell && cell.col == origCell.col && !(_wrap_setLastFunctionCall("fullcalendar.js",2520,96441,96459) || cellIsAllDay(cell))) {
@@ -2879,7 +2879,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2518, 96314,97020);
   }
 }, ev));
 (_wrap_setLastFunctionCall("fullcalendar.js",2534,97043,97418) ||         (_wrap_setLastFunctionCall("fullcalendar.js",2534,97043,97054) || $(document)).one('mouseup', function(ev) {
-_wrap_addFunctionToMap('fullcalendar.js', 2534, 97070,97417);
+_wrap_addFunctionToMap('fullcalendar.js', 2534, 97070,97417, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",2535,97106,97126) ||   hoverListener.stop());
   if (dates) {
@@ -2892,15 +2892,15 @@ _wrap_addFunctionToMap('fullcalendar.js', 2534, 97070,97417);
       }
     }
     function reportDayClick(date, allDay, ev) {
-_wrap_addFunctionToMap('fullcalendar.js', 2545, 97452,97599);
+_wrap_addFunctionToMap('fullcalendar.js', 2545, 97452,97599, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",2546,97508,97588) ||       trigger('dayClick', dayBodyCells[(_wrap_setLastFunctionCall("fullcalendar.js",2546,97541,97568) || dayOfWeekCol((_wrap_setLastFunctionCall("fullcalendar.js",2546,97554,97567) || date.getDay())))], date, allDay, ev));
     }
     function dragStart(_dragElement, ev, ui) {
-_wrap_addFunctionToMap('fullcalendar.js', 2548, 97608,98177);
+_wrap_addFunctionToMap('fullcalendar.js', 2548, 97608,98177, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",2549,97663,98166) ||       hoverListener.start(function(cell) {
-_wrap_addFunctionToMap('fullcalendar.js', 2549, 97683,98161);
+_wrap_addFunctionToMap('fullcalendar.js', 2549, 97683,98161, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",2550,97717,97732) ||   clearOverlays());
   if (cell) {
@@ -2915,7 +2915,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2549, 97683,98161);
 }, ev));
     }
     function dragStop(_dragElement, ev, ui) {
-_wrap_addFunctionToMap('fullcalendar.js', 2562, 98186,98440);
+_wrap_addFunctionToMap('fullcalendar.js', 2562, 98186,98440, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var cell = (_wrap_setLastFunctionCall("fullcalendar.js",2563,98251,98271) || hoverListener.stop());
 (_wrap_setLastFunctionCall("fullcalendar.js",2564,98285,98300) ||       clearOverlays());
@@ -2925,7 +2925,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2562, 98186,98440);
     }
   }
   function AgendaEventRenderer() {
-_wrap_addFunctionToMap('fullcalendar.js', 2570, 98451,119167);
+_wrap_addFunctionToMap('fullcalendar.js', 2570, 98451,119167, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var t = this;
     t.renderEvents = renderEvents;
@@ -2968,7 +2968,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2570, 98451,119167);
     var formatDate = calendar.formatDate;
     var formatDates = calendar.formatDates;
     function renderEvents(events, modifiedEventId) {
-_wrap_addFunctionToMap('fullcalendar.js', 2611, 100232,100858);
+_wrap_addFunctionToMap('fullcalendar.js', 2611, 100232,100858, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",2612,100293,100313) ||       reportEvents(events));
       var i, len = events.length, dayEvents = [], slotEvents = [];
@@ -2986,14 +2986,14 @@ _wrap_addFunctionToMap('fullcalendar.js', 2611, 100232,100858);
 (_wrap_setLastFunctionCall("fullcalendar.js",2625,100787,100847) ||       renderSlotSegs((_wrap_setLastFunctionCall("fullcalendar.js",2625,100802,100829) || compileSlotSegs(slotEvents)), modifiedEventId));
     }
     function clearEvents() {
-_wrap_addFunctionToMap('fullcalendar.js', 2627, 100867,101026);
+_wrap_addFunctionToMap('fullcalendar.js', 2627, 100867,101026, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",2628,100904,100922) ||       reportEventClear());
 (_wrap_setLastFunctionCall("fullcalendar.js",2629,100936,100968) ||       (_wrap_setLastFunctionCall("fullcalendar.js",2629,100936,100960) || getDaySegmentContainer()).empty());
 (_wrap_setLastFunctionCall("fullcalendar.js",2630,100982,101015) ||       (_wrap_setLastFunctionCall("fullcalendar.js",2630,100982,101007) || getSlotSegmentContainer()).empty());
     }
     function compileDaySegs(events) {
-_wrap_addFunctionToMap('fullcalendar.js', 2632, 101035,101567);
+_wrap_addFunctionToMap('fullcalendar.js', 2632, 101035,101567, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var levels = (_wrap_setLastFunctionCall("fullcalendar.js",2633,101094,101171) || stackSegs((_wrap_setLastFunctionCall("fullcalendar.js",2633,101104,101170) || sliceSegs(events, (_wrap_setLastFunctionCall("fullcalendar.js",2633,101122,101147) || $.map(events, exclEndDay)), t.visStart, t.visEnd)))), i, levelCnt = levels.length, level, j, seg, segs = [];
       for (i = 0; i < levelCnt; i++) {
@@ -3008,7 +3008,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2632, 101035,101567);
       return segs;
     }
     function compileSlotSegs(events) {
-_wrap_addFunctionToMap('fullcalendar.js', 2645, 101576,102461);
+_wrap_addFunctionToMap('fullcalendar.js', 2645, 101576,102461, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var colCnt = (_wrap_setLastFunctionCall("fullcalendar.js",2646,101636,101647) || getColCnt()), minMinute = (_wrap_setLastFunctionCall("fullcalendar.js",2646,101661,101675) || getMinMinute()), maxMinute = (_wrap_setLastFunctionCall("fullcalendar.js",2646,101689,101703) || getMaxMinute()), d = (_wrap_setLastFunctionCall("fullcalendar.js",2646,101709,101753) || addMinutes((_wrap_setLastFunctionCall("fullcalendar.js",2646,101720,101741) || cloneDate(t.visStart)), minMinute)), visEventEnds = (_wrap_setLastFunctionCall("fullcalendar.js",2646,101770,101797) || $.map(events, slotEventEnd)), i, col, j, level, k, seg, segs = [];
       for (i = 0; i < colCnt; i++) {
@@ -3028,7 +3028,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2645, 101576,102461);
       return segs;
     }
     function slotEventEnd(event) {
-_wrap_addFunctionToMap('fullcalendar.js', 2663, 102470,102706);
+_wrap_addFunctionToMap('fullcalendar.js', 2663, 102470,102706, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if (event.end) {
         return (_wrap_setLastFunctionCall("fullcalendar.js",2665,102553,102573) || cloneDate(event.end));
@@ -3037,7 +3037,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2663, 102470,102706);
       }
     }
     function renderSlotSegs(segs, modifiedEventId) {
-_wrap_addFunctionToMap('fullcalendar.js', 2670, 102715,107368);
+_wrap_addFunctionToMap('fullcalendar.js', 2670, 102715,107368, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var i, segCnt = segs.length, seg, event, classes, top, bottom, colI, levelI, forward, leftmost, availWidth, outerWidth, left, html = '', eventElements, eventElement, triggerRes, vsideCache = {}, hsideCache = {}, key, val, contentElement, height, slotSegmentContainer = (_wrap_setLastFunctionCall("fullcalendar.js",2671,103045,103070) || getSlotSegmentContainer()), rtl, dis, dit, colCnt = (_wrap_setLastFunctionCall("fullcalendar.js",2671,103096,103107) || getColCnt());
       if (rtl = (_wrap_setLastFunctionCall("fullcalendar.js",2672,103131,103143) || opt('isRTL'))) {
@@ -3127,7 +3127,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2670, 102715,107368);
       }
     }
     function slotSegHtml(event, seg) {
-_wrap_addFunctionToMap('fullcalendar.js', 2762, 107377,109217);
+_wrap_addFunctionToMap('fullcalendar.js', 2762, 107377,109217, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var html = '<';
       var url = event.url;
@@ -3160,7 +3160,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2762, 107377,109217);
       return html;
     }
     function bindDaySeg(event, eventElement, seg) {
-_wrap_addFunctionToMap('fullcalendar.js', 2797, 109226,109595);
+_wrap_addFunctionToMap('fullcalendar.js', 2797, 109226,109595, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if ((_wrap_setLastFunctionCall("fullcalendar.js",2798,109290,109313) || isEventDraggable(event))) {
 (_wrap_setLastFunctionCall("fullcalendar.js",2799,109333,109384) ||         draggableDayEvent(event, eventElement, seg.isStart));
@@ -3171,7 +3171,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2797, 109226,109595);
 (_wrap_setLastFunctionCall("fullcalendar.js",2804,109543,109584) ||       eventElementHandlers(event, eventElement));
     }
     function bindSlotSeg(event, eventElement, seg) {
-_wrap_addFunctionToMap('fullcalendar.js', 2806, 109604,110054);
+_wrap_addFunctionToMap('fullcalendar.js', 2806, 109604,110054, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var timeElement = (_wrap_setLastFunctionCall("fullcalendar.js",2807,109683,109721) || eventElement.find('div.fc-event-time'));
       if ((_wrap_setLastFunctionCall("fullcalendar.js",2808,109739,109762) || isEventDraggable(event))) {
@@ -3183,7 +3183,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2806, 109604,110054);
 (_wrap_setLastFunctionCall("fullcalendar.js",2814,110002,110043) ||       eventElementHandlers(event, eventElement));
     }
     function draggableDayEvent(event, eventElement, isStart) {
-_wrap_addFunctionToMap('fullcalendar.js', 2816, 110063,113705);
+_wrap_addFunctionToMap('fullcalendar.js', 2816, 110063,113705, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var origWidth;
       var revert;
@@ -3195,13 +3195,13 @@ _wrap_addFunctionToMap('fullcalendar.js', 2816, 110063,113705);
       var slotHeight = (_wrap_setLastFunctionCall("fullcalendar.js",2824,110398,110413) || getSlotHeight());
       var minMinute = (_wrap_setLastFunctionCall("fullcalendar.js",2825,110443,110457) || getMinMinute());
 (_wrap_setLastFunctionCall("fullcalendar.js",2826,110471,113462) ||       eventElement.draggable({zIndex: 9, opacity: (_wrap_setLastFunctionCall("fullcalendar.js",2828,110548,110575) || opt('dragOpacity', 'month')), revertDuration: (_wrap_setLastFunctionCall("fullcalendar.js",2829,110609,110634) || opt('dragRevertDuration')), start: function(ev, ui) {
-_wrap_addFunctionToMap('fullcalendar.js', 2830, 110659,112577);
+_wrap_addFunctionToMap('fullcalendar.js', 2830, 110659,112577, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",2831,110699,110753) ||   trigger('eventDragStart', eventElement, event, ev, ui));
 (_wrap_setLastFunctionCall("fullcalendar.js",2832,110775,110806) ||   hideEvents(event, eventElement));
   origWidth = (_wrap_setLastFunctionCall("fullcalendar.js",2833,110840,110860) || eventElement.width());
 (_wrap_setLastFunctionCall("fullcalendar.js",2834,110882,112558) ||   hoverListener.start(function(cell, origCell, rowDelta, colDelta) {
-_wrap_addFunctionToMap('fullcalendar.js', 2834, 110902,112545);
+_wrap_addFunctionToMap('fullcalendar.js', 2834, 110902,112545, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",2835,110974,110989) ||   clearOverlays());
   if (cell) {
@@ -3230,7 +3230,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2834, 110902,112545);
 (_wrap_setLastFunctionCall("fullcalendar.js",2862,112472,112522) ||   eventElement.draggable('option', 'revert', revert));
 }, ev, 'drag'));
 }, stop: function(ev, ui) {
-_wrap_addFunctionToMap('fullcalendar.js', 2865, 112601,113447);
+_wrap_addFunctionToMap('fullcalendar.js', 2865, 112601,113447, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",2866,112641,112661) ||   hoverListener.stop());
 (_wrap_setLastFunctionCall("fullcalendar.js",2867,112683,112698) ||   clearOverlays());
@@ -3248,7 +3248,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2865, 112601,113447);
   }
 }}));
       function resetElement() {
-_wrap_addFunctionToMap('fullcalendar.js', 2882, 113476,113695);
+_wrap_addFunctionToMap('fullcalendar.js', 2882, 113476,113695, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
         if (!allDay) {
 (_wrap_setLastFunctionCall("fullcalendar.js",2884,113553,113627) ||           (_wrap_setLastFunctionCall("fullcalendar.js",2884,113553,113593) || (_wrap_setLastFunctionCall("fullcalendar.js",2884,113553,113582) || eventElement.width(origWidth)).height('')).draggable('option', 'grid', null));
@@ -3257,7 +3257,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2882, 113476,113695);
       }
     }
     function draggableSlotEvent(event, eventElement, timeElement) {
-_wrap_addFunctionToMap('fullcalendar.js', 2889, 113714,117638);
+_wrap_addFunctionToMap('fullcalendar.js', 2889, 113714,117638, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var origPosition;
       var allDay = false;
@@ -3270,14 +3270,14 @@ _wrap_addFunctionToMap('fullcalendar.js', 2889, 113714,117638);
       var colWidth = (_wrap_setLastFunctionCall("fullcalendar.js",2898,114090,114103) || getColWidth());
       var slotHeight = (_wrap_setLastFunctionCall("fullcalendar.js",2899,114134,114149) || getSlotHeight());
 (_wrap_setLastFunctionCall("fullcalendar.js",2900,114163,116899) ||       eventElement.draggable({zIndex: 9, scroll: false, grid: [colWidth, slotHeight], axis: colCnt == 1 ? 'y' : false, opacity: (_wrap_setLastFunctionCall("fullcalendar.js",2908,114424,114442) || opt('dragOpacity')), revertDuration: (_wrap_setLastFunctionCall("fullcalendar.js",2909,114476,114501) || opt('dragRevertDuration')), start: function(ev, ui) {
-_wrap_addFunctionToMap('fullcalendar.js', 2910, 114526,115748);
+_wrap_addFunctionToMap('fullcalendar.js', 2910, 114526,115748, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",2911,114566,114620) ||   trigger('eventDragStart', eventElement, event, ev, ui));
 (_wrap_setLastFunctionCall("fullcalendar.js",2912,114642,114673) ||   hideEvents(event, eventElement));
   origPosition = (_wrap_setLastFunctionCall("fullcalendar.js",2913,114710,114733) || eventElement.position());
   minuteDelta = prevMinuteDelta = 0;
 (_wrap_setLastFunctionCall("fullcalendar.js",2915,114810,115729) ||   hoverListener.start(function(cell, origCell, rowDelta, colDelta) {
-_wrap_addFunctionToMap('fullcalendar.js', 2915, 114830,115716);
+_wrap_addFunctionToMap('fullcalendar.js', 2915, 114830,115716, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",2916,114902,114951) ||   eventElement.draggable('option', 'revert', !cell));
 (_wrap_setLastFunctionCall("fullcalendar.js",2917,114977,114992) ||   clearOverlays());
@@ -3296,7 +3296,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2915, 114830,115716);
   }
 }, ev, 'drag'));
 }, drag: function(ev, ui) {
-_wrap_addFunctionToMap('fullcalendar.js', 2933, 115772,116184);
+_wrap_addFunctionToMap('fullcalendar.js', 2933, 115772,116184, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   minuteDelta = (_wrap_setLastFunctionCall("fullcalendar.js",2934,115826,115887) || Math.round((ui.position.top - origPosition.top) / slotHeight)) * (_wrap_setLastFunctionCall("fullcalendar.js",2934,115890,115908) || opt('slotMinutes'));
   if (minuteDelta != prevMinuteDelta) {
@@ -3306,7 +3306,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2933, 115772,116184);
     prevMinuteDelta = minuteDelta;
   }
 }, stop: function(ev, ui) {
-_wrap_addFunctionToMap('fullcalendar.js', 2942, 116208,116884);
+_wrap_addFunctionToMap('fullcalendar.js', 2942, 116208,116884, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var cell = (_wrap_setLastFunctionCall("fullcalendar.js",2943,116259,116279) || hoverListener.stop());
 (_wrap_setLastFunctionCall("fullcalendar.js",2944,116301,116316) ||   clearOverlays());
@@ -3322,7 +3322,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2942, 116208,116884);
   }
 }}));
       function updateTimeText(minuteDelta) {
-_wrap_addFunctionToMap('fullcalendar.js', 2957, 116913,117284);
+_wrap_addFunctionToMap('fullcalendar.js', 2957, 116913,117284, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
         var newStart = (_wrap_setLastFunctionCall("fullcalendar.js",2958,116983,117030) || addMinutes((_wrap_setLastFunctionCall("fullcalendar.js",2958,116994,117016) || cloneDate(event.start)), minuteDelta));
         var newEnd;
@@ -3332,7 +3332,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2957, 116913,117284);
 (_wrap_setLastFunctionCall("fullcalendar.js",2963,117203,117269) ||         timeElement.text((_wrap_setLastFunctionCall("fullcalendar.js",2963,117220,117268) || formatDates(newStart, newEnd, (_wrap_setLastFunctionCall("fullcalendar.js",2963,117250,117267) || opt('timeFormat'))))));
       }
       function resetElement() {
-_wrap_addFunctionToMap('fullcalendar.js', 2965, 117297,117628);
+_wrap_addFunctionToMap('fullcalendar.js', 2965, 117297,117628, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
         if (allDay) {
 (_wrap_setLastFunctionCall("fullcalendar.js",2967,117373,117403) ||           timeElement.css('display', ''));
@@ -3342,19 +3342,19 @@ _wrap_addFunctionToMap('fullcalendar.js', 2965, 117297,117628);
       }
     }
     function resizableSlotEvent(event, eventElement, timeElement) {
-_wrap_addFunctionToMap('fullcalendar.js', 2976, 117647,119161);
+_wrap_addFunctionToMap('fullcalendar.js', 2976, 117647,119161, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var slotDelta, prevSlotDelta;
       var slotHeight = (_wrap_setLastFunctionCall("fullcalendar.js",2978,117782,117797) || getSlotHeight());
 (_wrap_setLastFunctionCall("fullcalendar.js",2979,117811,119150) ||       eventElement.resizable({handles: {s: 'div.ui-resizable-s'}, grid: slotHeight, start: function(ev, ui) {
-_wrap_addFunctionToMap('fullcalendar.js', 2982, 117947,118210);
+_wrap_addFunctionToMap('fullcalendar.js', 2982, 117947,118210, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   slotDelta = prevSlotDelta = 0;
 (_wrap_setLastFunctionCall("fullcalendar.js",2984,118038,118069) ||   hideEvents(event, eventElement));
 (_wrap_setLastFunctionCall("fullcalendar.js",2985,118091,118121) ||   eventElement.css('z-index', 9));
 (_wrap_setLastFunctionCall("fullcalendar.js",2986,118143,118191) ||   trigger('eventResizeStart', this, event, ev, ui));
 }, resize: function(ev, ui) {
-_wrap_addFunctionToMap('fullcalendar.js', 2988, 118236,118711);
+_wrap_addFunctionToMap('fullcalendar.js', 2988, 118236,118711, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   slotDelta = (_wrap_setLastFunctionCall("fullcalendar.js",2989,118288,118383) || Math.round(((_wrap_setLastFunctionCall("fullcalendar.js",2989,118300,118343) || Math.max(slotHeight, (_wrap_setLastFunctionCall("fullcalendar.js",2989,118321,118342) || eventElement.height()))) - ui.originalSize.height) / slotHeight));
   if (slotDelta != prevSlotDelta) {
@@ -3362,7 +3362,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2988, 118236,118711);
     prevSlotDelta = slotDelta;
   }
 }, stop: function(ev, ui) {
-_wrap_addFunctionToMap('fullcalendar.js', 2995, 118735,119135);
+_wrap_addFunctionToMap('fullcalendar.js', 2995, 118735,119135, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",2996,118775,118822) ||   trigger('eventResizeStop', this, event, ev, ui));
   if (slotDelta) {
@@ -3375,7 +3375,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 2995, 118735,119135);
     }
   }
   function countForwardSegs(levels) {
-_wrap_addFunctionToMap('fullcalendar.js', 3007, 119172,119769);
+_wrap_addFunctionToMap('fullcalendar.js', 3007, 119172,119769, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var i, j, k, level, segForward, segBack;
     for (i = levels.length - 1; i > 0; i--) {
@@ -3392,7 +3392,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3007, 119172,119769);
     }
   }
   function View(element, calendar, viewName) {
-_wrap_addFunctionToMap('fullcalendar.js', 3022, 119774,125617);
+_wrap_addFunctionToMap('fullcalendar.js', 3022, 119774,125617, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var t = this;
     t.element = element;
@@ -3419,7 +3419,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3022, 119774,125617);
     var eventElementsByID = {};
     var options = calendar.options;
     function opt(name, viewNameOverride) {
-_wrap_addFunctionToMap('fullcalendar.js', 3047, 120743,120973);
+_wrap_addFunctionToMap('fullcalendar.js', 3047, 120743,120973, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var v = options[name];
       if (typeof v == 'object') {
@@ -3428,27 +3428,27 @@ _wrap_addFunctionToMap('fullcalendar.js', 3047, 120743,120973);
       return v;
     }
     function trigger(name, thisObj) {
-_wrap_addFunctionToMap('fullcalendar.js', 3054, 120982,121200);
+_wrap_addFunctionToMap('fullcalendar.js', 3054, 120982,121200, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return (_wrap_setLastFunctionCall("fullcalendar.js",3055,121035,121189) || calendar.trigger.apply(calendar, (_wrap_setLastFunctionCall("fullcalendar.js",3058,121068,121188) || [name, thisObj || t].concat((_wrap_setLastFunctionCall("fullcalendar.js",3058,121142,121182) || Array.prototype.slice.call(arguments, 2)), [t]))));
     }
     function isEventDraggable(event) {
-_wrap_addFunctionToMap('fullcalendar.js', 3060, 121209,121323);
+_wrap_addFunctionToMap('fullcalendar.js', 3060, 121209,121323, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return (_wrap_setLastFunctionCall("fullcalendar.js",3061,121263,121285) || isEventEditable(event)) && !(_wrap_setLastFunctionCall("fullcalendar.js",3061,121290,121312) || opt('disableDragging'));
     }
     function isEventResizable(event) {
-_wrap_addFunctionToMap('fullcalendar.js', 3063, 121332,121446);
+_wrap_addFunctionToMap('fullcalendar.js', 3063, 121332,121446, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return (_wrap_setLastFunctionCall("fullcalendar.js",3064,121386,121408) || isEventEditable(event)) && !(_wrap_setLastFunctionCall("fullcalendar.js",3064,121413,121435) || opt('disableResizing'));
     }
     function isEventEditable(event) {
-_wrap_addFunctionToMap('fullcalendar.js', 3066, 121455,121595);
+_wrap_addFunctionToMap('fullcalendar.js', 3066, 121455,121595, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return (_wrap_setLastFunctionCall("fullcalendar.js",3067,121508,121584) || firstDefined(event.editable, (event.source || {}).editable, (_wrap_setLastFunctionCall("fullcalendar.js",3067,121568,121583) || opt('editable'))));
     }
     function reportEvents(events) {
-_wrap_addFunctionToMap('fullcalendar.js', 3069, 121604,122006);
+_wrap_addFunctionToMap('fullcalendar.js', 3069, 121604,122006, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       eventsByID = {};
       var i, len = events.length, event;
@@ -3462,12 +3462,12 @@ _wrap_addFunctionToMap('fullcalendar.js', 3069, 121604,122006);
       }
     }
     function eventEnd(event) {
-_wrap_addFunctionToMap('fullcalendar.js', 3081, 122015,122129);
+_wrap_addFunctionToMap('fullcalendar.js', 3081, 122015,122129, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return event.end ? (_wrap_setLastFunctionCall("fullcalendar.js",3082,122073,122093) || cloneDate(event.end)) : (_wrap_setLastFunctionCall("fullcalendar.js",3082,122096,122118) || defaultEventEnd(event));
     }
     function reportEventElement(event, element) {
-_wrap_addFunctionToMap('fullcalendar.js', 3084, 122138,122435);
+_wrap_addFunctionToMap('fullcalendar.js', 3084, 122138,122435, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",3085,122196,122223) ||       eventElements.push(element));
       if (eventElementsByID[event._id]) {
@@ -3477,42 +3477,42 @@ _wrap_addFunctionToMap('fullcalendar.js', 3084, 122138,122435);
       }
     }
     function reportEventClear() {
-_wrap_addFunctionToMap('fullcalendar.js', 3092, 122444,122551);
+_wrap_addFunctionToMap('fullcalendar.js', 3092, 122444,122551, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       eventElements = [];
       eventElementsByID = {};
     }
     function eventElementHandlers(event, eventElement) {
-_wrap_addFunctionToMap('fullcalendar.js', 3096, 122560,123079);
+_wrap_addFunctionToMap('fullcalendar.js', 3096, 122560,123079, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",3101,122625,123068) ||       (_wrap_setLastFunctionCall("fullcalendar.js",3097,122625,122881) || eventElement.click(function(ev) {
-_wrap_addFunctionToMap('fullcalendar.js', 3097, 122644,122880);
+_wrap_addFunctionToMap('fullcalendar.js', 3097, 122644,122880, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (!(_wrap_setLastFunctionCall("fullcalendar.js",3098,122681,122727) || eventElement.hasClass('ui-draggable-dragging')) && !(_wrap_setLastFunctionCall("fullcalendar.js",3098,122732,122778) || eventElement.hasClass('ui-resizable-resizing'))) {
     return (_wrap_setLastFunctionCall("fullcalendar.js",3099,122809,122847) || trigger('eventClick', this, event, ev));
   }
 })).hover(function(ev) {
-_wrap_addFunctionToMap('fullcalendar.js', 3101, 122888,122977);
+_wrap_addFunctionToMap('fullcalendar.js', 3101, 122888,122977, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",3102,122920,122962) ||   trigger('eventMouseover', this, event, ev));
 }, function(ev) {
-_wrap_addFunctionToMap('fullcalendar.js', 3103, 122979,123067);
+_wrap_addFunctionToMap('fullcalendar.js', 3103, 122979,123067, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",3104,123011,123052) ||   trigger('eventMouseout', this, event, ev));
 }));
     }
     function showEvents(event, exceptElement) {
-_wrap_addFunctionToMap('fullcalendar.js', 3107, 123088,123201);
+_wrap_addFunctionToMap('fullcalendar.js', 3107, 123088,123201, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",3108,123144,123190) ||       eachEventElement(event, exceptElement, 'show'));
     }
     function hideEvents(event, exceptElement) {
-_wrap_addFunctionToMap('fullcalendar.js', 3110, 123210,123323);
+_wrap_addFunctionToMap('fullcalendar.js', 3110, 123210,123323, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",3111,123266,123312) ||       eachEventElement(event, exceptElement, 'hide'));
     }
     function eachEventElement(event, exceptElement, funcName) {
-_wrap_addFunctionToMap('fullcalendar.js', 3113, 123332,123677);
+_wrap_addFunctionToMap('fullcalendar.js', 3113, 123332,123677, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var elements = eventElementsByID[event._id], i, len = elements.length;
       for (i = 0; i < len; i++) {
@@ -3522,13 +3522,13 @@ _wrap_addFunctionToMap('fullcalendar.js', 3113, 123332,123677);
       }
     }
     function eventDrop(e, event, dayDelta, minuteDelta, allDay, ev, ui) {
-_wrap_addFunctionToMap('fullcalendar.js', 3121, 123686,124201);
+_wrap_addFunctionToMap('fullcalendar.js', 3121, 123686,124201, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var oldAllDay = event.allDay;
       var eventId = event._id;
 (_wrap_setLastFunctionCall("fullcalendar.js",3124,123847,123909) ||       moveEvents(eventsByID[eventId], dayDelta, minuteDelta, allDay));
 (_wrap_setLastFunctionCall("fullcalendar.js",3125,123923,124150) ||       trigger('eventDrop', e, event, dayDelta, minuteDelta, allDay, function() {
-_wrap_addFunctionToMap('fullcalendar.js', 3125, 123985,124141);
+_wrap_addFunctionToMap('fullcalendar.js', 3125, 123985,124141, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",3126,124015,124082) ||   moveEvents(eventsByID[eventId], -dayDelta, -minuteDelta, oldAllDay));
 (_wrap_setLastFunctionCall("fullcalendar.js",3127,124100,124126) ||   reportEventChange(eventId));
@@ -3536,12 +3536,12 @@ _wrap_addFunctionToMap('fullcalendar.js', 3125, 123985,124141);
 (_wrap_setLastFunctionCall("fullcalendar.js",3129,124164,124190) ||       reportEventChange(eventId));
     }
     function eventResize(e, event, dayDelta, minuteDelta, ev, ui) {
-_wrap_addFunctionToMap('fullcalendar.js', 3131, 124210,124660);
+_wrap_addFunctionToMap('fullcalendar.js', 3131, 124210,124660, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var eventId = event._id;
 (_wrap_setLastFunctionCall("fullcalendar.js",3133,124323,124381) ||       elongateEvents(eventsByID[eventId], dayDelta, minuteDelta));
 (_wrap_setLastFunctionCall("fullcalendar.js",3134,124395,124609) ||       trigger('eventResize', e, event, dayDelta, minuteDelta, function() {
-_wrap_addFunctionToMap('fullcalendar.js', 3134, 124451,124600);
+_wrap_addFunctionToMap('fullcalendar.js', 3134, 124451,124600, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",3135,124481,124541) ||   elongateEvents(eventsByID[eventId], -dayDelta, -minuteDelta));
 (_wrap_setLastFunctionCall("fullcalendar.js",3136,124559,124585) ||   reportEventChange(eventId));
@@ -3549,7 +3549,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3134, 124451,124600);
 (_wrap_setLastFunctionCall("fullcalendar.js",3138,124623,124649) ||       reportEventChange(eventId));
     }
     function moveEvents(events, dayDelta, minuteDelta, allDay) {
-_wrap_addFunctionToMap('fullcalendar.js', 3140, 124669,125248);
+_wrap_addFunctionToMap('fullcalendar.js', 3140, 124669,125248, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       minuteDelta = minuteDelta || 0;
       for (var e, len = events.length, i = 0; i < len; i++) {
@@ -3565,7 +3565,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3140, 124669,125248);
       }
     }
     function elongateEvents(events, dayDelta, minuteDelta) {
-_wrap_addFunctionToMap('fullcalendar.js', 3154, 125257,125611);
+_wrap_addFunctionToMap('fullcalendar.js', 3154, 125257,125611, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       minuteDelta = minuteDelta || 0;
       for (var e, len = events.length, i = 0; i < len; i++) {
@@ -3576,7 +3576,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3154, 125257,125611);
     }
   }
   function DayEventRenderer() {
-_wrap_addFunctionToMap('fullcalendar.js', 3163, 125622,141572);
+_wrap_addFunctionToMap('fullcalendar.js', 3163, 125622,141572, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var t = this;
     t.renderDaySegs = renderDaySegs;
@@ -3607,7 +3607,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3163, 125622,141572);
     var clearOverlays = t.clearOverlays;
     var clearSelection = t.clearSelection;
     function renderDaySegs(segs, modifiedEventId) {
-_wrap_addFunctionToMap('fullcalendar.js', 3192, 126852,128417);
+_wrap_addFunctionToMap('fullcalendar.js', 3192, 126852,128417, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var segmentContainer = (_wrap_setLastFunctionCall("fullcalendar.js",3193,126935,126959) || getDaySegmentContainer());
       var rowDivs;
@@ -3650,7 +3650,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3192, 126852,128417);
 (_wrap_setLastFunctionCall("fullcalendar.js",3231,128366,128406) ||       daySegSetTops(segs, (_wrap_setLastFunctionCall("fullcalendar.js",3231,128386,128405) || getRowTops(rowDivs))));
     }
     function renderTempDaySegs(segs, adjustRow, adjustTop) {
-_wrap_addFunctionToMap('fullcalendar.js', 3233, 128426,129463);
+_wrap_addFunctionToMap('fullcalendar.js', 3233, 128426,129463, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var tempContainer = (_wrap_setLastFunctionCall("fullcalendar.js",3234,128515,128526) || $('<div/>'));
       var elements;
@@ -3679,7 +3679,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3233, 128426,129463);
       return (_wrap_setLastFunctionCall("fullcalendar.js",3258,129441,129452) || $(elements));
     }
     function daySegHTML(segs) {
-_wrap_addFunctionToMap('fullcalendar.js', 3260, 129472,132946);
+_wrap_addFunctionToMap('fullcalendar.js', 3260, 129472,132946, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var rtl = (_wrap_setLastFunctionCall("fullcalendar.js",3261,129522,129534) || opt('isRTL'));
       var i;
@@ -3755,7 +3755,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3260, 129472,132946);
       return html;
     }
     function daySegElementResolve(segs, elements) {
-_wrap_addFunctionToMap('fullcalendar.js', 3338, 132955,133939);
+_wrap_addFunctionToMap('fullcalendar.js', 3338, 132955,133939, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var i;
       var segCnt = segs.length;
@@ -3781,7 +3781,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3338, 132955,133939);
       }
     }
     function daySegElementReport(segs) {
-_wrap_addFunctionToMap('fullcalendar.js', 3365, 133948,134333);
+_wrap_addFunctionToMap('fullcalendar.js', 3365, 133948,134333, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var i;
       var segCnt = segs.length;
@@ -3796,7 +3796,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3365, 133948,134333);
       }
     }
     function daySegHandlers(segs, segmentContainer, modifiedEventId) {
-_wrap_addFunctionToMap('fullcalendar.js', 3378, 134342,135030);
+_wrap_addFunctionToMap('fullcalendar.js', 3378, 134342,135030, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var i;
       var segCnt = segs.length;
@@ -3818,7 +3818,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3378, 134342,135030);
 (_wrap_setLastFunctionCall("fullcalendar.js",3396,134972,135019) ||       lazySegBind(segmentContainer, segs, bindDaySeg));
     }
     function daySegCalcHSides(segs) {
-_wrap_addFunctionToMap('fullcalendar.js', 3398, 135039,135695);
+_wrap_addFunctionToMap('fullcalendar.js', 3398, 135039,135695, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var i;
       var segCnt = segs.length;
@@ -3840,7 +3840,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3398, 135039,135695);
       }
     }
     function daySegSetWidths(segs) {
-_wrap_addFunctionToMap('fullcalendar.js', 3418, 135704,136119);
+_wrap_addFunctionToMap('fullcalendar.js', 3418, 135704,136119, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var i;
       var segCnt = segs.length;
@@ -3855,7 +3855,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3418, 135704,136119);
       }
     }
     function daySegCalcHeights(segs) {
-_wrap_addFunctionToMap('fullcalendar.js', 3431, 136128,136797);
+_wrap_addFunctionToMap('fullcalendar.js', 3431, 136128,136797, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var i;
       var segCnt = segs.length;
@@ -3877,7 +3877,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3431, 136128,136797);
       }
     }
     function getRowDivs() {
-_wrap_addFunctionToMap('fullcalendar.js', 3451, 136806,137096);
+_wrap_addFunctionToMap('fullcalendar.js', 3451, 136806,137096, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var i;
       var rowCnt = (_wrap_setLastFunctionCall("fullcalendar.js",3453,136874,136885) || getRowCnt());
@@ -3888,7 +3888,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3451, 136806,137096);
       return rowDivs;
     }
     function getRowTops(rowDivs) {
-_wrap_addFunctionToMap('fullcalendar.js', 3460, 137105,137365);
+_wrap_addFunctionToMap('fullcalendar.js', 3460, 137105,137365, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var i;
       var rowCnt = rowDivs.length;
@@ -3899,7 +3899,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3460, 137105,137365);
       return tops;
     }
     function daySegSetTops(segs, rowTops) {
-_wrap_addFunctionToMap('fullcalendar.js', 3469, 137374,137921);
+_wrap_addFunctionToMap('fullcalendar.js', 3469, 137374,137921, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var i;
       var segCnt = segs.length;
@@ -3917,7 +3917,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3469, 137374,137921);
       }
     }
     function resizableDayEvent(event, element, seg) {
-_wrap_addFunctionToMap('fullcalendar.js', 3485, 137930,141566);
+_wrap_addFunctionToMap('fullcalendar.js', 3485, 137930,141566, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var rtl = (_wrap_setLastFunctionCall("fullcalendar.js",3486,138002,138014) || opt('isRTL'));
       var direction = rtl ? 'w' : 'e';
@@ -3925,11 +3925,11 @@ _wrap_addFunctionToMap('fullcalendar.js', 3485, 137930,141566);
       var isResizing = false;
 (_wrap_setLastFunctionCall("fullcalendar.js",3490,138181,138210) ||       disableTextSelection(element));
 (_wrap_setLastFunctionCall("fullcalendar.js",3493,138224,138490) ||       (_wrap_setLastFunctionCall("fullcalendar.js",3491,138224,138309) || element.mousedown(function(ev) {
-_wrap_addFunctionToMap('fullcalendar.js', 3491, 138242,138308);
+_wrap_addFunctionToMap('fullcalendar.js', 3491, 138242,138308, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",3492,138274,138293) ||   ev.preventDefault());
 })).click(function(ev) {
-_wrap_addFunctionToMap('fullcalendar.js', 3493, 138316,138489);
+_wrap_addFunctionToMap('fullcalendar.js', 3493, 138316,138489, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (isResizing) {
 (_wrap_setLastFunctionCall("fullcalendar.js",3495,138386,138405) ||     ev.preventDefault());
@@ -3937,7 +3937,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3493, 138316,138489);
   }
 }));
 (_wrap_setLastFunctionCall("fullcalendar.js",3499,138504,141555) ||       handle.mousedown(function(ev) {
-_wrap_addFunctionToMap('fullcalendar.js', 3499, 138521,141554);
+_wrap_addFunctionToMap('fullcalendar.js', 3499, 138521,141554, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (ev.which != 1) {
     return;
@@ -3957,7 +3957,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3499, 138521,141554);
 (_wrap_setLastFunctionCall("fullcalendar.js",3515,139153,139223) ||   (_wrap_setLastFunctionCall("fullcalendar.js",3515,139153,139199) || (_wrap_setLastFunctionCall("fullcalendar.js",3515,139153,139162) || $('body')).css('cursor', direction + '-resize')).one('mouseup', mouseup));
 (_wrap_setLastFunctionCall("fullcalendar.js",3516,139241,139285) ||   trigger('eventResizeStart', this, event, ev));
 (_wrap_setLastFunctionCall("fullcalendar.js",3517,139303,141048) ||   hoverListener.start(function(cell, origCell) {
-_wrap_addFunctionToMap('fullcalendar.js', 3517, 139323,141043);
+_wrap_addFunctionToMap('fullcalendar.js', 3517, 139323,141043, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (cell) {
     var r = (_wrap_setLastFunctionCall("fullcalendar.js",3519,139415,139446) || Math.max(minCell.row, cell.row));
@@ -3995,7 +3995,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3517, 139323,141043);
   }
 }, ev));
   function mouseup(ev) {
-_wrap_addFunctionToMap('fullcalendar.js', 3553, 141066,141540);
+_wrap_addFunctionToMap('fullcalendar.js', 3553, 141066,141540, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",3554,141109,141152) ||     trigger('eventResizeStop', this, event, ev));
 (_wrap_setLastFunctionCall("fullcalendar.js",3555,141174,141201) ||     (_wrap_setLastFunctionCall("fullcalendar.js",3555,141174,141183) || $('body')).css('cursor', ''));
@@ -4005,7 +4005,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3553, 141066,141540);
 (_wrap_setLastFunctionCall("fullcalendar.js",3559,141342,141383) ||       eventResize(this, event, dayDelta, 0, ev));
     }
 (_wrap_setLastFunctionCall("fullcalendar.js",3561,141427,141521) ||     setTimeout(function() {
-_wrap_addFunctionToMap('fullcalendar.js', 3561, 141438,141517);
+_wrap_addFunctionToMap('fullcalendar.js', 3561, 141438,141517, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   isResizing = false;
 }, 0));
@@ -4014,7 +4014,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3561, 141438,141517);
     }
   }
   function SelectionManager() {
-_wrap_addFunctionToMap('fullcalendar.js', 3568, 141577,144404);
+_wrap_addFunctionToMap('fullcalendar.js', 3568, 141577,144404, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var t = this;
     t.select = select;
@@ -4029,7 +4029,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3568, 141577,144404);
     var selected = false;
     if ((_wrap_setLastFunctionCall("fullcalendar.js",3580,142042,142059) || opt('selectable')) && (_wrap_setLastFunctionCall("fullcalendar.js",3580,142063,142082) || opt('unselectAuto'))) {
 (_wrap_setLastFunctionCall("fullcalendar.js",3581,142098,142397) ||       (_wrap_setLastFunctionCall("fullcalendar.js",3581,142098,142109) || $(document)).mousedown(function(ev) {
-_wrap_addFunctionToMap('fullcalendar.js', 3581, 142120,142396);
+_wrap_addFunctionToMap('fullcalendar.js', 3581, 142120,142396, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var ignore = (_wrap_setLastFunctionCall("fullcalendar.js",3582,142165,142186) || opt('unselectCancel'));
   if (ignore) {
@@ -4041,7 +4041,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3581, 142120,142396);
 }));
     }
     function select(startDate, endDate, allDay) {
-_wrap_addFunctionToMap('fullcalendar.js', 3591, 142417,142718);
+_wrap_addFunctionToMap('fullcalendar.js', 3591, 142417,142718, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",3592,142475,142485) ||       unselect());
       if (!endDate) {
@@ -4051,7 +4051,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3591, 142417,142718);
 (_wrap_setLastFunctionCall("fullcalendar.js",3597,142664,142707) ||       reportSelection(startDate, endDate, allDay));
     }
     function unselect(ev) {
-_wrap_addFunctionToMap('fullcalendar.js', 3599, 142727,142917);
+_wrap_addFunctionToMap('fullcalendar.js', 3599, 142727,142917, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       if (selected) {
         selected = false;
@@ -4060,13 +4060,13 @@ _wrap_addFunctionToMap('fullcalendar.js', 3599, 142727,142917);
       }
     }
     function reportSelection(startDate, endDate, allDay, ev) {
-_wrap_addFunctionToMap('fullcalendar.js', 3606, 142926,143092);
+_wrap_addFunctionToMap('fullcalendar.js', 3606, 142926,143092, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       selected = true;
 (_wrap_setLastFunctionCall("fullcalendar.js",3608,143026,143081) ||       trigger('select', null, startDate, endDate, allDay, ev));
     }
     function daySelectionMousedown(ev) {
-_wrap_addFunctionToMap('fullcalendar.js', 3610, 143101,144398);
+_wrap_addFunctionToMap('fullcalendar.js', 3610, 143101,144398, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var cellDate = t.cellDate;
       var cellIsAllDay = t.cellIsAllDay;
@@ -4077,7 +4077,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3610, 143101,144398);
         var _mousedownElement = this;
         var dates;
 (_wrap_setLastFunctionCall("fullcalendar.js",3619,143502,143982) ||         hoverListener.start(function(cell, origCell) {
-_wrap_addFunctionToMap('fullcalendar.js', 3619, 143522,143977);
+_wrap_addFunctionToMap('fullcalendar.js', 3619, 143522,143977, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",3620,143570,143586) ||   clearSelection());
   if (cell && (_wrap_setLastFunctionCall("fullcalendar.js",3621,143620,143638) || cellIsAllDay(cell))) {
@@ -4088,7 +4088,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3619, 143522,143977);
   }
 }, ev));
 (_wrap_setLastFunctionCall("fullcalendar.js",3631,144000,144373) ||         (_wrap_setLastFunctionCall("fullcalendar.js",3631,144000,144011) || $(document)).one('mouseup', function(ev) {
-_wrap_addFunctionToMap('fullcalendar.js', 3631, 144027,144372);
+_wrap_addFunctionToMap('fullcalendar.js', 3631, 144027,144372, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",3632,144063,144083) ||   hoverListener.stop());
   if (dates) {
@@ -4102,7 +4102,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3631, 144027,144372);
     }
   }
   function OverlayManager() {
-_wrap_addFunctionToMap('fullcalendar.js', 3643, 144409,145196);
+_wrap_addFunctionToMap('fullcalendar.js', 3643, 144409,145196, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var t = this;
     t.renderOverlay = renderOverlay;
@@ -4110,7 +4110,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3643, 144409,145196);
     var usedOverlays = [];
     var unusedOverlays = [];
     function renderOverlay(rect, parent) {
-_wrap_addFunctionToMap('fullcalendar.js', 3649, 144613,145009);
+_wrap_addFunctionToMap('fullcalendar.js', 3649, 144613,145009, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var e = (_wrap_setLastFunctionCall("fullcalendar.js",3650,144672,144694) || unusedOverlays.shift());
       if (!e) {
@@ -4123,7 +4123,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3649, 144613,145009);
       return e;
     }
     function clearOverlays() {
-_wrap_addFunctionToMap('fullcalendar.js', 3660, 145018,145190);
+_wrap_addFunctionToMap('fullcalendar.js', 3660, 145018,145190, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       var e;
       while (e = (_wrap_setLastFunctionCall("fullcalendar.js",3662,145087,145107) || usedOverlays.shift())) {
@@ -4132,20 +4132,20 @@ _wrap_addFunctionToMap('fullcalendar.js', 3660, 145018,145190);
     }
   }
   function CoordinateGrid(buildFunc) {
-_wrap_addFunctionToMap('fullcalendar.js', 3667, 145201,146435);
+_wrap_addFunctionToMap('fullcalendar.js', 3667, 145201,146435, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var t = this;
     var rows;
     var cols;
     t.build = function() {
-_wrap_addFunctionToMap('fullcalendar.js', 3671, 145314,145418);
+_wrap_addFunctionToMap('fullcalendar.js', 3671, 145314,145418, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   rows = [];
   cols = [];
 (_wrap_setLastFunctionCall("fullcalendar.js",3674,145386,145407) ||   buildFunc(rows, cols));
 };
     t.cell = function(x, y) {
-_wrap_addFunctionToMap('fullcalendar.js', 3676, 145437,146056);
+_wrap_addFunctionToMap('fullcalendar.js', 3676, 145437,146056, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var rowCnt = rows.length;
   var colCnt = cols.length;
@@ -4165,14 +4165,14 @@ _wrap_addFunctionToMap('fullcalendar.js', 3676, 145437,146056);
   return r >= 0 && c >= 0 ? {row: r, col: c} : null;
 };
     t.rect = function(row0, col0, row1, col1, originElement) {
-_wrap_addFunctionToMap('fullcalendar.js', 3697, 146075,146428);
+_wrap_addFunctionToMap('fullcalendar.js', 3697, 146075,146428, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var origin = (_wrap_setLastFunctionCall("fullcalendar.js",3698,146151,146173) || originElement.offset());
   return {top: rows[row0][0] - origin.top, left: cols[col0][0] - origin.left, width: cols[col1][1] - cols[col0][0], height: rows[row1][1] - rows[row0][0]};
 };
   }
   function HoverListener(coordinateGrid) {
-_wrap_addFunctionToMap('fullcalendar.js', 3707, 146440,147612);
+_wrap_addFunctionToMap('fullcalendar.js', 3707, 146440,147612, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var t = this;
     var bindType;
@@ -4180,7 +4180,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3707, 146440,147612);
     var firstCell;
     var cell;
     t.start = function(_change, ev, _bindType) {
-_wrap_addFunctionToMap('fullcalendar.js', 3713, 146604,146871);
+_wrap_addFunctionToMap('fullcalendar.js', 3713, 146604,146871, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   change = _change;
   firstCell = cell = null;
@@ -4190,7 +4190,7 @@ _wrap_addFunctionToMap('fullcalendar.js', 3713, 146604,146871);
 (_wrap_setLastFunctionCall("fullcalendar.js",3719,146827,146860) ||   (_wrap_setLastFunctionCall("fullcalendar.js",3719,146827,146838) || $(document)).bind(bindType, mouse));
 };
     function mouse(ev) {
-_wrap_addFunctionToMap('fullcalendar.js', 3721, 146881,147490);
+_wrap_addFunctionToMap('fullcalendar.js', 3721, 146881,147490, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",3722,146914,146929) ||       _fixUIEvent(ev));
       var newCell = (_wrap_setLastFunctionCall("fullcalendar.js",3723,146957,146996) || coordinateGrid.cell(ev.pageX, ev.pageY));
@@ -4207,14 +4207,14 @@ _wrap_addFunctionToMap('fullcalendar.js', 3721, 146881,147490);
       }
     }
     t.stop = function() {
-_wrap_addFunctionToMap('fullcalendar.js', 3736, 147508,147605);
+_wrap_addFunctionToMap('fullcalendar.js', 3736, 147508,147605, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("fullcalendar.js",3737,147534,147569) ||   (_wrap_setLastFunctionCall("fullcalendar.js",3737,147534,147545) || $(document)).unbind(bindType, mouse));
   return cell;
 };
   }
   function _fixUIEvent(event) {
-_wrap_addFunctionToMap('fullcalendar.js', 3741, 147617,147809);
+_wrap_addFunctionToMap('fullcalendar.js', 3741, 147617,147809, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     if (event.pageX === undefined) {
       event.pageX = event.originalEvent.pageX;
@@ -4222,26 +4222,26 @@ _wrap_addFunctionToMap('fullcalendar.js', 3741, 147617,147809);
     }
   }
   function HorizontalPositionCache(getElement) {
-_wrap_addFunctionToMap('fullcalendar.js', 3747, 147814,148414);
+_wrap_addFunctionToMap('fullcalendar.js', 3747, 147814,148414, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var t = this, elements = {}, lefts = {}, rights = {};
     function e(i) {
-_wrap_addFunctionToMap('fullcalendar.js', 3749, 147931,148019);
+_wrap_addFunctionToMap('fullcalendar.js', 3749, 147931,148019, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
       return elements[i] = elements[i] || (_wrap_setLastFunctionCall("fullcalendar.js",3750,147995,148008) || getElement(i));
     }
     t.left = function(i) {
-_wrap_addFunctionToMap('fullcalendar.js', 3752, 148037,148149);
+_wrap_addFunctionToMap('fullcalendar.js', 3752, 148037,148149, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return lefts[i] = lefts[i] === undefined ? (_wrap_setLastFunctionCall("fullcalendar.js",3753,148107,148122) || (_wrap_setLastFunctionCall("fullcalendar.js",3753,148107,148111) || e(i)).position()).left : lefts[i];
 };
     t.right = function(i) {
-_wrap_addFunctionToMap('fullcalendar.js', 3755, 148169,148288);
+_wrap_addFunctionToMap('fullcalendar.js', 3755, 148169,148288, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return rights[i] = rights[i] === undefined ? (_wrap_setLastFunctionCall("fullcalendar.js",3756,148241,148250) || t.left(i)) + (_wrap_setLastFunctionCall("fullcalendar.js",3756,148253,148265) || (_wrap_setLastFunctionCall("fullcalendar.js",3756,148253,148257) || e(i)).width()) : rights[i];
 };
     t.clear = function() {
-_wrap_addFunctionToMap('fullcalendar.js', 3758, 148308,148407);
+_wrap_addFunctionToMap('fullcalendar.js', 3758, 148308,148407, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   elements = {};
   lefts = {};

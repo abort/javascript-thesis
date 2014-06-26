@@ -37,25 +37,58 @@ function _wrap_calculateFunctionCoverage() {
 }
 
 function _wrap_calculateFunctionCoverageWithScriptExclude(script) {
-  var total = 0;
-  for (var i in _wrap_staticMeasuredFunctions) {
-    if (!_wrap_staticMeasuredFunctions.hasOwnProperty(i) || script === i) continue;
-    total += _wrap_staticMeasuredFunctions[i];
-  }
+	var total = 0;
+	for ( var i in _wrap_staticMeasuredFunctions) {
+		if (!_wrap_staticMeasuredFunctions.hasOwnProperty(i) || script === i)
+			continue;
+		total += _wrap_staticMeasuredFunctions[i];
+	}
 
-  var nonNativeFunctions = _wrap_getNonNativeFunctions();
-  if (script !== null && script !== undefined && typeof script === "string") {
-    var scriptLen = script.length;
-    nonNativeFunctions = nonNativeFunctions
-        .filter(function(el) {
-          // filter out script
-          return (el.length > scriptLen && !(el.substring(0,
-              scriptLen) === script));
-        });
-  }
+	var nonNativeFunctions = _wrap_getNonNativeFunctions();
+	if (script !== null && script !== undefined && typeof script === "string") {
+		nonNativeFunctions = nonNativeFunctions.filter(function(el) {
+			// filter out script
+			return (el.indexOf(script + "@") !== 0);
+		});
+	}
 
-  return (nonNativeFunctions.length / total) * 100;
+	return (nonNativeFunctions.length / total) * 100;
 }
+
+function _wrap_calculateFunctionCoverageWithScriptsExclude(scripts) {
+	var total = 0;
+	for ( var i in _wrap_staticMeasuredFunctions) {
+		if (!_wrap_staticMeasuredFunctions.hasOwnProperty(i))
+			continue;
+		var doContinue = false
+		for (var j = 0; j < scripts.length; j++) {
+			if (scripts[j] === i)
+				doContinue = true;
+		}
+		if (doContinue)
+			continue;
+		total += _wrap_staticMeasuredFunctions[i];
+	}
+
+	var nonNativeFunctions = _wrap_getNonNativeFunctions();
+	if (scripts !== null && scripts !== undefined) {
+		for (var i = 0; i < scripts.length; i++) {
+			var script = scripts[i];
+			nonNativeFunctions = nonNativeFunctions.filter(function(el) {
+				// filter out script
+				return (el.indexOf(script + "@") !== 0);
+			});
+		}
+	}
+
+	return (nonNativeFunctions.length / total) * 100;
+}
+
+function _wrap_isNativeFunction(f) {
+    return !!f && (typeof f).toLowerCase() == 'function' 
+        && (f === Function.prototype 
+        || /^\s*function\s*(\b[a-z$_][a-z0-9$_]*\b)*\s*\((|([a-z$_][a-z0-9$_]*)(\s*,[a-z$_][a-z0-9$_]*)*)\)\s*{\s*\[native code\]\s*}\s*$/i.test(String(f)));
+ }
 
 function _wrap_calculateCallCoverage() {
   console.log("Warning this result relies on post processing (adding native functions to the call map after running the program). Make sure you run _wrap_postProcess first.");
@@ -68,7 +101,12 @@ function _wrap_calculateCallCoverage() {
   return (_wrap_getCalls().length / total) * 100;
 }
 
-function _wrap_addFunctionToMap(file, line, startPosition, endPosition) {
+function _wrap_addFunctionToMap(file, line, startPosition, endPosition, caller) {
+  if (caller == null) {
+	  // native invocation or top level
+	  _wrap_lastCall = null;
+	  return;
+  }
   if (_wrap_lastCall == null) return;
   var thisFunction = file + "@" + line + ":" + startPosition + "-" + endPosition;
   var currentArray = _wrap_callMap[thisFunction];
@@ -131,7 +169,11 @@ function _wrap_printCallMap() {
   }
 }
 
-function _wrap_setLastFunctionCall(file, line, startPosition, endPosition) {
+function _wrap_setLastFunctionCall(file, line, startPosition, endPosition, functionProp) {
+  if (functionProp != null && _wrap_isNativeFunction(functionProp)) {
+	  // Encountered a native function.... prevent this from creating a vertex
+	  return false;
+  }
   var newCall = file + "@" + line + ":" + startPosition + "-" + endPosition;
   _wrap_lastCall = newCall;
   if (!_wrap_doesArrayContain(_wrap_allCalls, newCall)) _wrap_allCalls.push(newCall);

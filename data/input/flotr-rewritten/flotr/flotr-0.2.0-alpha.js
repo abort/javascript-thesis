@@ -1,19 +1,19 @@
 window.parent._wrap_staticMeasuredFunctions['flotr-0.2.0-alpha.js'] = 104;
 window.parent._wrap_staticMeasuredCalls['flotr-0.2.0-alpha.js'] =830;
 var Flotr = {version: '0.2.0-alpha', author: 'Bas Wenneker', website: 'http://www.solutoire.com', _registeredTypes: {'lines': 'drawSeriesLines', 'points': 'drawSeriesPoints', 'bars': 'drawSeriesBars', 'candles': 'drawSeriesCandles', 'pie': 'drawSeriesPie'}, register: function(type, functionName) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 14, 350,447);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 14, 350,447, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   Flotr._registeredTypes[type] = functionName + '';
 }, draw: function(el, data, options, _GraphKlass_) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 18, 462,619);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 18, 462,619, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   _GraphKlass_ = _GraphKlass_ || Flotr.Graph;
   return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",20,576,611) || new _GraphKlass_(el, data, options));
 }, getSeries: function(data) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 23, 639,1043);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 23, 639,1043, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",24,673,1035) || data.collect(function(serie) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 24, 686,1034);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 24, 686,1034, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var i, serie = (serie.data) ? (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",25,748,767) || Object.clone(serie)) : {'data': serie};
   for (i = serie.data.length - 1; i > -1; --i) {
@@ -22,7 +22,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 24, 686,1034);
   return serie;
 }));
 }, merge: function(src, dest) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 35, 1059,1408);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 35, 1059,1408, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var result = dest || {};
   for (var i in src) {
@@ -30,7 +30,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 35, 1059,1408);
   }
   return result;
 }, getTickSize: function(noTicks, min, max, decimals) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 43, 1430,1867);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 43, 1430,1867, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var delta = (max - min) / noTicks;
   var magn = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",45,1535,1560) || Flotr.getMagnitude(delta));
@@ -46,31 +46,31 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 43, 1430,1867);
     tickSize = 5;
   return tickSize * magn;
 }, defaultTickFormatter: function(val) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 59, 1898,1947);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 59, 1898,1947, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return val + '';
 }, defaultTrackFormatter: function(obj) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 63, 1979,2052);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 63, 1979,2052, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return '(' + obj.x + ', ' + obj.y + ')';
 }, defaultPieLabelFormatter: function(slice) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 66, 2085,2167);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 66, 2085,2167, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",67,2121,2153) || (slice.fraction * 100).toFixed(2)) + '%';
 }, getMagnitude: function(x) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 70, 2190,2278);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 70, 2190,2278, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",71,2221,2270) || Math.pow(10, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",71,2234,2269) || Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",71,2245,2256) || Math.log(x)) / Math.LN10))));
 }, toPixel: function(val) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 73, 2294,2356);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 73, 2294,2356, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",74,2327,2342) || Math.floor(val)) + 0.5;
 }, toRad: function(angle) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 76, 2370,2437);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 76, 2370,2437, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return -angle * (Math.PI / 180);
 }, parseColor: function(str) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 80, 2458,4276);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 80, 2458,4276, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (str instanceof Flotr.Color) 
     return str;
@@ -93,7 +93,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 80, 2458,4276);
   }
   return ((result = Color.lookupColors[name])) ? (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",114,4218,4260) || new Color(result[0], result[1], result[2])) : false;
 }, extractColor: function(element) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 117, 4299,4669);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 117, 4299,4669, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var color;
   do {
@@ -105,7 +105,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 117, 4299,4669);
   return (color == 'rgba(0, 0, 0, 0)') ? 'transparent' : color;
 }};
 Flotr.Graph = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",131,4691,97537) || Class.create({initialize: function(el, data, options) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 133, 4725,5865);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 133, 4725,5865, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   this.el = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",134,4775,4780) || $(el));
   if (!this.el) 
@@ -132,7 +132,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 133, 4725,5865);
   if (this.options.spreadsheet.show) 
     (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",180,5837,5857) ||   this.constructTabs());
 }, setOptions: function(opts) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 183, 5886,13363);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 183, 5886,13363, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var options = {colors: ['#00A8F0', '#C0D800', '#CB4B4B', '#4DA74D', '#9440ED'], title: null, subtitle: null, legend: {show: true, noColumns: 1, labelFormatter: Prototype.K, labelBoxBorderColor: '#CCCCCC', labelBoxWidth: 14, labelBoxHeight: 10, labelBoxMargin: 5, container: null, position: 'nw', margin: 5, backgroundColor: null, backgroundOpacity: 0.85}, xaxis: {ticks: null, showLabels: true, labelsAngle: 0, title: null, titleAngle: 0, noTicks: 5, tickFormatter: Flotr.defaultTickFormatter, tickDecimals: null, min: null, max: null, autoscaleMargin: 0, color: null}, x2axis: {}, yaxis: {ticks: null, showLabels: true, labelsAngle: 0, title: null, titleAngle: 90, noTicks: 5, tickFormatter: Flotr.defaultTickFormatter, tickDecimals: null, min: null, max: null, autoscaleMargin: 0, color: null}, y2axis: {titleAngle: 270}, points: {show: false, radius: 3, lineWidth: 2, fill: true, fillColor: '#FFFFFF', fillOpacity: 0.4}, lines: {show: false, lineWidth: 2, fill: false, fillColor: null, fillOpacity: 0.4}, bars: {show: false, lineWidth: 2, barWidth: 1, fill: true, fillColor: null, fillOpacity: 0.4, horizontal: false, stacked: false}, candles: {show: false, lineWidth: 1, wickLineWidth: 1, candleWidth: 0.6, fill: true, upFillColor: '#00A8F0', downFillColor: '#CB4B4B', fillOpacity: 0.5, barcharts: false}, pie: {show: false, lineWidth: 1, fill: true, fillColor: null, fillOpacity: 0.6, explode: 6, sizeRatio: 0.6, startAngle: Math.PI / 4, labelFormatter: Flotr.defaultPieLabelFormatter, pie3D: false, pie3DviewAngle: (Math.PI / 2 * 0.8), pie3DspliceThickness: 20}, grid: {color: '#545454', backgroundColor: null, tickColor: '#DDDDDD', labelMargin: 3, verticalLines: true, horizontalLines: true, outlineWidth: 2}, selection: {mode: null, color: '#B6D9FF', fps: 20}, mouse: {track: false, position: 'se', relative: false, trackFormatter: Flotr.defaultTrackFormatter, margin: 5, lineColor: '#FF3F19', trackDecimals: 1, sensibility: 2, radius: 3}, shadowSize: 4, defaultType: 'lines', HtmlText: true, fontSize: 7.5, spreadsheet: {show: false, tabGraphLabel: 'Graph', tabDataLabel: 'Data', toolbarDownload: 'Download CSV', toolbarSelectAll: 'Select all'}};
   options.x2axis = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",322,10293,10351) || Object.extend((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",322,10307,10334) || Object.clone(options.xaxis)), options.x2axis));
@@ -192,7 +192,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 183, 5886,13363);
       s.shadowSize = this.options.shadowSize;
   }
 }, constructCanvas: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 418, 13389,15249);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 418, 13389,15249, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var el = this.el, size, c, oc;
   this.canvas = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",422,13481,13507) || el.select('.flotr-canvas'))[0];
@@ -235,7 +235,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 418, 13389,15249);
     this.textEnabled = true;
   }
 }, getTextDimensions: function(text, canvasStyle, HtmlStyle, className) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 481, 15275,16005);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 481, 15275,16005, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (!text) 
     return {width: 0, height: 0};
@@ -249,7 +249,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 481, 15275,16005);
     return dim;
   }
 }, loadDataGrid: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 500, 16026,16799);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 500, 16026,16799, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (this.seriesData) 
     return this.seriesData;
@@ -257,11 +257,11 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 500, 16026,16799);
   var dg = [];
   for (i = 0; i < s.length; ++i) {
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",508,16207,16660) ||     s[i].data.each(function(v) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 508, 16222,16659);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 508, 16222,16659, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var x = v[0], y = v[1];
   if (r = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",511,16324,16409) || dg.find(function(row) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 511, 16332,16408);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 511, 16332,16408, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return row[0] == x;
 }))) {
@@ -275,13 +275,13 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 511, 16332,16408);
 }));
   }
   dg = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",525,16691,16753) || dg.sortBy(function(v) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 525, 16701,16752);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 525, 16701,16752, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return v[0];
 }));
   return this.seriesData = dg;
 }, showTab: function(tabName, onComplete) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 532, 16819,17576);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 532, 16819,17576, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var elementsClassNames = 'canvas, .flotr-labels, .flotr-legend, .flotr-legend-bg, .flotr-title, .flotr-subtitle';
   switch (tabName) {
@@ -300,7 +300,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 532, 16819,17576);
       break;
   }
 }, constructTabs: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 550, 17598,18754);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 550, 17598,18754, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var tabsContainer = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",551,17641,17832) || new Element('div', {className: 'flotr-tabs-group', style: 'position:absolute;left:0px;top:' + this.canvasHeight + 'px;width:' + this.canvasWidth + 'px;'}));
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",555,17843,17906) ||   this.el.insert({bottom: tabsContainer}));
@@ -308,17 +308,17 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 550, 17598,18754);
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",569,18328,18388) ||   (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",569,18328,18365) || tabsContainer.insert(this.tabs.graph)).insert(this.tabs.data));
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",571,18401,18510) ||   this.el.setStyle({height: this.canvasHeight + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",572,18461,18487) || this.tabs.data.getHeight()) + 2 + 'px'}));
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",575,18523,18630) ||   this.tabs.graph.observe('click', (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",577,18557,18629) || (function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 575, 18557,18617);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 575, 18557,18617, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",576,18584,18605) ||   this.showTab('graph'));
 }).bind(this))));
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",578,18641,18746) ||   this.tabs.data.observe('click', (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",580,18674,18745) || (function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 578, 18674,18733);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 578, 18674,18733, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",579,18701,18721) ||   this.showTab('data'));
 }).bind(this))));
 }, constructDataGrid: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 584, 18784,22225);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 584, 18784,22225, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (this.datagrid) 
     return this.datagrid;
@@ -342,7 +342,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 584, 18784,22225);
         var label;
         if (this.options.xaxis.ticks) {
           var tick = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",618,19918,20050) || this.options.xaxis.ticks.find(function(x) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 618, 19948,20049);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 618, 19948,20049, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return x[0] == datagrid[j][i];
 }));
@@ -362,10 +362,10 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 618, 19948,20049);
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",634,20524,20567) ||   t.update((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",634,20533,20550) || colgroup.join('')) + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",634,20553,20566) || html.join(''))));
   if (!Prototype.Browser.IE) {
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",637,20622,21264) ||     (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",637,20622,20636) || t.select('td')).each(function(td) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 637, 20642,21263);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 637, 20642,21263, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",638,20675,21010) ||   td.observe('mouseover', function(e) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 638, 20699,21009);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 638, 20699,21009, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   td = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",639,20740,20751) || e.element());
   var siblings = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",640,20789,20810) || td.previousSiblings());
@@ -373,10 +373,10 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 638, 20699,21009);
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",643,20926,20989) ||   (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",643,20926,20950) || t.select('colgroup col'))[siblings.length].addClassName('hover'));
 }));
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",646,21031,21247) ||   td.observe('mouseout', function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 646, 21054,21246);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 646, 21054,21246, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",647,21089,21226) ||   (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",647,21089,21129) || t.select('colgroup col.hover, th.hover')).each(function(e) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 647, 21135,21225);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 647, 21135,21225, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",648,21175,21201) ||   e.removeClassName('hover'));
 }));
@@ -390,13 +390,13 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 647, 21135,21225);
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",673,22173,22198) ||   this.el.insert(container));
   return t;
 }, selectAllData: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 676, 22247,23212);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 676, 22247,23212, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (this.tabs) {
     var selection, range, doc, win, node = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",678,22339,22363) || this.constructDataGrid());
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",680,22380,22400) ||     this.showTab('data'));
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",697,22420,23148) ||     (function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 683, 22420,23139);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 683, 22420,23139, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if ((doc = node.ownerDocument) && (win = doc.defaultView) && win.getSelection && doc.createRange && (selection = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",686,22606,22627) || window.getSelection())) && selection.removeAllRanges) {
     range = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",688,22711,22728) || doc.createRange());
@@ -412,7 +412,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 683, 22420,23139);
   } else 
     return false;
 }, downloadCSV: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 701, 23232,24215);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 701, 23232,24215, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var i, csv = '"x"', series = this.series, dg = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",704,23328,23347) || this.loadDataGrid());
   for (i = 0; i < series.length; ++i) {
@@ -422,7 +422,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 701, 23232,24215);
   for (i = 0; i < dg.length; ++i) {
     if (this.options.xaxis.ticks) {
       var tick = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",713,23638,23748) || this.options.xaxis.ticks.find(function(x) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 713, 23668,23747);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 713, 23668,23747, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return x[0] == dg[i][0];
 }));
@@ -440,14 +440,14 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 713, 23668,23747);
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",726,24161,24196) ||     window.open('data:text/csv,' + csv));
   }
 }, initEvents: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 730, 24236,24587);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 730, 24236,24587, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",733,24325,24353) ||   this.overlay.stopObserving());
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",734,24364,24431) ||   this.overlay.observe('mousedown', (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",734,24398,24430) || this.mouseDownHandler.bind(this))));
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",735,24442,24509) ||   this.overlay.observe('mousemove', (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",735,24476,24508) || this.mouseMoveHandler.bind(this))));
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",736,24520,24579) ||   this.overlay.observe('click', (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",736,24550,24578) || this.clickHandler.bind(this))));
 }, findDataRanges: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 739, 24612,26504);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 739, 24612,26504, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var s = this.series, a = this.axes;
   a.x.datamin = 0;
@@ -502,7 +502,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 739, 24612,26504);
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",797,26449,26485) ||     this.extendYRangeIfNeededByBar(a.y2));
   }
 }, calculateRange: function(axis) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 801, 26529,27629);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 801, 26529,27629, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var o = axis.options, min = o.min != null ? o.min : axis.datamin, max = o.max != null ? o.max : axis.datamax, margin;
   if (max - min == 0.0) {
@@ -532,7 +532,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 801, 26529,27629);
   axis.min = min;
   axis.max = max;
 }, extendXRangeIfNeededByBar: function(axis) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 838, 27665,29034);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 838, 27665,29034, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (axis.options.max == null) {
     var newmax = axis.max, i, s, b, c, stackedSums = [], lastSerie = null;
@@ -562,7 +562,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 838, 27665,29034);
     axis.max = newmax;
   }
 }, extendYRangeIfNeededByBar: function(axis) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 873, 29070,30434);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 873, 29070,30434, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (axis.options.max == null) {
     var newmax = axis.max, i, s, b, c, stackedSums = [], lastSerie = null;
@@ -592,7 +592,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 873, 29070,30434);
     axis.max = newmax;
   }
 }, findXAxesValues: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 908, 30460,30756);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 908, 30460,30756, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   for (i = this.series.length - 1; i > -1; --i) {
     s = this.series[i];
@@ -602,7 +602,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 908, 30460,30756);
     }
   }
 }, calculateTicks: function(axis) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 918, 30781,32292);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 918, 30781,32292, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var o = axis.options, i, v;
   axis.ticks = [];
@@ -636,11 +636,11 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 918, 30781,32292);
     }
   }
 }, calculateSpacing: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 972, 32319,35520);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 972, 32319,35520, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var a = this.axes, options = this.options, series = this.series, margin = options.grid.labelMargin, x = a.x, x2 = a.x2, y = a.y, y2 = a.y2, maxOutset = 2, i, j, l, dim;
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",985,32641,33515) ||   [x, x2, y, y2].each(function(axis) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 985, 32661,33508);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 985, 32661,33508, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var maxLabel = '';
   if (axis.options.showLabels) {
@@ -680,7 +680,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 985, 32661,33508);
   y.scale = this.plotHeight / (y.max - y.min);
   y2.scale = this.plotHeight / (y2.max - y2.min);
 }, draw: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1059, 35535,35988);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1059, 35535,35988, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1060,35558,35573) ||   this.drawGrid());
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1061,35584,35601) ||   this.drawLabels());
@@ -694,17 +694,17 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1059, 35535,35988);
   }
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1071,35928,35980) ||   this.el.fire('flotr:afterdraw', [this.series, this]));
 }, tHoz: function(x, axis) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1074, 36003,36112);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1074, 36003,36112, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   axis = axis || this.axes.x;
   return (x - axis.min) * axis.scale;
 }, tVert: function(y, axis) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1079, 36128,36255);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1079, 36128,36255, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   axis = axis || this.axes.y;
   return this.plotHeight - (y - axis.min) * axis.scale;
 }, drawGrid: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1084, 36274,38306);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1084, 36274,38306, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var v, o = this.options, ctx = this.ctx;
   if (o.grid.verticalLines || o.grid.horizontalLines) {
@@ -749,7 +749,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1084, 36274,38306);
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1138,38219,38287) ||     this.el.fire('flotr:aftergrid', [this.axes.x, this.axes.y, o, this]));
   }
 }, drawLabels: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1142, 38327,45719);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1142, 38327,45719, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var noLabels = 0, axis, xBoxWidth, i, html, tick, options = this.options, ctx = this.ctx, a = this.axes;
   for (i = 0; i < a.x.ticks.length; ++i) {
@@ -860,7 +860,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1142, 38327,45719);
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1303,45671,45700) ||     this.el.insert((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1303,45686,45699) || html.join(''))));
   }
 }, drawTitles: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1307, 45740,50985);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1307, 45740,50985, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var html, options = this.options, margin = options.grid.labelMargin, ctx = this.ctx, a = this.axes;
   if (!options.HtmlText && this.textEnabled) {
@@ -926,7 +926,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1307, 45740,50985);
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1436,50937,50966) ||     this.el.insert((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1436,50952,50965) || html.join(''))));
   }
 }, drawSeries: function(series) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1440, 51006,51440);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1440, 51006,51440, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   series = series || this.series;
   var drawn = false;
@@ -940,7 +940,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1440, 51006,51440);
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1452,51359,51421) ||     this[Flotr._registeredTypes[this.options.defaultType]](series));
   }
 }, plotLine: function(series, offset) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1456, 51459,54043);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1456, 51459,54043, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var ctx = this.ctx, xa = series.xaxis, ya = series.yaxis, tHoz = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1460,51600,51620) || this.tHoz.bind(this)), tVert = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1461,51643,51664) || this.tVert.bind(this)), data = series.data;
   if (data.length < 2) 
@@ -1004,7 +1004,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1456, 51459,54043);
   }
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1534,54023,54035) ||   ctx.stroke());
 }, plotLineArea: function(series, offset) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1537, 54066,57626);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1537, 54066,57626, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var data = series.data;
   if (data.length < 2) 
@@ -1081,7 +1081,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1537, 54066,57626);
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1638,57582,57597) ||   ctx.closePath());
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1639,57608,57618) ||   ctx.fill());
 }, drawSeriesLines: function(series) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1642, 57652,58850);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1642, 57652,58850, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   series = series || this.series;
   var ctx = this.ctx;
@@ -1111,7 +1111,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1642, 57652,58850);
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1676,58794,58818) ||   this.plotLine(series, 0));
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1677,58829,58842) ||   ctx.restore());
 }, drawSeriesPoints: function(series) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1680, 58877,59751);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1680, 58877,59751, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var ctx = this.ctx;
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1683,58937,58947) ||   ctx.save());
@@ -1131,7 +1131,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1680, 58877,59751);
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1702,59654,59719) ||   this.plotPoints(series, series.points.radius, series.points.fill));
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1703,59730,59743) ||   ctx.restore());
 }, plotPoints: function(series, radius, fill) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1705, 59770,60362);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1705, 59770,60362, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var xa = series.xaxis, ya = series.yaxis, ctx = this.ctx, i, data = series.data;
   for (i = data.length - 1; i > -1; --i) {
@@ -1145,7 +1145,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1705, 59770,60362);
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1721,60331,60343) ||     ctx.stroke());
   }
 }, plotPointShadows: function(series, offset, radius) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1724, 60387,60950);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1724, 60387,60950, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var xa = series.xaxis, ya = series.yaxis, ctx = this.ctx, i, data = series.data;
   for (i = data.length - 1; i > -1; --i) {
@@ -1157,7 +1157,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1724, 60387,60950);
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1738,60919,60931) ||     ctx.stroke());
   }
 }, drawSeriesBars: function(series) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1742, 60975,61694);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1742, 60975,61694, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var ctx = this.ctx, bw = series.bars.barWidth, lw = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1745,61082,61117) || Math.min(series.bars.lineWidth, bw));
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1747,61130,61140) ||   ctx.save());
@@ -1172,7 +1172,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1742, 60975,61694);
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1761,61616,61662) ||   this.plotBars(series, bw, 0, series.bars.fill));
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1762,61673,61686) ||   ctx.restore());
 }, plotBars: function(series, barWidth, offset, fill) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1764, 61711,64575);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1764, 61711,64575, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var data = series.data;
   if (data.length < 1) 
@@ -1184,7 +1184,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1764, 61711,64575);
     var stackOffset = 0;
     if (series.bars.stacked) {
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1784,62321,62536) ||       xa.values.each(function(o, v) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1784, 62336,62535);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1784, 62336,62535, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (v == x) {
     stackOffset = o.stack || 0;
@@ -1232,7 +1232,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1784, 62336,62535);
     }
   }
 }, plotBarsShadows: function(series, barWidth, offset) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1851, 64599,66532);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1851, 64599,66532, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var data = series.data;
   if (data.length < 1) 
@@ -1243,7 +1243,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1851, 64599,66532);
     var stackOffset = 0;
     if (series.bars.stacked) {
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1869,65144,65371) ||       xa.values.each(function(o, v) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1869, 65159,65370);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1869, 65159,65370, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (v == x) {
     stackOffset = o.stackShadow || 0;
@@ -1271,7 +1271,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1869, 65159,65370);
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1901,66392,66513) ||     ctx.fillRect((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1901,66405,66450) || Math.min((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1901,66414,66428) || tHoz(left, xa)) + sw, this.plotWidth)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1901,66452,66497) || Math.min((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1901,66461,66475) || tVert(top, ya)) + sw, this.plotWidth)), width, height));
   }
 }, drawSeriesCandles: function(series) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1905, 66560,66958);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1905, 66560,66958, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var ctx = this.ctx, bw = series.candles.candleWidth;
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1909,66666,66676) ||   ctx.save());
@@ -1282,7 +1282,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1905, 66560,66958);
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1916,66892,66924) ||   this.plotCandles(series, bw / 2));
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1918,66937,66950) ||   ctx.restore());
 }, plotCandles: function(series, offset) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1920, 66978,70025);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1920, 66978,70025, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var data = series.data;
   if (data.length < 1) 
@@ -1328,7 +1328,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1920, 66978,70025);
     }
   }
 }, plotCandlesShadows: function(series, offset) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1994, 70052,71394);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1994, 70052,71394, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var data = series.data;
   if (data.length < 1 || series.candles.barcharts) 
@@ -1345,7 +1345,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1994, 70052,71394);
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2024,71249,71375) ||     this.ctx.fillRect((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2024,71267,71312) || Math.min((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2024,71276,71290) || tHoz(left, xa)) + sw, this.plotWidth)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2024,71314,71359) || Math.min((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2024,71323,71337) || tVert(top, ya)) + sw, this.plotWidth)), width, height));
   }
 }, drawSeriesPie: function(series) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2028, 71418,76549);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2028, 71418,76549, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (!this.options.pie.drawn) {
     var ctx = this.ctx, options = this.options, lw = series.pie.lineWidth, sw = series.shadowSize, data = series.data, radius = ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2035,71701,71746) || Math.min(this.canvasWidth, this.canvasHeight)) * series.pie.sizeRatio) / 2, html = [];
@@ -1354,19 +1354,19 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2028, 71418,76549);
     var style = {size: options.fontSize * 1.2, color: options.grid.color, weight: 1.5};
     var center = {x: (this.canvasWidth + this.plotOffset.left) / 2, y: (this.canvasHeight - this.plotOffset.bottom) / 2};
     var portions = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2053,72316,72639) || this.series.collect(function(hash, index) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2053, 72336,72638);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2053, 72336,72638, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (hash.pie.show) 
     return {name: (hash.label || hash.data[0][1]), value: [index, hash.data[0][1]], explode: hash.pie.explode};
 }));
     var sum = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2063,72668,72779) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2063,72668,72700) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2063,72668,72691) || portions.pluck('value')).pluck(1)).inject(0, function(acc, n) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2063, 72711,72778);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2063, 72711,72778, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return acc + n;
 }));
     var fraction = 0.0, angle = series.pie.startAngle, value = 0.0;
     var slices = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2071,72922,73463) || portions.collect(function(slice) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2071, 72939,73462);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2071, 72939,73462, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   angle += fraction;
   value = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2073,73019,73045) || parseFloat(slice.value[1]));
@@ -1376,7 +1376,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2071, 72939,73462);
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2086,73480,73490) ||     ctx.save());
     if (sw > 0) {
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2089,73538,74055) ||       slices.each(function(slice) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2089, 73550,74048);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2089, 73550,74048, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var bisection = (slice.startAngle + slice.endAngle) / 2;
   var xOffset = center.x + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2092,73695,73714) || Math.cos(bisection)) * slice.explode + sw;
@@ -1390,7 +1390,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2089, 73550,74048);
       html = ['<div style="color:' + this.options.grid.color + '" class="flotr-labels">'];
     }
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2106,74243,76321) ||     slices.each(function(slice, index) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2106, 74255,76314);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2106, 74255,76314, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var bisection = (slice.startAngle + slice.endAngle) / 2;
   var color = options.colors[index];
@@ -1431,7 +1431,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2106, 74255,76314);
     options.pie.drawn = true;
   }
 }, plotSlice: function(x, y, radius, startAngle, endAngle, fill, vScale) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2162, 76567,76939);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2162, 76567,76939, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var ctx = this.ctx;
   vScale = vScale || 1;
@@ -1444,16 +1444,16 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2162, 76567,76939);
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2172,76892,76907) ||   ctx.closePath());
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2173,76918,76931) ||   ctx.restore());
 }, plotPie: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2175, 76955,76969);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2175, 76955,76969, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 }, insertLegend: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2177, 76992,83116);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2177, 76992,83116, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (!this.options.legend.show) 
     return;
   var series = this.series, plotOffset = this.plotOffset, options = this.options, fragments = [], rowStarted = false, ctx = this.ctx, i;
   var noLegendItems = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2191,77322,77412) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2189,77322,77405) || series.findAll(function(s) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2189, 77337,77404);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2189, 77337,77404, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (s.label && !s.hide);
 })).size());
@@ -1534,7 +1534,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2189, 77337,77404);
     }
   }
 }, getEventPosition: function(event) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2306, 83143,84156);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2306, 83143,84156, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var offset = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2307,83184,83215) || this.overlay.cumulativeOffset()), rx = (event.pageX - offset.left - this.plotOffset.left), ry = (event.pageY - offset.top - this.plotOffset.top), ax = 0, ay = 0;
   if (event.pageX == null && event.clientX != null) {
@@ -1547,7 +1547,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2306, 83143,84156);
   }
   return {x: this.axes.x.min + rx / this.axes.x.scale, x2: this.axes.x2.min + rx / this.axes.x2.scale, y: this.axes.y.max - ry / this.axes.y.scale, y2: this.axes.y2.max - ry / this.axes.y2.scale, relX: rx, relY: ry, absX: ax, absY: ay};
 }, clickHandler: function(event) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2335, 84179,84384);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2335, 84179,84384, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (this.ignoreClick) {
     this.ignoreClick = false;
@@ -1555,13 +1555,13 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2335, 84179,84384);
   }
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2340,84311,84376) ||   this.el.fire('flotr:click', [(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2340,84340,84368) || this.getEventPosition(event)), this]));
 }, mouseMoveHandler: function(event) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2343, 84411,84849);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2343, 84411,84849, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var pos = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2344,84449,84477) || this.getEventPosition(event));
   this.lastMousePos.pageX = pos.absX;
   this.lastMousePos.pageY = pos.absY;
   if (this.selectionInterval == null && (this.options.mouse.track || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2348,84647,84735) || this.series.any(function(s) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2348, 84663,84734);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2348, 84663,84734, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return s.mouse && s.mouse.track;
 })))) {
@@ -1569,14 +1569,14 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2348, 84663,84734);
   }
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2354,84790,84841) ||   this.el.fire('flotr:mousemove', [event, pos, this]));
 }, mouseDownHandler: function(event) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2357, 84876,85835);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2357, 84876,85835, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2358,84908,84928) || event.isRightClick())) {
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2359,84945,84957) ||     event.stop());
     var overlay = this.overlay;
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2361,85013,85027) ||     overlay.hide());
     function cancelContextMenu() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2363, 85044,85198);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2363, 85044,85198, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2364,85092,85106) ||       overlay.show());
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2365,85125,85182) ||       (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2365,85125,85136) || $(document)).stopObserving('mousemove', cancelContextMenu));
@@ -1594,7 +1594,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2363, 85044,85198);
   this.mouseUpHandler = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2380,85735,85765) || this.mouseUpHandler.bind(this));
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2381,85776,85827) ||   (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2381,85776,85787) || $(document)).observe('mouseup', this.mouseUpHandler));
 }, fireSelectEvent: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2384, 85861,86709);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2384, 85861,86709, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var a = this.axes, selection = this.selection, x1 = (selection.first.x <= selection.second.x) ? selection.first.x : selection.second.x, x2 = (selection.first.x <= selection.second.x) ? selection.second.x : selection.first.x, y1 = (selection.first.y >= selection.second.y) ? selection.first.y : selection.second.y, y2 = (selection.first.y >= selection.second.y) ? selection.second.y : selection.first.y;
   x1 = a.x.min + x1 / a.x.scale;
@@ -1603,7 +1603,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2384, 85861,86709);
   y2 = a.y.max - y2 / a.y.scale;
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2397,86525,86701) ||   this.el.fire('flotr:select', [{x1: x1, y1: y1, x2: x2, y2: y2}, this]));
 }, mouseUpHandler: function(event) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2407, 86734,87263);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2407, 86734,87263, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2408,86762,86819) ||   (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2408,86762,86773) || $(document)).stopObserving('mouseup', this.mouseUpHandler));
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2409,86830,86842) ||   event.stop());
@@ -1619,7 +1619,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2407, 86734,87263);
     this.ignoreClick = true;
   }
 }, setSelectionPos: function(pos, event) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2426, 87289,88014);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2426, 87289,88014, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var options = this.options, offset = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2428,87372,87406) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2428,87372,87387) || $(this.overlay)).cumulativeOffset());
   if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2430,87423,87458) || options.selection.mode.indexOf('x')) == -1) {
@@ -1635,7 +1635,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2426, 87289,88014);
     pos.y = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2441,87950,87995) || Math.min((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2441,87959,87977) || Math.max(0, pos.y)), this.plotHeight));
   }
 }, updateSelection: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2445, 88040,88282);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2445, 88040,88282, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (this.lastMousePos.pageX == null) 
     return;
@@ -1644,7 +1644,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2445, 88040,88282);
   if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2451,88230,88252) || this.selectionIsSane())) 
     (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2451,88254,88274) ||   this.drawSelection());
 }, clearSelection: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2454, 88307,89026);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2454, 88307,89026, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (this.prevSelection == null) 
     return;
@@ -1652,7 +1652,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2454, 88307,89026);
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2465,88804,88980) ||   octx.clearRect(x + plotOffset.left - octx.lineWidth, y + plotOffset.top - octx.lineWidth, w + octx.lineWidth * 2, h + octx.lineWidth * 2));
   this.prevSelection = null;
 }, setSelection: function(area) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2473, 89049,89810);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2473, 89049,89810, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var options = this.options, xa = this.axes.x, ya = this.axes.y, vertScale = yaxis.scale, hozScale = xaxis.scale, selX = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2479,89261,89296) || options.selection.mode.indexOf('x')) != -1, selY = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2480,89324,89359) || options.selection.mode.indexOf('y')) != -1;
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2482,89378,89399) ||   this.clearSelection());
@@ -1663,7 +1663,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2473, 89049,89810);
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2489,89749,89769) ||   this.drawSelection());
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2490,89780,89802) ||   this.fireSelectEvent());
 }, drawSelection: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2493, 89834,91331);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2493, 89834,91331, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var prevSelection = this.prevSelection, selection = this.selection, octx = this.octx, options = this.options, plotOffset = this.plotOffset;
   if (prevSelection != null && selection.first.x == prevSelection.first.x && selection.first.y == prevSelection.first.y && selection.second.x == prevSelection.second.x && selection.second.y == prevSelection.second.y) 
@@ -1677,12 +1677,12 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2493, 89834,91331);
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2528,91190,91250) ||   octx.fillRect(x + plotOffset.left, y + plotOffset.top, w, h));
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2529,91261,91323) ||   octx.strokeRect(x + plotOffset.left, y + plotOffset.top, w, h));
 }, selectionIsSane: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2532, 91357,91559);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2532, 91357,91559, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var selection = this.selection;
   return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2534,91428,91476) || Math.abs(selection.second.x - selection.first.x)) >= 5 && (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2535,91498,91546) || Math.abs(selection.second.y - selection.first.y)) >= 5;
 }, clearHit: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2538, 91578,92172);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2538, 91578,92172, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (this.prevHit) {
     var options = this.options, plotOffset = this.plotOffset, prevHit = this.prevHit;
@@ -1690,7 +1690,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2538, 91578,92172);
     this.prevHit = null;
   }
 }, hit: function(mouse) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2554, 92186,96549);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2554, 92186,96549, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var series = this.series, options = this.options, prevHit = this.prevHit, plotOffset = this.plotOffset, octx = this.octx, data, xsens, ysens, i, n = {dist: Number.MAX_VALUE, x: null, y: null, relX: mouse.relX, relY: mouse.relY, absX: mouse.absX, absY: mouse.absY, mouse: null};
   for (i = 0; i < series.length; i++) {
@@ -1768,7 +1768,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2554, 92186,96549);
     }
   }
 }, saveImage: function(type, width, height, replaceCanvas) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2653, 96567,97383);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2653, 96567,97383, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var image = null;
   switch (type) {
@@ -1791,14 +1791,14 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2653, 96567,97383);
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2672,97278,97364) ||     this.el.insert((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2672,97293,97363) || image.setStyle({position: 'absolute'}))));
   }
 }, restoreCanvas: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2677, 97405,97533);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2677, 97405,97533, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2678,97428,97446) ||   this.canvas.show());
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2679,97457,97476) ||   this.overlay.show());
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2680,97487,97525) ||   (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2680,97487,97508) || this.el.select('img')).invoke('remove'));
 }}));
 Flotr.Color = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2684,97556,99275) || Class.create({initialize: function(r, g, b, a) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2685, 97588,97819);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2685, 97588,97819, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   this.rgba = ['r', 'g', 'b', 'a'];
   var x = 4;
@@ -1807,7 +1807,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2685, 97588,97819);
   }
 (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2691,97795,97811) ||   this.normalize());
 }, adjust: function(rd, gd, bd, ad) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2694, 97836,98055);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2694, 97836,98055, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var x = 4;
   while (-1 < --x) {
@@ -1816,15 +1816,15 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2694, 97836,98055);
   }
   return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2700,98031,98047) || this.normalize());
 }, clone: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2703, 98071,98156);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2703, 98071,98156, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2704,98101,98148) || new Flotr.Color(this.r, this.b, this.g, this.a));
 }, limit: function(val, minVal, maxVal) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2707, 98172,98268);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2707, 98172,98268, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2708,98221,98260) || Math.max((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2708,98230,98251) || Math.min(val, maxVal)), minVal));
 }, normalize: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2711, 98288,98555);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2711, 98288,98555, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var limit = this.limit;
   this.r = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2713,98353,98384) || limit((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2713,98359,98375) || parseInt(this.r)), 0, 255));
@@ -1833,7 +1833,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2711, 98288,98555);
   this.a = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2716,98506,98525) || limit(this.a, 0, 1));
   return this;
 }, scale: function(rf, gf, bf, af) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2720, 98571,98790);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2720, 98571,98790, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var x = 4;
   while (-1 < --x) {
@@ -1842,7 +1842,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2720, 98571,98790);
   }
   return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2726,98766,98782) || this.normalize());
 }, distance: function(color) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2729, 98809,99086);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2729, 98809,99086, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (!color) 
     return;
@@ -1854,18 +1854,18 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2729, 98809,99086);
   }
   return dist;
 }, toString: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2740, 99105,99271);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2740, 99105,99271, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (this.a >= 1.0) ? 'rgb(' + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2741,99162,99196) || [this.r, this.g, this.b].join(',')) + ')' : 'rgba(' + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2741,99215,99257) || [this.r, this.g, this.b, this.a].join(',')) + ')';
 }}));
 Flotr.Color.lookupColors = {aqua: [0, 255, 255], azure: [240, 255, 255], beige: [245, 245, 220], black: [0, 0, 0], blue: [0, 0, 255], brown: [165, 42, 42], cyan: [0, 255, 255], darkblue: [0, 0, 139], darkcyan: [0, 139, 139], darkgrey: [169, 169, 169], darkgreen: [0, 100, 0], darkkhaki: [189, 183, 107], darkmagenta: [139, 0, 139], darkolivegreen: [85, 107, 47], darkorange: [255, 140, 0], darkorchid: [153, 50, 204], darkred: [139, 0, 0], darksalmon: [233, 150, 122], darkviolet: [148, 0, 211], fuchsia: [255, 0, 255], gold: [255, 215, 0], green: [0, 128, 0], indigo: [75, 0, 130], khaki: [240, 230, 140], lightblue: [173, 216, 230], lightcyan: [224, 255, 255], lightgreen: [144, 238, 144], lightgrey: [211, 211, 211], lightpink: [255, 182, 193], lightyellow: [255, 255, 224], lime: [0, 255, 0], magenta: [255, 0, 255], maroon: [128, 0, 0], navy: [0, 0, 128], olive: [128, 128, 0], orange: [255, 165, 0], pink: [255, 192, 203], purple: [128, 0, 128], violet: [128, 0, 128], red: [255, 0, 0], silver: [192, 192, 192], white: [255, 255, 255], yellow: [255, 255, 0]};
 Flotr.Date = {format: function(d, format) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2793, 100597,102145);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2793, 100597,102145, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (!d) 
     return;
   var leftPad = function(n) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2796, 100670,100775);
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2796, 100670,100775, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   n = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2797,100702,100714) || n.toString());
   return n.length == 1 ? "0" + n : n;

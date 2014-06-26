@@ -1,24 +1,24 @@
 _wrap_staticMeasuredFunctions['xhtml.js'] = 6;
 _wrap_staticMeasuredCalls['xhtml.js'] =30;
 function getXHTML(data) {
-_wrap_addFunctionToMap('xhtml.js', 1, 0,68);
+_wrap_addFunctionToMap('xhtml.js', 1, 0,68, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (_wrap_setLastFunctionCall("xhtml.js",2,37,65) || (_wrap_setLastFunctionCall("xhtml.js",2,37,57) || new Html2Xhtml(data)).parse());
 }
 ;
 function Html2Xhtml(data) {
-_wrap_addFunctionToMap('xhtml.js', 5, 71,128);
+_wrap_addFunctionToMap('xhtml.js', 5, 71,128, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   this.data = data || '';
 }
 ;
 Html2Xhtml.prototype.setHTML = function(data) {
-_wrap_addFunctionToMap('xhtml.js', 9, 162,216);
+_wrap_addFunctionToMap('xhtml.js', 9, 162,216, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   this.data = data || this.data;
 };
 Html2Xhtml.prototype.parse = function() {
-_wrap_addFunctionToMap('xhtml.js', 12, 247,8560);
+_wrap_addFunctionToMap('xhtml.js', 12, 247,8560, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var state = 0;
   var xhtml = '';
@@ -292,7 +292,7 @@ _wrap_addFunctionToMap('xhtml.js', 12, 247,8560);
   return xhtml;
 };
 Html2Xhtml.escapeQuot = function(str, quot) {
-_wrap_addFunctionToMap('xhtml.js', 284, 8586,8763);
+_wrap_addFunctionToMap('xhtml.js', 284, 8586,8763, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (!quot) {
     quot = '"';
@@ -303,7 +303,7 @@ _wrap_addFunctionToMap('xhtml.js', 284, 8586,8763);
   return (_wrap_setLastFunctionCall("xhtml.js",291,8734,8760) || str.replace(/'/gi, '\\\''));
 };
 Html2Xhtml.escapeHTMLChar = function(c) {
-_wrap_addFunctionToMap('xhtml.js', 293, 8793,8971);
+_wrap_addFunctionToMap('xhtml.js', 293, 8793,8971, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (c == '&') {
     return '&amp;';

@@ -1,7 +1,7 @@
 window.parent._wrap_staticMeasuredFunctions['canvas2image.js'] = 14;
 window.parent._wrap_staticMeasuredCalls['canvas2image.js'] =90;
 var Canvas2Image = (window.parent._wrap_setLastFunctionCall("canvas2image.js",1,20,7002) || (function() {
-window.parent._wrap_addFunctionToMap('canvas2image.js', 1, 20,6999);
+window.parent._wrap_addFunctionToMap('canvas2image.js', 1, 20,6999, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var bHasCanvas = false;
   var oCanvas = (window.parent._wrap_setLastFunctionCall("canvas2image.js",4,80,112) || document.createElement("canvas"));
@@ -10,13 +10,13 @@ window.parent._wrap_addFunctionToMap('canvas2image.js', 1, 20,6999);
   }
   if (!bHasCanvas) {
     return {saveAsBMP: function() {
-window.parent._wrap_addFunctionToMap('canvas2image.js', 11, 248,260);
+window.parent._wrap_addFunctionToMap('canvas2image.js', 11, 248,260, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 }, saveAsPNG: function() {
-window.parent._wrap_addFunctionToMap('canvas2image.js', 12, 286,298);
+window.parent._wrap_addFunctionToMap('canvas2image.js', 12, 286,298, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 }, saveAsJPEG: function() {
-window.parent._wrap_addFunctionToMap('canvas2image.js', 13, 325,337);
+window.parent._wrap_addFunctionToMap('canvas2image.js', 13, 325,337, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 }};
   }
@@ -25,14 +25,14 @@ window.parent._wrap_addFunctionToMap('canvas2image.js', 13, 325,337);
   var bHasBase64 = !!(window.btoa);
   var strDownloadMime = "image/octet-stream";
   var readCanvasData = function(oCanvas) {
-window.parent._wrap_addFunctionToMap('canvas2image.js', 23, 580,773);
+window.parent._wrap_addFunctionToMap('canvas2image.js', 23, 580,773, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var iWidth = (window.parent._wrap_setLastFunctionCall("canvas2image.js",24,621,644) || parseInt(oCanvas.width));
   var iHeight = (window.parent._wrap_setLastFunctionCall("canvas2image.js",25,668,692) || parseInt(oCanvas.height));
   return (window.parent._wrap_setLastFunctionCall("canvas2image.js",26,709,766) || (window.parent._wrap_setLastFunctionCall("canvas2image.js",26,709,733) || oCanvas.getContext("2d")).getImageData(0, 0, iWidth, iHeight));
 };
   var encodeData = function(data) {
-window.parent._wrap_addFunctionToMap('canvas2image.js', 29, 796,1117);
+window.parent._wrap_addFunctionToMap('canvas2image.js', 29, 796,1117, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var strData = "";
   if (typeof data == "string") {
@@ -46,7 +46,7 @@ window.parent._wrap_addFunctionToMap('canvas2image.js', 29, 796,1117);
   return (window.parent._wrap_setLastFunctionCall("canvas2image.js",39,1097,1110) || btoa(strData));
 };
   var createBMP = function(oData) {
-window.parent._wrap_addFunctionToMap('canvas2image.js', 42, 1139,4271);
+window.parent._wrap_addFunctionToMap('canvas2image.js', 42, 1139,4271, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var aHeader = [];
   var iWidth = oData.width;
@@ -131,24 +131,24 @@ window.parent._wrap_addFunctionToMap('canvas2image.js', 42, 1139,4271);
   return strEncoded;
 };
   var saveFile = function(strData) {
-window.parent._wrap_addFunctionToMap('canvas2image.js', 134, 4293,4360);
+window.parent._wrap_addFunctionToMap('canvas2image.js', 134, 4293,4360, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   document.location.href = strData;
 };
   var makeDataURI = function(strData, strMime) {
-window.parent._wrap_addFunctionToMap('canvas2image.js', 138, 4384,4475);
+window.parent._wrap_addFunctionToMap('canvas2image.js', 138, 4384,4475, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return "data:" + strMime + ";base64," + strData;
 };
   var makeImageObject = function(strSource) {
-window.parent._wrap_addFunctionToMap('canvas2image.js', 142, 4503,4652);
+window.parent._wrap_addFunctionToMap('canvas2image.js', 142, 4503,4652, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var oImgElement = (window.parent._wrap_setLastFunctionCall("canvas2image.js",143,4551,4580) || document.createElement("img"));
   oImgElement.src = strSource;
   return oImgElement;
 };
   var scaleCanvas = function(oCanvas, iWidth, iHeight) {
-window.parent._wrap_addFunctionToMap('canvas2image.js', 148, 4676,5227);
+window.parent._wrap_addFunctionToMap('canvas2image.js', 148, 4676,5227, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (iWidth && iHeight) {
     var oSaveCanvas = (window.parent._wrap_setLastFunctionCall("canvas2image.js",150,4776,4808) || document.createElement("canvas"));
@@ -163,7 +163,7 @@ window.parent._wrap_addFunctionToMap('canvas2image.js', 148, 4676,5227);
   return oCanvas;
 };
   var retval = {saveAsPNG: function(oCanvas, bReturnImg, iWidth, iHeight) {
-window.parent._wrap_addFunctionToMap('canvas2image.js', 166, 5268,5749);
+window.parent._wrap_addFunctionToMap('canvas2image.js', 166, 5268,5749, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (!bHasDataURL) {
     return false;
@@ -177,7 +177,7 @@ window.parent._wrap_addFunctionToMap('canvas2image.js', 166, 5268,5749);
   }
   return true;
 }, saveAsJPEG: function(oCanvas, bReturnImg, iWidth, iHeight) {
-window.parent._wrap_addFunctionToMap('canvas2image.js', 180, 5772,6385);
+window.parent._wrap_addFunctionToMap('canvas2image.js', 180, 5772,6385, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (!bHasDataURL) {
     return false;
@@ -195,7 +195,7 @@ window.parent._wrap_addFunctionToMap('canvas2image.js', 180, 5772,6385);
   }
   return true;
 }, saveAsBMP: function(oCanvas, bReturnImg, iWidth, iHeight) {
-window.parent._wrap_addFunctionToMap('canvas2image.js', 201, 6407,6970);
+window.parent._wrap_addFunctionToMap('canvas2image.js', 201, 6407,6970, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (!(bHasImageData && bHasBase64)) {
     return false;

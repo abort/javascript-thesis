@@ -53,6 +53,7 @@ main.js@50:1651-1693 -> design.js@1641:29007-69859
 transform.js@154:4814-4840 -> transform.js@129:4057-4240
 transform.js@183:5662-5698 -> transform.js@102:2927-3758
 transform.js@201:6189-6238 -> transform.js@9:290-506
+index.js@2:22-28 -> main.js@18:294-844
 main.js@141:4805-4866 -> transform.js@176:5390-5811
 transform.js@162:5033-5064 -> transform.js@102:2927-3758
 transform.js@133:4197-4231 -> transform.js@116:3760-3908

@@ -8,14 +8,35 @@
         "prototype-1.6.0.3.js@14:694-723",
         "prototype-1.6.0.3.js@14:740-769",
         "prototype-1.6.0.3.js@14:787-817",
+        "prototype-1.6.0.3.js@81:3326-5738",
+        "prototype-1.6.0.3.js@162:5740-7609",
+        "prototype-1.6.0.3.js@235:8503-9440",
         "prototype-1.6.0.3.js@703:25381-25398",
+        "prototype-1.6.0.3.js@265:9442-9711",
+        "prototype-1.6.0.3.js@278:9713-15947",
+        "prototype-1.6.0.3.js@447:16007-16334",
         "prototype-1.6.0.3.js@464:16661-16786",
         "prototype-1.6.0.3.js@465:16715-16744",
+        "prototype-1.6.0.3.js@466:16756-16783",
         "prototype-1.6.0.3.js@468:16788-16865",
+        "prototype-1.6.0.3.js@469:16882-18229",
+        "prototype-1.6.0.3.js@688:24938-25207",
+        "prototype-1.6.0.3.js@721:25975-26017",
+        "prototype-1.6.0.3.js@724:26106-28132",
+        "prototype-1.6.0.3.js@794:28138-28180",
+        "prototype-1.6.0.3.js@836:29570-30116",
         "prototype-1.6.0.3.js@855:30118-30229",
+        "prototype-1.6.0.3.js@855:30118-30144",
         "prototype-1.6.0.3.js@313:11088-11132",
+        "prototype-1.6.0.3.js@818:28974-28993",
         "prototype-1.6.0.3.js@862:30297-33383",
+        "prototype-1.6.0.3.js@862:30322-33382",
+        "prototype-1.6.0.3.js@945:33484-34117",
+        "prototype-1.6.0.3.js@1008:35410-35452",
+        "prototype-1.6.0.3.js@1009:35454-35624",
         "prototype-1.6.0.3.js@988:34816-34847",
+        "prototype-1.6.0.3.js@1017:35638-36349",
+        "prototype-1.6.0.3.js@1036:36366-41931",
         "prototype-1.6.0.3.js@30:1350-1368",
         "prototype-1.6.0.3.js@42:1805-1834",
         "prototype-1.6.0.3.js@60:2631-2660",
@@ -23,25 +44,60 @@
         "prototype-1.6.0.3.js@164:5829-5910",
         "prototype-1.6.0.3.js@164:5829-5887",
         "prototype-1.6.0.3.js@66:2736-2922",
+        "prototype-1.6.0.3.js@1179:42060-44285",
+        "prototype-1.6.0.3.js@1241:44302-45606",
+        "prototype-1.6.0.3.js@1273:45633-46788",
+        "prototype-1.6.0.3.js@1359:48016-48821",
+        "prototype-1.6.0.3.js@1880:69069-69211",
         "prototype-1.6.0.3.js@2155:79679-79708",
+        "prototype-1.6.0.3.js@2251:82339-82519",
+        "prototype-1.6.0.3.js@2260:82821-82860",
+        "prototype-1.6.0.3.js@2266:83143-84342",
+        "prototype-1.6.0.3.js@2430:89258-94417",
+        "prototype-1.6.0.3.js@2566:94419-116823",
+        "prototype-1.6.0.3.js@3348:125472-126001",
+        "prototype-1.6.0.3.js@3362:126027-126154",
+        "prototype-1.6.0.3.js@3367:126172-126292",
+        "prototype-1.6.0.3.js@3372:126319-127432",
+        "prototype-1.6.0.3.js@3406:127463-127590",
+        "prototype-1.6.0.3.js@3411:127613-127733",
+        "prototype-1.6.0.3.js@3418:127774-128433",
+        "prototype-1.6.0.3.js@3449:128451-131282",
+        "prototype-1.6.0.3.js@3528:131299-132594",
         "prototype-1.6.0.3.js@3529:131331-131477",
         "prototype-1.6.0.3.js@3566:132596-137142",
+        "prototype-1.6.0.3.js@3566:132617-137141",
+        "prototype-1.6.0.3.js@3622:134601-134666",
+        "prototype-1.6.0.3.js@3686:137144-137179",
+        "prototype-1.6.0.3.js@3687:137181-137293",
         "prototype-1.6.0.3.js@3692:137295-137497",
+        "prototype-1.6.0.3.js@3693:137331-137363",
+        "prototype-1.6.0.3.js@3694:137378-137413",
+        "prototype-1.6.0.3.js@3695:137434-137475",
+        "prototype-1.6.0.3.js@3698:137500-138535",
         "prototype-1.6.0.3.js@3710:137850-138011",
         "prototype-1.6.0.3.js@427:15437-15458",
         "prototype-1.6.0.3.js@3589:133464-133499",
         "prototype-1.6.0.3.js@3598:133819-133834",
         "prototype-1.6.0.3.js@3745:139199-139265",
+        "prototype-1.6.0.3.js@3821:143255-143269",
+        "prototype-1.6.0.3.js@3848:144059-144114",
+        "prototype-1.6.0.3.js@3849:144116-144136",
         "prototype-1.6.0.3.js@2304:84789-85060",
         "prototype-1.6.0.3.js@387:13877-13905",
         "prototype-1.6.0.3.js@387:13877-13891",
         "prototype-1.6.0.3.js@387:13908-13939",
         "prototype-1.6.0.3.js@387:13908-13925",
+        "examples.js@12:152-538",
         "prototype-1.6.0.3.js@210:7538-7588",
         "prototype-1.6.0.3.js@210:7559-7587",
+        "canvas2image.js@1:20-7002",
         "canvas2image.js@4:80-112",
         "canvas2image.js@5:122-146",
         "canvas2image.js@17:382-406",
+        "flotr-0.2.0-alpha.js@131:4691-97537",
+        "flotr-0.2.0-alpha.js@2684:97556-99275",
+        "advanced-titles.js@5:67-1545",
         "prototype-1.6.0.3.js@3704:137649-137676",
         "prototype-1.6.0.3.js@3669:136583-136617",
         "prototype-1.6.0.3.js@3670:136635-136679",
@@ -65,17 +121,18 @@
         "prototype-1.6.0.3.js@2519:92749-92777",
         "prototype-1.6.0.3.js@546:19918-19968",
         "prototype-1.6.0.3.js@471:16976-16995",
-        "negative.js@21:543-556",
-        "negative.js@22:569-584",
-        "negative.js@23:596-611",
-        "negative.js@31:761-774",
-        "negative.js@36:871-885",
-        "negative.js@43:1017-1045",
-        "negative.js@49:1114-1524",
-        "negative.js@53:1359-1375",
+        "advanced-titles.js@13:244-277",
+        "advanced-titles.js@13:260-275",
+        "advanced-titles.js@14:284-311",
+        "advanced-titles.js@14:296-309",
+        "advanced-titles.js@15:318-351",
+        "advanced-titles.js@15:336-349",
+        "advanced-titles.js@16:358-373",
+        "advanced-titles.js@17:384-396",
+        "advanced-titles.js@18:413-430",
+        "advanced-titles.js@25:501-1538",
         "flotr-0.2.0-alpha.js@322:10293-10351",
         "flotr-0.2.0-alpha.js@323:10379-10437",
-        "flotr-0.2.0-alpha.js@361:11473-11509",
         "flotr-0.2.0-alpha.js@86:2599-2674",
         "flotr-0.2.0-alpha.js@90:2798-2902",
         "flotr-0.2.0-alpha.js@94:3049-3157",
@@ -90,13 +147,13 @@
         "flotr-0.2.0-alpha.js@2715:98455-98486",
         "flotr-0.2.0-alpha.js@375:11920-11944",
         "flotr-0.2.0-alpha.js@379:12015-12029",
+        "flotr-0.2.0-alpha.js@2741:99162-99196",
         "flotr-0.2.0-alpha.js@407:12802-12858",
         "flotr-0.2.0-alpha.js@408:12884-12942",
         "flotr-0.2.0-alpha.js@409:12966-13020",
         "flotr-0.2.0-alpha.js@410:13047-13107",
         "flotr-0.2.0-alpha.js@411:13130-13182",
         "flotr-0.2.0-alpha.js@412:13207-13263",
-        "flotr-0.2.0-alpha.js@2741:99162-99196",
         "prototype-1.6.0.3.js@1534:55814-55829",
         "prototype-1.6.0.3.js@2516:92641-92659",
         "prototype-1.6.0.3.js@1564:56928-56954",
@@ -122,127 +179,6 @@
         "flotr-0.2.0-alpha.js@963:32109-32128",
         "flotr-0.2.0-alpha.js@964:32147-32258",
         "flotr-0.2.0-alpha.js@996:33060-33255",
-        "flotr-0.2.0-alpha.js@494:15714-15881",
-        "prototype-1.6.0.3.js@267:9536-9549",
-        "prototype-1.6.0.3.js@1426:51357-51454",
-        "prototype-1.6.0.3.js@1427:51481-51553",
-        "prototype-1.6.0.3.js@319:11273-11334",
-        "prototype-1.6.0.3.js@1430:51663-51701",
-        "prototype-1.6.0.3.js@186:6727-6775",
-        "prototype-1.6.0.3.js@186:6748-6774",
-        "prototype-1.6.0.3.js@1431:51715-51756",
-        "prototype-1.6.0.3.js@196:7072-7100",
-        "prototype-1.6.0.3.js@190:6881-6893",
-        "flotr-0.2.0-alpha.js@1000:33287-33496",
-        "flotr-0.2.0-alpha.js@1048:35143-35160",
-        "flotr-0.2.0-alpha.js@1090:36518-36528",
-        "flotr-0.2.0-alpha.js@1091:36539-36595",
-        "flotr-0.2.0-alpha.js@1102:36864-36879",
-        "flotr-0.2.0-alpha.js@1110:37178-37237",
-        "flotr-0.2.0-alpha.js@1110:37189-37213",
-        "flotr-0.2.0-alpha.js@1111:37256-37329",
-        "flotr-0.2.0-alpha.js@1111:37267-37291",
-        "flotr-0.2.0-alpha.js@1123:37660-37720",
-        "flotr-0.2.0-alpha.js@1123:37674-37699",
-        "flotr-0.2.0-alpha.js@1124:37739-37812",
-        "flotr-0.2.0-alpha.js@1124:37766-37791",
-        "flotr-0.2.0-alpha.js@1127:37849-37861",
-        "flotr-0.2.0-alpha.js@1134:38053-38106",
-        "flotr-0.2.0-alpha.js@1136:38128-38141",
-        "flotr-0.2.0-alpha.js@1259:42745-43117",
-        "flotr-0.2.0-alpha.js@1279:44120-44467",
-        "flotr-0.2.0-alpha.js@1302:45637-45656",
-        "flotr-0.2.0-alpha.js@1303:45671-45700",
-        "flotr-0.2.0-alpha.js@1411:49520-49539",
-        "flotr-0.2.0-alpha.js@1414:49558-49627",
-        "flotr-0.2.0-alpha.js@1434:50901-50920",
-        "flotr-0.2.0-alpha.js@1436:50937-50966",
-        "flotr-0.2.0-alpha.js@1645:57751-57761",
-        "flotr-0.2.0-alpha.js@1646:57772-57828",
-        "prototype-1.6.0.3.js@172:6231-6281",
-        "prototype-1.6.0.3.js@172:6254-6280",
-        "flotr-0.2.0-alpha.js@1469:51848-51863",
-        "flotr-0.2.0-alpha.js@1470:51874-51898",
-        "flotr-0.2.0-alpha.js@1532:53977-54001",
-        "flotr-0.2.0-alpha.js@1534:54023-54035",
-        "flotr-0.2.0-alpha.js@1677:58829-58842",
-        "flotr-0.2.0-alpha.js@1683:58937-58947",
-        "flotr-0.2.0-alpha.js@1684:58958-59014",
-        "flotr-0.2.0-alpha.js@1736:60794-60809",
-        "flotr-0.2.0-alpha.js@1737:60824-60904",
-        "flotr-0.2.0-alpha.js@1738:60919-60931",
-        "flotr-0.2.0-alpha.js@1718:60177-60192",
-        "flotr-0.2.0-alpha.js@1719:60207-60281",
-        "flotr-0.2.0-alpha.js@1720:60306-60316",
-        "flotr-0.2.0-alpha.js@1721:60331-60343",
-        "flotr-0.2.0-alpha.js@1703:59730-59743",
-        "flotr-0.2.0-alpha.js@2191:77322-77412",
-        "flotr-0.2.0-alpha.js@2262:80414-80463",
-        "flotr-0.2.0-alpha.js@2268:80638-81018",
-        "flotr-0.2.0-alpha.js@2271:81072-81095",
-        "flotr-0.2.0-alpha.js@2274:81248-81266",
-        "flotr-0.2.0-alpha.js@2282:81624-81635",
-        "flotr-0.2.0-alpha.js@2283:81724-81735",
-        "flotr-0.2.0-alpha.js@2284:81825-81836",
-        "flotr-0.2.0-alpha.js@2287:82034-82180",
-        "flotr-0.2.0-alpha.js@2287:82034-82172",
-        "flotr-0.2.0-alpha.js@2296:82672-83013",
-        "flotr-0.2.0-alpha.js@2296:82672-82893",
-        "flotr-0.2.0-alpha.js@2296:82672-82885",
-        "flotr-0.2.0-alpha.js@2296:82672-82855",
-        "basic-axis.js@15:330-363",
-        "basic-axis.js@15:346-361",
-        "basic-axis.js@16:370-397",
-        "basic-axis.js@16:382-395",
-        "basic-axis.js@17:404-437",
-        "basic-axis.js@17:422-435",
-        "basic-axis.js@18:444-459",
-        "basic-axis.js@19:470-482",
-        "basic-axis.js@20:499-516",
-        "basic-axis.js@27:593-1462",
-        "flotr-0.2.0-alpha.js@1404:48969-49183",
-        "flotr-0.2.0-alpha.js@1409:49258-49490",
-        "flotr-0.2.0-alpha.js@1528:53832-53880",
-        "flotr-0.2.0-alpha.js@1547:54397-54434",
-        "flotr-0.2.0-alpha.js@1547:54406-54425",
-        "flotr-0.2.0-alpha.js@1550:54474-54489",
-        "flotr-0.2.0-alpha.js@1579:55519-55571",
-        "flotr-0.2.0-alpha.js@1624:57090-57138",
-        "flotr-0.2.0-alpha.js@1625:57153-57201",
-        "flotr-0.2.0-alpha.js@1634:57473-57492",
-        "flotr-0.2.0-alpha.js@1637:57516-57571",
-        "flotr-0.2.0-alpha.js@1638:57582-57597",
-        "flotr-0.2.0-alpha.js@1639:57608-57618",
-        "flotr-0.2.0-alpha.js@1672:58636-58727",
-        "flotr-0.2.0-alpha.js@1672:58636-58716",
-        "flotr-0.2.0-alpha.js@87:2697-2769",
-        "flotr-0.2.0-alpha.js@87:2707-2726",
-        "flotr-0.2.0-alpha.js@87:2728-2747",
-        "flotr-0.2.0-alpha.js@2741:99215-99257",
-        "flotr-0.2.0-alpha.js@2285:81929-81940",
-        "flotr-0.2.0-alpha.js@121:4377-4427",
-        "prototype-1.6.0.3.js@381:13585-13599",
-        "prototype-1.6.0.3.js@383:13741-13773",
-        "prototype-1.6.0.3.js@383:13741-13759",
-        "prototype-1.6.0.3.js@383:13776-13797",
-        "flotr-0.2.0-alpha.js@2294:82550-82610",
-        "flotr-0.2.0-alpha.js@2294:82550-82599",
-        "flotr-0.2.0-alpha.js@106:3816-3868",
-        "flotr-0.2.0-alpha.js@110:4037-4062",
-        "prototype-1.6.0.3.js@332:11757-11846",
-        "prototype-1.6.0.3.js@322:11400-11443",
-        "prototype-1.6.0.3.js@323:11468-11510",
-        "prototype-1.6.0.3.js@324:11528-11702",
-        "image-download.js@13:241-274",
-        "image-download.js@13:257-272",
-        "image-download.js@14:281-308",
-        "image-download.js@14:293-306",
-        "image-download.js@15:315-348",
-        "image-download.js@15:333-346",
-        "image-download.js@16:355-370",
-        "image-download.js@17:381-393",
-        "image-download.js@18:410-427",
-        "image-download.js@25:498-1554",
         "canvastext.js@5193:126736-126770",
         "canvastext.js@5198:126951-126964",
         "canvastext.js@5210:127445-127459",
@@ -253,7 +189,19 @@
         "canvastext.js@5243:128865-128898",
         "canvastext.js@5243:128874-128889",
         "canvastext.js@5243:128901-128935",
+        "flotr-0.2.0-alpha.js@1000:33287-33496",
+        "flotr-0.2.0-alpha.js@1048:35143-35160",
+        "flotr-0.2.0-alpha.js@1090:36518-36528",
+        "flotr-0.2.0-alpha.js@1091:36539-36595",
         "flotr-0.2.0-alpha.js@1096:36714-36765",
+        "flotr-0.2.0-alpha.js@1102:36864-36879",
+        "flotr-0.2.0-alpha.js@1123:37660-37720",
+        "flotr-0.2.0-alpha.js@1123:37674-37699",
+        "flotr-0.2.0-alpha.js@1124:37739-37812",
+        "flotr-0.2.0-alpha.js@1124:37766-37791",
+        "flotr-0.2.0-alpha.js@1127:37849-37861",
+        "flotr-0.2.0-alpha.js@1134:38053-38106",
+        "flotr-0.2.0-alpha.js@1136:38128-38141",
         "flotr-0.2.0-alpha.js@1175:39358-39606",
         "canvastext.js@5252:129201-129235",
         "canvastext.js@5252:129212-129227",
@@ -276,6 +224,43 @@
         "flotr-0.2.0-alpha.js@1243:42021-42118",
         "flotr-0.2.0-alpha.js@1244:42137-42149",
         "flotr-0.2.0-alpha.js@1245:42168-42181",
+        "flotr-0.2.0-alpha.js@1645:57751-57761",
+        "flotr-0.2.0-alpha.js@1646:57772-57828",
+        "prototype-1.6.0.3.js@172:6231-6281",
+        "prototype-1.6.0.3.js@172:6254-6280",
+        "flotr-0.2.0-alpha.js@1469:51848-51863",
+        "flotr-0.2.0-alpha.js@1470:51874-51898",
+        "flotr-0.2.0-alpha.js@1528:53832-53880",
+        "flotr-0.2.0-alpha.js@1532:53977-54001",
+        "flotr-0.2.0-alpha.js@1534:54023-54035",
+        "flotr-0.2.0-alpha.js@1547:54397-54434",
+        "flotr-0.2.0-alpha.js@1547:54406-54425",
+        "flotr-0.2.0-alpha.js@1550:54474-54489",
+        "flotr-0.2.0-alpha.js@1579:55519-55571",
+        "flotr-0.2.0-alpha.js@1624:57090-57138",
+        "flotr-0.2.0-alpha.js@1625:57153-57201",
+        "flotr-0.2.0-alpha.js@1634:57473-57492",
+        "flotr-0.2.0-alpha.js@1637:57516-57571",
+        "flotr-0.2.0-alpha.js@1638:57582-57597",
+        "flotr-0.2.0-alpha.js@1639:57608-57618",
+        "flotr-0.2.0-alpha.js@1672:58636-58727",
+        "flotr-0.2.0-alpha.js@1672:58636-58716",
+        "flotr-0.2.0-alpha.js@87:2697-2769",
+        "flotr-0.2.0-alpha.js@87:2707-2726",
+        "flotr-0.2.0-alpha.js@87:2728-2747",
+        "flotr-0.2.0-alpha.js@2741:99215-99257",
+        "flotr-0.2.0-alpha.js@1677:58829-58842",
+        "flotr-0.2.0-alpha.js@1683:58937-58947",
+        "flotr-0.2.0-alpha.js@1684:58958-59014",
+        "flotr-0.2.0-alpha.js@1736:60794-60809",
+        "flotr-0.2.0-alpha.js@1737:60824-60904",
+        "flotr-0.2.0-alpha.js@1738:60919-60931",
+        "flotr-0.2.0-alpha.js@1718:60177-60192",
+        "flotr-0.2.0-alpha.js@1719:60207-60281",
+        "flotr-0.2.0-alpha.js@1720:60306-60316",
+        "flotr-0.2.0-alpha.js@1721:60331-60343",
+        "flotr-0.2.0-alpha.js@1703:59730-59743",
+        "flotr-0.2.0-alpha.js@2191:77322-77412",
         "flotr-0.2.0-alpha.js@2216:78328-78382",
         "flotr-0.2.0-alpha.js@2219:78440-78481",
         "flotr-0.2.0-alpha.js@2220:78519-78564",
@@ -291,22 +276,95 @@
         "flotr-0.2.0-alpha.js@2245:79816-79828",
         "flotr-0.2.0-alpha.js@2245:79836-79848",
         "flotr-0.2.0-alpha.js@2248:79900-80117",
-        "mouse-tracking.js@12:243-260",
-        "mouse-tracking.js@13:267-302",
-        "mouse-tracking.js@13:289-300",
-        "mouse-tracking.js@14:315-345",
-        "mouse-tracking.js@14:329-340",
-        "mouse-tracking.js@21:518-905",
-        "advanced-titles.js@13:244-277",
-        "advanced-titles.js@13:260-275",
-        "advanced-titles.js@14:284-311",
-        "advanced-titles.js@14:296-309",
-        "advanced-titles.js@15:318-351",
-        "advanced-titles.js@15:336-349",
-        "advanced-titles.js@16:358-373",
-        "advanced-titles.js@17:384-396",
-        "advanced-titles.js@18:413-430",
-        "advanced-titles.js@25:501-1538",
+        "basic-axis.js@4:107-1469",
+        "basic-axis.js@15:330-363",
+        "basic-axis.js@15:346-361",
+        "basic-axis.js@16:370-397",
+        "basic-axis.js@16:382-395",
+        "basic-axis.js@17:404-437",
+        "basic-axis.js@17:422-435",
+        "basic-axis.js@18:444-459",
+        "basic-axis.js@19:470-482",
+        "basic-axis.js@20:499-516",
+        "basic-axis.js@27:593-1462",
+        "flotr-0.2.0-alpha.js@494:15714-15881",
+        "prototype-1.6.0.3.js@267:9536-9549",
+        "prototype-1.6.0.3.js@1426:51357-51454",
+        "prototype-1.6.0.3.js@1427:51481-51553",
+        "prototype-1.6.0.3.js@319:11273-11334",
+        "prototype-1.6.0.3.js@1430:51663-51701",
+        "prototype-1.6.0.3.js@186:6727-6775",
+        "prototype-1.6.0.3.js@186:6748-6774",
+        "prototype-1.6.0.3.js@1431:51715-51756",
+        "prototype-1.6.0.3.js@196:7072-7100",
+        "prototype-1.6.0.3.js@190:6881-6893",
+        "flotr-0.2.0-alpha.js@1259:42745-43117",
+        "flotr-0.2.0-alpha.js@1279:44120-44467",
+        "flotr-0.2.0-alpha.js@1302:45637-45656",
+        "flotr-0.2.0-alpha.js@1303:45671-45700",
+        "flotr-0.2.0-alpha.js@1404:48969-49183",
+        "flotr-0.2.0-alpha.js@1409:49258-49490",
+        "flotr-0.2.0-alpha.js@1411:49520-49539",
+        "flotr-0.2.0-alpha.js@1414:49558-49627",
+        "flotr-0.2.0-alpha.js@1434:50901-50920",
+        "flotr-0.2.0-alpha.js@1436:50937-50966",
+        "flotr-0.2.0-alpha.js@2262:80414-80463",
+        "flotr-0.2.0-alpha.js@2268:80638-81018",
+        "flotr-0.2.0-alpha.js@2271:81072-81095",
+        "flotr-0.2.0-alpha.js@2274:81248-81266",
+        "flotr-0.2.0-alpha.js@2282:81624-81635",
+        "flotr-0.2.0-alpha.js@2284:81825-81836",
+        "flotr-0.2.0-alpha.js@2285:81929-81940",
+        "flotr-0.2.0-alpha.js@2287:82034-82180",
+        "flotr-0.2.0-alpha.js@2287:82034-82172",
+        "flotr-0.2.0-alpha.js@121:4377-4427",
+        "prototype-1.6.0.3.js@381:13585-13599",
+        "prototype-1.6.0.3.js@383:13741-13773",
+        "prototype-1.6.0.3.js@383:13741-13759",
+        "prototype-1.6.0.3.js@383:13776-13797",
+        "flotr-0.2.0-alpha.js@2294:82550-82610",
+        "flotr-0.2.0-alpha.js@2294:82550-82599",
+        "flotr-0.2.0-alpha.js@106:3816-3868",
+        "flotr-0.2.0-alpha.js@110:4037-4062",
+        "flotr-0.2.0-alpha.js@2296:82672-83013",
+        "flotr-0.2.0-alpha.js@2296:82672-82893",
+        "flotr-0.2.0-alpha.js@2296:82672-82885",
+        "flotr-0.2.0-alpha.js@2296:82672-82855",
+        "basic-bar.js@4:54-541",
+        "basic-bar.js@11:242-282",
+        "basic-bar.js@11:253-280",
+        "basic-bar.js@11:263-276",
+        "basic-bar.js@12:289-334",
+        "basic-bar.js@12:305-332",
+        "basic-bar.js@12:315-328",
+        "basic-bar.js@18:413-534",
+        "flotr-0.2.0-alpha.js@1110:37178-37237",
+        "flotr-0.2.0-alpha.js@1110:37189-37213",
+        "flotr-0.2.0-alpha.js@1111:37256-37329",
+        "flotr-0.2.0-alpha.js@1111:37267-37291",
+        "flotr-0.2.0-alpha.js@1745:61082-61117",
+        "flotr-0.2.0-alpha.js@1747:61130-61140",
+        "flotr-0.2.0-alpha.js@1748:61151-61207",
+        "flotr-0.2.0-alpha.js@1898:66222-66326",
+        "flotr-0.2.0-alpha.js@1901:66392-66513",
+        "flotr-0.2.0-alpha.js@1901:66405-66450",
+        "flotr-0.2.0-alpha.js@1901:66452-66497",
+        "flotr-0.2.0-alpha.js@1758:61502-61592",
+        "flotr-0.2.0-alpha.js@1758:61502-61581",
+        "flotr-0.2.0-alpha.js@1830:63673-63688",
+        "flotr-0.2.0-alpha.js@1831:63707-63761",
+        "flotr-0.2.0-alpha.js@1832:63780-63831",
+        "flotr-0.2.0-alpha.js@1833:63850-63902",
+        "flotr-0.2.0-alpha.js@1834:63921-63976",
+        "flotr-0.2.0-alpha.js@1835:63995-64005",
+        "flotr-0.2.0-alpha.js@1840:64128-64143",
+        "flotr-0.2.0-alpha.js@1841:64162-64216",
+        "flotr-0.2.0-alpha.js@1843:64237-64313",
+        "flotr-0.2.0-alpha.js@1844:64332-64408",
+        "flotr-0.2.0-alpha.js@1845:64427-64508",
+        "flotr-0.2.0-alpha.js@1847:64529-64541",
+        "flotr-0.2.0-alpha.js@1762:61673-61686",
+        "basic-candlesticks.js@4:57-646",
         "basic-candlesticks.js@12:246-259",
         "basic-candlesticks.js@13:281-294",
         "basic-candlesticks.js@14:317-330",
@@ -346,6 +404,7 @@
         "flotr-0.2.0-alpha.js@1989:69947-69959",
         "flotr-0.2.0-alpha.js@1990:69978-69991",
         "flotr-0.2.0-alpha.js@1918:66937-66950",
+        "basic-legend.js@4:55-970",
         "basic-legend.js@12:247-284",
         "basic-legend.js@12:263-282",
         "basic-legend.js@13:291-306",
@@ -354,54 +413,7 @@
         "basic-legend.js@27:547-963",
         "canvastext.js@5200:127022-127050",
         "canvastext.js@5202:127133-127151",
-        "mouse-zoom.js@12:247-286",
-        "mouse-zoom.js@12:259-270",
-        "mouse-zoom.js@12:273-284",
-        "mouse-zoom.js@13:293-323",
-        "mouse-zoom.js@13:305-321",
-        "mouse-zoom.js@14:330-367",
-        "mouse-zoom.js@14:349-362",
-        "mouse-zoom.js@32:785-833",
-        "mouse-zoom.js@36:893-964",
-        "mouse-zoom.js@51:1122-1588",
-        "mouse-zoom.js@74:1860-1916",
-        "basic.js@10:212-237",
-        "basic.js@10:224-235",
-        "basic.js@17:356-394",
-        "basic-stacked-bars.js@10:219-232",
-        "basic-stacked-bars.js@11:253-266",
-        "basic-stacked-bars.js@12:287-300",
-        "basic-stacked-bars.js@18:367-836",
-        "flotr-0.2.0-alpha.js@898:30226-30258",
-        "flotr-0.2.0-alpha.js@1745:61082-61117",
-        "flotr-0.2.0-alpha.js@1747:61130-61140",
-        "flotr-0.2.0-alpha.js@1748:61151-61207",
-        "flotr-0.2.0-alpha.js@1898:66222-66326",
-        "flotr-0.2.0-alpha.js@1901:66392-66513",
-        "flotr-0.2.0-alpha.js@1901:66405-66450",
-        "flotr-0.2.0-alpha.js@1901:66452-66497",
-        "flotr-0.2.0-alpha.js@1758:61502-61592",
-        "flotr-0.2.0-alpha.js@1758:61502-61581",
-        "flotr-0.2.0-alpha.js@1830:63673-63688",
-        "flotr-0.2.0-alpha.js@1831:63707-63761",
-        "flotr-0.2.0-alpha.js@1832:63780-63831",
-        "flotr-0.2.0-alpha.js@1833:63850-63902",
-        "flotr-0.2.0-alpha.js@1834:63921-63976",
-        "flotr-0.2.0-alpha.js@1835:63995-64005",
-        "flotr-0.2.0-alpha.js@1840:64128-64143",
-        "flotr-0.2.0-alpha.js@1841:64162-64216",
-        "flotr-0.2.0-alpha.js@1843:64237-64313",
-        "flotr-0.2.0-alpha.js@1844:64332-64408",
-        "flotr-0.2.0-alpha.js@1845:64427-64508",
-        "flotr-0.2.0-alpha.js@1847:64529-64541",
-        "flotr-0.2.0-alpha.js@1762:61673-61686",
-        "flotr-0.2.0-alpha.js@562:17951-18122",
-        "prototype-1.6.0.3.js@1393:49874-49915",
-        "flotr-0.2.0-alpha.js@566:18143-18304",
-        "flotr-0.2.0-alpha.js@569:18328-18388",
-        "flotr-0.2.0-alpha.js@571:18401-18510",
-        "flotr-0.2.0-alpha.js@575:18523-18630",
-        "flotr-0.2.0-alpha.js@578:18641-18746",
+        "basic-pie.js@1:0-606",
         "basic-pie.js@9:177-602",
         "flotr-0.2.0-alpha.js@2035:71701-71746",
         "flotr-0.2.0-alpha.js@2039:71867-71897",
@@ -429,14 +441,70 @@
         "flotr-0.2.0-alpha.js@2128:75178-75197",
         "flotr-0.2.0-alpha.js@2129:75270-75289",
         "flotr-0.2.0-alpha.js@2158:76478-76491",
+        "basic-stacked-bars.js@4:56-843",
+        "basic-stacked-bars.js@10:219-232",
+        "basic-stacked-bars.js@11:253-266",
+        "basic-stacked-bars.js@12:287-300",
+        "basic-stacked-bars.js@18:367-836",
+        "flotr-0.2.0-alpha.js@898:30226-30258",
+        "flotr-0.2.0-alpha.js@562:17951-18122",
+        "prototype-1.6.0.3.js@1393:49874-49915",
+        "flotr-0.2.0-alpha.js@566:18143-18304",
+        "flotr-0.2.0-alpha.js@569:18328-18388",
+        "flotr-0.2.0-alpha.js@571:18401-18510",
+        "flotr-0.2.0-alpha.js@575:18523-18630",
+        "flotr-0.2.0-alpha.js@578:18641-18746",
+        "basic.js@4:55-401",
+        "basic.js@10:212-237",
+        "basic.js@10:224-235",
+        "basic.js@17:356-394",
+        "image-download.js@5:64-1762",
+        "image-download.js@13:241-274",
+        "image-download.js@13:257-272",
+        "image-download.js@14:281-308",
+        "image-download.js@14:293-306",
+        "image-download.js@15:315-348",
+        "image-download.js@15:333-346",
+        "image-download.js@16:355-370",
+        "image-download.js@17:381-393",
+        "image-download.js@18:410-427",
+        "image-download.js@25:498-1554",
         "json-data.js@2:19-813",
-        "basic-bar.js@11:242-282",
-        "basic-bar.js@11:253-280",
-        "basic-bar.js@11:263-276",
-        "basic-bar.js@12:289-334",
-        "basic-bar.js@12:305-332",
-        "basic-bar.js@12:315-328",
-        "basic-bar.js@18:413-534",
+        "json-data.js@2:19-32",
+        "mouse-tracking.js@4:57-912",
+        "mouse-tracking.js@12:243-260",
+        "mouse-tracking.js@13:267-302",
+        "mouse-tracking.js@13:289-300",
+        "mouse-tracking.js@14:315-345",
+        "mouse-tracking.js@14:329-340",
+        "mouse-tracking.js@21:518-905",
+        "mouse-zoom.js@4:55-1923",
+        "mouse-zoom.js@12:247-286",
+        "mouse-zoom.js@12:259-270",
+        "mouse-zoom.js@12:273-284",
+        "mouse-zoom.js@13:293-323",
+        "mouse-zoom.js@13:305-321",
+        "mouse-zoom.js@14:330-367",
+        "mouse-zoom.js@14:349-362",
+        "mouse-zoom.js@32:785-833",
+        "mouse-zoom.js@36:893-964",
+        "mouse-zoom.js@51:1122-1588",
+        "mouse-zoom.js@74:1860-1916",
+        "negative.js@4:51-1530",
+        "negative.js@21:543-556",
+        "negative.js@22:569-584",
+        "negative.js@23:596-611",
+        "negative.js@31:761-774",
+        "negative.js@36:871-885",
+        "negative.js@43:1017-1045",
+        "negative.js@49:1114-1524",
+        "negative.js@53:1359-1375",
+        "flotr-0.2.0-alpha.js@361:11473-11509",
+        "flotr-0.2.0-alpha.js@2283:81724-81735",
+        "prototype-1.6.0.3.js@332:11757-11846",
+        "prototype-1.6.0.3.js@322:11400-11443",
+        "prototype-1.6.0.3.js@323:11468-11510",
+        "prototype-1.6.0.3.js@324:11528-11702",
         "flotr-0.2.0-alpha.js@2340:84311-84376",
         "prototype-1.6.0.3.js@667:23915-24279",
         "prototype-1.6.0.3.js@664:23915-24264",
@@ -473,15 +541,21 @@
         "flotr-0.2.0-alpha.js@642:20835-20903",
         "flotr-0.2.0-alpha.js@643:20926-20989",
         "flotr-0.2.0-alpha.js@647:21089-21226",
+        "flotr-0.2.0-alpha.js@720:23926-23943",
+        "flotr-0.2.0-alpha.js@726:24161-24196",
+        "flotr-0.2.0-alpha.js@536:17039-17064",
+        "flotr-0.2.0-alpha.js@537:17079-17128",
         "flotr-0.2.0-alpha.js@686:22606-22627",
         "flotr-0.2.0-alpha.js@688:22711-22728",
         "flotr-0.2.0-alpha.js@689:22751-22773",
         "flotr-0.2.0-alpha.js@690:22796-22823",
-        "flotr-0.2.0-alpha.js@720:23926-23943",
+        "flotr-0.2.0-alpha.js@691:22846-22871",
+        "flotr-0.2.0-alpha.js@2582:93134-93185",
+        "flotr-0.2.0-alpha.js@2583:93211-93262",
+        "flotr-0.2.0-alpha.js@2680:97487-97525",
         "examples.js@3:38-132",
         "canvas2image.js@171:5490-5526",
         "canvas2image.js@143:4551-4580",
-        "flotr-0.2.0-alpha.js@2680:97487-97525",
         "flotr-0.2.0-alpha.js@2672:97278-97364",
         "canvas2image.js@187:6035-6067",
         "canvas2image.js@189:6090-6114",
@@ -550,8 +624,6 @@
         "canvas2image.js@213:6870-6920",
         "canvas2image.js@196:6284-6335",
         "canvas2image.js@175:5644-5699",
-        "flotr-0.2.0-alpha.js@2582:93134-93185",
-        "flotr-0.2.0-alpha.js@2583:93211-93262",
         "prototype-1.6.0.3.js@202:7262-7326",
         "prototype-1.6.0.3.js@202:7282-7325",
         "prototype-1.6.0.3.js@1029:36042-36075",
@@ -565,6 +637,7 @@
         "prototype-1.6.0.3.js@1066:37481-37506",
         "prototype-1.6.0.3.js@1068:37605-37649",
         "prototype-1.6.0.3.js@1109:39495-39547",
+        "prototype-1.6.0.3.js@1072:37868-37898",
         "prototype-1.6.0.3.js@1232:43962-44027",
         "prototype-1.6.0.3.js@1127:40084-40244",
         "prototype-1.6.0.3.js@421:15247-15269",
@@ -597,6 +670,7 @@
         "flotr-0.2.0-alpha.js@2437:87723-87758",
         "flotr-0.2.0-alpha.js@2378:85621-85700",
         "flotr-0.2.0-alpha.js@2381:85776-85827",
+        "flotr-0.2.0-alpha.js@2534:91428-91476",
         "flotr-0.2.0-alpha.js@2535:91498-91546",
         "flotr-0.2.0-alpha.js@2507:90378-90459",
         "flotr-0.2.0-alpha.js@2507:90378-90448",
@@ -607,6 +681,7 @@
         "flotr-0.2.0-alpha.js@2525:91062-91110",
         "flotr-0.2.0-alpha.js@2526:91129-91177",
         "flotr-0.2.0-alpha.js@2528:91190-91250",
+        "flotr-0.2.0-alpha.js@2529:91261-91323",
         "flotr-0.2.0-alpha.js@2460:88512-88567",
         "flotr-0.2.0-alpha.js@2461:88586-88641",
         "flotr-0.2.0-alpha.js@2462:88660-88716",
@@ -623,68 +698,29 @@
         "prototype-1.6.0.3.js@1495:53969-54013",
         "prototype-1.6.0.3.js@3642:135431-135585"
     ],
-    "prototype-1.6.0.3.js@76:3183-3324": [
-        "prototype-1.6.0.3.js@81:3326-5738",
-        "prototype-1.6.0.3.js@162:5740-7609",
-        "prototype-1.6.0.3.js@34:1483-1518",
-        "prototype-1.6.0.3.js@265:9442-9711",
-        "prototype-1.6.0.3.js@278:9713-15947",
-        "prototype-1.6.0.3.js@447:16007-16334",
-        "prototype-1.6.0.3.js@466:16756-16783",
-        "prototype-1.6.0.3.js@688:24938-25207",
-        "prototype-1.6.0.3.js@721:25975-26017",
-        "prototype-1.6.0.3.js@724:26106-28132",
-        "prototype-1.6.0.3.js@836:29570-30116",
-        "prototype-1.6.0.3.js@1008:35410-35452",
-        "prototype-1.6.0.3.js@1356:48694-48736",
-        "prototype-1.6.0.3.js@1880:69069-69211",
-        "prototype-1.6.0.3.js@2246:82357-82479",
-        "prototype-1.6.0.3.js@2260:82821-82860",
-        "prototype-1.6.0.3.js@2566:94419-116823",
-        "prototype-1.6.0.3.js@3418:127774-128433",
-        "prototype-1.6.0.3.js@3562:132516-132555",
-        "prototype-1.6.0.3.js@3622:134601-134666",
-        "prototype-1.6.0.3.js@3686:137144-137179",
-        "prototype-1.6.0.3.js@2316:85196-85241",
-        "prototype-1.6.0.3.js@2399:88087-88126",
-        "prototype-1.6.0.3.js@3848:144059-144114",
-        "prototype-1.6.0.3.js@2302:84687-84720",
-        "prototype-1.6.0.3.js@2303:84730-84779",
-        "prototype-1.6.0.3.js@138:5048-5073",
-        "prototype-1.6.0.3.js@1028:35968-36010"
-    ],
-    "prototype-1.6.0.3.js@27:1202-2154": [
-        "prototype-1.6.0.3.js@235:8503-9440",
-        "prototype-1.6.0.3.js@469:16882-18229",
-        "prototype-1.6.0.3.js@945:33484-34117",
-        "prototype-1.6.0.3.js@1017:35638-36349",
-        "prototype-1.6.0.3.js@1036:36366-41931",
-        "prototype-1.6.0.3.js@1179:42060-44285",
-        "prototype-1.6.0.3.js@1241:44302-45606",
-        "prototype-1.6.0.3.js@1273:45633-46788",
-        "prototype-1.6.0.3.js@2430:89258-94417",
-        "prototype-1.6.0.3.js@3348:125472-126001",
-        "prototype-1.6.0.3.js@3362:126027-126154",
-        "prototype-1.6.0.3.js@3367:126172-126292",
-        "prototype-1.6.0.3.js@3372:126319-127432",
-        "prototype-1.6.0.3.js@3406:127463-127590",
-        "prototype-1.6.0.3.js@3411:127613-127733",
-        "prototype-1.6.0.3.js@3821:143255-143269",
-        "flotr-0.2.0-alpha.js@131:4691-97537",
-        "flotr-0.2.0-alpha.js@2684:97556-99275"
-    ],
     "prototype-1.6.0.3.js@698:25209-25486": [
         "prototype-1.6.0.3.js@28:1260-1273"
     ],
     "prototype-1.6.0.3.js@149:5411-5480": [
         "prototype-1.6.0.3.js@29:1291-1323",
-        "prototype-1.6.0.3.js@794:28138-28180",
         "prototype-1.6.0.3.js@580:21112-21143",
         "prototype-1.6.0.3.js@60:2603-2627",
         "prototype-1.6.0.3.js@2333:85811-85835",
         "prototype-1.6.0.3.js@456:16412-16442",
         "flotr-0.2.0-alpha.js@927:30981-31005",
         "prototype-1.6.0.3.js@995:35083-35121"
+    ],
+    "prototype-1.6.0.3.js@76:3183-3324": [
+        "prototype-1.6.0.3.js@34:1483-1518",
+        "prototype-1.6.0.3.js@1356:48694-48736",
+        "prototype-1.6.0.3.js@2246:82357-82479",
+        "prototype-1.6.0.3.js@3562:132516-132555",
+        "prototype-1.6.0.3.js@2316:85196-85241",
+        "prototype-1.6.0.3.js@2399:88087-88126",
+        "prototype-1.6.0.3.js@2302:84687-84720",
+        "prototype-1.6.0.3.js@2303:84730-84779",
+        "prototype-1.6.0.3.js@138:5048-5073",
+        "prototype-1.6.0.3.js@1028:35968-36010"
     ],
     "prototype-1.6.0.3.js@53:2196-3144": [
         "prototype-1.6.0.3.js@45:1922-1953"
@@ -693,9 +729,6 @@
         "prototype-1.6.0.3.js@55:2310-2329",
         "prototype-1.6.0.3.js@56:2344-2375",
         "prototype-1.6.0.3.js@3529:131331-131357"
-    ],
-    "prototype-1.6.0.3.js@814:28850-29001": [
-        "prototype-1.6.0.3.js@855:30118-30144"
     ],
     "prototype-1.6.0.3.js@152:5496-5563": [
         "prototype-1.6.0.3.js@815:28881-28904",
@@ -713,32 +746,12 @@
         "prototype-1.6.0.3.js@1612:58788-58835",
         "prototype-1.6.0.3.js@349:12382-12394"
     ],
-    "prototype-1.6.0.3.js@503:18327-18665": [
-        "prototype-1.6.0.3.js@818:28974-28993",
-        "prototype-1.6.0.3.js@584:21269-21437",
-        "prototype-1.6.0.3.js@601:21868-21985",
-        "prototype-1.6.0.3.js@645:23438-23528",
-        "prototype-1.6.0.3.js@545:19866-19984",
-        "flotr-0.2.0-alpha.js@985:32641-33515",
-        "prototype-1.6.0.3.js@714:25833-25850",
-        "prototype-1.6.0.3.js@562:20436-20585",
-        "prototype-1.6.0.3.js@536:19535-19688",
-        "flotr-0.2.0-alpha.js@1869:65144-65371",
-        "flotr-0.2.0-alpha.js@1784:62321-62536",
-        "flotr-0.2.0-alpha.js@2089:73538-74055",
-        "flotr-0.2.0-alpha.js@2106:74243-76321",
-        "flotr-0.2.0-alpha.js@508:16207-16660",
-        "prototype-1.6.0.3.js@552:20108-20306",
-        "prototype-1.6.0.3.js@2729:101459-101471",
-        "prototype-1.6.0.3.js@994:35034-35399",
-        "prototype-1.6.0.3.js@128:4786-4805"
-    ],
     "prototype-1.6.0.3.js@506:18430-18526": [
         "prototype-1.6.0.3.js@506:18419-18527",
         "flotr-0.2.0-alpha.js@29:951-979",
-        "prototype-1.6.0.3.js@2212:81657-81682",
         "prototype-1.6.0.3.js@564:20550-20569",
         "canvastext.js@5243:128910-128925",
+        "prototype-1.6.0.3.js@2212:81657-81682",
         "prototype-1.6.0.3.js@646:23483-23512",
         "flotr-0.2.0-alpha.js@2073:73019-73045",
         "flotr-0.2.0-alpha.js@2098:74018-74028",
@@ -756,13 +769,7 @@
     "prototype-1.6.0.3.js@205:7361-7606": [
         "prototype-1.6.0.3.js@856:30201-30225",
         "prototype-1.6.0.3.js@3530:131412-131443",
-        "prototype-1.6.0.3.js@2336:85964-85981",
-        "prototype-1.6.0.3.js@3693:137331-137363",
-        "prototype-1.6.0.3.js@3694:137378-137413",
-        "prototype-1.6.0.3.js@3695:137434-137475"
-    ],
-    "prototype-1.6.0.3.js@862:30322-33380": [
-        "prototype-1.6.0.3.js@862:30322-33382"
+        "prototype-1.6.0.3.js@2336:85964-85981"
     ],
     "prototype-1.6.0.3.js@709:25528-25954": [
         "prototype-1.6.0.3.js@28:1260-1273",
@@ -772,18 +779,15 @@
         "prototype-1.6.0.3.js@2519:92752-92776",
         "prototype-1.6.0.3.js@1534:55789-55802",
         "prototype-1.6.0.3.js@607:22082-22095",
+        "prototype-1.6.0.3.js@172:6266-6279",
         "prototype-1.6.0.3.js@2202:81351-81369",
         "prototype-1.6.0.3.js@184:6664-6677",
         "prototype-1.6.0.3.js@186:6760-6773",
         "prototype-1.6.0.3.js@196:7086-7099",
         "prototype-1.6.0.3.js@190:6856-6869",
-        "prototype-1.6.0.3.js@172:6266-6279",
         "examples.js@3:38-44",
         "prototype-1.6.0.3.js@202:7311-7324",
         "prototype-1.6.0.3.js@750:26837-26850"
-    ],
-    "prototype-1.6.0.3.js@986:34743-34854": [
-        "prototype-1.6.0.3.js@1009:35454-35624"
     ],
     "prototype-1.6.0.3.js@579:21076-21474": [
         "prototype-1.6.0.3.js@987:34779-34802",
@@ -791,6 +795,25 @@
         "prototype-1.6.0.3.js@646:23483-23512",
         "prototype-1.6.0.3.js@1050:36739-36821",
         "prototype-1.6.0.3.js@752:26918-26939"
+    ],
+    "prototype-1.6.0.3.js@503:18327-18665": [
+        "prototype-1.6.0.3.js@584:21269-21437",
+        "prototype-1.6.0.3.js@601:21868-21985",
+        "prototype-1.6.0.3.js@645:23438-23528",
+        "prototype-1.6.0.3.js@545:19866-19984",
+        "flotr-0.2.0-alpha.js@985:32641-33515",
+        "prototype-1.6.0.3.js@562:20436-20585",
+        "prototype-1.6.0.3.js@714:25833-25850",
+        "flotr-0.2.0-alpha.js@2089:73538-74055",
+        "flotr-0.2.0-alpha.js@2106:74243-76321",
+        "flotr-0.2.0-alpha.js@1869:65144-65371",
+        "flotr-0.2.0-alpha.js@1784:62321-62536",
+        "prototype-1.6.0.3.js@536:19535-19688",
+        "flotr-0.2.0-alpha.js@508:16207-16660",
+        "prototype-1.6.0.3.js@552:20108-20306",
+        "prototype-1.6.0.3.js@2729:101459-101471",
+        "prototype-1.6.0.3.js@994:35034-35399",
+        "prototype-1.6.0.3.js@128:4786-4805"
     ],
     "prototype-1.6.0.3.js@983:34659-34727": [
         "prototype-1.6.0.3.js@506:18419-18527"
@@ -814,19 +837,19 @@
         "flotr-0.2.0-alpha.js@734:24398-24430",
         "flotr-0.2.0-alpha.js@735:24476-24508",
         "flotr-0.2.0-alpha.js@736:24550-24578",
-        "prototype-1.6.0.3.js@1431:51715-51748",
         "flotr-0.2.0-alpha.js@1460:51600-51620",
         "flotr-0.2.0-alpha.js@1461:51643-51664",
         "flotr-0.2.0-alpha.js@1545:54309-54329",
         "flotr-0.2.0-alpha.js@1546:54352-54373",
-        "flotr-0.2.0-alpha.js@2000:70265-70285",
-        "flotr-0.2.0-alpha.js@2001:70308-70329",
-        "flotr-0.2.0-alpha.js@1927:67192-67212",
-        "flotr-0.2.0-alpha.js@1928:67235-67256",
+        "prototype-1.6.0.3.js@1431:51715-51748",
         "flotr-0.2.0-alpha.js@1858:64823-64843",
         "flotr-0.2.0-alpha.js@1859:64866-64887",
         "flotr-0.2.0-alpha.js@1771:61941-61961",
         "flotr-0.2.0-alpha.js@1772:61984-62005",
+        "flotr-0.2.0-alpha.js@2000:70265-70285",
+        "flotr-0.2.0-alpha.js@2001:70308-70329",
+        "flotr-0.2.0-alpha.js@1927:67192-67212",
+        "flotr-0.2.0-alpha.js@1928:67235-67256",
         "prototype-1.6.0.3.js@1393:49874-49907",
         "flotr-0.2.0-alpha.js@577:18557-18629",
         "flotr-0.2.0-alpha.js@580:18674-18745",
@@ -845,21 +868,6 @@
         "prototype-1.6.0.3.js@1191:42671-42694",
         "prototype-1.6.0.3.js@296:10454-10479"
     ],
-    "prototype-1.6.0.3.js@1341:48016-48808": [
-        "prototype-1.6.0.3.js@1359:48016-48821"
-    ],
-    "prototype-1.6.0.3.js@2245:82339-82482": [
-        "prototype-1.6.0.3.js@2251:82339-82519"
-    ],
-    "prototype-1.6.0.3.js@2266:83143-84340": [
-        "prototype-1.6.0.3.js@2266:83143-84342"
-    ],
-    "prototype-1.6.0.3.js@3449:128451-131280": [
-        "prototype-1.6.0.3.js@3449:128451-131282"
-    ],
-    "prototype-1.6.0.3.js@3528:131299-132592": [
-        "prototype-1.6.0.3.js@3528:131299-132594"
-    ],
     "prototype-1.6.0.3.js@600:21819-22021": [
         "prototype-1.6.0.3.js@128:4786-4805",
         "prototype-1.6.0.3.js@646:23483-23512",
@@ -872,20 +880,10 @@
     "prototype-1.6.0.3.js@3529:131369-131476": [
         "prototype-1.6.0.3.js@602:21927-21969"
     ],
-    "prototype-1.6.0.3.js@3566:132617-137139": [
-        "prototype-1.6.0.3.js@3566:132617-137141"
-    ],
-    "prototype-1.6.0.3.js@2299:84572-88245": [
-        "prototype-1.6.0.3.js@3687:137181-137293",
-        "prototype-1.6.0.3.js@3849:144116-144136"
-    ],
     "prototype-1.6.0.3.js@2329:85613-85998": [
         "prototype-1.6.0.3.js@2388:87702-87746",
         "prototype-1.6.0.3.js@2389:87756-87816",
         "prototype-1.6.0.3.js@2396:88036-88065"
-    ],
-    "prototype-1.6.0.3.js@3698:137500-138533": [
-        "prototype-1.6.0.3.js@3698:137500-138535"
     ],
     "prototype-1.6.0.3.js@3625:134704-135197": [
         "prototype-1.6.0.3.js@3714:138025-138078",
@@ -896,7 +894,7 @@
         "prototype-1.6.0.3.js@3664:136345-136355",
         "examples.js@13:208-222",
         "prototype-1.6.0.3.js@1567:57035-57045",
-        "negative.js@50:1130-1144",
+        "advanced-titles.js@26:518-532",
         "flotr-0.2.0-alpha.js@134:4775-4780",
         "prototype-1.6.0.3.js@1534:55816-55828",
         "prototype-1.6.0.3.js@2516:92641-92648",
@@ -910,23 +908,22 @@
         "prototype-1.6.0.3.js@1588:57823-57833",
         "prototype-1.6.0.3.js@1411:50595-50605",
         "prototype-1.6.0.3.js@3639:135285-135295",
+        "basic-axis.js@28:610-624",
         "prototype-1.6.0.3.js@1381:49431-49441",
         "prototype-1.6.0.3.js@2105:77714-77724",
-        "basic-axis.js@28:610-624",
-        "image-download.js@26:515-529",
-        "mouse-tracking.js@22:535-549",
-        "advanced-titles.js@26:518-532",
+        "basic-bar.js@19:430-444",
         "basic-candlesticks.js@22:526-540",
         "basic-legend.js@28:564-578",
+        "basic-pie.js@9:188-202",
+        "basic-stacked-bars.js@19:384-398",
+        "prototype-1.6.0.3.js@1386:49583-49593",
+        "basic.js@17:367-381",
+        "image-download.js@26:515-529",
+        "mouse-tracking.js@22:535-549",
         "mouse-zoom.js@37:911-925",
         "mouse-zoom.js@51:1122-1136",
         "mouse-zoom.js@74:1860-1874",
-        "basic.js@17:367-381",
-        "basic-stacked-bars.js@19:384-398",
-        "prototype-1.6.0.3.js@1386:49583-49593",
-        "basic-pie.js@9:188-202",
-        "json-data.js@2:19-32",
-        "basic-bar.js@19:430-444",
+        "negative.js@50:1130-1144",
         "prototype-1.6.0.3.js@1548:56339-56344",
         "prototype-1.6.0.3.js@1371:49169-49179",
         "prototype-1.6.0.3.js@1436:51869-51879",
@@ -953,9 +950,9 @@
         "prototype-1.6.0.3.js@1353:48565-48596",
         "prototype-1.6.0.3.js@546:19931-19967",
         "prototype-1.6.0.3.js@3682:137100-137119",
-        "flotr-0.2.0-alpha.js@2266:80567-80613",
         "flotr-0.2.0-alpha.js@2215:78243-78289",
         "flotr-0.2.0-alpha.js@2238:79500-79546",
+        "flotr-0.2.0-alpha.js@2266:80567-80613",
         "prototype-1.6.0.3.js@2764:102977-102994",
         "prototype-1.6.0.3.js@3487:129575-129594",
         "prototype-1.6.0.3.js@3495:130073-130093",
@@ -1017,9 +1014,16 @@
     "prototype-1.6.0.3.js@386:13848-13946": [
         "prototype-1.6.0.3.js@2380:87424-87444"
     ],
+    "prototype-1.6.0.3.js@645:23448-23527": [
+        "prototype-1.6.0.3.js@507:18469-18507"
+    ],
+    "prototype-1.6.0.3.js@584:21279-21436": [
+        "prototype-1.6.0.3.js@507:18469-18507"
+    ],
+    "prototype-1.6.0.3.js@3700:137533-137752": [
+        "prototype-1.6.0.3.js@3595:133735-133763"
+    ],
     "prototype-1.6.0.3.js@209:7505-7599": [
-        "examples.js@12:152-538",
-        "negative.js@4:51-1530",
         "prototype-1.6.0.3.js@3705:137686-137713",
         "flotr-0.2.0-alpha.js@422:13481-13507",
         "prototype-1.6.0.3.js@1543:56160-56187",
@@ -1035,40 +1039,29 @@
         "flotr-0.2.0-alpha.js@467:14903-14916",
         "flotr-0.2.0-alpha.js@733:24325-24353",
         "prototype-1.6.0.3.js@170:6169-6181",
+        "flotr-0.2.0-alpha.js@1088:36427-36496",
+        "flotr-0.2.0-alpha.js@1138:38219-38287",
+        "flotr-0.2.0-alpha.js@1065:35681-35734",
+        "flotr-0.2.0-alpha.js@1071:35928-35980",
         "flotr-0.2.0-alpha.js@494:15714-15854",
         "prototype-1.6.0.3.js@191:6917-7019",
         "flotr-0.2.0-alpha.js@495:15905-15929",
         "flotr-0.2.0-alpha.js@496:15944-15961",
-        "flotr-0.2.0-alpha.js@1088:36427-36496",
-        "flotr-0.2.0-alpha.js@1138:38219-38287",
         "flotr-0.2.0-alpha.js@1303:45686-45699",
         "flotr-0.2.0-alpha.js@1436:50952-50965",
-        "flotr-0.2.0-alpha.js@1065:35681-35734",
-        "flotr-0.2.0-alpha.js@1071:35928-35980",
         "flotr-0.2.0-alpha.js@2287:82034-82145",
+        "flotr-0.2.0-alpha.js@121:4377-4413",
         "flotr-0.2.0-alpha.js@2296:82752-82766",
         "flotr-0.2.0-alpha.js@2296:82784-82799",
         "prototype-1.6.0.3.js@1656:60436-60488",
         "prototype-1.6.0.3.js@1675:61206-61242",
-        "basic-axis.js@4:107-1469",
-        "flotr-0.2.0-alpha.js@121:4377-4413",
-        "image-download.js@5:64-1762",
-        "mouse-tracking.js@4:57-912",
-        "advanced-titles.js@5:67-1545",
-        "basic-candlesticks.js@4:57-646",
-        "flotr-0.2.0-alpha.js@2307:83184-83215",
-        "flotr-0.2.0-alpha.js@2354:84790-84841",
-        "basic-legend.js@4:55-970",
-        "mouse-zoom.js@4:55-1923",
-        "basic.js@4:55-401",
-        "basic-stacked-bars.js@4:56-843",
         "flotr-0.2.0-alpha.js@555:17843-17906",
         "prototype-1.6.0.3.js@1583:57696-57729",
         "flotr-0.2.0-alpha.js@569:18328-18365",
         "prototype-1.6.0.3.js@2212:81657-81682",
         "flotr-0.2.0-alpha.js@572:18461-18487",
-        "basic-pie.js@1:0-606",
-        "basic-bar.js@4:54-541",
+        "flotr-0.2.0-alpha.js@2307:83184-83215",
+        "flotr-0.2.0-alpha.js@2354:84790-84841",
         "flotr-0.2.0-alpha.js@2358:84908-84928",
         "flotr-0.2.0-alpha.js@634:20553-20566",
         "flotr-0.2.0-alpha.js@637:20622-20636",
@@ -1092,6 +1085,10 @@
         "flotr-0.2.0-alpha.js@643:20926-20950",
         "flotr-0.2.0-alpha.js@647:21089-21129",
         "flotr-0.2.0-alpha.js@648:21175-21201",
+        "flotr-0.2.0-alpha.js@536:17039-17057",
+        "flotr-0.2.0-alpha.js@537:17079-17113",
+        "flotr-0.2.0-alpha.js@538:17143-17185",
+        "flotr-0.2.0-alpha.js@539:17200-17240",
         "flotr-0.2.0-alpha.js@2678:97428-97446",
         "flotr-0.2.0-alpha.js@2679:97457-97476",
         "flotr-0.2.0-alpha.js@2680:97487-97508",
@@ -1114,32 +1111,12 @@
         "prototype-1.6.0.3.js@3648:135751-135783",
         "prototype-1.6.0.3.js@3643:135516-135565"
     ],
-    "canvas2image.js@1:20-6999": [
-        "canvas2image.js@1:20-7002"
-    ],
-    "prototype-1.6.0.3.js@645:23448-23527": [
-        "prototype-1.6.0.3.js@507:18469-18507"
-    ],
-    "prototype-1.6.0.3.js@584:21279-21436": [
-        "prototype-1.6.0.3.js@507:18469-18507"
-    ],
-    "prototype-1.6.0.3.js@3591:133549-133774": [
-        "prototype-1.6.0.3.js@3632:135018-135064",
-        "prototype-1.6.0.3.js@3678:136957-136985",
-        "prototype-1.6.0.3.js@2729:101459-101471",
-        "prototype-1.6.0.3.js@506:18419-18527",
-        "prototype-1.6.0.3.js@313:11088-11112",
-        "flotr-0.2.0-alpha.js@691:22846-22871",
-        "flotr-0.2.0-alpha.js@726:24161-24196",
-        "prototype-1.6.0.3.js@1382:49451-49490",
-        "flotr-0.2.0-alpha.js@2534:91428-91476",
-        "flotr-0.2.0-alpha.js@2529:91261-91323"
-    ],
-    "prototype-1.6.0.3.js@3700:137533-137752": [
-        "prototype-1.6.0.3.js@3595:133735-133763"
-    ],
     "prototype-1.6.0.3.js@3663:136285-137130": [
         "prototype-1.6.0.3.js@714:25833-25850"
+    ],
+    "prototype-1.6.0.3.js@3591:133549-133774": [
+        "prototype-1.6.0.3.js@3678:136957-136985",
+        "prototype-1.6.0.3.js@2729:101459-101471"
     ],
     "examples.js@12:183-537": [
         "prototype-1.6.0.3.js@3595:133735-133763"
@@ -1219,10 +1196,10 @@
         "prototype-1.6.0.3.js@714:25833-25850",
         "flotr-0.2.0-alpha.js@24:673-1035",
         "prototype-1.6.0.3.js@608:22125-22224",
-        "prototype-1.6.0.3.js@324:11528-11548",
-        "prototype-1.6.0.3.js@506:18419-18527",
         "flotr-0.2.0-alpha.js@2053:72316-72639",
         "flotr-0.2.0-alpha.js@2071:72922-73463",
+        "prototype-1.6.0.3.js@324:11528-11548",
+        "prototype-1.6.0.3.js@506:18419-18527",
         "prototype-1.6.0.3.js@659:23915-24109"
     ],
     "prototype-1.6.0.3.js@545:19876-19983": [
@@ -1231,11 +1208,8 @@
     "prototype-1.6.0.3.js@470:16917-17062": [
         "prototype-1.6.0.3.js@32:1417-1455"
     ],
-    "negative.js@4:82-1529": [
+    "advanced-titles.js@5:98-1544": [
         "prototype-1.6.0.3.js@3595:133735-133763"
-    ],
-    "flotr-0.2.0-alpha.js@18:462-619": [
-        "negative.js@53:1384-1399"
     ],
     "flotr-0.2.0-alpha.js@133:4725-5865": [
         "prototype-1.6.0.3.js@32:1417-1455"
@@ -1261,20 +1235,15 @@
         "prototype-1.6.0.3.js@1437:51893-51918",
         "flotr-0.2.0-alpha.js@2668:97119-97142"
     ],
-    "prototype-1.6.0.3.js@155:5579-5646": [
-        "flotr-0.2.0-alpha.js@360:11407-11425",
-        "flotr-0.2.0-alpha.js@394:12345-12369",
-        "prototype-1.6.0.3.js@1412:50650-50677"
-    ],
     "flotr-0.2.0-alpha.js@80:2458-4276": [
-        "flotr-0.2.0-alpha.js@361:11489-11508",
         "flotr-0.2.0-alpha.js@371:11801-11824",
         "flotr-0.2.0-alpha.js@1672:58636-58666",
-        "flotr-0.2.0-alpha.js@2294:82550-82571",
         "flotr-0.2.0-alpha.js@2226:78812-78882",
-        "flotr-0.2.0-alpha.js@1951:68110-68133",
+        "flotr-0.2.0-alpha.js@2294:82550-82571",
         "flotr-0.2.0-alpha.js@1758:61502-61532",
+        "flotr-0.2.0-alpha.js@1951:68110-68133",
         "flotr-0.2.0-alpha.js@2116:74756-74779",
+        "flotr-0.2.0-alpha.js@361:11489-11508",
         "flotr-0.2.0-alpha.js@2507:90378-90419",
         "flotr-0.2.0-alpha.js@2510:90550-90591"
     ],
@@ -1340,6 +1309,11 @@
     "prototype-1.6.0.3.js@1410:50544-51797": [
         "prototype-1.6.0.3.js@714:25833-25850"
     ],
+    "prototype-1.6.0.3.js@155:5579-5646": [
+        "prototype-1.6.0.3.js@1412:50650-50677",
+        "flotr-0.2.0-alpha.js@360:11407-11425",
+        "flotr-0.2.0-alpha.js@394:12345-12369"
+    ],
     "prototype-1.6.0.3.js@2211:81622-81689": [
         "prototype-1.6.0.3.js@1422:51222-51246",
         "prototype-1.6.0.3.js@714:25833-25850"
@@ -1384,9 +1358,12 @@
         "flotr-0.2.0-alpha.js@171:5610-5642",
         "flotr-0.2.0-alpha.js@172:5653-5686"
     ],
+    "advanced-titles.js@37:945-977": [
+        "flotr-0.2.0-alpha.js@966:32220-32238"
+    ],
     "flotr-0.2.0-alpha.js@59:1898-1947": [
-        "flotr-0.2.0-alpha.js@966:32220-32238",
         "flotr-0.2.0-alpha.js@942:31468-31486",
+        "flotr-0.2.0-alpha.js@966:32220-32238",
         "flotr-0.2.0-alpha.js@623:20167-20208",
         "flotr-0.2.0-alpha.js@718:23847-23889"
     ],
@@ -1405,6 +1382,222 @@
         "flotr-0.2.0-alpha.js@1352:47036-47071",
         "flotr-0.2.0-alpha.js@1378:47999-48034",
         "flotr-0.2.0-alpha.js@1391:48471-48507"
+    ],
+    "canvastext.js@5379:134320-134420": [
+        "flotr-0.2.0-alpha.js@488:15502-15543"
+    ],
+    "canvastext.js@5234:128405-128960": [
+        "canvastext.js@5380:134368-134405"
+    ],
+    "canvastext.js@5222:127855-128380": [
+        "canvastext.js@5235:128453-128483",
+        "canvastext.js@5307:131398-131428",
+        "canvastext.js@5377:134240-134271"
+    ],
+    "canvastext.js@5190:126584-127554": [
+        "canvastext.js@5226:127994-128022",
+        "canvastext.js@5303:131261-131289"
+    ],
+    "prototype-1.6.0.3.js@739:26489-26600": [
+        "canvastext.js@5212:127527-127543"
+    ],
+    "prototype-1.6.0.3.js@560:20363-20624": [
+        "prototype-1.6.0.3.js@740:26518-26593",
+        "flotr-0.2.0-alpha.js@2189:77322-77405",
+        "prototype-1.6.0.3.js@751:26867-26951"
+    ],
+    "prototype-1.6.0.3.js@562:20446-20584": [
+        "prototype-1.6.0.3.js@507:18469-18507"
+    ],
+    "prototype-1.6.0.3.js@740:26530-26592": [
+        "prototype-1.6.0.3.js@563:20492-20528"
+    ],
+    "flotr-0.2.0-alpha.js@481:15275-16005": [
+        "flotr-0.2.0-alpha.js@1007:33536-33679",
+        "flotr-0.2.0-alpha.js@1013:33740-33870"
+    ],
+    "flotr-0.2.0-alpha.js@1059:35535-35988": [
+        "flotr-0.2.0-alpha.js@175:5733-5744"
+    ],
+    "flotr-0.2.0-alpha.js@1084:36274-38306": [
+        "flotr-0.2.0-alpha.js@1060:35558-35573"
+    ],
+    "flotr-0.2.0-alpha.js@1079:36128-36255": [
+        "flotr-0.2.0-alpha.js@1123:37685-37698",
+        "flotr-0.2.0-alpha.js@1124:37777-37790",
+        "flotr-0.2.0-alpha.js@1216:40965-40989",
+        "flotr-0.2.0-alpha.js@1235:41698-41722",
+        "flotr-0.2.0-alpha.js@1242:41977-42001",
+        "flotr-0.2.0-alpha.js@1243:42093-42117",
+        "prototype-1.6.0.3.js@714:25833-25850",
+        "flotr-0.2.0-alpha.js@1737:60850-60867",
+        "flotr-0.2.0-alpha.js@1719:60233-60250",
+        "flotr-0.2.0-alpha.js@1279:44192-44216",
+        "flotr-0.2.0-alpha.js@2632:95848-95863",
+        "flotr-0.2.0-alpha.js@2546:91888-91909",
+        "flotr-0.2.0-alpha.js@2606:94579-94594"
+    ],
+    "flotr-0.2.0-alpha.js@1142:38327-45719": [
+        "flotr-0.2.0-alpha.js@1061:35584-35601"
+    ],
+    "flotr-0.2.0-alpha.js@1074:36003-36112": [
+        "flotr-0.2.0-alpha.js@1177:39449-39472",
+        "prototype-1.6.0.3.js@714:25833-25850",
+        "flotr-0.2.0-alpha.js@1737:60832-60848",
+        "flotr-0.2.0-alpha.js@1719:60215-60231",
+        "flotr-0.2.0-alpha.js@1259:42900-42923",
+        "flotr-0.2.0-alpha.js@1110:37200-37212",
+        "flotr-0.2.0-alpha.js@1111:37278-37290",
+        "flotr-0.2.0-alpha.js@2632:95832-95846",
+        "flotr-0.2.0-alpha.js@2545:91803-91823",
+        "flotr-0.2.0-alpha.js@2608:94816-94830"
+    ],
+    "canvastext.js@5294:130699-133990": [
+        "canvastext.js@5374:134106-134145"
+    ],
+    "canvastext.js@5246:128984-129454": [
+        "canvastext.js@5309:131498-131541"
+    ],
+    "canvastext.js@5258:129483-129928": [
+        "canvastext.js@5247:129031-129087"
+    ],
+    "canvastext.js@5272:129950-130683": [
+        "canvastext.js@5354:133150-133203"
+    ],
+    "flotr-0.2.0-alpha.js@1307:45740-50985": [
+        "flotr-0.2.0-alpha.js@1062:35612-35629"
+    ],
+    "canvastext.js@5373:134052-134160": [
+        "flotr-0.2.0-alpha.js@1323:46186-46413",
+        "flotr-0.2.0-alpha.js@1336:46552-46754",
+        "flotr-0.2.0-alpha.js@1353:47090-47348",
+        "flotr-0.2.0-alpha.js@1379:48053-48293",
+        "flotr-0.2.0-alpha.js@1392:48526-48785",
+        "flotr-0.2.0-alpha.js@2143:76056-76256"
+    ],
+    "flotr-0.2.0-alpha.js@1440:51006-51440": [
+        "flotr-0.2.0-alpha.js@1068:35860-35891"
+    ],
+    "flotr-0.2.0-alpha.js@1642:57652-58850": [
+        "flotr-0.2.0-alpha.js@1452:51359-51421",
+        "flotr-0.2.0-alpha.js@1446:51220-51262"
+    ],
+    "flotr-0.2.0-alpha.js@1456:51459-54043": [
+        "flotr-0.2.0-alpha.js@1658:58127-58165",
+        "flotr-0.2.0-alpha.js@1661:58232-58261",
+        "flotr-0.2.0-alpha.js@1676:58794-58818"
+    ],
+    "prototype-1.6.0.3.js@171:6198-6292": [
+        "flotr-0.2.0-alpha.js@1466:51762-51782",
+        "flotr-0.2.0-alpha.js@1467:51805-51826",
+        "flotr-0.2.0-alpha.js@1527:53766-53778",
+        "flotr-0.2.0-alpha.js@1528:53843-53855",
+        "flotr-0.2.0-alpha.js@1528:53857-53870",
+        "flotr-0.2.0-alpha.js@1530:53905-53917",
+        "flotr-0.2.0-alpha.js@1531:53940-53953",
+        "flotr-0.2.0-alpha.js@1527:53791-53804",
+        "flotr-0.2.0-alpha.js@1579:55530-55542",
+        "flotr-0.2.0-alpha.js@1579:55544-55561",
+        "flotr-0.2.0-alpha.js@1624:57101-57113",
+        "flotr-0.2.0-alpha.js@1624:57115-57128",
+        "flotr-0.2.0-alpha.js@1625:57164-57176",
+        "flotr-0.2.0-alpha.js@1625:57178-57191",
+        "flotr-0.2.0-alpha.js@1637:57527-57542",
+        "flotr-0.2.0-alpha.js@1637:57544-57561",
+        "flotr-0.2.0-alpha.js@1897:66108-66123",
+        "flotr-0.2.0-alpha.js@1897:66126-66140",
+        "flotr-0.2.0-alpha.js@1897:66145-66160",
+        "flotr-0.2.0-alpha.js@1898:66234-66251",
+        "flotr-0.2.0-alpha.js@1898:66254-66268",
+        "flotr-0.2.0-alpha.js@1898:66273-66290",
+        "flotr-0.2.0-alpha.js@1901:66414-66428",
+        "flotr-0.2.0-alpha.js@1901:66461-66475",
+        "flotr-0.2.0-alpha.js@1831:63718-63732",
+        "flotr-0.2.0-alpha.js@1831:63734-63751",
+        "flotr-0.2.0-alpha.js@1832:63791-63805",
+        "flotr-0.2.0-alpha.js@1832:63807-63821",
+        "flotr-0.2.0-alpha.js@1833:63861-63876",
+        "flotr-0.2.0-alpha.js@1833:63878-63892",
+        "flotr-0.2.0-alpha.js@1834:63932-63947",
+        "flotr-0.2.0-alpha.js@1834:63949-63966",
+        "flotr-0.2.0-alpha.js@1841:64173-64187",
+        "flotr-0.2.0-alpha.js@1841:64189-64206",
+        "flotr-0.2.0-alpha.js@1843:64273-64287",
+        "flotr-0.2.0-alpha.js@1843:64289-64303",
+        "flotr-0.2.0-alpha.js@1844:64367-64382",
+        "flotr-0.2.0-alpha.js@1844:64384-64398",
+        "flotr-0.2.0-alpha.js@1845:64464-64479",
+        "flotr-0.2.0-alpha.js@1845:64481-64498",
+        "flotr-0.2.0-alpha.js@2020:70960-70975",
+        "flotr-0.2.0-alpha.js@2020:70978-70992",
+        "flotr-0.2.0-alpha.js@2020:70997-71012",
+        "flotr-0.2.0-alpha.js@2021:71086-71103",
+        "flotr-0.2.0-alpha.js@2021:71106-71120",
+        "flotr-0.2.0-alpha.js@2021:71125-71142",
+        "flotr-0.2.0-alpha.js@2024:71276-71290",
+        "flotr-0.2.0-alpha.js@2024:71323-71337",
+        "flotr-0.2.0-alpha.js@1952:68228-68242",
+        "flotr-0.2.0-alpha.js@1952:68244-68259",
+        "flotr-0.2.0-alpha.js@1952:68270-68285",
+        "flotr-0.2.0-alpha.js@1952:68288-68302",
+        "flotr-0.2.0-alpha.js@1952:68304-68322",
+        "flotr-0.2.0-alpha.js@1952:68325-68340",
+        "flotr-0.2.0-alpha.js@1959:68554-68578",
+        "flotr-0.2.0-alpha.js@1980:69454-69468",
+        "flotr-0.2.0-alpha.js@1980:69470-69485",
+        "flotr-0.2.0-alpha.js@1980:69496-69511",
+        "flotr-0.2.0-alpha.js@1980:69514-69528",
+        "flotr-0.2.0-alpha.js@1980:69530-69548",
+        "flotr-0.2.0-alpha.js@1980:69551-69566",
+        "flotr-0.2.0-alpha.js@1983:69655-69670",
+        "flotr-0.2.0-alpha.js@1984:69729-69743",
+        "flotr-0.2.0-alpha.js@1985:69802-69820",
+        "flotr-0.2.0-alpha.js@1986:69879-69896",
+        "prototype-1.6.0.3.js@3595:133735-133763",
+        "prototype-1.6.0.3.js@192:6968-6998",
+        "prototype-1.6.0.3.js@1039:36472-36487"
+    ],
+    "flotr-0.2.0-alpha.js@1537:54066-57626": [
+        "flotr-0.2.0-alpha.js@1665:58373-58415",
+        "flotr-0.2.0-alpha.js@1673:58742-58770"
+    ],
+    "flotr-0.2.0-alpha.js@1680:58877-59751": [
+        "flotr-0.2.0-alpha.js@1446:51220-51262"
+    ],
+    "flotr-0.2.0-alpha.js@1724:60387-60950": [
+        "flotr-0.2.0-alpha.js@1693:59224-59303",
+        "flotr-0.2.0-alpha.js@1696:59370-59440"
+    ],
+    "flotr-0.2.0-alpha.js@1705:59770-60362": [
+        "flotr-0.2.0-alpha.js@1702:59654-59719"
+    ],
+    "flotr-0.2.0-alpha.js@2177:76992-83116": [
+        "flotr-0.2.0-alpha.js@176:5755-5774"
+    ],
+    "flotr-0.2.0-alpha.js@2189:77337-77404": [
+        "prototype-1.6.0.3.js@563:20492-20528"
+    ],
+    "prototype-1.6.0.3.js@778:27700-27747": [
+        "prototype-1.6.0.3.js@564:20550-20569"
+    ],
+    "canvastext.js@5376:134192-134286": [
+        "flotr-0.2.0-alpha.js@2216:78352-78381"
+    ],
+    "flotr-0.2.0-alpha.js@73:2294-2356": [
+        "flotr-0.2.0-alpha.js@2231:79181-79203",
+        "flotr-0.2.0-alpha.js@2231:79205-79227"
+    ],
+    "canvastext.js@5385:134564-134646": [
+        "flotr-0.2.0-alpha.js@2251:80035-80057"
+    ],
+    "canvastext.js@5218:127708-127836": [
+        "canvastext.js@5386:134606-134631"
+    ],
+    "basic-axis.js@4:138-1468": [
+        "prototype-1.6.0.3.js@3595:133735-133763"
+    ],
+    "basic-axis.js@37:961-993": [
+        "flotr-0.2.0-alpha.js@966:32220-32238"
     ],
     "prototype-1.6.0.3.js@122:4572-4682": [
         "prototype-1.6.0.3.js@1425:51310-51332",
@@ -1433,263 +1626,26 @@
     "prototype-1.6.0.3.js@1380:49392-49521": [
         "prototype-1.6.0.3.js@714:25833-25850"
     ],
-    "flotr-0.2.0-alpha.js@481:15275-16005": [
-        "flotr-0.2.0-alpha.js@1007:33536-33679",
-        "flotr-0.2.0-alpha.js@1013:33740-33870"
-    ],
-    "flotr-0.2.0-alpha.js@1059:35535-35988": [
-        "flotr-0.2.0-alpha.js@175:5733-5744"
-    ],
-    "flotr-0.2.0-alpha.js@1084:36274-38306": [
-        "flotr-0.2.0-alpha.js@1060:35558-35573"
-    ],
-    "flotr-0.2.0-alpha.js@1074:36003-36112": [
-        "flotr-0.2.0-alpha.js@1110:37200-37212",
-        "flotr-0.2.0-alpha.js@1111:37278-37290",
-        "flotr-0.2.0-alpha.js@1259:42900-42923",
-        "prototype-1.6.0.3.js@714:25833-25850",
-        "flotr-0.2.0-alpha.js@1737:60832-60848",
-        "flotr-0.2.0-alpha.js@1719:60215-60231",
-        "flotr-0.2.0-alpha.js@1177:39449-39472",
-        "flotr-0.2.0-alpha.js@2632:95832-95846",
-        "flotr-0.2.0-alpha.js@2545:91803-91823",
-        "flotr-0.2.0-alpha.js@2608:94816-94830"
-    ],
-    "flotr-0.2.0-alpha.js@1079:36128-36255": [
-        "flotr-0.2.0-alpha.js@1123:37685-37698",
-        "flotr-0.2.0-alpha.js@1124:37777-37790",
-        "flotr-0.2.0-alpha.js@1279:44192-44216",
-        "prototype-1.6.0.3.js@714:25833-25850",
-        "flotr-0.2.0-alpha.js@1737:60850-60867",
-        "flotr-0.2.0-alpha.js@1719:60233-60250",
-        "flotr-0.2.0-alpha.js@1216:40965-40989",
-        "flotr-0.2.0-alpha.js@1235:41698-41722",
-        "flotr-0.2.0-alpha.js@1242:41977-42001",
-        "flotr-0.2.0-alpha.js@1243:42093-42117",
-        "flotr-0.2.0-alpha.js@2632:95848-95863",
-        "flotr-0.2.0-alpha.js@2546:91888-91909",
-        "flotr-0.2.0-alpha.js@2606:94579-94594"
-    ],
-    "flotr-0.2.0-alpha.js@1142:38327-45719": [
-        "flotr-0.2.0-alpha.js@1061:35584-35601"
-    ],
-    "flotr-0.2.0-alpha.js@1307:45740-50985": [
-        "flotr-0.2.0-alpha.js@1062:35612-35629"
-    ],
-    "flotr-0.2.0-alpha.js@1440:51006-51440": [
-        "flotr-0.2.0-alpha.js@1068:35860-35891"
-    ],
-    "flotr-0.2.0-alpha.js@1642:57652-58850": [
-        "flotr-0.2.0-alpha.js@1452:51359-51421",
-        "flotr-0.2.0-alpha.js@1446:51220-51262"
-    ],
-    "flotr-0.2.0-alpha.js@1456:51459-54043": [
-        "flotr-0.2.0-alpha.js@1676:58794-58818",
-        "flotr-0.2.0-alpha.js@1658:58127-58165",
-        "flotr-0.2.0-alpha.js@1661:58232-58261"
-    ],
-    "prototype-1.6.0.3.js@171:6198-6292": [
-        "flotr-0.2.0-alpha.js@1466:51762-51782",
-        "flotr-0.2.0-alpha.js@1467:51805-51826",
-        "flotr-0.2.0-alpha.js@1527:53766-53778",
-        "flotr-0.2.0-alpha.js@1527:53791-53804",
-        "flotr-0.2.0-alpha.js@1530:53905-53917",
-        "flotr-0.2.0-alpha.js@1531:53940-53953",
-        "flotr-0.2.0-alpha.js@1528:53843-53855",
-        "flotr-0.2.0-alpha.js@1528:53857-53870",
-        "flotr-0.2.0-alpha.js@1579:55530-55542",
-        "flotr-0.2.0-alpha.js@1579:55544-55561",
-        "flotr-0.2.0-alpha.js@1624:57101-57113",
-        "flotr-0.2.0-alpha.js@1624:57115-57128",
-        "flotr-0.2.0-alpha.js@1625:57164-57176",
-        "flotr-0.2.0-alpha.js@1625:57178-57191",
-        "flotr-0.2.0-alpha.js@1637:57527-57542",
-        "flotr-0.2.0-alpha.js@1637:57544-57561",
-        "prototype-1.6.0.3.js@192:6968-6998",
-        "flotr-0.2.0-alpha.js@2020:70960-70975",
-        "flotr-0.2.0-alpha.js@2020:70978-70992",
-        "flotr-0.2.0-alpha.js@2020:70997-71012",
-        "flotr-0.2.0-alpha.js@2021:71086-71103",
-        "flotr-0.2.0-alpha.js@2021:71106-71120",
-        "flotr-0.2.0-alpha.js@2021:71125-71142",
-        "flotr-0.2.0-alpha.js@2024:71276-71290",
-        "flotr-0.2.0-alpha.js@2024:71323-71337",
-        "flotr-0.2.0-alpha.js@1952:68228-68242",
-        "flotr-0.2.0-alpha.js@1952:68244-68259",
-        "flotr-0.2.0-alpha.js@1952:68270-68285",
-        "flotr-0.2.0-alpha.js@1952:68288-68302",
-        "flotr-0.2.0-alpha.js@1952:68304-68322",
-        "flotr-0.2.0-alpha.js@1952:68325-68340",
-        "flotr-0.2.0-alpha.js@1959:68554-68578",
-        "flotr-0.2.0-alpha.js@1980:69454-69468",
-        "flotr-0.2.0-alpha.js@1980:69470-69485",
-        "flotr-0.2.0-alpha.js@1980:69496-69511",
-        "flotr-0.2.0-alpha.js@1980:69514-69528",
-        "flotr-0.2.0-alpha.js@1980:69530-69548",
-        "flotr-0.2.0-alpha.js@1980:69551-69566",
-        "flotr-0.2.0-alpha.js@1983:69655-69670",
-        "flotr-0.2.0-alpha.js@1984:69729-69743",
-        "flotr-0.2.0-alpha.js@1985:69802-69820",
-        "flotr-0.2.0-alpha.js@1986:69879-69896",
-        "prototype-1.6.0.3.js@3595:133735-133763",
-        "flotr-0.2.0-alpha.js@1897:66108-66123",
-        "flotr-0.2.0-alpha.js@1897:66126-66140",
-        "flotr-0.2.0-alpha.js@1897:66145-66160",
-        "flotr-0.2.0-alpha.js@1898:66234-66251",
-        "flotr-0.2.0-alpha.js@1898:66254-66268",
-        "flotr-0.2.0-alpha.js@1898:66273-66290",
-        "flotr-0.2.0-alpha.js@1901:66414-66428",
-        "flotr-0.2.0-alpha.js@1901:66461-66475",
-        "flotr-0.2.0-alpha.js@1831:63718-63732",
-        "flotr-0.2.0-alpha.js@1831:63734-63751",
-        "flotr-0.2.0-alpha.js@1832:63791-63805",
-        "flotr-0.2.0-alpha.js@1832:63807-63821",
-        "flotr-0.2.0-alpha.js@1833:63861-63876",
-        "flotr-0.2.0-alpha.js@1833:63878-63892",
-        "flotr-0.2.0-alpha.js@1834:63932-63947",
-        "flotr-0.2.0-alpha.js@1834:63949-63966",
-        "flotr-0.2.0-alpha.js@1841:64173-64187",
-        "flotr-0.2.0-alpha.js@1841:64189-64206",
-        "flotr-0.2.0-alpha.js@1843:64273-64287",
-        "flotr-0.2.0-alpha.js@1843:64289-64303",
-        "flotr-0.2.0-alpha.js@1844:64367-64382",
-        "flotr-0.2.0-alpha.js@1844:64384-64398",
-        "flotr-0.2.0-alpha.js@1845:64464-64479",
-        "flotr-0.2.0-alpha.js@1845:64481-64498",
-        "prototype-1.6.0.3.js@1039:36472-36487",
-        "prototype-1.6.0.3.js@1072:37868-37898",
-        "prototype-1.6.0.3.js@3632:135018-135064"
-    ],
-    "flotr-0.2.0-alpha.js@1680:58877-59751": [
-        "flotr-0.2.0-alpha.js@1446:51220-51262"
-    ],
-    "flotr-0.2.0-alpha.js@1724:60387-60950": [
-        "flotr-0.2.0-alpha.js@1693:59224-59303",
-        "flotr-0.2.0-alpha.js@1696:59370-59440"
-    ],
-    "flotr-0.2.0-alpha.js@1705:59770-60362": [
-        "flotr-0.2.0-alpha.js@1702:59654-59719"
-    ],
-    "flotr-0.2.0-alpha.js@2177:76992-83116": [
-        "flotr-0.2.0-alpha.js@176:5755-5774"
-    ],
-    "prototype-1.6.0.3.js@560:20363-20624": [
-        "flotr-0.2.0-alpha.js@2189:77322-77405",
-        "prototype-1.6.0.3.js@740:26518-26593",
-        "prototype-1.6.0.3.js@751:26867-26951"
-    ],
-    "prototype-1.6.0.3.js@562:20446-20584": [
-        "prototype-1.6.0.3.js@507:18469-18507"
-    ],
-    "flotr-0.2.0-alpha.js@2189:77337-77404": [
-        "prototype-1.6.0.3.js@563:20492-20528"
-    ],
-    "prototype-1.6.0.3.js@778:27700-27747": [
-        "prototype-1.6.0.3.js@564:20550-20569"
-    ],
-    "prototype-1.6.0.3.js@2104:77668-78250": [
-        "prototype-1.6.0.3.js@714:25833-25850"
-    ],
-    "basic-axis.js@4:138-1468": [
-        "prototype-1.6.0.3.js@3595:133735-133763"
-    ],
-    "basic-axis.js@37:961-993": [
-        "flotr-0.2.0-alpha.js@966:32220-32238"
-    ],
-    "flotr-0.2.0-alpha.js@1537:54066-57626": [
-        "flotr-0.2.0-alpha.js@1665:58373-58415",
-        "flotr-0.2.0-alpha.js@1673:58742-58770"
-    ],
     "flotr-0.2.0-alpha.js@117:4299-4669": [
         "flotr-0.2.0-alpha.js@2293:82488-82511"
     ],
     "flotr-0.2.0-alpha.js@2694:97836-98055": [
         "flotr-0.2.0-alpha.js@2708:98230-98251"
     ],
-    "prototype-1.6.0.3.js@3710:137869-138007": [
-        "prototype-1.6.0.3.js@128:4786-4805",
-        "prototype-1.6.0.3.js@3711:137903-137946"
-    ],
-    "prototype-1.6.0.3.js@191:6935-7009": [
-        "prototype-1.6.0.3.js@3711:137903-137946",
-        "prototype-1.6.0.3.js@506:18419-18527",
-        "prototype-1.6.0.3.js@313:11088-11112",
-        "prototype-1.6.0.3.js@191:6917-7019"
-    ],
-    "prototype-1.6.0.3.js@331:11728-11853": [
+    "prototype-1.6.0.3.js@2104:77668-78250": [
         "prototype-1.6.0.3.js@714:25833-25850"
     ],
-    "prototype-1.6.0.3.js@321:11363-11709": [
-        "prototype-1.6.0.3.js@332:11757-11778"
-    ],
-    "image-download.js@5:95-1761": [
+    "basic-bar.js@4:85-540": [
         "prototype-1.6.0.3.js@3595:133735-133763"
     ],
-    "image-download.js@37:961-993": [
-        "flotr-0.2.0-alpha.js@966:32220-32238"
+    "flotr-0.2.0-alpha.js@1742:60975-61694": [
+        "flotr-0.2.0-alpha.js@1446:51220-51262"
     ],
-    "canvastext.js@5379:134320-134420": [
-        "flotr-0.2.0-alpha.js@488:15502-15543"
+    "flotr-0.2.0-alpha.js@1851:64599-66532": [
+        "flotr-0.2.0-alpha.js@1755:61327-61380"
     ],
-    "canvastext.js@5234:128405-128960": [
-        "canvastext.js@5380:134368-134405"
-    ],
-    "canvastext.js@5222:127855-128380": [
-        "canvastext.js@5235:128453-128483",
-        "canvastext.js@5307:131398-131428",
-        "canvastext.js@5377:134240-134271"
-    ],
-    "canvastext.js@5190:126584-127554": [
-        "canvastext.js@5226:127994-128022",
-        "canvastext.js@5303:131261-131289"
-    ],
-    "prototype-1.6.0.3.js@739:26489-26600": [
-        "canvastext.js@5212:127527-127543"
-    ],
-    "prototype-1.6.0.3.js@740:26530-26592": [
-        "prototype-1.6.0.3.js@563:20492-20528"
-    ],
-    "canvastext.js@5294:130699-133990": [
-        "canvastext.js@5374:134106-134145"
-    ],
-    "canvastext.js@5246:128984-129454": [
-        "canvastext.js@5309:131498-131541"
-    ],
-    "canvastext.js@5258:129483-129928": [
-        "canvastext.js@5247:129031-129087"
-    ],
-    "canvastext.js@5272:129950-130683": [
-        "canvastext.js@5354:133150-133203"
-    ],
-    "canvastext.js@5373:134052-134160": [
-        "flotr-0.2.0-alpha.js@1323:46186-46413",
-        "flotr-0.2.0-alpha.js@1336:46552-46754",
-        "flotr-0.2.0-alpha.js@1353:47090-47348",
-        "flotr-0.2.0-alpha.js@1379:48053-48293",
-        "flotr-0.2.0-alpha.js@1392:48526-48785",
-        "flotr-0.2.0-alpha.js@2143:76056-76256"
-    ],
-    "canvastext.js@5376:134192-134286": [
-        "flotr-0.2.0-alpha.js@2216:78352-78381"
-    ],
-    "flotr-0.2.0-alpha.js@73:2294-2356": [
-        "flotr-0.2.0-alpha.js@2231:79181-79203",
-        "flotr-0.2.0-alpha.js@2231:79205-79227"
-    ],
-    "canvastext.js@5385:134564-134646": [
-        "flotr-0.2.0-alpha.js@2251:80035-80057"
-    ],
-    "canvastext.js@5218:127708-127836": [
-        "canvastext.js@5386:134606-134631"
-    ],
-    "mouse-tracking.js@4:88-911": [
-        "prototype-1.6.0.3.js@3595:133735-133763"
-    ],
-    "advanced-titles.js@5:98-1544": [
-        "prototype-1.6.0.3.js@3595:133735-133763"
-    ],
-    "advanced-titles.js@37:945-977": [
-        "flotr-0.2.0-alpha.js@966:32220-32238"
+    "flotr-0.2.0-alpha.js@1764:61711-64575": [
+        "flotr-0.2.0-alpha.js@1761:61616-61662"
     ],
     "basic-candlesticks.js@4:88-645": [
         "prototype-1.6.0.3.js@3595:133735-133763"
@@ -1703,68 +1659,12 @@
     "flotr-0.2.0-alpha.js@1920:66978-70025": [
         "flotr-0.2.0-alpha.js@1916:66892-66924"
     ],
-    "flotr-0.2.0-alpha.js@2343:84411-84849": [
-        "prototype-1.6.0.3.js@714:25833-25850"
-    ],
-    "flotr-0.2.0-alpha.js@2306:83143-84156": [
-        "flotr-0.2.0-alpha.js@2344:84449-84477",
-        "flotr-0.2.0-alpha.js@2340:84340-84368"
-    ],
-    "prototype-1.6.0.3.js@2120:78291-78739": [
-        "prototype-1.6.0.3.js@714:25833-25850"
-    ],
-    "prototype-1.6.0.3.js@2184:80870-81008": [
-        "prototype-1.6.0.3.js@2130:78695-78732"
-    ],
-    "prototype-1.6.0.3.js@533:19412-19726": [
-        "flotr-0.2.0-alpha.js@2348:84647-84735"
-    ],
-    "prototype-1.6.0.3.js@536:19545-19687": [
-        "prototype-1.6.0.3.js@507:18469-18507"
-    ],
-    "flotr-0.2.0-alpha.js@2348:84663-84734": [
-        "prototype-1.6.0.3.js@537:19602-19638"
-    ],
     "basic-legend.js@4:86-969": [
         "prototype-1.6.0.3.js@3595:133735-133763"
     ],
     "basic-legend.js@20:426-488": [
         "flotr-0.2.0-alpha.js@2215:78243-78289",
         "flotr-0.2.0-alpha.js@2238:79500-79546"
-    ],
-    "mouse-zoom.js@4:86-1922": [
-        "prototype-1.6.0.3.js@3595:133735-133763"
-    ],
-    "mouse-zoom.js@28:654-971": [
-        "mouse-zoom.js@46:1038-1049",
-        "mouse-zoom.js@62:1480-1580"
-    ],
-    "basic.js@4:86-400": [
-        "prototype-1.6.0.3.js@3595:133735-133763"
-    ],
-    "basic-stacked-bars.js@4:87-842": [
-        "prototype-1.6.0.3.js@3595:133735-133763"
-    ],
-    "flotr-0.2.0-alpha.js@1742:60975-61694": [
-        "flotr-0.2.0-alpha.js@1446:51220-51262"
-    ],
-    "flotr-0.2.0-alpha.js@1851:64599-66532": [
-        "flotr-0.2.0-alpha.js@1755:61327-61380"
-    ],
-    "flotr-0.2.0-alpha.js@1869:65159-65370": [
-        "prototype-1.6.0.3.js@507:18469-18507"
-    ],
-    "flotr-0.2.0-alpha.js@1764:61711-64575": [
-        "flotr-0.2.0-alpha.js@1761:61616-61662"
-    ],
-    "flotr-0.2.0-alpha.js@1784:62336-62535": [
-        "prototype-1.6.0.3.js@507:18469-18507"
-    ],
-    "flotr-0.2.0-alpha.js@550:17598-18754": [
-        "flotr-0.2.0-alpha.js@180:5837-5857"
-    ],
-    "prototype-1.6.0.3.js@1385:49535-49946": [
-        "prototype-1.6.0.3.js@714:25833-25850"
     ],
     "basic-pie.js@1:31-605": [
         "prototype-1.6.0.3.js@3595:133735-133763"
@@ -1794,8 +1694,74 @@
     "flotr-0.2.0-alpha.js@66:2085-2167": [
         "flotr-0.2.0-alpha.js@2125:75037-75070"
     ],
-    "basic-bar.js@4:85-540": [
+    "basic-stacked-bars.js@4:87-842": [
         "prototype-1.6.0.3.js@3595:133735-133763"
+    ],
+    "flotr-0.2.0-alpha.js@1869:65159-65370": [
+        "prototype-1.6.0.3.js@507:18469-18507"
+    ],
+    "flotr-0.2.0-alpha.js@1784:62336-62535": [
+        "prototype-1.6.0.3.js@507:18469-18507"
+    ],
+    "flotr-0.2.0-alpha.js@550:17598-18754": [
+        "flotr-0.2.0-alpha.js@180:5837-5857"
+    ],
+    "prototype-1.6.0.3.js@1385:49535-49946": [
+        "prototype-1.6.0.3.js@714:25833-25850"
+    ],
+    "basic.js@4:86-400": [
+        "prototype-1.6.0.3.js@3595:133735-133763"
+    ],
+    "image-download.js@5:95-1761": [
+        "prototype-1.6.0.3.js@3595:133735-133763"
+    ],
+    "image-download.js@37:961-993": [
+        "flotr-0.2.0-alpha.js@966:32220-32238"
+    ],
+    "mouse-tracking.js@4:88-911": [
+        "prototype-1.6.0.3.js@3595:133735-133763"
+    ],
+    "mouse-zoom.js@4:86-1922": [
+        "prototype-1.6.0.3.js@3595:133735-133763"
+    ],
+    "mouse-zoom.js@28:654-971": [
+        "mouse-zoom.js@46:1038-1049",
+        "mouse-zoom.js@62:1480-1580",
+        "mouse-zoom.js@74:1903-1914"
+    ],
+    "negative.js@4:82-1529": [
+        "prototype-1.6.0.3.js@3595:133735-133763"
+    ],
+    "flotr-0.2.0-alpha.js@18:462-619": [
+        "negative.js@53:1384-1399"
+    ],
+    "flotr-0.2.0-alpha.js@2343:84411-84849": [
+        "prototype-1.6.0.3.js@714:25833-25850"
+    ],
+    "flotr-0.2.0-alpha.js@2306:83143-84156": [
+        "flotr-0.2.0-alpha.js@2344:84449-84477",
+        "flotr-0.2.0-alpha.js@2340:84340-84368"
+    ],
+    "prototype-1.6.0.3.js@2120:78291-78739": [
+        "prototype-1.6.0.3.js@714:25833-25850"
+    ],
+    "prototype-1.6.0.3.js@2184:80870-81008": [
+        "prototype-1.6.0.3.js@2130:78695-78732"
+    ],
+    "prototype-1.6.0.3.js@533:19412-19726": [
+        "flotr-0.2.0-alpha.js@2348:84647-84735"
+    ],
+    "prototype-1.6.0.3.js@536:19545-19687": [
+        "prototype-1.6.0.3.js@507:18469-18507"
+    ],
+    "flotr-0.2.0-alpha.js@2348:84663-84734": [
+        "prototype-1.6.0.3.js@537:19602-19638"
+    ],
+    "prototype-1.6.0.3.js@331:11728-11853": [
+        "prototype-1.6.0.3.js@714:25833-25850"
+    ],
+    "prototype-1.6.0.3.js@321:11363-11709": [
+        "prototype-1.6.0.3.js@332:11757-11778"
     ],
     "flotr-0.2.0-alpha.js@2357:84876-85835": [
         "prototype-1.6.0.3.js@714:25833-25850"
@@ -1815,6 +1781,7 @@
     ],
     "flotr-0.2.0-alpha.js@532:16819-17576": [
         "flotr-0.2.0-alpha.js@579:18701-18721",
+        "flotr-0.2.0-alpha.js@576:18584-18605",
         "flotr-0.2.0-alpha.js@680:22380-22400"
     ],
     "flotr-0.2.0-alpha.js@584:18784-22225": [
@@ -1898,14 +1865,24 @@
     "flotr-0.2.0-alpha.js@647:21135-21225": [
         "prototype-1.6.0.3.js@507:18469-18507"
     ],
+    "flotr-0.2.0-alpha.js@701:23232-24215": [
+        "prototype-1.6.0.3.js@714:25833-25850"
+    ],
+    "flotr-0.2.0-alpha.js@575:18557-18617": [
+        "prototype-1.6.0.3.js@714:25833-25850"
+    ],
     "flotr-0.2.0-alpha.js@676:22247-23212": [
         "prototype-1.6.0.3.js@714:25833-25850"
     ],
     "flotr-0.2.0-alpha.js@683:22420-23139": [
         "prototype-1.6.0.3.js@192:6968-6998"
     ],
-    "flotr-0.2.0-alpha.js@701:23232-24215": [
-        "prototype-1.6.0.3.js@714:25833-25850"
+    "flotr-0.2.0-alpha.js@2554:92186-96549": [
+        "flotr-0.2.0-alpha.js@2351:84753-84766"
+    ],
+    "examples.js@1:0-148": [
+        "prototype-1.6.0.3.js@506:18419-18527",
+        "prototype-1.6.0.3.js@2212:81657-81682"
     ],
     "examples.js@3:50-131": [
         "prototype-1.6.0.3.js@507:18469-18507"
@@ -1924,9 +1901,6 @@
     ],
     "flotr-0.2.0-alpha.js@2677:97405-97533": [
         "flotr-0.2.0-alpha.js@2669:97176-97196"
-    ],
-    "examples.js@1:0-148": [
-        "prototype-1.6.0.3.js@2212:81657-81682"
     ],
     "canvas2image.js@180:5772-6385": [
         "flotr-0.2.0-alpha.js@2658:96731-96797"
@@ -1954,9 +1928,6 @@
     "canvas2image.js@134:4293-4360": [
         "canvas2image.js@196:6293-6334",
         "canvas2image.js@175:5653-5698"
-    ],
-    "flotr-0.2.0-alpha.js@2554:92186-96549": [
-        "flotr-0.2.0-alpha.js@2351:84753-84766"
     ],
     "json-data.js@2:50-812": [
         "prototype-1.6.0.3.js@3595:133735-133763"
@@ -2134,5 +2105,8 @@
     ],
     "prototype-1.6.0.3.js@3642:135475-135584": [
         "prototype-1.6.0.3.js@507:18469-18507"
+    ],
+    "mouse-zoom.js@74:1892-1915": [
+        "prototype-1.6.0.3.js@3595:133735-133763"
     ]
 }

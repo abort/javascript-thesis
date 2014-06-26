@@ -1,7 +1,7 @@
 window.parent._wrap_staticMeasuredFunctions['basic-legend.js'] = 2;
 window.parent._wrap_staticMeasuredCalls['basic-legend.js'] =8;
 (window.parent._wrap_setLastFunctionCall("basic-legend.js",4,55,970) || document.observe('dom:loaded', function() {
-window.parent._wrap_addFunctionToMap('basic-legend.js', 4, 86,969);
+window.parent._wrap_addFunctionToMap('basic-legend.js', 4, 86,969, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var d1 = [];
   var d2 = [];
@@ -12,7 +12,7 @@ window.parent._wrap_addFunctionToMap('basic-legend.js', 4, 86,969);
 (window.parent._wrap_setLastFunctionCall("basic-legend.js",14,313,341) ||     d3.push([i, 15 - (window.parent._wrap_setLastFunctionCall("basic-legend.js",14,328,339) || Math.cos(i))]));
   }
   function myLabelFunc(label) {
-window.parent._wrap_addFunctionToMap('basic-legend.js', 20, 426,488);
+window.parent._wrap_addFunctionToMap('basic-legend.js', 20, 426,488, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     return 'y = ' + label;
   }

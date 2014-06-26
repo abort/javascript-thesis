@@ -1,7 +1,7 @@
 _wrap_staticMeasuredFunctions['gcal.js.no.js'] = 8;
 _wrap_staticMeasuredCalls['gcal.js.no.js'] =24;
 ((_wrap_setLastFunctionCall("gcal.js.no.js",1,1,3552) || function($) {
-_wrap_addFunctionToMap('gcal.js.no.js', 1, 1,3544);
+_wrap_addFunctionToMap('gcal.js.no.js', 1, 1,3544, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var fc = $.fullCalendar;
   var formatDate = fc.formatDate;
@@ -9,7 +9,7 @@ _wrap_addFunctionToMap('gcal.js.no.js', 1, 1,3544);
   var addDays = fc.addDays;
   var applyAll = fc.applyAll;
 (_wrap_setLastFunctionCall("gcal.js.no.js",7,187,597) ||   fc.sourceNormalizers.push(function(sourceOptions) {
-_wrap_addFunctionToMap('gcal.js.no.js', 7, 213,596);
+_wrap_addFunctionToMap('gcal.js.no.js', 7, 213,596, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (sourceOptions.dataType == 'gcal' || sourceOptions.dataType === undefined && (_wrap_setLastFunctionCall("gcal.js.no.js",8,329,414) || (sourceOptions.url || '').match(/^(http|https):\/\/www.google.com\/calendar\/feeds\//))) {
     sourceOptions.dataType = 'gcal';
@@ -19,14 +19,14 @@ _wrap_addFunctionToMap('gcal.js.no.js', 7, 213,596);
   }
 }));
 (_wrap_setLastFunctionCall("gcal.js.no.js",15,603,793) ||   fc.sourceFetchers.push(function(sourceOptions, start, end) {
-_wrap_addFunctionToMap('gcal.js.no.js', 15, 626,792);
+_wrap_addFunctionToMap('gcal.js.no.js', 15, 626,792, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (sourceOptions.dataType == 'gcal') {
     return (_wrap_setLastFunctionCall("gcal.js.no.js",17,732,775) || transformOptions(sourceOptions, start, end));
   }
 }));
   function transformOptions(sourceOptions, start, end) {
-_wrap_addFunctionToMap('gcal.js.no.js', 20, 799,3377);
+_wrap_addFunctionToMap('gcal.js.no.js', 20, 799,3377, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var success = sourceOptions.success;
     var data = (_wrap_setLastFunctionCall("gcal.js.no.js",22,918,1151) || $.extend({}, sourceOptions.data || {}, {'start-min': (_wrap_setLastFunctionCall("gcal.js.no.js",23,988,1010) || formatDate(start, 'u')), 'start-max': (_wrap_setLastFunctionCall("gcal.js.no.js",24,1041,1061) || formatDate(end, 'u')), 'singleevents': true, 'max-results': 9999}));
@@ -35,12 +35,12 @@ _wrap_addFunctionToMap('gcal.js.no.js', 20, 799,3377);
       data.ctz = ctz = (_wrap_setLastFunctionCall("gcal.js.no.js",30,1250,1271) || ctz.replace(' ', '_'));
     }
     return (_wrap_setLastFunctionCall("gcal.js.no.js",32,1298,3370) || $.extend({}, sourceOptions, {url: (_wrap_setLastFunctionCall("gcal.js.no.js",33,1345,1391) || sourceOptions.url.replace(/\/basic$/, '/full')) + '?alt=json-in-script&callback=?', dataType: 'jsonp', data: data, startParam: false, endParam: false, success: function(data) {
-_wrap_addFunctionToMap('gcal.js.no.js', 38, 1564,3359);
+_wrap_addFunctionToMap('gcal.js.no.js', 38, 1564,3359, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var events = [];
   if (data.feed.entry) {
 (_wrap_setLastFunctionCall("gcal.js.no.js",41,1674,3064) ||     $.each(data.feed.entry, function(i, entry) {
-_wrap_addFunctionToMap('gcal.js.no.js', 41, 1698,3063);
+_wrap_addFunctionToMap('gcal.js.no.js', 41, 1698,3063, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var startStr = entry['gd$when'][0]['startTime'];
   var start = (_wrap_setLastFunctionCall("gcal.js.no.js",43,1829,1857) || parseISO8601(startStr, true));
@@ -48,7 +48,7 @@ _wrap_addFunctionToMap('gcal.js.no.js', 41, 1698,3063);
   var allDay = (_wrap_setLastFunctionCall("gcal.js.no.js",45,1982,2003) || startStr.indexOf('T')) == -1;
   var url;
 (_wrap_setLastFunctionCall("gcal.js.no.js",47,2068,2446) ||   $.each(entry.link, function(i, link) {
-_wrap_addFunctionToMap('gcal.js.no.js', 47, 2087,2445);
+_wrap_addFunctionToMap('gcal.js.no.js', 47, 2087,2445, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (link.type == 'text/html') {
     url = link.href;
@@ -72,7 +72,7 @@ _wrap_addFunctionToMap('gcal.js.no.js', 47, 2087,2445);
 }}));
   }
   fc.gcalFeed = function(url, sourceOptions) {
-_wrap_addFunctionToMap('gcal.js.no.js', 79, 3396,3541);
+_wrap_addFunctionToMap('gcal.js.no.js', 79, 3396,3541, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (_wrap_setLastFunctionCall("gcal.js.no.js",80,3443,3534) || $.extend({}, sourceOptions, {url: url, dataType: 'gcal'}));
 };

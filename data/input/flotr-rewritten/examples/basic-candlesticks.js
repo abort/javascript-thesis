@@ -1,7 +1,7 @@
 window.parent._wrap_staticMeasuredFunctions['basic-candlesticks.js'] = 1;
 window.parent._wrap_staticMeasuredCalls['basic-candlesticks.js'] =7;
 (window.parent._wrap_setLastFunctionCall("basic-candlesticks.js",4,57,646) || document.observe('dom:loaded', function() {
-window.parent._wrap_addFunctionToMap('basic-candlesticks.js', 4, 88,645);
+window.parent._wrap_addFunctionToMap('basic-candlesticks.js', 4, 88,645, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var d1 = [];
   var price = 3.206;

@@ -1,21 +1,21 @@
 _wrap_staticMeasuredFunctions['htmlbox.full.js'] = 27;
 _wrap_staticMeasuredCalls['htmlbox.full.js'] =265;
 ((_wrap_setLastFunctionCall("htmlbox.full.js",1,1,31665) || function($) {
-_wrap_addFunctionToMap('htmlbox.full.js', 1, 1,31657);
+_wrap_addFunctionToMap('htmlbox.full.js', 1, 1,31657, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   $.fn.htmlbox = function(options) {
-_wrap_addFunctionToMap('htmlbox.full.js', 2, 35,31654);
+_wrap_addFunctionToMap('htmlbox.full.js', 2, 35,31654, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var colors = typeof document.htmlbox_colors === 'function' ? (_wrap_setLastFunctionCall("htmlbox.full.js",3,125,150) || document.htmlbox_colors()) : ['silver', 'silver', 'white', 'white', 'yellow', 'yellow', 'orange', 'orange', 'red', 'red', 'green', 'green', 'blue', 'blue', 'brown', 'brown', 'black', 'black'];
   var styles = typeof document.htmlbox_styles === 'function' ? (_wrap_setLastFunctionCall("htmlbox.full.js",23,688,713) || document.htmlbox_styles()) : [['No Styles', '', '']];
   var syntax = typeof document.htmlbox_syntax === 'function' ? (_wrap_setLastFunctionCall("htmlbox.full.js",28,888,913) || document.htmlbox_syntax()) : [['No Syntax', '', '']];
   var urm = typeof htmlbox_undo_redo_manager === 'function' ? (_wrap_setLastFunctionCall("htmlbox.full.js",33,1087,1118) || new htmlbox_undo_redo_manager()) : false;
   var d = {toolbars: [['bold', 'italic', 'underline']], idir: './images/', icons: 'default', about: true, skin: 'default', output: 'xhtml', toolbar_height: 24, tool_height: 16, tool_width: 16, tool_image_height: 16, tool_image_width: 16, css: 'body{margin:3px;font-family:verdana;font-size:11px;}p{margin:0px;}', success: function(data) {
-_wrap_addFunctionToMap('htmlbox.full.js', 51, 1759,1827);
+_wrap_addFunctionToMap('htmlbox.full.js', 51, 1759,1827, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("htmlbox.full.js",52,1797,1808) ||   alert(data));
 }, error: function(a, b, c) {
-_wrap_addFunctionToMap('htmlbox.full.js', 54, 1852,1923);
+_wrap_addFunctionToMap('htmlbox.full.js', 54, 1852,1923, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return this;
 }};
@@ -24,7 +24,7 @@ _wrap_addFunctionToMap('htmlbox.full.js', 54, 1852,1923);
     d.idir += '/';
   }
   var get_selection = function() {
-_wrap_addFunctionToMap('htmlbox.full.js', 62, 2097,3216);
+_wrap_addFunctionToMap('htmlbox.full.js', 62, 2097,3216, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var range;
   if ($.browser.msie) {
@@ -51,7 +51,7 @@ _wrap_addFunctionToMap('htmlbox.full.js', 62, 2097,3216);
   }
 };
   var in_array = function(o, a) {
-_wrap_addFunctionToMap('htmlbox.full.js', 87, 3241,3421);
+_wrap_addFunctionToMap('htmlbox.full.js', 87, 3241,3421, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   for (var i in a) {
     if (i === o) {
@@ -61,7 +61,7 @@ _wrap_addFunctionToMap('htmlbox.full.js', 87, 3241,3421);
   return false;
 };
   var insert_text = function(text, start, end) {
-_wrap_addFunctionToMap('htmlbox.full.js', 95, 3449,5023);
+_wrap_addFunctionToMap('htmlbox.full.js', 95, 3449,5023, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if ($.browser.msie) {
 (_wrap_setLastFunctionCall("htmlbox.full.js",97,3529,3559) ||     d.iframe.contentWindow.focus());
@@ -99,7 +99,7 @@ _wrap_addFunctionToMap('htmlbox.full.js', 95, 3449,5023);
   }
 };
   var keyup = function(e) {
-_wrap_addFunctionToMap('htmlbox.full.js', 131, 5045,5465);
+_wrap_addFunctionToMap('htmlbox.full.js', 131, 5045,5465, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var html = (_wrap_setLastFunctionCall("htmlbox.full.js",132,5083,5112) || (_wrap_setLastFunctionCall("htmlbox.full.js",132,5083,5097) || $('#1' + d.id)).is(':visible')) ? (_wrap_setLastFunctionCall("htmlbox.full.js",132,5115,5134) || (_wrap_setLastFunctionCall("htmlbox.full.js",132,5115,5128) || $('#' + d.id)).val()) : html = d.iframe.contentWindow.document.body.innerHTML;
   if (urm) {
@@ -112,7 +112,7 @@ _wrap_addFunctionToMap('htmlbox.full.js', 131, 5045,5465);
   }
 };
   var style = function() {
-_wrap_addFunctionToMap('htmlbox.full.js', 142, 5487,6365);
+_wrap_addFunctionToMap('htmlbox.full.js', 142, 5487,6365, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if ((_wrap_setLastFunctionCall("htmlbox.full.js",143,5517,5545) || d.css.indexOf('background:')) === -1) {
     d.css += 'body{background:white;}';
@@ -134,7 +134,7 @@ _wrap_addFunctionToMap('htmlbox.full.js', 142, 5487,6365);
   }
 };
   var toolbar = function() {
-_wrap_addFunctionToMap('htmlbox.full.js', 162, 6389,14936);
+_wrap_addFunctionToMap('htmlbox.full.js', 162, 6389,14936, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var h = '';
   if (d.about && !(_wrap_setLastFunctionCall("htmlbox.full.js",164,6455,6487) || in_array(d.toolbars[0], 'about'))) {
@@ -207,7 +207,7 @@ _wrap_addFunctionToMap('htmlbox.full.js', 162, 6389,14936);
   return h;
 };
   this.wrap_tags = function(start, end) {
-_wrap_addFunctionToMap('htmlbox.full.js', 263, 14963,15259);
+_wrap_addFunctionToMap('htmlbox.full.js', 263, 14963,15259, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var sel = (_wrap_setLastFunctionCall("htmlbox.full.js",264,15009,15024) || get_selection());
   if (undefined === sel) {
@@ -219,7 +219,7 @@ _wrap_addFunctionToMap('htmlbox.full.js', 263, 14963,15259);
 (_wrap_setLastFunctionCall("htmlbox.full.js",271,15192,15248) ||   insert_text(start + sel + end, start.length, end.length));
 };
   this._init = function(is_init) {
-_wrap_addFunctionToMap('htmlbox.full.js', 273, 15282,20789);
+_wrap_addFunctionToMap('htmlbox.full.js', 273, 15282,20789, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (undefined === window.global_hb) {
     global_hb = [];
@@ -241,28 +241,28 @@ _wrap_addFunctionToMap('htmlbox.full.js', 273, 15282,20789);
 (_wrap_setLastFunctionCall("htmlbox.full.js",291,16146,16208) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",291,16146,16189) || (_wrap_setLastFunctionCall("htmlbox.full.js",291,16146,16180) || (_wrap_setLastFunctionCall("htmlbox.full.js",291,16146,16171) || (_wrap_setLastFunctionCall("htmlbox.full.js",291,16146,16162) || (_wrap_setLastFunctionCall("htmlbox.full.js",291,16146,16153) || $(this)).parent()).parent()).parent()).parent()).prepend((_wrap_setLastFunctionCall("htmlbox.full.js",291,16198,16207) || toolbar())));
 (_wrap_setLastFunctionCall("htmlbox.full.js",292,16222,16268) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",292,16222,16243) || $('.' + d.id + '_tb')).height(d.toolbar_height));
 (_wrap_setLastFunctionCall("htmlbox.full.js",293,16282,17054) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",293,16282,16312) || $('.' + d.id + '_html_button')).each(function() {
-_wrap_addFunctionToMap('htmlbox.full.js', 293, 16318,17053);
+_wrap_addFunctionToMap('htmlbox.full.js', 293, 16318,17053, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("htmlbox.full.js",294,16348,16397) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",294,16348,16375) || (_wrap_setLastFunctionCall("htmlbox.full.js",294,16348,16355) || $(this)).width(d.tool_width)).height(d.tool_height));
 (_wrap_setLastFunctionCall("htmlbox.full.js",295,16415,16557) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",295,16415,16436) || (_wrap_setLastFunctionCall("htmlbox.full.js",295,16415,16422) || $(this)).find('image')).each(function() {
-_wrap_addFunctionToMap('htmlbox.full.js', 295, 16442,16556);
+_wrap_addFunctionToMap('htmlbox.full.js', 295, 16442,16556, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("htmlbox.full.js",296,16476,16537) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",296,16476,16509) || (_wrap_setLastFunctionCall("htmlbox.full.js",296,16476,16483) || $(this)).width(d.tool_image_width)).height(d.tool_image_height));
 }));
 (_wrap_setLastFunctionCall("htmlbox.full.js",298,16575,16709) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",298,16575,16687) || (_wrap_setLastFunctionCall("htmlbox.full.js",298,16575,16654) || (_wrap_setLastFunctionCall("htmlbox.full.js",298,16575,16621) || (_wrap_setLastFunctionCall("htmlbox.full.js",298,16575,16582) || $(this)).css('border', '1px solid transparent')).css('background', 'transparent')).css('margin', '1px 1px 1px 1px')).css('padding', '1px'));
 (_wrap_setLastFunctionCall("htmlbox.full.js",299,16727,16870) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",299,16727,16734) || $(this)).mouseover(function() {
-_wrap_addFunctionToMap('htmlbox.full.js', 299, 16745,16869);
+_wrap_addFunctionToMap('htmlbox.full.js', 299, 16745,16869, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("htmlbox.full.js",300,16779,16850) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",300,16779,16821) || (_wrap_setLastFunctionCall("htmlbox.full.js",300,16779,16786) || $(this)).css('border', '1px solid #BFCAFF')).css('background', '#EFF2FF'));
 }));
 (_wrap_setLastFunctionCall("htmlbox.full.js",302,16888,17038) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",302,16888,16895) || $(this)).mouseout(function() {
-_wrap_addFunctionToMap('htmlbox.full.js', 302, 16905,17037);
+_wrap_addFunctionToMap('htmlbox.full.js', 302, 16905,17037, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("htmlbox.full.js",303,16939,17018) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",303,16939,16985) || (_wrap_setLastFunctionCall("htmlbox.full.js",303,16939,16946) || $(this)).css('border', '1px solid transparent')).css('background', 'transparent'));
 }));
 }));
 (_wrap_setLastFunctionCall("htmlbox.full.js",306,17068,17419) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",306,17068,17104) || (_wrap_setLastFunctionCall("htmlbox.full.js",306,17068,17089) || $('.' + d.id + '_tb')).find('select')).each(function() {
-_wrap_addFunctionToMap('htmlbox.full.js', 306, 17110,17418);
+_wrap_addFunctionToMap('htmlbox.full.js', 306, 17110,17418, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("htmlbox.full.js",307,17140,17248) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",307,17140,17215) || (_wrap_setLastFunctionCall("htmlbox.full.js",307,17140,17182) || (_wrap_setLastFunctionCall("htmlbox.full.js",307,17140,17147) || $(this)).css('border', '1px solid #E9EAEF')).css('background', 'transparent')).css('margin', '2px 2px 3px 2px'));
   if ($.browser.mozilla) {
@@ -344,7 +344,7 @@ _wrap_addFunctionToMap('htmlbox.full.js', 306, 17110,17418);
   return this;
 };
   this.cmd = function(cmd, arg1) {
-_wrap_addFunctionToMap('htmlbox.full.js', 386, 20810,28283);
+_wrap_addFunctionToMap('htmlbox.full.js', 386, 20810,28283, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("htmlbox.full.js",387,20845,20875) ||   d.iframe.contentWindow.focus());
   if (cmd === 'paragraph') {
@@ -471,7 +471,7 @@ _wrap_addFunctionToMap('htmlbox.full.js', 386, 20810,28283);
   }
 };
   this.get_text = function() {
-_wrap_addFunctionToMap('htmlbox.full.js', 522, 28309,28826);
+_wrap_addFunctionToMap('htmlbox.full.js', 522, 28309,28826, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if ((_wrap_setLastFunctionCall("htmlbox.full.js",523,28339,28367) || (_wrap_setLastFunctionCall("htmlbox.full.js",523,28339,28352) || $('#' + d.id)).is(':visible'))) {
     return (_wrap_setLastFunctionCall("htmlbox.full.js",524,28394,28413) || (_wrap_setLastFunctionCall("htmlbox.full.js",524,28394,28407) || $('#' + d.id)).val());
@@ -487,7 +487,7 @@ _wrap_addFunctionToMap('htmlbox.full.js', 522, 28309,28826);
   return text;
 };
   this.set_text = function(txt) {
-_wrap_addFunctionToMap('htmlbox.full.js', 536, 28852,29808);
+_wrap_addFunctionToMap('htmlbox.full.js', 536, 28852,29808, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var text = undefined === txt ? '' : txt;
   if (text === '' && $.browser.safari) {
@@ -518,7 +518,7 @@ _wrap_addFunctionToMap('htmlbox.full.js', 536, 28852,29808);
   return this;
 };
   this.get_html = function() {
-_wrap_addFunctionToMap('htmlbox.full.js', 565, 29834,30230);
+_wrap_addFunctionToMap('htmlbox.full.js', 565, 29834,30230, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var html;
   if ((_wrap_setLastFunctionCall("htmlbox.full.js",567,29886,29914) || (_wrap_setLastFunctionCall("htmlbox.full.js",567,29886,29899) || $('#' + d.id)).is(':visible'))) {
@@ -533,13 +533,13 @@ _wrap_addFunctionToMap('htmlbox.full.js', 565, 29834,30230);
   }
 };
   this.change = function(fn) {
-_wrap_addFunctionToMap('htmlbox.full.js', 578, 30254,30331);
+_wrap_addFunctionToMap('htmlbox.full.js', 578, 30254,30331, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   d.change = fn;
   return this;
 };
   this.remove = function() {
-_wrap_addFunctionToMap('htmlbox.full.js', 582, 30355,30587);
+_wrap_addFunctionToMap('htmlbox.full.js', 582, 30355,30587, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   global_hb[d.id] = undefined;
 (_wrap_setLastFunctionCall("htmlbox.full.js",584,30422,30454) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",584,30422,30445) || $('#' + d.id + '_wrap')).remove());
@@ -548,7 +548,7 @@ _wrap_addFunctionToMap('htmlbox.full.js', 582, 30355,30587);
   }
 };
   this.post = function(url, data) {
-_wrap_addFunctionToMap('htmlbox.full.js', 589, 30609,30993);
+_wrap_addFunctionToMap('htmlbox.full.js', 589, 30609,30993, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (undefined === data) {
     data = (_wrap_setLastFunctionCall("htmlbox.full.js",591,30693,30708) || this.get_html());
@@ -557,7 +557,7 @@ _wrap_addFunctionToMap('htmlbox.full.js', 589, 30609,30993);
 (_wrap_setLastFunctionCall("htmlbox.full.js",594,30774,30982) ||   $.ajax({type: 'POST', data: data, url: url, dataType: 'html', error: d.error, success: d.success}));
 };
   this.get = function(url, data) {
-_wrap_addFunctionToMap('htmlbox.full.js', 603, 31014,31397);
+_wrap_addFunctionToMap('htmlbox.full.js', 603, 31014,31397, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (undefined === data) {
     data = (_wrap_setLastFunctionCall("htmlbox.full.js",605,31098,31113) || this.get_html());
@@ -566,13 +566,13 @@ _wrap_addFunctionToMap('htmlbox.full.js', 603, 31014,31397);
 (_wrap_setLastFunctionCall("htmlbox.full.js",608,31179,31386) ||   $.ajax({type: 'GET', data: data, url: url, dataType: 'html', error: d.error, success: d.success}));
 };
   this.success = function(fn) {
-_wrap_addFunctionToMap('htmlbox.full.js', 617, 31422,31500);
+_wrap_addFunctionToMap('htmlbox.full.js', 617, 31422,31500, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   d.success = fn;
   return this;
 };
   this.error = function(fn) {
-_wrap_addFunctionToMap('htmlbox.full.js', 621, 31523,31599);
+_wrap_addFunctionToMap('htmlbox.full.js', 621, 31523,31599, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   d.error = fn;
   return this;

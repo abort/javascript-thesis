@@ -1,13 +1,13 @@
 window.parent._wrap_staticMeasuredFunctions['coolclock.js'] = 16;
 window.parent._wrap_staticMeasuredCalls['coolclock.js'] =78;
 window.CoolClock = function(options) {
-window.parent._wrap_addFunctionToMap('coolclock.js', 1, 19,72);
+window.parent._wrap_addFunctionToMap('coolclock.js', 1, 19,72, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (window.parent._wrap_setLastFunctionCall("coolclock.js",2,51,69) || this.init(options));
 };
 CoolClock.config = {tickDelay: 1000, longTickDelay: 15000, defaultRadius: 85, renderRadius: 100, defaultSkin: 'chunkySwiss', showSecs: true, showAmPm: true, skins: {swissRail: {outerBorder: {lineWidth: 2, radius: 95, color: 'black', alpha: 1}, smallIndicator: {lineWidth: 2, startAt: 88, endAt: 92, color: 'black', alpha: 1}, largeIndicator: {lineWidth: 4, startAt: 79, endAt: 92, color: 'black', alpha: 1}, hourHand: {lineWidth: 8, startAt: -15, endAt: 50, color: 'black', alpha: 1}, minuteHand: {lineWidth: 7, startAt: -15, endAt: 75, color: 'black', alpha: 1}, secondHand: {lineWidth: 1, startAt: -20, endAt: 85, color: 'red', alpha: 1}, secondDecoration: {lineWidth: 1, startAt: 70, radius: 4, fillColor: 'red', color: 'red', alpha: 1}}, chunkySwiss: {outerBorder: {lineWidth: 4, radius: 97, color: 'black', alpha: 1}, smallIndicator: {lineWidth: 4, startAt: 89, endAt: 93, color: 'black', alpha: 1}, largeIndicator: {lineWidth: 8, startAt: 80, endAt: 93, color: 'black', alpha: 1}, hourHand: {lineWidth: 12, startAt: -15, endAt: 60, color: 'black', alpha: 1}, minuteHand: {lineWidth: 10, startAt: -15, endAt: 85, color: 'black', alpha: 1}, secondHand: {lineWidth: 4, startAt: -20, endAt: 85, color: 'red', alpha: 1}, secondDecoration: {lineWidth: 2, startAt: 70, radius: 8, fillColor: 'red', color: 'red', alpha: 1}}, chunkySwissOnBlack: {outerBorder: {lineWidth: 4, radius: 97, color: 'white', alpha: 1}, smallIndicator: {lineWidth: 4, startAt: 89, endAt: 93, color: 'white', alpha: 1}, largeIndicator: {lineWidth: 8, startAt: 80, endAt: 93, color: 'white', alpha: 1}, hourHand: {lineWidth: 12, startAt: -15, endAt: 60, color: 'white', alpha: 1}, minuteHand: {lineWidth: 10, startAt: -15, endAt: 85, color: 'white', alpha: 1}, secondHand: {lineWidth: 4, startAt: -20, endAt: 85, color: 'red', alpha: 1}, secondDecoration: {lineWidth: 2, startAt: 70, radius: 8, fillColor: 'red', color: 'red', alpha: 1}}}, isIE: !!document.all, clockTracker: {}, noIdCount: 0};
 CoolClock.prototype = {init: function(options) {
-window.parent._wrap_addFunctionToMap('coolclock.js', 172, 4407,5942);
+window.parent._wrap_addFunctionToMap('coolclock.js', 172, 4407,5942, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   this.canvasId = options.canvasId;
   this.skinId = options.skinId || CoolClock.config.defaultSkin;
@@ -33,7 +33,7 @@ window.parent._wrap_addFunctionToMap('coolclock.js', 172, 4407,5942);
 (window.parent._wrap_setLastFunctionCall("coolclock.js",194,5903,5914) ||   this.tick());
   return this;
 }, fullCircleAt: function(x, y, skin) {
-window.parent._wrap_addFunctionToMap('coolclock.js', 197, 5962,6714);
+window.parent._wrap_addFunctionToMap('coolclock.js', 197, 5962,6714, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (window.parent._wrap_setLastFunctionCall("coolclock.js",198,5994,6009) ||   this.ctx.save());
   this.ctx.globalAlpha = skin.alpha;
@@ -57,7 +57,7 @@ window.parent._wrap_addFunctionToMap('coolclock.js', 197, 5962,6714);
   }
 (window.parent._wrap_setLastFunctionCall("coolclock.js",218,6689,6707) ||   this.ctx.restore());
 }, drawTextAt: function(theText, x, y) {
-window.parent._wrap_addFunctionToMap('coolclock.js', 220, 6732,7048);
+window.parent._wrap_addFunctionToMap('coolclock.js', 220, 6732,7048, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (window.parent._wrap_setLastFunctionCall("coolclock.js",221,6767,6782) ||   this.ctx.save());
   this.ctx.font = '15px sans-serif';
@@ -67,11 +67,11 @@ window.parent._wrap_addFunctionToMap('coolclock.js', 220, 6732,7048);
 (window.parent._wrap_setLastFunctionCall("coolclock.js",226,6944,7013) ||   this.ctx.fillText(theText, x - tSize.width / 2, y - tSize.height / 2));
 (window.parent._wrap_setLastFunctionCall("coolclock.js",227,7023,7041) ||   this.ctx.restore());
 }, lpad2: function(num) {
-window.parent._wrap_addFunctionToMap('coolclock.js', 229, 7061,7127);
+window.parent._wrap_addFunctionToMap('coolclock.js', 229, 7061,7127, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (num < 10 ? '0' : '') + num;
 }, tickAngle: function(second) {
-window.parent._wrap_addFunctionToMap('coolclock.js', 232, 7144,7538);
+window.parent._wrap_addFunctionToMap('coolclock.js', 232, 7144,7538, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var tweak = 3;
   if (this.logClock) {
@@ -83,13 +83,13 @@ window.parent._wrap_addFunctionToMap('coolclock.js', 232, 7144,7538);
     return second / 60;
   }
 }, timeText: function(hour, min, sec) {
-window.parent._wrap_addFunctionToMap('coolclock.js', 243, 7554,7822);
+window.parent._wrap_addFunctionToMap('coolclock.js', 243, 7554,7822, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var c = CoolClock.config;
   return '' + (c.showAmPm ? hour % 12 == 0 ? 12 : hour % 12 : hour) + ':' + (window.parent._wrap_setLastFunctionCall("coolclock.js",245,7698,7713) || this.lpad2(min)) + (c.showSecs ? ':' + (window.parent._wrap_setLastFunctionCall("coolclock.js",245,7736,7751) || this.lpad2(sec)) : '') + (c.showAmPm ? hour < 12 ? ' am' : ' pm' : '');
   ;
 }, radialLineAtAngle: function(angleFraction, skin) {
-window.parent._wrap_addFunctionToMap('coolclock.js', 248, 7847,8561);
+window.parent._wrap_addFunctionToMap('coolclock.js', 248, 7847,8561, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (window.parent._wrap_setLastFunctionCall("coolclock.js",249,7888,7903) ||   this.ctx.save());
 (window.parent._wrap_setLastFunctionCall("coolclock.js",250,7913,7969) ||   this.ctx.translate(this.renderRadius, this.renderRadius));
@@ -109,7 +109,7 @@ window.parent._wrap_addFunctionToMap('coolclock.js', 248, 7847,8561);
   }
 (window.parent._wrap_setLastFunctionCall("coolclock.js",265,8536,8554) ||   this.ctx.restore());
 }, render: function(hour, min, sec) {
-window.parent._wrap_addFunctionToMap('coolclock.js', 267, 8575,10232);
+window.parent._wrap_addFunctionToMap('coolclock.js', 267, 8575,10232, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var skin = CoolClock.config.skins[this.skinId];
   if (!skin) 
@@ -140,7 +140,7 @@ window.parent._wrap_addFunctionToMap('coolclock.js', 267, 8575,10232);
       (window.parent._wrap_setLastFunctionCall("coolclock.js",294,10148,10215) ||     this.radialLineAtAngle((window.parent._wrap_setLastFunctionCall("coolclock.js",294,10171,10191) || this.tickAngle(secA)), skin.secondDecoration));
   }
 }, refreshDisplay: function() {
-window.parent._wrap_addFunctionToMap('coolclock.js', 297, 10254,10636);
+window.parent._wrap_addFunctionToMap('coolclock.js', 297, 10254,10636, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var now = (window.parent._wrap_setLastFunctionCall("coolclock.js",298,10286,10296) || new Date());
   if (this.gmtOffset != null) {
@@ -150,27 +150,27 @@ window.parent._wrap_addFunctionToMap('coolclock.js', 297, 10254,10636);
 (window.parent._wrap_setLastFunctionCall("coolclock.js",303,10556,10619) ||     this.render((window.parent._wrap_setLastFunctionCall("coolclock.js",303,10568,10582) || now.getHours()), (window.parent._wrap_setLastFunctionCall("coolclock.js",303,10584,10600) || now.getMinutes()), (window.parent._wrap_setLastFunctionCall("coolclock.js",303,10602,10618) || now.getSeconds())));
   }
 }, nextTick: function() {
-window.parent._wrap_addFunctionToMap('coolclock.js', 306, 10652,10793);
+window.parent._wrap_addFunctionToMap('coolclock.js', 306, 10652,10793, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   this.tickTimeout = (window.parent._wrap_setLastFunctionCall("coolclock.js",307,10693,10786) || setTimeout('CoolClock.config.clockTracker[\'' + this.canvasId + '\'].tick()', this.tickDelay));
 }, stillHere: function() {
-window.parent._wrap_addFunctionToMap('coolclock.js', 309, 10810,10892);
+window.parent._wrap_addFunctionToMap('coolclock.js', 309, 10810,10892, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (window.parent._wrap_setLastFunctionCall("coolclock.js",310,10839,10877) || document.getElementById(this.canvasId)) != null;
 }, stop: function() {
-window.parent._wrap_addFunctionToMap('coolclock.js', 312, 10904,10992);
+window.parent._wrap_addFunctionToMap('coolclock.js', 312, 10904,10992, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   this.active = false;
 (window.parent._wrap_setLastFunctionCall("coolclock.js",314,10955,10985) ||   clearTimeout(this.tickTimeout));
 }, start: function() {
-window.parent._wrap_addFunctionToMap('coolclock.js', 316, 11005,11119);
+window.parent._wrap_addFunctionToMap('coolclock.js', 316, 11005,11119, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (!this.active) {
     this.active = true;
 (window.parent._wrap_setLastFunctionCall("coolclock.js",319,11091,11102) ||     this.tick());
   }
 }, tick: function() {
-window.parent._wrap_addFunctionToMap('coolclock.js', 322, 11131,11271);
+window.parent._wrap_addFunctionToMap('coolclock.js', 322, 11131,11271, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if ((window.parent._wrap_setLastFunctionCall("coolclock.js",323,11157,11173) || this.stillHere()) && this.active) {
 (window.parent._wrap_setLastFunctionCall("coolclock.js",324,11204,11225) ||     this.refreshDisplay());
@@ -178,7 +178,7 @@ window.parent._wrap_addFunctionToMap('coolclock.js', 322, 11131,11271);
   }
 }};
 CoolClock.findAndCreateClocks = function() {
-window.parent._wrap_addFunctionToMap('coolclock.js', 329, 11307,12114);
+window.parent._wrap_addFunctionToMap('coolclock.js', 329, 11307,12114, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var canvases = (window.parent._wrap_setLastFunctionCall("coolclock.js",330,11340,11379) || document.getElementsByTagName('canvas'));
   for (var i = 0; i < canvases.length; i++) {

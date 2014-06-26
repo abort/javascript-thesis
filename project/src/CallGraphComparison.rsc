@@ -233,9 +233,22 @@ public rel[Vertex, Vertex] createOptimisticCallGraphByPath(loc path) {
 public num calculatePrecision(set[str] dynamicCallGraph, set[str] staticCallGraph) = ((size(dynamicCallGraph & staticCallGraph)) * 1.0) / size(staticCallGraph);
 public num calculateRecall(set[str] dynamicCallGraph, set[str] staticCallGraph) = ((size(dynamicCallGraph & staticCallGraph)) * 1.0) / size(dynamicCallGraph);
 
+public set[str] showRecallInfluence(set[str] dynamicCallGraph, set[str] staticCallGraph) {
+	set[str] dynamicCallSites = getCallSites(dynamicCallGraph);
+	staticCallGraph = { g | g <- staticCallGraph, trim(split("-\>", g)[0]) in dynamicCallSites };
+	return (dynamicCallGraph - staticCallGraph);
+}
+
+public set[str] showPrecisionInfluence(set[str] dynamicCallGraph, set[str] staticCallGraph) {
+	set[str] dynamicCallSites = getCallSites(dynamicCallGraph);
+	staticCallGraph = { g | g <- staticCallGraph, trim(split("-\>", g)[0]) in dynamicCallSites };
+	return (staticCallGraph - dynamicCallGraph);
+}
+
 // Requires full edges
 public tuple[num, num] calculateCallTargetStatistics(set[str] dynamicCallGraph, set[str] staticCallGraph) {
 	set[str] dynamicCallSites = getCallSites(dynamicCallGraph);
+	// filter callsites from the static call graph that are not covered in the dynamic
 	staticCallGraph = { trim(split("-\>", g)[1]) | g <- staticCallGraph, trim(split("-\>", g)[0]) in dynamicCallSites };
 	dynamicCallGraph = { trim(split("-\>", g)[1]) | g <- dynamicCallGraph };
 	num precision = calculatePrecision(dynamicCallGraph, staticCallGraph) * 100.0;

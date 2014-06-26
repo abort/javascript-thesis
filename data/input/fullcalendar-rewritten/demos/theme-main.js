@@ -1,7 +1,7 @@
 _wrap_staticMeasuredFunctions['theme-main.js'] = 1;
 _wrap_staticMeasuredCalls['theme-main.js'] =20;
 (_wrap_setLastFunctionCall("theme-main.js",2,2,1259) || (_wrap_setLastFunctionCall("theme-main.js",2,2,13) || $(document)).ready(function() {
-_wrap_addFunctionToMap('theme-main.js', 2, 20,1258);
+_wrap_addFunctionToMap('theme-main.js', 2, 20,1258, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var date = (_wrap_setLastFunctionCall("theme-main.js",4,48,58) || new Date());
   var d = (_wrap_setLastFunctionCall("theme-main.js",5,70,84) || date.getDate());

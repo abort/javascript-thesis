@@ -1,7 +1,7 @@
 window.parent._wrap_staticMeasuredFunctions['basic-stacked-bars.js'] = 1;
 window.parent._wrap_staticMeasuredCalls['basic-stacked-bars.js'] =6;
 (window.parent._wrap_setLastFunctionCall("basic-stacked-bars.js",4,56,843) || document.observe('dom:loaded', function() {
-window.parent._wrap_addFunctionToMap('basic-stacked-bars.js', 4, 87,842);
+window.parent._wrap_addFunctionToMap('basic-stacked-bars.js', 4, 87,842, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var d1 = [], d2 = [], d3 = [];
   for (i = 0; i < 10; i++) {

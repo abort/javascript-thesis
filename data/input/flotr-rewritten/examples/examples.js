@@ -1,11 +1,11 @@
 window.parent._wrap_staticMeasuredFunctions['examples.js'] = 3;
 window.parent._wrap_staticMeasuredCalls['examples.js'] =8;
 function getV(nl) {
-window.parent._wrap_addFunctionToMap('examples.js', 1, 0,148);
+window.parent._wrap_addFunctionToMap('examples.js', 1, 0,148, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var v = null;
 (window.parent._wrap_setLastFunctionCall("examples.js",3,38,132) ||   (window.parent._wrap_setLastFunctionCall("examples.js",3,38,44) || $A(nl)).each(function(e) {
-window.parent._wrap_addFunctionToMap('examples.js', 3, 50,131);
+window.parent._wrap_addFunctionToMap('examples.js', 3, 50,131, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (e.checked) {
     v = e.value;
@@ -15,7 +15,7 @@ window.parent._wrap_addFunctionToMap('examples.js', 3, 50,131);
   return v;
 }
 (window.parent._wrap_setLastFunctionCall("examples.js",12,152,538) || document.observe('dom:loaded', function() {
-window.parent._wrap_addFunctionToMap('examples.js', 12, 183,537);
+window.parent._wrap_addFunctionToMap('examples.js', 12, 183,537, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var view = (window.parent._wrap_setLastFunctionCall("examples.js",13,208,222) || $('code-view'));
   if (view) {

@@ -2,7 +2,7 @@ window.parent._wrap_staticMeasuredFunctions['image-download.js'] = 2;
 window.parent._wrap_staticMeasuredCalls['image-download.js'] =15;
 var f;
 (window.parent._wrap_setLastFunctionCall("image-download.js",5,64,1762) || document.observe('dom:loaded', function() {
-window.parent._wrap_addFunctionToMap('image-download.js', 5, 95,1761);
+window.parent._wrap_addFunctionToMap('image-download.js', 5, 95,1761, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var d1 = [];
   var d2 = [];
@@ -19,7 +19,7 @@ window.parent._wrap_addFunctionToMap('image-download.js', 5, 95,1761);
     }
   }
   f = (window.parent._wrap_setLastFunctionCall("image-download.js",25,498,1554) || Flotr.draw((window.parent._wrap_setLastFunctionCall("image-download.js",26,515,529) || $('container')), [{data: d1, label: 'y = 4 + x^(1.5)', lines: {fill: true}}, {data: d2, label: 'y = x^3', yaxis: 2}, {data: d3, label: 'y = 5x + 3sin(4x)'}, {data: d4, label: 'y = x'}, {data: d5, label: 'y = 2x', lines: {show: true}, points: {show: true}}], {title: 'Download Image Example', subtitle: 'You can save me as an image', xaxis: {noTicks: 7, tickFormatter: function(n) {
-window.parent._wrap_addFunctionToMap('image-download.js', 37, 961,993);
+window.parent._wrap_addFunctionToMap('image-download.js', 37, 961,993, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return '(' + n + ')';
 }, min: 1, max: 7.5, labelsAngle: 45, title: 'x Axis'}, yaxis: {ticks: [[0, "Lower"], 10, 20, 30, [40, "Upper"]], max: 40, title: 'y = f(x)'}, y2axis: {color: '#FF0000', max: 500, title: 'y = x^3'}, grid: {verticalLines: false, backgroundColor: 'white'}, HtmlText: false, legend: {position: 'nw'}}));

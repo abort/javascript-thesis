@@ -1,7 +1,7 @@
 window.parent._wrap_staticMeasuredFunctions['basic-bar.js'] = 1;
 window.parent._wrap_staticMeasuredCalls['basic-bar.js'] =9;
 (window.parent._wrap_setLastFunctionCall("basic-bar.js",4,54,541) || document.observe('dom:loaded', function() {
-window.parent._wrap_addFunctionToMap('basic-bar.js', 4, 85,540);
+window.parent._wrap_addFunctionToMap('basic-bar.js', 4, 85,540, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var d1 = [];
   var d2 = [];

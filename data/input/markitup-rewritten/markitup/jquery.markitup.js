@@ -1,10 +1,10 @@
 _wrap_staticMeasuredFunctions['jquery.markitup.js'] = 45;
 _wrap_staticMeasuredCalls['jquery.markitup.js'] =215;
 (_wrap_setLastFunctionCall("jquery.markitup.js",27,1579,18298) || (function($) {
-_wrap_addFunctionToMap('jquery.markitup.js', 27, 1579,18289);
+_wrap_addFunctionToMap('jquery.markitup.js', 27, 1579,18289, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   $.fn.markItUp = function(settings, extraSettings) {
-_wrap_addFunctionToMap('jquery.markitup.js', 28, 1610,17754);
+_wrap_addFunctionToMap('jquery.markitup.js', 28, 1610,17754, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var options, ctrlKey, shiftKey, altKey;
   ctrlKey = shiftKey = altKey = false;
@@ -12,7 +12,7 @@ _wrap_addFunctionToMap('jquery.markitup.js', 28, 1610,17754);
 (_wrap_setLastFunctionCall("jquery.markitup.js",51,2302,2344) ||   $.extend(options, settings, extraSettings));
   if (!options.root) {
 (_wrap_setLastFunctionCall("jquery.markitup.js",55,2401,2591) ||     (_wrap_setLastFunctionCall("jquery.markitup.js",55,2401,2412) || $('script')).each(function(a, tag) {
-_wrap_addFunctionToMap('jquery.markitup.js', 55, 2418,2590);
+_wrap_addFunctionToMap('jquery.markitup.js', 55, 2418,2590, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   miuScript = (_wrap_setLastFunctionCall("jquery.markitup.js",56,2453,2514) || (_wrap_setLastFunctionCall("jquery.markitup.js",56,2453,2466) || (_wrap_setLastFunctionCall("jquery.markitup.js",56,2453,2459) || $(tag)).get(0)).src.match(/(.*)jquery\.markitup(\.pack)?\.js$/));
   if (miuScript !== null) {
@@ -21,7 +21,7 @@ _wrap_addFunctionToMap('jquery.markitup.js', 55, 2418,2590);
 }));
   }
   return (_wrap_setLastFunctionCall("jquery.markitup.js",63,2607,17750) || this.each(function() {
-_wrap_addFunctionToMap('jquery.markitup.js', 63, 2617,17749);
+_wrap_addFunctionToMap('jquery.markitup.js', 63, 2617,17749, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var $$, textarea, levels, scrollPosition, caretPosition, caretOffset, clicked, hash, header, footer, previewWindow, template, iFrame, abort;
   $$ = (_wrap_setLastFunctionCall("jquery.markitup.js",66,2786,2793) || $(this));
@@ -33,7 +33,7 @@ _wrap_addFunctionToMap('jquery.markitup.js', 63, 2617,17749);
   options.previewParserPath = (_wrap_setLastFunctionCall("jquery.markitup.js",73,2941,2976) || localize(options.previewParserPath));
   options.previewTemplatePath = (_wrap_setLastFunctionCall("jquery.markitup.js",74,3011,3048) || localize(options.previewTemplatePath));
   function localize(data, inText) {
-_wrap_addFunctionToMap('jquery.markitup.js', 77, 3090,3259);
+_wrap_addFunctionToMap('jquery.markitup.js', 77, 3090,3259, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     if (inText) {
       return (_wrap_setLastFunctionCall("jquery.markitup.js",79,3155,3199) || data.replace(/("|')~\//g, "$1" + options.root));
@@ -41,7 +41,7 @@ _wrap_addFunctionToMap('jquery.markitup.js', 77, 3090,3259);
     return (_wrap_setLastFunctionCall("jquery.markitup.js",81,3219,3253) || data.replace(/^~\//, options.root));
   }
   function init() {
-_wrap_addFunctionToMap('jquery.markitup.js', 85, 3292,5186);
+_wrap_addFunctionToMap('jquery.markitup.js', 85, 3292,5186, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     id = '';
     nameSpace = '';
@@ -62,17 +62,17 @@ _wrap_addFunctionToMap('jquery.markitup.js', 85, 3292,5186);
     footer = (_wrap_setLastFunctionCall("jquery.markitup.js",106,4023,4078) || (_wrap_setLastFunctionCall("jquery.markitup.js",106,4023,4062) || $('<div class="markItUpFooter"></div>')).insertAfter($$));
     if (options.resizeHandle === true && $.browser.safari !== true) {
       resizeHandle = (_wrap_setLastFunctionCall("jquery.markitup.js",112,4215,4730) || (_wrap_setLastFunctionCall("jquery.markitup.js",111,4215,4283) || (_wrap_setLastFunctionCall("jquery.markitup.js",110,4215,4260) || $('<div class="markItUpResizeHandle"></div>')).insertAfter($$)).bind("mousedown", function(e) {
-_wrap_addFunctionToMap('jquery.markitup.js', 112, 4309,4729);
+_wrap_addFunctionToMap('jquery.markitup.js', 112, 4309,4729, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var h = (_wrap_setLastFunctionCall("jquery.markitup.js",113,4338,4349) || $$.height()), y = e.clientY, mouseMove, mouseUp;
   mouseMove = function(e) {
-_wrap_addFunctionToMap('jquery.markitup.js', 114, 4405,4509);
+_wrap_addFunctionToMap('jquery.markitup.js', 114, 4405,4509, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("jquery.markitup.js",115,4427,4477) ||   $$.css("height", (_wrap_setLastFunctionCall("jquery.markitup.js",115,4444,4471) || Math.max(20, e.clientY + h - y)) + "px"));
   return false;
 };
   mouseUp = function(e) {
-_wrap_addFunctionToMap('jquery.markitup.js', 118, 4528,4649);
+_wrap_addFunctionToMap('jquery.markitup.js', 118, 4528,4649, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("jquery.markitup.js",119,4550,4617) ||   (_wrap_setLastFunctionCall("jquery.markitup.js",119,4550,4590) || (_wrap_setLastFunctionCall("jquery.markitup.js",119,4550,4559) || $("html")).unbind("mousemove", mouseMove)).unbind("mouseup", mouseUp));
   return false;
@@ -83,7 +83,7 @@ _wrap_addFunctionToMap('jquery.markitup.js', 118, 4528,4649);
     }
 (_wrap_setLastFunctionCall("jquery.markitup.js",128,4802,4842) ||     (_wrap_setLastFunctionCall("jquery.markitup.js",128,4802,4824) || $$.keydown(keyPressed)).keyup(keyPressed));
 (_wrap_setLastFunctionCall("jquery.markitup.js",131,4898,5082) ||     $$.bind("insertion", function(e, settings) {
-_wrap_addFunctionToMap('jquery.markitup.js', 131, 4919,5081);
+_wrap_addFunctionToMap('jquery.markitup.js', 131, 4919,5081, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (settings.target !== false) {
 (_wrap_setLastFunctionCall("jquery.markitup.js",133,4987,4992) ||     get());
@@ -93,18 +93,18 @@ _wrap_addFunctionToMap('jquery.markitup.js', 131, 4919,5081);
   }
 }));
 (_wrap_setLastFunctionCall("jquery.markitup.js",141,5120,5180) ||     $$.focus(function() {
-_wrap_addFunctionToMap('jquery.markitup.js', 141, 5129,5179);
+_wrap_addFunctionToMap('jquery.markitup.js', 141, 5129,5179, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   $.markItUp.focused = this;
 }));
   }
   function dropMenus(markupSet) {
-_wrap_addFunctionToMap('jquery.markitup.js', 147, 5252,6881);
+_wrap_addFunctionToMap('jquery.markitup.js', 147, 5252,6881, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var ul = (_wrap_setLastFunctionCall("jquery.markitup.js",148,5297,5311) || $('<ul></ul>')), i = 0;
 (_wrap_setLastFunctionCall("jquery.markitup.js",149,5324,5370) ||     (_wrap_setLastFunctionCall("jquery.markitup.js",149,5324,5346) || $('li:hover > ul', ul)).css('display', 'block'));
 (_wrap_setLastFunctionCall("jquery.markitup.js",150,5376,6841) ||     $.each(markupSet, function() {
-_wrap_addFunctionToMap('jquery.markitup.js', 150, 5394,6840);
+_wrap_addFunctionToMap('jquery.markitup.js', 150, 5394,6840, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var button = this, t = '', title, li, j;
   title = (button.key) ? (button.name || '') + ' [Ctrl+' + button.key + ']' : (button.name || '');
@@ -117,40 +117,40 @@ _wrap_addFunctionToMap('jquery.markitup.js', 150, 5394,6840);
       t += levels[j] + "-";
     }
     li = (_wrap_setLastFunctionCall("jquery.markitup.js",183,5848,6688) || (_wrap_setLastFunctionCall("jquery.markitup.js",174,5848,6675) || (_wrap_setLastFunctionCall("jquery.markitup.js",168,5848,6412) || (_wrap_setLastFunctionCall("jquery.markitup.js",166,5848,6245) || (_wrap_setLastFunctionCall("jquery.markitup.js",164,5848,6168) || (_wrap_setLastFunctionCall("jquery.markitup.js",162,5848,6119) || (_wrap_setLastFunctionCall("jquery.markitup.js",161,5848,5998) || $('<li class="markItUpButton markItUpButton' + t + (i) + ' ' + (button.className || '') + '"><a href="" ' + key + ' title="' + title + '">' + (button.name || '') + '</a></li>')).bind("contextmenu", function() {
-_wrap_addFunctionToMap('jquery.markitup.js', 162, 6026,6118);
+_wrap_addFunctionToMap('jquery.markitup.js', 162, 6026,6118, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return false;
 })).click(function() {
-_wrap_addFunctionToMap('jquery.markitup.js', 164, 6126,6167);
+_wrap_addFunctionToMap('jquery.markitup.js', 164, 6126,6167, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return false;
 })).bind("focusin", function() {
-_wrap_addFunctionToMap('jquery.markitup.js', 166, 6185,6244);
+_wrap_addFunctionToMap('jquery.markitup.js', 166, 6185,6244, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("jquery.markitup.js",167,6225,6235) ||   $$.focus());
 })).mouseup(function() {
-_wrap_addFunctionToMap('jquery.markitup.js', 168, 6254,6411);
+_wrap_addFunctionToMap('jquery.markitup.js', 168, 6254,6411, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (button.call) {
 (_wrap_setLastFunctionCall("jquery.markitup.js",170,6301,6320) ||     (_wrap_setLastFunctionCall("jquery.markitup.js",170,6301,6318) || eval(button.call))());
   }
 (_wrap_setLastFunctionCall("jquery.markitup.js",172,6338,6381) ||   setTimeout(function() {
-_wrap_addFunctionToMap('jquery.markitup.js', 172, 6349,6378);
+_wrap_addFunctionToMap('jquery.markitup.js', 172, 6349,6378, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("jquery.markitup.js",172,6362,6376) ||   markup(button));
 }, 1));
   return false;
 })).hover(function() {
-_wrap_addFunctionToMap('jquery.markitup.js', 174, 6419,6612);
+_wrap_addFunctionToMap('jquery.markitup.js', 174, 6419,6612, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("jquery.markitup.js",175,6440,6462) ||   (_wrap_setLastFunctionCall("jquery.markitup.js",175,6440,6455) || $('> ul', this)).show());
 (_wrap_setLastFunctionCall("jquery.markitup.js",176,6472,6602) ||   (_wrap_setLastFunctionCall("jquery.markitup.js",176,6472,6483) || $(document)).one('click', function() {
-_wrap_addFunctionToMap('jquery.markitup.js', 176, 6497,6592);
+_wrap_addFunctionToMap('jquery.markitup.js', 176, 6497,6592, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("jquery.markitup.js",177,6555,6580) ||   (_wrap_setLastFunctionCall("jquery.markitup.js",177,6555,6573) || $('ul ul', header)).hide());
 }));
 }, function() {
-_wrap_addFunctionToMap('jquery.markitup.js', 180, 6614,6667);
+_wrap_addFunctionToMap('jquery.markitup.js', 180, 6614,6667, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("jquery.markitup.js",181,6635,6657) ||   (_wrap_setLastFunctionCall("jquery.markitup.js",181,6635,6650) || $('> ul', this)).hide());
 })).appendTo(ul));
@@ -164,12 +164,12 @@ _wrap_addFunctionToMap('jquery.markitup.js', 180, 6614,6667);
     return ul;
   }
   function magicMarkups(string) {
-_wrap_addFunctionToMap('jquery.markitup.js', 195, 6910,7678);
+_wrap_addFunctionToMap('jquery.markitup.js', 195, 6910,7678, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     if (string) {
       string = (_wrap_setLastFunctionCall("jquery.markitup.js",197,6974,6991) || string.toString());
       string = (_wrap_setLastFunctionCall("jquery.markitup.js",198,7007,7272) || string.replace(/\(\!\(([\s\S]*?)\)\!\)/g, function(x, a) {
-_wrap_addFunctionToMap('jquery.markitup.js', 199, 7055,7265);
+_wrap_addFunctionToMap('jquery.markitup.js', 199, 7055,7265, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var b = (_wrap_setLastFunctionCall("jquery.markitup.js",200,7087,7101) || a.split('|!|'));
   if (altKey === true) {
@@ -179,7 +179,7 @@ _wrap_addFunctionToMap('jquery.markitup.js', 199, 7055,7265);
   }
 }));
       string = (_wrap_setLastFunctionCall("jquery.markitup.js",209,7331,7631) || string.replace(/\[\!\[([\s\S]*?)\]\!\]/g, function(x, a) {
-_wrap_addFunctionToMap('jquery.markitup.js', 210, 7379,7624);
+_wrap_addFunctionToMap('jquery.markitup.js', 210, 7379,7624, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var b = (_wrap_setLastFunctionCall("jquery.markitup.js",211,7411,7425) || a.split(':!:'));
   if (abort === true) {
@@ -196,7 +196,7 @@ _wrap_addFunctionToMap('jquery.markitup.js', 210, 7379,7624);
     return "";
   }
   function prepare(action) {
-_wrap_addFunctionToMap('jquery.markitup.js', 228, 7704,7834);
+_wrap_addFunctionToMap('jquery.markitup.js', 228, 7704,7834, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     if ((_wrap_setLastFunctionCall("jquery.markitup.js",229,7739,7759) || $.isFunction(action))) {
       action = (_wrap_setLastFunctionCall("jquery.markitup.js",230,7777,7789) || action(hash));
@@ -204,7 +204,7 @@ _wrap_addFunctionToMap('jquery.markitup.js', 228, 7704,7834);
     return (_wrap_setLastFunctionCall("jquery.markitup.js",232,7808,7828) || magicMarkups(action));
   }
   function build(string) {
-_wrap_addFunctionToMap('jquery.markitup.js', 236, 7867,9123);
+_wrap_addFunctionToMap('jquery.markitup.js', 236, 7867,9123, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var openWith = (_wrap_setLastFunctionCall("jquery.markitup.js",237,7914,7939) || prepare(clicked.openWith));
     var placeHolder = (_wrap_setLastFunctionCall("jquery.markitup.js",238,7965,7993) || prepare(clicked.placeHolder));
@@ -235,7 +235,7 @@ _wrap_addFunctionToMap('jquery.markitup.js', 236, 7867,9123);
     return {block: block, openWith: openWith, replaceWith: replaceWith, placeHolder: placeHolder, closeWith: closeWith};
   }
   function markup(button) {
-_wrap_addFunctionToMap('jquery.markitup.js', 278, 9158,12007);
+_wrap_addFunctionToMap('jquery.markitup.js', 278, 9158,12007, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var len, j, n, i;
     hash = clicked = button;
@@ -304,7 +304,7 @@ _wrap_addFunctionToMap('jquery.markitup.js', 278, 9158,12007);
     shiftKey = altKey = ctrlKey = abort = false;
   }
   function fixOperaBug(string) {
-_wrap_addFunctionToMap('jquery.markitup.js', 368, 12046,12191);
+_wrap_addFunctionToMap('jquery.markitup.js', 368, 12046,12191, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     if ($.browser.opera) {
       return string.length - (_wrap_setLastFunctionCall("jquery.markitup.js",370,12132,12158) || string.replace(/\n*/g, '')).length;
@@ -312,7 +312,7 @@ _wrap_addFunctionToMap('jquery.markitup.js', 368, 12046,12191);
     return 0;
   }
   function fixIeBug(string) {
-_wrap_addFunctionToMap('jquery.markitup.js', 375, 12226,12367);
+_wrap_addFunctionToMap('jquery.markitup.js', 375, 12226,12367, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     if ($.browser.msie) {
       return string.length - (_wrap_setLastFunctionCall("jquery.markitup.js",377,12308,12334) || string.replace(/\r*/g, '')).length;
@@ -320,7 +320,7 @@ _wrap_addFunctionToMap('jquery.markitup.js', 375, 12226,12367);
     return 0;
   }
   function insert(block) {
-_wrap_addFunctionToMap('jquery.markitup.js', 383, 12393,12722);
+_wrap_addFunctionToMap('jquery.markitup.js', 383, 12393,12722, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     if (document.selection) {
       var newSelection = (_wrap_setLastFunctionCall("jquery.markitup.js",385,12473,12505) || document.selection.createRange());
@@ -330,7 +330,7 @@ _wrap_addFunctionToMap('jquery.markitup.js', 383, 12393,12722);
     }
   }
   function set(start, len) {
-_wrap_addFunctionToMap('jquery.markitup.js', 393, 12749,13295);
+_wrap_addFunctionToMap('jquery.markitup.js', 393, 12749,13295, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     if (textarea.createTextRange) {
       if ($.browser.opera && $.browser.version >= 9.5 && len == 0) {
@@ -348,7 +348,7 @@ _wrap_addFunctionToMap('jquery.markitup.js', 393, 12749,13295);
 (_wrap_setLastFunctionCall("jquery.markitup.js",408,13273,13289) ||     textarea.focus());
   }
   function get() {
-_wrap_addFunctionToMap('jquery.markitup.js', 412, 13324,14061);
+_wrap_addFunctionToMap('jquery.markitup.js', 412, 13324,14061, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("jquery.markitup.js",413,13345,13361) ||     textarea.focus());
     scrollPosition = textarea.scrollTop;
@@ -372,13 +372,13 @@ _wrap_addFunctionToMap('jquery.markitup.js', 412, 13324,14061);
     return selection;
   }
   function preview() {
-_wrap_addFunctionToMap('jquery.markitup.js', 438, 14092,14984);
+_wrap_addFunctionToMap('jquery.markitup.js', 438, 14092,14984, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     if (!previewWindow || previewWindow.closed) {
       if (options.previewInWindow) {
         previewWindow = (_wrap_setLastFunctionCall("jquery.markitup.js",441,14221,14272) || window.open('', 'preview', options.previewInWindow));
 (_wrap_setLastFunctionCall("jquery.markitup.js",442,14280,14348) ||         (_wrap_setLastFunctionCall("jquery.markitup.js",442,14280,14289) || $(window)).unload(function() {
-_wrap_addFunctionToMap('jquery.markitup.js', 442, 14297,14347);
+_wrap_addFunctionToMap('jquery.markitup.js', 442, 14297,14347, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("jquery.markitup.js",443,14317,14338) ||   previewWindow.close());
 }));
@@ -407,12 +407,12 @@ _wrap_addFunctionToMap('jquery.markitup.js', 442, 14297,14347);
     }
   }
   function refreshPreview() {
-_wrap_addFunctionToMap('jquery.markitup.js', 471, 15018,15072);
+_wrap_addFunctionToMap('jquery.markitup.js', 471, 15018,15072, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("jquery.markitup.js",472,15051,15066) ||     renderPreview());
   }
   function renderPreview() {
-_wrap_addFunctionToMap('jquery.markitup.js', 475, 15077,15937);
+_wrap_addFunctionToMap('jquery.markitup.js', 475, 15077,15937, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var phtml;
     if (options.previewParser && typeof options.previewParser === 'function') {
@@ -420,14 +420,14 @@ _wrap_addFunctionToMap('jquery.markitup.js', 475, 15077,15937);
 (_wrap_setLastFunctionCall("jquery.markitup.js",479,15257,15292) ||       writeInPreview((_wrap_setLastFunctionCall("jquery.markitup.js",479,15273,15290) || localize(data, 1))));
     } else if (options.previewParserPath !== '') {
 (_wrap_setLastFunctionCall("jquery.markitup.js",481,15351,15626) ||       $.ajax({type: 'POST', dataType: 'text', global: false, url: options.previewParserPath, data: options.previewParserVar + '=' + (_wrap_setLastFunctionCall("jquery.markitup.js",486,15504,15532) || encodeURIComponent((_wrap_setLastFunctionCall("jquery.markitup.js",486,15523,15531) || $$.val()))), success: function(data) {
-_wrap_addFunctionToMap('jquery.markitup.js', 487, 15549,15618);
+_wrap_addFunctionToMap('jquery.markitup.js', 487, 15549,15618, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("jquery.markitup.js",488,15573,15608) ||   writeInPreview((_wrap_setLastFunctionCall("jquery.markitup.js",488,15589,15606) || localize(data, 1))));
 }}));
     } else {
       if (!template) {
 (_wrap_setLastFunctionCall("jquery.markitup.js",493,15669,15900) ||         $.ajax({url: options.previewTemplatePath, dataType: 'text', global: false, success: function(data) {
-_wrap_addFunctionToMap('jquery.markitup.js', 497, 15782,15891);
+_wrap_addFunctionToMap('jquery.markitup.js', 497, 15782,15891, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("jquery.markitup.js",498,15807,15881) ||   writeInPreview((_wrap_setLastFunctionCall("jquery.markitup.js",498,15823,15879) || (_wrap_setLastFunctionCall("jquery.markitup.js",498,15823,15840) || localize(data, 1)).replace(/<!-- content -->/g, (_wrap_setLastFunctionCall("jquery.markitup.js",498,15870,15878) || $$.val())))));
 }}));
@@ -436,7 +436,7 @@ _wrap_addFunctionToMap('jquery.markitup.js', 497, 15782,15891);
     return false;
   }
   function writeInPreview(data) {
-_wrap_addFunctionToMap('jquery.markitup.js', 506, 15945,16309);
+_wrap_addFunctionToMap('jquery.markitup.js', 506, 15945,16309, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     if (previewWindow.document) {
       try {
@@ -451,7 +451,7 @@ _wrap_addFunctionToMap('jquery.markitup.js', 506, 15945,16309);
     }
   }
   function keyPressed(e) {
-_wrap_addFunctionToMap('jquery.markitup.js', 521, 16340,17733);
+_wrap_addFunctionToMap('jquery.markitup.js', 521, 16340,17733, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     shiftKey = e.shiftKey;
     altKey = e.altKey;
@@ -462,7 +462,7 @@ _wrap_addFunctionToMap('jquery.markitup.js', 521, 16340,17733);
         if (li.length !== 0) {
           ctrlKey = false;
 (_wrap_setLastFunctionCall("jquery.markitup.js",531,16703,16776) ||           setTimeout(function() {
-_wrap_addFunctionToMap('jquery.markitup.js', 531, 16714,16773);
+_wrap_addFunctionToMap('jquery.markitup.js', 531, 16714,16773, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("jquery.markitup.js",532,16735,16763) ||   li.triggerHandler('mouseup'));
 }, 1));
@@ -504,23 +504,23 @@ _wrap_addFunctionToMap('jquery.markitup.js', 531, 16714,16773);
 }));
 };
   $.fn.markItUpRemove = function() {
-_wrap_addFunctionToMap('jquery.markitup.js', 573, 17780,17973);
+_wrap_addFunctionToMap('jquery.markitup.js', 573, 17780,17973, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (_wrap_setLastFunctionCall("jquery.markitup.js",574,17802,17969) || this.each(function() {
-_wrap_addFunctionToMap('jquery.markitup.js', 574, 17812,17965);
+_wrap_addFunctionToMap('jquery.markitup.js', 574, 17812,17965, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var $$ = (_wrap_setLastFunctionCall("jquery.markitup.js",575,17838,17884) || (_wrap_setLastFunctionCall("jquery.markitup.js",575,17838,17854) || (_wrap_setLastFunctionCall("jquery.markitup.js",575,17838,17845) || $(this)).unbind()).removeClass('markItUpEditor'));
 (_wrap_setLastFunctionCall("jquery.markitup.js",576,17890,17959) ||   (_wrap_setLastFunctionCall("jquery.markitup.js",576,17890,17943) || (_wrap_setLastFunctionCall("jquery.markitup.js",576,17890,17929) || (_wrap_setLastFunctionCall("jquery.markitup.js",576,17890,17906) || $$.parent('div')).parent('div.markItUp')).parent('div')).replaceWith($$));
 }));
 };
   $.markItUp = function(settings) {
-_wrap_addFunctionToMap('jquery.markitup.js', 581, 17990,18286);
+_wrap_addFunctionToMap('jquery.markitup.js', 581, 17990,18286, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var options = {target: false};
 (_wrap_setLastFunctionCall("jquery.markitup.js",583,18047,18074) ||   $.extend(options, settings));
   if (options.target) {
     return (_wrap_setLastFunctionCall("jquery.markitup.js",585,18110,18217) || (_wrap_setLastFunctionCall("jquery.markitup.js",585,18110,18127) || $(options.target)).each(function() {
-_wrap_addFunctionToMap('jquery.markitup.js', 585, 18133,18216);
+_wrap_addFunctionToMap('jquery.markitup.js', 585, 18133,18216, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("jquery.markitup.js",586,18150,18165) ||   (_wrap_setLastFunctionCall("jquery.markitup.js",586,18150,18157) || $(this)).focus());
 (_wrap_setLastFunctionCall("jquery.markitup.js",587,18171,18210) ||   (_wrap_setLastFunctionCall("jquery.markitup.js",587,18171,18178) || $(this)).trigger('insertion', [options]));

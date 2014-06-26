@@ -98,7 +98,7 @@ public rel[Vertex, Vertex] createFlowGraph(rel[Vertex, Vertex] flowGraph, Tree s
 			Vertex v;
 			if (scope is scoped) v = Var("<f.name>", functionPosition);
 			else v = Prop("<f.name>");
-	
+
 			flowGraph += <Fun(functionPosition), v>;
 			flowGraph += createFlowGraph(f.implementation, scoped(inFunctionSymbolMap));
 		}

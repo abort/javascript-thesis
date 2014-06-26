@@ -1,7 +1,7 @@
 _wrap_staticMeasuredFunctions['transform.js'] = 19;
 _wrap_staticMeasuredCalls['transform.js'] =50;
 function rotate_x(center, sin_cos_angle, point) {
-_wrap_addFunctionToMap('transform.js', 1, 0,288);
+_wrap_addFunctionToMap('transform.js', 1, 0,288, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var diff1 = point[1] - center[1];
   var diff2 = center[2] - point[2];
@@ -9,14 +9,14 @@ _wrap_addFunctionToMap('transform.js', 1, 0,288);
   point[2] = center[2] - diff2 * sin_cos_angle[1] + diff1 * sin_cos_angle[0];
 }
 function rotate_x_normal(sin_cos_angle, point) {
-_wrap_addFunctionToMap('transform.js', 9, 290,506);
+_wrap_addFunctionToMap('transform.js', 9, 290,506, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var temp = point[1];
   point[1] = temp * sin_cos_angle[1] - point[2] * sin_cos_angle[0];
   point[2] = point[2] * sin_cos_angle[1] + temp * sin_cos_angle[0];
 }
 function rotate_y(center, sin_cos_angle, point) {
-_wrap_addFunctionToMap('transform.js', 16, 508,796);
+_wrap_addFunctionToMap('transform.js', 16, 508,796, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var diff1 = point[0] - center[0];
   var diff2 = point[2] - center[2];
@@ -24,14 +24,14 @@ _wrap_addFunctionToMap('transform.js', 16, 508,796);
   point[2] = center[2] + diff2 * sin_cos_angle[1] - diff1 * sin_cos_angle[0];
 }
 function rotate_y_normal(sin_cos_angle, point) {
-_wrap_addFunctionToMap('transform.js', 24, 798,1014);
+_wrap_addFunctionToMap('transform.js', 24, 798,1014, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var temp = point[0];
   point[0] = temp * sin_cos_angle[1] + point[2] * sin_cos_angle[0];
   point[2] = point[2] * sin_cos_angle[1] - temp * sin_cos_angle[0];
 }
 function rotate_z(center, sin_cos_angle, point) {
-_wrap_addFunctionToMap('transform.js', 31, 1016,1304);
+_wrap_addFunctionToMap('transform.js', 31, 1016,1304, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var diff1 = point[0] - center[0];
   var diff2 = point[1] - center[1];
@@ -39,14 +39,14 @@ _wrap_addFunctionToMap('transform.js', 31, 1016,1304);
   point[1] = center[1] + diff2 * sin_cos_angle[1] + diff1 * sin_cos_angle[0];
 }
 function rotate_z_normal(sin_cos_angle, point) {
-_wrap_addFunctionToMap('transform.js', 39, 1306,1522);
+_wrap_addFunctionToMap('transform.js', 39, 1306,1522, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var temp = point[0];
   point[0] = temp * sin_cos_angle[1] - point[1] * sin_cos_angle[0];
   point[1] = point[1] * sin_cos_angle[1] + temp * sin_cos_angle[0];
 }
 function get_rotation_parameter(center, vector, teta) {
-_wrap_addFunctionToMap('transform.js', 47, 1525,2924);
+_wrap_addFunctionToMap('transform.js', 47, 1525,2924, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var result = (_wrap_setLastFunctionCall("transform.js",48,1598,1609) || new Array());
   var u_u = vector[0] * vector[0];
@@ -86,7 +86,7 @@ _wrap_addFunctionToMap('transform.js', 47, 1525,2924);
   return result;
 }
 function rotate(p, point) {
-_wrap_addFunctionToMap('transform.js', 102, 2927,3758);
+_wrap_addFunctionToMap('transform.js', 102, 2927,3758, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var p_20_p_2 = p[20] * point[2];
   var p_19_p_1 = p[19] * point[1];
@@ -99,21 +99,21 @@ _wrap_addFunctionToMap('transform.js', 102, 2927,3758);
   point[2] = (p[6] + p[20] * (-p[9] + u_x_p_v_y_p_w_z) + ((point[2] - p[17]) * p[3] + p[20] * (p[9] - p_18_p_0 - p_19_p_1)) * p[10] + p[11] * (p[14] - p[19] * temp0 + p[18] * temp1)) / p[0];
 }
 function translate(vector, point) {
-_wrap_addFunctionToMap('transform.js', 116, 3760,3908);
+_wrap_addFunctionToMap('transform.js', 116, 3760,3908, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   point[0] = point[0] + vector[0];
   point[1] = point[1] + vector[1];
   point[2] = point[2] + vector[2];
 }
 function scale(vector, point) {
-_wrap_addFunctionToMap('transform.js', 122, 3910,4054);
+_wrap_addFunctionToMap('transform.js', 122, 3910,4054, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   point[0] = point[0] * vector[0];
   point[1] = point[1] * vector[1];
   point[2] = point[2] * vector[2];
 }
 function translate_solid(vector, solid) {
-_wrap_addFunctionToMap('transform.js', 129, 4057,4240);
+_wrap_addFunctionToMap('transform.js', 129, 4057,4240, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("transform.js",130,4103,4134) ||   translate(vector, solid.center));
   for (var i = 0; i < solid.points_number; i++) {
@@ -121,7 +121,7 @@ _wrap_addFunctionToMap('transform.js', 129, 4057,4240);
   }
 }
 function translate_solid_direction(vector, delta, solid) {
-_wrap_addFunctionToMap('transform.js', 137, 4242,4544);
+_wrap_addFunctionToMap('transform.js', 137, 4242,4544, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("transform.js",138,4305,4387) ||   translate([vector[0] * delta, vector[1] * delta, vector[2] * delta], solid.center));
   for (var i = 0; i < solid.points_number; i++) {
@@ -129,7 +129,7 @@ _wrap_addFunctionToMap('transform.js', 137, 4242,4544);
   }
 }
 function scale_solid(vector, solid) {
-_wrap_addFunctionToMap('transform.js', 145, 4546,4843);
+_wrap_addFunctionToMap('transform.js', 145, 4546,4843, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var da = solid.center;
   var a = [-solid.center[0], -solid.center[1], -solid.center[2]];
@@ -140,7 +140,7 @@ _wrap_addFunctionToMap('transform.js', 145, 4546,4843);
 (_wrap_setLastFunctionCall("transform.js",154,4814,4840) ||   translate_solid(da, solid));
 }
 function rotate_solid(point, vector, angle, solid) {
-_wrap_addFunctionToMap('transform.js', 158, 4846,5388);
+_wrap_addFunctionToMap('transform.js', 158, 4846,5388, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   parametri = (_wrap_setLastFunctionCall("transform.js",159,4915,4959) || get_rotation_parameter(point, vector, angle));
   parametri2 = (_wrap_setLastFunctionCall("transform.js",160,4978,5026) || get_rotation_parameter([0, 0, 0], vector, angle));
@@ -156,7 +156,7 @@ _wrap_addFunctionToMap('transform.js', 158, 4846,5388);
   }
 }
 function rotate_solid_fast(parametri1, parametri2, solid) {
-_wrap_addFunctionToMap('transform.js', 176, 5390,5811);
+_wrap_addFunctionToMap('transform.js', 176, 5390,5811, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("transform.js",177,5454,5486) ||   rotate(parametri1, solid.center));
 (_wrap_setLastFunctionCall("transform.js",178,5492,5524) ||   rotate(parametri2, solid.axis_x));
@@ -170,7 +170,7 @@ _wrap_addFunctionToMap('transform.js', 176, 5390,5811);
   }
 }
 function rotate_solid_x(center, angle, solid) {
-_wrap_addFunctionToMap('transform.js', 191, 5813,6365);
+_wrap_addFunctionToMap('transform.js', 191, 5813,6365, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var sin_cosin_teta = [(_wrap_setLastFunctionCall("transform.js",193,5888,5903) || Math.sin(angle)), (_wrap_setLastFunctionCall("transform.js",193,5905,5920) || Math.cos(angle))];
 (_wrap_setLastFunctionCall("transform.js",195,5928,5974) ||   rotate_x(center, sin_cosin_teta, solid.center));
@@ -185,7 +185,7 @@ _wrap_addFunctionToMap('transform.js', 191, 5813,6365);
   }
 }
 function rotate_solid_y(center, angle, solid) {
-_wrap_addFunctionToMap('transform.js', 209, 6367,6918);
+_wrap_addFunctionToMap('transform.js', 209, 6367,6918, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var sin_cosin_teta = [(_wrap_setLastFunctionCall("transform.js",210,6441,6456) || Math.sin(angle)), (_wrap_setLastFunctionCall("transform.js",210,6458,6473) || Math.cos(angle))];
 (_wrap_setLastFunctionCall("transform.js",212,6481,6527) ||   rotate_y(center, sin_cosin_teta, solid.center));
@@ -200,7 +200,7 @@ _wrap_addFunctionToMap('transform.js', 209, 6367,6918);
   }
 }
 function rotate_solid_z(center, angle, solid) {
-_wrap_addFunctionToMap('transform.js', 226, 6920,7471);
+_wrap_addFunctionToMap('transform.js', 226, 6920,7471, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var sin_cosin_teta = [(_wrap_setLastFunctionCall("transform.js",227,6994,7009) || Math.sin(angle)), (_wrap_setLastFunctionCall("transform.js",227,7011,7026) || Math.cos(angle))];
 (_wrap_setLastFunctionCall("transform.js",229,7034,7080) ||   rotate_z(center, sin_cosin_teta, solid.center));
@@ -215,7 +215,7 @@ _wrap_addFunctionToMap('transform.js', 226, 6920,7471);
   }
 }
 function project(distance, point) {
-_wrap_addFunctionToMap('transform.js', 243, 7473,7695);
+_wrap_addFunctionToMap('transform.js', 243, 7473,7695, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var result = (_wrap_setLastFunctionCall("transform.js",244,7526,7537) || new Array());
   result[0] = point[0] * distance / point[2] + 500;

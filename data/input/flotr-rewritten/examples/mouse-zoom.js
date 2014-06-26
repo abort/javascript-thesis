@@ -1,7 +1,7 @@
 window.parent._wrap_staticMeasuredFunctions['mouse-zoom.js'] = 4;
 window.parent._wrap_staticMeasuredCalls['mouse-zoom.js'] =19;
 (window.parent._wrap_setLastFunctionCall("mouse-zoom.js",4,55,1923) || document.observe('dom:loaded', function() {
-window.parent._wrap_addFunctionToMap('mouse-zoom.js', 4, 86,1922);
+window.parent._wrap_addFunctionToMap('mouse-zoom.js', 4, 86,1922, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var d1 = [];
   var d2 = [];
@@ -13,20 +13,20 @@ window.parent._wrap_addFunctionToMap('mouse-zoom.js', 4, 86,1922);
   }
   var options = {selection: {mode: 'x', fps: 30}};
   function drawGraph(opts) {
-window.parent._wrap_addFunctionToMap('mouse-zoom.js', 28, 654,971);
+window.parent._wrap_addFunctionToMap('mouse-zoom.js', 28, 654,971, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     var o = (window.parent._wrap_setLastFunctionCall("mouse-zoom.js",32,785,833) || Object.extend((window.parent._wrap_setLastFunctionCall("mouse-zoom.js",32,799,820) || Object.clone(options)), opts || {}));
     return (window.parent._wrap_setLastFunctionCall("mouse-zoom.js",36,893,964) || Flotr.draw((window.parent._wrap_setLastFunctionCall("mouse-zoom.js",37,911,925) || $('container')), [d1, d2, d3], o));
   }
   var f = (window.parent._wrap_setLastFunctionCall("mouse-zoom.js",46,1038,1049) || drawGraph());
 (window.parent._wrap_setLastFunctionCall("mouse-zoom.js",51,1122,1588) ||   (window.parent._wrap_setLastFunctionCall("mouse-zoom.js",51,1122,1136) || $('container')).observe('flotr:select', function(evt) {
-window.parent._wrap_addFunctionToMap('mouse-zoom.js', 51, 1161,1587);
+window.parent._wrap_addFunctionToMap('mouse-zoom.js', 51, 1161,1587, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var area = evt.memo[0];
   f = (window.parent._wrap_setLastFunctionCall("mouse-zoom.js",62,1480,1580) || drawGraph({xaxis: {min: area.x1, max: area.x2}, yaxis: {min: area.y1, max: area.y2}}));
 }));
 (window.parent._wrap_setLastFunctionCall("mouse-zoom.js",74,1860,1916) ||   (window.parent._wrap_setLastFunctionCall("mouse-zoom.js",74,1860,1874) || $('reset-btn')).observe('click', function() {
-window.parent._wrap_addFunctionToMap('mouse-zoom.js', 74, 1892,1915);
+window.parent._wrap_addFunctionToMap('mouse-zoom.js', 74, 1892,1915, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (window.parent._wrap_setLastFunctionCall("mouse-zoom.js",74,1903,1914) ||   drawGraph());
 }));

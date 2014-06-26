@@ -1,11 +1,11 @@
 window.parent._wrap_staticMeasuredFunctions['data-download.js'] = 4;
 window.parent._wrap_staticMeasuredCalls['data-download.js'] =14;
 function getV(nl) {
-window.parent._wrap_addFunctionToMap('data-download.js', 1, 4,181);
+window.parent._wrap_addFunctionToMap('data-download.js', 1, 4,181, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var v = null;
 (window.parent._wrap_setLastFunctionCall("data-download.js",3,50,158) ||   (window.parent._wrap_setLastFunctionCall("data-download.js",3,50,56) || $A(nl)).each(function(e) {
-window.parent._wrap_addFunctionToMap('data-download.js', 3, 62,157);
+window.parent._wrap_addFunctionToMap('data-download.js', 3, 62,157, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (e.checked) {
     v = e.value;
@@ -16,7 +16,7 @@ window.parent._wrap_addFunctionToMap('data-download.js', 3, 62,157);
 }
 var f;
 (window.parent._wrap_setLastFunctionCall("data-download.js",16,253,1815) || document.observe('dom:loaded', function() {
-window.parent._wrap_addFunctionToMap('data-download.js', 16, 284,1814);
+window.parent._wrap_addFunctionToMap('data-download.js', 16, 284,1814, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var d1 = [];
   var d2 = [];
@@ -33,7 +33,7 @@ window.parent._wrap_addFunctionToMap('data-download.js', 16, 284,1814);
     }
   }
   f = (window.parent._wrap_setLastFunctionCall("data-download.js",36,779,1808) || Flotr.draw((window.parent._wrap_setLastFunctionCall("data-download.js",37,801,815) || $('container')), [{data: d1, label: 'y = 4 + x^(1.5)', lines: {fill: true}}, {data: d2, label: 'y = x^3'}, {data: d3, label: 'y = 5x + 3sin(4x)'}, {data: d4, label: 'y = x'}, {data: d5, label: 'y = 2x', lines: {show: true}, points: {show: true}}], {xaxis: {noTicks: 7, tickFormatter: function(n) {
-window.parent._wrap_addFunctionToMap('data-download.js', 46, 1207,1239);
+window.parent._wrap_addFunctionToMap('data-download.js', 46, 1207,1239, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return '(' + n + ')';
 }, min: 1, max: 7.5}, yaxis: {ticks: [[0, "Lower"], 10, 20, 30, [40, "Upper"]], max: 40}, grid: {verticalLines: false, backgroundColor: 'white'}, legend: {position: 'nw'}, spreadsheet: {show: true}}));

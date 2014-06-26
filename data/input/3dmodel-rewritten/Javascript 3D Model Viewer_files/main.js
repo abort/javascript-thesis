@@ -1,7 +1,7 @@
 _wrap_staticMeasuredFunctions['main.js'] = 7;
 _wrap_staticMeasuredCalls['main.js'] =53;
 function scene() {
-_wrap_addFunctionToMap('main.js', 1, 0,134);
+_wrap_addFunctionToMap('main.js', 1, 0,134, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   this.solid_number = 0;
   this.solid = (_wrap_setLastFunctionCall("main.js",3,63,74) || new Array());
@@ -16,7 +16,7 @@ var teta_y_global = 0;
 var motion = 1;
 var id_timer = 0;
 function init() {
-_wrap_addFunctionToMap('main.js', 18, 294,844);
+_wrap_addFunctionToMap('main.js', 18, 294,844, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   world.solid[world.solid_number++] = (_wrap_setLastFunctionCall("main.js",19,352,392) || new dinosaur([255, 255, 255], [0, 0, 0]));
 (_wrap_setLastFunctionCall("main.js",20,398,457) ||   scale_solid([3, 3, 3], world.solid[world.solid_number - 1]));
@@ -27,7 +27,7 @@ _wrap_addFunctionToMap('main.js', 18, 294,844);
 (_wrap_setLastFunctionCall("main.js",28,819,840) ||   setInterval(draw, 10));
 }
 function changeModel() {
-_wrap_addFunctionToMap('main.js', 32, 846,2583);
+_wrap_addFunctionToMap('main.js', 32, 846,2583, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 (_wrap_setLastFunctionCall("main.js",33,875,898) ||   clearInterval(id_timer));
   var canvas = (_wrap_setLastFunctionCall("main.js",34,917,951) || document.getElementById("display"));
@@ -56,7 +56,7 @@ _wrap_addFunctionToMap('main.js', 32, 846,2583);
   id_timer = (_wrap_setLastFunctionCall("main.js",62,2559,2580) || setInterval(draw, 10));
 }
 function onKeyDown(evt) {
-_wrap_addFunctionToMap('main.js', 65, 2585,3463);
+_wrap_addFunctionToMap('main.js', 65, 2585,3463, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (evt.keyCode == 77) 
     motion = (motion + 1) % 2;
@@ -92,7 +92,7 @@ _wrap_addFunctionToMap('main.js', 65, 2585,3463);
     alpha = 0.8;
 }
 function onMouseMove(evt) {
-_wrap_addFunctionToMap('main.js', 101, 3465,3796);
+_wrap_addFunctionToMap('main.js', 101, 3465,3796, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var x = evt.pageX - (_wrap_setLastFunctionCall("main.js",102,3517,3551) || document.getElementById("display")).offsetLeft;
   var y = evt.pageY - (_wrap_setLastFunctionCall("main.js",103,3588,3622) || document.getElementById("display")).offsetTop;
@@ -102,7 +102,7 @@ _wrap_addFunctionToMap('main.js', 101, 3465,3796);
   }
 }
 function draw() {
-_wrap_addFunctionToMap('main.js', 112, 3798,7117);
+_wrap_addFunctionToMap('main.js', 112, 3798,7117, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var canvas = (_wrap_setLastFunctionCall("main.js",113,3833,3867) || document.getElementById("display"));
   if (canvas.getContext) {
@@ -168,7 +168,7 @@ _wrap_addFunctionToMap('main.js', 112, 3798,7117);
   }
 }
 function sortfunction(a, b) {
-_wrap_addFunctionToMap('main.js', 203, 7120,7189);
+_wrap_addFunctionToMap('main.js', 203, 7120,7189, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (b.distance - a.distance);
 }

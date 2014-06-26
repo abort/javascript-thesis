@@ -1,13 +1,13 @@
 window.parent._wrap_staticMeasuredFunctions['extending-flotr.js'] = 2;
 window.parent._wrap_staticMeasuredCalls['extending-flotr.js'] =8;
 var MyGraph = (window.parent._wrap_setLastFunctionCall("extending-flotr.js",1,17,160) || Class.create(Flotr.Graph, {drawCount: 0, drawSeries: function($super, series) {
-window.parent._wrap_addFunctionToMap('extending-flotr.js', 3, 79,154);
+window.parent._wrap_addFunctionToMap('extending-flotr.js', 3, 79,154, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   this.drawCount++;
 (window.parent._wrap_setLastFunctionCall("extending-flotr.js",5,133,147) ||   $super(series));
 }}));
 (window.parent._wrap_setLastFunctionCall("extending-flotr.js",11,219,632) || document.observe('dom:loaded', function() {
-window.parent._wrap_addFunctionToMap('extending-flotr.js', 11, 250,631);
+window.parent._wrap_addFunctionToMap('extending-flotr.js', 11, 250,631, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var d1 = [];
   for (var i = 0; i < 14; i += 0.5) 

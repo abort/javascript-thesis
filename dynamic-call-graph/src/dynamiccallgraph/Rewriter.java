@@ -43,6 +43,7 @@ public class Rewriter {
     
     public void rewriteDirectory(final File directoryHandle) throws IOException {	
 	final File rewritePath = new File(directoryHandle.getPath() + "-rewritten");
+	FileUtils.deleteDirectory(rewritePath);
 	FileUtils.copyDirectory(directoryHandle, rewritePath);
 
 	int rewrittenFiles = 0;

@@ -9,26 +9,26 @@ window.parent._wrap_addFunctionToMap('canvastext.js', 5190, 126584,127554, (type
 
   if (CanvasText._bufferLexemes[str]) 
     return CanvasText._bufferLexemes[str];
-  var i, c, matches = (window.parent._wrap_setLastFunctionCall("canvastext.js",5193,126736,126770) || str.match(/&[A-Za-z]{2,5};|\s|./g));
+  var i, c, matches = (window.parent._wrap_setLastFunctionCall("canvastext.js",5193,126736,126770,str.match,false) || str.match(/&[A-Za-z]{2,5};|\s|./g));
   var result = [], chars = [];
   for (i = 0; i < matches.length; i++) {
     c = matches[i];
     if (c.length == 1) 
-      (window.parent._wrap_setLastFunctionCall("canvastext.js",5198,126951,126964) ||     chars.push(c));
+      (window.parent._wrap_setLastFunctionCall("canvastext.js",5198,126951,126964,chars.push,false) ||     chars.push(c));
     else {
-      var entity = (window.parent._wrap_setLastFunctionCall("canvastext.js",5200,127022,127050) || c.substring(1, c.length - 1));
+      var entity = (window.parent._wrap_setLastFunctionCall("canvastext.js",5200,127022,127050,c.substring,false) || c.substring(1, c.length - 1));
       if (CanvasText.specialchars[entity]) 
-        (window.parent._wrap_setLastFunctionCall("canvastext.js",5202,127133,127151) ||       chars.push(entity));
+        (window.parent._wrap_setLastFunctionCall("canvastext.js",5202,127133,127151,chars.push,false) ||       chars.push(entity));
       else 
-        chars = (window.parent._wrap_setLastFunctionCall("canvastext.js",5204,127210,127235) || chars.concat((window.parent._wrap_setLastFunctionCall("canvastext.js",5204,127223,127234) || c.toArray())));
+        chars = (window.parent._wrap_setLastFunctionCall("canvastext.js",5204,127210,127235,chars.concat,false) || chars.concat((window.parent._wrap_setLastFunctionCall("canvastext.js",5204,127223,127234,c.toArray,false) || c.toArray())));
     }
   }
   for (i = 0; i < chars.length; i++) {
     c = chars[i];
     if (c = CanvasText.letters[c] || CanvasText.specialchars[c]) 
-      (window.parent._wrap_setLastFunctionCall("canvastext.js",5210,127445,127459) ||     result.push(c));
+      (window.parent._wrap_setLastFunctionCall("canvastext.js",5210,127445,127459,result.push,false) ||     result.push(c));
   }
-  return CanvasText._bufferLexemes[str] = (window.parent._wrap_setLastFunctionCall("canvastext.js",5212,127527,127543) || result.compact());
+  return CanvasText._bufferLexemes[str] = (window.parent._wrap_setLastFunctionCall("canvastext.js",5212,127527,127543,result.compact,false) || result.compact());
 }, ascent: function(style) {
 window.parent._wrap_addFunctionToMap('canvastext.js', 5214, 127572,127689, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
@@ -45,29 +45,29 @@ window.parent._wrap_addFunctionToMap('canvastext.js', 5222, 127855,128380, (type
   if (!str) 
     return;
   style = style || {};
-  var i, width, lexemes = (window.parent._wrap_setLastFunctionCall("canvastext.js",5226,127994,128022) || CanvasText.parseLexemes(str)), total = 0;
+  var i, width, lexemes = (window.parent._wrap_setLastFunctionCall("canvastext.js",5226,127994,128022,CanvasText.parseLexemes,false) || CanvasText.parseLexemes(str)), total = 0;
   for (i = lexemes.length - 1; i > -1; --i) {
     c = lexemes[i];
-    width = c.diacritic ? (window.parent._wrap_setLastFunctionCall("canvastext.js",5229,128161,128188) || CanvasText.letter(c.letter)).width : c.width;
+    width = c.diacritic ? (window.parent._wrap_setLastFunctionCall("canvastext.js",5229,128161,128188,CanvasText.letter,false) || CanvasText.letter(c.letter)).width : c.width;
     total += width * (style.tracking || CanvasText.style.tracking) * (style.size || CanvasText.style.size) / 25;
   }
   return total;
 }, getDimensions: function(str, style) {
 window.parent._wrap_addFunctionToMap('canvastext.js', 5234, 128405,128960, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  var width = (window.parent._wrap_setLastFunctionCall("canvastext.js",5235,128453,128483) || CanvasText.measure(str, style)), height = style.size || CanvasText.style.size, angle = style.angle || CanvasText.style.angle;
+  var width = (window.parent._wrap_setLastFunctionCall("canvastext.js",5235,128453,128483,CanvasText.measure,false) || CanvasText.measure(str, style)), height = style.size || CanvasText.style.size, angle = style.angle || CanvasText.style.angle;
   if (style.angle == 0) 
     return {width: width, height: height};
-  return {width: (window.parent._wrap_setLastFunctionCall("canvastext.js",5242,128769,128802) || Math.abs((window.parent._wrap_setLastFunctionCall("canvastext.js",5242,128778,128793) || Math.cos(angle)) * width)) + (window.parent._wrap_setLastFunctionCall("canvastext.js",5242,128805,128839) || Math.abs((window.parent._wrap_setLastFunctionCall("canvastext.js",5242,128814,128829) || Math.sin(angle)) * height)), height: (window.parent._wrap_setLastFunctionCall("canvastext.js",5243,128865,128898) || Math.abs((window.parent._wrap_setLastFunctionCall("canvastext.js",5243,128874,128889) || Math.sin(angle)) * width)) + (window.parent._wrap_setLastFunctionCall("canvastext.js",5243,128901,128935) || Math.abs((window.parent._wrap_setLastFunctionCall("canvastext.js",5243,128910,128925) || Math.cos(angle)) * height))};
+  return {width: (window.parent._wrap_setLastFunctionCall("canvastext.js",5242,128769,128802,Math.abs,false) || Math.abs((window.parent._wrap_setLastFunctionCall("canvastext.js",5242,128778,128793,Math.cos,false) || Math.cos(angle)) * width)) + (window.parent._wrap_setLastFunctionCall("canvastext.js",5242,128805,128839,Math.abs,false) || Math.abs((window.parent._wrap_setLastFunctionCall("canvastext.js",5242,128814,128829,Math.sin,false) || Math.sin(angle)) * height)), height: (window.parent._wrap_setLastFunctionCall("canvastext.js",5243,128865,128898,Math.abs,false) || Math.abs((window.parent._wrap_setLastFunctionCall("canvastext.js",5243,128874,128889,Math.sin,false) || Math.sin(angle)) * width)) + (window.parent._wrap_setLastFunctionCall("canvastext.js",5243,128901,128935,Math.abs,false) || Math.abs((window.parent._wrap_setLastFunctionCall("canvastext.js",5243,128910,128925,Math.cos,false) || Math.cos(angle)) * height))};
 }, getBestAlign: function(angle, style) {
 window.parent._wrap_addFunctionToMap('canvastext.js', 5246, 128984,129454, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  angle += (window.parent._wrap_setLastFunctionCall("canvastext.js",5247,129031,129087) || CanvasText.getAngleFromAlign(style.halign, style.valign));
+  angle += (window.parent._wrap_setLastFunctionCall("canvastext.js",5247,129031,129087,CanvasText.getAngleFromAlign,false) || CanvasText.getAngleFromAlign(style.halign, style.valign));
   var a = {h: 'c', v: 'm'};
-  if ((window.parent._wrap_setLastFunctionCall("canvastext.js",5252,129201,129235) || Math.round((window.parent._wrap_setLastFunctionCall("canvastext.js",5252,129212,129227) || Math.cos(angle)) * 1000)) / 1000 != 0) 
-    a.h = (window.parent._wrap_setLastFunctionCall("canvastext.js",5253,129271,129286) || Math.cos(angle)) > 0 ? 'r' : 'l';
-  if ((window.parent._wrap_setLastFunctionCall("canvastext.js",5254,129320,129354) || Math.round((window.parent._wrap_setLastFunctionCall("canvastext.js",5254,129331,129346) || Math.sin(angle)) * 1000)) / 1000 != 0) 
-    a.v = (window.parent._wrap_setLastFunctionCall("canvastext.js",5255,129390,129405) || Math.sin(angle)) > 0 ? 't' : 'b';
+  if ((window.parent._wrap_setLastFunctionCall("canvastext.js",5252,129201,129235,Math.round,false) || Math.round((window.parent._wrap_setLastFunctionCall("canvastext.js",5252,129212,129227,Math.cos,false) || Math.cos(angle)) * 1000)) / 1000 != 0) 
+    a.h = (window.parent._wrap_setLastFunctionCall("canvastext.js",5253,129271,129286,Math.cos,false) || Math.cos(angle)) > 0 ? 'r' : 'l';
+  if ((window.parent._wrap_setLastFunctionCall("canvastext.js",5254,129320,129354,Math.round,false) || Math.round((window.parent._wrap_setLastFunctionCall("canvastext.js",5254,129331,129346,Math.sin,false) || Math.sin(angle)) * 1000)) / 1000 != 0) 
+    a.v = (window.parent._wrap_setLastFunctionCall("canvastext.js",5255,129390,129405,Math.sin,false) || Math.sin(angle)) > 0 ? 't' : 'b';
   return a;
 }, getAngleFromAlign: function(halign, valign) {
 window.parent._wrap_addFunctionToMap('canvastext.js', 5258, 129483,129928, (typeof arguments === 'object' ? arguments.callee.caller : null));
@@ -79,7 +79,7 @@ window.parent._wrap_addFunctionToMap('canvastext.js', 5272, 129950,130683, (type
 
   var i, a, penUp = true, needStroke = 0;
   offset = offset || {x: 0, y: 0};
-(window.parent._wrap_setLastFunctionCall("canvastext.js",5278,130149,130164) ||   ctx.beginPath());
+(window.parent._wrap_setLastFunctionCall("canvastext.js",5278,130149,130164,ctx.beginPath,false) ||   ctx.beginPath());
   for (i = 0; i < points.length; i++) {
     a = points[i];
     if (!a) {
@@ -87,13 +87,13 @@ window.parent._wrap_addFunctionToMap('canvastext.js', 5272, 129950,130683, (type
       continue;
     }
     if (penUp) {
-(window.parent._wrap_setLastFunctionCall("canvastext.js",5286,130404,130468) ||       ctx.moveTo(x + a[0] * mag + offset.x, y - a[1] * mag + offset.y));
+(window.parent._wrap_setLastFunctionCall("canvastext.js",5286,130404,130468,ctx.moveTo,false) ||       ctx.moveTo(x + a[0] * mag + offset.x, y - a[1] * mag + offset.y));
       penUp = false;
     } else {
-(window.parent._wrap_setLastFunctionCall("canvastext.js",5289,130550,130614) ||       ctx.lineTo(x + a[0] * mag + offset.x, y - a[1] * mag + offset.y));
+(window.parent._wrap_setLastFunctionCall("canvastext.js",5289,130550,130614,ctx.lineTo,false) ||       ctx.lineTo(x + a[0] * mag + offset.x, y - a[1] * mag + offset.y));
     }
   }
-(window.parent._wrap_setLastFunctionCall("canvastext.js",5292,130660,130672) ||   ctx.stroke());
+(window.parent._wrap_setLastFunctionCall("canvastext.js",5292,130660,130672,ctx.stroke,false) ||   ctx.stroke());
 }, draw: function(ctx, str, xOrig, yOrig, style) {
 window.parent._wrap_addFunctionToMap('canvastext.js', 5294, 130699,133990, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
@@ -105,10 +105,10 @@ window.parent._wrap_addFunctionToMap('canvastext.js', 5294, 130699,133990, (type
   style.angle = style.angle || CanvasText.style.angle;
   style.size = style.size || CanvasText.style.size;
   style.adjustAlign = style.adjustAlign || CanvasText.style.adjustAlign;
-  var i, c, total = 0, mag = style.size / 25, x = 0, y = 0, lexemes = (window.parent._wrap_setLastFunctionCall("canvastext.js",5303,131261,131289) || CanvasText.parseLexemes(str));
-  var offset = {x: 0, y: 0}, measure = (window.parent._wrap_setLastFunctionCall("canvastext.js",5307,131398,131428) || CanvasText.measure(str, style)), align;
+  var i, c, total = 0, mag = style.size / 25, x = 0, y = 0, lexemes = (window.parent._wrap_setLastFunctionCall("canvastext.js",5303,131261,131289,CanvasText.parseLexemes,false) || CanvasText.parseLexemes(str));
+  var offset = {x: 0, y: 0}, measure = (window.parent._wrap_setLastFunctionCall("canvastext.js",5307,131398,131428,CanvasText.measure,false) || CanvasText.measure(str, style)), align;
   if (style.adjustAlign) {
-    align = (window.parent._wrap_setLastFunctionCall("canvastext.js",5309,131498,131541) || CanvasText.getBestAlign(style.angle, style));
+    align = (window.parent._wrap_setLastFunctionCall("canvastext.js",5309,131498,131541,CanvasText.getBestAlign,false) || CanvasText.getBestAlign(style.angle, style));
     style.halign = align.h;
     style.valign = align.v;
   }
@@ -132,9 +132,9 @@ window.parent._wrap_addFunctionToMap('canvastext.js', 5294, 130699,133990, (type
       offset.y = style.size;
       break;
   }
-(window.parent._wrap_setLastFunctionCall("canvastext.js",5333,132179,132189) ||   ctx.save());
-(window.parent._wrap_setLastFunctionCall("canvastext.js",5334,132203,132230) ||   ctx.translate(xOrig, yOrig));
-(window.parent._wrap_setLastFunctionCall("canvastext.js",5335,132244,132267) ||   ctx.rotate(style.angle));
+(window.parent._wrap_setLastFunctionCall("canvastext.js",5333,132179,132189,ctx.save,false) ||   ctx.save());
+(window.parent._wrap_setLastFunctionCall("canvastext.js",5334,132203,132230,ctx.translate,false) ||   ctx.translate(xOrig, yOrig));
+(window.parent._wrap_setLastFunctionCall("canvastext.js",5335,132244,132267,ctx.rotate,false) ||   ctx.rotate(style.angle));
   ctx.lineCap = 'round';
   ctx.lineWidth = 2 * mag * (style.weight || CanvasText.style.weight);
   ctx.strokeStyle = style.color || CanvasText.style.color;
@@ -148,27 +148,27 @@ window.parent._wrap_addFunctionToMap('canvastext.js', 5294, 130699,133990, (type
     var points = c.points, width = c.width;
     if (c.diacritic) {
       var dia = CanvasText.diacritics[c.diacritic];
-      var char = (window.parent._wrap_setLastFunctionCall("canvastext.js",5349,132879,132906) || CanvasText.letter(c.letter));
-(window.parent._wrap_setLastFunctionCall("canvastext.js",5350,132928,133032) ||       CanvasText.drawPoints(ctx, dia.points, x, y - ((window.parent._wrap_setLastFunctionCall("canvastext.js",5350,132975,132997) || c.letter.toUpperCase()) == c.letter ? 3 : 0), mag, offset));
+      var char = (window.parent._wrap_setLastFunctionCall("canvastext.js",5349,132879,132906,CanvasText.letter,false) || CanvasText.letter(c.letter));
+(window.parent._wrap_setLastFunctionCall("canvastext.js",5350,132928,133032,CanvasText.drawPoints,false) ||       CanvasText.drawPoints(ctx, dia.points, x, y - ((window.parent._wrap_setLastFunctionCall("canvastext.js",5350,132975,132997,c.letter.toUpperCase,false) || c.letter.toUpperCase()) == c.letter ? 3 : 0), mag, offset));
       points = char.points;
       width = char.width;
     }
-(window.parent._wrap_setLastFunctionCall("canvastext.js",5354,133150,133203) ||     CanvasText.drawPoints(ctx, points, x, y, mag, offset));
+(window.parent._wrap_setLastFunctionCall("canvastext.js",5354,133150,133203,CanvasText.drawPoints,false) ||     CanvasText.drawPoints(ctx, points, x, y, mag, offset));
     if (CanvasText.debug) {
-(window.parent._wrap_setLastFunctionCall("canvastext.js",5356,133265,133275) ||       ctx.save());
+(window.parent._wrap_setLastFunctionCall("canvastext.js",5356,133265,133275,ctx.save,false) ||       ctx.save());
       ctx.lineJoin = 'miter';
       ctx.lineWidth = 0.5;
       ctx.strokeStyle = style.boundingBoxColor || CanvasText.style.boundingBoxColor;
-(window.parent._wrap_setLastFunctionCall("canvastext.js",5360,133481,133549) ||       ctx.strokeRect(x + offset.x, y + offset.y, width * mag, -style.size));
+(window.parent._wrap_setLastFunctionCall("canvastext.js",5360,133481,133549,ctx.strokeRect,false) ||       ctx.strokeRect(x + offset.x, y + offset.y, width * mag, -style.size));
       ctx.fillStyle = style.originPointColor || CanvasText.style.originPointColor;
-(window.parent._wrap_setLastFunctionCall("canvastext.js",5362,133668,133683) ||       ctx.beginPath());
-(window.parent._wrap_setLastFunctionCall("canvastext.js",5363,133705,133745) ||       ctx.arc(0, 0, 1.5, 0, Math.PI * 2, true));
-(window.parent._wrap_setLastFunctionCall("canvastext.js",5364,133767,133777) ||       ctx.fill());
-(window.parent._wrap_setLastFunctionCall("canvastext.js",5365,133799,133812) ||       ctx.restore());
+(window.parent._wrap_setLastFunctionCall("canvastext.js",5362,133668,133683,ctx.beginPath,false) ||       ctx.beginPath());
+(window.parent._wrap_setLastFunctionCall("canvastext.js",5363,133705,133745,ctx.arc,false) ||       ctx.arc(0, 0, 1.5, 0, Math.PI * 2, true));
+(window.parent._wrap_setLastFunctionCall("canvastext.js",5364,133767,133777,ctx.fill,false) ||       ctx.fill());
+(window.parent._wrap_setLastFunctionCall("canvastext.js",5365,133799,133812,ctx.restore,false) ||       ctx.restore());
     }
     x += width * mag * (style.tracking || CanvasText.style.tracking);
   }
-(window.parent._wrap_setLastFunctionCall("canvastext.js",5369,133940,133953) ||   ctx.restore());
+(window.parent._wrap_setLastFunctionCall("canvastext.js",5369,133940,133953,ctx.restore,false) ||   ctx.restore());
   return total;
 }, enable: function(ctx) {
 window.parent._wrap_addFunctionToMap('canvastext.js', 5372, 134008,134657, (typeof arguments === 'object' ? arguments.callee.caller : null));
@@ -176,26 +176,26 @@ window.parent._wrap_addFunctionToMap('canvastext.js', 5372, 134008,134657, (type
   ctx.drawText = function(text, x, y, style) {
 window.parent._wrap_addFunctionToMap('canvastext.js', 5373, 134052,134160, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  return (window.parent._wrap_setLastFunctionCall("canvastext.js",5374,134106,134145) || CanvasText.draw(ctx, text, x, y, style));
+  return (window.parent._wrap_setLastFunctionCall("canvastext.js",5374,134106,134145,CanvasText.draw,false) || CanvasText.draw(ctx, text, x, y, style));
 };
   ctx.measureText = function(text, style) {
 window.parent._wrap_addFunctionToMap('canvastext.js', 5376, 134192,134286, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  return (window.parent._wrap_setLastFunctionCall("canvastext.js",5377,134240,134271) || CanvasText.measure(text, style));
+  return (window.parent._wrap_setLastFunctionCall("canvastext.js",5377,134240,134271,CanvasText.measure,false) || CanvasText.measure(text, style));
 };
   ctx.getTextBounds = function(text, style) {
 window.parent._wrap_addFunctionToMap('canvastext.js', 5379, 134320,134420, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  return (window.parent._wrap_setLastFunctionCall("canvastext.js",5380,134368,134405) || CanvasText.getDimensions(text, style));
+  return (window.parent._wrap_setLastFunctionCall("canvastext.js",5380,134368,134405,CanvasText.getDimensions,false) || CanvasText.getDimensions(text, style));
 };
   ctx.fontAscent = function(style) {
 window.parent._wrap_addFunctionToMap('canvastext.js', 5382, 134451,134532, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  return (window.parent._wrap_setLastFunctionCall("canvastext.js",5383,134493,134517) || CanvasText.ascent(style));
+  return (window.parent._wrap_setLastFunctionCall("canvastext.js",5383,134493,134517,CanvasText.ascent,false) || CanvasText.ascent(style));
 };
   ctx.fontDescent = function(style) {
 window.parent._wrap_addFunctionToMap('canvastext.js', 5385, 134564,134646, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  return (window.parent._wrap_setLastFunctionCall("canvastext.js",5386,134606,134631) || CanvasText.descent(style));
+  return (window.parent._wrap_setLastFunctionCall("canvastext.js",5386,134606,134631,CanvasText.descent,false) || CanvasText.descent(style));
 };
 }};

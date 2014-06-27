@@ -33,6 +33,24 @@ public set[OneShotCall] getOneShotCalls(Source source) {
 					oneShotCalls += OneShotCall(getPosition(e), getPosition(f), expressions);
 				}
 			}
+			elseif (nestedExpression(f:functionParams(Expression expressionToCall, { Expression!comma ","}+ _)) := e
+					|| nestedExpression(f:functionNoParams(Expression expressionToCall)) := e) {
+					if (functionAnonymous({Id ","}* parameters, Block _) := expressionToCall
+						|| function(Id name, {Id ","}* parameters, Block _) := expressionToCall) {
+					set[Expression] expressions = {};
+					
+					println("new one shot closure :) params: <f is functionParams>");
+					// Add params
+					if (functionParams(Expression _, { Expression!comma ","}+ args) := f) {
+						for (Expression arg <- args) {
+							println("added arg to new shot <arg>");
+							expressions += arg;
+						}
+					}						
+				
+					oneShotCalls += OneShotCall(getPosition(f), getPosition(expressionToCall), expressions);
+				}
+			}
 		}
 	}
 	
@@ -103,13 +121,10 @@ public set[Tree] getFunctions(Tree tree) {
 	return functions;
 }
 
-public rel[Vertex, Vertex] optimisticTransitiveClosure(rel[Vertex, Vertex] R) {
-	tc = R;
-	while (true) {
-		tc1 = tc;
-  		tc += {<x,y> | <x,y> <- tc, (y != Unknown()) } o R;
-  		if (tc1 == tc) return tc;
-	}
+public rel[Vertex, Vertex] optimisticTransitiveClosure(rel[Vertex, Vertex] relation) {
+	rel[Vertex, Vertex] unknownRelation = { <x, y> | <x, y> <- relation, isUnknown(y) };
+	rel[Vertex, Vertex] relationWithoutUnknowns = relation - unknownRelation;
+	return ((relationWithoutUnknowns+) + unknownRelation);   
 }
 
 public rel[Vertex, Vertex] optimisticTransitiveClosureWithFileFilter(rel[Vertex, Vertex] R, str fromFileToIgnore, str toFileToIgnore) {

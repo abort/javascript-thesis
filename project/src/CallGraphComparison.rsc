@@ -191,9 +191,8 @@ public set[str] convertCallGraphResults(rel[Vertex, Vertex] graph, bool ignoreNa
 	return retval;
 }
 
-public void storePessimisticCallGraphForStatistics(loc path) = storePessimisticCallGraphForStatistics(path, <"", "">);
-public void storePessimisticCallGraphForStatistics(loc path, tuple[str, str] ignorePath) {
-	pcg = createPessimisticCallGraphByPathWithoutNatives(path, ignorePath);
+public void storePessimisticCallGraphForStatistics(loc path) {
+	pcg = createPessimisticCallGraphByPathWithoutNatives(path);
 	resultSet = convertCallGraphResults(pcg);
 
 	str fileStoreName;
@@ -203,6 +202,7 @@ public void storePessimisticCallGraphForStatistics(loc path, tuple[str, str] ign
 	loc storePath = toLocation(dataSaveDir.uri + "/" + toLocation(fileStoreName).file + ".pcg.txt");
 	str outputText = "";	
 	for (str line <- resultSet)	outputText += line + "\n";
+
 	outputText = substring(outputText, 0, size(outputText) - 1);
 	writeFile(storePath, outputText);
 }
@@ -264,26 +264,19 @@ public tuple[num, num] calculateStatistics(set[str] dynamicCallGraph, set[str] s
 }
 public set[str] getCallSites(set[str] callGraph) = { trim(split("-\>", g)[0]) | g <- callGraph };
 
-public rel[Vertex, Vertex] createPessimisticCallGraphByPath(loc path) = createPessimisticCallGraphByPath(path, <"","">);
-public rel[Vertex, Vertex] createPessimisticCallGraphByPath(loc path, tuple[str, str] ignorePath) {
+public rel[Vertex, Vertex] createPessimisticCallGraphByPath(loc path) {
 	assert(isDirectory(path));
 	list[loc] files = getJavaScripts(path);
 	list[Source] sources = [ parse(source) | source <- files ];
-	return createPessimisticCallGraph(sources, files, ignorePath).graph;
-}
-public rel[Vertex, Vertex] createPessimisticCallGraphByPathWithFilteredResults(loc path, tuple[str, str] ignorePath) {
-	assert(isDirectory(path));
-	list[loc] files = getJavaScripts(path);
-	list[Source] sources = [ parse(source) | source <- files ];
-	return createPessimisticCallGraphWithFilteredResults(sources, files, ignorePath).graph;
+	return createPessimisticCallGraph(sources, files).graph;
 }
 
-public rel[Vertex, Vertex] createPessimisticCallGraphByPathWithoutNatives(loc path, tuple[str, str] ignorePath) {
+public rel[Vertex, Vertex] createPessimisticCallGraphByPathWithoutNatives(loc path) {
 	assert(isDirectory(path));
 	list[loc] files = getJavaScripts(path);
 	list[Source] sources = [ parse(source) | source <- files ];
 	println("starting pcg creation for <files>");
-	return createPessimisticCallGraphWithoutNatives(sources, files, ignorePath).graph;
+	return createPessimisticCallGraphWithoutNatives(sources, files).graph;
 }
 
 public rel[Vertex, Vertex] createOptimisticCallGraphByPathWithoutNatives(loc path) {

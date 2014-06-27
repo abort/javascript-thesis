@@ -48,7 +48,7 @@ _wrap_addFunctionToMap('transform.js', 39, 1306,1522, (typeof arguments === 'obj
 function get_rotation_parameter(center, vector, teta) {
 _wrap_addFunctionToMap('transform.js', 47, 1525,2924, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  var result = (_wrap_setLastFunctionCall("transform.js",48,1598,1609) || new Array());
+  var result = (_wrap_setLastFunctionCall("transform.js",48,1598,1609,Array,false) || new Array());
   var u_u = vector[0] * vector[0];
   var v_v = vector[1] * vector[1];
   var w_w = vector[2] * vector[2];
@@ -72,8 +72,8 @@ _wrap_addFunctionToMap('transform.js', 47, 1525,2924, (typeof arguments === 'obj
   result[7] = b_v_p_c_w;
   result[8] = a_u_p_c_w;
   result[9] = a_u_p_b_v;
-  result[10] = (_wrap_setLastFunctionCall("transform.js",82,2581,2595) || Math.cos(teta));
-  result[11] = (_wrap_setLastFunctionCall("transform.js",84,2615,2629) || Math.sin(teta)) * (_wrap_setLastFunctionCall("transform.js",84,2632,2646) || Math.sqrt(den));
+  result[10] = (_wrap_setLastFunctionCall("transform.js",82,2581,2595,Math.cos,false) || Math.cos(teta));
+  result[11] = (_wrap_setLastFunctionCall("transform.js",84,2615,2629,Math.sin,false) || Math.sin(teta)) * (_wrap_setLastFunctionCall("transform.js",84,2632,2646,Math.sqrt,false) || Math.sqrt(den));
   result[12] = b_w_m_c_v;
   result[13] = c_u_m_a_w;
   result[14] = a_v_m_b_u;
@@ -115,17 +115,17 @@ _wrap_addFunctionToMap('transform.js', 122, 3910,4054, (typeof arguments === 'ob
 function translate_solid(vector, solid) {
 _wrap_addFunctionToMap('transform.js', 129, 4057,4240, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-(_wrap_setLastFunctionCall("transform.js",130,4103,4134) ||   translate(vector, solid.center));
+(_wrap_setLastFunctionCall("transform.js",130,4103,4134,translate,false) ||   translate(vector, solid.center));
   for (var i = 0; i < solid.points_number; i++) {
-(_wrap_setLastFunctionCall("transform.js",133,4197,4231) ||     translate(vector, solid.points[i]));
+(_wrap_setLastFunctionCall("transform.js",133,4197,4231,translate,false) ||     translate(vector, solid.points[i]));
   }
 }
 function translate_solid_direction(vector, delta, solid) {
 _wrap_addFunctionToMap('transform.js', 137, 4242,4544, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-(_wrap_setLastFunctionCall("transform.js",138,4305,4387) ||   translate([vector[0] * delta, vector[1] * delta, vector[2] * delta], solid.center));
+(_wrap_setLastFunctionCall("transform.js",138,4305,4387,translate,false) ||   translate([vector[0] * delta, vector[1] * delta, vector[2] * delta], solid.center));
   for (var i = 0; i < solid.points_number; i++) {
-(_wrap_setLastFunctionCall("transform.js",141,4450,4535) ||     translate([vector[0] * delta, vector[1] * delta, vector[2] * delta], solid.points[i]));
+(_wrap_setLastFunctionCall("transform.js",141,4450,4535,translate,false) ||     translate([vector[0] * delta, vector[1] * delta, vector[2] * delta], solid.points[i]));
   }
 }
 function scale_solid(vector, solid) {
@@ -133,91 +133,91 @@ _wrap_addFunctionToMap('transform.js', 145, 4546,4843, (typeof arguments === 'ob
 
   var da = solid.center;
   var a = [-solid.center[0], -solid.center[1], -solid.center[2]];
-(_wrap_setLastFunctionCall("transform.js",149,4684,4709) ||   translate_solid(a, solid));
+(_wrap_setLastFunctionCall("transform.js",149,4684,4709,translate_solid,false) ||   translate_solid(a, solid));
   for (var i = 0; i < solid.points_number; i++) {
-(_wrap_setLastFunctionCall("transform.js",151,4771,4801) ||     scale(vector, solid.points[i]));
+(_wrap_setLastFunctionCall("transform.js",151,4771,4801,scale,false) ||     scale(vector, solid.points[i]));
   }
-(_wrap_setLastFunctionCall("transform.js",154,4814,4840) ||   translate_solid(da, solid));
+(_wrap_setLastFunctionCall("transform.js",154,4814,4840,translate_solid,false) ||   translate_solid(da, solid));
 }
 function rotate_solid(point, vector, angle, solid) {
 _wrap_addFunctionToMap('transform.js', 158, 4846,5388, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  parametri = (_wrap_setLastFunctionCall("transform.js",159,4915,4959) || get_rotation_parameter(point, vector, angle));
-  parametri2 = (_wrap_setLastFunctionCall("transform.js",160,4978,5026) || get_rotation_parameter([0, 0, 0], vector, angle));
-(_wrap_setLastFunctionCall("transform.js",162,5033,5064) ||   rotate(parametri, solid.center));
-(_wrap_setLastFunctionCall("transform.js",163,5070,5102) ||   rotate(parametri2, solid.axis_x));
-(_wrap_setLastFunctionCall("transform.js",164,5108,5140) ||   rotate(parametri2, solid.axis_y));
-(_wrap_setLastFunctionCall("transform.js",165,5146,5178) ||   rotate(parametri2, solid.axis_z));
+  parametri = (_wrap_setLastFunctionCall("transform.js",159,4915,4959,get_rotation_parameter,false) || get_rotation_parameter(point, vector, angle));
+  parametri2 = (_wrap_setLastFunctionCall("transform.js",160,4978,5026,get_rotation_parameter,false) || get_rotation_parameter([0, 0, 0], vector, angle));
+(_wrap_setLastFunctionCall("transform.js",162,5033,5064,rotate,false) ||   rotate(parametri, solid.center));
+(_wrap_setLastFunctionCall("transform.js",163,5070,5102,rotate,false) ||   rotate(parametri2, solid.axis_x));
+(_wrap_setLastFunctionCall("transform.js",164,5108,5140,rotate,false) ||   rotate(parametri2, solid.axis_y));
+(_wrap_setLastFunctionCall("transform.js",165,5146,5178,rotate,false) ||   rotate(parametri2, solid.axis_z));
   for (var i = 0; i < solid.faces_number; i++) {
-(_wrap_setLastFunctionCall("transform.js",168,5240,5276) ||     rotate(parametri2, solid.normals[i]));
+(_wrap_setLastFunctionCall("transform.js",168,5240,5276,rotate,false) ||     rotate(parametri2, solid.normals[i]));
   }
   for (var j = 0; j < solid.points_number; j++) {
-(_wrap_setLastFunctionCall("transform.js",172,5345,5379) ||     rotate(parametri, solid.points[j]));
+(_wrap_setLastFunctionCall("transform.js",172,5345,5379,rotate,false) ||     rotate(parametri, solid.points[j]));
   }
 }
 function rotate_solid_fast(parametri1, parametri2, solid) {
 _wrap_addFunctionToMap('transform.js', 176, 5390,5811, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-(_wrap_setLastFunctionCall("transform.js",177,5454,5486) ||   rotate(parametri1, solid.center));
-(_wrap_setLastFunctionCall("transform.js",178,5492,5524) ||   rotate(parametri2, solid.axis_x));
-(_wrap_setLastFunctionCall("transform.js",179,5530,5562) ||   rotate(parametri2, solid.axis_y));
-(_wrap_setLastFunctionCall("transform.js",180,5568,5600) ||   rotate(parametri2, solid.axis_z));
+(_wrap_setLastFunctionCall("transform.js",177,5454,5486,rotate,false) ||   rotate(parametri1, solid.center));
+(_wrap_setLastFunctionCall("transform.js",178,5492,5524,rotate,false) ||   rotate(parametri2, solid.axis_x));
+(_wrap_setLastFunctionCall("transform.js",179,5530,5562,rotate,false) ||   rotate(parametri2, solid.axis_y));
+(_wrap_setLastFunctionCall("transform.js",180,5568,5600,rotate,false) ||   rotate(parametri2, solid.axis_z));
   for (var i = 0; i < solid.faces_number; i++) {
-(_wrap_setLastFunctionCall("transform.js",183,5662,5698) ||     rotate(parametri2, solid.normals[i]));
+(_wrap_setLastFunctionCall("transform.js",183,5662,5698,rotate,false) ||     rotate(parametri2, solid.normals[i]));
   }
   for (var j = 0; j < solid.points_number; j++) {
-(_wrap_setLastFunctionCall("transform.js",187,5767,5802) ||     rotate(parametri1, solid.points[j]));
+(_wrap_setLastFunctionCall("transform.js",187,5767,5802,rotate,false) ||     rotate(parametri1, solid.points[j]));
   }
 }
 function rotate_solid_x(center, angle, solid) {
 _wrap_addFunctionToMap('transform.js', 191, 5813,6365, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  var sin_cosin_teta = [(_wrap_setLastFunctionCall("transform.js",193,5888,5903) || Math.sin(angle)), (_wrap_setLastFunctionCall("transform.js",193,5905,5920) || Math.cos(angle))];
-(_wrap_setLastFunctionCall("transform.js",195,5928,5974) ||   rotate_x(center, sin_cosin_teta, solid.center));
-(_wrap_setLastFunctionCall("transform.js",196,5980,6025) ||   rotate_x_normal(sin_cosin_teta, solid.axis_x));
-(_wrap_setLastFunctionCall("transform.js",197,6031,6076) ||   rotate_x_normal(sin_cosin_teta, solid.axis_y));
-(_wrap_setLastFunctionCall("transform.js",198,6082,6127) ||   rotate_x_normal(sin_cosin_teta, solid.axis_z));
+  var sin_cosin_teta = [(_wrap_setLastFunctionCall("transform.js",193,5888,5903,Math.sin,false) || Math.sin(angle)), (_wrap_setLastFunctionCall("transform.js",193,5905,5920,Math.cos,false) || Math.cos(angle))];
+(_wrap_setLastFunctionCall("transform.js",195,5928,5974,rotate_x,false) ||   rotate_x(center, sin_cosin_teta, solid.center));
+(_wrap_setLastFunctionCall("transform.js",196,5980,6025,rotate_x_normal,false) ||   rotate_x_normal(sin_cosin_teta, solid.axis_x));
+(_wrap_setLastFunctionCall("transform.js",197,6031,6076,rotate_x_normal,false) ||   rotate_x_normal(sin_cosin_teta, solid.axis_y));
+(_wrap_setLastFunctionCall("transform.js",198,6082,6127,rotate_x_normal,false) ||   rotate_x_normal(sin_cosin_teta, solid.axis_z));
   for (var i = 0; i < solid.faces_number; i++) {
-(_wrap_setLastFunctionCall("transform.js",201,6189,6238) ||     rotate_x_normal(sin_cosin_teta, solid.normals[i]));
+(_wrap_setLastFunctionCall("transform.js",201,6189,6238,rotate_x_normal,false) ||     rotate_x_normal(sin_cosin_teta, solid.normals[i]));
   }
   for (var j = 0; j < solid.points_number; j++) {
-(_wrap_setLastFunctionCall("transform.js",205,6307,6356) ||     rotate_x(center, sin_cosin_teta, solid.points[j]));
+(_wrap_setLastFunctionCall("transform.js",205,6307,6356,rotate_x,false) ||     rotate_x(center, sin_cosin_teta, solid.points[j]));
   }
 }
 function rotate_solid_y(center, angle, solid) {
 _wrap_addFunctionToMap('transform.js', 209, 6367,6918, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  var sin_cosin_teta = [(_wrap_setLastFunctionCall("transform.js",210,6441,6456) || Math.sin(angle)), (_wrap_setLastFunctionCall("transform.js",210,6458,6473) || Math.cos(angle))];
-(_wrap_setLastFunctionCall("transform.js",212,6481,6527) ||   rotate_y(center, sin_cosin_teta, solid.center));
-(_wrap_setLastFunctionCall("transform.js",213,6533,6578) ||   rotate_y_normal(sin_cosin_teta, solid.axis_x));
-(_wrap_setLastFunctionCall("transform.js",214,6584,6629) ||   rotate_y_normal(sin_cosin_teta, solid.axis_y));
-(_wrap_setLastFunctionCall("transform.js",215,6635,6680) ||   rotate_y_normal(sin_cosin_teta, solid.axis_z));
+  var sin_cosin_teta = [(_wrap_setLastFunctionCall("transform.js",210,6441,6456,Math.sin,false) || Math.sin(angle)), (_wrap_setLastFunctionCall("transform.js",210,6458,6473,Math.cos,false) || Math.cos(angle))];
+(_wrap_setLastFunctionCall("transform.js",212,6481,6527,rotate_y,false) ||   rotate_y(center, sin_cosin_teta, solid.center));
+(_wrap_setLastFunctionCall("transform.js",213,6533,6578,rotate_y_normal,false) ||   rotate_y_normal(sin_cosin_teta, solid.axis_x));
+(_wrap_setLastFunctionCall("transform.js",214,6584,6629,rotate_y_normal,false) ||   rotate_y_normal(sin_cosin_teta, solid.axis_y));
+(_wrap_setLastFunctionCall("transform.js",215,6635,6680,rotate_y_normal,false) ||   rotate_y_normal(sin_cosin_teta, solid.axis_z));
   for (var i = 0; i < solid.faces_number; i++) {
-(_wrap_setLastFunctionCall("transform.js",218,6742,6791) ||     rotate_y_normal(sin_cosin_teta, solid.normals[i]));
+(_wrap_setLastFunctionCall("transform.js",218,6742,6791,rotate_y_normal,false) ||     rotate_y_normal(sin_cosin_teta, solid.normals[i]));
   }
   for (var j = 0; j < solid.points_number; j++) {
-(_wrap_setLastFunctionCall("transform.js",222,6860,6909) ||     rotate_y(center, sin_cosin_teta, solid.points[j]));
+(_wrap_setLastFunctionCall("transform.js",222,6860,6909,rotate_y,false) ||     rotate_y(center, sin_cosin_teta, solid.points[j]));
   }
 }
 function rotate_solid_z(center, angle, solid) {
 _wrap_addFunctionToMap('transform.js', 226, 6920,7471, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  var sin_cosin_teta = [(_wrap_setLastFunctionCall("transform.js",227,6994,7009) || Math.sin(angle)), (_wrap_setLastFunctionCall("transform.js",227,7011,7026) || Math.cos(angle))];
-(_wrap_setLastFunctionCall("transform.js",229,7034,7080) ||   rotate_z(center, sin_cosin_teta, solid.center));
-(_wrap_setLastFunctionCall("transform.js",230,7086,7131) ||   rotate_z_normal(sin_cosin_teta, solid.axis_x));
-(_wrap_setLastFunctionCall("transform.js",231,7137,7182) ||   rotate_z_normal(sin_cosin_teta, solid.axis_y));
-(_wrap_setLastFunctionCall("transform.js",232,7188,7233) ||   rotate_z_normal(sin_cosin_teta, solid.axis_z));
+  var sin_cosin_teta = [(_wrap_setLastFunctionCall("transform.js",227,6994,7009,Math.sin,false) || Math.sin(angle)), (_wrap_setLastFunctionCall("transform.js",227,7011,7026,Math.cos,false) || Math.cos(angle))];
+(_wrap_setLastFunctionCall("transform.js",229,7034,7080,rotate_z,false) ||   rotate_z(center, sin_cosin_teta, solid.center));
+(_wrap_setLastFunctionCall("transform.js",230,7086,7131,rotate_z_normal,false) ||   rotate_z_normal(sin_cosin_teta, solid.axis_x));
+(_wrap_setLastFunctionCall("transform.js",231,7137,7182,rotate_z_normal,false) ||   rotate_z_normal(sin_cosin_teta, solid.axis_y));
+(_wrap_setLastFunctionCall("transform.js",232,7188,7233,rotate_z_normal,false) ||   rotate_z_normal(sin_cosin_teta, solid.axis_z));
   for (var i = 0; i < solid.faces_number; i++) {
-(_wrap_setLastFunctionCall("transform.js",235,7295,7344) ||     rotate_z_normal(sin_cosin_teta, solid.normals[i]));
+(_wrap_setLastFunctionCall("transform.js",235,7295,7344,rotate_z_normal,false) ||     rotate_z_normal(sin_cosin_teta, solid.normals[i]));
   }
   for (var j = 0; j < solid.points_number; j++) {
-(_wrap_setLastFunctionCall("transform.js",239,7413,7462) ||     rotate_z(center, sin_cosin_teta, solid.points[j]));
+(_wrap_setLastFunctionCall("transform.js",239,7413,7462,rotate_z,false) ||     rotate_z(center, sin_cosin_teta, solid.points[j]));
   }
 }
 function project(distance, point) {
 _wrap_addFunctionToMap('transform.js', 243, 7473,7695, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  var result = (_wrap_setLastFunctionCall("transform.js",244,7526,7537) || new Array());
+  var result = (_wrap_setLastFunctionCall("transform.js",244,7526,7537,Array,false) || new Array());
   result[0] = point[0] * distance / point[2] + 500;
   result[1] = 275 - point[1] * distance / point[2];
   result[2] = distance;

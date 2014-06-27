@@ -6,6 +6,7 @@ import Location;
 
 data Position = ExistingPosition(loc position) | InexistentPosition();
 data PrintablePosition = PrintableExistingPosition(str filename, int line, int columnStart, int columnEnd) | PrintableInexistentPosition();
+// Real call position is stored as sometimes a target may have parentheses.
 data OneShotCall = OneShotCall(Position oneShotCall, Position expressionToCall, set[Expression] args);
 data EscapingFunction = EscapingFunction(Position position, set[Id] args);
 data UnresolvedCallSite = UnresolvedCallSite(Position position, int args);

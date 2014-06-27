@@ -3,12 +3,16 @@ var _wrap_allCalls = [];
 var _wrap_staticMeasuredFunctions = {};
 var _wrap_staticMeasuredCalls = {};
 var _wrap_lastCall = null;
+var _wrap_lastCallWasGlobalScope = false;
+var _wrap_nonLoggedFunctions = [];
+var _wrap_lastCallStack = [];
+var _wrap_lastCallWasProxy = false;
 
 function _wrap_getNonNativeFunctions() {
     var r = [];
     for (var k in _wrap_callMap) {
         if (!_wrap_callMap.hasOwnProperty(k) || k === "native") continue;
-        r.push(k)
+        r.push(k);
     }
     return r;
 }
@@ -23,7 +27,7 @@ function _wrap_getCalls() {
           calls.push(_wrap_callMap[k][call]);
         }
     }
-    return calls; 
+    return calls;
 }
 
 function _wrap_calculateFunctionCoverage() {
@@ -52,7 +56,13 @@ function _wrap_calculateFunctionCoverageWithScriptExclude(script) {
 		});
 	}
 
-	return (nonNativeFunctions.length / total) * 100;
+  // Remove functions that have actually been logged afterwards
+  _wrap_nonLoggedFunctions = _wrap_nonLoggedFunctions.filter(function(el) {
+    // Only functions that are not logged in the non native functions may pass this
+    return (nonNativeFunctions.indexOf(el) < 0);
+  })  
+
+	return ((nonNativeFunctions.length + _wrap_nonLoggedFunctions.length) / total) * 100;
 }
 
 function _wrap_calculateFunctionCoverageWithScriptsExclude(scripts) {
@@ -81,7 +91,13 @@ function _wrap_calculateFunctionCoverageWithScriptsExclude(scripts) {
 		}
 	}
 
-	return (nonNativeFunctions.length / total) * 100;
+  // Remove functions that have actually been logged afterwards
+  _wrap_nonLoggedFunctions = _wrap_nonLoggedFunctions.filter(function(el) {
+    // Only functions that are not logged in the non native functions may pass this
+    return (nonNativeFunctions.indexOf(el) < 0);
+  })
+
+	return ((nonNativeFunctions.length + _wrap_nonLoggedFunctions.length) / total) * 100;
 }
 
 function _wrap_isNativeFunction(f) {
@@ -101,27 +117,49 @@ function _wrap_calculateCallCoverage() {
   return (_wrap_getCalls().length / total) * 100;
 }
 
+function _wrap_isFunctionLogged(file, line, startPosition, endPosition) {
+  // it is normally invoked before
+  var thisFunction = file + "@" + line + ":" + startPosition + "-" + endPosition;
+  var currentArray = _wrap_callMap[thisFunction];
+  if (currentArray != null) return true;
+
+  // it is already in the nonlogged functions (native callback functions)
+  return (_wrap_nonLoggedFunctions.indexOf(thisFunction) > -1);
+}
+
 function _wrap_addFunctionToMap(file, line, startPosition, endPosition, caller) {
-  if (caller == null) {
-	  // native invocation or top level
-	  _wrap_lastCall = null;
+  if (_wrap_lastCallWasProxy || (caller == null && !_wrap_lastCallWasGlobalScope)) {
+    if (!_wrap_isFunctionLogged(file, line, startPosition, endPosition)) {
+      _wrap_nonLoggedFunctions.push(file + "@" + line + ":" + startPosition + "-" + endPosition);
+    }
+
+	  // native invocation that was not detected with the prior attempt.... we know this function came in between calls so we can clear the call stack to increase precision again
+	  _wrap_lastCallStack = [];
+    _wrap_lastCallWasProxy = false;
 	  return;
   }
-  if (_wrap_lastCall == null) return;
+  // Nothings on the call stack...
+  if (_wrap_lastCallStack.length == 0) {
+    if (!_wrap_isFunctionLogged(file, line, startPosition, endPosition)) {
+      _wrap_nonLoggedFunctions.push(file + "@" + line + ":" + startPosition + "-" + endPosition);
+    }
+
+    return; // native that is missed in the native detection of the set last call function
+  } 
   var thisFunction = file + "@" + line + ":" + startPosition + "-" + endPosition;
   var currentArray = _wrap_callMap[thisFunction];
   if (currentArray == null) {
     currentArray = [];
   }
-  if (!_wrap_doesArrayContain(currentArray, _wrap_lastCall))
-    currentArray.push(_wrap_lastCall);
+  var lastCall = _wrap_lastCallStack.pop();
+  if (!_wrap_doesArrayContain(currentArray, lastCall))
+    currentArray.push(lastCall);
 
   _wrap_callMap[thisFunction] = currentArray;
-  var index = _wrap_allCalls.indexOf(_wrap_lastCall);
+  var index = _wrap_allCalls.indexOf(lastCall);
   if (index > -1) {
     _wrap_allCalls.splice(index, 1);
   }
-  _wrap_lastCall = null; // reset
 }
 
 function _wrap_doesArrayContain(array, call) {
@@ -169,15 +207,24 @@ function _wrap_printCallMap() {
   }
 }
 
-function _wrap_setLastFunctionCall(file, line, startPosition, endPosition, functionProp) {
-  if (functionProp != null && _wrap_isNativeFunction(functionProp)) {
-	  // Encountered a native function.... prevent this from creating a vertex
-	  return false;
-  }
-  var newCall = file + "@" + line + ":" + startPosition + "-" + endPosition;
-  _wrap_lastCall = newCall;
-  if (!_wrap_doesArrayContain(_wrap_allCalls, newCall)) _wrap_allCalls.push(newCall);
-  return false;
+function _wrap_setLastFunctionCall(file, line, startPosition, endPosition, functionProp, globalScope, proxyFunction) {
+
+	_wrap_lastCallWasGlobalScope = globalScope;
+  _wrap_lastCallWasProxy = proxyFunction;
+	if (proxyFunction || (functionProp != null && _wrap_isNativeFunction(functionProp))) {
+		// Encountered a native function.... prevent this from creating a vertex
+		// Add native call
+		var newCall = file + "@" + line + ":" + startPosition + "-" + endPosition;
+		if (!_wrap_doesArrayContain(_wrap_callMap["native"], newCall))
+			_wrap_callMap["native"].push(newCall);
+		_wrap_lastCallWasGlobalScope = false;
+		return false;
+	}
+	var newCall = file + "@" + line + ":" + startPosition + "-" + endPosition;
+	_wrap_lastCallStack.push(newCall);
+	if (!_wrap_doesArrayContain(_wrap_allCalls, newCall))
+		_wrap_allCalls.push(newCall);
+	return false;
 }
 
 function _wrap_STRINGIFY(obj) {

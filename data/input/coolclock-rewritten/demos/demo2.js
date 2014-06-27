@@ -1,10 +1,10 @@
 window.parent._wrap_staticMeasuredFunctions['demo2.js'] = 2;
 window.parent._wrap_staticMeasuredCalls['demo2.js'] =12;
 (window.parent._wrap_setLastFunctionCall("demo2.js",1,1,684) || $(function() {
-window.parent._wrap_addFunctionToMap('demo2.js', 1, 3,683, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('demo2.js', 1, 3,683);
 
   var shuffle = function() {
-window.parent._wrap_addFunctionToMap('demo2.js', 2, 33,74, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('demo2.js', 2, 33,74);
 
   return 0.5 - (window.parent._wrap_setLastFunctionCall("demo2.js",2,58,71) || Math.random());
 };

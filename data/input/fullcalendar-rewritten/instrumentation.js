@@ -6,8 +6,9 @@ var _wrap_lastCall = null;
 var _wrap_lastCallWasGlobalScope = false;
 var _wrap_nonLoggedFunctions = [];
 var _wrap_lastCallStack = [];
+var _wrap_proxyDepth = 0;
 var _wrap_lastCallWasProxy = false;
-var _wrap_preventNextFromLogging = [];
+
 
 function _wrap_getNonNativeFunctions() {
     var r = [];
@@ -16,16 +17,6 @@ function _wrap_getNonNativeFunctions() {
         r.push(k);
     }
     return r;
-}
-
-function _wrap_popCallStack(retval) {
-	// maybe add an extra argument so if we know its not in the list then its a native
-	/*var preventLog = _wrap_preventNextFromLogging[_wrap_preventNextFromLogging.length - 1];
-  if (preventLog) _wrap_preventNextFromLogging[_wrap_preventNextFromLogging.length - 1].pop();
-  */
-  _wrap_lastCallWasGlobalScope = false;
-	_wrap_lastCallStack.pop();
-	return retval;
 }
 
 function _wrap_getCalls() {
@@ -138,40 +129,44 @@ function _wrap_isFunctionLogged(file, line, startPosition, endPosition) {
   return (_wrap_nonLoggedFunctions.indexOf(thisFunction) > -1);
 }
 
-
-function _wrap_setLastFunctionCall(file, line, startPosition, endPosition, functionProp, globalScope, proxyFunction) {
-	if (proxyFunction || (functionProp != null && _wrap_isNativeFunction(functionProp))) _wrap_preventNextFromLogging.push(true);
-  else _wrap_preventNextFromLogging.push(false);
-	var newCall = file + "@" + line + ":" + startPosition + "-" + endPosition;
-	_wrap_lastCallStack.push(newCall); // always add to the call stack
-	if (!_wrap_doesArrayContain(_wrap_allCalls, newCall))
-		_wrap_allCalls.push(newCall);
-	return false;
-}
-
 function _wrap_addFunctionToMap(file, line, startPosition, endPosition, caller) {
-  if (!_wrap_lastCallWasGlobalScope && arguments.callee.caller == null) {
-    // we know this is a call back
-    _wrap_lastCallStack = [];
-    _wrap_preventNextFromLogging = [];
-  }
+// _wrap_lastCallWasProxy || <--- is this correct? i dont think so
+	/*
+	 * if last call was proxy, simply return?
+	 */
+	if (_wrap_proxyDepth > 0) {
+		// support for nested 
+		_wrap_proxyDepth--;
 
-  var preventLog = _wrap_preventNextFromLogging[_wrap_preventNextFromLogging.length - 1];
-	var lastCall = _wrap_lastCallStack[_wrap_lastCallStack.length - 1];
-  // Nothings on the call stack... so dont act upon it
-  if (_wrap_lastCallStack.length == 0) {
-    console.log("weird??? maybe this is a native callback!: " + arguments.callee.caller.name + " last call: " + lastCall);
-    return;
-  }
-
-	if (preventLog) {
-		console.log("prevented: " + lastCall);
+    if (!_wrap_isFunctionLogged(file, line, startPosition, endPosition)) {
+      _wrap_nonLoggedFunctions.push(file + "@" + line + ":" + startPosition + "-" + endPosition);
+    }
 		return;
 	}
+  if (caller == null && !_wrap_lastCallWasGlobalScope) {
+    if (!_wrap_isFunctionLogged(file, line, startPosition, endPosition)) {
+      _wrap_nonLoggedFunctions.push(file + "@" + line + ":" + startPosition + "-" + endPosition);
+    }
+
+	  // native invocation that was not detected with the prior attempt.... we know this function came in between calls so we can clear the call stack to increase precision again
+	  _wrap_lastCallStack = [];
+    _wrap_lastCallWasProxy = false;
+	  return;
+  }
+  // Nothings on the call stack...
+  if (_wrap_lastCallStack.length == 0) {
+    if (!_wrap_isFunctionLogged(file, line, startPosition, endPosition)) {
+      _wrap_nonLoggedFunctions.push(file + "@" + line + ":" + startPosition + "-" + endPosition);
+    }
+
+    return; // native that is missed in the native detection of the set last call function
+  } 
   var thisFunction = file + "@" + line + ":" + startPosition + "-" + endPosition;
   var currentArray = _wrap_callMap[thisFunction];
-  if (currentArray == null) currentArray = [];
-
+  if (currentArray == null) {
+    currentArray = [];
+  }
+  var lastCall = _wrap_lastCallStack.pop();
   if (!_wrap_doesArrayContain(currentArray, lastCall))
     currentArray.push(lastCall);
 
@@ -225,6 +220,28 @@ function _wrap_printCallMap() {
       console.log(_wrap_allCalls[c] + " -> native");
     }
   }
+}
+
+function _wrap_setLastFunctionCall(file, line, startPosition, endPosition, functionProp, globalScope, proxyFunction) {
+
+	_wrap_lastCallWasGlobalScope = globalScope;
+  _wrap_lastCallWasProxy = proxyFunction;
+	if (proxyFunction || (functionProp != null && _wrap_isNativeFunction(functionProp))) {
+		// Encountered a native function.... prevent this from creating a vertex
+		// Add native call
+		var newCall = file + "@" + line + ":" + startPosition + "-" + endPosition;
+		if (!_wrap_doesArrayContain(_wrap_callMap["native"], newCall))
+			_wrap_callMap["native"].push(newCall);
+		_wrap_lastCallWasGlobalScope = false;
+		
+		if (proxyFunction) _wrap_proxyDepth++;
+		return false;
+	}
+	var newCall = file + "@" + line + ":" + startPosition + "-" + endPosition;
+	_wrap_lastCallStack.push(newCall);
+	if (!_wrap_doesArrayContain(_wrap_allCalls, newCall))
+		_wrap_allCalls.push(newCall);
+	return false;
 }
 
 function _wrap_STRINGIFY(obj) {

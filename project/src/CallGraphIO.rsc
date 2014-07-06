@@ -30,6 +30,16 @@ public void printPessimisticCallGraph(loc location) {
 	printFlowGraph(result.unresolvedCallSites);
 }
 
+public void printAlphabeticalPessimisticCallGraphWithoutNatives(loc location) {
+	CallGraphResult result = createPessimisticCallGraphWithoutNatives(location);
+	println("Pessimistic Call graph:");
+	printAlphabeticalFlowGraph(result.graph);
+	println("\nUncertainties:");
+	printAlphabeticalFlowGraph(result.escapingFunctions);
+	printAlphabeticalFlowGraph(result.unresolvedCallSites);
+}
+
+
 public void printAlphabeticalPessimisticCallGraph(loc location) {
 	CallGraphResult result = createPessimisticCallGraph(location);
 	println("Pessimistic Call graph:");

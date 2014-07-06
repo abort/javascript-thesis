@@ -57,6 +57,51 @@ public CallGraphResult createOptimisticCallGraphWithoutNatives(list[Source] sour
 	return CallGraphResult(callGraph, getEscapingFunctionsAsRelation(flowGraph), getUnresolvedCallSitesAsRelation(flowGraph));
 }
 
+public CallGraphResult createOptimisticCallGraphWithoutNativesOptimized(list[Source] sources, list[loc] files) {
+	bool changed = false;
+	int iterations = 0;
+	rel[Vertex, Vertex] flowGraph = createFlowGraphFromMultipleFiles(files);
+	set[Tree] functions = { f | source <- sources, f <- getFunctions(source) };
+	do {
+		changed = false;
+		for (Tree function <- functions) {
+			Position functionPosition = getPosition(function);
+			Vertex functionVertex = Fun(functionPosition);
+			for (Vertex calleeVertex <- reach(flowGraph, { functionVertex }), Callee(Position callPosition) := calleeVertex) {
+				tuple[Vertex, Vertex] calleeCandidate = <Ret(functionPosition), Res(callPosition)>;
+				if (calleeCandidate notin flowGraph) {
+					// println("Added candidate");
+					flowGraph += calleeCandidate;
+					changed = true;
+				}
+				
+				int argnum = 1;
+	
+				set[Id] parameters = getParameters(function);
+				set[Expression] arguments = getArguments(getSourceFromPosition(sources, callPosition), callPosition);
+				while (argnum <= size(parameters)) {
+					if (argnum > size(arguments)) break;
+					
+					tuple[Vertex, Vertex] candidateTuple = <Arg(callPosition, argnum), Parm(functionPosition, argnum)>;
+					if (candidateTuple notin flowGraph) {
+						flowGraph += candidateTuple;
+						changed = true;
+					}
+					argnum += 1;
+				}		
+			}
+		}
+		println("Finished iteration #<iterations>");
+		
+		iterations += 1; 
+	} while (changed);
+
+	println("Fixpoint reached after <iterations+1> iterations");
+	rel[Vertex, Vertex] callGraph = { <y, x> | <x,y> <- optimisticTransitiveClosure(flowGraph), (Fun(Position _) := x || Builtin(str _) := x), Callee(Position _) := y };
+	
+	return CallGraphResult(callGraph, {}, {});
+}
+
 private Source getSourceFromPosition(list[Source] sources, Position position) {
 	for (Source src <- sources) {
 		if (ExistingPosition(loc location) := position) {

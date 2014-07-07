@@ -25,6 +25,7 @@ function _wrap_popCallStack(retval) {
   */
   _wrap_lastCallWasGlobalScope = false;
 	_wrap_lastCallStack.pop();
+  _wrap_preventNextFromLogging.pop();
 	return retval;
 }
 

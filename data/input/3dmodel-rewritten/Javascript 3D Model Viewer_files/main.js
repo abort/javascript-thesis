@@ -1,14 +1,14 @@
 _wrap_staticMeasuredFunctions['main.js'] = 7;
 _wrap_staticMeasuredCalls['main.js'] =53;
 function scene() {
-_wrap_addFunctionToMap('main.js', 1, 0,134, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('main.js', 1, 0,126, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   this.solid_number = 0;
-  this.solid = (_wrap_setLastFunctionCall("main.js",3,63,74,Array,false) || new Array());
+  this.solid = (_wrap_setLastFunctionCall("main.js",3,59,70,Array,false,false) || _wrap_popCallStack(new Array()));
   this.observer = [0, 0, 0];
   this.distance = -650;
 }
-var world = (_wrap_setLastFunctionCall("main.js",8,148,159,scene,true) || new scene());
+var world = (_wrap_setLastFunctionCall("main.js",7,139,150,scene,true,false) || _wrap_popCallStack(new scene()));
 var colore = 'rgb(255,255,255)';
 var alpha = 0.6;
 var teta_x_global = 0;
@@ -16,47 +16,47 @@ var teta_y_global = 0;
 var motion = 1;
 var id_timer = 0;
 function init() {
-_wrap_addFunctionToMap('main.js', 18, 294,844, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('main.js', 14, 282,814, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  world.solid[world.solid_number++] = (_wrap_setLastFunctionCall("main.js",19,352,392,dinosaur,false) || new dinosaur([255, 255, 255], [0, 0, 0]));
-(_wrap_setLastFunctionCall("main.js",20,398,457,scale_solid,false) ||   scale_solid([3, 3, 3], world.solid[world.solid_number - 1]));
-(_wrap_setLastFunctionCall("main.js",21,463,661,translate_solid,false) ||   translate_solid([-world.solid[world.solid_number - 1].center[0], -world.solid[world.solid_number - 1].center[1], -world.solid[world.solid_number - 1].center[2]], world.solid[world.solid_number - 1]));
-(_wrap_setLastFunctionCall("main.js",22,667,734,translate_solid,false) ||   translate_solid([0, 0, -1100], world.solid[world.solid_number - 1]));
+  world.solid[world.solid_number++] = (_wrap_setLastFunctionCall("main.js",15,338,378,dinosaur,false,false) || _wrap_popCallStack(new dinosaur([255, 255, 255], [0, 0, 0])));
+(_wrap_setLastFunctionCall("main.js",16,382,441,scale_solid,false,false) || _wrap_popCallStack(  scale_solid([3, 3, 3], world.solid[world.solid_number - 1])));
+(_wrap_setLastFunctionCall("main.js",17,445,643,translate_solid,false,false) || _wrap_popCallStack(  translate_solid([-world.solid[world.solid_number - 1].center[0], -world.solid[world.solid_number - 1].center[1], -world.solid[world.solid_number - 1].center[2]], world.solid[world.solid_number - 1])));
+(_wrap_setLastFunctionCall("main.js",18,647,714,translate_solid,false,false) || _wrap_popCallStack(  translate_solid([0, 0, -1100], world.solid[world.solid_number - 1])));
   document.onkeydown = onKeyDown;
   document.onmousemove = onMouseMove;
-(_wrap_setLastFunctionCall("main.js",28,819,840,setInterval,false) ||   setInterval(draw, 10));
+(_wrap_setLastFunctionCall("main.js",21,790,811,setInterval,false,false) || _wrap_popCallStack(  setInterval(draw, 10)));
 }
 function changeModel() {
-_wrap_addFunctionToMap('main.js', 32, 846,2583, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('main.js', 23, 815,2469, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-(_wrap_setLastFunctionCall("main.js",33,875,898,clearInterval,false) ||   clearInterval(id_timer));
-  var canvas = (_wrap_setLastFunctionCall("main.js",34,917,951,document.getElementById,false) || document.getElementById("display"));
+(_wrap_setLastFunctionCall("main.js",24,842,865,clearInterval,false,false) || _wrap_popCallStack(  clearInterval(id_timer)));
+  var canvas = (_wrap_setLastFunctionCall("main.js",25,882,916,document.getElementById,false,false) || _wrap_popCallStack(document.getElementById("display")));
   if (canvas.getContext) {
-    var ctx = (_wrap_setLastFunctionCall("main.js",37,1001,1024,canvas.getContext,false) || canvas.getContext("2d"));
-(_wrap_setLastFunctionCall("main.js",39,1035,1065,ctx.clearRect,false) ||     ctx.clearRect(0, 0, 1000, 550));
+    var ctx = (_wrap_setLastFunctionCall("main.js",27,959,982,canvas.getContext,false,false) || _wrap_popCallStack(canvas.getContext("2d")));
+(_wrap_setLastFunctionCall("main.js",28,988,1018,ctx.clearRect,false,false) || _wrap_popCallStack(    ctx.clearRect(0, 0, 1000, 550)));
   }
-  if ((_wrap_setLastFunctionCall("main.js",43,1083,1117,document.getElementById,false) || document.getElementById("modello")).value == 'dino') {
-    world.solid[0] = (_wrap_setLastFunctionCall("main.js",44,1162,1202,dinosaur,false) || new dinosaur([255, 255, 255], [0, 0, 0]));
-(_wrap_setLastFunctionCall("main.js",45,1212,1271,scale_solid,false) ||     scale_solid([3, 3, 3], world.solid[world.solid_number - 1]));
-(_wrap_setLastFunctionCall("main.js",46,1281,1479,translate_solid,false) ||     translate_solid([-world.solid[world.solid_number - 1].center[0], -world.solid[world.solid_number - 1].center[1], -world.solid[world.solid_number - 1].center[2]], world.solid[world.solid_number - 1]));
-(_wrap_setLastFunctionCall("main.js",47,1489,1556,translate_solid,false) ||     translate_solid([0, 0, -1100], world.solid[world.solid_number - 1]));
+  if ((_wrap_setLastFunctionCall("main.js",30,1030,1064,document.getElementById,false,false) || _wrap_popCallStack(document.getElementById("modello"))).value == 'dino') {
+    world.solid[0] = (_wrap_setLastFunctionCall("main.js",31,1105,1145,dinosaur,false,false) || _wrap_popCallStack(new dinosaur([255, 255, 255], [0, 0, 0])));
+(_wrap_setLastFunctionCall("main.js",32,1151,1210,scale_solid,false,false) || _wrap_popCallStack(    scale_solid([3, 3, 3], world.solid[world.solid_number - 1])));
+(_wrap_setLastFunctionCall("main.js",33,1216,1414,translate_solid,false,false) || _wrap_popCallStack(    translate_solid([-world.solid[world.solid_number - 1].center[0], -world.solid[world.solid_number - 1].center[1], -world.solid[world.solid_number - 1].center[2]], world.solid[world.solid_number - 1])));
+(_wrap_setLastFunctionCall("main.js",34,1420,1487,translate_solid,false,false) || _wrap_popCallStack(    translate_solid([0, 0, -1100], world.solid[world.solid_number - 1])));
   }
-  if ((_wrap_setLastFunctionCall("main.js",49,1572,1606,document.getElementById,false) || document.getElementById("modello")).value == 'heli') {
-    world.solid[0] = (_wrap_setLastFunctionCall("main.js",50,1651,1693,helicopter,false) || new helicopter([255, 255, 255], [0, 0, 0]));
-(_wrap_setLastFunctionCall("main.js",51,1703,1765,scale_solid,false) ||     scale_solid([12, 12, 12], world.solid[world.solid_number - 1]));
-(_wrap_setLastFunctionCall("main.js",52,1775,1973,translate_solid,false) ||     translate_solid([-world.solid[world.solid_number - 1].center[0], -world.solid[world.solid_number - 1].center[1], -world.solid[world.solid_number - 1].center[2]], world.solid[world.solid_number - 1]));
-(_wrap_setLastFunctionCall("main.js",53,1983,2050,translate_solid,false) ||     translate_solid([0, 0, -1100], world.solid[world.solid_number - 1]));
+  if ((_wrap_setLastFunctionCall("main.js",36,1499,1533,document.getElementById,false,false) || _wrap_popCallStack(document.getElementById("modello"))).value == 'heli') {
+    world.solid[0] = (_wrap_setLastFunctionCall("main.js",37,1574,1616,helicopter,false,false) || _wrap_popCallStack(new helicopter([255, 255, 255], [0, 0, 0])));
+(_wrap_setLastFunctionCall("main.js",38,1622,1684,scale_solid,false,false) || _wrap_popCallStack(    scale_solid([12, 12, 12], world.solid[world.solid_number - 1])));
+(_wrap_setLastFunctionCall("main.js",39,1690,1888,translate_solid,false,false) || _wrap_popCallStack(    translate_solid([-world.solid[world.solid_number - 1].center[0], -world.solid[world.solid_number - 1].center[1], -world.solid[world.solid_number - 1].center[2]], world.solid[world.solid_number - 1])));
+(_wrap_setLastFunctionCall("main.js",40,1894,1961,translate_solid,false,false) || _wrap_popCallStack(    translate_solid([0, 0, -1100], world.solid[world.solid_number - 1])));
   }
-  if ((_wrap_setLastFunctionCall("main.js",55,2066,2100,document.getElementById,false) || document.getElementById("modello")).value == 'ship') {
-    world.solid[0] = (_wrap_setLastFunctionCall("main.js",56,2145,2181,ship,false) || new ship([255, 255, 255], [0, 0, 0]));
-(_wrap_setLastFunctionCall("main.js",57,2191,2250,scale_solid,false) ||     scale_solid([3, 3, 3], world.solid[world.solid_number - 1]));
-(_wrap_setLastFunctionCall("main.js",58,2260,2458,translate_solid,false) ||     translate_solid([-world.solid[world.solid_number - 1].center[0], -world.solid[world.solid_number - 1].center[1], -world.solid[world.solid_number - 1].center[2]], world.solid[world.solid_number - 1]));
-(_wrap_setLastFunctionCall("main.js",59,2468,2535,translate_solid,false) ||     translate_solid([0, 0, -1100], world.solid[world.solid_number - 1]));
+  if ((_wrap_setLastFunctionCall("main.js",42,1973,2007,document.getElementById,false,false) || _wrap_popCallStack(document.getElementById("modello"))).value == 'ship') {
+    world.solid[0] = (_wrap_setLastFunctionCall("main.js",43,2048,2084,ship,false,false) || _wrap_popCallStack(new ship([255, 255, 255], [0, 0, 0])));
+(_wrap_setLastFunctionCall("main.js",44,2090,2149,scale_solid,false,false) || _wrap_popCallStack(    scale_solid([3, 3, 3], world.solid[world.solid_number - 1])));
+(_wrap_setLastFunctionCall("main.js",45,2155,2353,translate_solid,false,false) || _wrap_popCallStack(    translate_solid([-world.solid[world.solid_number - 1].center[0], -world.solid[world.solid_number - 1].center[1], -world.solid[world.solid_number - 1].center[2]], world.solid[world.solid_number - 1])));
+(_wrap_setLastFunctionCall("main.js",46,2359,2426,translate_solid,false,false) || _wrap_popCallStack(    translate_solid([0, 0, -1100], world.solid[world.solid_number - 1])));
   }
-  id_timer = (_wrap_setLastFunctionCall("main.js",62,2559,2580,setInterval,false) || setInterval(draw, 10));
+  id_timer = (_wrap_setLastFunctionCall("main.js",48,2445,2466,setInterval,false,false) || _wrap_popCallStack(setInterval(draw, 10)));
 }
 function onKeyDown(evt) {
-_wrap_addFunctionToMap('main.js', 65, 2585,3463, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('main.js', 50, 2470,3267, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (evt.keyCode == 77) 
     motion = (motion + 1) % 2;
@@ -92,48 +92,48 @@ _wrap_addFunctionToMap('main.js', 65, 2585,3463, (typeof arguments === 'object' 
     alpha = 0.8;
 }
 function onMouseMove(evt) {
-_wrap_addFunctionToMap('main.js', 101, 3465,3796, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('main.js', 84, 3268,3581, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  var x = evt.pageX - (_wrap_setLastFunctionCall("main.js",102,3517,3551,document.getElementById,false) || document.getElementById("display")).offsetLeft;
-  var y = evt.pageY - (_wrap_setLastFunctionCall("main.js",103,3588,3622,document.getElementById,false) || document.getElementById("display")).offsetTop;
+  var x = evt.pageX - (_wrap_setLastFunctionCall("main.js",85,3318,3352,document.getElementById,false,false) || _wrap_popCallStack(document.getElementById("display"))).offsetLeft;
+  var y = evt.pageY - (_wrap_setLastFunctionCall("main.js",86,3387,3421,document.getElementById,false,false) || _wrap_popCallStack(document.getElementById("display"))).offsetTop;
   if ((x > 0) && (x < 1000) && (y > 0) && (y < 550)) {
     teta_y_global = 0.10 * (x - 500) / 500;
     teta_x_global = 0.10 * (y - 275) / 275;
   }
 }
 function draw() {
-_wrap_addFunctionToMap('main.js', 112, 3798,7117, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('main.js', 92, 3582,6463, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  var canvas = (_wrap_setLastFunctionCall("main.js",113,3833,3867,document.getElementById,false) || document.getElementById("display"));
+  var canvas = (_wrap_setLastFunctionCall("main.js",93,3615,3649,document.getElementById,false,false) || _wrap_popCallStack(document.getElementById("display")));
   if (canvas.getContext) {
-    var ctx = (_wrap_setLastFunctionCall("main.js",115,3916,3939,canvas.getContext,false) || canvas.getContext("2d"));
+    var ctx = (_wrap_setLastFunctionCall("main.js",95,3692,3715,canvas.getContext,false,false) || _wrap_popCallStack(canvas.getContext("2d")));
     if (motion == 0) {
-(_wrap_setLastFunctionCall("main.js",118,3981,4011,ctx.clearRect,false) ||       ctx.clearRect(0, 0, 1000, 550));
+(_wrap_setLastFunctionCall("main.js",97,3746,3776,ctx.clearRect,false,false) || _wrap_popCallStack(      ctx.clearRect(0, 0, 1000, 550)));
     } else {
       ctx.globalAlpha = 0.2;
       ctx.fillStyle = 'rgb(255,255,255)';
-(_wrap_setLastFunctionCall("main.js",122,4125,4154,ctx.fillRect,false) ||       ctx.fillRect(0, 0, 1000, 550));
+(_wrap_setLastFunctionCall("main.js",101,3868,3897,ctx.fillRect,false,false) || _wrap_popCallStack(      ctx.fillRect(0, 0, 1000, 550)));
     }
     ctx.fillStyle = colore;
     ctx.strokeStyle = 'rgb(0,0,0)';
     ctx.lineWidth = 0.5;
     ctx.globalAlpha = alpha;
-    var parametrig1 = (_wrap_setLastFunctionCall("main.js",132,4330,4393,get_rotation_parameter,false) || get_rotation_parameter([0, 0, -1100], [0, 1, 0], teta_y_global));
-    var parametrig2 = (_wrap_setLastFunctionCall("main.js",133,4421,4480,get_rotation_parameter,false) || get_rotation_parameter([0, 0, 0], [0, 1, 0], teta_y_global));
-    var parametrig1a = (_wrap_setLastFunctionCall("main.js",134,4509,4572,get_rotation_parameter,false) || get_rotation_parameter([0, 0, -1100], [1, 0, 0], teta_x_global));
-    var parametrig2a = (_wrap_setLastFunctionCall("main.js",135,4601,4660,get_rotation_parameter,false) || get_rotation_parameter([0, 0, 0], [1, 0, 0], teta_x_global));
+    var parametrig1 = (_wrap_setLastFunctionCall("main.js",107,4045,4108,get_rotation_parameter,false,false) || _wrap_popCallStack(get_rotation_parameter([0, 0, -1100], [0, 1, 0], teta_y_global)));
+    var parametrig2 = (_wrap_setLastFunctionCall("main.js",108,4132,4191,get_rotation_parameter,false,false) || _wrap_popCallStack(get_rotation_parameter([0, 0, 0], [0, 1, 0], teta_y_global)));
+    var parametrig1a = (_wrap_setLastFunctionCall("main.js",109,4216,4279,get_rotation_parameter,false,false) || _wrap_popCallStack(get_rotation_parameter([0, 0, -1100], [1, 0, 0], teta_x_global)));
+    var parametrig2a = (_wrap_setLastFunctionCall("main.js",110,4304,4363,get_rotation_parameter,false,false) || _wrap_popCallStack(get_rotation_parameter([0, 0, 0], [1, 0, 0], teta_x_global)));
     for (var i = 0; i < world.solid_number; i++) {
-(_wrap_setLastFunctionCall("main.js",140,4732,4791,rotate_solid_fast,false) ||       rotate_solid_fast(parametrig1, parametrig2, world.solid[i]));
-(_wrap_setLastFunctionCall("main.js",141,4805,4866,rotate_solid_fast,false) ||       rotate_solid_fast(parametrig1a, parametrig2a, world.solid[i]));
+(_wrap_setLastFunctionCall("main.js",112,4422,4481,rotate_solid_fast,false,false) || _wrap_popCallStack(      rotate_solid_fast(parametrig1, parametrig2, world.solid[i])));
+(_wrap_setLastFunctionCall("main.js",113,4489,4550,rotate_solid_fast,false,false) || _wrap_popCallStack(      rotate_solid_fast(parametrig1a, parametrig2a, world.solid[i])));
     }
     var contatore = 0;
-    visible_polygons = (_wrap_setLastFunctionCall("main.js",149,4937,4948,Array,false) || new Array());
+    visible_polygons = (_wrap_setLastFunctionCall("main.js",116,4604,4615,Array,false,false) || _wrap_popCallStack(new Array()));
     var delta_x;
     var delta_y;
     var delta_z;
     for (var j = 0; j < world.solid_number; j++) {
       for (var i = 0; i < world.solid[j].points_number; i++) {
-        world.solid[j].distances[i] = (_wrap_setLastFunctionCall("main.js",156,5184,5224,Math.pow,false) || Math.pow(world.solid[j].points[i][0], 2)) + (_wrap_setLastFunctionCall("main.js",156,5227,5267,Math.pow,false) || Math.pow(world.solid[j].points[i][1], 2)) + (_wrap_setLastFunctionCall("main.js",156,5270,5310,Math.pow,false) || Math.pow(world.solid[j].points[i][2], 2));
+        world.solid[j].distances[i] = (_wrap_setLastFunctionCall("main.js",122,4820,4860,Math.pow,false,false) || _wrap_popCallStack(Math.pow(world.solid[j].points[i][0], 2))) + (_wrap_setLastFunctionCall("main.js",122,4863,4903,Math.pow,false,false) || _wrap_popCallStack(Math.pow(world.solid[j].points[i][1], 2))) + (_wrap_setLastFunctionCall("main.js",122,4906,4946,Math.pow,false,false) || _wrap_popCallStack(Math.pow(world.solid[j].points[i][2], 2)));
       }
     }
     for (var j = 0; j < world.solid_number; j++) {
@@ -146,29 +146,29 @@ _wrap_addFunctionToMap('main.js', 112, 3798,7117, (typeof arguments === 'object'
         visible_polygons[contatore++] = {solid: j, vertex: world.solid[j].faces[i], fillcolor: world.solid[j].fillcolor, linecolor: world.solid[j].linecolor, distance: max};
       }
     }
-(_wrap_setLastFunctionCall("main.js",176,6110,6145,visible_polygons.sort,false) ||     visible_polygons.sort(sortfunction));
-    var projected_points = (_wrap_setLastFunctionCall("main.js",178,6179,6190,Array,false) || new Array());
+(_wrap_setLastFunctionCall("main.js",135,5563,5598,visible_polygons.sort,false,false) || _wrap_popCallStack(    visible_polygons.sort(sortfunction)));
+    var projected_points = (_wrap_setLastFunctionCall("main.js",136,5627,5638,Array,false,false) || _wrap_popCallStack(new Array()));
     for (var j = 0; j < world.solid_number; j++) {
-      projected_points[j] = (_wrap_setLastFunctionCall("main.js",181,6282,6293,Array,false) || new Array());
+      projected_points[j] = (_wrap_setLastFunctionCall("main.js",138,5719,5730,Array,false,false) || _wrap_popCallStack(new Array()));
       for (var i = 0; i < world.solid[j].points.length; i++) {
-        projected_points[j][i] = (_wrap_setLastFunctionCall("main.js",183,6405,6454,project,false) || project(world.distance, world.solid[j].points[i]));
+        projected_points[j][i] = (_wrap_setLastFunctionCall("main.js",140,5828,5877,project,false,false) || _wrap_popCallStack(project(world.distance, world.solid[j].points[i])));
       }
     }
     for (var i = 0; i < contatore; i++) {
-(_wrap_setLastFunctionCall("main.js",188,6539,6554,ctx.beginPath,false) ||       ctx.beginPath());
+(_wrap_setLastFunctionCall("main.js",144,5941,5956,ctx.beginPath,false,false) || _wrap_popCallStack(      ctx.beginPath()));
       var indice_solido = visible_polygons[i].solid;
       var indici_vertici = visible_polygons[i].vertex;
-(_wrap_setLastFunctionCall("main.js",192,6689,6809,ctx.moveTo,false) ||       ctx.moveTo(projected_points[indice_solido][indici_vertici[0]][0], projected_points[indice_solido][indici_vertici[0]][1]));
+(_wrap_setLastFunctionCall("main.js",147,6072,6192,ctx.moveTo,false,false) || _wrap_popCallStack(      ctx.moveTo(projected_points[indice_solido][indici_vertici[0]][0], projected_points[indice_solido][indici_vertici[0]][1])));
       for (var z = 1; z < visible_polygons[i].vertex.length; z++) 
-(_wrap_setLastFunctionCall("main.js",194,6899,7019,ctx.lineTo,false) ||         ctx.lineTo(projected_points[indice_solido][indici_vertici[z]][0], projected_points[indice_solido][indici_vertici[z]][1]));
-(_wrap_setLastFunctionCall("main.js",195,7033,7048,ctx.closePath,false) ||       ctx.closePath());
-(_wrap_setLastFunctionCall("main.js",196,7062,7072,ctx.fill,false) ||       ctx.fill());
-(_wrap_setLastFunctionCall("main.js",197,7086,7098,ctx.stroke,false) ||       ctx.stroke());
+(_wrap_setLastFunctionCall("main.js",149,6269,6389,ctx.lineTo,false,false) || _wrap_popCallStack(        ctx.lineTo(projected_points[indice_solido][indici_vertici[z]][0], projected_points[indice_solido][indici_vertici[z]][1])));
+(_wrap_setLastFunctionCall("main.js",150,6397,6412,ctx.closePath,false,false) || _wrap_popCallStack(      ctx.closePath()));
+(_wrap_setLastFunctionCall("main.js",151,6420,6430,ctx.fill,false,false) || _wrap_popCallStack(      ctx.fill()));
+(_wrap_setLastFunctionCall("main.js",152,6438,6450,ctx.stroke,false,false) || _wrap_popCallStack(      ctx.stroke()));
     }
   }
 }
 function sortfunction(a, b) {
-_wrap_addFunctionToMap('main.js', 203, 7120,7189, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('main.js', 156, 6464,6531, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (b.distance - a.distance);
 }

@@ -1,39 +1,39 @@
 window.parent._wrap_staticMeasuredFunctions['flotr-0.2.0-alpha.js'] = 104;
 window.parent._wrap_staticMeasuredCalls['flotr-0.2.0-alpha.js'] =830;
 var Flotr = {version: '0.2.0-alpha', author: 'Bas Wenneker', website: 'http://www.solutoire.com', _registeredTypes: {'lines': 'drawSeriesLines', 'points': 'drawSeriesPoints', 'bars': 'drawSeriesBars', 'candles': 'drawSeriesCandles', 'pie': 'drawSeriesPie'}, register: function(type, functionName) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 14, 350,447, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1, 268,352, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   Flotr._registeredTypes[type] = functionName + '';
 }, draw: function(el, data, options, _GraphKlass_) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 18, 462,619, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 3, 360,497, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   _GraphKlass_ = _GraphKlass_ || Flotr.Graph;
-  return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",20,576,611,_GraphKlass_,false) || new _GraphKlass_(el, data, options));
+  return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",5,459,494,_GraphKlass_,false,false) || window.parent._wrap_popCallStack(new _GraphKlass_(el, data, options)));
 }, getSeries: function(data) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 23, 639,1043, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 6, 510,802, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",24,673,1035,data.collect,false) || data.collect(function(serie) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 24, 686,1034, (typeof arguments === 'object' ? arguments.callee.caller : null));
+  return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",7,536,799,data.collect,false,false) || window.parent._wrap_popCallStack(data.collect(function(serie) {
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 7, 549,798, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  var i, serie = (serie.data) ? (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",25,748,767,Object.clone,false) || Object.clone(serie)) : {'data': serie};
+  var i, serie = (serie.data) ? (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",8,599,618,Object.clone,false,false) || window.parent._wrap_popCallStack(Object.clone(serie))) : {'data': serie};
   for (i = serie.data.length - 1; i > -1; --i) {
-    serie.data[i][1] = (serie.data[i][1] === null ? null : (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",29,951,979,parseFloat,false) || parseFloat(serie.data[i][1])));
+    serie.data[i][1] = (serie.data[i][1] === null ? null : (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",10,746,774,parseFloat,false,false) || window.parent._wrap_popCallStack(parseFloat(serie.data[i][1]))));
   }
   return serie;
-}));
+})));
 }, merge: function(src, dest) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 35, 1059,1408, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 14, 811,1117, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var result = dest || {};
   for (var i in src) {
-    result[i] = (src[i] != null && typeof (src[i]) == 'object' && !(src[i].constructor == Array || src[i].constructor == RegExp) && !(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",38,1288,1312,Object.isElement,false) || Object.isElement(src[i]))) ? (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",38,1316,1344,Flotr.merge,false) || Flotr.merge(src[i], dest[i])) : result[i] = src[i];
+    result[i] = (src[i] != null && typeof (src[i]) == 'object' && !(src[i].constructor == Array || src[i].constructor == RegExp) && !(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",17,1016,1040,Object.isElement,false,false) || window.parent._wrap_popCallStack(Object.isElement(src[i])))) ? (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",17,1044,1072,Flotr.merge,false,false) || window.parent._wrap_popCallStack(Flotr.merge(src[i], dest[i]))) : result[i] = src[i];
   }
   return result;
 }, getTickSize: function(noTicks, min, max, decimals) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 43, 1430,1867, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 20, 1132,1512, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var delta = (max - min) / noTicks;
-  var magn = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",45,1535,1560,Flotr.getMagnitude,false) || Flotr.getMagnitude(delta));
+  var magn = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",22,1222,1247,Flotr.getMagnitude,false,false) || window.parent._wrap_popCallStack(Flotr.getMagnitude(delta)));
   var norm = delta / magn;
   var tickSize = 10;
   if (norm < 1.5) 
@@ -46,118 +46,118 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 43, 1430,1867, (typ
     tickSize = 5;
   return tickSize * magn;
 }, defaultTickFormatter: function(val) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 59, 1898,1947, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 34, 1536,1572, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return val + '';
 }, defaultTrackFormatter: function(obj) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 63, 1979,2052, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 36, 1597,1657, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return '(' + obj.x + ', ' + obj.y + ')';
 }, defaultPieLabelFormatter: function(slice) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 66, 2085,2167, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 38, 1685,1754, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",67,2121,2153,(slice.fraction * 100).toFixed,false) || (slice.fraction * 100).toFixed(2)) + '%';
+  return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",39,1713,1745,null,false,false) || window.parent._wrap_popCallStack((slice.fraction * 100).toFixed(2))) + '%';
 }, getMagnitude: function(x) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 70, 2190,2278, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 40, 1770,1845, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",71,2221,2270,Math.pow,false) || Math.pow(10, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",71,2234,2269,Math.floor,false) || Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",71,2245,2256,Math.log,false) || Math.log(x)) / Math.LN10))));
+  return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",41,1793,1842,Math.pow,false,false) || window.parent._wrap_popCallStack(Math.pow(10, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",41,1806,1841,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",41,1817,1828,Math.log,false,false) || window.parent._wrap_popCallStack(Math.log(x))) / Math.LN10))))));
 }, toPixel: function(val) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 73, 2294,2356, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 42, 1856,1905, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",74,2327,2342,Math.floor,false) || Math.floor(val)) + 0.5;
+  return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",43,1881,1896,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor(val))) + 0.5;
 }, toRad: function(angle) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 76, 2370,2437, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 44, 1914,1968, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return -angle * (Math.PI / 180);
 }, parseColor: function(str) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 80, 2458,4276, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 46, 1982,3628, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (str instanceof Flotr.Color) 
     return str;
   var result, Color = Flotr.Color;
-  if ((result = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",86,2599,2674,/rgb\(\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*\)/.exec,false) || /rgb\(\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*\)/.exec(str)))) 
-    return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",87,2697,2769,Color,false) || new Color((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",87,2707,2726,parseInt,false) || parseInt(result[1])), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",87,2728,2747,parseInt,false) || parseInt(result[2])), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",87,2749,2768,parseInt,false) || parseInt(result[3]))));
-  if ((result = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",90,2798,2902,/rgba\(\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*,\s*([0-9]+(?:\.[0-9]+)?)\s*\)/.exec,false) || /rgba\(\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*,\s*([0-9]+(?:\.[0-9]+)?)\s*\)/.exec(str)))) 
-    return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",91,2925,3020,Color,false) || new Color((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",91,2935,2954,parseInt,false) || parseInt(result[1])), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",91,2956,2975,parseInt,false) || parseInt(result[2])), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",91,2977,2996,parseInt,false) || parseInt(result[3])), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",91,2998,3019,parseFloat,false) || parseFloat(result[4]))));
-  if ((result = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",94,3049,3157,/rgb\(\s*([0-9]+(?:\.[0-9]+)?)\%\s*,\s*([0-9]+(?:\.[0-9]+)?)\%\s*,\s*([0-9]+(?:\.[0-9]+)?)\%\s*\)/.exec,false) || /rgb\(\s*([0-9]+(?:\.[0-9]+)?)\%\s*,\s*([0-9]+(?:\.[0-9]+)?)\%\s*,\s*([0-9]+(?:\.[0-9]+)?)\%\s*\)/.exec(str)))) 
-    return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",95,3180,3279,Color,false) || new Color((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",95,3190,3211,parseFloat,false) || parseFloat(result[1])) * 2.55, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",95,3220,3241,parseFloat,false) || parseFloat(result[2])) * 2.55, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",95,3250,3271,parseFloat,false) || parseFloat(result[3])) * 2.55));
-  if ((result = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",98,3308,3445,/rgba\(\s*([0-9]+(?:\.[0-9]+)?)\%\s*,\s*([0-9]+(?:\.[0-9]+)?)\%\s*,\s*([0-9]+(?:\.[0-9]+)?)\%\s*,\s*([0-9]+(?:\.[0-9]+)?)\s*\)/.exec,false) || /rgba\(\s*([0-9]+(?:\.[0-9]+)?)\%\s*,\s*([0-9]+(?:\.[0-9]+)?)\%\s*,\s*([0-9]+(?:\.[0-9]+)?)\%\s*,\s*([0-9]+(?:\.[0-9]+)?)\s*\)/.exec(str)))) 
-    return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",99,3468,3590,Color,false) || new Color((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",99,3478,3499,parseFloat,false) || parseFloat(result[1])) * 2.55, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",99,3508,3529,parseFloat,false) || parseFloat(result[2])) * 2.55, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",99,3538,3559,parseFloat,false) || parseFloat(result[3])) * 2.55, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",99,3568,3589,parseFloat,false) || parseFloat(result[4]))));
-  if ((result = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",102,3619,3680,/#([a-fA-F0-9]{2})([a-fA-F0-9]{2})([a-fA-F0-9]{2})/.exec,false) || /#([a-fA-F0-9]{2})([a-fA-F0-9]{2})([a-fA-F0-9]{2})/.exec(str)))) 
-    return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",103,3703,3787,Color,false) || new Color((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",103,3713,3736,parseInt,false) || parseInt(result[1], 16)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",103,3738,3761,parseInt,false) || parseInt(result[2], 16)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",103,3763,3786,parseInt,false) || parseInt(result[3], 16))));
-  if ((result = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",106,3816,3868,/#([a-fA-F0-9])([a-fA-F0-9])([a-fA-F0-9])/.exec,false) || /#([a-fA-F0-9])([a-fA-F0-9])([a-fA-F0-9])/.exec(str)))) 
-    return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",107,3891,4011,Color,false) || new Color((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",107,3901,3936,parseInt,false) || parseInt(result[1] + result[1], 16)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",107,3938,3973,parseInt,false) || parseInt(result[2] + result[2], 16)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",107,3975,4010,parseInt,false) || parseInt(result[3] + result[3], 16))));
-  var name = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",110,4037,4062,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",110,4037,4048,str.strip,false) || str.strip()).toLowerCase,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",110,4037,4048,str.strip,false) || str.strip()).toLowerCase());
+  if ((result = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",50,2100,2175,null,false,false) || window.parent._wrap_popCallStack(/rgb\(\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*\)/.exec(str))))) 
+    return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",51,2190,2262,Color,false,false) || window.parent._wrap_popCallStack(new Color((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",51,2200,2219,parseInt,false,false) || window.parent._wrap_popCallStack(parseInt(result[1]))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",51,2221,2240,parseInt,false,false) || window.parent._wrap_popCallStack(parseInt(result[2]))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",51,2242,2261,parseInt,false,false) || window.parent._wrap_popCallStack(parseInt(result[3]))))));
+  if ((result = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",52,2280,2384,null,false,false) || window.parent._wrap_popCallStack(/rgba\(\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*,\s*([0-9]+(?:\.[0-9]+)?)\s*\)/.exec(str))))) 
+    return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",53,2399,2494,Color,false,false) || window.parent._wrap_popCallStack(new Color((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",53,2409,2428,parseInt,false,false) || window.parent._wrap_popCallStack(parseInt(result[1]))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",53,2430,2449,parseInt,false,false) || window.parent._wrap_popCallStack(parseInt(result[2]))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",53,2451,2470,parseInt,false,false) || window.parent._wrap_popCallStack(parseInt(result[3]))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",53,2472,2493,parseFloat,false,false) || window.parent._wrap_popCallStack(parseFloat(result[4]))))));
+  if ((result = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",54,2512,2620,null,false,false) || window.parent._wrap_popCallStack(/rgb\(\s*([0-9]+(?:\.[0-9]+)?)\%\s*,\s*([0-9]+(?:\.[0-9]+)?)\%\s*,\s*([0-9]+(?:\.[0-9]+)?)\%\s*\)/.exec(str))))) 
+    return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",55,2635,2734,Color,false,false) || window.parent._wrap_popCallStack(new Color((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",55,2645,2666,parseFloat,false,false) || window.parent._wrap_popCallStack(parseFloat(result[1]))) * 2.55, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",55,2675,2696,parseFloat,false,false) || window.parent._wrap_popCallStack(parseFloat(result[2]))) * 2.55, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",55,2705,2726,parseFloat,false,false) || window.parent._wrap_popCallStack(parseFloat(result[3]))) * 2.55)));
+  if ((result = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",56,2752,2889,null,false,false) || window.parent._wrap_popCallStack(/rgba\(\s*([0-9]+(?:\.[0-9]+)?)\%\s*,\s*([0-9]+(?:\.[0-9]+)?)\%\s*,\s*([0-9]+(?:\.[0-9]+)?)\%\s*,\s*([0-9]+(?:\.[0-9]+)?)\s*\)/.exec(str))))) 
+    return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",57,2904,3026,Color,false,false) || window.parent._wrap_popCallStack(new Color((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",57,2914,2935,parseFloat,false,false) || window.parent._wrap_popCallStack(parseFloat(result[1]))) * 2.55, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",57,2944,2965,parseFloat,false,false) || window.parent._wrap_popCallStack(parseFloat(result[2]))) * 2.55, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",57,2974,2995,parseFloat,false,false) || window.parent._wrap_popCallStack(parseFloat(result[3]))) * 2.55, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",57,3004,3025,parseFloat,false,false) || window.parent._wrap_popCallStack(parseFloat(result[4]))))));
+  if ((result = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",58,3044,3105,null,false,false) || window.parent._wrap_popCallStack(/#([a-fA-F0-9]{2})([a-fA-F0-9]{2})([a-fA-F0-9]{2})/.exec(str))))) 
+    return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",59,3120,3204,Color,false,false) || window.parent._wrap_popCallStack(new Color((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",59,3130,3153,parseInt,false,false) || window.parent._wrap_popCallStack(parseInt(result[1], 16))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",59,3155,3178,parseInt,false,false) || window.parent._wrap_popCallStack(parseInt(result[2], 16))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",59,3180,3203,parseInt,false,false) || window.parent._wrap_popCallStack(parseInt(result[3], 16))))));
+  if ((result = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",60,3222,3274,null,false,false) || window.parent._wrap_popCallStack(/#([a-fA-F0-9])([a-fA-F0-9])([a-fA-F0-9])/.exec(str))))) 
+    return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",61,3289,3409,Color,false,false) || window.parent._wrap_popCallStack(new Color((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",61,3299,3334,parseInt,false,false) || window.parent._wrap_popCallStack(parseInt(result[1] + result[1], 16))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",61,3336,3371,parseInt,false,false) || window.parent._wrap_popCallStack(parseInt(result[2] + result[2], 16))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",61,3373,3408,parseInt,false,false) || window.parent._wrap_popCallStack(parseInt(result[3] + result[3], 16))))));
+  var name = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",62,3424,3449,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",62,3424,3435,str.strip,false,false) || window.parent._wrap_popCallStack(str.strip())).toLowerCase()));
   if (name == 'transparent') {
-    return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",112,4122,4149,Color,false) || new Color(255, 255, 255, 0));
+    return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",64,3493,3520,Color,false,false) || window.parent._wrap_popCallStack(new Color(255, 255, 255, 0)));
   }
-  return ((result = Color.lookupColors[name])) ? (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",114,4218,4260,Color,false) || new Color(result[0], result[1], result[2])) : false;
+  return ((result = Color.lookupColors[name])) ? (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",66,3575,3617,Color,false,false) || window.parent._wrap_popCallStack(new Color(result[0], result[1], result[2]))) : false;
 }, extractColor: function(element) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 117, 4299,4669, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 67, 3644,3954, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var color;
   do {
-    color = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",121,4377,4427,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",121,4377,4413,element.getStyle,false) || element.getStyle('background-color')).toLowerCase,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",121,4377,4413,element.getStyle,false) || element.getStyle('background-color')).toLowerCase());
+    color = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",70,3696,3746,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",70,3696,3732,element.getStyle,false,false) || window.parent._wrap_popCallStack(element.getStyle('background-color'))).toLowerCase()));
     if (!(color == '' || color == 'transparent')) 
       break;
-    element = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",123,4518,4531,element.up,false) || element.up(0));
-  } while (!(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",124,4552,4585,element.nodeName.match,false) || element.nodeName.match(/^body$/i)));
+    element = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",73,3826,3839,element.up,false,false) || window.parent._wrap_popCallStack(element.up(0)));
+  } while (!(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",74,3853,3886,element.nodeName.match,false,false) || window.parent._wrap_popCallStack(element.nodeName.match(/^body$/i))));
   return (color == 'rgba(0, 0, 0, 0)') ? 'transparent' : color;
 }};
-Flotr.Graph = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",131,4691,97537,Class.create,true) || Class.create({initialize: function(el, data, options) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 133, 4725,5865, (typeof arguments === 'object' ? arguments.callee.caller : null));
+Flotr.Graph = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",77,3971,72754,Class.create,true,false) || window.parent._wrap_popCallStack(Class.create({initialize: function(el, data, options) {
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 77, 3997,4778, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  this.el = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",134,4775,4780,$,false) || $(el));
+  this.el = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",78,4039,4044,$,false,false) || window.parent._wrap_popCallStack($(el)));
   if (!this.el) 
     throw 'The target container doesn\'t exist';
   this.data = data;
-  this.series = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",139,4904,4925,Flotr.getSeries,false) || Flotr.getSeries(data));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",140,4936,4960,this.setOptions,false) ||   this.setOptions(options));
+  this.series = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",82,4148,4169,Flotr.getSeries,false,false) || window.parent._wrap_popCallStack(Flotr.getSeries(data)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",83,4173,4197,this.setOptions,false,false) || window.parent._wrap_popCallStack(  this.setOptions(options)));
   this.lastMousePos = {pageX: null, pageY: null};
   this.selection = {first: {x: -1, y: -1}, second: {x: -1, y: -1}};
   this.prevSelection = null;
   this.selectionInterval = null;
   this.ignoreClick = false;
   this.prevHit = null;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",163,5424,5446,this.constructCanvas,false) ||   this.constructCanvas());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",166,5461,5478,this.initEvents,false) ||   this.initEvents());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",168,5491,5512,this.findDataRanges,false) ||   this.findDataRanges());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",169,5523,5555,this.calculateTicks,false) ||   this.calculateTicks(this.axes.x));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",170,5566,5599,this.calculateTicks,false) ||   this.calculateTicks(this.axes.x2));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",171,5610,5642,this.calculateTicks,false) ||   this.calculateTicks(this.axes.y));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",172,5653,5686,this.calculateTicks,false) ||   this.calculateTicks(this.axes.y2));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",174,5699,5722,this.calculateSpacing,false) ||   this.calculateSpacing());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",175,5733,5744,this.draw,false) ||   this.draw());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",176,5755,5774,this.insertLegend,false) ||   this.insertLegend());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",90,4432,4454,this.constructCanvas,false,false) || window.parent._wrap_popCallStack(  this.constructCanvas()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",91,4458,4475,this.initEvents,false,false) || window.parent._wrap_popCallStack(  this.initEvents()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",92,4479,4500,this.findDataRanges,false,false) || window.parent._wrap_popCallStack(  this.findDataRanges()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",93,4504,4536,this.calculateTicks,false,false) || window.parent._wrap_popCallStack(  this.calculateTicks(this.axes.x)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",94,4540,4573,this.calculateTicks,false,false) || window.parent._wrap_popCallStack(  this.calculateTicks(this.axes.x2)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",95,4577,4609,this.calculateTicks,false,false) || window.parent._wrap_popCallStack(  this.calculateTicks(this.axes.y)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",96,4613,4646,this.calculateTicks,false,false) || window.parent._wrap_popCallStack(  this.calculateTicks(this.axes.y2)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",97,4650,4673,this.calculateSpacing,false,false) || window.parent._wrap_popCallStack(  this.calculateSpacing()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",98,4677,4688,this.draw,false,false) || window.parent._wrap_popCallStack(  this.draw()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",99,4692,4711,this.insertLegend,false,false) || window.parent._wrap_popCallStack(  this.insertLegend()));
   if (this.options.spreadsheet.show) 
-    (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",180,5837,5857,this.constructTabs,false) ||   this.constructTabs());
+    (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",101,4755,4775,this.constructTabs,false,false) || window.parent._wrap_popCallStack(  this.constructTabs()));
 }, setOptions: function(opts) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 183, 5886,13363, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 102, 4792,9319, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var options = {colors: ['#00A8F0', '#C0D800', '#CB4B4B', '#4DA74D', '#9440ED'], title: null, subtitle: null, legend: {show: true, noColumns: 1, labelFormatter: Prototype.K, labelBoxBorderColor: '#CCCCCC', labelBoxWidth: 14, labelBoxHeight: 10, labelBoxMargin: 5, container: null, position: 'nw', margin: 5, backgroundColor: null, backgroundOpacity: 0.85}, xaxis: {ticks: null, showLabels: true, labelsAngle: 0, title: null, titleAngle: 0, noTicks: 5, tickFormatter: Flotr.defaultTickFormatter, tickDecimals: null, min: null, max: null, autoscaleMargin: 0, color: null}, x2axis: {}, yaxis: {ticks: null, showLabels: true, labelsAngle: 0, title: null, titleAngle: 90, noTicks: 5, tickFormatter: Flotr.defaultTickFormatter, tickDecimals: null, min: null, max: null, autoscaleMargin: 0, color: null}, y2axis: {titleAngle: 270}, points: {show: false, radius: 3, lineWidth: 2, fill: true, fillColor: '#FFFFFF', fillOpacity: 0.4}, lines: {show: false, lineWidth: 2, fill: false, fillColor: null, fillOpacity: 0.4}, bars: {show: false, lineWidth: 2, barWidth: 1, fill: true, fillColor: null, fillOpacity: 0.4, horizontal: false, stacked: false}, candles: {show: false, lineWidth: 1, wickLineWidth: 1, candleWidth: 0.6, fill: true, upFillColor: '#00A8F0', downFillColor: '#CB4B4B', fillOpacity: 0.5, barcharts: false}, pie: {show: false, lineWidth: 1, fill: true, fillColor: null, fillOpacity: 0.6, explode: 6, sizeRatio: 0.6, startAngle: Math.PI / 4, labelFormatter: Flotr.defaultPieLabelFormatter, pie3D: false, pie3DviewAngle: (Math.PI / 2 * 0.8), pie3DspliceThickness: 20}, grid: {color: '#545454', backgroundColor: null, tickColor: '#DDDDDD', labelMargin: 3, verticalLines: true, horizontalLines: true, outlineWidth: 2}, selection: {mode: null, color: '#B6D9FF', fps: 20}, mouse: {track: false, position: 'se', relative: false, trackFormatter: Flotr.defaultTrackFormatter, margin: 5, lineColor: '#FF3F19', trackDecimals: 1, sensibility: 2, radius: 3}, shadowSize: 4, defaultType: 'lines', HtmlText: true, fontSize: 7.5, spreadsheet: {show: false, tabGraphLabel: 'Graph', tabDataLabel: 'Data', toolbarDownload: 'Download CSV', toolbarSelectAll: 'Select all'}};
-  options.x2axis = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",322,10293,10351,Object.extend,false) || Object.extend((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",322,10307,10334,Object.clone,false) || Object.clone(options.xaxis)), options.x2axis));
-  options.y2axis = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",323,10379,10437,Object.extend,false) || Object.extend((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",323,10393,10420,Object.clone,false) || Object.clone(options.yaxis)), options.y2axis));
-  this.options = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",324,10463,10497,Flotr.merge,false) || Flotr.merge((opts || {}), options));
+  options.x2axis = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",104,6986,7044,Object.extend,false,false) || window.parent._wrap_popCallStack(Object.extend((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",104,7000,7027,Object.clone,false,false) || window.parent._wrap_popCallStack(Object.clone(options.xaxis))), options.x2axis)));
+  options.y2axis = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",105,7065,7123,Object.extend,false,false) || window.parent._wrap_popCallStack(Object.extend((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",105,7079,7106,Object.clone,false,false) || window.parent._wrap_popCallStack(Object.clone(options.yaxis))), options.y2axis)));
+  this.options = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",106,7142,7176,Flotr.merge,false,false) || window.parent._wrap_popCallStack(Flotr.merge((opts || {}), options)));
   this.axes = {x: {options: this.options.xaxis, n: 1}, x2: {options: this.options.x2axis, n: 2}, y: {options: this.options.yaxis, n: 1}, y2: {options: this.options.y2axis, n: 2}};
   var assignedColors = [], colors = [], ln = this.series.length, neededColors = this.series.length, oc = this.options.colors, usedColors = [], variation = 0, c, i, j, s, tooClose;
   for (i = neededColors - 1; i > -1; --i) {
     c = this.series[i].color;
     if (c != null) {
       --neededColors;
-      if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",360,11407,11425,Object.isNumber,false) || Object.isNumber(c))) 
-        (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",360,11427,11449,assignedColors.push,false) ||       assignedColors.push(c));
+      if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",113,7665,7683,Object.isNumber,false,false) || window.parent._wrap_popCallStack(Object.isNumber(c)))) 
+        (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",114,7694,7716,assignedColors.push,false,false) || window.parent._wrap_popCallStack(      assignedColors.push(c)));
       else 
-        (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",361,11473,11509,usedColors.push,false) ||       usedColors.push((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",361,11489,11508,Flotr.parseColor,false) || Flotr.parseColor(c))));
+        (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",116,7738,7774,usedColors.push,false,false) || window.parent._wrap_popCallStack(      usedColors.push((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",116,7754,7773,Flotr.parseColor,false,false) || window.parent._wrap_popCallStack(Flotr.parseColor(c))))));
     }
   }
   for (i = assignedColors.length - 1; i > -1; --i) 
-    neededColors = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",367,11627,11672,Math.max,false) || Math.max(neededColors, assignedColors[i] + 1));
+    neededColors = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",120,7857,7902,Math.max,false,false) || window.parent._wrap_popCallStack(Math.max(neededColors, assignedColors[i] + 1)));
   for (i = 0; colors.length < neededColors; ) {
-    c = (oc.length == i) ? (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",371,11768,11798,Flotr.Color,false) || new Flotr.Color(100, 100, 100)) : (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",371,11801,11824,Flotr.parseColor,false) || Flotr.parseColor(oc[i]));
+    c = (oc.length == i) ? (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",122,7979,8009,Flotr.Color,false,false) || window.parent._wrap_popCallStack(new Flotr.Color(100, 100, 100))) : (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",122,8012,8035,Flotr.parseColor,false,false) || window.parent._wrap_popCallStack(Flotr.parseColor(oc[i])));
     var sign = variation % 2 == 1 ? -1 : 1;
-    var factor = 1 + sign * (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",375,11920,11944,Math.ceil,false) || Math.ceil(variation / 2)) * 0.2;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",376,11965,11996,c.scale,false) ||     c.scale(factor, factor, factor));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",379,12015,12029,colors.push,false) ||     colors.push(c));
+    var factor = 1 + sign * (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",124,8109,8133,Math.ceil,false,false) || window.parent._wrap_popCallStack(Math.ceil(variation / 2))) * 0.2;
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",125,8145,8176,c.scale,false,false) || window.parent._wrap_popCallStack(    c.scale(factor, factor, factor)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",126,8182,8196,colors.push,false,false) || window.parent._wrap_popCallStack(    colors.push(c)));
     if (++i >= oc.length) {
       i = 0;
       ++variation;
@@ -166,9 +166,9 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 183, 5886,13363, (t
   for (i = 0 , j = 0; i < ln; ++i) {
     s = this.series[i];
     if (s.color == null) {
-      s.color = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",393,12297,12319,null,false) || colors[j++].toString());
-    } else if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",394,12345,12369,Object.isNumber,false) || Object.isNumber(s.color))) {
-      s.color = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",395,12400,12426,colors[s.color].toString,false) || colors[s.color].toString());
+      s.color = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",135,8372,8394,null,false,false) || window.parent._wrap_popCallStack(colors[j++].toString()));
+    } else if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",136,8411,8435,Object.isNumber,false,false) || window.parent._wrap_popCallStack(Object.isNumber(s.color)))) {
+      s.color = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",137,8455,8481,colors[s.color].toString,false,false) || window.parent._wrap_popCallStack(colors[s.color].toString()));
     }
     if (!s.xaxis) 
       s.xaxis = this.axes.x;
@@ -182,292 +182,272 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 183, 5886,13363, (t
       s.yaxis = this.axes.y;
     else if (s.yaxis == 2) 
       s.yaxis = this.axes.y2;
-    s.lines = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",407,12802,12858,Object.extend,false) || Object.extend((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",407,12816,12848,Object.clone,false) || Object.clone(this.options.lines)), s.lines));
-    s.points = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",408,12884,12942,Object.extend,false) || Object.extend((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",408,12898,12931,Object.clone,false) || Object.clone(this.options.points)), s.points));
-    s.bars = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",409,12966,13020,Object.extend,false) || Object.extend((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",409,12980,13011,Object.clone,false) || Object.clone(this.options.bars)), s.bars));
-    s.candles = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",410,13047,13107,Object.extend,false) || Object.extend((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",410,13061,13095,Object.clone,false) || Object.clone(this.options.candles)), s.candles));
-    s.pie = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",411,13130,13182,Object.extend,false) || Object.extend((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",411,13144,13174,Object.clone,false) || Object.clone(this.options.pie)), s.pie));
-    s.mouse = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",412,13207,13263,Object.extend,false) || Object.extend((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",412,13221,13253,Object.clone,false) || Object.clone(this.options.mouse)), s.mouse));
+    s.lines = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",151,8819,8875,Object.extend,false,false) || window.parent._wrap_popCallStack(Object.extend((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",151,8833,8865,Object.clone,false,false) || window.parent._wrap_popCallStack(Object.clone(this.options.lines))), s.lines)));
+    s.points = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",152,8892,8950,Object.extend,false,false) || window.parent._wrap_popCallStack(Object.extend((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",152,8906,8939,Object.clone,false,false) || window.parent._wrap_popCallStack(Object.clone(this.options.points))), s.points)));
+    s.bars = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",153,8965,9019,Object.extend,false,false) || window.parent._wrap_popCallStack(Object.extend((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",153,8979,9010,Object.clone,false,false) || window.parent._wrap_popCallStack(Object.clone(this.options.bars))), s.bars)));
+    s.candles = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",154,9037,9097,Object.extend,false,false) || window.parent._wrap_popCallStack(Object.extend((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",154,9051,9085,Object.clone,false,false) || window.parent._wrap_popCallStack(Object.clone(this.options.candles))), s.candles)));
+    s.pie = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",155,9111,9163,Object.extend,false,false) || window.parent._wrap_popCallStack(Object.extend((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",155,9125,9155,Object.clone,false,false) || window.parent._wrap_popCallStack(Object.clone(this.options.pie))), s.pie)));
+    s.mouse = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",156,9179,9235,Object.extend,false,false) || window.parent._wrap_popCallStack(Object.extend((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",156,9193,9225,Object.clone,false,false) || window.parent._wrap_popCallStack(Object.clone(this.options.mouse))), s.mouse)));
     if (s.shadowSize == null) 
       s.shadowSize = this.options.shadowSize;
   }
 }, constructCanvas: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 418, 13389,15249, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 160, 9338,10769, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var el = this.el, size, c, oc;
-  this.canvas = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",422,13481,13507,el.select,false) || el.select('.flotr-canvas'))[0];
-  this.overlay = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",423,13536,13563,el.select,false) || el.select('.flotr-overlay'))[0];
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",425,13579,13614,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",425,13579,13597,el.childElements,false) || el.childElements()).invoke,false) ||   (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",425,13579,13597,el.childElements,false) || el.childElements()).invoke('remove'));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",428,13629,13720,el.setStyle,false) ||   el.setStyle({position: 'relative', cursor: 'default'}));
-  this.canvasWidth = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",433,13752,13765,el.getWidth,false) || el.getWidth());
-  this.canvasHeight = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",434,13796,13810,el.getHeight,false) || el.getHeight());
+  this.canvas = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",162,9400,9426,el.select,false,false) || window.parent._wrap_popCallStack(el.select('.flotr-canvas')))[0];
+  this.overlay = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",163,9448,9475,el.select,false,false) || window.parent._wrap_popCallStack(el.select('.flotr-overlay')))[0];
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",164,9482,9517,null,false,false) || window.parent._wrap_popCallStack(  (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",164,9482,9500,el.childElements,false,false) || window.parent._wrap_popCallStack(el.childElements())).invoke('remove')));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",165,9521,9575,el.setStyle,false,false) || window.parent._wrap_popCallStack(  el.setStyle({position: 'relative', cursor: 'default'})));
+  this.canvasWidth = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",166,9598,9611,el.getWidth,false,false) || window.parent._wrap_popCallStack(el.getWidth()));
+  this.canvasHeight = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",167,9635,9649,el.getHeight,false,false) || window.parent._wrap_popCallStack(el.getHeight()));
   size = {'width': this.canvasWidth, 'height': this.canvasHeight};
   if (this.canvasWidth <= 0 || this.canvasHeight <= 0) {
     throw 'Invalid dimensions for plot, width = ' + this.canvasWidth + ', height = ' + this.canvasHeight;
   }
   if (!this.canvas) {
-    c = this.canvas = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",446,14179,14206,Element,false) || new Element('canvas', size));
+    c = this.canvas = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",173,9929,9956,Element,false,false) || window.parent._wrap_popCallStack(new Element('canvas', size)));
     c.className = 'flotr-canvas';
-    c = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",448,14268,14332,c.writeAttribute,false) || c.writeAttribute('style', 'position:absolute;left:0px;top:0px;'));
+    c = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",175,10000,10064,c.writeAttribute,false,false) || window.parent._wrap_popCallStack(c.writeAttribute('style', 'position:absolute;left:0px;top:0px;')));
   } else {
-    c = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",450,14369,14401,this.canvas.writeAttribute,false) || this.canvas.writeAttribute(size));
+    c = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",177,10085,10117,this.canvas.writeAttribute,false,false) || window.parent._wrap_popCallStack(this.canvas.writeAttribute(size)));
   }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",452,14423,14435,el.insert,false) ||   el.insert(c));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",179,10125,10137,el.insert,false,false) || window.parent._wrap_popCallStack(  el.insert(c)));
   if (Prototype.Browser.IE) {
-    c = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",455,14493,14533,window.G_vmlCanvasManager.initElement,false) || window.G_vmlCanvasManager.initElement(c));
+    c = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",181,10177,10217,window.G_vmlCanvasManager.initElement,false,false) || window.parent._wrap_popCallStack(window.G_vmlCanvasManager.initElement(c)));
   }
-  this.ctx = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",457,14566,14584,c.getContext,false) || c.getContext('2d'));
+  this.ctx = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",183,10236,10254,c.getContext,false,false) || window.parent._wrap_popCallStack(c.getContext('2d')));
   if (!this.overlay) {
-    oc = this.overlay = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",461,14653,14680,Element,false) || new Element('canvas', size));
+    oc = this.overlay = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",185,10303,10330,Element,false,false) || window.parent._wrap_popCallStack(new Element('canvas', size)));
     oc.className = 'flotr-overlay';
-    oc = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",463,14745,14810,oc.writeAttribute,false) || oc.writeAttribute('style', 'position:absolute;left:0px;top:0px;'));
+    oc = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",187,10377,10442,oc.writeAttribute,false,false) || window.parent._wrap_popCallStack(oc.writeAttribute('style', 'position:absolute;left:0px;top:0px;')));
   } else {
-    oc = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",465,14848,14881,this.overlay.writeAttribute,false) || this.overlay.writeAttribute(size));
+    oc = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",189,10464,10497,this.overlay.writeAttribute,false,false) || window.parent._wrap_popCallStack(this.overlay.writeAttribute(size)));
   }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",467,14903,14916,el.insert,false) ||   el.insert(oc));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",191,10505,10518,el.insert,false,false) || window.parent._wrap_popCallStack(  el.insert(oc)));
   if (Prototype.Browser.IE) {
-    oc = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",470,14975,15016,window.G_vmlCanvasManager.initElement,false) || window.G_vmlCanvasManager.initElement(oc));
+    oc = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",193,10559,10600,window.G_vmlCanvasManager.initElement,false,false) || window.parent._wrap_popCallStack(window.G_vmlCanvasManager.initElement(oc)));
   }
-  this.octx = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",472,15050,15069,oc.getContext,false) || oc.getContext('2d'));
+  this.octx = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",195,10620,10639,oc.getContext,false,false) || window.parent._wrap_popCallStack(oc.getContext('2d')));
   if (window.CanvasText) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",476,15122,15149,CanvasText.enable,false) ||     CanvasText.enable(this.ctx));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",477,15164,15192,CanvasText.enable,false) ||     CanvasText.enable(this.octx));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",197,10672,10699,CanvasText.enable,false,false) || window.parent._wrap_popCallStack(    CanvasText.enable(this.ctx)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",198,10705,10733,CanvasText.enable,false,false) || window.parent._wrap_popCallStack(    CanvasText.enable(this.octx)));
     this.textEnabled = true;
   }
 }, getTextDimensions: function(text, canvasStyle, HtmlStyle, className) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 481, 15275,16005, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 201, 10790,11349, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (!text) 
     return {width: 0, height: 0};
   if (!this.options.HtmlText && this.textEnabled) {
-    var bounds = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",488,15502,15543,this.ctx.getTextBounds,false) || this.ctx.getTextBounds(text, canvasStyle));
+    var bounds = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",205,10959,11000,this.ctx.getTextBounds,false,false) || window.parent._wrap_popCallStack(this.ctx.getTextBounds(text, canvasStyle)));
     return {width: bounds.width + 2, height: bounds.height + 6};
   } else {
-    var dummyDiv = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",494,15714,15881,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",494,15714,15854,this.el.insert,false) || this.el.insert('<div style="position:absolute;top:-10000px;' + HtmlStyle + '" class="' + className + ' flotr-dummy-div">' + text + '</div>')).select,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",494,15714,15854,this.el.insert,false) || this.el.insert('<div style="position:absolute;top:-10000px;' + HtmlStyle + '" class="' + className + ' flotr-dummy-div">' + text + '</div>')).select(".flotr-dummy-div"))[0];
-    dim = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",495,15905,15929,dummyDiv.getDimensions,false) || dummyDiv.getDimensions());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",496,15944,15961,dummyDiv.remove,false) ||     dummyDiv.remove());
+    var dummyDiv = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",208,11097,11264,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",208,11097,11237,this.el.insert,false,false) || window.parent._wrap_popCallStack(this.el.insert('<div style="position:absolute;top:-10000px;' + HtmlStyle + '" class="' + className + ' flotr-dummy-div">' + text + '</div>'))).select(".flotr-dummy-div")))[0];
+    dim = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",209,11279,11303,dummyDiv.getDimensions,false,false) || window.parent._wrap_popCallStack(dummyDiv.getDimensions()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",210,11309,11326,dummyDiv.remove,false,false) || window.parent._wrap_popCallStack(    dummyDiv.remove()));
     return dim;
   }
 }, loadDataGrid: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 500, 16026,16799, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 213, 11365,11831, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (this.seriesData) 
     return this.seriesData;
   var s = this.series;
   var dg = [];
   for (i = 0; i < s.length; ++i) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",508,16207,16660,s[i].data.each,false) ||     s[i].data.each(function(v) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 508, 16222,16659, (typeof arguments === 'object' ? arguments.callee.caller : null));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",219,11507,11743,s[i].data.each,false,false) || window.parent._wrap_popCallStack(    s[i].data.each(function(v) {
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 219, 11522,11742, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var x = v[0], y = v[1];
-  if (r = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",511,16324,16409,dg.find,false) || dg.find(function(row) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 511, 16332,16408, (typeof arguments === 'object' ? arguments.callee.caller : null));
+  if (r = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",221,11572,11620,dg.find,false,false) || window.parent._wrap_popCallStack(dg.find(function(row) {
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 221, 11580,11619, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return row[0] == x;
-}))) {
+})))) {
     r[i + 1] = y;
   } else {
     var newRow = [];
     newRow[0] = x;
     newRow[i + 1] = y;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",519,16609,16624,dg.push,false) ||     dg.push(newRow));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",229,11720,11735,dg.push,false,false) || window.parent._wrap_popCallStack(    dg.push(newRow)));
   }
-}));
+})));
   }
-  dg = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",525,16691,16753,dg.sortBy,false) || dg.sortBy(function(v) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 525, 16701,16752, (typeof arguments === 'object' ? arguments.callee.caller : null));
+  dg = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",233,11756,11797,dg.sortBy,false,false) || window.parent._wrap_popCallStack(dg.sortBy(function(v) {
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 233, 11766,11796, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return v[0];
-}));
+})));
   return this.seriesData = dg;
 }, showTab: function(tabName, onComplete) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 532, 16819,17576, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 237, 11842,12485, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var elementsClassNames = 'canvas, .flotr-labels, .flotr-legend, .flotr-legend-bg, .flotr-title, .flotr-subtitle';
   switch (tabName) {
     case 'graph':
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",536,17039,17064,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",536,17039,17057,this.datagrid.up,false) || this.datagrid.up()).hide,false) ||       (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",536,17039,17057,this.datagrid.up,false) || this.datagrid.up()).hide());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",537,17079,17128,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",537,17079,17113,this.el.select,false) || this.el.select(elementsClassNames)).invoke,false) ||       (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",537,17079,17113,this.el.select,false) || this.el.select(elementsClassNames)).invoke('show'));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",538,17143,17185,this.tabs.data.removeClassName,false) ||       this.tabs.data.removeClassName('selected'));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",539,17200,17240,this.tabs.graph.addClassName,false) ||       this.tabs.graph.addClassName('selected'));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",241,12035,12060,null,false,false) || window.parent._wrap_popCallStack(      (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",241,12035,12053,this.datagrid.up,false,false) || window.parent._wrap_popCallStack(this.datagrid.up())).hide()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",242,12068,12117,null,false,false) || window.parent._wrap_popCallStack(      (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",242,12068,12102,this.el.select,false,false) || window.parent._wrap_popCallStack(this.el.select(elementsClassNames))).invoke('show')));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",243,12125,12167,this.tabs.data.removeClassName,false,false) || window.parent._wrap_popCallStack(      this.tabs.data.removeClassName('selected')));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",244,12175,12215,this.tabs.graph.addClassName,false,false) || window.parent._wrap_popCallStack(      this.tabs.graph.addClassName('selected')));
       break;
     case 'data':
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",542,17297,17321,this.constructDataGrid,false) ||       this.constructDataGrid());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",543,17336,17361,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",543,17336,17354,this.datagrid.up,false) || this.datagrid.up()).show,false) ||       (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",543,17336,17354,this.datagrid.up,false) || this.datagrid.up()).show());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",544,17376,17425,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",544,17376,17410,this.el.select,false) || this.el.select(elementsClassNames)).invoke,false) ||       (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",544,17376,17410,this.el.select,false) || this.el.select(elementsClassNames)).invoke('hide'));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",545,17440,17479,this.tabs.data.addClassName,false) ||       this.tabs.data.addClassName('selected'));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",546,17494,17537,this.tabs.graph.removeClassName,false) ||       this.tabs.graph.removeClassName('selected'));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",247,12253,12277,this.constructDataGrid,false,false) || window.parent._wrap_popCallStack(      this.constructDataGrid()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",248,12285,12310,null,false,false) || window.parent._wrap_popCallStack(      (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",248,12285,12303,this.datagrid.up,false,false) || window.parent._wrap_popCallStack(this.datagrid.up())).show()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",249,12318,12367,null,false,false) || window.parent._wrap_popCallStack(      (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",249,12318,12352,this.el.select,false,false) || window.parent._wrap_popCallStack(this.el.select(elementsClassNames))).invoke('hide')));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",250,12375,12414,this.tabs.data.addClassName,false,false) || window.parent._wrap_popCallStack(      this.tabs.data.addClassName('selected')));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",251,12422,12465,this.tabs.graph.removeClassName,false,false) || window.parent._wrap_popCallStack(      this.tabs.graph.removeClassName('selected')));
       break;
   }
 }, constructTabs: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 550, 17598,18754, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 254, 12502,13335, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  var tabsContainer = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",551,17641,17832,Element,false) || new Element('div', {className: 'flotr-tabs-group', style: 'position:absolute;left:0px;top:' + this.canvasHeight + 'px;width:' + this.canvasWidth + 'px;'}));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",555,17843,17906,this.el.insert,false) ||   this.el.insert({bottom: tabsContainer}));
-  this.tabs = {graph: (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",562,17951,18122,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",559,17951,18075,Element,false) || new Element('div', {className: 'flotr-tab selected', style: 'float:left;'})).update,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",559,17951,18075,Element,false) || new Element('div', {className: 'flotr-tab selected', style: 'float:left;'})).update(this.options.spreadsheet.tabGraphLabel)), data: (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",566,18143,18304,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",563,18143,18258,Element,false) || new Element('div', {className: 'flotr-tab', style: 'float:left;'})).update,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",563,18143,18258,Element,false) || new Element('div', {className: 'flotr-tab', style: 'float:left;'})).update(this.options.spreadsheet.tabDataLabel))};
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",569,18328,18388,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",569,18328,18365,tabsContainer.insert,false) || tabsContainer.insert(this.tabs.graph)).insert,false) ||   (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",569,18328,18365,tabsContainer.insert,false) || tabsContainer.insert(this.tabs.graph)).insert(this.tabs.data));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",571,18401,18510,this.el.setStyle,false) ||   this.el.setStyle({height: this.canvasHeight + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",572,18461,18487,this.tabs.data.getHeight,false) || this.tabs.data.getHeight()) + 2 + 'px'}));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",575,18523,18630,this.tabs.graph.observe,false) ||   this.tabs.graph.observe('click', (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",577,18557,18629,(function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 575, 18557,18617, (typeof arguments === 'object' ? arguments.callee.caller : null));
+  var tabsContainer = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",255,12537,12691,Element,false,false) || window.parent._wrap_popCallStack(new Element('div', {className: 'flotr-tabs-group', style: 'position:absolute;left:0px;top:' + this.canvasHeight + 'px;width:' + this.canvasWidth + 'px;'})));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",256,12695,12734,this.el.insert,false,false) || window.parent._wrap_popCallStack(  this.el.insert({bottom: tabsContainer})));
+  this.tabs = {graph: (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",257,12758,12880,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",257,12758,12833,Element,false,false) || window.parent._wrap_popCallStack(new Element('div', {className: 'flotr-tab selected', style: 'float:left;'}))).update(this.options.spreadsheet.tabGraphLabel))), data: (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",257,12888,13000,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",257,12888,12954,Element,false,false) || window.parent._wrap_popCallStack(new Element('div', {className: 'flotr-tab', style: 'float:left;'}))).update(this.options.spreadsheet.tabDataLabel)))};
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",258,13005,13065,null,false,false) || window.parent._wrap_popCallStack(  (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",258,13005,13042,tabsContainer.insert,false,false) || window.parent._wrap_popCallStack(tabsContainer.insert(this.tabs.graph))).insert(this.tabs.data)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",259,13069,13154,this.el.setStyle,false,false) || window.parent._wrap_popCallStack(  this.el.setStyle({height: this.canvasHeight + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",259,13115,13141,this.tabs.data.getHeight,false,false) || window.parent._wrap_popCallStack(this.tabs.data.getHeight())) + 2 + 'px'})));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",260,13158,13244,this.tabs.graph.observe,false,false) || window.parent._wrap_popCallStack(  this.tabs.graph.observe('click', (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",262,13192,13243,null,false,false) || window.parent._wrap_popCallStack((function() {
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 260, 13192,13231, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",576,18584,18605,this.showTab,false) ||   this.showTab('graph'));
-}).bind,false) || (function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 575, 18557,18617, (typeof arguments === 'object' ? arguments.callee.caller : null));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",261,13207,13228,this.showTab,false,false) || window.parent._wrap_popCallStack(  this.showTab('graph')));
+}).bind(this))))));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",263,13248,13332,this.tabs.data.observe,false,false) || window.parent._wrap_popCallStack(  this.tabs.data.observe('click', (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",265,13281,13331,null,false,false) || window.parent._wrap_popCallStack((function() {
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 263, 13281,13319, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",576,18584,18605,this.showTab,false) ||   this.showTab('graph'));
-}).bind(this))));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",578,18641,18746,this.tabs.data.observe,false) ||   this.tabs.data.observe('click', (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",580,18674,18745,(function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 578, 18674,18733, (typeof arguments === 'object' ? arguments.callee.caller : null));
-
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",579,18701,18721,this.showTab,false) ||   this.showTab('data'));
-}).bind,false) || (function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 578, 18674,18733, (typeof arguments === 'object' ? arguments.callee.caller : null));
-
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",579,18701,18721,this.showTab,false) ||   this.showTab('data'));
-}).bind(this))));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",264,13296,13316,this.showTab,false,false) || window.parent._wrap_popCallStack(  this.showTab('data')));
+}).bind(this))))));
 }, constructDataGrid: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 584, 18784,22225, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 266, 13356,15909, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (this.datagrid) 
     return this.datagrid;
-  var i, j, s = this.series, datagrid = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",590,18925,18944,this.loadDataGrid,false) || this.loadDataGrid());
-  var t = this.datagrid = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",592,18981,19093,Element,false) || new Element('table', {className: 'flotr-datagrid', style: 'height:100px;'}));
+  var i, j, s = this.series, datagrid = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",269,13457,13476,this.loadDataGrid,false,false) || window.parent._wrap_popCallStack(this.loadDataGrid()));
+  var t = this.datagrid = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",270,13504,13579,Element,false,false) || window.parent._wrap_popCallStack(new Element('table', {className: 'flotr-datagrid', style: 'height:100px;'})));
   var colgroup = ['<colgroup><col />'];
   var html = ['<tr class="first-row">'];
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",600,19203,19231,html.push,false) ||   html.push('<th>&nbsp;</th>'));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",273,13664,13692,html.push,false,false) || window.parent._wrap_popCallStack(  html.push('<th>&nbsp;</th>')));
   for (i = 0; i < s.length; ++i) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",602,19288,19373,html.push,false) ||     html.push('<th scope="col">' + (s[i].label || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",602,19334,19361,String.fromCharCode,false) || String.fromCharCode(65 + i))) + '</th>'));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",603,19388,19412,colgroup.push,false) ||     colgroup.push('<col />'));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",275,13733,13818,html.push,false,false) || window.parent._wrap_popCallStack(    html.push('<th scope="col">' + (s[i].label || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",275,13779,13806,String.fromCharCode,false,false) || window.parent._wrap_popCallStack(String.fromCharCode(65 + i)))) + '</th>')));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",276,13824,13848,colgroup.push,false,false) || window.parent._wrap_popCallStack(    colgroup.push('<col />')));
   }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",605,19434,19452,html.push,false) ||   html.push('</tr>'));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",278,13856,13874,html.push,false,false) || window.parent._wrap_popCallStack(  html.push('</tr>')));
   for (j = 0; j < datagrid.length; ++j) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",609,19520,19537,html.push,false) ||     html.push('<tr>'));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",280,13922,13939,html.push,false,false) || window.parent._wrap_popCallStack(    html.push('<tr>')));
     for (i = 0; i < s.length + 1; ++i) {
       var tag = 'td';
-      var content = (datagrid[j][i] != null ? (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",612,19679,19714,Math.round,false) || Math.round(datagrid[j][i] * 100000)) / 100000 : '');
+      var content = (datagrid[j][i] != null ? (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",283,14050,14085,Math.round,false,false) || window.parent._wrap_popCallStack(Math.round(datagrid[j][i] * 100000))) / 100000 : '');
       if (i == 0) {
         tag = 'th';
         var label;
         if (this.options.xaxis.ticks) {
-          var tick = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",618,19918,20050,this.options.xaxis.ticks.find,false) || this.options.xaxis.ticks.find(function(x) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 618, 19948,20049, (typeof arguments === 'object' ? arguments.callee.caller : null));
+          var tick = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",288,14222,14301,this.options.xaxis.ticks.find,false,false) || window.parent._wrap_popCallStack(this.options.xaxis.ticks.find(function(x) {
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 288, 14252,14300, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return x[0] == datagrid[j][i];
-}));
+})));
           if (tick) 
             label = tick[1];
         } else {
-          label = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",623,20167,20208,this.options.xaxis.tickFormatter,false) || this.options.xaxis.tickFormatter(content));
+          label = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",294,14388,14429,this.options.xaxis.tickFormatter,false,false) || window.parent._wrap_popCallStack(this.options.xaxis.tickFormatter(content)));
         }
         if (label) 
           content = label;
       }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",629,20322,20415,html.push,false) ||       html.push('<' + tag + (tag == 'th' ? ' scope="row"' : '') + '>' + content + '</' + tag + '>'));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",299,14502,14595,html.push,false,false) || window.parent._wrap_popCallStack(      html.push('<' + tag + (tag == 'th' ? ' scope="row"' : '') + '>' + content + '</' + tag + '>')));
     }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",631,20445,20463,html.push,false) ||     html.push('</tr>'));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",301,14607,14625,html.push,false,false) || window.parent._wrap_popCallStack(    html.push('</tr>')));
   }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",633,20485,20513,colgroup.push,false) ||   colgroup.push('</colgroup>'));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",634,20524,20567,t.update,false) ||   t.update((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",634,20533,20550,colgroup.join,false) || colgroup.join('')) + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",634,20553,20566,html.join,false) || html.join(''))));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",303,14633,14661,colgroup.push,false,false) || window.parent._wrap_popCallStack(  colgroup.push('</colgroup>')));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",304,14665,14708,t.update,false,false) || window.parent._wrap_popCallStack(  t.update((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",304,14674,14691,colgroup.join,false,false) || window.parent._wrap_popCallStack(colgroup.join(''))) + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",304,14694,14707,html.join,false,false) || window.parent._wrap_popCallStack(html.join(''))))));
   if (!Prototype.Browser.IE) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",637,20622,21264,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",637,20622,20636,t.select,false) || t.select('td')).each,false) ||     (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",637,20622,20636,t.select,false) || t.select('td')).each(function(td) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 637, 20642,21263, (typeof arguments === 'object' ? arguments.callee.caller : null));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",306,14745,15163,null,false,false) || window.parent._wrap_popCallStack(    (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",306,14745,14759,t.select,false,false) || window.parent._wrap_popCallStack(t.select('td'))).each(function(td) {
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 306, 14765,15162, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",638,20675,21010,td.observe,false) ||   td.observe('mouseover', function(e) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 638, 20699,21009, (typeof arguments === 'object' ? arguments.callee.caller : null));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",307,14782,15021,td.observe,false,false) || window.parent._wrap_popCallStack(  td.observe('mouseover', function(e) {
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 307, 14806,15020, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  td = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",639,20740,20751,e.element,false) || e.element());
-  var siblings = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",640,20789,20810,td.previousSiblings,false) || td.previousSiblings());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",642,20835,20903,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",642,20835,20860,t.select,false) || t.select('th[scope=col]'))[siblings.length - 1].addClassName,false) ||   (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",642,20835,20860,t.select,false) || t.select('th[scope=col]'))[siblings.length - 1].addClassName('hover'));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",643,20926,20989,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",643,20926,20950,t.select,false) || t.select('colgroup col'))[siblings.length].addClassName,false) ||   (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",643,20926,20950,t.select,false) || t.select('colgroup col'))[siblings.length].addClassName('hover'));
-}));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",646,21031,21247,td.observe,false) ||   td.observe('mouseout', function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 646, 21054,21246, (typeof arguments === 'object' ? arguments.callee.caller : null));
+  td = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",308,14827,14838,e.element,false,false) || window.parent._wrap_popCallStack(e.element()));
+  var siblings = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",309,14857,14878,td.previousSiblings,false,false) || window.parent._wrap_popCallStack(td.previousSiblings()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",310,14882,14950,null,false,false) || window.parent._wrap_popCallStack(  (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",310,14882,14907,t.select,false,false) || window.parent._wrap_popCallStack(t.select('th[scope=col]')))[siblings.length - 1].addClassName('hover')));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",311,14954,15017,null,false,false) || window.parent._wrap_popCallStack(  (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",311,14954,14978,t.select,false,false) || window.parent._wrap_popCallStack(t.select('colgroup col')))[siblings.length].addClassName('hover')));
+})));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",313,15025,15159,td.observe,false,false) || window.parent._wrap_popCallStack(  td.observe('mouseout', function() {
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 313, 15048,15158, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",647,21089,21226,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",647,21089,21129,t.select,false) || t.select('colgroup col.hover, th.hover')).each,false) ||   (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",647,21089,21129,t.select,false) || t.select('colgroup col.hover, th.hover')).each(function(e) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 647, 21135,21225, (typeof arguments === 'object' ? arguments.callee.caller : null));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",314,15063,15155,null,false,false) || window.parent._wrap_popCallStack(  (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",314,15063,15103,t.select,false,false) || window.parent._wrap_popCallStack(t.select('colgroup col.hover, th.hover'))).each(function(e) {
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 314, 15109,15154, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",648,21175,21201,e.removeClassName,false) ||   e.removeClassName('hover'));
-}));
-}));
-}));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",315,15125,15151,e.removeClassName,false,false) || window.parent._wrap_popCallStack(  e.removeClassName('hover')));
+})));
+})));
+})));
   }
-  var toolbar = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",660,21302,21854,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",656,21302,21617,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",654,21302,21383,Element,false) || new Element('div', {className: 'flotr-datagrid-toolbar'})).insert,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",654,21302,21383,Element,false) || new Element('div', {className: 'flotr-datagrid-toolbar'})).insert((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",660,21401,21616,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",660,21401,21570,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",657,21401,21521,Element,false) || new Element('button', {type: 'button', className: 'flotr-datagrid-toolbar-button'})).update,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",657,21401,21521,Element,false) || new Element('button', {type: 'button', className: 'flotr-datagrid-toolbar-button'})).update(this.options.spreadsheet.toolbarDownload)).observe,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",660,21401,21570,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",657,21401,21521,Element,false) || new Element('button', {type: 'button', className: 'flotr-datagrid-toolbar-button'})).update,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",657,21401,21521,Element,false) || new Element('button', {type: 'button', className: 'flotr-datagrid-toolbar-button'})).update(this.options.spreadsheet.toolbarDownload)).observe('click', (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",660,21588,21615,this.downloadCSV.bind,false) || this.downloadCSV.bind(this)))))).insert,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",656,21302,21617,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",654,21302,21383,Element,false) || new Element('div', {className: 'flotr-datagrid-toolbar'})).insert,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",654,21302,21383,Element,false) || new Element('div', {className: 'flotr-datagrid-toolbar'})).insert((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",660,21401,21616,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",660,21401,21570,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",657,21401,21521,Element,false) || new Element('button', {type: 'button', className: 'flotr-datagrid-toolbar-button'})).update,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",657,21401,21521,Element,false) || new Element('button', {type: 'button', className: 'flotr-datagrid-toolbar-button'})).update(this.options.spreadsheet.toolbarDownload)).observe,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",660,21401,21570,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",657,21401,21521,Element,false) || new Element('button', {type: 'button', className: 'flotr-datagrid-toolbar-button'})).update,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",657,21401,21521,Element,false) || new Element('button', {type: 'button', className: 'flotr-datagrid-toolbar-button'})).update(this.options.spreadsheet.toolbarDownload)).observe('click', (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",660,21588,21615,this.downloadCSV.bind,false) || this.downloadCSV.bind(this)))))).insert((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",664,21635,21853,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",664,21635,21805,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",661,21635,21755,Element,false) || new Element('button', {type: 'button', className: 'flotr-datagrid-toolbar-button'})).update,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",661,21635,21755,Element,false) || new Element('button', {type: 'button', className: 'flotr-datagrid-toolbar-button'})).update(this.options.spreadsheet.toolbarSelectAll)).observe,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",664,21635,21805,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",661,21635,21755,Element,false) || new Element('button', {type: 'button', className: 'flotr-datagrid-toolbar-button'})).update,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",661,21635,21755,Element,false) || new Element('button', {type: 'button', className: 'flotr-datagrid-toolbar-button'})).update(this.options.spreadsheet.toolbarSelectAll)).observe('click', (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",664,21823,21852,this.selectAllData.bind,false) || this.selectAllData.bind(this))))));
-  var container = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",666,21883,22089,Element,false) || new Element('div', {className: 'flotr-datagrid-container', style: 'left:0px;top:0px;width:' + this.canvasWidth + 'px;height:' + this.canvasHeight + 'px;overflow:auto;'}));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",670,22100,22125,container.insert,false) ||   container.insert(toolbar));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",671,22136,22160,t.wrap,false) ||   t.wrap((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",671,22143,22159,container.hide,false) || container.hide())));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",673,22173,22198,this.el.insert,false) ||   this.el.insert(container));
+  var toolbar = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",320,15185,15619,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",320,15185,15429,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",320,15185,15242,Element,false,false) || window.parent._wrap_popCallStack(new Element('div', {className: 'flotr-datagrid-toolbar'}))).insert((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",320,15250,15428,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",320,15250,15382,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",320,15250,15333,Element,false,false) || window.parent._wrap_popCallStack(new Element('button', {type: 'button', className: 'flotr-datagrid-toolbar-button'}))).update(this.options.spreadsheet.toolbarDownload))).observe('click', (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",320,15400,15427,this.downloadCSV.bind,false,false) || window.parent._wrap_popCallStack(this.downloadCSV.bind(this))))))))).insert((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",320,15437,15618,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",320,15437,15570,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",320,15437,15520,Element,false,false) || window.parent._wrap_popCallStack(new Element('button', {type: 'button', className: 'flotr-datagrid-toolbar-button'}))).update(this.options.spreadsheet.toolbarSelectAll))).observe('click', (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",320,15588,15617,this.selectAllData.bind,false,false) || window.parent._wrap_popCallStack(this.selectAllData.bind(this)))))))));
+  var container = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",321,15639,15808,Element,false,false) || window.parent._wrap_popCallStack(new Element('div', {className: 'flotr-datagrid-container', style: 'left:0px;top:0px;width:' + this.canvasWidth + 'px;height:' + this.canvasHeight + 'px;overflow:auto;'})));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",322,15812,15837,container.insert,false,false) || window.parent._wrap_popCallStack(  container.insert(toolbar)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",323,15841,15865,t.wrap,false,false) || window.parent._wrap_popCallStack(  t.wrap((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",323,15848,15864,container.hide,false,false) || window.parent._wrap_popCallStack(container.hide())))));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",324,15869,15894,this.el.insert,false,false) || window.parent._wrap_popCallStack(  this.el.insert(container)));
   return t;
 }, selectAllData: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 676, 22247,23212, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 326, 15926,16589, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (this.tabs) {
-    var selection, range, doc, win, node = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",678,22339,22363,this.constructDataGrid,false) || this.constructDataGrid());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",680,22380,22400,this.showTab,false) ||     this.showTab('data'));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",697,22420,23148,(function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 683, 22420,23139, (typeof arguments === 'object' ? arguments.callee.caller : null));
+    var selection, range, doc, win, node = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",328,16001,16025,this.constructDataGrid,false,false) || window.parent._wrap_popCallStack(this.constructDataGrid()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",329,16031,16051,this.showTab,false,false) || window.parent._wrap_popCallStack(    this.showTab('data')));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",340,16058,16541,null,false,false) || window.parent._wrap_popCallStack(    (function() {
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 330, 16058,16532, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  if ((doc = node.ownerDocument) && (win = doc.defaultView) && win.getSelection && doc.createRange && (selection = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",686,22606,22627,window.getSelection,false) || window.getSelection())) && selection.removeAllRanges) {
-    range = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",688,22711,22728,doc.createRange,false) || doc.createRange());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",689,22751,22773,range.selectNode,false) ||     range.selectNode(node));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",690,22796,22823,selection.removeAllRanges,false) ||     selection.removeAllRanges());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",691,22846,22871,selection.addRange,false) ||     selection.addRange(range));
-  } else if (document.body && document.body.createTextRange && (range = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",693,22981,23012,document.body.createTextRange,false) || document.body.createTextRange()))) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",694,23038,23067,range.moveToElementText,false) ||     range.moveToElementText(node));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",695,23090,23104,range.select,false) ||     range.select());
+  if ((doc = node.ownerDocument) && (win = doc.defaultView) && win.getSelection && doc.createRange && (selection = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",331,16186,16207,window.getSelection,false,false) || window.parent._wrap_popCallStack(window.getSelection()))) && selection.removeAllRanges) {
+    range = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",332,16253,16270,doc.createRange,false,false) || window.parent._wrap_popCallStack(doc.createRange()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",333,16276,16298,range.selectNode,false,false) || window.parent._wrap_popCallStack(    range.selectNode(node)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",334,16304,16331,selection.removeAllRanges,false,false) || window.parent._wrap_popCallStack(    selection.removeAllRanges()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",335,16337,16362,selection.addRange,false,false) || window.parent._wrap_popCallStack(    selection.addRange(range)));
+  } else if (document.body && document.body.createTextRange && (range = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",336,16436,16467,document.body.createTextRange,false,false) || window.parent._wrap_popCallStack(document.body.createTextRange())))) {
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",337,16476,16505,range.moveToElementText,false,false) || window.parent._wrap_popCallStack(    range.moveToElementText(node)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",338,16511,16525,range.select,false,false) || window.parent._wrap_popCallStack(    range.select()));
   }
-}).defer,false) ||     (function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 683, 22420,23139, (typeof arguments === 'object' ? arguments.callee.caller : null));
-
-  if ((doc = node.ownerDocument) && (win = doc.defaultView) && win.getSelection && doc.createRange && (selection = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",686,22606,22627,window.getSelection,false) || window.getSelection())) && selection.removeAllRanges) {
-    range = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",688,22711,22728,doc.createRange,false) || doc.createRange());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",689,22751,22773,range.selectNode,false) ||     range.selectNode(node));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",690,22796,22823,selection.removeAllRanges,false) ||     selection.removeAllRanges());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",691,22846,22871,selection.addRange,false) ||     selection.addRange(range));
-  } else if (document.body && document.body.createTextRange && (range = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",693,22981,23012,document.body.createTextRange,false) || document.body.createTextRange()))) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",694,23038,23067,range.moveToElementText,false) ||     range.moveToElementText(node));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",695,23090,23104,range.select,false) ||     range.select());
-  }
-}).defer());
+}).defer()));
     return true;
   } else 
     return false;
 }, downloadCSV: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 701, 23232,24215, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 344, 16604,17355, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  var i, csv = '"x"', series = this.series, dg = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",704,23328,23347,this.loadDataGrid,false) || this.loadDataGrid());
+  var i, csv = '"x"', series = this.series, dg = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",345,16666,16685,this.loadDataGrid,false,false) || window.parent._wrap_popCallStack(this.loadDataGrid()));
   for (i = 0; i < series.length; ++i) {
-    csv += '%09"' + (series[i].label || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",707,23447,23474,String.fromCharCode,false) || String.fromCharCode(65 + i))) + '"';
+    csv += '%09"' + (series[i].label || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",347,16767,16794,String.fromCharCode,false,false) || window.parent._wrap_popCallStack(String.fromCharCode(65 + i)))) + '"';
   }
   csv += "%0D%0A";
   for (i = 0; i < dg.length; ++i) {
     if (this.options.xaxis.ticks) {
-      var tick = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",713,23638,23748,this.options.xaxis.ticks.find,false) || this.options.xaxis.ticks.find(function(x) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 713, 23668,23747, (typeof arguments === 'object' ? arguments.callee.caller : null));
+      var tick = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",352,16915,16988,this.options.xaxis.ticks.find,false,false) || window.parent._wrap_popCallStack(this.options.xaxis.ticks.find(function(x) {
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 352, 16945,16987, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return x[0] == dg[i][0];
-}));
+})));
       if (tick) 
         dg[i][0] = tick[1];
     } else {
-      dg[i][0] = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",718,23847,23889,this.options.xaxis.tickFormatter,false) || this.options.xaxis.tickFormatter(dg[i][0]));
+      dg[i][0] = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",358,17065,17107,this.options.xaxis.tickFormatter,false,false) || window.parent._wrap_popCallStack(this.options.xaxis.tickFormatter(dg[i][0])));
     }
-    csv += (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",720,23926,23943,dg[i].join,false) || dg[i].join('%09')) + "%0D%0A";
+    csv += (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",360,17126,17143,dg[i].join,false,false) || window.parent._wrap_popCallStack(dg[i].join('%09'))) + "%0D%0A";
   }
   if (Prototype.Browser.IE) {
-    csv = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",723,24023,24080,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",723,24023,24062,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",723,24023,24044,csv.gsub,false) || csv.gsub('%09', '\t')).gsub,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",723,24023,24044,csv.gsub,false) || csv.gsub('%09', '\t')).gsub('%0A', '\n')).gsub,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",723,24023,24062,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",723,24023,24044,csv.gsub,false) || csv.gsub('%09', '\t')).gsub,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",723,24023,24044,csv.gsub,false) || csv.gsub('%09', '\t')).gsub('%0A', '\n')).gsub('%0D', '\r'));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",724,24095,24128,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",724,24095,24108,window.open,false) || window.open()).document.write,false) ||     (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",724,24095,24108,window.open,false) || window.open()).document.write(csv));
+    csv = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",363,17200,17257,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",363,17200,17239,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",363,17200,17221,csv.gsub,false,false) || window.parent._wrap_popCallStack(csv.gsub('%09', '\t'))).gsub('%0A', '\n'))).gsub('%0D', '\r')));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",364,17263,17296,null,false,false) || window.parent._wrap_popCallStack(    (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",364,17263,17276,window.open,false,false) || window.parent._wrap_popCallStack(window.open())).document.write(csv)));
   } else {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",726,24161,24196,window.open,false) ||     window.open('data:text/csv,' + csv));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",366,17313,17348,window.open,false,false) || window.parent._wrap_popCallStack(    window.open('data:text/csv,' + csv)));
   }
 }, initEvents: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 730, 24236,24587, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 368, 17369,17620, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",733,24325,24353,this.overlay.stopObserving,false) ||   this.overlay.stopObserving());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",734,24364,24431,this.overlay.observe,false) ||   this.overlay.observe('mousedown', (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",734,24398,24430,this.mouseDownHandler.bind,false) || this.mouseDownHandler.bind(this))));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",735,24442,24509,this.overlay.observe,false) ||   this.overlay.observe('mousemove', (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",735,24476,24508,this.mouseMoveHandler.bind,false) || this.mouseMoveHandler.bind(this))));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",736,24520,24579,this.overlay.observe,false) ||   this.overlay.observe('click', (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",736,24550,24578,this.clickHandler.bind,false) || this.clickHandler.bind(this))));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",369,17384,17412,this.overlay.stopObserving,false,false) || window.parent._wrap_popCallStack(  this.overlay.stopObserving()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",370,17416,17483,this.overlay.observe,false,false) || window.parent._wrap_popCallStack(  this.overlay.observe('mousedown', (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",370,17450,17482,this.mouseDownHandler.bind,false,false) || window.parent._wrap_popCallStack(this.mouseDownHandler.bind(this))))));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",371,17487,17554,this.overlay.observe,false,false) || window.parent._wrap_popCallStack(  this.overlay.observe('mousemove', (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",371,17521,17553,this.mouseMoveHandler.bind,false,false) || window.parent._wrap_popCallStack(this.mouseMoveHandler.bind(this))))));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",372,17558,17617,this.overlay.observe,false,false) || window.parent._wrap_popCallStack(  this.overlay.observe('click', (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",372,17588,17616,this.clickHandler.bind,false,false) || window.parent._wrap_popCallStack(this.clickHandler.bind(this))))));
 }, findDataRanges: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 739, 24612,26504, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 373, 17638,19103, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var s = this.series, a = this.axes;
   a.x.datamin = 0;
@@ -508,21 +488,21 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 739, 24612,26504, (
       }
     }
   }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",782,26048,26070,this.findXAxesValues,false) ||   this.findXAxesValues());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",784,26083,26107,this.calculateRange,false) ||   this.calculateRange(a.x));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",785,26118,26153,this.extendXRangeIfNeededByBar,false) ||   this.extendXRangeIfNeededByBar(a.x));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",413,18752,18774,this.findXAxesValues,false,false) || window.parent._wrap_popCallStack(  this.findXAxesValues()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",414,18778,18802,this.calculateRange,false,false) || window.parent._wrap_popCallStack(  this.calculateRange(a.x)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",415,18806,18841,this.extendXRangeIfNeededByBar,false,false) || window.parent._wrap_popCallStack(  this.extendXRangeIfNeededByBar(a.x)));
   if (a.x2.used) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",788,26196,26221,this.calculateRange,false) ||     this.calculateRange(a.x2));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",789,26236,26272,this.extendXRangeIfNeededByBar,false) ||     this.extendXRangeIfNeededByBar(a.x2));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",417,18866,18891,this.calculateRange,false,false) || window.parent._wrap_popCallStack(    this.calculateRange(a.x2)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",418,18897,18933,this.extendXRangeIfNeededByBar,false,false) || window.parent._wrap_popCallStack(    this.extendXRangeIfNeededByBar(a.x2)));
   }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",792,26296,26320,this.calculateRange,false) ||   this.calculateRange(a.y));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",793,26331,26366,this.extendYRangeIfNeededByBar,false) ||   this.extendYRangeIfNeededByBar(a.y));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",420,18941,18965,this.calculateRange,false,false) || window.parent._wrap_popCallStack(  this.calculateRange(a.y)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",421,18969,19004,this.extendYRangeIfNeededByBar,false,false) || window.parent._wrap_popCallStack(  this.extendYRangeIfNeededByBar(a.y)));
   if (a.y2.used) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",796,26409,26434,this.calculateRange,false) ||     this.calculateRange(a.y2));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",797,26449,26485,this.extendYRangeIfNeededByBar,false) ||     this.extendYRangeIfNeededByBar(a.y2));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",423,19029,19054,this.calculateRange,false,false) || window.parent._wrap_popCallStack(    this.calculateRange(a.y2)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",424,19060,19096,this.extendYRangeIfNeededByBar,false,false) || window.parent._wrap_popCallStack(    this.extendYRangeIfNeededByBar(a.y2)));
   }
 }, calculateRange: function(axis) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 801, 26529,27629, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 426, 19121,19965, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var o = axis.options, min = o.min != null ? o.min : axis.datamin, max = o.max != null ? o.max : axis.datamax, margin;
   if (max - min == 0.0) {
@@ -530,14 +510,14 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 801, 26529,27629, (
     min -= widen;
     max += widen;
   }
-  axis.tickSize = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",812,26890,26944,Flotr.getTickSize,false) || Flotr.getTickSize(o.noTicks, min, max, o.tickDecimals));
+  axis.tickSize = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",433,19385,19439,Flotr.getTickSize,false,false) || window.parent._wrap_popCallStack(Flotr.getTickSize(o.noTicks, min, max, o.tickDecimals)));
   if (o.min == null) {
     margin = o.autoscaleMargin;
     if (margin != 0) {
       min -= axis.tickSize * margin;
       if (min < 0 && axis.datamin >= 0) 
         min = 0;
-      min = axis.tickSize * (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",823,27206,27237,Math.floor,false) || Math.floor(min / axis.tickSize));
+      min = axis.tickSize * (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",440,19642,19673,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor(min / axis.tickSize)));
     }
   }
   if (o.max == null) {
@@ -546,13 +526,13 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 801, 26529,27629, (
       max += axis.tickSize * margin;
       if (max > 0 && axis.datamax <= 0) 
         max = 0;
-      max = axis.tickSize * (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",831,27515,27545,Math.ceil,false) || Math.ceil(max / axis.tickSize));
+      max = axis.tickSize * (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",449,19886,19916,Math.ceil,false,false) || window.parent._wrap_popCallStack(Math.ceil(max / axis.tickSize)));
     }
   }
   axis.min = min;
   axis.max = max;
 }, extendXRangeIfNeededByBar: function(axis) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 838, 27665,29034, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 454, 19994,20953, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (axis.options.max == null) {
     var newmax = axis.max, i, s, b, c, stackedSums = [], lastSerie = null;
@@ -573,7 +553,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 838, 27665,29034, (
             }
           }
           for (j = 0; j < stackedSums.length; j++) {
-            newmax = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",863,28826,28858,Math.max,false) || Math.max(stackedSums[j], newmax));
+            newmax = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",474,20823,20855,Math.max,false,false) || window.parent._wrap_popCallStack(Math.max(stackedSums[j], newmax)));
           }
         }
       }
@@ -582,7 +562,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 838, 27665,29034, (
     axis.max = newmax;
   }
 }, extendYRangeIfNeededByBar: function(axis) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 873, 29070,30434, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 482, 20982,21936, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (axis.options.max == null) {
     var newmax = axis.max, i, s, b, c, stackedSums = [], lastSerie = null;
@@ -603,7 +583,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 873, 29070,30434, (
             }
           }
           for (j = 0; j < stackedSums.length; j++) {
-            newmax = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",898,30226,30258,Math.max,false) || Math.max(stackedSums[j], newmax));
+            newmax = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",502,21806,21838,Math.max,false,false) || window.parent._wrap_popCallStack(Math.max(stackedSums[j], newmax)));
           }
         }
       }
@@ -612,7 +592,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 873, 29070,30434, (
     axis.max = newmax;
   }
 }, findXAxesValues: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 908, 30460,30756, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 510, 21955,22184, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   for (i = this.series.length - 1; i > -1; --i) {
     s = this.series[i];
@@ -622,45 +602,45 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 908, 30460,30756, (
     }
   }
 }, calculateTicks: function(axis) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 918, 30781,32292, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 518, 22202,23184, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var o = axis.options, i, v;
   axis.ticks = [];
   if (o.ticks) {
     var ticks = o.ticks, t, label;
-    if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",927,30981,31005,Object.isFunction,false) || Object.isFunction(ticks))) {
-      ticks = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",928,31034,31132,ticks,false) || ticks({min: axis.min, max: axis.max}));
+    if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",523,22328,22352,Object.isFunction,false,false) || window.parent._wrap_popCallStack(Object.isFunction(ticks)))) {
+      ticks = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",524,22370,22407,ticks,false,false) || window.parent._wrap_popCallStack(ticks({min: axis.min, max: axis.max})));
     }
     for (i = 0; i < ticks.length; ++i) {
       t = ticks[i];
       if (typeof (t) == 'object') {
         v = t[0];
-        label = (t.length > 1) ? t[1] : (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",939,31365,31383,o.tickFormatter,false) || o.tickFormatter(v));
+        label = (t.length > 1) ? t[1] : (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",530,22570,22588,o.tickFormatter,false,false) || window.parent._wrap_popCallStack(o.tickFormatter(v)));
       } else {
         v = t;
-        label = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",942,31468,31486,o.tickFormatter,false) || o.tickFormatter(v));
+        label = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",533,22636,22654,o.tickFormatter,false,false) || window.parent._wrap_popCallStack(o.tickFormatter(v)));
       }
       axis.ticks[i] = {v: v, label: label};
     }
   } else {
-    var start = axis.tickSize * (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",951,31699,31734,Math.ceil,false) || Math.ceil(axis.min / axis.tickSize)), decimals;
+    var start = axis.tickSize * (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",538,22757,22792,Math.ceil,false,false) || window.parent._wrap_popCallStack(Math.ceil(axis.min / axis.tickSize))), decimals;
     for (i = 0; start + i * axis.tickSize <= axis.max; ++i) {
       v = start + i * axis.tickSize;
       decimals = o.tickDecimals;
       if (decimals == null) 
-        decimals = 1 - (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",960,31988,32035,Math.floor,false) || Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",960,31999,32022,Math.log,false) || Math.log(axis.tickSize)) / Math.LN10));
+        decimals = 1 - (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",543,22988,23035,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",543,22999,23022,Math.log,false,false) || window.parent._wrap_popCallStack(Math.log(axis.tickSize))) / Math.LN10)));
       if (decimals < 0) 
         decimals = 0;
-      v = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",963,32109,32128,v.toFixed,false) || v.toFixed(decimals));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",964,32147,32258,axis.ticks.push,false) ||       axis.ticks.push({v: v, label: (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",966,32220,32238,o.tickFormatter,false) || o.tickFormatter(v))}));
+      v = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",546,23094,23113,v.toFixed,false,false) || window.parent._wrap_popCallStack(v.toFixed(decimals)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",547,23121,23171,axis.ticks.push,false,false) || window.parent._wrap_popCallStack(      axis.ticks.push({v: v, label: (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",547,23151,23169,o.tickFormatter,false,false) || window.parent._wrap_popCallStack(o.tickFormatter(v)))})));
     }
   }
 }, calculateSpacing: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 972, 32319,35520, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 550, 23204,25635, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var a = this.axes, options = this.options, series = this.series, margin = options.grid.labelMargin, x = a.x, x2 = a.x2, y = a.y, y2 = a.y2, maxOutset = 2, i, j, l, dim;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",985,32641,33515,[x, x2, y, y2].each,false) ||   [x, x2, y, y2].each(function(axis) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 985, 32661,33508, (typeof arguments === 'object' ? arguments.callee.caller : null));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",552,23390,24011,[x, x2, y, y2].each,false,false) || window.parent._wrap_popCallStack(  [x, x2, y, y2].each(function(axis) {
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 552, 23410,24004, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var maxLabel = '';
   if (axis.options.showLabels) {
@@ -671,19 +651,19 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 985, 32661,33508, (
       }
     }
   }
-  axis.maxLabel = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",996,33060,33255,this.getTextDimensions,false) || this.getTextDimensions(maxLabel, {size: options.fontSize, angle: (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",998,33160,33197,Flotr.toRad,false) || Flotr.toRad(axis.options.labelsAngle))}, 'font-size:smaller;', 'flotr-grid-label'));
-  axis.titleSize = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1000,33287,33496,this.getTextDimensions,false) || this.getTextDimensions(axis.options.title, {size: options.fontSize * 1.2, angle: (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1002,33403,33439,Flotr.toRad,false) || Flotr.toRad(axis.options.titleAngle))}, 'font-weight:bold;', 'flotr-axis-title'));
-}, this));
-  dim = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1007,33536,33679,this.getTextDimensions,false) || this.getTextDimensions(options.title, {size: options.fontSize * 1.5}, 'font-size:1em;font-weight:bold;', 'flotr-title'));
+  axis.maxLabel = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",562,23674,23820,this.getTextDimensions,false,false) || window.parent._wrap_popCallStack(this.getTextDimensions(maxLabel, {size: options.fontSize, angle: (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",562,23739,23776,Flotr.toRad,false,false) || window.parent._wrap_popCallStack(Flotr.toRad(axis.options.labelsAngle)))}, 'font-size:smaller;', 'flotr-grid-label')));
+  axis.titleSize = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",563,23841,24001,this.getTextDimensions,false,false) || window.parent._wrap_popCallStack(this.getTextDimensions(axis.options.title, {size: options.fontSize * 1.2, angle: (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",563,23922,23958,Flotr.toRad,false,false) || window.parent._wrap_popCallStack(Flotr.toRad(axis.options.titleAngle)))}, 'font-weight:bold;', 'flotr-axis-title')));
+}, this)));
+  dim = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",565,24021,24140,this.getTextDimensions,false,false) || window.parent._wrap_popCallStack(this.getTextDimensions(options.title, {size: options.fontSize * 1.5}, 'font-size:1em;font-weight:bold;', 'flotr-title')));
   this.titleHeight = dim.height;
-  dim = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1013,33740,33870,this.getTextDimensions,false) || this.getTextDimensions(options.subtitle, {size: options.fontSize}, 'font-size:smaller;', 'flotr-subtitle'));
+  dim = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",567,24183,24289,this.getTextDimensions,false,false) || window.parent._wrap_popCallStack(this.getTextDimensions(options.subtitle, {size: options.fontSize}, 'font-size:smaller;', 'flotr-subtitle')));
   this.subtitleHeight = dim.height;
   if (options.show) {
-    maxOutset = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1020,33973,34046,Math.max,false) || Math.max(maxOutset, options.points.radius + options.points.lineWidth / 2));
+    maxOutset = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",570,24365,24438,Math.max,false,false) || window.parent._wrap_popCallStack(Math.max(maxOutset, options.points.radius + options.points.lineWidth / 2)));
   }
   for (j = 0; j < options.length; ++j) {
     if (series[j].points.show) {
-      maxOutset = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1024,34178,34255,Math.max,false) || Math.max(maxOutset, series[j].points.radius + series[j].points.lineWidth / 2));
+      maxOutset = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",574,24536,24613,Math.max,false,false) || window.parent._wrap_popCallStack(Math.max(maxOutset, series[j].points.radius + series[j].points.lineWidth / 2)));
     }
   }
   var p = this.plotOffset = {left: 0, right: 0, top: 0, bottom: 0};
@@ -692,7 +672,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 985, 32661,33508, (
   p.top += (x2.options.showLabels ? (x2.maxLabel.height + margin) : 0) + (x2.options.title ? (x2.titleSize.height + margin) : 0) + this.subtitleHeight + this.titleHeight;
   p.left += (y.options.showLabels ? (y.maxLabel.width + margin) : 0) + (y.options.title ? (y.titleSize.width + margin) : 0);
   p.right += (y2.options.showLabels ? (y2.maxLabel.width + margin) : 0) + (y2.options.title ? (y2.titleSize.width + margin) : 0);
-  p.top = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1048,35143,35160,Math.floor,false) || Math.floor(p.top));
+  p.top = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",583,25309,25326,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor(p.top)));
   this.plotWidth = this.canvasWidth - p.left - p.right;
   this.plotHeight = this.canvasHeight - p.bottom - p.top;
   x.scale = this.plotWidth / (x.max - x.min);
@@ -700,52 +680,52 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 985, 32661,33508, (
   y.scale = this.plotHeight / (y.max - y.min);
   y2.scale = this.plotHeight / (y2.max - y2.min);
 }, draw: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1059, 35535,35988, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 590, 25643,25996, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1060,35558,35573,this.drawGrid,false) ||   this.drawGrid());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1061,35584,35601,this.drawLabels,false) ||   this.drawLabels());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1062,35612,35629,this.drawTitles,false) ||   this.drawTitles());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",591,25658,25673,this.drawGrid,false,false) || window.parent._wrap_popCallStack(  this.drawGrid()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",592,25677,25694,this.drawLabels,false,false) || window.parent._wrap_popCallStack(  this.drawLabels()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",593,25698,25715,this.drawTitles,false,false) || window.parent._wrap_popCallStack(  this.drawTitles()));
   if (this.series.length) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1065,35681,35734,this.el.fire,false) ||     this.el.fire('flotr:beforedraw', [this.series, this]));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",595,25749,25802,this.el.fire,false,false) || window.parent._wrap_popCallStack(    this.el.fire('flotr:beforedraw', [this.series, this])));
     for (var i = 0; i < this.series.length; i++) {
       if (!this.series[i].hide) 
-        (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1068,35860,35891,this.drawSeries,false) ||       this.drawSeries(this.series[i]));
+        (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",598,25896,25927,this.drawSeries,false,false) || window.parent._wrap_popCallStack(      this.drawSeries(this.series[i])));
     }
   }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1071,35928,35980,this.el.fire,false) ||   this.el.fire('flotr:afterdraw', [this.series, this]));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",601,25941,25993,this.el.fire,false,false) || window.parent._wrap_popCallStack(  this.el.fire('flotr:afterdraw', [this.series, this])));
 }, tHoz: function(x, axis) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1074, 36003,36112, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 602, 26004,26093, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   axis = axis || this.axes.x;
   return (x - axis.min) * axis.scale;
 }, tVert: function(y, axis) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1079, 36128,36255, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 605, 26102,26209, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   axis = axis || this.axes.y;
   return this.plotHeight - (y - axis.min) * axis.scale;
 }, drawGrid: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1084, 36274,38306, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 608, 26221,27850, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var v, o = this.options, ctx = this.ctx;
   if (o.grid.verticalLines || o.grid.horizontalLines) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1088,36427,36496,this.el.fire,false) ||     this.el.fire('flotr:beforegrid', [this.axes.x, this.axes.y, o, this]));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",611,26337,26406,this.el.fire,false,false) || window.parent._wrap_popCallStack(    this.el.fire('flotr:beforegrid', [this.axes.x, this.axes.y, o, this])));
   }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1090,36518,36528,ctx.save,false) ||   ctx.save());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1091,36539,36595,ctx.translate,false) ||   ctx.translate(this.plotOffset.left, this.plotOffset.top));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",613,26414,26424,ctx.save,false,false) || window.parent._wrap_popCallStack(  ctx.save()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",614,26428,26484,ctx.translate,false,false) || window.parent._wrap_popCallStack(  ctx.translate(this.plotOffset.left, this.plotOffset.top)));
   if (o.grid.backgroundColor != null) {
     ctx.fillStyle = o.grid.backgroundColor;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1096,36714,36765,ctx.fillRect,false) ||     ctx.fillRect(0, 0, this.plotWidth, this.plotHeight));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",617,26574,26625,ctx.fillRect,false,false) || window.parent._wrap_popCallStack(    ctx.fillRect(0, 0, this.plotWidth, this.plotHeight)));
   }
   ctx.lineWidth = 1;
   ctx.strokeStyle = o.grid.tickColor;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1102,36864,36879,ctx.beginPath,false) ||   ctx.beginPath());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",621,26692,26707,ctx.beginPath,false,false) || window.parent._wrap_popCallStack(  ctx.beginPath()));
   if (o.grid.verticalLines) {
     for (var i = 0; i < this.axes.x.ticks.length; ++i) {
       v = this.axes.x.ticks[i].v;
       if ((v == this.axes.x.min || v == this.axes.x.max) && o.grid.outlineWidth != 0) 
         continue;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1110,37178,37237,ctx.moveTo,false) ||       ctx.moveTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1110,37189,37213,Math.floor,false) || Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1110,37200,37212,this.tHoz,false) || this.tHoz(v)))) + ctx.lineWidth / 2, 0));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1111,37256,37329,ctx.lineTo,false) ||       ctx.lineTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1111,37267,37291,Math.floor,false) || Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1111,37278,37290,this.tHoz,false) || this.tHoz(v)))) + ctx.lineWidth / 2, this.plotHeight));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",627,26941,27000,ctx.moveTo,false,false) || window.parent._wrap_popCallStack(      ctx.moveTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",627,26952,26976,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",627,26963,26975,this.tHoz,false,false) || window.parent._wrap_popCallStack(this.tHoz(v)))))) + ctx.lineWidth / 2, 0)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",628,27008,27081,ctx.lineTo,false,false) || window.parent._wrap_popCallStack(      ctx.lineTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",628,27019,27043,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",628,27030,27042,this.tHoz,false,false) || window.parent._wrap_popCallStack(this.tHoz(v)))))) + ctx.lineWidth / 2, this.plotHeight)));
     }
   }
   if (o.grid.horizontalLines) {
@@ -753,23 +733,23 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1084, 36274,38306, 
       v = this.axes.y.ticks[j].v;
       if ((v == this.axes.y.min || v == this.axes.y.max) && o.grid.outlineWidth != 0) 
         continue;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1123,37660,37720,ctx.moveTo,false) ||       ctx.moveTo(0, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1123,37674,37699,Math.floor,false) || Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1123,37685,37698,this.tVert,false) || this.tVert(v)))) + ctx.lineWidth / 2));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1124,37739,37812,ctx.lineTo,false) ||       ctx.lineTo(this.plotWidth, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1124,37766,37791,Math.floor,false) || Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1124,37777,37790,this.tVert,false) || this.tVert(v)))) + ctx.lineWidth / 2));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",636,27327,27387,ctx.moveTo,false,false) || window.parent._wrap_popCallStack(      ctx.moveTo(0, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",636,27341,27366,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",636,27352,27365,this.tVert,false,false) || window.parent._wrap_popCallStack(this.tVert(v)))))) + ctx.lineWidth / 2)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",637,27395,27468,ctx.lineTo,false,false) || window.parent._wrap_popCallStack(      ctx.lineTo(this.plotWidth, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",637,27422,27447,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",637,27433,27446,this.tVert,false,false) || window.parent._wrap_popCallStack(this.tVert(v)))))) + ctx.lineWidth / 2)));
     }
   }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1127,37849,37861,ctx.stroke,false) ||   ctx.stroke());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",640,27482,27494,ctx.stroke,false,false) || window.parent._wrap_popCallStack(  ctx.stroke()));
   if (o.grid.outlineWidth != 0) {
     ctx.lineWidth = o.grid.outlineWidth;
     ctx.strokeStyle = o.grid.color;
     ctx.lineJoin = 'round';
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1134,38053,38106,ctx.strokeRect,false) ||     ctx.strokeRect(0, 0, this.plotWidth, this.plotHeight));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",645,27639,27692,ctx.strokeRect,false,false) || window.parent._wrap_popCallStack(    ctx.strokeRect(0, 0, this.plotWidth, this.plotHeight)));
   }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1136,38128,38141,ctx.restore,false) ||   ctx.restore());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",647,27700,27713,ctx.restore,false,false) || window.parent._wrap_popCallStack(  ctx.restore()));
   if (o.grid.verticalLines || o.grid.horizontalLines) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1138,38219,38287,this.el.fire,false) ||     this.el.fire('flotr:aftergrid', [this.axes.x, this.axes.y, o, this]));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",649,27775,27843,this.el.fire,false,false) || window.parent._wrap_popCallStack(    this.el.fire('flotr:aftergrid', [this.axes.x, this.axes.y, o, this])));
   }
 }, drawLabels: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1142, 38327,45719, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 651, 27864,33671, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var noLabels = 0, axis, xBoxWidth, i, html, tick, options = this.options, ctx = this.ctx, a = this.axes;
   for (i = 0; i < a.x.ticks.length; ++i) {
@@ -786,10 +766,10 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1142, 38327,45719, 
       tick = axis.ticks[i];
       if (!tick.label || tick.label.length == 0) 
         continue;
-      style.angle = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1171,39226,39263,Flotr.toRad,false) || Flotr.toRad(axis.options.labelsAngle));
+      style.angle = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",667,28512,28549,Flotr.toRad,false,false) || window.parent._wrap_popCallStack(Flotr.toRad(axis.options.labelsAngle)));
       style.halign = 'c';
       style.valign = 't';
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1175,39358,39606,ctx.drawText,false) ||       ctx.drawText(tick.label, this.plotOffset.left + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1177,39449,39472,this.tHoz,false) || this.tHoz(tick.v, axis)), this.plotOffset.top + this.plotHeight + options.grid.labelMargin, style));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",670,28609,28754,ctx.drawText,false,false) || window.parent._wrap_popCallStack(      ctx.drawText(tick.label, this.plotOffset.left + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",670,28657,28680,this.tHoz,false,false) || window.parent._wrap_popCallStack(this.tHoz(tick.v, axis))), this.plotOffset.top + this.plotHeight + options.grid.labelMargin, style)));
     }
     axis = a.x2;
     style.color = axis.options.color || options.grid.color;
@@ -797,10 +777,10 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1142, 38327,45719, 
       tick = axis.ticks[i];
       if (!tick.label || tick.label.length == 0) 
         continue;
-      style.angle = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1190,39959,39996,Flotr.toRad,false) || Flotr.toRad(axis.options.labelsAngle));
+      style.angle = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",678,29041,29078,Flotr.toRad,false,false) || window.parent._wrap_popCallStack(Flotr.toRad(axis.options.labelsAngle)));
       style.halign = 'c';
       style.valign = 'b';
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1194,40091,40321,ctx.drawText,false) ||       ctx.drawText(tick.label, this.plotOffset.left + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1196,40182,40205,this.tHoz,false) || this.tHoz(tick.v, axis)), this.plotOffset.top + options.grid.labelMargin, style));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",681,29138,29265,ctx.drawText,false,false) || window.parent._wrap_popCallStack(      ctx.drawText(tick.label, this.plotOffset.left + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",681,29186,29209,this.tHoz,false,false) || window.parent._wrap_popCallStack(this.tHoz(tick.v, axis))), this.plotOffset.top + options.grid.labelMargin, style)));
     }
     axis = a.y;
     style.color = axis.options.color || options.grid.color;
@@ -808,10 +788,10 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1142, 38327,45719, 
       tick = axis.ticks[i];
       if (!tick.label || tick.label.length == 0) 
         continue;
-      style.angle = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1209,40673,40710,Flotr.toRad,false) || Flotr.toRad(axis.options.labelsAngle));
+      style.angle = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",689,29551,29588,Flotr.toRad,false,false) || window.parent._wrap_popCallStack(Flotr.toRad(axis.options.labelsAngle)));
       style.halign = 'r';
       style.valign = 'm';
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1213,40805,41036,ctx.drawText,false) ||       ctx.drawText(tick.label, this.plotOffset.left - options.grid.labelMargin, this.plotOffset.top + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1216,40965,40989,this.tVert,false) || this.tVert(tick.v, axis)), style));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",692,29648,29776,ctx.drawText,false,false) || window.parent._wrap_popCallStack(      ctx.drawText(tick.label, this.plotOffset.left - options.grid.labelMargin, this.plotOffset.top + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",692,29744,29768,this.tVert,false,false) || window.parent._wrap_popCallStack(this.tVert(tick.v, axis))), style)));
     }
     axis = a.y2;
     style.color = axis.options.color || options.grid.color;
@@ -819,17 +799,17 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1142, 38327,45719, 
       tick = axis.ticks[i];
       if (!tick.label || tick.label.length == 0) 
         continue;
-      style.angle = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1228,41389,41426,Flotr.toRad,false) || Flotr.toRad(axis.options.labelsAngle));
+      style.angle = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",700,30063,30100,Flotr.toRad,false,false) || window.parent._wrap_popCallStack(Flotr.toRad(axis.options.labelsAngle)));
       style.halign = 'l';
       style.valign = 'm';
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1232,41521,41769,ctx.drawText,false) ||       ctx.drawText(tick.label, this.plotOffset.left + this.plotWidth + options.grid.labelMargin, this.plotOffset.top + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1235,41698,41722,this.tVert,false) || this.tVert(tick.v, axis)), style));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1239,41790,41800,ctx.save,false) ||       ctx.save());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",703,30160,30305,ctx.drawText,false,false) || window.parent._wrap_popCallStack(      ctx.drawText(tick.label, this.plotOffset.left + this.plotWidth + options.grid.labelMargin, this.plotOffset.top + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",703,30273,30297,this.tVert,false,false) || window.parent._wrap_popCallStack(this.tVert(tick.v, axis))), style)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",704,30313,30323,ctx.save,false,false) || window.parent._wrap_popCallStack(      ctx.save()));
       ctx.strokeStyle = style.color;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1241,41867,41882,ctx.beginPath,false) ||       ctx.beginPath());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1242,41901,42002,ctx.moveTo,false) ||       ctx.moveTo(this.plotOffset.left + this.plotWidth - 8, this.plotOffset.top + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1242,41977,42001,this.tVert,false) || this.tVert(tick.v, axis))));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1243,42021,42118,ctx.lineTo,false) ||       ctx.lineTo(this.plotOffset.left + this.plotWidth, this.plotOffset.top + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1243,42093,42117,this.tVert,false) || this.tVert(tick.v, axis))));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1244,42137,42149,ctx.stroke,false) ||       ctx.stroke());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1245,42168,42181,ctx.restore,false) ||       ctx.restore());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",706,30368,30383,ctx.beginPath,false,false) || window.parent._wrap_popCallStack(      ctx.beginPath()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",707,30391,30492,ctx.moveTo,false,false) || window.parent._wrap_popCallStack(      ctx.moveTo(this.plotOffset.left + this.plotWidth - 8, this.plotOffset.top + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",707,30467,30491,this.tVert,false,false) || window.parent._wrap_popCallStack(this.tVert(tick.v, axis))))));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",708,30500,30597,ctx.lineTo,false,false) || window.parent._wrap_popCallStack(      ctx.lineTo(this.plotOffset.left + this.plotWidth, this.plotOffset.top + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",708,30572,30596,this.tVert,false,false) || window.parent._wrap_popCallStack(this.tVert(tick.v, axis))))));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",709,30605,30617,ctx.stroke,false,false) || window.parent._wrap_popCallStack(      ctx.stroke()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",710,30625,30638,ctx.restore,false,false) || window.parent._wrap_popCallStack(      ctx.restore()));
     }
   } else if (a.x.options.showLabels || a.x2.options.showLabels || a.y.options.showLabels || a.y2.options.showLabels) {
     html = ['<div style="font-size:smaller;color:' + options.grid.color + ';" class="flotr-labels">'];
@@ -839,7 +819,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1142, 38327,45719, 
         tick = axis.ticks[i];
         if (!tick.label || tick.label.length == 0) 
           continue;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1259,42745,43117,html.push,false) ||         html.push('<div style="position:absolute;top:' + (this.plotOffset.top + this.plotHeight + options.grid.labelMargin) + 'px;left:' + (this.plotOffset.left + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1259,42900,42923,this.tHoz,false) || this.tHoz(tick.v, axis)) - xBoxWidth / 2) + 'px;width:' + xBoxWidth + 'px;text-align:center;' + (axis.options.color ? ('color:' + axis.options.color + ';') : '') + '" class="flotr-grid-label">' + tick.label + '</div>'));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",720,31077,31449,html.push,false,false) || window.parent._wrap_popCallStack(        html.push('<div style="position:absolute;top:' + (this.plotOffset.top + this.plotHeight + options.grid.labelMargin) + 'px;left:' + (this.plotOffset.left + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",720,31232,31255,this.tHoz,false,false) || window.parent._wrap_popCallStack(this.tHoz(tick.v, axis))) - xBoxWidth / 2) + 'px;width:' + xBoxWidth + 'px;text-align:center;' + (axis.options.color ? ('color:' + axis.options.color + ';') : '') + '" class="flotr-grid-label">' + tick.label + '</div>')));
       }
     }
     axis = a.x2;
@@ -848,7 +828,7 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1142, 38327,45719, 
         tick = axis.ticks[i];
         if (!tick.label || tick.label.length == 0) 
           continue;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1269,43437,43814,html.push,false) ||         html.push('<div style="position:absolute;top:' + (this.plotOffset.top - options.grid.labelMargin - axis.maxLabel.height) + 'px;left:' + (this.plotOffset.left + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1269,43597,43620,this.tHoz,false) || this.tHoz(tick.v, axis)) - xBoxWidth / 2) + 'px;width:' + xBoxWidth + 'px;text-align:center;' + (axis.options.color ? ('color:' + axis.options.color + ';') : '') + '" class="flotr-grid-label">' + tick.label + '</div>'));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",729,31688,32065,html.push,false,false) || window.parent._wrap_popCallStack(        html.push('<div style="position:absolute;top:' + (this.plotOffset.top - options.grid.labelMargin - axis.maxLabel.height) + 'px;left:' + (this.plotOffset.left + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",729,31848,31871,this.tHoz,false,false) || window.parent._wrap_popCallStack(this.tHoz(tick.v, axis))) - xBoxWidth / 2) + 'px;width:' + xBoxWidth + 'px;text-align:center;' + (axis.options.color ? ('color:' + axis.options.color + ';') : '') + '" class="flotr-grid-label">' + tick.label + '</div>')));
       }
     }
     axis = a.y;
@@ -857,41 +837,41 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1142, 38327,45719, 
         tick = axis.ticks[i];
         if (!tick.label || tick.label.length == 0) 
           continue;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1279,44120,44467,html.push,false) ||         html.push('<div style="position:absolute;top:' + (this.plotOffset.top + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1279,44192,44216,this.tVert,false) || this.tVert(tick.v, axis)) - axis.maxLabel.height / 2) + 'px;left:0;width:' + (this.plotOffset.left - options.grid.labelMargin) + 'px;text-align:right;' + (axis.options.color ? ('color:' + axis.options.color + ';') : '') + '" class="flotr-grid-label">' + tick.label + '</div>'));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",738,32290,32637,html.push,false,false) || window.parent._wrap_popCallStack(        html.push('<div style="position:absolute;top:' + (this.plotOffset.top + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",738,32362,32386,this.tVert,false,false) || window.parent._wrap_popCallStack(this.tVert(tick.v, axis))) - axis.maxLabel.height / 2) + 'px;left:0;width:' + (this.plotOffset.left - options.grid.labelMargin) + 'px;text-align:right;' + (axis.options.color ? ('color:' + axis.options.color + ';') : '') + '" class="flotr-grid-label">' + tick.label + '</div>')));
       }
     }
     axis = a.y2;
     if (axis.options.showLabels && axis.used) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1286,44607,44617,ctx.save,false) ||       ctx.save());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",743,32724,32734,ctx.save,false,false) || window.parent._wrap_popCallStack(      ctx.save()));
       ctx.strokeStyle = axis.options.color || options.grid.color;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1288,44713,44728,ctx.beginPath,false) ||       ctx.beginPath());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",745,32808,32823,ctx.beginPath,false,false) || window.parent._wrap_popCallStack(      ctx.beginPath()));
       for (i = 0; i < axis.ticks.length; ++i) {
         tick = axis.ticks[i];
         if (!tick.label || tick.label.length == 0) 
           continue;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1293,44929,45277,html.push,false) ||         html.push('<div style="position:absolute;top:' + (this.plotOffset.top + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1293,45001,45025,this.tVert,false) || this.tVert(tick.v, axis)) - axis.maxLabel.height / 2) + 'px;right:0;width:' + (this.plotOffset.right - options.grid.labelMargin) + 'px;text-align:left;' + (axis.options.color ? ('color:' + axis.options.color + ';') : '') + '" class="flotr-grid-label">' + tick.label + '</div>'));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1295,45302,45403,ctx.moveTo,false) ||         ctx.moveTo(this.plotOffset.left + this.plotWidth - 8, this.plotOffset.top + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1295,45378,45402,this.tVert,false) || this.tVert(tick.v, axis))));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1296,45426,45523,ctx.lineTo,false) ||         ctx.lineTo(this.plotOffset.left + this.plotWidth, this.plotOffset.top + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1296,45498,45522,this.tVert,false) || this.tVert(tick.v, axis))));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",750,32983,33331,html.push,false,false) || window.parent._wrap_popCallStack(        html.push('<div style="position:absolute;top:' + (this.plotOffset.top + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",750,33055,33079,this.tVert,false,false) || window.parent._wrap_popCallStack(this.tVert(tick.v, axis))) - axis.maxLabel.height / 2) + 'px;right:0;width:' + (this.plotOffset.right - options.grid.labelMargin) + 'px;text-align:left;' + (axis.options.color ? ('color:' + axis.options.color + ';') : '') + '" class="flotr-grid-label">' + tick.label + '</div>')));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",751,33341,33442,ctx.moveTo,false,false) || window.parent._wrap_popCallStack(        ctx.moveTo(this.plotOffset.left + this.plotWidth - 8, this.plotOffset.top + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",751,33417,33441,this.tVert,false,false) || window.parent._wrap_popCallStack(this.tVert(tick.v, axis))))));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",752,33452,33549,ctx.lineTo,false,false) || window.parent._wrap_popCallStack(        ctx.lineTo(this.plotOffset.left + this.plotWidth, this.plotOffset.top + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",752,33524,33548,this.tVert,false,false) || window.parent._wrap_popCallStack(this.tVert(tick.v, axis))))));
       }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1298,45561,45573,ctx.stroke,false) ||       ctx.stroke());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1299,45592,45605,ctx.restore,false) ||       ctx.restore());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",754,33565,33577,ctx.stroke,false,false) || window.parent._wrap_popCallStack(      ctx.stroke()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",755,33585,33598,ctx.restore,false,false) || window.parent._wrap_popCallStack(      ctx.restore()));
     }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1302,45637,45656,html.push,false) ||     html.push('</div>'));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1303,45671,45700,this.el.insert,false) ||     this.el.insert((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1303,45686,45699,html.join,false) || html.join(''))));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",757,33610,33629,html.push,false,false) || window.parent._wrap_popCallStack(    html.push('</div>')));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",758,33635,33664,this.el.insert,false,false) || window.parent._wrap_popCallStack(    this.el.insert((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",758,33650,33663,html.join,false,false) || window.parent._wrap_popCallStack(html.join(''))))));
   }
 }, drawTitles: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1307, 45740,50985, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 760, 33685,37523, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var html, options = this.options, margin = options.grid.labelMargin, ctx = this.ctx, a = this.axes;
   if (!options.HtmlText && this.textEnabled) {
     var style = {size: options.fontSize, color: options.grid.color, halign: 'c'};
     if (options.subtitle) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1323,46186,46413,ctx.drawText,false) ||       ctx.drawText(options.subtitle, this.plotOffset.left + this.plotWidth / 2, this.titleHeight + this.subtitleHeight - 2, style));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",765,33963,34087,ctx.drawText,false,false) || window.parent._wrap_popCallStack(      ctx.drawText(options.subtitle, this.plotOffset.left + this.plotWidth / 2, this.titleHeight + this.subtitleHeight - 2, style)));
     }
     style.weight = 1.5;
     style.size *= 1.5;
     if (options.title) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1336,46552,46754,ctx.drawText,false) ||       ctx.drawText(options.title, this.plotOffset.left + this.plotWidth / 2, this.titleHeight - 2, style));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",770,34173,34272,ctx.drawText,false,false) || window.parent._wrap_popCallStack(      ctx.drawText(options.title, this.plotOffset.left + this.plotWidth / 2, this.titleHeight - 2, style)));
     }
     style.weight = 1.8;
     style.size *= 0.8;
@@ -899,75 +879,75 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1307, 45740,50985, 
     if (a.x.options.title && a.x.used) {
       style.halign = 'c';
       style.valign = 't';
-      style.angle = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1352,47036,47071,Flotr.toRad,false) || Flotr.toRad(a.x.options.titleAngle));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1353,47090,47348,ctx.drawText,false) ||       ctx.drawText(a.x.options.title, this.plotOffset.left + this.plotWidth / 2, this.plotOffset.top + a.x.maxLabel.height + this.plotHeight + 2 * margin, style));
+      style.angle = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",778,34470,34505,Flotr.toRad,false,false) || window.parent._wrap_popCallStack(Flotr.toRad(a.x.options.titleAngle)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",779,34513,34668,ctx.drawText,false,false) || window.parent._wrap_popCallStack(      ctx.drawText(a.x.options.title, this.plotOffset.left + this.plotWidth / 2, this.plotOffset.top + a.x.maxLabel.height + this.plotHeight + 2 * margin, style)));
     }
     if (a.x2.options.title && a.x2.used) {
       style.halign = 'c';
       style.valign = 'b';
-      style.angle = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1365,47526,47562,Flotr.toRad,false) || Flotr.toRad(a.x2.options.titleAngle));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1366,47581,47823,ctx.drawText,false) ||       ctx.drawText(a.x2.options.title, this.plotOffset.left + this.plotWidth / 2, this.plotOffset.top - a.x2.maxLabel.height - 2 * margin, style));
+      style.angle = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",784,34791,34827,Flotr.toRad,false,false) || window.parent._wrap_popCallStack(Flotr.toRad(a.x2.options.titleAngle)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",785,34835,34974,ctx.drawText,false,false) || window.parent._wrap_popCallStack(      ctx.drawText(a.x2.options.title, this.plotOffset.left + this.plotWidth / 2, this.plotOffset.top - a.x2.maxLabel.height - 2 * margin, style)));
     }
     if (a.y.options.title && a.y.used) {
       style.halign = 'r';
       style.valign = 'm';
-      style.angle = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1378,47999,48034,Flotr.toRad,false) || Flotr.toRad(a.y.options.titleAngle));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1379,48053,48293,ctx.drawText,false) ||       ctx.drawText(a.y.options.title, this.plotOffset.left - a.y.maxLabel.width - 2 * margin, this.plotOffset.top + this.plotHeight / 2, style));
+      style.angle = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",790,35095,35130,Flotr.toRad,false,false) || window.parent._wrap_popCallStack(Flotr.toRad(a.y.options.titleAngle)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",791,35138,35275,ctx.drawText,false,false) || window.parent._wrap_popCallStack(      ctx.drawText(a.y.options.title, this.plotOffset.left - a.y.maxLabel.width - 2 * margin, this.plotOffset.top + this.plotHeight / 2, style)));
     }
     if (a.y2.options.title && a.y2.used) {
       style.halign = 'l';
       style.valign = 'm';
-      style.angle = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1391,48471,48507,Flotr.toRad,false) || Flotr.toRad(a.y2.options.titleAngle));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1392,48526,48785,ctx.drawText,false) ||       ctx.drawText(a.y2.options.title, this.plotOffset.left + this.plotWidth + a.y2.maxLabel.width + 2 * margin, this.plotOffset.top + this.plotHeight / 2, style));
+      style.angle = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",796,35398,35434,Flotr.toRad,false,false) || window.parent._wrap_popCallStack(Flotr.toRad(a.y2.options.titleAngle)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",797,35442,35598,ctx.drawText,false,false) || window.parent._wrap_popCallStack(      ctx.drawText(a.y2.options.title, this.plotOffset.left + this.plotWidth + a.y2.maxLabel.width + 2 * margin, this.plotOffset.top + this.plotHeight / 2, style)));
     }
   } else {
     html = ['<div style="color:' + options.grid.color + ';" class="flotr-titles">'];
     if (options.title) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1404,48969,49183,html.push,false) ||       html.push('<div style="position:absolute;top:0;left:' + this.plotOffset.left + 'px;font-size:1em;font-weight:bold;text-align:center;width:' + this.plotWidth + 'px;" class="flotr-title">' + options.title + '</div>'));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",802,35733,35947,html.push,false,false) || window.parent._wrap_popCallStack(      html.push('<div style="position:absolute;top:0;left:' + this.plotOffset.left + 'px;font-size:1em;font-weight:bold;text-align:center;width:' + this.plotWidth + 'px;" class="flotr-title">' + options.title + '</div>')));
     }
     if (options.subtitle) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1409,49258,49490,html.push,false) ||       html.push('<div style="position:absolute;top:' + this.titleHeight + 'px;left:' + this.plotOffset.left + 'px;font-size:smaller;text-align:center;width:' + this.plotWidth + 'px;" class="flotr-subtitle">' + options.subtitle + '</div>'));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",805,35989,36221,html.push,false,false) || window.parent._wrap_popCallStack(      html.push('<div style="position:absolute;top:' + this.titleHeight + 'px;left:' + this.plotOffset.left + 'px;font-size:smaller;text-align:center;width:' + this.plotWidth + 'px;" class="flotr-subtitle">' + options.subtitle + '</div>')));
     }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1411,49520,49539,html.push,false) ||     html.push('</div>'));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1414,49558,49627,html.push,false) ||     html.push('<div class="flotr-axis-title" style="font-weight:bold;">'));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",807,36233,36252,html.push,false,false) || window.parent._wrap_popCallStack(    html.push('</div>')));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",808,36258,36327,html.push,false,false) || window.parent._wrap_popCallStack(    html.push('<div class="flotr-axis-title" style="font-weight:bold;">')));
     if (a.x.options.title && a.x.used) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1417,49698,49988,html.push,false) ||       html.push('<div style="position:absolute;top:' + (this.plotOffset.top + this.plotHeight + options.grid.labelMargin + a.x.titleSize.height) + 'px;left:' + this.plotOffset.left + 'px;width:' + this.plotWidth + 'px;text-align:center;" class="flotr-axis-title">' + a.x.options.title + '</div>'));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",810,36376,36666,html.push,false,false) || window.parent._wrap_popCallStack(      html.push('<div style="position:absolute;top:' + (this.plotOffset.top + this.plotHeight + options.grid.labelMargin + a.x.titleSize.height) + 'px;left:' + this.plotOffset.left + 'px;width:' + this.plotWidth + 'px;text-align:center;" class="flotr-axis-title">' + a.x.options.title + '</div>')));
     }
     if (a.x2.options.title && a.x2.used) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1422,50078,50271,html.push,false) ||       html.push('<div style="position:absolute;top:0;left:' + this.plotOffset.left + 'px;width:' + this.plotWidth + 'px;text-align:center;" class="flotr-axis-title">' + a.x2.options.title + '</div>'));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",813,36723,36916,html.push,false,false) || window.parent._wrap_popCallStack(      html.push('<div style="position:absolute;top:0;left:' + this.plotOffset.left + 'px;width:' + this.plotWidth + 'px;text-align:center;" class="flotr-axis-title">' + a.x2.options.title + '</div>')));
     }
     if (a.y.options.title && a.y.used) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1427,50359,50569,html.push,false) ||       html.push('<div style="position:absolute;top:' + (this.plotOffset.top + this.plotHeight / 2 - a.y.titleSize.height / 2) + 'px;left:0;text-align:right;" class="flotr-axis-title">' + a.y.options.title + '</div>'));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",816,36971,37181,html.push,false,false) || window.parent._wrap_popCallStack(      html.push('<div style="position:absolute;top:' + (this.plotOffset.top + this.plotHeight / 2 - a.y.titleSize.height / 2) + 'px;left:0;text-align:right;" class="flotr-axis-title">' + a.y.options.title + '</div>')));
     }
     if (a.y2.options.title && a.y2.used) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1432,50659,50871,html.push,false) ||       html.push('<div style="position:absolute;top:' + (this.plotOffset.top + this.plotHeight / 2 - a.y.titleSize.height / 2) + 'px;right:0;text-align:right;" class="flotr-axis-title">' + a.y2.options.title + '</div>'));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",819,37238,37450,html.push,false,false) || window.parent._wrap_popCallStack(      html.push('<div style="position:absolute;top:' + (this.plotOffset.top + this.plotHeight / 2 - a.y.titleSize.height / 2) + 'px;right:0;text-align:right;" class="flotr-axis-title">' + a.y2.options.title + '</div>')));
     }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1434,50901,50920,html.push,false) ||     html.push('</div>'));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1436,50937,50966,this.el.insert,false) ||     this.el.insert((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1436,50952,50965,html.join,false) || html.join(''))));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",821,37462,37481,html.push,false,false) || window.parent._wrap_popCallStack(    html.push('</div>')));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",822,37487,37516,this.el.insert,false,false) || window.parent._wrap_popCallStack(    this.el.insert((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",822,37502,37515,html.join,false,false) || window.parent._wrap_popCallStack(html.join(''))))));
   }
 }, drawSeries: function(series) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1440, 51006,51440, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 824, 37537,37870, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   series = series || this.series;
   var drawn = false;
   for (var type in Flotr._registeredTypes) {
     if (series[type] && series[type].show) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1446,51220,51262,null,false) ||       this[Flotr._registeredTypes[type]](series));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",829,37707,37749,null,false,false) || window.parent._wrap_popCallStack(      this[Flotr._registeredTypes[type]](series)));
       drawn = true;
     }
   }
   if (!drawn) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1452,51359,51421,null,false) ||     this[Flotr._registeredTypes[this.options.defaultType]](series));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",834,37801,37863,null,false,false) || window.parent._wrap_popCallStack(    this[Flotr._registeredTypes[this.options.defaultType]](series)));
   }
 }, plotLine: function(series, offset) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1456, 51459,54043, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 836, 37882,39887, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  var ctx = this.ctx, xa = series.xaxis, ya = series.yaxis, tHoz = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1460,51600,51620,this.tHoz.bind,false) || this.tHoz.bind(this)), tVert = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1461,51643,51664,this.tVert.bind,false) || this.tVert.bind(this)), data = series.data;
+  var ctx = this.ctx, xa = series.xaxis, ya = series.yaxis, tHoz = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",837,37976,37996,this.tHoz.bind,false,false) || window.parent._wrap_popCallStack(this.tHoz.bind(this))), tVert = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",837,38006,38027,this.tVert.bind,false,false) || window.parent._wrap_popCallStack(this.tVert.bind(this))), data = series.data;
   if (data.length < 2) 
     return;
-  var prevx = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1466,51762,51782,tHoz,false) || tHoz(data[0][0], xa)), prevy = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1467,51805,51826,tVert,false) || tVert(data[0][1], ya)) + offset;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1469,51848,51863,ctx.beginPath,false) ||   ctx.beginPath());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1470,51874,51898,ctx.moveTo,false) ||   ctx.moveTo(prevx, prevy));
+  var prevx = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",840,38099,38119,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(data[0][0], xa))), prevy = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",840,38129,38150,tVert,false,false) || window.parent._wrap_popCallStack(tVert(data[0][1], ya))) + offset;
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",841,38163,38178,ctx.beginPath,false,false) || window.parent._wrap_popCallStack(  ctx.beginPath()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",842,38182,38206,ctx.moveTo,false,false) || window.parent._wrap_popCallStack(  ctx.moveTo(prevx, prevy)));
   for (var i = 0; i < data.length - 1; ++i) {
     var x1 = data[i][0], y1 = data[i][1], x2 = data[i + 1][0], y2 = data[i + 1][1];
     if (y1 === null || y2 === null) 
@@ -1016,21 +996,21 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1456, 51459,54043, 
       y2 = (xa.max - x1) / (x2 - x1) * (y2 - y1) + y1;
       x2 = xa.max;
     }
-    if (prevx != (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1527,53766,53778,tHoz,false) || tHoz(x1, xa)) || prevy != (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1527,53791,53804,tVert,false) || tVert(y1, ya)) + offset) 
-      (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1528,53832,53880,ctx.moveTo,false) ||     ctx.moveTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1528,53843,53855,tHoz,false) || tHoz(x1, xa)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1528,53857,53870,tVert,false) || tVert(y1, ya)) + offset));
-    prevx = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1530,53905,53917,tHoz,false) || tHoz(x2, xa));
-    prevy = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1531,53940,53953,tVert,false) || tVert(y2, ya)) + offset;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1532,53977,54001,ctx.lineTo,false) ||     ctx.lineTo(prevx, prevy));
+    if (prevx != (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",891,39668,39680,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(x1, xa))) || prevy != (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",891,39693,39706,tVert,false,false) || window.parent._wrap_popCallStack(tVert(y1, ya))) + offset) 
+      (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",892,39724,39772,ctx.moveTo,false,false) || window.parent._wrap_popCallStack(    ctx.moveTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",892,39735,39747,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(x1, xa))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",892,39749,39762,tVert,false,false) || window.parent._wrap_popCallStack(tVert(y1, ya))) + offset)));
+    prevx = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",893,39786,39798,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(x2, xa)));
+    prevy = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",894,39812,39825,tVert,false,false) || window.parent._wrap_popCallStack(tVert(y2, ya))) + offset;
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",895,39840,39864,ctx.lineTo,false,false) || window.parent._wrap_popCallStack(    ctx.lineTo(prevx, prevy)));
   }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1534,54023,54035,ctx.stroke,false) ||   ctx.stroke());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",897,39872,39884,ctx.stroke,false,false) || window.parent._wrap_popCallStack(  ctx.stroke()));
 }, plotLineArea: function(series, offset) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1537, 54066,57626, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 898, 39903,42624, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var data = series.data;
   if (data.length < 2) 
     return;
-  var top, lastX = 0, ctx = this.ctx, xa = series.xaxis, ya = series.yaxis, tHoz = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1545,54309,54329,this.tHoz.bind,false) || this.tHoz.bind(this)), tVert = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1546,54352,54373,this.tVert.bind,false) || this.tVert.bind(this)), bottom = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1547,54397,54434,Math.min,false) || Math.min((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1547,54406,54425,Math.max,false) || Math.max(0, ya.min)), ya.max)), first = true;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1550,54474,54489,ctx.beginPath,false) ||   ctx.beginPath());
+  var top, lastX = 0, ctx = this.ctx, xa = series.xaxis, ya = series.yaxis, tHoz = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",902,40075,40095,this.tHoz.bind,false,false) || window.parent._wrap_popCallStack(this.tHoz.bind(this))), tVert = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",902,40105,40126,this.tVert.bind,false,false) || window.parent._wrap_popCallStack(this.tVert.bind(this))), bottom = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",902,40137,40174,Math.min,false,false) || window.parent._wrap_popCallStack(Math.min((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",902,40146,40165,Math.max,false,false) || window.parent._wrap_popCallStack(Math.max(0, ya.min))), ya.max))), first = true;
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",903,40192,40207,ctx.beginPath,false,false) || window.parent._wrap_popCallStack(  ctx.beginPath()));
   for (var i = 0; i < data.length - 1; ++i) {
     var x1 = data[i][0], y1 = data[i][1], x2 = data[i + 1][0], y2 = data[i + 1][1];
     if (x1 <= x2 && x1 < xa.min) {
@@ -1056,16 +1036,16 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1537, 54066,57626, 
       x2 = xa.max;
     }
     if (first) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1579,55519,55571,ctx.moveTo,false) ||       ctx.moveTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1579,55530,55542,tHoz,false) || tHoz(x1, xa)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1579,55544,55561,tVert,false) || tVert(bottom, ya)) + offset));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",929,40992,41044,ctx.moveTo,false,false) || window.parent._wrap_popCallStack(      ctx.moveTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",929,41003,41015,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(x1, xa))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",929,41017,41034,tVert,false,false) || window.parent._wrap_popCallStack(tVert(bottom, ya))) + offset)));
       first = false;
     }
     if (y1 >= ya.max && y2 >= ya.max) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1585,55690,55742,ctx.lineTo,false) ||       ctx.lineTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1585,55701,55713,tHoz,false) || tHoz(x1, xa)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1585,55715,55732,tVert,false) || tVert(ya.max, ya)) + offset));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1586,55761,55813,ctx.lineTo,false) ||       ctx.lineTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1586,55772,55784,tHoz,false) || tHoz(x2, xa)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1586,55786,55803,tVert,false) || tVert(ya.max, ya)) + offset));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",933,41119,41171,ctx.lineTo,false,false) || window.parent._wrap_popCallStack(      ctx.lineTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",933,41130,41142,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(x1, xa))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",933,41144,41161,tVert,false,false) || window.parent._wrap_popCallStack(tVert(ya.max, ya))) + offset)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",934,41179,41231,ctx.lineTo,false,false) || window.parent._wrap_popCallStack(      ctx.lineTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",934,41190,41202,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(x2, xa))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",934,41204,41221,tVert,false,false) || window.parent._wrap_popCallStack(tVert(ya.max, ya))) + offset)));
       continue;
     } else if (y1 <= ya.min && y2 <= ya.min) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1589,55915,55967,ctx.lineTo,false) ||       ctx.lineTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1589,55926,55938,tHoz,false) || tHoz(x1, xa)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1589,55940,55957,tVert,false) || tVert(ya.min, ya)) + offset));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1590,55986,56038,ctx.lineTo,false) ||       ctx.lineTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1590,55997,56009,tHoz,false) || tHoz(x2, xa)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1590,56011,56028,tVert,false) || tVert(ya.min, ya)) + offset));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",937,41302,41354,ctx.lineTo,false,false) || window.parent._wrap_popCallStack(      ctx.lineTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",937,41313,41325,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(x1, xa))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",937,41327,41344,tVert,false,false) || window.parent._wrap_popCallStack(tVert(ya.min, ya))) + offset)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",938,41362,41414,ctx.lineTo,false,false) || window.parent._wrap_popCallStack(      ctx.lineTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",938,41373,41385,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(x2, xa))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",938,41387,41404,tVert,false,false) || window.parent._wrap_popCallStack(tVert(ya.min, ya))) + offset)));
       continue;
     }
     var x1old = x1, x2old = x2;
@@ -1085,28 +1065,28 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1537, 54066,57626, 
     }
     if (x1 != x1old) {
       top = (y1 <= ya.min) ? top = ya.min : ya.max;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1619,56936,56988,ctx.lineTo,false) ||       ctx.lineTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1619,56947,56962,tHoz,false) || tHoz(x1old, xa)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1619,56964,56978,tVert,false) || tVert(top, ya)) + offset));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1620,57007,57056,ctx.lineTo,false) ||       ctx.lineTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1620,57018,57030,tHoz,false) || tHoz(x1, xa)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1620,57032,57046,tVert,false) || tVert(top, ya)) + offset));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",958,42077,42129,ctx.lineTo,false,false) || window.parent._wrap_popCallStack(      ctx.lineTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",958,42088,42103,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(x1old, xa))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",958,42105,42119,tVert,false,false) || window.parent._wrap_popCallStack(tVert(top, ya))) + offset)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",959,42137,42186,ctx.lineTo,false,false) || window.parent._wrap_popCallStack(      ctx.lineTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",959,42148,42160,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(x1, xa))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",959,42162,42176,tVert,false,false) || window.parent._wrap_popCallStack(tVert(top, ya))) + offset)));
     }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1624,57090,57138,ctx.lineTo,false) ||     ctx.lineTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1624,57101,57113,tHoz,false) || tHoz(x1, xa)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1624,57115,57128,tVert,false) || tVert(y1, ya)) + offset));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1625,57153,57201,ctx.lineTo,false) ||     ctx.lineTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1625,57164,57176,tHoz,false) || tHoz(x2, xa)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1625,57178,57191,tVert,false) || tVert(y2, ya)) + offset));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",961,42198,42246,ctx.lineTo,false,false) || window.parent._wrap_popCallStack(    ctx.lineTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",961,42209,42221,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(x1, xa))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",961,42223,42236,tVert,false,false) || window.parent._wrap_popCallStack(tVert(y1, ya))) + offset)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",962,42252,42300,ctx.lineTo,false,false) || window.parent._wrap_popCallStack(    ctx.lineTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",962,42263,42275,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(x2, xa))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",962,42277,42290,tVert,false,false) || window.parent._wrap_popCallStack(tVert(y2, ya))) + offset)));
     if (x2 != x2old) {
       top = (y2 <= ya.min) ? ya.min : ya.max;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1630,57313,57365,ctx.lineTo,false) ||       ctx.lineTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1630,57324,57339,tHoz,false) || tHoz(x2old, xa)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1630,57341,57355,tVert,false) || tVert(top, ya)) + offset));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1631,57384,57433,ctx.lineTo,false) ||       ctx.lineTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1631,57395,57407,tHoz,false) || tHoz(x2, xa)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1631,57409,57423,tVert,false) || tVert(top, ya)) + offset));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",965,42377,42429,ctx.lineTo,false,false) || window.parent._wrap_popCallStack(      ctx.lineTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",965,42388,42403,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(x2old, xa))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",965,42405,42419,tVert,false,false) || window.parent._wrap_popCallStack(tVert(top, ya))) + offset)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",966,42437,42486,ctx.lineTo,false,false) || window.parent._wrap_popCallStack(      ctx.lineTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",966,42448,42460,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(x2, xa))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",966,42462,42476,tVert,false,false) || window.parent._wrap_popCallStack(tVert(top, ya))) + offset)));
     }
-    lastX = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1634,57473,57492,Math.max,false) || Math.max(x2, x2old));
+    lastX = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",968,42506,42525,Math.max,false,false) || window.parent._wrap_popCallStack(Math.max(x2, x2old)));
   }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1637,57516,57571,ctx.lineTo,false) ||   ctx.lineTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1637,57527,57542,tHoz,false) || tHoz(lastX, xa)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1637,57544,57561,tVert,false) || tVert(bottom, ya)) + offset));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1638,57582,57597,ctx.closePath,false) ||   ctx.closePath());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1639,57608,57618,ctx.fill,false) ||   ctx.fill());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",970,42533,42588,ctx.lineTo,false,false) || window.parent._wrap_popCallStack(  ctx.lineTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",970,42544,42559,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(lastX, xa))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",970,42561,42578,tVert,false,false) || window.parent._wrap_popCallStack(tVert(bottom, ya))) + offset)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",971,42592,42607,ctx.closePath,false,false) || window.parent._wrap_popCallStack(  ctx.closePath()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",972,42611,42621,ctx.fill,false,false) || window.parent._wrap_popCallStack(  ctx.fill()));
 }, drawSeriesLines: function(series) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1642, 57652,58850, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 973, 42643,43602, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   series = series || this.series;
   var ctx = this.ctx;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1645,57751,57761,ctx.save,false) ||   ctx.save());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1646,57772,57828,ctx.translate,false) ||   ctx.translate(this.plotOffset.left, this.plotOffset.top));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",976,42720,42730,ctx.save,false,false) || window.parent._wrap_popCallStack(  ctx.save()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",977,42734,42790,ctx.translate,false,false) || window.parent._wrap_popCallStack(  ctx.translate(this.plotOffset.left, this.plotOffset.top)));
   ctx.lineJoin = 'round';
   var lw = series.lines.lineWidth;
   var sw = series.shadowSize;
@@ -1114,103 +1094,103 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1642, 57652,58850, 
     ctx.lineWidth = sw / 2;
     var offset = lw / 2 + ctx.lineWidth / 2;
     ctx.strokeStyle = "rgba(0,0,0,0.1)";
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1658,58127,58165,this.plotLine,false) ||     this.plotLine(series, offset + sw / 2));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",985,43017,43055,this.plotLine,false,false) || window.parent._wrap_popCallStack(    this.plotLine(series, offset + sw / 2)));
     ctx.strokeStyle = "rgba(0,0,0,0.2)";
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1661,58232,58261,this.plotLine,false) ||     this.plotLine(series, offset));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",987,43102,43131,this.plotLine,false,false) || window.parent._wrap_popCallStack(    this.plotLine(series, offset)));
     if (series.lines.fill) {
       ctx.fillStyle = "rgba(0,0,0,0.05)";
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1665,58373,58415,this.plotLineArea,false) ||       this.plotLineArea(series, offset + sw / 2));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",990,43210,43252,this.plotLineArea,false,false) || window.parent._wrap_popCallStack(      this.plotLineArea(series, offset + sw / 2)));
     }
   }
   ctx.lineWidth = lw;
   ctx.strokeStyle = series.color;
   if (series.lines.fill) {
-    ctx.fillStyle = series.lines.fillColor != null ? series.lines.fillColor : (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1672,58636,58727,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1672,58636,58716,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1672,58636,58666,Flotr.parseColor,false) || Flotr.parseColor(series.color)).scale,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1672,58636,58666,Flotr.parseColor,false) || Flotr.parseColor(series.color)).scale(null, null, null, series.lines.fillOpacity)).toString,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1672,58636,58716,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1672,58636,58666,Flotr.parseColor,false) || Flotr.parseColor(series.color)).scale,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1672,58636,58666,Flotr.parseColor,false) || Flotr.parseColor(series.color)).scale(null, null, null, series.lines.fillOpacity)).toString());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1673,58742,58770,this.plotLineArea,false) ||     this.plotLineArea(series, 0));
+    ctx.fillStyle = series.lines.fillColor != null ? series.lines.fillColor : (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",996,43425,43516,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",996,43425,43505,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",996,43425,43455,Flotr.parseColor,false,false) || window.parent._wrap_popCallStack(Flotr.parseColor(series.color))).scale(null, null, null, series.lines.fillOpacity))).toString()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",997,43522,43550,this.plotLineArea,false,false) || window.parent._wrap_popCallStack(    this.plotLineArea(series, 0)));
   }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1676,58794,58818,this.plotLine,false) ||   this.plotLine(series, 0));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1677,58829,58842,ctx.restore,false) ||   ctx.restore());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",999,43558,43582,this.plotLine,false,false) || window.parent._wrap_popCallStack(  this.plotLine(series, 0)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1000,43586,43599,ctx.restore,false,false) || window.parent._wrap_popCallStack(  ctx.restore()));
 }, drawSeriesPoints: function(series) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1680, 58877,59751, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1001, 43622,44349, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var ctx = this.ctx;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1683,58937,58947,ctx.save,false) ||   ctx.save());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1684,58958,59014,ctx.translate,false) ||   ctx.translate(this.plotOffset.left, this.plotOffset.top));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1003,43665,43675,ctx.save,false,false) || window.parent._wrap_popCallStack(  ctx.save()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1004,43679,43735,ctx.translate,false,false) || window.parent._wrap_popCallStack(  ctx.translate(this.plotOffset.left, this.plotOffset.top)));
   var lw = series.lines.lineWidth;
   var sw = series.shadowSize;
   if (sw > 0) {
     ctx.lineWidth = sw / 2;
     ctx.strokeStyle = 'rgba(0,0,0,0.1)';
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1693,59224,59303,this.plotPointShadows,false) ||     this.plotPointShadows(series, sw / 2 + ctx.lineWidth / 2, series.points.radius));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1010,43891,43970,this.plotPointShadows,false,false) || window.parent._wrap_popCallStack(    this.plotPointShadows(series, sw / 2 + ctx.lineWidth / 2, series.points.radius)));
     ctx.strokeStyle = 'rgba(0,0,0,0.2)';
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1696,59370,59440,this.plotPointShadows,false) ||     this.plotPointShadows(series, ctx.lineWidth / 2, series.points.radius));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1012,44017,44087,this.plotPointShadows,false,false) || window.parent._wrap_popCallStack(    this.plotPointShadows(series, ctx.lineWidth / 2, series.points.radius)));
   }
   ctx.lineWidth = series.points.lineWidth;
   ctx.strokeStyle = series.color;
   ctx.fillStyle = series.points.fillColor != null ? series.points.fillColor : series.color;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1702,59654,59719,this.plotPoints,false) ||   this.plotPoints(series, series.points.radius, series.points.fill));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1703,59730,59743,ctx.restore,false) ||   ctx.restore());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1017,44264,44329,this.plotPoints,false,false) || window.parent._wrap_popCallStack(  this.plotPoints(series, series.points.radius, series.points.fill)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1018,44333,44346,ctx.restore,false,false) || window.parent._wrap_popCallStack(  ctx.restore()));
 }, plotPoints: function(series, radius, fill) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1705, 59770,60362, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1019, 44363,44798, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var xa = series.xaxis, ya = series.yaxis, ctx = this.ctx, i, data = series.data;
   for (i = data.length - 1; i > -1; --i) {
     var x = data[i][0], y = data[i][1];
     if (x < xa.min || x > xa.max || y < ya.min || y > ya.max) 
       continue;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1718,60177,60192,ctx.beginPath,false) ||     ctx.beginPath());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1719,60207,60281,ctx.arc,false) ||     ctx.arc((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1719,60215,60231,this.tHoz,false) || this.tHoz(x, xa)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1719,60233,60250,this.tVert,false) || this.tVert(y, ya)), radius, 0, 2 * Math.PI, true));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1025,44645,44660,ctx.beginPath,false,false) || window.parent._wrap_popCallStack(    ctx.beginPath()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1026,44666,44740,ctx.arc,false,false) || window.parent._wrap_popCallStack(    ctx.arc((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1026,44674,44690,this.tHoz,false,false) || window.parent._wrap_popCallStack(this.tHoz(x, xa))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1026,44692,44709,this.tVert,false,false) || window.parent._wrap_popCallStack(this.tVert(y, ya))), radius, 0, 2 * Math.PI, true)));
     if (fill) 
-      (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1720,60306,60316,ctx.fill,false) ||     ctx.fill());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1721,60331,60343,ctx.stroke,false) ||     ctx.stroke());
+      (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1028,44763,44773,ctx.fill,false,false) || window.parent._wrap_popCallStack(    ctx.fill()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1029,44779,44791,ctx.stroke,false,false) || window.parent._wrap_popCallStack(    ctx.stroke()));
   }
 }, plotPointShadows: function(series, offset, radius) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1724, 60387,60950, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1031, 44818,45228, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var xa = series.xaxis, ya = series.yaxis, ctx = this.ctx, i, data = series.data;
   for (i = data.length - 1; i > -1; --i) {
     var x = data[i][0], y = data[i][1];
     if (x < xa.min || x > xa.max || y < ya.min || y > ya.max) 
       continue;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1736,60794,60809,ctx.beginPath,false) ||     ctx.beginPath());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1737,60824,60904,ctx.arc,false) ||     ctx.arc((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1737,60832,60848,this.tHoz,false) || this.tHoz(x, xa)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1737,60850,60867,this.tVert,false) || this.tVert(y, ya)) + offset, radius, 0, Math.PI, false));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1738,60919,60931,ctx.stroke,false) ||     ctx.stroke());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1037,45102,45117,ctx.beginPath,false,false) || window.parent._wrap_popCallStack(    ctx.beginPath()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1038,45123,45203,ctx.arc,false,false) || window.parent._wrap_popCallStack(    ctx.arc((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1038,45131,45147,this.tHoz,false,false) || window.parent._wrap_popCallStack(this.tHoz(x, xa))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1038,45149,45166,this.tVert,false,false) || window.parent._wrap_popCallStack(this.tVert(y, ya))) + offset, radius, 0, Math.PI, false)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1039,45209,45221,ctx.stroke,false,false) || window.parent._wrap_popCallStack(    ctx.stroke()));
   }
 }, drawSeriesBars: function(series) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1742, 60975,61694, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1041, 45246,45835, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  var ctx = this.ctx, bw = series.bars.barWidth, lw = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1745,61082,61117,Math.min,false) || Math.min(series.bars.lineWidth, bw));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1747,61130,61140,ctx.save,false) ||   ctx.save());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1748,61151,61207,ctx.translate,false) ||   ctx.translate(this.plotOffset.left, this.plotOffset.top));
+  var ctx = this.ctx, bw = series.bars.barWidth, lw = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1042,45319,45354,Math.min,false,false) || window.parent._wrap_popCallStack(Math.min(series.bars.lineWidth, bw)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1043,45358,45368,ctx.save,false,false) || window.parent._wrap_popCallStack(  ctx.save()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1044,45372,45428,ctx.translate,false,false) || window.parent._wrap_popCallStack(  ctx.translate(this.plotOffset.left, this.plotOffset.top)));
   ctx.lineJoin = 'miter';
   ctx.lineWidth = lw;
   ctx.strokeStyle = series.color;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1755,61327,61380,this.plotBarsShadows,false) ||   this.plotBarsShadows(series, bw, 0, series.bars.fill));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1048,45514,45567,this.plotBarsShadows,false,false) || window.parent._wrap_popCallStack(  this.plotBarsShadows(series, bw, 0, series.bars.fill)));
   if (series.bars.fill) {
-    ctx.fillStyle = series.bars.fillColor != null ? series.bars.fillColor : (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1758,61502,61592,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1758,61502,61581,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1758,61502,61532,Flotr.parseColor,false) || Flotr.parseColor(series.color)).scale,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1758,61502,61532,Flotr.parseColor,false) || Flotr.parseColor(series.color)).scale(null, null, null, series.bars.fillOpacity)).toString,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1758,61502,61581,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1758,61502,61532,Flotr.parseColor,false) || Flotr.parseColor(series.color)).scale,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1758,61502,61532,Flotr.parseColor,false) || Flotr.parseColor(series.color)).scale(null, null, null, series.bars.fillOpacity)).toString());
+    ctx.fillStyle = series.bars.fillColor != null ? series.bars.fillColor : (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1050,45671,45761,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1050,45671,45750,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1050,45671,45701,Flotr.parseColor,false,false) || window.parent._wrap_popCallStack(Flotr.parseColor(series.color))).scale(null, null, null, series.bars.fillOpacity))).toString()));
   }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1761,61616,61662,this.plotBars,false) ||   this.plotBars(series, bw, 0, series.bars.fill));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1762,61673,61686,ctx.restore,false) ||   ctx.restore());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1052,45769,45815,this.plotBars,false,false) || window.parent._wrap_popCallStack(  this.plotBars(series, bw, 0, series.bars.fill)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1053,45819,45832,ctx.restore,false,false) || window.parent._wrap_popCallStack(  ctx.restore()));
 }, plotBars: function(series, barWidth, offset, fill) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1764, 61711,64575, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1054, 45847,47868, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var data = series.data;
   if (data.length < 1) 
     return;
-  var xa = series.xaxis, ya = series.yaxis, ctx = this.ctx, tHoz = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1771,61941,61961,this.tHoz.bind,false) || this.tHoz.bind(this)), tVert = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1772,61984,62005,this.tVert.bind,false) || this.tVert.bind(this));
+  var xa = series.xaxis, ya = series.yaxis, ctx = this.ctx, tHoz = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1058,46019,46039,this.tHoz.bind,false,false) || window.parent._wrap_popCallStack(this.tHoz.bind(this))), tVert = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1058,46049,46070,this.tVert.bind,false,false) || window.parent._wrap_popCallStack(this.tVert.bind(this)));
   for (var i = 0; i < data.length; i++) {
     var x = data[i][0], y = data[i][1];
     var drawLeft = true, drawTop = true, drawRight = true;
     var stackOffset = 0;
     if (series.bars.stacked) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1784,62321,62536,xa.values.each,false) ||       xa.values.each(function(o, v) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1784, 62336,62535, (typeof arguments === 'object' ? arguments.callee.caller : null));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1064,46275,46392,xa.values.each,false,false) || window.parent._wrap_popCallStack(      xa.values.each(function(o, v) {
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1064, 46290,46391, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (v == x) {
     stackOffset = o.stack || 0;
     o.stack = stackOffset + y;
   }
-}));
+})));
     }
     if (series.bars.horizontal) 
       var left = stackOffset, right = x + stackOffset, bottom = y, top = y + barWidth;
@@ -1235,41 +1215,41 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1784, 62336,62535, 
         drawTop = false;
     }
     if (fill) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1830,63673,63688,ctx.beginPath,false) ||       ctx.beginPath());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1831,63707,63761,ctx.moveTo,false) ||       ctx.moveTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1831,63718,63732,tHoz,false) || tHoz(left, xa)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1831,63734,63751,tVert,false) || tVert(bottom, ya)) + offset));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1832,63780,63831,ctx.lineTo,false) ||       ctx.lineTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1832,63791,63805,tHoz,false) || tHoz(left, xa)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1832,63807,63821,tVert,false) || tVert(top, ya)) + offset));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1833,63850,63902,ctx.lineTo,false) ||       ctx.lineTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1833,63861,63876,tHoz,false) || tHoz(right, xa)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1833,63878,63892,tVert,false) || tVert(top, ya)) + offset));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1834,63921,63976,ctx.lineTo,false) ||       ctx.lineTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1834,63932,63947,tHoz,false) || tHoz(right, xa)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1834,63949,63966,tVert,false) || tVert(bottom, ya)) + offset));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1835,63995,64005,ctx.fill,false) ||       ctx.fill());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1094,47134,47149,ctx.beginPath,false,false) || window.parent._wrap_popCallStack(      ctx.beginPath()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1095,47157,47211,ctx.moveTo,false,false) || window.parent._wrap_popCallStack(      ctx.moveTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1095,47168,47182,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(left, xa))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1095,47184,47201,tVert,false,false) || window.parent._wrap_popCallStack(tVert(bottom, ya))) + offset)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1096,47219,47270,ctx.lineTo,false,false) || window.parent._wrap_popCallStack(      ctx.lineTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1096,47230,47244,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(left, xa))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1096,47246,47260,tVert,false,false) || window.parent._wrap_popCallStack(tVert(top, ya))) + offset)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1097,47278,47330,ctx.lineTo,false,false) || window.parent._wrap_popCallStack(      ctx.lineTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1097,47289,47304,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(right, xa))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1097,47306,47320,tVert,false,false) || window.parent._wrap_popCallStack(tVert(top, ya))) + offset)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1098,47338,47393,ctx.lineTo,false,false) || window.parent._wrap_popCallStack(      ctx.lineTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1098,47349,47364,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(right, xa))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1098,47366,47383,tVert,false,false) || window.parent._wrap_popCallStack(tVert(bottom, ya))) + offset)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1099,47401,47411,ctx.fill,false,false) || window.parent._wrap_popCallStack(      ctx.fill()));
     }
     if (series.bars.lineWidth != 0 && (drawLeft || drawRight || drawTop)) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1840,64128,64143,ctx.beginPath,false) ||       ctx.beginPath());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1841,64162,64216,ctx.moveTo,false) ||       ctx.moveTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1841,64173,64187,tHoz,false) || tHoz(left, xa)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1841,64189,64206,tVert,false) || tVert(bottom, ya)) + offset));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1843,64237,64313,null,false) ||       ctx[drawLeft ? 'lineTo' : 'moveTo']((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1843,64273,64287,tHoz,false) || tHoz(left, xa)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1843,64289,64303,tVert,false) || tVert(top, ya)) + offset));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1844,64332,64408,null,false) ||       ctx[drawTop ? 'lineTo' : 'moveTo']((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1844,64367,64382,tHoz,false) || tHoz(right, xa)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1844,64384,64398,tVert,false) || tVert(top, ya)) + offset));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1845,64427,64508,null,false) ||       ctx[drawRight ? 'lineTo' : 'moveTo']((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1845,64464,64479,tHoz,false) || tHoz(right, xa)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1845,64481,64498,tVert,false) || tVert(bottom, ya)) + offset));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1847,64529,64541,ctx.stroke,false) ||       ctx.stroke());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1102,47501,47516,ctx.beginPath,false,false) || window.parent._wrap_popCallStack(      ctx.beginPath()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1103,47524,47578,ctx.moveTo,false,false) || window.parent._wrap_popCallStack(      ctx.moveTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1103,47535,47549,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(left, xa))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1103,47551,47568,tVert,false,false) || window.parent._wrap_popCallStack(tVert(bottom, ya))) + offset)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1104,47586,47662,null,false,false) || window.parent._wrap_popCallStack(      ctx[drawLeft ? 'lineTo' : 'moveTo']((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1104,47622,47636,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(left, xa))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1104,47638,47652,tVert,false,false) || window.parent._wrap_popCallStack(tVert(top, ya))) + offset)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1105,47670,47746,null,false,false) || window.parent._wrap_popCallStack(      ctx[drawTop ? 'lineTo' : 'moveTo']((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1105,47705,47720,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(right, xa))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1105,47722,47736,tVert,false,false) || window.parent._wrap_popCallStack(tVert(top, ya))) + offset)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1106,47754,47835,null,false,false) || window.parent._wrap_popCallStack(      ctx[drawRight ? 'lineTo' : 'moveTo']((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1106,47791,47806,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(right, xa))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1106,47808,47825,tVert,false,false) || window.parent._wrap_popCallStack(tVert(bottom, ya))) + offset)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1107,47843,47855,ctx.stroke,false,false) || window.parent._wrap_popCallStack(      ctx.stroke()));
     }
   }
 }, plotBarsShadows: function(series, barWidth, offset) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1851, 64599,66532, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1110, 47887,49310, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var data = series.data;
   if (data.length < 1) 
     return;
-  var xa = series.xaxis, ya = series.yaxis, ctx = this.ctx, tHoz = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1858,64823,64843,this.tHoz.bind,false) || this.tHoz.bind(this)), tVert = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1859,64866,64887,this.tVert.bind,false) || this.tVert.bind(this)), sw = this.options.shadowSize;
+  var xa = series.xaxis, ya = series.yaxis, ctx = this.ctx, tHoz = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1114,48053,48073,this.tHoz.bind,false,false) || window.parent._wrap_popCallStack(this.tHoz.bind(this))), tVert = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1114,48083,48104,this.tVert.bind,false,false) || window.parent._wrap_popCallStack(this.tVert.bind(this))), sw = this.options.shadowSize;
   for (var i = 0; i < data.length; i++) {
     var x = data[i][0], y = data[i][1];
     var stackOffset = 0;
     if (series.bars.stacked) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1869,65144,65371,xa.values.each,false) ||       xa.values.each(function(o, v) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1869, 65159,65370, (typeof arguments === 'object' ? arguments.callee.caller : null));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1119,48280,48409,xa.values.each,false,false) || window.parent._wrap_popCallStack(      xa.values.each(function(o, v) {
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1119, 48295,48408, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (v == x) {
     stackOffset = o.stackShadow || 0;
     o.stackShadow = stackOffset + y;
   }
-}));
+})));
     }
     if (series.bars.horizontal) 
       var left = stackOffset, right = x + stackOffset, bottom = y, top = y + barWidth;
@@ -1285,149 +1265,149 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1869, 65159,65370, 
       bottom = ya.min;
     if (top > ya.max) 
       top = ya.max;
-    var width = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1897,66108,66123,tHoz,false) || tHoz(right, xa)) - (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1897,66126,66140,tHoz,false) || tHoz(left, xa)) - (((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1897,66145,66160,tHoz,false) || tHoz(right, xa)) + sw <= this.plotWidth) ? 0 : sw);
-    var height = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1898,66222,66326,Math.max,false) || Math.max(0, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1898,66234,66251,tVert,false) || tVert(bottom, ya)) - (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1898,66254,66268,tVert,false) || tVert(top, ya)) - (((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1898,66273,66290,tVert,false) || tVert(bottom, ya)) + sw <= this.plotHeight) ? 0 : sw)));
+    var width = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1140,48927,48942,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(right, xa))) - (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1140,48945,48959,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(left, xa))) - (((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1140,48964,48979,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(right, xa))) + sw <= this.plotWidth) ? 0 : sw);
+    var height = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1141,49032,49136,Math.max,false,false) || window.parent._wrap_popCallStack(Math.max(0, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1141,49044,49061,tVert,false,false) || window.parent._wrap_popCallStack(tVert(bottom, ya))) - (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1141,49064,49078,tVert,false,false) || window.parent._wrap_popCallStack(tVert(top, ya))) - (((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1141,49083,49100,tVert,false,false) || window.parent._wrap_popCallStack(tVert(bottom, ya))) + sw <= this.plotHeight) ? 0 : sw))));
     ctx.fillStyle = 'rgba(0,0,0,0.05)';
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1901,66392,66513,ctx.fillRect,false) ||     ctx.fillRect((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1901,66405,66450,Math.min,false) || Math.min((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1901,66414,66428,tHoz,false) || tHoz(left, xa)) + sw, this.plotWidth)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1901,66452,66497,Math.min,false) || Math.min((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1901,66461,66475,tVert,false) || tVert(top, ya)) + sw, this.plotWidth)), width, height));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1143,49182,49303,ctx.fillRect,false,false) || window.parent._wrap_popCallStack(    ctx.fillRect((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1143,49195,49240,Math.min,false,false) || window.parent._wrap_popCallStack(Math.min((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1143,49204,49218,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(left, xa))) + sw, this.plotWidth))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1143,49242,49287,Math.min,false,false) || window.parent._wrap_popCallStack(Math.min((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1143,49251,49265,tVert,false,false) || window.parent._wrap_popCallStack(tVert(top, ya))) + sw, this.plotWidth))), width, height)));
   }
 }, drawSeriesCandles: function(series) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1905, 66560,66958, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1145, 49331,49646, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var ctx = this.ctx, bw = series.candles.candleWidth;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1909,66666,66676,ctx.save,false) ||   ctx.save());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1910,66687,66743,ctx.translate,false) ||   ctx.translate(this.plotOffset.left, this.plotOffset.top));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1147,49407,49417,ctx.save,false,false) || window.parent._wrap_popCallStack(  ctx.save()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1148,49421,49477,ctx.translate,false,false) || window.parent._wrap_popCallStack(  ctx.translate(this.plotOffset.left, this.plotOffset.top)));
   ctx.lineJoin = 'miter';
   ctx.lineWidth = series.candles.lineWidth;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1915,66842,66881,this.plotCandlesShadows,false) ||   this.plotCandlesShadows(series, bw / 2));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1916,66892,66924,this.plotCandles,false) ||   this.plotCandles(series, bw / 2));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1918,66937,66950,ctx.restore,false) ||   ctx.restore());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1151,49551,49590,this.plotCandlesShadows,false,false) || window.parent._wrap_popCallStack(  this.plotCandlesShadows(series, bw / 2)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1152,49594,49626,this.plotCandles,false,false) || window.parent._wrap_popCallStack(  this.plotCandles(series, bw / 2)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1153,49630,49643,ctx.restore,false,false) || window.parent._wrap_popCallStack(  ctx.restore()));
 }, plotCandles: function(series, offset) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1920, 66978,70025, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1154, 49661,51998, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var data = series.data;
   if (data.length < 1) 
     return;
-  var xa = series.xaxis, ya = series.yaxis, ctx = this.ctx, tHoz = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1927,67192,67212,this.tHoz.bind,false) || this.tHoz.bind(this)), tVert = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1928,67235,67256,this.tVert.bind,false) || this.tVert.bind(this));
+  var xa = series.xaxis, ya = series.yaxis, ctx = this.ctx, tHoz = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1158,49817,49837,this.tHoz.bind,false,false) || window.parent._wrap_popCallStack(this.tHoz.bind(this))), tVert = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1158,49847,49868,this.tVert.bind,false,false) || window.parent._wrap_popCallStack(this.tVert.bind(this)));
   for (var i = 0; i < data.length; i++) {
     var d = data[i], x = d[0], open = d[1], high = d[2], low = d[3], close = d[4];
-    var left = x, right = x + series.candles.candleWidth, bottom = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1940,67598,67619,Math.max,false) || Math.max(ya.min, low)), top = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1941,67644,67666,Math.min,false) || Math.min(ya.max, high)), bottom2 = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1942,67695,67734,Math.max,false) || Math.max(ya.min, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1942,67712,67733,Math.min,false) || Math.min(open, close)))), top2 = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1943,67760,67799,Math.min,false) || Math.min(ya.max, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1943,67777,67798,Math.max,false) || Math.max(open, close))));
+    var left = x, right = x + series.candles.candleWidth, bottom = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1161,50062,50083,Math.max,false,false) || window.parent._wrap_popCallStack(Math.max(ya.min, low))), top = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1161,50091,50113,Math.min,false,false) || window.parent._wrap_popCallStack(Math.min(ya.max, high))), bottom2 = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1161,50125,50164,Math.max,false,false) || window.parent._wrap_popCallStack(Math.max(ya.min, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1161,50142,50163,Math.min,false,false) || window.parent._wrap_popCallStack(Math.min(open, close)))))), top2 = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1161,50173,50212,Math.min,false,false) || window.parent._wrap_popCallStack(Math.min(ya.max, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1161,50190,50211,Math.max,false,false) || window.parent._wrap_popCallStack(Math.max(open, close))))));
     if (right < xa.min || left > xa.max || top < ya.min || bottom > ya.max) 
       continue;
     var color = series.candles[open > close ? 'downFillColor' : 'upFillColor'];
     if (series.candles.fill && !series.candles.barcharts) {
-      ctx.fillStyle = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1951,68110,68196,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1951,68110,68185,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1951,68110,68133,Flotr.parseColor,false) || Flotr.parseColor(color)).scale,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1951,68110,68133,Flotr.parseColor,false) || Flotr.parseColor(color)).scale(null, null, null, series.candles.fillOpacity)).toString,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1951,68110,68185,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1951,68110,68133,Flotr.parseColor,false) || Flotr.parseColor(color)).scale,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1951,68110,68133,Flotr.parseColor,false) || Flotr.parseColor(color)).scale(null, null, null, series.candles.fillOpacity)).toString());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1952,68215,68341,ctx.fillRect,false) ||       ctx.fillRect((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1952,68228,68242,tHoz,false) || tHoz(left, xa)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1952,68244,68259,tVert,false) || tVert(top2, ya)) + offset, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1952,68270,68285,tHoz,false) || tHoz(right, xa)) - (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1952,68288,68302,tHoz,false) || tHoz(left, xa)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1952,68304,68322,tVert,false) || tVert(bottom2, ya)) - (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1952,68325,68340,tVert,false) || tVert(top2, ya))));
+      ctx.fillStyle = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1166,50469,50555,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1166,50469,50544,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1166,50469,50492,Flotr.parseColor,false,false) || window.parent._wrap_popCallStack(Flotr.parseColor(color))).scale(null, null, null, series.candles.fillOpacity))).toString()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1167,50563,50689,ctx.fillRect,false,false) || window.parent._wrap_popCallStack(      ctx.fillRect((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1167,50576,50590,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(left, xa))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1167,50592,50607,tVert,false,false) || window.parent._wrap_popCallStack(tVert(top2, ya))) + offset, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1167,50618,50633,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(right, xa))) - (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1167,50636,50650,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(left, xa))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1167,50652,50670,tVert,false,false) || window.parent._wrap_popCallStack(tVert(bottom2, ya))) - (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1167,50673,50688,tVert,false,false) || window.parent._wrap_popCallStack(tVert(top2, ya))))));
     }
     if (series.candles.lineWidth || series.candles.wickLineWidth) {
       var x, y, pixelOffset = (series.candles.wickLineWidth % 2) / 2;
-      x = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1959,68543,68583,Math.floor,false) || Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1959,68554,68578,tHoz,false) || tHoz((left + right) / 2)), xa)) + pixelOffset;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1961,68618,68628,ctx.save,false) ||       ctx.save());
+      x = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1171,50845,50885,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1171,50856,50880,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz((left + right) / 2))), xa))) + pixelOffset;
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1172,50907,50917,ctx.save,false,false) || window.parent._wrap_popCallStack(      ctx.save()));
       ctx.strokeStyle = color;
       ctx.lineWidth = series.candles.wickLineWidth;
       ctx.lineCap = 'butt';
       if (series.candles.barcharts) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1967,68846,68861,ctx.beginPath,false) ||         ctx.beginPath());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1969,68886,68936,ctx.moveTo,false) ||         ctx.moveTo(x, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1969,68900,68935,Math.floor,false) || Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1969,68911,68925,tVert,false) || tVert(top, ya)) + offset))));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1970,68959,69012,ctx.lineTo,false) ||         ctx.lineTo(x, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1970,68973,69011,Math.floor,false) || Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1970,68984,69001,tVert,false) || tVert(bottom, ya)) + offset))));
-        y = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1972,69041,69077,Math.floor,false) || Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1972,69052,69067,tVert,false) || tVert(open, ya)) + offset)) + 0.5;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1973,69106,69161,ctx.moveTo,false) ||         ctx.moveTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1973,69117,69143,Math.floor,false) || Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1973,69128,69142,tHoz,false) || tHoz(left, xa)))) + pixelOffset, y));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1974,69184,69200,ctx.lineTo,false) ||         ctx.lineTo(x, y));
-        y = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1976,69229,69266,Math.floor,false) || Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1976,69240,69256,tVert,false) || tVert(close, ya)) + offset)) + 0.5;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1977,69295,69351,ctx.moveTo,false) ||         ctx.moveTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1977,69306,69333,Math.floor,false) || Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1977,69317,69332,tHoz,false) || tHoz(right, xa)))) + pixelOffset, y));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1978,69374,69390,ctx.lineTo,false) ||         ctx.lineTo(x, y));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1177,51076,51091,ctx.beginPath,false,false) || window.parent._wrap_popCallStack(        ctx.beginPath()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1178,51101,51151,ctx.moveTo,false,false) || window.parent._wrap_popCallStack(        ctx.moveTo(x, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1178,51115,51150,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1178,51126,51140,tVert,false,false) || window.parent._wrap_popCallStack(tVert(top, ya))) + offset))))));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1179,51161,51214,ctx.lineTo,false,false) || window.parent._wrap_popCallStack(        ctx.lineTo(x, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1179,51175,51213,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1179,51186,51203,tVert,false,false) || window.parent._wrap_popCallStack(tVert(bottom, ya))) + offset))))));
+        y = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1180,51228,51264,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1180,51239,51254,tVert,false,false) || window.parent._wrap_popCallStack(tVert(open, ya))) + offset))) + 0.5;
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1181,51280,51335,ctx.moveTo,false,false) || window.parent._wrap_popCallStack(        ctx.moveTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1181,51291,51317,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1181,51302,51316,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(left, xa)))))) + pixelOffset, y)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1182,51345,51361,ctx.lineTo,false,false) || window.parent._wrap_popCallStack(        ctx.lineTo(x, y)));
+        y = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1183,51375,51412,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1183,51386,51402,tVert,false,false) || window.parent._wrap_popCallStack(tVert(close, ya))) + offset))) + 0.5;
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1184,51428,51484,ctx.moveTo,false,false) || window.parent._wrap_popCallStack(        ctx.moveTo((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1184,51439,51466,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1184,51450,51465,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(right, xa)))))) + pixelOffset, y)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1185,51494,51510,ctx.lineTo,false,false) || window.parent._wrap_popCallStack(        ctx.lineTo(x, y)));
       } else {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1980,69439,69567,ctx.strokeRect,false) ||         ctx.strokeRect((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1980,69454,69468,tHoz,false) || tHoz(left, xa)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1980,69470,69485,tVert,false) || tVert(top2, ya)) + offset, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1980,69496,69511,tHoz,false) || tHoz(right, xa)) - (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1980,69514,69528,tHoz,false) || tHoz(left, xa)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1980,69530,69548,tVert,false) || tVert(bottom2, ya)) - (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1980,69551,69566,tVert,false) || tVert(top2, ya))));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1982,69592,69607,ctx.beginPath,false) ||         ctx.beginPath());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1983,69630,69681,ctx.moveTo,false) ||         ctx.moveTo(x, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1983,69644,69680,Math.floor,false) || Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1983,69655,69670,tVert,false) || tVert(top2, ya)) + offset))));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1984,69704,69754,ctx.lineTo,false) ||         ctx.lineTo(x, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1984,69718,69753,Math.floor,false) || Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1984,69729,69743,tVert,false) || tVert(top, ya)) + offset))));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1985,69777,69831,ctx.moveTo,false) ||         ctx.moveTo(x, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1985,69791,69830,Math.floor,false) || Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1985,69802,69820,tVert,false) || tVert(bottom2, ya)) + offset))));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1986,69854,69907,ctx.lineTo,false) ||         ctx.lineTo(x, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1986,69868,69906,Math.floor,false) || Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1986,69879,69896,tVert,false) || tVert(bottom, ya)) + offset))));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1187,51535,51663,ctx.strokeRect,false,false) || window.parent._wrap_popCallStack(        ctx.strokeRect((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1187,51550,51564,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(left, xa))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1187,51566,51581,tVert,false,false) || window.parent._wrap_popCallStack(tVert(top2, ya))) + offset, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1187,51592,51607,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(right, xa))) - (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1187,51610,51624,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(left, xa))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1187,51626,51644,tVert,false,false) || window.parent._wrap_popCallStack(tVert(bottom2, ya))) - (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1187,51647,51662,tVert,false,false) || window.parent._wrap_popCallStack(tVert(top2, ya))))));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1188,51673,51688,ctx.beginPath,false,false) || window.parent._wrap_popCallStack(        ctx.beginPath()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1189,51698,51749,ctx.moveTo,false,false) || window.parent._wrap_popCallStack(        ctx.moveTo(x, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1189,51712,51748,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1189,51723,51738,tVert,false,false) || window.parent._wrap_popCallStack(tVert(top2, ya))) + offset))))));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1190,51759,51809,ctx.lineTo,false,false) || window.parent._wrap_popCallStack(        ctx.lineTo(x, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1190,51773,51808,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1190,51784,51798,tVert,false,false) || window.parent._wrap_popCallStack(tVert(top, ya))) + offset))))));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1191,51819,51873,ctx.moveTo,false,false) || window.parent._wrap_popCallStack(        ctx.moveTo(x, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1191,51833,51872,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1191,51844,51862,tVert,false,false) || window.parent._wrap_popCallStack(tVert(bottom2, ya))) + offset))))));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1192,51883,51936,ctx.lineTo,false,false) || window.parent._wrap_popCallStack(        ctx.lineTo(x, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1192,51897,51935,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1192,51908,51925,tVert,false,false) || window.parent._wrap_popCallStack(tVert(bottom, ya))) + offset))))));
       }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1989,69947,69959,ctx.stroke,false) ||       ctx.stroke());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1990,69978,69991,ctx.restore,false) ||       ctx.restore());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1194,51952,51964,ctx.stroke,false,false) || window.parent._wrap_popCallStack(      ctx.stroke()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1195,51972,51985,ctx.restore,false,false) || window.parent._wrap_popCallStack(      ctx.restore()));
     }
   }
 }, plotCandlesShadows: function(series, offset) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1994, 70052,71394, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1198, 52020,53053, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var data = series.data;
   if (data.length < 1 || series.candles.barcharts) 
     return;
-  var xa = series.xaxis, ya = series.yaxis, tHoz = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2000,70265,70285,this.tHoz.bind,false) || this.tHoz.bind(this)), tVert = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2001,70308,70329,this.tVert.bind,false) || this.tVert.bind(this)), sw = this.options.shadowSize;
+  var xa = series.xaxis, ya = series.yaxis, tHoz = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1202,52188,52208,this.tHoz.bind,false,false) || window.parent._wrap_popCallStack(this.tHoz.bind(this))), tVert = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1202,52218,52239,this.tVert.bind,false,false) || window.parent._wrap_popCallStack(this.tVert.bind(this))), sw = this.options.shadowSize;
   for (var i = 0; i < data.length; i++) {
     var d = data[i], x = d[0], open = d[1], high = d[2], low = d[3], close = d[4];
-    var left = x, right = x + series.candles.candleWidth, bottom = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2014,70714,70753,Math.max,false) || Math.max(ya.min, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2014,70731,70752,Math.min,false) || Math.min(open, close)))), top = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2015,70778,70817,Math.min,false) || Math.min(ya.max, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2015,70795,70816,Math.max,false) || Math.max(open, close))));
+    var left = x, right = x + series.candles.candleWidth, bottom = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1205,52463,52502,Math.max,false,false) || window.parent._wrap_popCallStack(Math.max(ya.min, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1205,52480,52501,Math.min,false,false) || window.parent._wrap_popCallStack(Math.min(open, close)))))), top = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1205,52510,52549,Math.min,false,false) || window.parent._wrap_popCallStack(Math.min(ya.max, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1205,52527,52548,Math.max,false,false) || window.parent._wrap_popCallStack(Math.max(open, close))))));
     if (right < xa.min || left > xa.max || top < ya.min || bottom > ya.max) 
       continue;
-    var width = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2020,70960,70975,tHoz,false) || tHoz(right, xa)) - (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2020,70978,70992,tHoz,false) || tHoz(left, xa)) - (((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2020,70997,71012,tHoz,false) || tHoz(right, xa)) + sw <= this.plotWidth) ? 0 : sw);
-    var height = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2021,71074,71178,Math.max,false) || Math.max(0, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2021,71086,71103,tVert,false) || tVert(bottom, ya)) - (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2021,71106,71120,tVert,false) || tVert(top, ya)) - (((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2021,71125,71142,tVert,false) || tVert(bottom, ya)) + sw <= this.plotHeight) ? 0 : sw)));
+    var width = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1208,52660,52675,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(right, xa))) - (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1208,52678,52692,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(left, xa))) - (((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1208,52697,52712,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(right, xa))) + sw <= this.plotWidth) ? 0 : sw);
+    var height = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1209,52765,52869,Math.max,false,false) || window.parent._wrap_popCallStack(Math.max(0, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1209,52777,52794,tVert,false,false) || window.parent._wrap_popCallStack(tVert(bottom, ya))) - (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1209,52797,52811,tVert,false,false) || window.parent._wrap_popCallStack(tVert(top, ya))) - (((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1209,52816,52833,tVert,false,false) || window.parent._wrap_popCallStack(tVert(bottom, ya))) + sw <= this.plotHeight) ? 0 : sw))));
     this.ctx.fillStyle = 'rgba(0,0,0,0.05)';
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2024,71249,71375,this.ctx.fillRect,false) ||     this.ctx.fillRect((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2024,71267,71312,Math.min,false) || Math.min((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2024,71276,71290,tHoz,false) || tHoz(left, xa)) + sw, this.plotWidth)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2024,71314,71359,Math.min,false) || Math.min((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2024,71323,71337,tVert,false) || tVert(top, ya)) + sw, this.plotWidth)), width, height));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1211,52920,53046,this.ctx.fillRect,false,false) || window.parent._wrap_popCallStack(    this.ctx.fillRect((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1211,52938,52983,Math.min,false,false) || window.parent._wrap_popCallStack(Math.min((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1211,52947,52961,tHoz,false,false) || window.parent._wrap_popCallStack(tHoz(left, xa))) + sw, this.plotWidth))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1211,52985,53030,Math.min,false,false) || window.parent._wrap_popCallStack(Math.min((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1211,52994,53008,tVert,false,false) || window.parent._wrap_popCallStack(tVert(top, ya))) + sw, this.plotWidth))), width, height)));
   }
 }, drawSeriesPie: function(series) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2028, 71418,76549, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1213, 53070,56444, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (!this.options.pie.drawn) {
-    var ctx = this.ctx, options = this.options, lw = series.pie.lineWidth, sw = series.shadowSize, data = series.data, radius = ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2035,71701,71746,Math.min,false) || Math.min(this.canvasWidth, this.canvasHeight)) * series.pie.sizeRatio) / 2, html = [];
+    var ctx = this.ctx, options = this.options, lw = series.pie.lineWidth, sw = series.shadowSize, data = series.data, radius = ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1215,53251,53296,Math.min,false,false) || window.parent._wrap_popCallStack(Math.min(this.canvasWidth, this.canvasHeight))) * series.pie.sizeRatio) / 2, html = [];
     var vScale = 1;
-    var plotTickness = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2039,71867,71897,Math.sin,false) || Math.sin(series.pie.viewAngle)) * series.pie.spliceThickness / vScale;
+    var plotTickness = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1217,53380,53410,Math.sin,false,false) || window.parent._wrap_popCallStack(Math.sin(series.pie.viewAngle))) * series.pie.spliceThickness / vScale;
     var style = {size: options.fontSize * 1.2, color: options.grid.color, weight: 1.5};
     var center = {x: (this.canvasWidth + this.plotOffset.left) / 2, y: (this.canvasHeight - this.plotOffset.bottom) / 2};
-    var portions = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2053,72316,72639,this.series.collect,false) || this.series.collect(function(hash, index) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2053, 72336,72638, (typeof arguments === 'object' ? arguments.callee.caller : null));
+    var portions = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1220,53679,53859,this.series.collect,false,false) || window.parent._wrap_popCallStack(this.series.collect(function(hash, index) {
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1220, 53699,53858, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (hash.pie.show) 
     return {name: (hash.label || hash.data[0][1]), value: [index, hash.data[0][1]], explode: hash.pie.explode};
-}));
-    var sum = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2063,72668,72779,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2063,72668,72700,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2063,72668,72691,portions.pluck,false) || portions.pluck('value')).pluck,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2063,72668,72691,portions.pluck,false) || portions.pluck('value')).pluck(1)).inject,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2063,72668,72700,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2063,72668,72691,portions.pluck,false) || portions.pluck('value')).pluck,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2063,72668,72691,portions.pluck,false) || portions.pluck('value')).pluck(1)).inject(0, function(acc, n) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2063, 72711,72778, (typeof arguments === 'object' ? arguments.callee.caller : null));
+})));
+    var sum = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1224,53875,53957,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1224,53875,53907,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1224,53875,53898,portions.pluck,false,false) || window.parent._wrap_popCallStack(portions.pluck('value'))).pluck(1))).inject(0, function(acc, n) {
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1224, 53918,53956, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return acc + n;
-}));
+})));
     var fraction = 0.0, angle = series.pie.startAngle, value = 0.0;
-    var slices = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2071,72922,73463,portions.collect,false) || portions.collect(function(slice) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2071, 72939,73462, (typeof arguments === 'object' ? arguments.callee.caller : null));
+    var slices = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1228,54044,54345,portions.collect,false,false) || window.parent._wrap_popCallStack(portions.collect(function(slice) {
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1228, 54061,54344, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   angle += fraction;
-  value = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2073,73019,73045,parseFloat,false) || parseFloat(slice.value[1]));
+  value = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1230,54110,54136,parseFloat,false,false) || window.parent._wrap_popCallStack(parseFloat(slice.value[1])));
   fraction = value / sum;
   return {name: slice.name, fraction: fraction, x: slice.value[0], y: value, explode: slice.explode, startAngle: 2 * angle * Math.PI, endAngle: 2 * (angle + fraction) * Math.PI};
-}));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2086,73480,73490,ctx.save,false) ||     ctx.save());
+})));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1234,54351,54361,ctx.save,false,false) || window.parent._wrap_popCallStack(    ctx.save()));
     if (sw > 0) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2089,73538,74055,slices.each,false) ||       slices.each(function(slice) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2089, 73550,74048, (typeof arguments === 'object' ? arguments.callee.caller : null));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1236,54387,54766,slices.each,false,false) || window.parent._wrap_popCallStack(      slices.each(function(slice) {
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1236, 54399,54759, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var bisection = (slice.startAngle + slice.endAngle) / 2;
-  var xOffset = center.x + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2092,73695,73714,Math.cos,false) || Math.cos(bisection)) * slice.explode + sw;
-  var yOffset = center.y + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2093,73783,73802,Math.sin,false) || Math.sin(bisection)) * slice.explode + sw;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2095,73848,73937,this.plotSlice,false) ||   this.plotSlice(xOffset, yOffset, radius, slice.startAngle, slice.endAngle, false, vScale));
+  var xOffset = center.x + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1238,54503,54522,Math.cos,false,false) || window.parent._wrap_popCallStack(Math.cos(bisection))) * slice.explode + sw;
+  var yOffset = center.y + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1239,54572,54591,Math.sin,false,false) || window.parent._wrap_popCallStack(Math.sin(bisection))) * slice.explode + sw;
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1240,54616,54705,this.plotSlice,false,false) || window.parent._wrap_popCallStack(  this.plotSlice(xOffset, yOffset, radius, slice.startAngle, slice.endAngle, false, vScale)));
   ctx.fillStyle = 'rgba(0,0,0,0.1)';
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2098,74018,74028,ctx.fill,false) ||   ctx.fill());
-}, this));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1242,54746,54756,ctx.fill,false,false) || window.parent._wrap_popCallStack(  ctx.fill()));
+}, this)));
     }
     if (options.HtmlText) {
       html = ['<div style="color:' + this.options.grid.color + '" class="flotr-labels">'];
     }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2106,74243,76321,slices.each,false) ||     slices.each(function(slice, index) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2106, 74255,76314, (typeof arguments === 'object' ? arguments.callee.caller : null));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1248,54903,56290,slices.each,false,false) || window.parent._wrap_popCallStack(    slices.each(function(slice, index) {
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1248, 54915,56283, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var bisection = (slice.startAngle + slice.endAngle) / 2;
   var color = options.colors[index];
-  var xOffset = center.x + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2110,74451,74470,Math.cos,false) || Math.cos(bisection)) * slice.explode;
-  var yOffset = center.y + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2111,74530,74549,Math.sin,false) || Math.sin(bisection)) * slice.explode;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2113,74586,74675,this.plotSlice,false) ||   this.plotSlice(xOffset, yOffset, radius, slice.startAngle, slice.endAngle, false, vScale));
+  var xOffset = center.x + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1251,55063,55082,Math.cos,false,false) || window.parent._wrap_popCallStack(Math.cos(bisection))) * slice.explode;
+  var yOffset = center.y + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1252,55127,55146,Math.sin,false,false) || window.parent._wrap_popCallStack(Math.sin(bisection))) * slice.explode;
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1253,55166,55255,this.plotSlice,false,false) || window.parent._wrap_popCallStack(  this.plotSlice(xOffset, yOffset, radius, slice.startAngle, slice.endAngle, false, vScale)));
   if (series.pie.fill) {
-    ctx.fillStyle = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2116,74756,74838,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2116,74756,74827,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2116,74756,74779,Flotr.parseColor,false) || Flotr.parseColor(color)).scale,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2116,74756,74779,Flotr.parseColor,false) || Flotr.parseColor(color)).scale(null, null, null, series.pie.fillOpacity)).toString,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2116,74756,74827,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2116,74756,74779,Flotr.parseColor,false) || Flotr.parseColor(color)).scale,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2116,74756,74779,Flotr.parseColor,false) || Flotr.parseColor(color)).scale(null, null, null, series.pie.fillOpacity)).toString());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2117,74861,74871,ctx.fill,false) ||     ctx.fill());
+    ctx.fillStyle = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1255,55302,55384,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1255,55302,55373,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1255,55302,55325,Flotr.parseColor,false,false) || window.parent._wrap_popCallStack(Flotr.parseColor(color))).scale(null, null, null, series.pie.fillOpacity))).toString()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1256,55390,55400,ctx.fill,false,false) || window.parent._wrap_popCallStack(    ctx.fill()));
   }
   ctx.lineWidth = lw;
   ctx.strokeStyle = color;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2121,74988,75000,ctx.stroke,false) ||   ctx.stroke());
-  var label = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2125,75037,75070,options.pie.labelFormatter,false) || options.pie.labelFormatter(slice));
-  var textAlignRight = ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2127,75113,75132,Math.cos,false) || Math.cos(bisection)) < 0);
-  var distX = xOffset + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2128,75178,75197,Math.cos,false) || Math.cos(bisection)) * (series.pie.explode + radius);
-  var distY = yOffset + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2129,75270,75289,Math.sin,false) || Math.sin(bisection)) * (series.pie.explode + radius);
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1260,55457,55469,ctx.stroke,false,false) || window.parent._wrap_popCallStack(  ctx.stroke()));
+  var label = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1261,55485,55518,options.pie.labelFormatter,false,false) || window.parent._wrap_popCallStack(options.pie.labelFormatter(slice)));
+  var textAlignRight = ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1262,55544,55563,Math.cos,false,false) || window.parent._wrap_popCallStack(Math.cos(bisection))) < 0);
+  var distX = xOffset + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1263,55594,55613,Math.cos,false,false) || window.parent._wrap_popCallStack(Math.cos(bisection))) * (series.pie.explode + radius);
+  var distY = yOffset + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1264,55671,55690,Math.sin,false,false) || window.parent._wrap_popCallStack(Math.sin(bisection))) * (series.pie.explode + radius);
   if (slice.fraction && label) {
     if (options.HtmlText) {
       var divStyle = 'position:absolute;top:' + (distY - 5) + 'px;';
@@ -1436,51 +1416,47 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2106, 74255,76314, 
       } else {
         divStyle += 'left:' + distX + 'px;text-align:left;';
       }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2140,75844,75931,html.push,false) ||       html.push('<div style="' + divStyle + '" class="flotr-grid-label">' + label + '</div>'));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1273,56056,56143,html.push,false,false) || window.parent._wrap_popCallStack(      html.push('<div style="' + divStyle + '" class="flotr-grid-label">' + label + '</div>')));
     } else {
       style.halign = textAlignRight ? 'r' : 'l';
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2143,76056,76256,ctx.drawText,false) ||       ctx.drawText(label, distX, distY + style.size / 2, style));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1276,56213,56270,ctx.drawText,false,false) || window.parent._wrap_popCallStack(      ctx.drawText(label, distX, distY + style.size / 2, style)));
     }
   }
-}, this));
+}, this)));
     if (options.HtmlText) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2154,76379,76398,html.push,false) ||       html.push('</div>'));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2155,76417,76446,this.el.insert,false) ||       this.el.insert((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2155,76432,76445,html.join,false) || html.join(''))));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1281,56326,56345,html.push,false,false) || window.parent._wrap_popCallStack(      html.push('</div>')));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1282,56353,56382,this.el.insert,false,false) || window.parent._wrap_popCallStack(      this.el.insert((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1282,56368,56381,html.join,false,false) || window.parent._wrap_popCallStack(html.join(''))))));
     }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2158,76478,76491,ctx.restore,false) ||     ctx.restore());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1284,56394,56407,ctx.restore,false,false) || window.parent._wrap_popCallStack(    ctx.restore()));
     options.pie.drawn = true;
   }
 }, plotSlice: function(x, y, radius, startAngle, endAngle, fill, vScale) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2162, 76567,76939, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1287, 56457,56751, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var ctx = this.ctx;
   vScale = vScale || 1;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2166,76700,76710,ctx.save,false) ||   ctx.save());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2167,76721,76741,ctx.scale,false) ||   ctx.scale(1, vScale));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2168,76752,76767,ctx.beginPath,false) ||   ctx.beginPath());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2169,76778,76794,ctx.moveTo,false) ||   ctx.moveTo(x, y));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2170,76805,76854,ctx.arc,false) ||   ctx.arc(x, y, radius, startAngle, endAngle, fill));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2171,76865,76881,ctx.lineTo,false) ||   ctx.lineTo(x, y));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2172,76892,76907,ctx.closePath,false) ||   ctx.closePath());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2173,76918,76931,ctx.restore,false) ||   ctx.restore());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1290,56566,56576,ctx.save,false,false) || window.parent._wrap_popCallStack(  ctx.save()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1291,56580,56600,ctx.scale,false,false) || window.parent._wrap_popCallStack(  ctx.scale(1, vScale)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1292,56604,56619,ctx.beginPath,false,false) || window.parent._wrap_popCallStack(  ctx.beginPath()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1293,56623,56639,ctx.moveTo,false,false) || window.parent._wrap_popCallStack(  ctx.moveTo(x, y)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1294,56643,56692,ctx.arc,false,false) || window.parent._wrap_popCallStack(  ctx.arc(x, y, radius, startAngle, endAngle, fill)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1295,56696,56712,ctx.lineTo,false,false) || window.parent._wrap_popCallStack(  ctx.lineTo(x, y)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1296,56716,56731,ctx.closePath,false,false) || window.parent._wrap_popCallStack(  ctx.closePath()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1297,56735,56748,ctx.restore,false,false) || window.parent._wrap_popCallStack(  ctx.restore()));
 }, plotPie: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2175, 76955,76969, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1298, 56762,56776, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 }, insertLegend: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2177, 76992,83116, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1299, 56792,61545, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (!this.options.legend.show) 
     return;
   var series = this.series, plotOffset = this.plotOffset, options = this.options, fragments = [], rowStarted = false, ctx = this.ctx, i;
-  var noLegendItems = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2191,77322,77412,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2189,77322,77405,series.findAll,false) || series.findAll(function(s) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2189, 77337,77404, (typeof arguments === 'object' ? arguments.callee.caller : null));
+  var noLegendItems = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1305,57010,57079,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1303,57010,57072,series.findAll,false,false) || window.parent._wrap_popCallStack(series.findAll(function(s) {
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1303, 57025,57071, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return (s.label && !s.hide);
-})).size,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2189,77322,77405,series.findAll,false) || series.findAll(function(s) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2189, 77337,77404, (typeof arguments === 'object' ? arguments.callee.caller : null));
-
-  return (s.label && !s.hide);
-})).size());
+}))).size()));
   if (noLegendItems) {
     if (!options.HtmlText && this.textEnabled) {
       var style = {size: options.fontSize * 1.1, color: options.grid.color};
@@ -1489,31 +1465,31 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2189, 77337,77404, 
       for (i = series.length - 1; i > -1; --i) {
         if (!series[i].label || series[i].hide) 
           continue;
-        var label = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2215,78243,78289,options.legend.labelFormatter,false) || options.legend.labelFormatter(series[i].label));
-        labelMaxWidth = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2216,78328,78382,Math.max,false) || Math.max(labelMaxWidth, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2216,78352,78381,ctx.measureText,false) || ctx.measureText(label, style))));
+        var label = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1314,57634,57680,options.legend.labelFormatter,false,false) || window.parent._wrap_popCallStack(options.legend.labelFormatter(series[i].label)));
+        labelMaxWidth = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1315,57706,57760,Math.max,false,false) || window.parent._wrap_popCallStack(Math.max(labelMaxWidth, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1315,57730,57759,ctx.measureText,false,false) || window.parent._wrap_popCallStack(ctx.measureText(label, style))))));
       }
-      var legendWidth = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2219,78440,78481,Math.round,false) || Math.round(lbw + lbm * 3 + labelMaxWidth)), legendHeight = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2220,78519,78564,Math.round,false) || Math.round(noLegendItems * (lbm + lbh) + lbm));
-      if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2222,78589,78600,p.charAt,false) || p.charAt(0)) == 's') 
+      var legendWidth = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1317,57794,57835,Math.round,false,false) || window.parent._wrap_popCallStack(Math.round(lbw + lbm * 3 + labelMaxWidth))), legendHeight = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1317,57852,57897,Math.round,false,false) || window.parent._wrap_popCallStack(Math.round(noLegendItems * (lbm + lbh) + lbm)));
+      if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1318,57909,57920,p.charAt,false,false) || window.parent._wrap_popCallStack(p.charAt(0))) == 's') 
         offsetY = plotOffset.top + this.plotHeight - (m + legendHeight);
-      if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2223,78695,78706,p.charAt,false) || p.charAt(1)) == 'e') 
+      if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1320,58013,58024,p.charAt,false,false) || window.parent._wrap_popCallStack(p.charAt(1))) == 'e') 
         offsetX = plotOffset.left + this.plotWidth - (m + legendWidth);
-      var color = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2226,78812,78958,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2226,78812,78947,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2226,78812,78882,Flotr.parseColor,false) || Flotr.parseColor(options.legend.backgroundColor || 'rgb(240,240,240)')).scale,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2226,78812,78882,Flotr.parseColor,false) || Flotr.parseColor(options.legend.backgroundColor || 'rgb(240,240,240)')).scale(null, null, null, options.legend.backgroundOpacity || 0.1)).toString,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2226,78812,78947,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2226,78812,78882,Flotr.parseColor,false) || Flotr.parseColor(options.legend.backgroundColor || 'rgb(240,240,240)')).scale,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2226,78812,78882,Flotr.parseColor,false) || Flotr.parseColor(options.legend.backgroundColor || 'rgb(240,240,240)')).scale(null, null, null, options.legend.backgroundOpacity || 0.1)).toString());
+      var color = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1322,58124,58270,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1322,58124,58259,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1322,58124,58194,Flotr.parseColor,false,false) || window.parent._wrap_popCallStack(Flotr.parseColor(options.legend.backgroundColor || 'rgb(240,240,240)'))).scale(null, null, null, options.legend.backgroundOpacity || 0.1))).toString()));
       ctx.fillStyle = color;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2229,79019,79076,ctx.fillRect,false) ||       ctx.fillRect(offsetX, offsetY, legendWidth, legendHeight));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1324,58307,58364,ctx.fillRect,false,false) || window.parent._wrap_popCallStack(      ctx.fillRect(offsetX, offsetY, legendWidth, legendHeight)));
       ctx.strokeStyle = options.legend.labelBoxBorderColor;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2231,79166,79255,ctx.strokeRect,false) ||       ctx.strokeRect((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2231,79181,79203,Flotr.toPixel,false) || Flotr.toPixel(offsetX)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2231,79205,79227,Flotr.toPixel,false) || Flotr.toPixel(offsetY)), legendWidth, legendHeight));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1326,58432,58521,ctx.strokeRect,false,false) || window.parent._wrap_popCallStack(      ctx.strokeRect((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1326,58447,58469,Flotr.toPixel,false,false) || window.parent._wrap_popCallStack(Flotr.toPixel(offsetX))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1326,58471,58493,Flotr.toPixel,false,false) || window.parent._wrap_popCallStack(Flotr.toPixel(offsetY))), legendWidth, legendHeight)));
       var x = offsetX + lbm;
       var y = offsetY + lbm;
       for (i = 0; i < series.length; i++) {
         if (!series[i].label || series[i].hide) 
           continue;
-        var label = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2238,79500,79546,options.legend.labelFormatter,false) || options.legend.labelFormatter(series[i].label));
+        var label = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1332,58714,58760,options.legend.labelFormatter,false,false) || window.parent._wrap_popCallStack(options.legend.labelFormatter(series[i].label)));
         ctx.fillStyle = series[i].color;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2241,79625,79661,ctx.fillRect,false) ||         ctx.fillRect(x, y, lbw - 1, lbh - 1));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1334,58811,58847,ctx.fillRect,false,false) || window.parent._wrap_popCallStack(        ctx.fillRect(x, y, lbw - 1, lbh - 1)));
         ctx.strokeStyle = options.legend.labelBoxBorderColor;
         ctx.lineWidth = 1;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2245,79801,79873,ctx.strokeRect,false) ||         ctx.strokeRect((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2245,79816,79828,Math.ceil,false) || Math.ceil(x)) - 1.5, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2245,79836,79848,Math.ceil,false) || Math.ceil(y)) - 1.5, lbw + 2, lbh + 2));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2248,79900,80117,ctx.drawText,false) ||         ctx.drawText(label, x + lbw + lbm, y + (lbh + style.size - (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2251,80035,80057,ctx.fontDescent,false) || ctx.fontDescent(style))) / 2, style));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1337,58946,59018,ctx.strokeRect,false,false) || window.parent._wrap_popCallStack(        ctx.strokeRect((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1337,58961,58973,Math.ceil,false,false) || window.parent._wrap_popCallStack(Math.ceil(x))) - 1.5, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1337,58981,58993,Math.ceil,false,false) || window.parent._wrap_popCallStack(Math.ceil(y))) - 1.5, lbw + 2, lbh + 2)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1338,59028,59122,ctx.drawText,false,false) || window.parent._wrap_popCallStack(        ctx.drawText(label, x + lbw + lbm, y + (lbh + style.size - (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1338,59087,59109,ctx.fontDescent,false,false) || window.parent._wrap_popCallStack(ctx.fontDescent(style)))) / 2, style)));
         y += lbh + lbm;
       }
     } else {
@@ -1521,46 +1497,46 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2189, 77337,77404, 
         if (!series[i].label || series[i].hide) 
           continue;
         if (i % options.legend.noColumns == 0) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2262,80414,80463,fragments.push,false) ||           fragments.push(rowStarted ? '</tr><tr>' : '<tr>'));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1346,59341,59390,fragments.push,false,false) || window.parent._wrap_popCallStack(          fragments.push(rowStarted ? '</tr><tr>' : '<tr>')));
           rowStarted = true;
         }
-        var label = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2266,80567,80613,options.legend.labelFormatter,false) || options.legend.labelFormatter(series[i].label));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2268,80638,81018,fragments.push,false) ||         fragments.push('<td class="flotr-legend-color-box"><div style="border:1px solid ' + options.legend.labelBoxBorderColor + ';padding:1px"><div style="width:' + options.legend.labelBoxWidth + 'px;height:' + options.legend.labelBoxHeight + 'px;background-color:' + series[i].color + '"></div></div></td>' + '<td class="flotr-legend-label">' + label + '</td>'));
+        var label = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1349,59451,59497,options.legend.labelFormatter,false,false) || window.parent._wrap_popCallStack(options.legend.labelFormatter(series[i].label)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1350,59507,59862,fragments.push,false,false) || window.parent._wrap_popCallStack(        fragments.push('<td class="flotr-legend-color-box"><div style="border:1px solid ' + options.legend.labelBoxBorderColor + ';padding:1px"><div style="width:' + options.legend.labelBoxWidth + 'px;height:' + options.legend.labelBoxHeight + 'px;background-color:' + series[i].color + '"></div></div></td>' + '<td class="flotr-legend-label">' + label + '</td>')));
       }
       if (rowStarted) 
-        (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2271,81072,81095,fragments.push,false) ||       fragments.push('</tr>'));
+        (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1353,59903,59926,fragments.push,false,false) || window.parent._wrap_popCallStack(      fragments.push('</tr>')));
       if (fragments.length > 0) {
-        var table = '<table style="font-size:smaller;color:' + options.grid.color + '">' + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2274,81248,81266,fragments.join,false) || fragments.join("")) + '</table>';
+        var table = '<table style="font-size:smaller;color:' + options.grid.color + '">' + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1355,60053,60071,fragments.join,false,false) || window.parent._wrap_popCallStack(fragments.join(""))) + '</table>';
         if (options.legend.container != null) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2276,81367,81408,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2276,81367,81394,$,false) || $(options.legend.container)).update,false) ||           (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2276,81367,81394,$,false) || $(options.legend.container)).update(table));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1357,60144,60185,null,false,false) || window.parent._wrap_popCallStack(          (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1357,60144,60171,$,false,false) || window.parent._wrap_popCallStack($(options.legend.container))).update(table)));
         } else {
           var pos = '';
           var p = options.legend.position, m = options.legend.margin;
-          if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2282,81624,81635,p.charAt,false) || p.charAt(0)) == 'n') 
+          if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1361,60312,60323,p.charAt,false,false) || window.parent._wrap_popCallStack(p.charAt(0))) == 'n') 
             pos += 'top:' + (m + plotOffset.top) + 'px;';
-          else if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2283,81724,81735,p.charAt,false) || p.charAt(0)) == 's') 
+          else if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1363,60410,60421,p.charAt,false,false) || window.parent._wrap_popCallStack(p.charAt(0))) == 's') 
             pos += 'bottom:' + (m + plotOffset.bottom) + 'px;';
-          if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2284,81825,81836,p.charAt,false) || p.charAt(1)) == 'e') 
+          if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1365,60509,60520,p.charAt,false,false) || window.parent._wrap_popCallStack(p.charAt(1))) == 'e') 
             pos += 'right:' + (m + plotOffset.right) + 'px;';
-          else if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2285,81929,81940,p.charAt,false) || p.charAt(1)) == 'w') 
+          else if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1367,60611,60622,p.charAt,false,false) || window.parent._wrap_popCallStack(p.charAt(1))) == 'w') 
             pos += 'left:' + (m + plotOffset.left) + 'px;';
-          var div = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2287,82034,82180,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2287,82034,82172,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2287,82034,82145,this.el.insert,false) || this.el.insert('<div class="flotr-legend" style="position:absolute;z-index:2;' + pos + '">' + table + '</div>')).select,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2287,82034,82145,this.el.insert,false) || this.el.insert('<div class="flotr-legend" style="position:absolute;z-index:2;' + pos + '">' + table + '</div>')).select('div.flotr-legend')).first,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2287,82034,82172,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2287,82034,82145,this.el.insert,false) || this.el.insert('<div class="flotr-legend" style="position:absolute;z-index:2;' + pos + '">' + table + '</div>')).select,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2287,82034,82145,this.el.insert,false) || this.el.insert('<div class="flotr-legend" style="position:absolute;z-index:2;' + pos + '">' + table + '</div>')).select('div.flotr-legend')).first());
+          var div = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1369,60712,60858,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1369,60712,60850,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1369,60712,60823,this.el.insert,false,false) || window.parent._wrap_popCallStack(this.el.insert('<div class="flotr-legend" style="position:absolute;z-index:2;' + pos + '">' + table + '</div>'))).select('div.flotr-legend'))).first()));
           if (options.legend.backgroundOpacity != 0.0) {
             var c = options.legend.backgroundColor;
             if (c == null) {
-              var tmp = (options.grid.backgroundColor != null) ? options.grid.backgroundColor : (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2293,82488,82511,Flotr.extractColor,false) || Flotr.extractColor(div));
-              c = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2294,82550,82610,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2294,82550,82599,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2294,82550,82571,Flotr.parseColor,false) || Flotr.parseColor(tmp)).adjust,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2294,82550,82571,Flotr.parseColor,false) || Flotr.parseColor(tmp)).adjust(null, null, null, 1)).toString,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2294,82550,82599,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2294,82550,82571,Flotr.parseColor,false) || Flotr.parseColor(tmp)).adjust,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2294,82550,82571,Flotr.parseColor,false) || Flotr.parseColor(tmp)).adjust(null, null, null, 1)).toString());
+              var tmp = (options.grid.backgroundColor != null) ? options.grid.backgroundColor : (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1373,61094,61117,Flotr.extractColor,false,false) || window.parent._wrap_popCallStack(Flotr.extractColor(div)));
+              c = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1374,61137,61197,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1374,61137,61186,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1374,61137,61158,Flotr.parseColor,false,false) || window.parent._wrap_popCallStack(Flotr.parseColor(tmp))).adjust(null, null, null, 1))).toString()));
             }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82672,83013,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82672,82893,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82672,82885,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82672,82855,this.el.insert,false) || this.el.insert('<div class="flotr-legend-bg" style="position:absolute;width:' + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82752,82766,div.getWidth,false) || div.getWidth()) + 'px;height:' + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82784,82799,div.getHeight,false) || div.getHeight()) + 'px;' + pos + 'background-color:' + c + ';"> </div>')).select,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82672,82855,this.el.insert,false) || this.el.insert('<div class="flotr-legend-bg" style="position:absolute;width:' + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82752,82766,div.getWidth,false) || div.getWidth()) + 'px;height:' + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82784,82799,div.getHeight,false) || div.getHeight()) + 'px;' + pos + 'background-color:' + c + ';"> </div>')).select('div.flotr-legend-bg')).first,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82672,82885,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82672,82855,this.el.insert,false) || this.el.insert('<div class="flotr-legend-bg" style="position:absolute;width:' + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82752,82766,div.getWidth,false) || div.getWidth()) + 'px;height:' + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82784,82799,div.getHeight,false) || div.getHeight()) + 'px;' + pos + 'background-color:' + c + ';"> </div>')).select,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82672,82855,this.el.insert,false) || this.el.insert('<div class="flotr-legend-bg" style="position:absolute;width:' + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82752,82766,div.getWidth,false) || div.getWidth()) + 'px;height:' + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82784,82799,div.getHeight,false) || div.getHeight()) + 'px;' + pos + 'background-color:' + c + ';"> </div>')).select('div.flotr-legend-bg')).first()).setStyle,false) ||             (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82672,82893,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82672,82885,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82672,82855,this.el.insert,false) || this.el.insert('<div class="flotr-legend-bg" style="position:absolute;width:' + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82752,82766,div.getWidth,false) || div.getWidth()) + 'px;height:' + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82784,82799,div.getHeight,false) || div.getHeight()) + 'px;' + pos + 'background-color:' + c + ';"> </div>')).select,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82672,82855,this.el.insert,false) || this.el.insert('<div class="flotr-legend-bg" style="position:absolute;width:' + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82752,82766,div.getWidth,false) || div.getWidth()) + 'px;height:' + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82784,82799,div.getHeight,false) || div.getHeight()) + 'px;' + pos + 'background-color:' + c + ';"> </div>')).select('div.flotr-legend-bg')).first,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82672,82885,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82672,82855,this.el.insert,false) || this.el.insert('<div class="flotr-legend-bg" style="position:absolute;width:' + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82752,82766,div.getWidth,false) || div.getWidth()) + 'px;height:' + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82784,82799,div.getHeight,false) || div.getHeight()) + 'px;' + pos + 'background-color:' + c + ';"> </div>')).select,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82672,82855,this.el.insert,false) || this.el.insert('<div class="flotr-legend-bg" style="position:absolute;width:' + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82752,82766,div.getWidth,false) || div.getWidth()) + 'px;height:' + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2296,82784,82799,div.getHeight,false) || div.getHeight()) + 'px;' + pos + 'background-color:' + c + ';"> </div>')).select('div.flotr-legend-bg')).first()).setStyle({'opacity': options.legend.backgroundOpacity}));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1376,61225,61502,null,false,false) || window.parent._wrap_popCallStack(            (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1376,61225,61446,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1376,61225,61438,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1376,61225,61408,this.el.insert,false,false) || window.parent._wrap_popCallStack(this.el.insert('<div class="flotr-legend-bg" style="position:absolute;width:' + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1376,61305,61319,div.getWidth,false,false) || window.parent._wrap_popCallStack(div.getWidth())) + 'px;height:' + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1376,61337,61352,div.getHeight,false,false) || window.parent._wrap_popCallStack(div.getHeight())) + 'px;' + pos + 'background-color:' + c + ';"> </div>'))).select('div.flotr-legend-bg'))).first())).setStyle({'opacity': options.legend.backgroundOpacity})));
           }
         }
       }
     }
   }
 }, getEventPosition: function(event) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2306, 83143,84156, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1382, 61565,62304, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  var offset = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2307,83184,83215,this.overlay.cumulativeOffset,false) || this.overlay.cumulativeOffset()), rx = (event.pageX - offset.left - this.plotOffset.left), ry = (event.pageY - offset.top - this.plotOffset.top), ax = 0, ay = 0;
+  var offset = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1383,61598,61629,this.overlay.cumulativeOffset,false,false) || window.parent._wrap_popCallStack(this.overlay.cumulativeOffset())), rx = (event.pageX - offset.left - this.plotOffset.left), ry = (event.pageY - offset.top - this.plotOffset.top), ax = 0, ay = 0;
   if (event.pageX == null && event.clientX != null) {
     var de = document.documentElement, b = document.body;
     ax = event.clientX + (de && de.scrollLeft || b.scrollLeft || 0);
@@ -1571,150 +1547,150 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2306, 83143,84156, 
   }
   return {x: this.axes.x.min + rx / this.axes.x.scale, x2: this.axes.x2.min + rx / this.axes.x2.scale, y: this.axes.y.max - ry / this.axes.y.scale, y2: this.axes.y2.max - ry / this.axes.y2.scale, relX: rx, relY: ry, absX: ax, absY: ay};
 }, clickHandler: function(event) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2335, 84179,84384, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1393, 62320,62480, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (this.ignoreClick) {
     this.ignoreClick = false;
     return;
   }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2340,84311,84376,this.el.fire,false) ||   this.el.fire('flotr:click', [(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2340,84340,84368,this.getEventPosition,false) || this.getEventPosition(event)), this]));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1398,62412,62477,this.el.fire,false,false) || window.parent._wrap_popCallStack(  this.el.fire('flotr:click', [(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1398,62441,62469,this.getEventPosition,false,false) || window.parent._wrap_popCallStack(this.getEventPosition(event))), this])));
 }, mouseMoveHandler: function(event) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2343, 84411,84849, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1399, 62500,62856, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  var pos = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2344,84449,84477,this.getEventPosition,false) || this.getEventPosition(event));
+  var pos = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1400,62530,62558,this.getEventPosition,false,false) || window.parent._wrap_popCallStack(this.getEventPosition(event)));
   this.lastMousePos.pageX = pos.absX;
   this.lastMousePos.pageY = pos.absY;
-  if (this.selectionInterval == null && (this.options.mouse.track || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2348,84647,84735,this.series.any,false) || this.series.any(function(s) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2348, 84663,84734, (typeof arguments === 'object' ? arguments.callee.caller : null));
+  if (this.selectionInterval == null && (this.options.mouse.track || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1403,62705,62772,this.series.any,false,false) || window.parent._wrap_popCallStack(this.series.any(function(s) {
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1403, 62721,62771, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return s.mouse && s.mouse.track;
-})))) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2351,84753,84766,this.hit,false) ||     this.hit(pos));
+}))))) {
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1406,62781,62794,this.hit,false,false) || window.parent._wrap_popCallStack(    this.hit(pos)));
   }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2354,84790,84841,this.el.fire,false) ||   this.el.fire('flotr:mousemove', [event, pos, this]));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1408,62802,62853,this.el.fire,false,false) || window.parent._wrap_popCallStack(  this.el.fire('flotr:mousemove', [event, pos, this])));
 }, mouseDownHandler: function(event) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2357, 84876,85835, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1409, 62876,63661, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2358,84908,84928,event.isRightClick,false) || event.isRightClick())) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2359,84945,84957,event.stop,false) ||     event.stop());
+  if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1410,62900,62920,event.isRightClick,false,false) || window.parent._wrap_popCallStack(event.isRightClick()))) {
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1411,62928,62940,event.stop,false,false) || window.parent._wrap_popCallStack(    event.stop()));
     var overlay = this.overlay;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2361,85013,85027,overlay.hide,false) ||     overlay.hide());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1413,62978,62992,overlay.hide,false,false) || window.parent._wrap_popCallStack(    overlay.hide()));
     function cancelContextMenu() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2363, 85044,85198, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1414, 62998,63121, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2364,85092,85106,overlay.show,false) ||       overlay.show());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2365,85125,85182,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2365,85125,85136,$,false) || $(document)).stopObserving,false) ||       (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2365,85125,85136,$,false) || $(document)).stopObserving('mousemove', cancelContextMenu));
-    }(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2367,85212,85263,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2367,85212,85223,$,false) || $(document)).observe,false) ||     (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2367,85212,85223,$,false) || $(document)).observe('mousemove', cancelContextMenu));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1415,63035,63049,overlay.show,false,false) || window.parent._wrap_popCallStack(      overlay.show()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1416,63057,63114,null,false,false) || window.parent._wrap_popCallStack(      (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1416,63057,63068,$,false,false) || window.parent._wrap_popCallStack($(document))).stopObserving('mousemove', cancelContextMenu)));
+    }(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1417,63125,63176,null,false,false) || window.parent._wrap_popCallStack(    (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1417,63125,63136,$,false,false) || window.parent._wrap_popCallStack($(document))).observe('mousemove', cancelContextMenu)));
     return;
   }
-  if (!this.options.selection.mode || !(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2371,85345,85364,event.isLeftClick,false) || event.isLeftClick())) 
+  if (!this.options.selection.mode || !(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1420,63233,63252,event.isLeftClick,false,false) || window.parent._wrap_popCallStack(event.isLeftClick()))) 
     return;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2373,85385,85434,this.setSelectionPos,false) ||   this.setSelectionPos(this.selection.first, event));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1422,63269,63318,this.setSelectionPos,false,false) || window.parent._wrap_popCallStack(  this.setSelectionPos(this.selection.first, event)));
   if (this.selectionInterval != null) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2375,85496,85533,clearInterval,false) ||     clearInterval(this.selectionInterval));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1424,63364,63401,clearInterval,false,false) || window.parent._wrap_popCallStack(    clearInterval(this.selectionInterval)));
   }
   this.lastMousePos.pageX = null;
-  this.selectionInterval = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2378,85621,85700,setInterval,false) || setInterval((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2378,85633,85664,this.updateSelection.bind,false) || this.updateSelection.bind(this)), 1000 / this.options.selection.fps));
-  this.mouseUpHandler = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2380,85735,85765,this.mouseUpHandler.bind,false) || this.mouseUpHandler.bind(this));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2381,85776,85827,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2381,85776,85787,$,false) || $(document)).observe,false) ||   (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2381,85776,85787,$,false) || $(document)).observe('mouseup', this.mouseUpHandler));
+  this.selectionInterval = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1427,63468,63547,setInterval,false,false) || window.parent._wrap_popCallStack(setInterval((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1427,63480,63511,this.updateSelection.bind,false,false) || window.parent._wrap_popCallStack(this.updateSelection.bind(this))), 1000 / this.options.selection.fps)));
+  this.mouseUpHandler = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1428,63573,63603,this.mouseUpHandler.bind,false,false) || window.parent._wrap_popCallStack(this.mouseUpHandler.bind(this)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1429,63607,63658,null,false,false) || window.parent._wrap_popCallStack(  (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1429,63607,63618,$,false,false) || window.parent._wrap_popCallStack($(document))).observe('mouseup', this.mouseUpHandler)));
 }, fireSelectEvent: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2384, 85861,86709, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1430, 63680,64305, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var a = this.axes, selection = this.selection, x1 = (selection.first.x <= selection.second.x) ? selection.first.x : selection.second.x, x2 = (selection.first.x <= selection.second.x) ? selection.second.x : selection.first.x, y1 = (selection.first.y >= selection.second.y) ? selection.first.y : selection.second.y, y2 = (selection.first.y >= selection.second.y) ? selection.second.y : selection.first.y;
   x1 = a.x.min + x1 / a.x.scale;
   x2 = a.x.min + x2 / a.x.scale;
   y1 = a.y.max - y1 / a.y.scale;
   y2 = a.y.max - y2 / a.y.scale;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2397,86525,86701,this.el.fire,false) ||   this.el.fire('flotr:select', [{x1: x1, y1: y1, x2: x2, y2: y2}, this]));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1436,64232,64302,this.el.fire,false,false) || window.parent._wrap_popCallStack(  this.el.fire('flotr:select', [{x1: x1, y1: y1, x2: x2, y2: y2}, this])));
 }, mouseUpHandler: function(event) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2407, 86734,87263, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1437, 64323,64739, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2408,86762,86819,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2408,86762,86773,$,false) || $(document)).stopObserving,false) ||   (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2408,86762,86773,$,false) || $(document)).stopObserving('mouseup', this.mouseUpHandler));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2409,86830,86842,event.stop,false) ||   event.stop());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1438,64343,64400,null,false,false) || window.parent._wrap_popCallStack(  (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1438,64343,64354,$,false,false) || window.parent._wrap_popCallStack($(document))).stopObserving('mouseup', this.mouseUpHandler)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1439,64404,64416,event.stop,false,false) || window.parent._wrap_popCallStack(  event.stop()));
   if (this.selectionInterval != null) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2412,86906,86943,clearInterval,false) ||     clearInterval(this.selectionInterval));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1441,64462,64499,clearInterval,false,false) || window.parent._wrap_popCallStack(    clearInterval(this.selectionInterval)));
     this.selectionInterval = null;
   }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2416,87011,87061,this.setSelectionPos,false) ||   this.setSelectionPos(this.selection.second, event));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2417,87072,87093,this.clearSelection,false) ||   this.clearSelection());
-  if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2419,87110,87132,this.selectionIsSane,false) || this.selectionIsSane())) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2420,87149,87169,this.drawSelection,false) ||     this.drawSelection());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2421,87184,87206,this.fireSelectEvent,false) ||     this.fireSelectEvent());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1444,64542,64592,this.setSelectionPos,false,false) || window.parent._wrap_popCallStack(  this.setSelectionPos(this.selection.second, event)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1445,64596,64617,this.clearSelection,false,false) || window.parent._wrap_popCallStack(  this.clearSelection()));
+  if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1446,64625,64647,this.selectionIsSane,false,false) || window.parent._wrap_popCallStack(this.selectionIsSane()))) {
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1447,64655,64675,this.drawSelection,false,false) || window.parent._wrap_popCallStack(    this.drawSelection()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1448,64681,64703,this.fireSelectEvent,false,false) || window.parent._wrap_popCallStack(    this.fireSelectEvent()));
     this.ignoreClick = true;
   }
 }, setSelectionPos: function(pos, event) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2426, 87289,88014, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1451, 64758,65357, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  var options = this.options, offset = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2428,87372,87406,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2428,87372,87387,$,false) || $(this.overlay)).cumulativeOffset,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2428,87372,87387,$,false) || $(this.overlay)).cumulativeOffset());
-  if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2430,87423,87458,options.selection.mode.indexOf,false) || options.selection.mode.indexOf('x')) == -1) {
+  var options = this.options, offset = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1452,64820,64854,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1452,64820,64835,$,false,false) || window.parent._wrap_popCallStack($(this.overlay))).cumulativeOffset()));
+  if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1453,64862,64897,options.selection.mode.indexOf,false,false) || window.parent._wrap_popCallStack(options.selection.mode.indexOf('x'))) == -1) {
     pos.x = (pos == this.selection.first) ? 0 : this.plotWidth;
   } else {
     pos.x = event.pageX - offset.left - this.plotOffset.left;
-    pos.x = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2434,87651,87695,Math.min,false) || Math.min((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2434,87660,87678,Math.max,false) || Math.max(0, pos.x)), this.plotWidth));
+    pos.x = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1457,65056,65100,Math.min,false,false) || window.parent._wrap_popCallStack(Math.min((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1457,65065,65083,Math.max,false,false) || window.parent._wrap_popCallStack(Math.max(0, pos.x))), this.plotWidth)));
   }
-  if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2437,87723,87758,options.selection.mode.indexOf,false) || options.selection.mode.indexOf('y')) == -1) {
+  if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1459,65112,65147,options.selection.mode.indexOf,false,false) || window.parent._wrap_popCallStack(options.selection.mode.indexOf('y'))) == -1) {
     pos.y = (pos == this.selection.first) ? 0 : this.plotHeight;
   } else {
     pos.y = event.pageY - offset.top - this.plotOffset.top;
-    pos.y = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2441,87950,87995,Math.min,false) || Math.min((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2441,87959,87977,Math.max,false) || Math.max(0, pos.y)), this.plotHeight));
+    pos.y = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1463,65305,65350,Math.min,false,false) || window.parent._wrap_popCallStack(Math.min((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1463,65314,65332,Math.max,false,false) || window.parent._wrap_popCallStack(Math.max(0, pos.y))), this.plotHeight)));
   }
 }, updateSelection: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2445, 88040,88282, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1465, 65376,65590, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (this.lastMousePos.pageX == null) 
     return;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2448,88119,88181,this.setSelectionPos,false) ||   this.setSelectionPos(this.selection.second, this.lastMousePos));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2449,88192,88213,this.clearSelection,false) ||   this.clearSelection());
-  if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2451,88230,88252,this.selectionIsSane,false) || this.selectionIsSane())) 
-    (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2451,88254,88274,this.drawSelection,false) ||   this.drawSelection());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1468,65443,65505,this.setSelectionPos,false,false) || window.parent._wrap_popCallStack(  this.setSelectionPos(this.selection.second, this.lastMousePos)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1469,65509,65530,this.clearSelection,false,false) || window.parent._wrap_popCallStack(  this.clearSelection()));
+  if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1470,65538,65560,this.selectionIsSane,false,false) || window.parent._wrap_popCallStack(this.selectionIsSane()))) 
+    (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1471,65567,65587,this.drawSelection,false,false) || window.parent._wrap_popCallStack(  this.drawSelection()));
 }, clearSelection: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2454, 88307,89026, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1472, 65608,66175, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (this.prevSelection == null) 
     return;
-  var prevSelection = this.prevSelection, octx = this.octx, plotOffset = this.plotOffset, x = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2460,88512,88567,Math.min,false) || Math.min(prevSelection.first.x, prevSelection.second.x)), y = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2461,88586,88641,Math.min,false) || Math.min(prevSelection.first.y, prevSelection.second.y)), w = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2462,88660,88716,Math.abs,false) || Math.abs(prevSelection.second.x - prevSelection.first.x)), h = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2463,88735,88791,Math.abs,false) || Math.abs(prevSelection.second.y - prevSelection.first.y));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2465,88804,88980,octx.clearRect,false) ||   octx.clearRect(x + plotOffset.left - octx.lineWidth, y + plotOffset.top - octx.lineWidth, w + octx.lineWidth * 2, h + octx.lineWidth * 2));
+  var prevSelection = this.prevSelection, octx = this.octx, plotOffset = this.plotOffset, x = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1475,65762,65817,Math.min,false,false) || window.parent._wrap_popCallStack(Math.min(prevSelection.first.x, prevSelection.second.x))), y = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1475,65823,65878,Math.min,false,false) || window.parent._wrap_popCallStack(Math.min(prevSelection.first.y, prevSelection.second.y))), w = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1475,65884,65940,Math.abs,false,false) || window.parent._wrap_popCallStack(Math.abs(prevSelection.second.x - prevSelection.first.x))), h = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1475,65946,66002,Math.abs,false,false) || window.parent._wrap_popCallStack(Math.abs(prevSelection.second.y - prevSelection.first.y)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1476,66006,66143,octx.clearRect,false,false) || window.parent._wrap_popCallStack(  octx.clearRect(x + plotOffset.left - octx.lineWidth, y + plotOffset.top - octx.lineWidth, w + octx.lineWidth * 2, h + octx.lineWidth * 2)));
   this.prevSelection = null;
 }, setSelection: function(area) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2473, 89049,89810, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1478, 66191,66806, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  var options = this.options, xa = this.axes.x, ya = this.axes.y, vertScale = yaxis.scale, hozScale = xaxis.scale, selX = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2479,89261,89296,options.selection.mode.indexOf,false) || options.selection.mode.indexOf('x')) != -1, selY = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2480,89324,89359,options.selection.mode.indexOf,false) || options.selection.mode.indexOf('y')) != -1;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2482,89378,89399,this.clearSelection,false) ||   this.clearSelection());
+  var options = this.options, xa = this.axes.x, ya = this.axes.y, vertScale = yaxis.scale, hozScale = xaxis.scale, selX = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1479,66330,66365,options.selection.mode.indexOf,false,false) || window.parent._wrap_popCallStack(options.selection.mode.indexOf('x'))) != -1, selY = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1479,66380,66415,options.selection.mode.indexOf,false,false) || window.parent._wrap_popCallStack(options.selection.mode.indexOf('y'))) != -1;
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1480,66425,66446,this.clearSelection,false,false) || window.parent._wrap_popCallStack(  this.clearSelection()));
   this.selection.first.y = selX ? 0 : (ya.max - area.y1) * vertScale;
   this.selection.second.y = selX ? this.plotHeight : (ya.max - area.y2) * vertScale;
   this.selection.first.x = selY ? 0 : (area.x1 - xa.min) * hozScale;
   this.selection.second.x = selY ? this.plotWidth : (area.x2 - xa.min) * hozScale;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2489,89749,89769,this.drawSelection,false) ||   this.drawSelection());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2490,89780,89802,this.fireSelectEvent,false) ||   this.fireSelectEvent());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1485,66757,66777,this.drawSelection,false,false) || window.parent._wrap_popCallStack(  this.drawSelection()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1486,66781,66803,this.fireSelectEvent,false,false) || window.parent._wrap_popCallStack(  this.fireSelectEvent()));
 }, drawSelection: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2493, 89834,91331, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1487, 66823,67948, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var prevSelection = this.prevSelection, selection = this.selection, octx = this.octx, options = this.options, plotOffset = this.plotOffset;
   if (prevSelection != null && selection.first.x == prevSelection.first.x && selection.first.y == prevSelection.first.y && selection.second.x == prevSelection.second.x && selection.second.y == prevSelection.second.y) 
     return;
-  octx.strokeStyle = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2507,90378,90459,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2507,90378,90448,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2507,90378,90419,Flotr.parseColor,false) || Flotr.parseColor(options.selection.color)).scale,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2507,90378,90419,Flotr.parseColor,false) || Flotr.parseColor(options.selection.color)).scale(null, null, null, 0.8)).toString,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2507,90378,90448,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2507,90378,90419,Flotr.parseColor,false) || Flotr.parseColor(options.selection.color)).scale,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2507,90378,90419,Flotr.parseColor,false) || Flotr.parseColor(options.selection.color)).scale(null, null, null, 0.8)).toString());
+  octx.strokeStyle = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1491,67229,67310,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1491,67229,67299,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1491,67229,67270,Flotr.parseColor,false,false) || window.parent._wrap_popCallStack(Flotr.parseColor(options.selection.color))).scale(null, null, null, 0.8))).toString()));
   octx.lineWidth = 1;
   octx.lineJoin = 'round';
-  octx.fillStyle = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2510,90550,90631,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2510,90550,90620,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2510,90550,90591,Flotr.parseColor,false) || Flotr.parseColor(options.selection.color)).scale,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2510,90550,90591,Flotr.parseColor,false) || Flotr.parseColor(options.selection.color)).scale(null, null, null, 0.4)).toString,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2510,90550,90620,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2510,90550,90591,Flotr.parseColor,false) || Flotr.parseColor(options.selection.color)).scale,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2510,90550,90591,Flotr.parseColor,false) || Flotr.parseColor(options.selection.color)).scale(null, null, null, 0.4)).toString());
+  octx.fillStyle = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1494,67380,67461,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1494,67380,67450,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1494,67380,67421,Flotr.parseColor,false,false) || window.parent._wrap_popCallStack(Flotr.parseColor(options.selection.color))).scale(null, null, null, 0.4))).toString()));
   this.prevSelection = {first: {x: selection.first.x, y: selection.first.y}, second: {x: selection.second.x, y: selection.second.y}};
-  var x = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2523,90930,90977,Math.min,false) || Math.min(selection.first.x, selection.second.x)), y = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2524,90996,91043,Math.min,false) || Math.min(selection.first.y, selection.second.y)), w = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2525,91062,91110,Math.abs,false) || Math.abs(selection.second.x - selection.first.x)), h = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2526,91129,91177,Math.abs,false) || Math.abs(selection.second.y - selection.first.y));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2528,91190,91250,octx.fillRect,false) ||   octx.fillRect(x + plotOffset.left, y + plotOffset.top, w, h));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2529,91261,91323,octx.strokeRect,false) ||   octx.strokeRect(x + plotOffset.left, y + plotOffset.top, w, h));
+  var x = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1496,67607,67654,Math.min,false,false) || window.parent._wrap_popCallStack(Math.min(selection.first.x, selection.second.x))), y = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1496,67660,67707,Math.min,false,false) || window.parent._wrap_popCallStack(Math.min(selection.first.y, selection.second.y))), w = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1496,67713,67761,Math.abs,false,false) || window.parent._wrap_popCallStack(Math.abs(selection.second.x - selection.first.x))), h = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1496,67767,67815,Math.abs,false,false) || window.parent._wrap_popCallStack(Math.abs(selection.second.y - selection.first.y)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1497,67819,67879,octx.fillRect,false,false) || window.parent._wrap_popCallStack(  octx.fillRect(x + plotOffset.left, y + plotOffset.top, w, h)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1498,67883,67945,octx.strokeRect,false,false) || window.parent._wrap_popCallStack(  octx.strokeRect(x + plotOffset.left, y + plotOffset.top, w, h)));
 }, selectionIsSane: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2532, 91357,91559, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1499, 67967,68136, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var selection = this.selection;
-  return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2534,91428,91476,Math.abs,false) || Math.abs(selection.second.x - selection.first.x)) >= 5 && (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2535,91498,91546,Math.abs,false) || Math.abs(selection.second.y - selection.first.y)) >= 5;
+  return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1501,68023,68071,Math.abs,false,false) || window.parent._wrap_popCallStack(Math.abs(selection.second.x - selection.first.x))) >= 5 && (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1501,68080,68128,Math.abs,false,false) || window.parent._wrap_popCallStack(Math.abs(selection.second.y - selection.first.y))) >= 5;
 }, clearHit: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2538, 91578,92172, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1502, 68148,68576, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (this.prevHit) {
     var options = this.options, plotOffset = this.plotOffset, prevHit = this.prevHit;
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2544,91765,92119,this.octx.clearRect,false) ||     this.octx.clearRect((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2545,91803,91823,this.tHoz,false) || this.tHoz(prevHit.x)) + plotOffset.left - options.points.radius * 2, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2546,91888,91909,this.tVert,false) || this.tVert(prevHit.y)) + plotOffset.top - options.points.radius * 2, options.points.radius * 3 + options.points.lineWidth * 3, options.points.radius * 3 + options.points.lineWidth * 3));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1505,68273,68544,this.octx.clearRect,false,false) || window.parent._wrap_popCallStack(    this.octx.clearRect((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1505,68293,68313,this.tHoz,false,false) || window.parent._wrap_popCallStack(this.tHoz(prevHit.x))) + plotOffset.left - options.points.radius * 2, (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1505,68361,68382,this.tVert,false,false) || window.parent._wrap_popCallStack(this.tVert(prevHit.y))) + plotOffset.top - options.points.radius * 2, options.points.radius * 3 + options.points.lineWidth * 3, options.points.radius * 3 + options.points.lineWidth * 3)));
     this.prevHit = null;
   }
 }, hit: function(mouse) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2554, 92186,96549, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1508, 68583,71981, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var series = this.series, options = this.options, prevHit = this.prevHit, plotOffset = this.plotOffset, octx = this.octx, data, xsens, ysens, i, n = {dist: Number.MAX_VALUE, x: null, y: null, relX: mouse.relX, relY: mouse.relY, absX: mouse.absX, absY: mouse.absY, mouse: null};
   for (i = 0; i < series.length; i++) {
@@ -1727,10 +1703,10 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2554, 92186,96549, 
     for (var j = 0, xpow, ypow; j < data.length; j++) {
       if (data[j][1] === null) 
         continue;
-      xpow = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2582,93134,93185,Math.pow,false) || Math.pow(s.xaxis.scale * (data[j][0] - mouse.x), 2));
-      ypow = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2583,93211,93262,Math.pow,false) || Math.pow(s.yaxis.scale * (data[j][1] - mouse.y), 2));
-      if (xpow < xsens && ypow < ysens && (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2584,93317,93339,Math.sqrt,false) || Math.sqrt(xpow + ypow)) < n.dist) {
-        n.dist = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2585,93382,93404,Math.sqrt,false) || Math.sqrt(xpow + ypow));
+      xpow = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1520,69221,69272,Math.pow,false,false) || window.parent._wrap_popCallStack(Math.pow(s.xaxis.scale * (data[j][0] - mouse.x), 2)));
+      ypow = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1521,69287,69338,Math.pow,false,false) || window.parent._wrap_popCallStack(Math.pow(s.yaxis.scale * (data[j][1] - mouse.y), 2)));
+      if (xpow < xsens && ypow < ysens && (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1522,69382,69404,Math.sqrt,false,false) || window.parent._wrap_popCallStack(Math.sqrt(xpow + ypow))) < n.dist) {
+        n.dist = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1523,69434,69456,Math.sqrt,false,false) || window.parent._wrap_popCallStack(Math.sqrt(xpow + ypow)));
         n.x = data[j][0];
         n.y = data[j][1];
         n.mouse = s.mouse;
@@ -1738,201 +1714,201 @@ window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2554, 92186,96549, 
     }
   }
   if (n.mouse && n.mouse.track && !prevHit || (prevHit && (n.x != prevHit.x || n.y != prevHit.y))) {
-    var mt = this.mouseTrack || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2594,93720,93756,this.el.select,false) || this.el.select(".flotr-mouse-value"))[0], pos = '', p = options.mouse.position, m = options.mouse.margin, elStyle = 'opacity:0.7;background-color:#000;color:#fff;display:none;position:absolute;padding:2px 8px;-moz-border-radius:4px;border-radius:4px;white-space:nowrap;';
+    var mt = this.mouseTrack || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1531,69688,69724,this.el.select,false,false) || window.parent._wrap_popCallStack(this.el.select(".flotr-mouse-value")))[0], pos = '', p = options.mouse.position, m = options.mouse.margin, elStyle = 'opacity:0.7;background-color:#000;color:#fff;display:none;position:absolute;padding:2px 8px;-moz-border-radius:4px;border-radius:4px;white-space:nowrap;';
     if (!options.mouse.relative) {
-      if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2601,94126,94137,p.charAt,false) || p.charAt(0)) == 'n') 
+      if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1533,70004,70015,p.charAt,false,false) || window.parent._wrap_popCallStack(p.charAt(0))) == 'n') 
         pos += 'top:' + (m + plotOffset.top) + 'px;';
-      else if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2602,94218,94229,p.charAt,false) || p.charAt(0)) == 's') 
+      else if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1535,70094,70105,p.charAt,false,false) || window.parent._wrap_popCallStack(p.charAt(0))) == 's') 
         pos += 'bottom:' + (m + plotOffset.bottom) + 'px;';
-      if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2603,94311,94322,p.charAt,false) || p.charAt(1)) == 'e') 
+      if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1537,70185,70196,p.charAt,false,false) || window.parent._wrap_popCallStack(p.charAt(1))) == 'e') 
         pos += 'right:' + (m + plotOffset.right) + 'px;';
-      else if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2604,94407,94418,p.charAt,false) || p.charAt(1)) == 'w') 
+      else if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1539,70279,70290,p.charAt,false,false) || window.parent._wrap_popCallStack(p.charAt(1))) == 'w') 
         pos += 'left:' + (m + plotOffset.left) + 'px;';
     } else {
-      if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2606,94518,94529,p.charAt,false) || p.charAt(0)) == 'n') 
-        pos += 'bottom:' + (m - plotOffset.top - (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2606,94579,94594,this.tVert,false) || this.tVert(n.y)) + this.canvasHeight) + 'px;';
-      else if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2607,94651,94662,p.charAt,false) || p.charAt(0)) == 's') 
-        pos += 'top:' + (m + plotOffset.top + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2607,94709,94724,this.tVert,false) || this.tVert(n.y))) + 'px;';
-      if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2608,94756,94767,p.charAt,false) || p.charAt(1)) == 'e') 
-        pos += 'left:' + (m + plotOffset.left + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2608,94816,94830,this.tHoz,false) || this.tHoz(n.x))) + 'px;';
-      else if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2609,94867,94878,p.charAt,false) || p.charAt(1)) == 'w') 
-        pos += 'right:' + (m - plotOffset.left - (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2609,94928,94942,this.tHoz,false) || this.tHoz(n.x)) + this.canvasWidth) + 'px;';
+      if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1542,70379,70390,p.charAt,false,false) || window.parent._wrap_popCallStack(p.charAt(0))) == 'n') 
+        pos += 'bottom:' + (m - plotOffset.top - (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1543,70449,70464,this.tVert,false,false) || window.parent._wrap_popCallStack(this.tVert(n.y))) + this.canvasHeight) + 'px;';
+      else if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1544,70510,70521,p.charAt,false,false) || window.parent._wrap_popCallStack(p.charAt(0))) == 's') 
+        pos += 'top:' + (m + plotOffset.top + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1545,70577,70592,this.tVert,false,false) || window.parent._wrap_popCallStack(this.tVert(n.y)))) + 'px;';
+      if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1546,70613,70624,p.charAt,false,false) || window.parent._wrap_popCallStack(p.charAt(1))) == 'e') 
+        pos += 'left:' + (m + plotOffset.left + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1547,70682,70696,this.tHoz,false,false) || window.parent._wrap_popCallStack(this.tHoz(n.x)))) + 'px;';
+      else if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1548,70722,70733,p.charAt,false,false) || window.parent._wrap_popCallStack(p.charAt(1))) == 'w') 
+        pos += 'right:' + (m - plotOffset.left - (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1549,70792,70806,this.tHoz,false,false) || window.parent._wrap_popCallStack(this.tHoz(n.x))) + this.canvasWidth) + 'px;';
     }
     elStyle += pos;
     if (!mt) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2615,95061,95140,this.el.insert,false) ||       this.el.insert('<div class="flotr-mouse-value" style="' + elStyle + '"></div>'));
-      mt = this.mouseTrack = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2616,95182,95226,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2616,95182,95218,this.el.select,false) || this.el.select('.flotr-mouse-value')).first,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2616,95182,95218,this.el.select,false) || this.el.select('.flotr-mouse-value')).first());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1553,70883,70962,this.el.insert,false,false) || window.parent._wrap_popCallStack(      this.el.insert('<div class="flotr-mouse-value" style="' + elStyle + '"></div>')));
+      mt = this.mouseTrack = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1554,70993,71037,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1554,70993,71029,this.el.select,false,false) || window.parent._wrap_popCallStack(this.el.select('.flotr-mouse-value'))).first()));
     } else {
-      this.mouseTrack = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2618,95285,95305,mt.setStyle,false) || mt.setStyle(elStyle));
+      this.mouseTrack = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1556,71076,71096,mt.setStyle,false,false) || window.parent._wrap_popCallStack(mt.setStyle(elStyle)));
     }
     if (n.x !== null && n.y !== null) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2622,95390,95399,mt.show,false) ||       mt.show());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2624,95420,95435,this.clearHit,false) ||       this.clearHit());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1559,71150,71159,mt.show,false,false) || window.parent._wrap_popCallStack(      mt.show()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1560,71167,71182,this.clearHit,false,false) || window.parent._wrap_popCallStack(      this.clearHit()));
       if (n.mouse.lineColor != null) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2626,95508,95519,octx.save,false) ||         octx.save());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2627,95542,95589,octx.translate,false) ||         octx.translate(plotOffset.left, plotOffset.top));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1562,71231,71242,octx.save,false,false) || window.parent._wrap_popCallStack(        octx.save()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1563,71252,71299,octx.translate,false,false) || window.parent._wrap_popCallStack(        octx.translate(plotOffset.left, plotOffset.top)));
         octx.lineWidth = options.points.lineWidth;
         octx.strokeStyle = n.mouse.lineColor;
         octx.fillStyle = '#ffffff';
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2631,95784,95800,octx.beginPath,false) ||         octx.beginPath());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2632,95823,95908,octx.arc,false) ||         octx.arc((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2632,95832,95846,this.tHoz,false) || this.tHoz(n.x)), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2632,95848,95863,this.tVert,false) || this.tVert(n.y)), options.mouse.radius, 0, 2 * Math.PI, true));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2633,95931,95942,octx.fill,false) ||         octx.fill());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2634,95965,95978,octx.stroke,false) ||         octx.stroke());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2635,96001,96015,octx.restore,false) ||         octx.restore());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1567,71442,71458,octx.beginPath,false,false) || window.parent._wrap_popCallStack(        octx.beginPath()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1568,71468,71553,octx.arc,false,false) || window.parent._wrap_popCallStack(        octx.arc((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1568,71477,71491,this.tHoz,false,false) || window.parent._wrap_popCallStack(this.tHoz(n.x))), (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1568,71493,71508,this.tVert,false,false) || window.parent._wrap_popCallStack(this.tVert(n.y))), options.mouse.radius, 0, 2 * Math.PI, true)));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1569,71563,71574,octx.fill,false,false) || window.parent._wrap_popCallStack(        octx.fill()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1570,71584,71597,octx.stroke,false,false) || window.parent._wrap_popCallStack(        octx.stroke()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1571,71607,71621,octx.restore,false,false) || window.parent._wrap_popCallStack(        octx.restore()));
       }
       this.prevHit = n;
       var decimals = n.mouse.trackDecimals;
       if (decimals == null || decimals < 0) 
         decimals = 0;
-      mt.innerHTML = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2642,96231,96368,n.mouse.trackFormatter,false) || n.mouse.trackFormatter({x: (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2643,96280,96301,n.x.toFixed,false) || n.x.toFixed(decimals)), y: (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2644,96327,96348,n.y.toFixed,false) || n.y.toFixed(decimals))}));
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2646,96387,96418,mt.fire,false) ||       mt.fire('flotr:hit', [n, this]));
+      mt.innerHTML = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1577,71787,71863,n.mouse.trackFormatter,false,false) || window.parent._wrap_popCallStack(n.mouse.trackFormatter({x: (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1577,71814,71835,n.x.toFixed,false,false) || window.parent._wrap_popCallStack(n.x.toFixed(decimals))), y: (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1577,71840,71861,n.y.toFixed,false,false) || window.parent._wrap_popCallStack(n.y.toFixed(decimals)))})));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1578,71871,71902,mt.fire,false,false) || window.parent._wrap_popCallStack(      mt.fire('flotr:hit', [n, this])));
     } else if (prevHit) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2648,96472,96481,mt.hide,false) ||       mt.hide());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2649,96500,96515,this.clearHit,false) ||       this.clearHit());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1580,71936,71945,mt.hide,false,false) || window.parent._wrap_popCallStack(      mt.hide()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1581,71953,71968,this.clearHit,false,false) || window.parent._wrap_popCallStack(      this.clearHit()));
     }
   }
 }, saveImage: function(type, width, height, replaceCanvas) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2653, 96567,97383, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1584, 71994,72634, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var image = null;
   switch (type) {
     case 'jpeg':
     case 'jpg':
-      image = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2658,96731,96797,Canvas2Image.saveAsJPEG,false) || Canvas2Image.saveAsJPEG(this.canvas, replaceCanvas, width, height));
+      image = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1589,72126,72192,Canvas2Image.saveAsJPEG,false,false) || window.parent._wrap_popCallStack(Canvas2Image.saveAsJPEG(this.canvas, replaceCanvas, width, height)));
       break;
     default:
     case 'png':
-      image = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2662,96879,96944,Canvas2Image.saveAsPNG,false) || Canvas2Image.saveAsPNG(this.canvas, replaceCanvas, width, height));
+      image = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1593,72250,72315,Canvas2Image.saveAsPNG,false,false) || window.parent._wrap_popCallStack(Canvas2Image.saveAsPNG(this.canvas, replaceCanvas, width, height)));
       break;
     case 'bmp':
-      image = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2665,97008,97073,Canvas2Image.saveAsBMP,false) || Canvas2Image.saveAsBMP(this.canvas, replaceCanvas, width, height));
+      image = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1596,72360,72425,Canvas2Image.saveAsBMP,false,false) || window.parent._wrap_popCallStack(Canvas2Image.saveAsBMP(this.canvas, replaceCanvas, width, height)));
       break;
   }
-  if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2668,97119,97142,Object.isElement,false) || Object.isElement(image)) && replaceCanvas) {
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2669,97176,97196,this.restoreCanvas,false) ||     this.restoreCanvas());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2670,97211,97229,this.canvas.hide,false) ||     this.canvas.hide());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2671,97244,97263,this.overlay.hide,false) ||     this.overlay.hide());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2672,97278,97364,this.el.insert,false) ||     this.el.insert((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2672,97293,97363,image.setStyle,false) || image.setStyle({position: 'absolute'}))));
+  if ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1599,72450,72473,Object.isElement,false,false) || window.parent._wrap_popCallStack(Object.isElement(image))) && replaceCanvas) {
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1600,72498,72518,this.restoreCanvas,false,false) || window.parent._wrap_popCallStack(    this.restoreCanvas()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1601,72524,72542,this.canvas.hide,false,false) || window.parent._wrap_popCallStack(    this.canvas.hide()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1602,72548,72567,this.overlay.hide,false,false) || window.parent._wrap_popCallStack(    this.overlay.hide()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1603,72573,72627,this.el.insert,false,false) || window.parent._wrap_popCallStack(    this.el.insert((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1603,72588,72626,image.setStyle,false,false) || window.parent._wrap_popCallStack(image.setStyle({position: 'absolute'}))))));
   }
 }, restoreCanvas: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2677, 97405,97533, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1605, 72651,72752, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2678,97428,97446,this.canvas.show,false) ||   this.canvas.show());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2679,97457,97476,this.overlay.show,false) ||   this.overlay.show());
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2680,97487,97525,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2680,97487,97508,this.el.select,false) || this.el.select('img')).invoke,false) ||   (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2680,97487,97508,this.el.select,false) || this.el.select('img')).invoke('remove'));
-}}));
-Flotr.Color = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2684,97556,99275,Class.create,true) || Class.create({initialize: function(r, g, b, a) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2685, 97588,97819, (typeof arguments === 'object' ? arguments.callee.caller : null));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1606,72666,72684,this.canvas.show,false,false) || window.parent._wrap_popCallStack(  this.canvas.show()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1607,72688,72707,this.overlay.show,false,false) || window.parent._wrap_popCallStack(  this.overlay.show()));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1608,72711,72749,null,false,false) || window.parent._wrap_popCallStack(  (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1608,72711,72732,this.el.select,false,false) || window.parent._wrap_popCallStack(this.el.select('img'))).invoke('remove')));
+}})));
+Flotr.Color = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1610,72770,74130,Class.create,true,false) || window.parent._wrap_popCallStack(Class.create({initialize: function(r, g, b, a) {
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1610, 72796,72977, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   this.rgba = ['r', 'g', 'b', 'a'];
   var x = 4;
   while (-1 < --x) {
     this[this.rgba[x]] = arguments[x] || ((x == 3) ? 1.0 : 0);
   }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2691,97795,97811,this.normalize,false) ||   this.normalize());
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1616,72958,72974,this.normalize,false,false) || window.parent._wrap_popCallStack(  this.normalize()));
 }, adjust: function(rd, gd, bd, ad) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2694, 97836,98055, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1617, 72987,73153, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var x = 4;
   while (-1 < --x) {
     if (arguments[x] != null) 
       this[this.rgba[x]] += arguments[x];
   }
-  return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2700,98031,98047,this.normalize,false) || this.normalize());
+  return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1623,73134,73150,this.normalize,false,false) || window.parent._wrap_popCallStack(this.normalize()));
 }, clone: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2703, 98071,98156, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1624, 73162,73234, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2704,98101,98148,Flotr.Color,false) || new Flotr.Color(this.r, this.b, this.g, this.a));
+  return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1625,73184,73231,Flotr.Color,false,false) || window.parent._wrap_popCallStack(new Flotr.Color(this.r, this.b, this.g, this.a)));
 }, limit: function(val, minVal, maxVal) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2707, 98172,98268, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1626, 73243,73326, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2708,98221,98260,Math.max,false) || Math.max((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2708,98230,98251,Math.min,false) || Math.min(val, maxVal)), minVal));
+  return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1627,73284,73323,Math.max,false,false) || window.parent._wrap_popCallStack(Math.max((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1627,73293,73314,Math.min,false,false) || window.parent._wrap_popCallStack(Math.min(val, maxVal))), minVal)));
 }, normalize: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2711, 98288,98555, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1628, 73339,73558, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var limit = this.limit;
-  this.r = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2713,98353,98384,limit,false) || limit((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2713,98359,98375,parseInt,false) || parseInt(this.r)), 0, 255));
-  this.g = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2714,98404,98435,limit,false) || limit((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2714,98410,98426,parseInt,false) || parseInt(this.g)), 0, 255));
-  this.b = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2715,98455,98486,limit,false) || limit((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2715,98461,98477,parseInt,false) || parseInt(this.b)), 0, 255));
-  this.a = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2716,98506,98525,limit,false) || limit(this.a, 0, 1));
+  this.r = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1630,73389,73420,limit,false,false) || window.parent._wrap_popCallStack(limit((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1630,73395,73411,parseInt,false,false) || window.parent._wrap_popCallStack(parseInt(this.r))), 0, 255)));
+  this.g = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1631,73433,73464,limit,false,false) || window.parent._wrap_popCallStack(limit((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1631,73439,73455,parseInt,false,false) || window.parent._wrap_popCallStack(parseInt(this.g))), 0, 255)));
+  this.b = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1632,73477,73508,limit,false,false) || window.parent._wrap_popCallStack(limit((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1632,73483,73499,parseInt,false,false) || window.parent._wrap_popCallStack(parseInt(this.b))), 0, 255)));
+  this.a = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1633,73521,73540,limit,false,false) || window.parent._wrap_popCallStack(limit(this.a, 0, 1)));
   return this;
 }, scale: function(rf, gf, bf, af) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2720, 98571,98790, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1635, 73567,73733, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var x = 4;
   while (-1 < --x) {
     if (arguments[x] != null) 
       this[this.rgba[x]] *= arguments[x];
   }
-  return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2726,98766,98782,this.normalize,false) || this.normalize());
+  return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1641,73714,73730,this.normalize,false,false) || window.parent._wrap_popCallStack(this.normalize()));
 }, distance: function(color) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2729, 98809,99086, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1642, 73745,73963, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (!color) 
     return;
-  color = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2731,98874,98901,Flotr.parseColor,false) || new Flotr.parseColor(color));
+  color = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1645,73800,73827,Flotr.parseColor,false,false) || window.parent._wrap_popCallStack(new Flotr.parseColor(color)));
   var dist = 0;
   var x = 3;
   while (-1 < --x) {
-    dist += (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2735,98995,99045,Math.abs,false) || Math.abs(this[this.rgba[x]] - color[this.rgba[x]]));
+    dist += (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1649,73891,73941,Math.abs,false,false) || window.parent._wrap_popCallStack(Math.abs(this[this.rgba[x]] - color[this.rgba[x]])));
   }
   return dist;
 }, toString: function() {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2740, 99105,99271, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1652, 73975,74128, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  return (this.a >= 1.0) ? 'rgb(' + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2741,99162,99196,[this.r, this.g, this.b].join,false) || [this.r, this.g, this.b].join(',')) + ')' : 'rgba(' + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2741,99215,99257,[this.r, this.g, this.b, this.a].join,false) || [this.r, this.g, this.b, this.a].join(',')) + ')';
-}}));
+  return (this.a >= 1.0) ? 'rgb(' + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1653,74024,74058,[this.r, this.g, this.b].join,false,false) || window.parent._wrap_popCallStack([this.r, this.g, this.b].join(','))) + ')' : 'rgba(' + (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1653,74077,74119,[this.r, this.g, this.b, this.a].join,false,false) || window.parent._wrap_popCallStack([this.r, this.g, this.b, this.a].join(','))) + ')';
+}})));
 Flotr.Color.lookupColors = {aqua: [0, 255, 255], azure: [240, 255, 255], beige: [245, 245, 220], black: [0, 0, 0], blue: [0, 0, 255], brown: [165, 42, 42], cyan: [0, 255, 255], darkblue: [0, 0, 139], darkcyan: [0, 139, 139], darkgrey: [169, 169, 169], darkgreen: [0, 100, 0], darkkhaki: [189, 183, 107], darkmagenta: [139, 0, 139], darkolivegreen: [85, 107, 47], darkorange: [255, 140, 0], darkorchid: [153, 50, 204], darkred: [139, 0, 0], darksalmon: [233, 150, 122], darkviolet: [148, 0, 211], fuchsia: [255, 0, 255], gold: [255, 215, 0], green: [0, 128, 0], indigo: [75, 0, 130], khaki: [240, 230, 140], lightblue: [173, 216, 230], lightcyan: [224, 255, 255], lightgreen: [144, 238, 144], lightgrey: [211, 211, 211], lightpink: [255, 182, 193], lightyellow: [255, 255, 224], lime: [0, 255, 0], magenta: [255, 0, 255], maroon: [128, 0, 0], navy: [0, 0, 128], olive: [128, 128, 0], orange: [255, 165, 0], pink: [255, 192, 203], purple: [128, 0, 128], violet: [128, 0, 128], red: [255, 0, 0], silver: [192, 192, 192], white: [255, 255, 255], yellow: [255, 255, 0]};
 Flotr.Date = {format: function(d, format) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2793, 100597,102145, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1656, 75220,76304, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (!d) 
     return;
   var leftPad = function(n) {
-window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 2796, 100670,100775, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('flotr-0.2.0-alpha.js', 1659, 75281,75354, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  n = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2797,100702,100714,n.toString,false) || n.toString());
+  n = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1660,75301,75313,n.toString,false,false) || window.parent._wrap_popCallStack(n.toString()));
   return n.length == 1 ? "0" + n : n;
 };
   var r = [];
   var escape = false;
   for (var i = 0; i < format.length; ++i) {
-    var c = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2805,100903,100919,format.charAt,false) || format.charAt(i));
+    var c = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1666,75448,75464,format.charAt,false,false) || window.parent._wrap_popCallStack(format.charAt(i)));
     if (escape) {
       switch (c) {
         case 'h':
-          c = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2810,101032,101058,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2810,101032,101047,d.getUTCHours,false) || d.getUTCHours()).toString,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2810,101032,101047,d.getUTCHours,false) || d.getUTCHours()).toString());
+          c = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1670,75535,75561,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1670,75535,75550,d.getUTCHours,false,false) || window.parent._wrap_popCallStack(d.getUTCHours())).toString()));
           break;
         case 'H':
-          c = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2813,101140,101164,leftPad,false) || leftPad((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2813,101148,101163,d.getUTCHours,false) || d.getUTCHours())));
+          c = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1673,75612,75636,leftPad,false,false) || window.parent._wrap_popCallStack(leftPad((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1673,75620,75635,d.getUTCHours,false,false) || window.parent._wrap_popCallStack(d.getUTCHours())))));
           break;
         case 'M':
-          c = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2816,101246,101272,leftPad,false) || leftPad((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2816,101254,101271,d.getUTCMinutes,false) || d.getUTCMinutes())));
+          c = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1676,75687,75713,leftPad,false,false) || window.parent._wrap_popCallStack(leftPad((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1676,75695,75712,d.getUTCMinutes,false,false) || window.parent._wrap_popCallStack(d.getUTCMinutes())))));
           break;
         case 'S':
-          c = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2819,101354,101380,leftPad,false) || leftPad((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2819,101362,101379,d.getUTCSeconds,false) || d.getUTCSeconds())));
+          c = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1679,75764,75790,leftPad,false,false) || window.parent._wrap_popCallStack(leftPad((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1679,75772,75789,d.getUTCSeconds,false,false) || window.parent._wrap_popCallStack(d.getUTCSeconds())))));
           break;
         case 'd':
-          c = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2822,101462,101487,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2822,101462,101476,d.getUTCDate,false) || d.getUTCDate()).toString,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2822,101462,101476,d.getUTCDate,false) || d.getUTCDate()).toString());
+          c = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1682,75841,75866,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1682,75841,75855,d.getUTCDate,false,false) || window.parent._wrap_popCallStack(d.getUTCDate())).toString()));
           break;
         case 'm':
-          c = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2825,101570,101601,((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2825,101570,101585,d.getUTCMonth,false) || d.getUTCMonth()) + 1).toString,false) || ((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2825,101570,101585,d.getUTCMonth,false) || d.getUTCMonth()) + 1).toString());
+          c = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1685,75918,75949,null,false,false) || window.parent._wrap_popCallStack(((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1685,75918,75933,d.getUTCMonth,false,false) || window.parent._wrap_popCallStack(d.getUTCMonth())) + 1).toString()));
           break;
         case 'y':
-          c = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2828,101683,101712,(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2828,101683,101701,d.getUTCFullYear,false) || d.getUTCFullYear()).toString,false) || (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2828,101683,101701,d.getUTCFullYear,false) || d.getUTCFullYear()).toString());
+          c = (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1688,76000,76029,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1688,76000,76018,d.getUTCFullYear,false,false) || window.parent._wrap_popCallStack(d.getUTCFullYear())).toString()));
           break;
         case 'b':
-          c = Flotr.Date.monthNames[(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2831,101816,101831,d.getUTCMonth,false) || d.getUTCMonth())];
+          c = Flotr.Date.monthNames[(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1691,76102,76117,d.getUTCMonth,false,false) || window.parent._wrap_popCallStack(d.getUTCMonth()))];
           break;
       }
-(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2834,101898,101907,r.push,false) ||       r.push(c));
+(window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1694,76151,76160,r.push,false,false) || window.parent._wrap_popCallStack(      r.push(c)));
       escape = false;
     } else {
       if (c == "%") 
         escape = true;
       else 
-        (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2840,102074,102083,r.push,false) ||       r.push(c));
+        (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1700,76261,76270,r.push,false,false) || window.parent._wrap_popCallStack(      r.push(c)));
     }
   }
-  return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",2843,102127,102137,r.join,false) || r.join(""));
+  return (window.parent._wrap_setLastFunctionCall("flotr-0.2.0-alpha.js",1703,76291,76301,r.join,false,false) || window.parent._wrap_popCallStack(r.join("")));
 }, timeUnits: {"second": 1000, "minute": 60 * 1000, "hour": 60 * 60 * 1000, "day": 24 * 60 * 60 * 1000, "month": 30 * 24 * 60 * 60 * 1000, "year": 365.2425 * 24 * 60 * 60 * 1000}, spec: [[1, "second"], [2, "second"], [5, "second"], [10, "second"], [30, "second"], [1, "minute"], [2, "minute"], [5, "minute"], [10, "minute"], [30, "minute"], [1, "hour"], [2, "hour"], [4, "hour"], [8, "hour"], [12, "hour"], [1, "day"], [2, "day"], [3, "day"], [0.25, "month"], [0.5, "month"], [1, "month"], [2, "month"], [3, "month"], [6, "month"], [1, "year"]], monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]};

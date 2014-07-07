@@ -1,24 +1,24 @@
 _wrap_staticMeasuredFunctions['xhtml.js'] = 6;
 _wrap_staticMeasuredCalls['xhtml.js'] =30;
 function getXHTML(data) {
-_wrap_addFunctionToMap('xhtml.js', 1, 0,68, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('xhtml.js', 1, 0,66, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  return (_wrap_setLastFunctionCall("xhtml.js",2,37,65) || (_wrap_setLastFunctionCall("xhtml.js",2,37,57) || new Html2Xhtml(data)).parse());
+  return (_wrap_setLastFunctionCall("xhtml.js",2,35,63,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("xhtml.js",2,35,55,Html2Xhtml,false,false) || _wrap_popCallStack(new Html2Xhtml(data))).parse()));
 }
 ;
 function Html2Xhtml(data) {
-_wrap_addFunctionToMap('xhtml.js', 5, 71,128, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('xhtml.js', 5, 69,124, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   this.data = data || '';
 }
 ;
 Html2Xhtml.prototype.setHTML = function(data) {
-_wrap_addFunctionToMap('xhtml.js', 9, 162,216, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('xhtml.js', 9, 158,209, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   this.data = data || this.data;
 };
 Html2Xhtml.prototype.parse = function() {
-_wrap_addFunctionToMap('xhtml.js', 12, 247,8560, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('xhtml.js', 12, 240,7250, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var state = 0;
   var xhtml = '';
@@ -41,7 +41,7 @@ _wrap_addFunctionToMap('xhtml.js', 12, 247,8560, (typeof arguments === 'object' 
     if (unget) {
       unget = false;
     } else {
-      var c = (_wrap_setLastFunctionCall("xhtml.js",34,740,759) || data.substr(p++, 1));
+      var c = (_wrap_setLastFunctionCall("xhtml.js",34,668,687,data.substr,false,false) || _wrap_popCallStack(data.substr(p++, 1)));
     }
     switch (state) {
       case 0:
@@ -52,10 +52,10 @@ _wrap_addFunctionToMap('xhtml.js', 12, 247,8560, (typeof arguments === 'object' 
         xhtml += c;
         break;
       case 1:
-        if ((_wrap_setLastFunctionCall("xhtml.js",45,979,997) || /[a-zA-Z]/.test(c))) {
+        if ((_wrap_setLastFunctionCall("xhtml.js",45,863,881,/[a-zA-Z]/.test,false,false) || _wrap_popCallStack(/[a-zA-Z]/.test(c)))) {
           state = 2;
           tagtype = 1;
-          tagname = (_wrap_setLastFunctionCall("xhtml.js",48,1083,1098) || c.toLowerCase());
+          tagname = (_wrap_setLastFunctionCall("xhtml.js",48,949,964,c.toLowerCase,false,false) || _wrap_popCallStack(c.toLowerCase()));
           break;
         }
         if (c == '/') {
@@ -64,7 +64,7 @@ _wrap_addFunctionToMap('xhtml.js', 12, 247,8560, (typeof arguments === 'object' 
           break;
         }
         if (c == '!') {
-          if ((_wrap_setLastFunctionCall("xhtml.js",57,1307,1324) || data.substr(p, 2)) == '--') {
+          if ((_wrap_setLastFunctionCall("xhtml.js",57,1127,1144,data.substr,false,false) || _wrap_popCallStack(data.substr(p, 2))) == '--') {
             xhtml += '<!--';
             p += 2;
             state = 9;
@@ -86,13 +86,13 @@ _wrap_addFunctionToMap('xhtml.js', 12, 247,8560, (typeof arguments === 'object' 
         break;
       case 2:
         if (Html2Xhtml.isSpaceChar[c]) {
-          xhtml += (!insidepre && tagtype > 0 && Html2Xhtml.hasNLBefore[tagname] && xhtml.length && (_wrap_setLastFunctionCall("xhtml.js",79,2006,2039) || xhtml.substr(xhtml.length - 1, 1)) != '\n' ? '\n' : '') + (tagtype > 0 ? '<' : '</') + tagname;
+          xhtml += (!insidepre && tagtype > 0 && Html2Xhtml.hasNLBefore[tagname] && xhtml.length && (_wrap_setLastFunctionCall("xhtml.js",79,1706,1739,xhtml.substr,false,false) || _wrap_popCallStack(xhtml.substr(xhtml.length - 1, 1))) != '\n' ? '\n' : '') + (tagtype > 0 ? '<' : '</') + tagname;
           state = 3;
           break;
         }
         if (c == '/') {
-          xhtml += (!insidepre && tagtype > 0 && Html2Xhtml.hasNLBefore[tagname] && xhtml.length && (_wrap_setLastFunctionCall("xhtml.js",84,2299,2332) || xhtml.substr(xhtml.length - 1, 1)) != '\n' ? '\n' : '') + (tagtype > 0 ? '<' : '</') + tagname;
-          if ((_wrap_setLastFunctionCall("xhtml.js",85,2414,2431) || data.substr(p, 1)) != '>') {
+          xhtml += (!insidepre && tagtype > 0 && Html2Xhtml.hasNLBefore[tagname] && xhtml.length && (_wrap_setLastFunctionCall("xhtml.js",84,1973,2006,xhtml.substr,false,false) || _wrap_popCallStack(xhtml.substr(xhtml.length - 1, 1))) != '\n' ? '\n' : '') + (tagtype > 0 ? '<' : '</') + tagname;
+          if ((_wrap_setLastFunctionCall("xhtml.js",85,2082,2099,data.substr,false,false) || _wrap_popCallStack(data.substr(p, 1))) != '>') {
             state = 3;
             break;
           }
@@ -100,19 +100,19 @@ _wrap_addFunctionToMap('xhtml.js', 12, 247,8560, (typeof arguments === 'object' 
           break;
         }
         if (c == '>') {
-          xhtml += (!insidepre && tagtype > 0 && Html2Xhtml.hasNLBefore[tagname] && xhtml.length && (_wrap_setLastFunctionCall("xhtml.js",93,2716,2749) || xhtml.substr(xhtml.length - 1, 1)) != '\n' ? '\n' : '') + (tagtype > 0 ? '<' : '</') + tagname;
+          xhtml += (!insidepre && tagtype > 0 && Html2Xhtml.hasNLBefore[tagname] && xhtml.length && (_wrap_setLastFunctionCall("xhtml.js",93,2336,2369,xhtml.substr,false,false) || _wrap_popCallStack(xhtml.substr(xhtml.length - 1, 1))) != '\n' ? '\n' : '') + (tagtype > 0 ? '<' : '</') + tagname;
           unget = true;
           state = 4;
           break;
         }
-        tagname += (_wrap_setLastFunctionCall("xhtml.js",98,2928,2943) || c.toLowerCase());
+        tagname += (_wrap_setLastFunctionCall("xhtml.js",98,2522,2537,c.toLowerCase,false,false) || _wrap_popCallStack(c.toLowerCase()));
         break;
       case 3:
         if (Html2Xhtml.isSpaceChar[c]) {
           break;
         }
         if (c == '/') {
-          if ((_wrap_setLastFunctionCall("xhtml.js",105,3110,3127) || data.substr(p, 1)) != '>') {
+          if ((_wrap_setLastFunctionCall("xhtml.js",105,2674,2691,data.substr,false,false) || _wrap_popCallStack(data.substr(p, 1))) != '>') {
             break;
           }
           state = 4;
@@ -123,12 +123,12 @@ _wrap_addFunctionToMap('xhtml.js', 12, 247,8560, (typeof arguments === 'object' 
           state = 4;
           break;
         }
-        attrname = (_wrap_setLastFunctionCall("xhtml.js",116,3392,3407) || c.toLowerCase());
+        attrname = (_wrap_setLastFunctionCall("xhtml.js",116,2896,2911,c.toLowerCase,false,false) || _wrap_popCallStack(c.toLowerCase()));
         attrval = '';
         state = 5;
         break;
       case 4:
-        xhtml += (Html2Xhtml.isEmptyTag[tagname] ? ' />' : '>') + (!insidepre && tagtype < 0 && Html2Xhtml.hasNLAfter[tagname] && p < len && (_wrap_setLastFunctionCall("xhtml.js",121,3638,3655) || data.substr(p, 1)) != '\n' ? '\n' : '');
+        xhtml += (Html2Xhtml.isEmptyTag[tagname] ? ' />' : '>') + (!insidepre && tagtype < 0 && Html2Xhtml.hasNLAfter[tagname] && p < len && (_wrap_setLastFunctionCall("xhtml.js",121,3124,3141,data.substr,false,false) || _wrap_popCallStack(data.substr(p, 1))) != '\n' ? '\n' : '');
         if (tagtype > 0 && Html2Xhtml.dontAnalyzeContent[tagname]) {
           state = 13;
           attrname = attrval = quot = '';
@@ -156,7 +156,7 @@ _wrap_addFunctionToMap('xhtml.js', 12, 247,8560, (typeof arguments === 'object' 
           if (Html2Xhtml.isEmptyAttr[attrname]) {
             xhtml += '="' + attrname + '"';
           }
-          if ((_wrap_setLastFunctionCall("xhtml.js",149,4611,4628) || data.substr(p, 1)) != '>') {
+          if ((_wrap_setLastFunctionCall("xhtml.js",149,3951,3968,data.substr,false,false) || _wrap_popCallStack(data.substr(p, 1))) != '>') {
             state = 3;
             break;
           }
@@ -180,7 +180,7 @@ _wrap_addFunctionToMap('xhtml.js', 12, 247,8560, (typeof arguments === 'object' 
         if (c == '"' || c == '\'') {
           attrname += '?';
         } else {
-          attrname += (_wrap_setLastFunctionCall("xhtml.js",173,5330,5345) || c.toLowerCase());
+          attrname += (_wrap_setLastFunctionCall("xhtml.js",173,4534,4549,c.toLowerCase,false,false) || _wrap_popCallStack(c.toLowerCase()));
         }
         break;
       case 6:
@@ -195,7 +195,7 @@ _wrap_addFunctionToMap('xhtml.js', 12, 247,8560, (typeof arguments === 'object' 
           state = 4;
           break;
         }
-        if (c == '/' && (_wrap_setLastFunctionCall("xhtml.js",188,5833,5850) || data.substr(p, 1)) == '>') {
+        if (c == '/' && (_wrap_setLastFunctionCall("xhtml.js",188,4965,4982,data.substr,false,false) || _wrap_popCallStack(data.substr(p, 1))) == '>') {
           xhtml += Html2Xhtml.isEmptyAttr[attrname] ? '"' + attrname + '"' : '""';
           state = 4;
           break;
@@ -210,18 +210,18 @@ _wrap_addFunctionToMap('xhtml.js', 12, 247,8560, (typeof arguments === 'object' 
         break;
       case 7:
         if (Html2Xhtml.isSpaceChar[c]) {
-          xhtml += '"' + (_wrap_setLastFunctionCall("xhtml.js",203,6304,6339) || Html2Xhtml.escapeQuot(attrval, '"')) + '"';
+          xhtml += '"' + (_wrap_setLastFunctionCall("xhtml.js",203,5364,5399,Html2Xhtml.escapeQuot,false,false) || _wrap_popCallStack(Html2Xhtml.escapeQuot(attrval, '"'))) + '"';
           state = 3;
           break;
         }
-        if (c == '/' && (_wrap_setLastFunctionCall("xhtml.js",207,6439,6456) || data.substr(p, 1)) == '>') {
-          xhtml += '"' + (_wrap_setLastFunctionCall("xhtml.js",208,6498,6533) || Html2Xhtml.escapeQuot(attrval, '"')) + '"';
+        if (c == '/' && (_wrap_setLastFunctionCall("xhtml.js",207,5479,5496,data.substr,false,false) || _wrap_popCallStack(data.substr(p, 1))) == '>') {
+          xhtml += '"' + (_wrap_setLastFunctionCall("xhtml.js",208,5532,5567,Html2Xhtml.escapeQuot,false,false) || _wrap_popCallStack(Html2Xhtml.escapeQuot(attrval, '"'))) + '"';
           state = 4;
           break;
         }
         if (c == '>') {
           unget = true;
-          xhtml += '"' + (_wrap_setLastFunctionCall("xhtml.js",214,6694,6729) || Html2Xhtml.escapeQuot(attrval, '"')) + '"';
+          xhtml += '"' + (_wrap_setLastFunctionCall("xhtml.js",214,5696,5731,Html2Xhtml.escapeQuot,false,false) || _wrap_popCallStack(Html2Xhtml.escapeQuot(attrval, '"'))) + '"';
           state = 4;
           break;
         }
@@ -229,14 +229,14 @@ _wrap_addFunctionToMap('xhtml.js', 12, 247,8560, (typeof arguments === 'object' 
         break;
       case 8:
         if (c == quot) {
-          xhtml += '"' + (_wrap_setLastFunctionCall("xhtml.js",222,6922,6957) || Html2Xhtml.escapeQuot(attrval, '"')) + '"';
+          xhtml += '"' + (_wrap_setLastFunctionCall("xhtml.js",222,5888,5923,Html2Xhtml.escapeQuot,false,false) || _wrap_popCallStack(Html2Xhtml.escapeQuot(attrval, '"'))) + '"';
           state = 3;
           break;
         }
         attrval += c;
         break;
       case 9:
-        if (c == '-' && (_wrap_setLastFunctionCall("xhtml.js",229,7118,7135) || data.substr(p, 2)) == '->') {
+        if (c == '-' && (_wrap_setLastFunctionCall("xhtml.js",229,6054,6071,data.substr,false,false) || _wrap_popCallStack(data.substr(p, 2))) == '->') {
           p += 2;
           xhtml += '-->';
           state = 0;
@@ -256,7 +256,7 @@ _wrap_addFunctionToMap('xhtml.js', 12, 247,8560, (typeof arguments === 'object' 
           state = 12;
           break;
         }
-        if (c == codetype && (_wrap_setLastFunctionCall("xhtml.js",249,7621,7638) || data.substr(p, 1)) == '>') {
+        if (c == codetype && (_wrap_setLastFunctionCall("xhtml.js",249,6465,6482,data.substr,false,false) || _wrap_popCallStack(data.substr(p, 1))) == '>') {
           state = 0;
           xhtml += c + '>';
           codetype = '';
@@ -268,21 +268,21 @@ _wrap_addFunctionToMap('xhtml.js', 12, 247,8560, (typeof arguments === 'object' 
       case 12:
         if (c == quot) {
           state = 11;
-          xhtml += quot + (_wrap_setLastFunctionCall("xhtml.js",261,7948,7983) || Html2Xhtml.escapeQuot(phpval, quot)) + quot;
+          xhtml += quot + (_wrap_setLastFunctionCall("xhtml.js",261,6732,6767,Html2Xhtml.escapeQuot,false,false) || _wrap_popCallStack(Html2Xhtml.escapeQuot(phpval, quot))) + quot;
           phpval = quot = '';
           break;
         }
         phpval += c;
         break;
       case 13:
-        if (c == '<' && (_wrap_setLastFunctionCall("xhtml.js",268,8154,8202) || (_wrap_setLastFunctionCall("xhtml.js",268,8154,8188) || data.substr(p, tagname.length + 1)).toLowerCase()) == '/' + tagname) {
+        if (c == '<' && (_wrap_setLastFunctionCall("xhtml.js",268,6908,6956,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("xhtml.js",268,6908,6942,data.substr,false,false) || _wrap_popCallStack(data.substr(p, tagname.length + 1))).toLowerCase())) == '/' + tagname) {
           unget = true;
           state = 0;
           tagname = '';
           break;
         }
         if (tagname == 'textarea') {
-          xhtml += (_wrap_setLastFunctionCall("xhtml.js",275,8413,8441) || Html2Xhtml.escapeHTMLChar(c));
+          xhtml += (_wrap_setLastFunctionCall("xhtml.js",275,7129,7157,Html2Xhtml.escapeHTMLChar,false,false) || _wrap_popCallStack(Html2Xhtml.escapeHTMLChar(c)));
         } else {
           xhtml += c;
         }
@@ -292,18 +292,18 @@ _wrap_addFunctionToMap('xhtml.js', 12, 247,8560, (typeof arguments === 'object' 
   return xhtml;
 };
 Html2Xhtml.escapeQuot = function(str, quot) {
-_wrap_addFunctionToMap('xhtml.js', 284, 8586,8763, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('xhtml.js', 284, 7276,7434, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (!quot) {
     quot = '"';
   }
   if (quot == '"') {
-    return (_wrap_setLastFunctionCall("xhtml.js",289,8690,8715) || str.replace(/"/gi, '\\"'));
+    return (_wrap_setLastFunctionCall("xhtml.js",289,7365,7390,str.replace,false,false) || _wrap_popCallStack(str.replace(/"/gi, '\\"')));
   }
-  return (_wrap_setLastFunctionCall("xhtml.js",291,8734,8760) || str.replace(/'/gi, '\\\''));
+  return (_wrap_setLastFunctionCall("xhtml.js",291,7405,7431,str.replace,false,false) || _wrap_popCallStack(str.replace(/'/gi, '\\\'')));
 };
 Html2Xhtml.escapeHTMLChar = function(c) {
-_wrap_addFunctionToMap('xhtml.js', 293, 8793,8971, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('xhtml.js', 293, 7464,7615, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (c == '&') {
     return '&amp;';

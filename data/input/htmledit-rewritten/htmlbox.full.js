@@ -1,57 +1,57 @@
 _wrap_staticMeasuredFunctions['htmlbox.full.js'] = 27;
 _wrap_staticMeasuredCalls['htmlbox.full.js'] =265;
-((_wrap_setLastFunctionCall("htmlbox.full.js",1,1,31665) || function($) {
-_wrap_addFunctionToMap('htmlbox.full.js', 1, 1,31657, (typeof arguments === 'object' ? arguments.callee.caller : null));
+((_wrap_setLastFunctionCall("htmlbox.full.js",1,1,23299,null,true,false) || _wrap_popCallStack(function($) {
+_wrap_addFunctionToMap('htmlbox.full.js', 1, 1,23291, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   $.fn.htmlbox = function(options) {
-_wrap_addFunctionToMap('htmlbox.full.js', 2, 35,31654, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('htmlbox.full.js', 2, 32,23288, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  var colors = typeof document.htmlbox_colors === 'function' ? (_wrap_setLastFunctionCall("htmlbox.full.js",3,125,150) || document.htmlbox_colors()) : ['silver', 'silver', 'white', 'white', 'yellow', 'yellow', 'orange', 'orange', 'red', 'red', 'green', 'green', 'blue', 'blue', 'brown', 'brown', 'black', 'black'];
-  var styles = typeof document.htmlbox_styles === 'function' ? (_wrap_setLastFunctionCall("htmlbox.full.js",23,688,713) || document.htmlbox_styles()) : [['No Styles', '', '']];
-  var syntax = typeof document.htmlbox_syntax === 'function' ? (_wrap_setLastFunctionCall("htmlbox.full.js",28,888,913) || document.htmlbox_syntax()) : [['No Syntax', '', '']];
-  var urm = typeof htmlbox_undo_redo_manager === 'function' ? (_wrap_setLastFunctionCall("htmlbox.full.js",33,1087,1118) || new htmlbox_undo_redo_manager()) : false;
+  var colors = typeof document.htmlbox_colors === 'function' ? (_wrap_setLastFunctionCall("htmlbox.full.js",3,115,140,document.htmlbox_colors,false,false) || _wrap_popCallStack(document.htmlbox_colors())) : ['silver', 'silver', 'white', 'white', 'yellow', 'yellow', 'orange', 'orange', 'red', 'red', 'green', 'green', 'blue', 'blue', 'brown', 'brown', 'black', 'black'];
+  var styles = typeof document.htmlbox_styles === 'function' ? (_wrap_setLastFunctionCall("htmlbox.full.js",4,370,395,document.htmlbox_styles,false,false) || _wrap_popCallStack(document.htmlbox_styles())) : [['No Styles', '', '']];
+  var syntax = typeof document.htmlbox_syntax === 'function' ? (_wrap_setLastFunctionCall("htmlbox.full.js",5,486,511,document.htmlbox_syntax,false,false) || _wrap_popCallStack(document.htmlbox_syntax())) : [['No Syntax', '', '']];
+  var urm = typeof htmlbox_undo_redo_manager === 'function' ? (_wrap_setLastFunctionCall("htmlbox.full.js",6,601,632,htmlbox_undo_redo_manager,false,false) || _wrap_popCallStack(new htmlbox_undo_redo_manager())) : false;
   var d = {toolbars: [['bold', 'italic', 'underline']], idir: './images/', icons: 'default', about: true, skin: 'default', output: 'xhtml', toolbar_height: 24, tool_height: 16, tool_width: 16, tool_image_height: 16, tool_image_width: 16, css: 'body{margin:3px;font-family:verdana;font-size:11px;}p{margin:0px;}', success: function(data) {
-_wrap_addFunctionToMap('htmlbox.full.js', 51, 1759,1827, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('htmlbox.full.js', 7, 964,997, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-(_wrap_setLastFunctionCall("htmlbox.full.js",52,1797,1808) ||   alert(data));
+(_wrap_setLastFunctionCall("htmlbox.full.js",8,983,994,alert,false,false) || _wrap_popCallStack(  alert(data)));
 }, error: function(a, b, c) {
-_wrap_addFunctionToMap('htmlbox.full.js', 54, 1852,1923, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('htmlbox.full.js', 9, 1006,1042, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return this;
 }};
-  d = (_wrap_setLastFunctionCall("htmlbox.full.js",58,1951,1971) || $.extend(d, options));
-  if ((_wrap_setLastFunctionCall("htmlbox.full.js",59,1985,2020) || d.idir.substring(d.idir.length - 1)) !== '/') {
+  d = (_wrap_setLastFunctionCall("htmlbox.full.js",12,1051,1071,$.extend,false,false) || _wrap_popCallStack($.extend(d, options)));
+  if ((_wrap_setLastFunctionCall("htmlbox.full.js",13,1079,1114,d.idir.substring,false,false) || _wrap_popCallStack(d.idir.substring(d.idir.length - 1))) !== '/') {
     d.idir += '/';
   }
   var get_selection = function() {
-_wrap_addFunctionToMap('htmlbox.full.js', 62, 2097,3216, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('htmlbox.full.js', 16, 1171,1969, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var range;
   if ($.browser.msie) {
-    range = (_wrap_setLastFunctionCall("htmlbox.full.js",65,2192,2247) || d.iframe.contentWindow.document.selection.createRange());
+    range = (_wrap_setLastFunctionCall("htmlbox.full.js",19,1233,1288,d.iframe.contentWindow.document.selection.createRange,false,false) || _wrap_popCallStack(d.iframe.contentWindow.document.selection.createRange()));
     if (range.htmlText && range.text) {
       return range.htmlText;
     }
   } else {
     if (d.iframe.contentWindow.getSelection) {
-      var selection = (_wrap_setLastFunctionCall("htmlbox.full.js",71,2478,2515) || d.iframe.contentWindow.getSelection());
+      var selection = (_wrap_setLastFunctionCall("htmlbox.full.js",25,1445,1482,d.iframe.contentWindow.getSelection,false,false) || _wrap_popCallStack(d.iframe.contentWindow.getSelection()));
       if (selection.rangeCount > 0 && window.XMLSerializer) {
-        range = (_wrap_setLastFunctionCall("htmlbox.full.js",73,2625,2648) || selection.getRangeAt(0));
-        var html = (_wrap_setLastFunctionCall("htmlbox.full.js",74,2685,2745) || (_wrap_setLastFunctionCall("htmlbox.full.js",74,2685,2704) || new XMLSerializer()).serializeToString((_wrap_setLastFunctionCall("htmlbox.full.js",74,2723,2744) || range.cloneContents())));
+        range = (_wrap_setLastFunctionCall("htmlbox.full.js",27,1562,1585,selection.getRangeAt,false,false) || _wrap_popCallStack(selection.getRangeAt(0)));
+        var html = (_wrap_setLastFunctionCall("htmlbox.full.js",28,1606,1666,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",28,1606,1625,XMLSerializer,false,false) || _wrap_popCallStack(new XMLSerializer())).serializeToString((_wrap_setLastFunctionCall("htmlbox.full.js",28,1644,1665,range.cloneContents,false,false) || _wrap_popCallStack(range.cloneContents())))));
         return html;
       }
       if (selection.rangeCount > 0) {
-        range = (_wrap_setLastFunctionCall("htmlbox.full.js",78,2890,2913) || selection.getRangeAt(0));
-        var clonedSelection = (_wrap_setLastFunctionCall("htmlbox.full.js",79,2961,2982) || range.cloneContents());
-        var div = (_wrap_setLastFunctionCall("htmlbox.full.js",80,3018,3047) || document.createElement('div'));
-(_wrap_setLastFunctionCall("htmlbox.full.js",81,3073,3105) ||         div.appendChild(clonedSelection));
+        range = (_wrap_setLastFunctionCall("htmlbox.full.js",32,1751,1774,selection.getRangeAt,false,false) || _wrap_popCallStack(selection.getRangeAt(0)));
+        var clonedSelection = (_wrap_setLastFunctionCall("htmlbox.full.js",33,1806,1827,range.cloneContents,false,false) || _wrap_popCallStack(range.cloneContents()));
+        var div = (_wrap_setLastFunctionCall("htmlbox.full.js",34,1847,1876,document.createElement,false,false) || _wrap_popCallStack(document.createElement('div')));
+(_wrap_setLastFunctionCall("htmlbox.full.js",35,1886,1918,div.appendChild,false,false) || _wrap_popCallStack(        div.appendChild(clonedSelection)));
         return div.innerHTML;
       }
     }
   }
 };
   var in_array = function(o, a) {
-_wrap_addFunctionToMap('htmlbox.full.js', 87, 3241,3421, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('htmlbox.full.js', 41, 1988,2091, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   for (var i in a) {
     if (i === o) {
@@ -61,83 +61,83 @@ _wrap_addFunctionToMap('htmlbox.full.js', 87, 3241,3421, (typeof arguments === '
   return false;
 };
   var insert_text = function(text, start, end) {
-_wrap_addFunctionToMap('htmlbox.full.js', 95, 3449,5023, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('htmlbox.full.js', 49, 2113,3234, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if ($.browser.msie) {
-(_wrap_setLastFunctionCall("htmlbox.full.js",97,3529,3559) ||     d.iframe.contentWindow.focus());
+(_wrap_setLastFunctionCall("htmlbox.full.js",51,2170,2200,d.iframe.contentWindow.focus,false,false) || _wrap_popCallStack(    d.iframe.contentWindow.focus()));
     if (typeof d.idoc.selection !== 'undefined' && d.idoc.selection.type !== 'Text' && d.idoc.selection.type !== 'None') {
       start = false;
-(_wrap_setLastFunctionCall("htmlbox.full.js",100,3751,3775) ||       d.idoc.selection.clear());
+(_wrap_setLastFunctionCall("htmlbox.full.js",54,2352,2376,d.idoc.selection.clear,false,false) || _wrap_popCallStack(      d.idoc.selection.clear()));
     }
-    var sel = (_wrap_setLastFunctionCall("htmlbox.full.js",102,3821,3851) || d.idoc.selection.createRange());
-(_wrap_setLastFunctionCall("htmlbox.full.js",103,3869,3888) ||     sel.pasteHTML(text));
-    if ((_wrap_setLastFunctionCall("htmlbox.full.js",104,3910,3928) || text.indexOf('\n')) === -1) {
+    var sel = (_wrap_setLastFunctionCall("htmlbox.full.js",56,2398,2428,d.idoc.selection.createRange,false,false) || _wrap_popCallStack(d.idoc.selection.createRange()));
+(_wrap_setLastFunctionCall("htmlbox.full.js",57,2434,2453,sel.pasteHTML,false,false) || _wrap_popCallStack(    sel.pasteHTML(text)));
+    if ((_wrap_setLastFunctionCall("htmlbox.full.js",58,2463,2481,text.indexOf,false,false) || _wrap_popCallStack(text.indexOf('\n'))) === -1) {
       if (start === false) {
       } else {
         if (typeof start !== 'undefined') {
-(_wrap_setLastFunctionCall("htmlbox.full.js",108,4099,4147) ||           sel.moveStart('character', -text.length + start));
-(_wrap_setLastFunctionCall("htmlbox.full.js",109,4177,4207) ||           sel.moveEnd('character', -end));
+(_wrap_setLastFunctionCall("htmlbox.full.js",62,2590,2638,sel.moveStart,false,false) || _wrap_popCallStack(          sel.moveStart('character', -text.length + start)));
+(_wrap_setLastFunctionCall("htmlbox.full.js",63,2650,2680,sel.moveEnd,false,false) || _wrap_popCallStack(          sel.moveEnd('character', -end)));
         } else {
-(_wrap_setLastFunctionCall("htmlbox.full.js",111,4270,4310) ||           sel.moveStart('character', -text.length));
+(_wrap_setLastFunctionCall("htmlbox.full.js",65,2709,2749,sel.moveStart,false,false) || _wrap_popCallStack(          sel.moveStart('character', -text.length)));
         }
       }
-(_wrap_setLastFunctionCall("htmlbox.full.js",114,4380,4392) ||       sel.select());
+(_wrap_setLastFunctionCall("htmlbox.full.js",68,2775,2787,sel.select,false,false) || _wrap_popCallStack(      sel.select()));
     }
   } else {
-(_wrap_setLastFunctionCall("htmlbox.full.js",117,4449,4494) ||     d.idoc.execCommand('insertHTML', false, text));
+(_wrap_setLastFunctionCall("htmlbox.full.js",71,2810,2855,d.idoc.execCommand,false,false) || _wrap_popCallStack(    d.idoc.execCommand('insertHTML', false, text)));
   }
-  if ((_wrap_setLastFunctionCall("htmlbox.full.js",119,4526,4554) || (_wrap_setLastFunctionCall("htmlbox.full.js",119,4526,4539) || $('#' + d.id)).is(':visible')) === false) {
-    var html = (_wrap_setLastFunctionCall("htmlbox.full.js",120,4595,4624) || (_wrap_setLastFunctionCall("htmlbox.full.js",120,4595,4609) || $('#1' + d.id)).is(':visible')) ? (_wrap_setLastFunctionCall("htmlbox.full.js",120,4627,4646) || (_wrap_setLastFunctionCall("htmlbox.full.js",120,4627,4640) || $('#' + d.id)).val()) : html = d.iframe.contentWindow.document.body.innerHTML;
-    html = typeof getXHTML === 'function' ? (_wrap_setLastFunctionCall("htmlbox.full.js",121,4760,4774) || getXHTML(html)) : html;
-(_wrap_setLastFunctionCall("htmlbox.full.js",122,4799,4822) ||     (_wrap_setLastFunctionCall("htmlbox.full.js",122,4799,4812) || $('#' + d.id)).val(html));
+  if ((_wrap_setLastFunctionCall("htmlbox.full.js",73,2867,2895,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",73,2867,2880,$,false,false) || _wrap_popCallStack($('#' + d.id))).is(':visible'))) === false) {
+    var html = (_wrap_setLastFunctionCall("htmlbox.full.js",74,2924,2953,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",74,2924,2938,$,false,false) || _wrap_popCallStack($('#1' + d.id))).is(':visible'))) ? (_wrap_setLastFunctionCall("htmlbox.full.js",74,2956,2975,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",74,2956,2969,$,false,false) || _wrap_popCallStack($('#' + d.id))).val())) : html = d.iframe.contentWindow.document.body.innerHTML;
+    html = typeof getXHTML === 'function' ? (_wrap_setLastFunctionCall("htmlbox.full.js",75,3077,3091,getXHTML,false,false) || _wrap_popCallStack(getXHTML(html))) : html;
+(_wrap_setLastFunctionCall("htmlbox.full.js",76,3104,3127,null,false,false) || _wrap_popCallStack(    (_wrap_setLastFunctionCall("htmlbox.full.js",76,3104,3117,$,false,false) || _wrap_popCallStack($('#' + d.id))).val(html)));
     if (urm) {
-(_wrap_setLastFunctionCall("htmlbox.full.js",124,4871,4884) ||       urm.add(html));
+(_wrap_setLastFunctionCall("htmlbox.full.js",78,3150,3163,urm.add,false,false) || _wrap_popCallStack(      urm.add(html)));
     }
     if (undefined !== d.change) {
-(_wrap_setLastFunctionCall("htmlbox.full.js",127,4970,4980) ||       d.change());
+(_wrap_setLastFunctionCall("htmlbox.full.js",81,3211,3221,d.change,false,false) || _wrap_popCallStack(      d.change()));
     }
   }
 };
   var keyup = function(e) {
-_wrap_addFunctionToMap('htmlbox.full.js', 131, 5045,5465, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('htmlbox.full.js', 85, 3250,3567, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  var html = (_wrap_setLastFunctionCall("htmlbox.full.js",132,5083,5112) || (_wrap_setLastFunctionCall("htmlbox.full.js",132,5083,5097) || $('#1' + d.id)).is(':visible')) ? (_wrap_setLastFunctionCall("htmlbox.full.js",132,5115,5134) || (_wrap_setLastFunctionCall("htmlbox.full.js",132,5115,5128) || $('#' + d.id)).val()) : html = d.iframe.contentWindow.document.body.innerHTML;
+  var html = (_wrap_setLastFunctionCall("htmlbox.full.js",86,3277,3306,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",86,3277,3291,$,false,false) || _wrap_popCallStack($('#1' + d.id))).is(':visible'))) ? (_wrap_setLastFunctionCall("htmlbox.full.js",86,3309,3328,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",86,3309,3322,$,false,false) || _wrap_popCallStack($('#' + d.id))).val())) : html = d.iframe.contentWindow.document.body.innerHTML;
   if (urm) {
-(_wrap_setLastFunctionCall("htmlbox.full.js",134,5231,5244) ||     urm.add(html));
+(_wrap_setLastFunctionCall("htmlbox.full.js",88,3403,3416,urm.add,false,false) || _wrap_popCallStack(    urm.add(html)));
   }
-  html = typeof getXHTML === 'function' ? (_wrap_setLastFunctionCall("htmlbox.full.js",136,5312,5326) || getXHTML(html)) : html;
-(_wrap_setLastFunctionCall("htmlbox.full.js",137,5347,5370) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",137,5347,5360) || $('#' + d.id)).val(html));
+  html = typeof getXHTML === 'function' ? (_wrap_setLastFunctionCall("htmlbox.full.js",90,3464,3478,getXHTML,false,false) || _wrap_popCallStack(getXHTML(html))) : html;
+(_wrap_setLastFunctionCall("htmlbox.full.js",91,3489,3512,null,false,false) || _wrap_popCallStack(  (_wrap_setLastFunctionCall("htmlbox.full.js",91,3489,3502,$,false,false) || _wrap_popCallStack($('#' + d.id))).val(html)));
   if (undefined !== d.change) {
-(_wrap_setLastFunctionCall("htmlbox.full.js",139,5430,5440) ||     d.change());
+(_wrap_setLastFunctionCall("htmlbox.full.js",93,3550,3560,d.change,false,false) || _wrap_popCallStack(    d.change()));
   }
 };
   var style = function() {
-_wrap_addFunctionToMap('htmlbox.full.js', 142, 5487,6365, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('htmlbox.full.js', 96, 3583,4246, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  if ((_wrap_setLastFunctionCall("htmlbox.full.js",143,5517,5545) || d.css.indexOf('background:')) === -1) {
+  if ((_wrap_setLastFunctionCall("htmlbox.full.js",97,3602,3630,d.css.indexOf,false,false) || _wrap_popCallStack(d.css.indexOf('background:'))) === -1) {
     d.css += 'body{background:white;}';
   }
-  if ((_wrap_setLastFunctionCall("htmlbox.full.js",146,5638,5672) || d.css.indexOf('background-image:')) === -1) {
+  if ((_wrap_setLastFunctionCall("htmlbox.full.js",100,3691,3725,d.css.indexOf,false,false) || _wrap_popCallStack(d.css.indexOf('background-image:'))) === -1) {
     d.css = d.css + 'body{background-image:url(' + d.idir + 'logo.gif);background-position:top right;background-repeat:no-repeat;}';
   }
   if (d.idoc.createStyleSheet) {
-    (_wrap_setLastFunctionCall("htmlbox.full.js",150,5901,5926) || d.idoc.createStyleSheet()).cssText = d.css;
+    (_wrap_setLastFunctionCall("htmlbox.full.js",104,3910,3935,d.idoc.createStyleSheet,false,false) || _wrap_popCallStack(d.idoc.createStyleSheet())).cssText = d.css;
   } else {
-    var css = (_wrap_setLastFunctionCall("htmlbox.full.js",152,5991,6019) || d.idoc.createElement('link'));
+    var css = (_wrap_setLastFunctionCall("htmlbox.full.js",106,3978,4006,d.idoc.createElement,false,false) || _wrap_popCallStack(d.idoc.createElement('link')));
     css.rel = 'stylesheet';
-    css.href = 'data:text/css,' + (_wrap_setLastFunctionCall("htmlbox.full.js",154,6107,6120) || escape(d.css));
+    css.href = 'data:text/css,' + (_wrap_setLastFunctionCall("htmlbox.full.js",108,4070,4083,escape,false,false) || _wrap_popCallStack(escape(d.css)));
     if ($.browser.opera) {
-(_wrap_setLastFunctionCall("htmlbox.full.js",156,6181,6220) ||       d.idoc.documentElement.appendChild(css));
+(_wrap_setLastFunctionCall("htmlbox.full.js",110,4118,4157,d.idoc.documentElement.appendChild,false,false) || _wrap_popCallStack(      d.idoc.documentElement.appendChild(css)));
     } else {
-(_wrap_setLastFunctionCall("htmlbox.full.js",158,6267,6322) ||       (_wrap_setLastFunctionCall("htmlbox.full.js",158,6267,6302) || d.idoc.getElementsByTagName('head'))[0].appendChild(css));
+(_wrap_setLastFunctionCall("htmlbox.full.js",112,4178,4233,null,false,false) || _wrap_popCallStack(      (_wrap_setLastFunctionCall("htmlbox.full.js",112,4178,4213,d.idoc.getElementsByTagName,false,false) || _wrap_popCallStack(d.idoc.getElementsByTagName('head')))[0].appendChild(css)));
     }
   }
 };
   var toolbar = function() {
-_wrap_addFunctionToMap('htmlbox.full.js', 162, 6389,14936, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('htmlbox.full.js', 116, 4264,10914, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var h = '';
-  if (d.about && !(_wrap_setLastFunctionCall("htmlbox.full.js",164,6455,6487) || in_array(d.toolbars[0], 'about'))) {
+  if (d.about && !(_wrap_setLastFunctionCall("htmlbox.full.js",118,4309,4341,in_array,false,false) || _wrap_popCallStack(in_array(d.toolbars[0], 'about')))) {
     d.toolbars[0][d.toolbars[0].length] = 'separator';
     d.toolbars[0][d.toolbars[0].length] = 'about';
   }
@@ -150,7 +150,7 @@ _wrap_addFunctionToMap('htmlbox.full.js', 162, 6389,14936, (typeof arguments ===
         continue;
       } else if (typeof toolbar[i] !== 'string') {
         img = d.idir + d.icons + '/' + toolbar[i].icon;
-        var cmd = 'var cmd = unescape("' + (_wrap_setLastFunctionCall("htmlbox.full.js",177,7343,7380) || escape((_wrap_setLastFunctionCall("htmlbox.full.js",177,7350,7379) || toolbar[i].command.toString()))) + '");eval("var fn="+cmd);fn()\'';
+        var cmd = 'var cmd = unescape("' + (_wrap_setLastFunctionCall("htmlbox.full.js",131,5027,5064,escape,false,false) || _wrap_popCallStack(escape((_wrap_setLastFunctionCall("htmlbox.full.js",131,5034,5063,toolbar[i].command.toString,false,false) || _wrap_popCallStack(toolbar[i].command.toString()))))) + '");eval("var fn="+cmd);fn()\'';
         h += '<td class=\'' + d.id + '_html_button\' valign=\'middle\' align=\'center\' onclick=\'' + cmd + '\' title=\'' + toolbar[i].tooltip + '\'><image src=\'' + img + '\'></td>';
       } else if (toolbar[i] === 'separator') {
         h += '<td valign=\'middle\' align=\'center\'><image src=\'' + d.idir + 'separator.gif\' style=\'margin-right:1px;margin-left:3px;height:13px;\'></td>';
@@ -198,7 +198,7 @@ _wrap_addFunctionToMap('htmlbox.full.js', 162, 6389,14936, (typeof arguments ===
         h += '</select></td>';
       }
       var cmds = {'about': 'About', 'bold': 'Bold', 'center': 'Center', 'code': 'View Code', 'copy': 'Copy', 'cut': 'Cut', 'hr': 'Insert Line', 'link': 'Insert Link', 'image': 'Insert Image', 'indent': 'Indent', 'italic': 'Italic', 'justify': 'Justify', 'left': 'Left', 'ol': 'Numbered List', 'outdent': 'Outdent', 'paragraph': 'Insert Paragraph', 'paste': 'Paste', 'quote': 'Quote', 'redo': 'Redo', 'removeformat': 'Remove Format', 'right': 'Right', 'strike': 'Strikethrough', 'striptags': 'Strip Tags', 'sub': 'Subscript', 'sup': 'Superscript', 'ul': 'Bulleted List', 'underline': 'Underline', 'undo': 'Undo', 'unlink': 'Remove Link'};
-      if ((_wrap_setLastFunctionCall("htmlbox.full.js",255,14540,14566) || in_array(toolbar[i], cmds))) {
+      if ((_wrap_setLastFunctionCall("htmlbox.full.js",179,10600,10626,in_array,false,false) || _wrap_popCallStack(in_array(toolbar[i], cmds)))) {
         h += '<td class=\'' + d.id + '_html_button\' valign=\'middle\' align=\'center\' onclick=\'global_hb["' + d.id + '"].cmd("' + toolbar[i] + '")\' title=\'' + cmds[toolbar[i]] + '\'><image src=\'' + img + '\'></td>';
       }
     }
@@ -207,68 +207,68 @@ _wrap_addFunctionToMap('htmlbox.full.js', 162, 6389,14936, (typeof arguments ===
   return h;
 };
   this.wrap_tags = function(start, end) {
-_wrap_addFunctionToMap('htmlbox.full.js', 263, 14963,15259, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('htmlbox.full.js', 187, 10935,11138, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  var sel = (_wrap_setLastFunctionCall("htmlbox.full.js",264,15009,15024) || get_selection());
+  var sel = (_wrap_setLastFunctionCall("htmlbox.full.js",188,10970,10985,get_selection,false,false) || _wrap_popCallStack(get_selection()));
   if (undefined === sel) {
     sel = '';
   }
   if (undefined === end) {
     end = '';
   }
-(_wrap_setLastFunctionCall("htmlbox.full.js",271,15192,15248) ||   insert_text(start + sel + end, start.length, end.length));
+(_wrap_setLastFunctionCall("htmlbox.full.js",195,11079,11135,insert_text,false,false) || _wrap_popCallStack(  insert_text(start + sel + end, start.length, end.length)));
 };
   this._init = function(is_init) {
-_wrap_addFunctionToMap('htmlbox.full.js', 273, 15282,20789, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('htmlbox.full.js', 197, 11155,15285, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (undefined === window.global_hb) {
     global_hb = [];
   }
-  if (!(_wrap_setLastFunctionCall("htmlbox.full.js",277,15416,15434) || (_wrap_setLastFunctionCall("htmlbox.full.js",277,15416,15423) || $(this)).attr('id'))) {
-(_wrap_setLastFunctionCall("htmlbox.full.js",278,15454,15500) ||     (_wrap_setLastFunctionCall("htmlbox.full.js",278,15454,15461) || $(this)).attr('id', 'jqhb_' + global_hb.length));
+  if (!(_wrap_setLastFunctionCall("htmlbox.full.js",201,11246,11264,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",201,11246,11253,$,false,false) || _wrap_popCallStack($(this))).attr('id')))) {
+(_wrap_setLastFunctionCall("htmlbox.full.js",202,11272,11318,null,false,false) || _wrap_popCallStack(    (_wrap_setLastFunctionCall("htmlbox.full.js",202,11272,11279,$,false,false) || _wrap_popCallStack($(this))).attr('id', 'jqhb_' + global_hb.length)));
     d.id = 'jqhb_' + global_hb.length;
     global_hb[d.id] = global_hb;
   } else {
-    d.id = (_wrap_setLastFunctionCall("htmlbox.full.js",282,15642,15660) || (_wrap_setLastFunctionCall("htmlbox.full.js",282,15642,15649) || $(this)).attr('id'));
+    d.id = (_wrap_setLastFunctionCall("htmlbox.full.js",206,11414,11432,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",206,11414,11421,$,false,false) || _wrap_popCallStack($(this))).attr('id')));
   }
   if (undefined === global_hb[d.id]) {
     global_hb[d.id] = this;
   }
   d.ta_wrap_id = d.id + '_wrap';
-  var w = (_wrap_setLastFunctionCall("htmlbox.full.js",288,15842,15862) || (_wrap_setLastFunctionCall("htmlbox.full.js",288,15842,15849) || $(this)).css('width'));
-  var h = (_wrap_setLastFunctionCall("htmlbox.full.js",289,15884,15905) || (_wrap_setLastFunctionCall("htmlbox.full.js",289,15884,15891) || $(this)).css('height'));
-(_wrap_setLastFunctionCall("htmlbox.full.js",290,15919,16132) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",290,15919,15926) || $(this)).wrap('<table id=\'' + d.id + '_wrap\' width=\'' + w + '\' style=\'height:' + h + ';border:2px solid #E9EAEF;\' cellspacing=\'0\' cellpadding=\'0\'><tr><td id=\'' + d.id + '_container\'></td></tr></table>'));
-(_wrap_setLastFunctionCall("htmlbox.full.js",291,16146,16208) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",291,16146,16189) || (_wrap_setLastFunctionCall("htmlbox.full.js",291,16146,16180) || (_wrap_setLastFunctionCall("htmlbox.full.js",291,16146,16171) || (_wrap_setLastFunctionCall("htmlbox.full.js",291,16146,16162) || (_wrap_setLastFunctionCall("htmlbox.full.js",291,16146,16153) || $(this)).parent()).parent()).parent()).parent()).prepend((_wrap_setLastFunctionCall("htmlbox.full.js",291,16198,16207) || toolbar())));
-(_wrap_setLastFunctionCall("htmlbox.full.js",292,16222,16268) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",292,16222,16243) || $('.' + d.id + '_tb')).height(d.toolbar_height));
-(_wrap_setLastFunctionCall("htmlbox.full.js",293,16282,17054) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",293,16282,16312) || $('.' + d.id + '_html_button')).each(function() {
-_wrap_addFunctionToMap('htmlbox.full.js', 293, 16318,17053, (typeof arguments === 'object' ? arguments.callee.caller : null));
+  var w = (_wrap_setLastFunctionCall("htmlbox.full.js",212,11552,11572,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",212,11552,11559,$,false,false) || _wrap_popCallStack($(this))).css('width')));
+  var h = (_wrap_setLastFunctionCall("htmlbox.full.js",213,11584,11605,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",213,11584,11591,$,false,false) || _wrap_popCallStack($(this))).css('height')));
+(_wrap_setLastFunctionCall("htmlbox.full.js",214,11609,11822,null,false,false) || _wrap_popCallStack(  (_wrap_setLastFunctionCall("htmlbox.full.js",214,11609,11616,$,false,false) || _wrap_popCallStack($(this))).wrap('<table id=\'' + d.id + '_wrap\' width=\'' + w + '\' style=\'height:' + h + ';border:2px solid #E9EAEF;\' cellspacing=\'0\' cellpadding=\'0\'><tr><td id=\'' + d.id + '_container\'></td></tr></table>')));
+(_wrap_setLastFunctionCall("htmlbox.full.js",215,11826,11888,null,false,false) || _wrap_popCallStack(  (_wrap_setLastFunctionCall("htmlbox.full.js",215,11826,11869,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",215,11826,11860,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",215,11826,11851,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",215,11826,11842,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",215,11826,11833,$,false,false) || _wrap_popCallStack($(this))).parent())).parent())).parent())).parent())).prepend((_wrap_setLastFunctionCall("htmlbox.full.js",215,11878,11887,toolbar,false,false) || _wrap_popCallStack(toolbar())))));
+(_wrap_setLastFunctionCall("htmlbox.full.js",216,11892,11938,null,false,false) || _wrap_popCallStack(  (_wrap_setLastFunctionCall("htmlbox.full.js",216,11892,11913,$,false,false) || _wrap_popCallStack($('.' + d.id + '_tb'))).height(d.toolbar_height)));
+(_wrap_setLastFunctionCall("htmlbox.full.js",217,11942,12526,null,false,false) || _wrap_popCallStack(  (_wrap_setLastFunctionCall("htmlbox.full.js",217,11942,11972,$,false,false) || _wrap_popCallStack($('.' + d.id + '_html_button'))).each(function() {
+_wrap_addFunctionToMap('htmlbox.full.js', 217, 11978,12525, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-(_wrap_setLastFunctionCall("htmlbox.full.js",294,16348,16397) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",294,16348,16375) || (_wrap_setLastFunctionCall("htmlbox.full.js",294,16348,16355) || $(this)).width(d.tool_width)).height(d.tool_height));
-(_wrap_setLastFunctionCall("htmlbox.full.js",295,16415,16557) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",295,16415,16436) || (_wrap_setLastFunctionCall("htmlbox.full.js",295,16415,16422) || $(this)).find('image')).each(function() {
-_wrap_addFunctionToMap('htmlbox.full.js', 295, 16442,16556, (typeof arguments === 'object' ? arguments.callee.caller : null));
+(_wrap_setLastFunctionCall("htmlbox.full.js",218,11993,12042,null,false,false) || _wrap_popCallStack(  (_wrap_setLastFunctionCall("htmlbox.full.js",218,11993,12020,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",218,11993,12000,$,false,false) || _wrap_popCallStack($(this))).width(d.tool_width))).height(d.tool_height)));
+(_wrap_setLastFunctionCall("htmlbox.full.js",219,12046,12153,null,false,false) || _wrap_popCallStack(  (_wrap_setLastFunctionCall("htmlbox.full.js",219,12046,12067,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",219,12046,12053,$,false,false) || _wrap_popCallStack($(this))).find('image'))).each(function() {
+_wrap_addFunctionToMap('htmlbox.full.js', 219, 12073,12152, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-(_wrap_setLastFunctionCall("htmlbox.full.js",296,16476,16537) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",296,16476,16509) || (_wrap_setLastFunctionCall("htmlbox.full.js",296,16476,16483) || $(this)).width(d.tool_image_width)).height(d.tool_image_height));
-}));
-(_wrap_setLastFunctionCall("htmlbox.full.js",298,16575,16709) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",298,16575,16687) || (_wrap_setLastFunctionCall("htmlbox.full.js",298,16575,16654) || (_wrap_setLastFunctionCall("htmlbox.full.js",298,16575,16621) || (_wrap_setLastFunctionCall("htmlbox.full.js",298,16575,16582) || $(this)).css('border', '1px solid transparent')).css('background', 'transparent')).css('margin', '1px 1px 1px 1px')).css('padding', '1px'));
-(_wrap_setLastFunctionCall("htmlbox.full.js",299,16727,16870) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",299,16727,16734) || $(this)).mouseover(function() {
-_wrap_addFunctionToMap('htmlbox.full.js', 299, 16745,16869, (typeof arguments === 'object' ? arguments.callee.caller : null));
+(_wrap_setLastFunctionCall("htmlbox.full.js",220,12088,12149,null,false,false) || _wrap_popCallStack(  (_wrap_setLastFunctionCall("htmlbox.full.js",220,12088,12121,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",220,12088,12095,$,false,false) || _wrap_popCallStack($(this))).width(d.tool_image_width))).height(d.tool_image_height)));
+})));
+(_wrap_setLastFunctionCall("htmlbox.full.js",222,12157,12291,null,false,false) || _wrap_popCallStack(  (_wrap_setLastFunctionCall("htmlbox.full.js",222,12157,12269,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",222,12157,12236,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",222,12157,12203,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",222,12157,12164,$,false,false) || _wrap_popCallStack($(this))).css('border', '1px solid transparent'))).css('background', 'transparent'))).css('margin', '1px 1px 1px 1px'))).css('padding', '1px')));
+(_wrap_setLastFunctionCall("htmlbox.full.js",223,12295,12403,null,false,false) || _wrap_popCallStack(  (_wrap_setLastFunctionCall("htmlbox.full.js",223,12295,12302,$,false,false) || _wrap_popCallStack($(this))).mouseover(function() {
+_wrap_addFunctionToMap('htmlbox.full.js', 223, 12313,12402, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-(_wrap_setLastFunctionCall("htmlbox.full.js",300,16779,16850) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",300,16779,16821) || (_wrap_setLastFunctionCall("htmlbox.full.js",300,16779,16786) || $(this)).css('border', '1px solid #BFCAFF')).css('background', '#EFF2FF'));
-}));
-(_wrap_setLastFunctionCall("htmlbox.full.js",302,16888,17038) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",302,16888,16895) || $(this)).mouseout(function() {
-_wrap_addFunctionToMap('htmlbox.full.js', 302, 16905,17037, (typeof arguments === 'object' ? arguments.callee.caller : null));
+(_wrap_setLastFunctionCall("htmlbox.full.js",224,12328,12399,null,false,false) || _wrap_popCallStack(  (_wrap_setLastFunctionCall("htmlbox.full.js",224,12328,12370,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",224,12328,12335,$,false,false) || _wrap_popCallStack($(this))).css('border', '1px solid #BFCAFF'))).css('background', '#EFF2FF')));
+})));
+(_wrap_setLastFunctionCall("htmlbox.full.js",226,12407,12522,null,false,false) || _wrap_popCallStack(  (_wrap_setLastFunctionCall("htmlbox.full.js",226,12407,12414,$,false,false) || _wrap_popCallStack($(this))).mouseout(function() {
+_wrap_addFunctionToMap('htmlbox.full.js', 226, 12424,12521, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-(_wrap_setLastFunctionCall("htmlbox.full.js",303,16939,17018) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",303,16939,16985) || (_wrap_setLastFunctionCall("htmlbox.full.js",303,16939,16946) || $(this)).css('border', '1px solid transparent')).css('background', 'transparent'));
-}));
-}));
-(_wrap_setLastFunctionCall("htmlbox.full.js",306,17068,17419) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",306,17068,17104) || (_wrap_setLastFunctionCall("htmlbox.full.js",306,17068,17089) || $('.' + d.id + '_tb')).find('select')).each(function() {
-_wrap_addFunctionToMap('htmlbox.full.js', 306, 17110,17418, (typeof arguments === 'object' ? arguments.callee.caller : null));
+(_wrap_setLastFunctionCall("htmlbox.full.js",227,12439,12518,null,false,false) || _wrap_popCallStack(  (_wrap_setLastFunctionCall("htmlbox.full.js",227,12439,12485,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",227,12439,12446,$,false,false) || _wrap_popCallStack($(this))).css('border', '1px solid transparent'))).css('background', 'transparent')));
+})));
+})));
+(_wrap_setLastFunctionCall("htmlbox.full.js",230,12530,12810,null,false,false) || _wrap_popCallStack(  (_wrap_setLastFunctionCall("htmlbox.full.js",230,12530,12566,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",230,12530,12551,$,false,false) || _wrap_popCallStack($('.' + d.id + '_tb'))).find('select'))).each(function() {
+_wrap_addFunctionToMap('htmlbox.full.js', 230, 12572,12809, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-(_wrap_setLastFunctionCall("htmlbox.full.js",307,17140,17248) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",307,17140,17215) || (_wrap_setLastFunctionCall("htmlbox.full.js",307,17140,17182) || (_wrap_setLastFunctionCall("htmlbox.full.js",307,17140,17147) || $(this)).css('border', '1px solid #E9EAEF')).css('background', 'transparent')).css('margin', '2px 2px 3px 2px'));
+(_wrap_setLastFunctionCall("htmlbox.full.js",231,12587,12695,null,false,false) || _wrap_popCallStack(  (_wrap_setLastFunctionCall("htmlbox.full.js",231,12587,12662,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",231,12587,12629,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",231,12587,12594,$,false,false) || _wrap_popCallStack($(this))).css('border', '1px solid #E9EAEF'))).css('background', 'transparent'))).css('margin', '2px 2px 3px 2px')));
   if ($.browser.mozilla) {
-(_wrap_setLastFunctionCall("htmlbox.full.js",309,17311,17385) ||     (_wrap_setLastFunctionCall("htmlbox.full.js",309,17311,17366) || (_wrap_setLastFunctionCall("htmlbox.full.js",309,17311,17338) || (_wrap_setLastFunctionCall("htmlbox.full.js",309,17311,17318) || $(this)).css('padding', '0')).css('position', 'relative')).css('top', '-2px'));
+(_wrap_setLastFunctionCall("htmlbox.full.js",233,12728,12802,null,false,false) || _wrap_popCallStack(    (_wrap_setLastFunctionCall("htmlbox.full.js",233,12728,12783,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",233,12728,12755,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",233,12728,12735,$,false,false) || _wrap_popCallStack($(this))).css('padding', '0'))).css('position', 'relative'))).css('top', '-2px')));
   }
-}));
+})));
   var hb_border = '1px solid #7F7647';
   var hb_background = '#DFDDD1';
   var tb_border = '1px solid #7F7647';
@@ -292,143 +292,143 @@ _wrap_addFunctionToMap('htmlbox.full.js', 306, 17110,17418, (typeof arguments ==
     hb_background = '#F4F4F3';
     tb_border = '1px solid #DDDDDD';
   }
-(_wrap_setLastFunctionCall("htmlbox.full.js",335,18344,18392) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",335,18344,18367) || $('#' + d.id + '_wrap')).css('border', hb_border));
-(_wrap_setLastFunctionCall("htmlbox.full.js",336,18406,18462) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",336,18406,18429) || $('#' + d.id + '_wrap')).css('background', hb_background));
-(_wrap_setLastFunctionCall("htmlbox.full.js",337,18476,18531) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",337,18476,18504) || $('#' + d.id + '_container')).css('background', 'white'));
-(_wrap_setLastFunctionCall("htmlbox.full.js",338,18545,18598) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",338,18545,18566) || $('.' + d.id + '_tb')).css('border-bottom', tb_border));
+(_wrap_setLastFunctionCall("htmlbox.full.js",259,13471,13519,null,false,false) || _wrap_popCallStack(  (_wrap_setLastFunctionCall("htmlbox.full.js",259,13471,13494,$,false,false) || _wrap_popCallStack($('#' + d.id + '_wrap'))).css('border', hb_border)));
+(_wrap_setLastFunctionCall("htmlbox.full.js",260,13523,13579,null,false,false) || _wrap_popCallStack(  (_wrap_setLastFunctionCall("htmlbox.full.js",260,13523,13546,$,false,false) || _wrap_popCallStack($('#' + d.id + '_wrap'))).css('background', hb_background)));
+(_wrap_setLastFunctionCall("htmlbox.full.js",261,13583,13638,null,false,false) || _wrap_popCallStack(  (_wrap_setLastFunctionCall("htmlbox.full.js",261,13583,13611,$,false,false) || _wrap_popCallStack($('#' + d.id + '_container'))).css('background', 'white')));
+(_wrap_setLastFunctionCall("htmlbox.full.js",262,13642,13695,null,false,false) || _wrap_popCallStack(  (_wrap_setLastFunctionCall("htmlbox.full.js",262,13642,13663,$,false,false) || _wrap_popCallStack($('.' + d.id + '_tb'))).css('border-bottom', tb_border)));
   try {
-    var iframe = (_wrap_setLastFunctionCall("htmlbox.full.js",340,18647,18679) || document.createElement('IFRAME'));
-(_wrap_setLastFunctionCall("htmlbox.full.js",341,18697,18785) ||     (_wrap_setLastFunctionCall("htmlbox.full.js",341,18697,18766) || (_wrap_setLastFunctionCall("htmlbox.full.js",341,18697,18739) || (_wrap_setLastFunctionCall("htmlbox.full.js",341,18697,18722) || (_wrap_setLastFunctionCall("htmlbox.full.js",341,18697,18706) || $(iframe)).css('width', w)).css('height', h)).attr('id', d.id + '_html')).css('border', '0'));
-(_wrap_setLastFunctionCall("htmlbox.full.js",342,18803,18835) ||     (_wrap_setLastFunctionCall("htmlbox.full.js",342,18803,18819) || (_wrap_setLastFunctionCall("htmlbox.full.js",342,18803,18810) || $(this)).parent()).prepend(iframe));
+    var iframe = (_wrap_setLastFunctionCall("htmlbox.full.js",264,13722,13754,document.createElement,false,false) || _wrap_popCallStack(document.createElement('IFRAME')));
+(_wrap_setLastFunctionCall("htmlbox.full.js",265,13760,13848,null,false,false) || _wrap_popCallStack(    (_wrap_setLastFunctionCall("htmlbox.full.js",265,13760,13829,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",265,13760,13802,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",265,13760,13785,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",265,13760,13769,$,false,false) || _wrap_popCallStack($(iframe))).css('width', w))).css('height', h))).attr('id', d.id + '_html'))).css('border', '0')));
+(_wrap_setLastFunctionCall("htmlbox.full.js",266,13854,13886,null,false,false) || _wrap_popCallStack(    (_wrap_setLastFunctionCall("htmlbox.full.js",266,13854,13870,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",266,13854,13861,$,false,false) || _wrap_popCallStack($(this))).parent())).prepend(iframe)));
     d.iframe = iframe;
     d.idoc = iframe.contentWindow.document;
     d.idoc.designMode = 'on';
-    var text = (_wrap_setLastFunctionCall("htmlbox.full.js",346,18997,19010) || (_wrap_setLastFunctionCall("htmlbox.full.js",346,18997,19004) || $(this)).val()) === '' ? '' : (_wrap_setLastFunctionCall("htmlbox.full.js",346,19025,19038) || (_wrap_setLastFunctionCall("htmlbox.full.js",346,19025,19032) || $(this)).val());
+    var text = (_wrap_setLastFunctionCall("htmlbox.full.js",270,14000,14013,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",270,14000,14007,$,false,false) || _wrap_popCallStack($(this))).val())) === '' ? '' : (_wrap_setLastFunctionCall("htmlbox.full.js",270,14028,14041,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",270,14028,14035,$,false,false) || _wrap_popCallStack($(this))).val()));
     if ($.browser.mozilla || $.browser.safari) {
-(_wrap_setLastFunctionCall("htmlbox.full.js",348,19121,19156) ||       d.idoc.open('text/html', 'replace'));
-(_wrap_setLastFunctionCall("htmlbox.full.js",349,19178,19196) ||       d.idoc.write(text));
-(_wrap_setLastFunctionCall("htmlbox.full.js",350,19218,19232) ||       d.idoc.close());
+(_wrap_setLastFunctionCall("htmlbox.full.js",272,14098,14133,d.idoc.open,false,false) || _wrap_popCallStack(      d.idoc.open('text/html', 'replace')));
+(_wrap_setLastFunctionCall("htmlbox.full.js",273,14141,14159,d.idoc.write,false,false) || _wrap_popCallStack(      d.idoc.write(text)));
+(_wrap_setLastFunctionCall("htmlbox.full.js",274,14167,14181,d.idoc.close,false,false) || _wrap_popCallStack(      d.idoc.close()));
     } else {
       if (text !== '') {
-(_wrap_setLastFunctionCall("htmlbox.full.js",353,19322,19340) ||         d.idoc.write(text));
+(_wrap_setLastFunctionCall("htmlbox.full.js",277,14229,14247,d.idoc.write,false,false) || _wrap_popCallStack(        d.idoc.write(text)));
       } else {
         if ($.browser.msie) {
-(_wrap_setLastFunctionCall("htmlbox.full.js",356,19445,19467) ||           d.idoc.write('&nbsp;'));
+(_wrap_setLastFunctionCall("htmlbox.full.js",280,14304,14326,d.idoc.write,false,false) || _wrap_popCallStack(          d.idoc.write('&nbsp;')));
         }
       }
     }
     if ($.browser.msie === false) {
       iframe.contentWindow.document.body.contentEditable = true;
     }
-    if ((_wrap_setLastFunctionCall("htmlbox.full.js",363,19700,19728) || d.css.indexOf('background:')) === -1) {
+    if ((_wrap_setLastFunctionCall("htmlbox.full.js",287,14467,14495,d.css.indexOf,false,false) || _wrap_popCallStack(d.css.indexOf('background:'))) === -1) {
       d.css += 'body{background:white;}';
     }
-    if ((_wrap_setLastFunctionCall("htmlbox.full.js",366,19833,19867) || d.css.indexOf('background-image:')) === -1) {
+    if ((_wrap_setLastFunctionCall("htmlbox.full.js",290,14562,14596,d.css.indexOf,false,false) || _wrap_popCallStack(d.css.indexOf('background-image:'))) === -1) {
       d.css = d.css + 'body{background-image:url(' + d.idir + 'logo.gif);background-position:top right;background-repeat:no-repeat;}';
     }
     if (d.idoc.createStyleSheet) {
-(_wrap_setLastFunctionCall("htmlbox.full.js",370,20112,20206) ||       setTimeout('global_hb[\'' + d.id + '\'].set_text(global_hb[\'' + d.id + '\'].get_html())', 10));
+(_wrap_setLastFunctionCall("htmlbox.full.js",294,14789,14883,setTimeout,false,false) || _wrap_popCallStack(      setTimeout('global_hb[\'' + d.id + '\'].set_text(global_hb[\'' + d.id + '\'].get_html())', 10)));
     } else {
-(_wrap_setLastFunctionCall("htmlbox.full.js",372,20253,20260) ||       style());
+(_wrap_setLastFunctionCall("htmlbox.full.js",296,14904,14911,style,false,false) || _wrap_popCallStack(      style()));
     }
     if (iframe.contentWindow.document.attachEvent) {
-(_wrap_setLastFunctionCall("htmlbox.full.js",375,20365,20424) ||       iframe.contentWindow.document.attachEvent('onkeyup', keyup));
+(_wrap_setLastFunctionCall("htmlbox.full.js",299,14978,15037,iframe.contentWindow.document.attachEvent,false,false) || _wrap_popCallStack(      iframe.contentWindow.document.attachEvent('onkeyup', keyup)));
     } else {
-(_wrap_setLastFunctionCall("htmlbox.full.js",377,20471,20540) ||       iframe.contentWindow.document.addEventListener('keyup', keyup, false));
+(_wrap_setLastFunctionCall("htmlbox.full.js",301,15058,15127,iframe.contentWindow.document.addEventListener,false,false) || _wrap_popCallStack(      iframe.contentWindow.document.addEventListener('keyup', keyup, false)));
     }
-(_wrap_setLastFunctionCall("htmlbox.full.js",379,20576,20590) ||     (_wrap_setLastFunctionCall("htmlbox.full.js",379,20576,20583) || $(this)).hide());
+(_wrap_setLastFunctionCall("htmlbox.full.js",303,15139,15153,null,false,false) || _wrap_popCallStack(    (_wrap_setLastFunctionCall("htmlbox.full.js",303,15139,15146,$,false,false) || _wrap_popCallStack($(this))).hide()));
   }  catch (e) {
-(_wrap_setLastFunctionCall("htmlbox.full.js",381,20634,20707) ||   alert('This rich text component is not supported by your browser.\n' + e));
-(_wrap_setLastFunctionCall("htmlbox.full.js",382,20725,20739) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",382,20725,20732) || $(this)).show());
+(_wrap_setLastFunctionCall("htmlbox.full.js",305,15174,15247,alert,false,false) || _wrap_popCallStack(  alert('This rich text component is not supported by your browser.\n' + e)));
+(_wrap_setLastFunctionCall("htmlbox.full.js",306,15251,15265,null,false,false) || _wrap_popCallStack(  (_wrap_setLastFunctionCall("htmlbox.full.js",306,15251,15258,$,false,false) || _wrap_popCallStack($(this))).show()));
 }
   return this;
 };
   this.cmd = function(cmd, arg1) {
-_wrap_addFunctionToMap('htmlbox.full.js', 386, 20810,28283, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('htmlbox.full.js', 310, 15300,21070, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-(_wrap_setLastFunctionCall("htmlbox.full.js",387,20845,20875) ||   d.iframe.contentWindow.focus());
+(_wrap_setLastFunctionCall("htmlbox.full.js",311,15324,15354,d.iframe.contentWindow.focus,false,false) || _wrap_popCallStack(  d.iframe.contentWindow.focus()));
   if (cmd === 'paragraph') {
     cmd = 'format';
     arg1 = 'p';
   }
   var cmds = {'center': 'justifycenter', 'hr': 'inserthorizontalrule', 'justify': 'justifyfull', 'left': 'justifyleft', 'ol': 'insertorderedlist', 'right': 'justifyright', 'strike': 'strikethrough', 'sub': 'subscript', 'sup': 'superscript', 'ul': 'insertunorderedlist'};
-  if ((_wrap_setLastFunctionCall("htmlbox.full.js",404,21505,21524) || in_array(cmd, cmds))) {
+  if ((_wrap_setLastFunctionCall("htmlbox.full.js",317,15702,15721,in_array,false,false) || _wrap_popCallStack(in_array(cmd, cmds)))) {
     cmd = cmds[cmd];
   }
   if (cmd === 'code') {
-    var text = (_wrap_setLastFunctionCall("htmlbox.full.js",408,21636,21651) || this.get_html());
-    if ((_wrap_setLastFunctionCall("htmlbox.full.js",409,21673,21701) || (_wrap_setLastFunctionCall("htmlbox.full.js",409,21673,21686) || $('#' + d.id)).is(':visible'))) {
-(_wrap_setLastFunctionCall("htmlbox.full.js",410,21725,21745) ||       (_wrap_setLastFunctionCall("htmlbox.full.js",410,21725,21738) || $('#' + d.id)).hide());
-(_wrap_setLastFunctionCall("htmlbox.full.js",411,21767,21797) ||       (_wrap_setLastFunctionCall("htmlbox.full.js",411,21767,21790) || $('#' + d.id + '_html')).show());
-(_wrap_setLastFunctionCall("htmlbox.full.js",412,21819,21838) ||       this.set_text(text));
+    var text = (_wrap_setLastFunctionCall("htmlbox.full.js",321,15789,15804,this.get_html,false,false) || _wrap_popCallStack(this.get_html()));
+    if ((_wrap_setLastFunctionCall("htmlbox.full.js",322,15814,15842,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",322,15814,15827,$,false,false) || _wrap_popCallStack($('#' + d.id))).is(':visible')))) {
+(_wrap_setLastFunctionCall("htmlbox.full.js",323,15852,15872,null,false,false) || _wrap_popCallStack(      (_wrap_setLastFunctionCall("htmlbox.full.js",323,15852,15865,$,false,false) || _wrap_popCallStack($('#' + d.id))).hide()));
+(_wrap_setLastFunctionCall("htmlbox.full.js",324,15880,15910,null,false,false) || _wrap_popCallStack(      (_wrap_setLastFunctionCall("htmlbox.full.js",324,15880,15903,$,false,false) || _wrap_popCallStack($('#' + d.id + '_html'))).show()));
+(_wrap_setLastFunctionCall("htmlbox.full.js",325,15918,15937,this.set_text,false,false) || _wrap_popCallStack(      this.set_text(text)));
     } else {
-(_wrap_setLastFunctionCall("htmlbox.full.js",414,21885,21905) ||       (_wrap_setLastFunctionCall("htmlbox.full.js",414,21885,21898) || $('#' + d.id)).show());
-(_wrap_setLastFunctionCall("htmlbox.full.js",415,21927,21957) ||       (_wrap_setLastFunctionCall("htmlbox.full.js",415,21927,21950) || $('#' + d.id + '_html')).hide());
-(_wrap_setLastFunctionCall("htmlbox.full.js",416,21979,21998) ||       this.set_text(text));
-(_wrap_setLastFunctionCall("htmlbox.full.js",417,22020,22041) ||       (_wrap_setLastFunctionCall("htmlbox.full.js",417,22020,22033) || $('#' + d.id)).focus());
+(_wrap_setLastFunctionCall("htmlbox.full.js",327,15958,15978,null,false,false) || _wrap_popCallStack(      (_wrap_setLastFunctionCall("htmlbox.full.js",327,15958,15971,$,false,false) || _wrap_popCallStack($('#' + d.id))).show()));
+(_wrap_setLastFunctionCall("htmlbox.full.js",328,15986,16016,null,false,false) || _wrap_popCallStack(      (_wrap_setLastFunctionCall("htmlbox.full.js",328,15986,16009,$,false,false) || _wrap_popCallStack($('#' + d.id + '_html'))).hide()));
+(_wrap_setLastFunctionCall("htmlbox.full.js",329,16024,16043,this.set_text,false,false) || _wrap_popCallStack(      this.set_text(text)));
+(_wrap_setLastFunctionCall("htmlbox.full.js",330,16051,16072,null,false,false) || _wrap_popCallStack(      (_wrap_setLastFunctionCall("htmlbox.full.js",330,16051,16064,$,false,false) || _wrap_popCallStack($('#' + d.id))).focus()));
     }
   } else if (cmd === 'link') {
-(_wrap_setLastFunctionCall("htmlbox.full.js",420,22118,22196) ||     d.idoc.execCommand('createlink', false, (_wrap_setLastFunctionCall("htmlbox.full.js",420,22158,22195) || prompt('Paste Web Address URL Here:'))));
+(_wrap_setLastFunctionCall("htmlbox.full.js",333,16115,16193,d.idoc.execCommand,false,false) || _wrap_popCallStack(    d.idoc.execCommand('createlink', false, (_wrap_setLastFunctionCall("htmlbox.full.js",333,16155,16192,prompt,false,false) || _wrap_popCallStack(prompt('Paste Web Address URL Here:'))))));
   } else if (cmd === 'image') {
-(_wrap_setLastFunctionCall("htmlbox.full.js",422,22256,22329) ||     d.idoc.execCommand('insertimage', false, (_wrap_setLastFunctionCall("htmlbox.full.js",422,22297,22328) || prompt('Paste Image URL Here:'))));
+(_wrap_setLastFunctionCall("htmlbox.full.js",335,16231,16304,d.idoc.execCommand,false,false) || _wrap_popCallStack(    d.idoc.execCommand('insertimage', false, (_wrap_setLastFunctionCall("htmlbox.full.js",335,16272,16303,prompt,false,false) || _wrap_popCallStack(prompt('Paste Image URL Here:'))))));
   } else if (cmd === 'fontsize') {
-(_wrap_setLastFunctionCall("htmlbox.full.js",424,22392,22428) ||     d.idoc.execCommand(cmd, false, arg1));
+(_wrap_setLastFunctionCall("htmlbox.full.js",337,16345,16381,d.idoc.execCommand,false,false) || _wrap_popCallStack(    d.idoc.execCommand(cmd, false, arg1)));
   } else if (cmd === 'backcolor') {
     if ($.browser.msie) {
-(_wrap_setLastFunctionCall("htmlbox.full.js",427,22534,22578) ||       d.idoc.execCommand('backcolor', false, arg1));
+(_wrap_setLastFunctionCall("htmlbox.full.js",340,16451,16495,d.idoc.execCommand,false,false) || _wrap_popCallStack(      d.idoc.execCommand('backcolor', false, arg1)));
     } else {
-(_wrap_setLastFunctionCall("htmlbox.full.js",429,22625,22671) ||       d.idoc.execCommand('hilitecolor', false, arg1));
+(_wrap_setLastFunctionCall("htmlbox.full.js",342,16516,16562,d.idoc.execCommand,false,false) || _wrap_popCallStack(      d.idoc.execCommand('hilitecolor', false, arg1)));
     }
   } else if (cmd === 'fontcolor') {
-(_wrap_setLastFunctionCall("htmlbox.full.js",432,22753,22797) ||     d.idoc.execCommand('forecolor', false, arg1));
+(_wrap_setLastFunctionCall("htmlbox.full.js",345,16610,16654,d.idoc.execCommand,false,false) || _wrap_popCallStack(    d.idoc.execCommand('forecolor', false, arg1)));
   } else if (cmd === 'fontname') {
-(_wrap_setLastFunctionCall("htmlbox.full.js",434,22860,22896) ||     d.idoc.execCommand(cmd, false, arg1));
+(_wrap_setLastFunctionCall("htmlbox.full.js",347,16695,16731,d.idoc.execCommand,false,false) || _wrap_popCallStack(    d.idoc.execCommand(cmd, false, arg1)));
   } else if (cmd === 'cut') {
     if ($.browser.msie === false) {
-(_wrap_setLastFunctionCall("htmlbox.full.js",437,23006,23067) ||       alert('Available in IExplore only.\nUse CTRL+X to cut text!'));
+(_wrap_setLastFunctionCall("htmlbox.full.js",350,16805,16866,alert,false,false) || _wrap_popCallStack(      alert('Available in IExplore only.\nUse CTRL+X to cut text!')));
     } else {
-(_wrap_setLastFunctionCall("htmlbox.full.js",439,23114,23139) ||       d.idoc.execCommand('Cut'));
+(_wrap_setLastFunctionCall("htmlbox.full.js",352,16887,16912,d.idoc.execCommand,false,false) || _wrap_popCallStack(      d.idoc.execCommand('Cut')));
     }
   } else if (cmd === 'copy') {
     if ($.browser.msie === false) {
-(_wrap_setLastFunctionCall("htmlbox.full.js",443,23268,23330) ||       alert('Available in IExplore only.\nUse CTRL+C to copy text!'));
+(_wrap_setLastFunctionCall("htmlbox.full.js",356,16993,17055,alert,false,false) || _wrap_popCallStack(      alert('Available in IExplore only.\nUse CTRL+C to copy text!')));
     } else {
-(_wrap_setLastFunctionCall("htmlbox.full.js",445,23377,23403) ||       d.idoc.execCommand('Copy'));
+(_wrap_setLastFunctionCall("htmlbox.full.js",358,17076,17102,d.idoc.execCommand,false,false) || _wrap_popCallStack(      d.idoc.execCommand('Copy')));
     }
   } else if (cmd === 'paste') {
     if ($.browser.msie === false) {
-(_wrap_setLastFunctionCall("htmlbox.full.js",449,23533,23596) ||       alert('Available in IExplore only.\nUse CTRL+V to paste text!'));
+(_wrap_setLastFunctionCall("htmlbox.full.js",362,17184,17247,alert,false,false) || _wrap_popCallStack(      alert('Available in IExplore only.\nUse CTRL+V to paste text!')));
     } else {
-(_wrap_setLastFunctionCall("htmlbox.full.js",451,23643,23670) ||       d.idoc.execCommand('Paste'));
+(_wrap_setLastFunctionCall("htmlbox.full.js",364,17268,17295,d.idoc.execCommand,false,false) || _wrap_popCallStack(      d.idoc.execCommand('Paste')));
     }
   } else if (cmd === 'format') {
     if (arg1 === 'pindent') {
-(_wrap_setLastFunctionCall("htmlbox.full.js",455,23795,23850) ||       this.wrap_tags('<p style="text-indent:20px;">', '</p>'));
+(_wrap_setLastFunctionCall("htmlbox.full.js",368,17372,17427,this.wrap_tags,false,false) || _wrap_popCallStack(      this.wrap_tags('<p style="text-indent:20px;">', '</p>')));
     } else if (arg1 !== '') {
-(_wrap_setLastFunctionCall("htmlbox.full.js",457,23914,23972) ||       d.idoc.execCommand('formatBlock', false, '<' + arg1 + '>'));
+(_wrap_setLastFunctionCall("htmlbox.full.js",370,17465,17523,d.idoc.execCommand,false,false) || _wrap_popCallStack(      d.idoc.execCommand('formatBlock', false, '<' + arg1 + '>')));
     }
   } else if (cmd === 'striptags') {
-    var sel = (_wrap_setLastFunctionCall("htmlbox.full.js",460,24064,24079) || get_selection());
-    sel = (_wrap_setLastFunctionCall("htmlbox.full.js",461,24103,24135) || sel.replace(/(<([^>]+)>)/gi, ''));
-(_wrap_setLastFunctionCall("htmlbox.full.js",462,24153,24169) ||     insert_text(sel));
+    var sel = (_wrap_setLastFunctionCall("htmlbox.full.js",373,17581,17596,get_selection,false,false) || _wrap_popCallStack(get_selection()));
+    sel = (_wrap_setLastFunctionCall("htmlbox.full.js",374,17608,17640,sel.replace,false,false) || _wrap_popCallStack(sel.replace(/(<([^>]+)>)/gi, '')));
+(_wrap_setLastFunctionCall("htmlbox.full.js",375,17646,17662,insert_text,false,false) || _wrap_popCallStack(    insert_text(sel)));
   } else if (cmd === 'quote') {
-(_wrap_setLastFunctionCall("htmlbox.full.js",464,24229,24484) ||     this.wrap_tags('<br /><div style="position:relative;top:10px;left:11px;font-size:11px;font-family:verdana;">Quote</div><div class="quote" contenteditable="true" style="border:1px inset silver;margin:10px;padding:5px;background:#EFF7FF;">', '</div><br />'));
+(_wrap_setLastFunctionCall("htmlbox.full.js",377,17700,17955,this.wrap_tags,false,false) || _wrap_popCallStack(    this.wrap_tags('<br /><div style="position:relative;top:10px;left:11px;font-size:11px;font-family:verdana;">Quote</div><div class="quote" contenteditable="true" style="border:1px inset silver;margin:10px;padding:5px;background:#EFF7FF;">', '</div><br />')));
   } else if (cmd === 'styles') {
-(_wrap_setLastFunctionCall("htmlbox.full.js",466,24545,24593) ||     this.wrap_tags(styles[arg1][1], styles[arg1][2]));
+(_wrap_setLastFunctionCall("htmlbox.full.js",379,17994,18042,this.wrap_tags,false,false) || _wrap_popCallStack(    this.wrap_tags(styles[arg1][1], styles[arg1][2])));
   } else if (cmd === 'syntax') {
-(_wrap_setLastFunctionCall("htmlbox.full.js",468,24654,24702) ||     this.wrap_tags(syntax[arg1][1], syntax[arg1][2]));
+(_wrap_setLastFunctionCall("htmlbox.full.js",381,18081,18129,this.wrap_tags,false,false) || _wrap_popCallStack(    this.wrap_tags(syntax[arg1][1], syntax[arg1][2])));
   } else if (cmd === 'bold') {
-(_wrap_setLastFunctionCall("htmlbox.full.js",470,24761,24790) ||     this.wrap_tags('<b>', '</b>'));
+(_wrap_setLastFunctionCall("htmlbox.full.js",383,18166,18195,this.wrap_tags,false,false) || _wrap_popCallStack(    this.wrap_tags('<b>', '</b>')));
   } else if (cmd === 'undo' && urm) {
-    if ((_wrap_setLastFunctionCall("htmlbox.full.js",472,24860,24874) || urm.can_undo())) {
-      var undo = (_wrap_setLastFunctionCall("htmlbox.full.js",473,24909,24919) || urm.undo());
-(_wrap_setLastFunctionCall("htmlbox.full.js",474,24941,24960) ||       this.set_text(undo));
+    if ((_wrap_setLastFunctionCall("htmlbox.full.js",385,18243,18257,urm.can_undo,false,false) || _wrap_popCallStack(urm.can_undo()))) {
+      var undo = (_wrap_setLastFunctionCall("htmlbox.full.js",386,18278,18288,urm.undo,false,false) || _wrap_popCallStack(urm.undo()));
+(_wrap_setLastFunctionCall("htmlbox.full.js",387,18296,18315,this.set_text,false,false) || _wrap_popCallStack(      this.set_text(undo)));
       return true;
     }
   } else if (cmd === 'redo' && urm) {
-    if ((_wrap_setLastFunctionCall("htmlbox.full.js",478,25081,25095) || urm.can_redo())) {
-      var redo = (_wrap_setLastFunctionCall("htmlbox.full.js",479,25130,25140) || urm.redo());
-(_wrap_setLastFunctionCall("htmlbox.full.js",480,25162,25181) ||       this.set_text(redo));
+    if ((_wrap_setLastFunctionCall("htmlbox.full.js",391,18388,18402,urm.can_redo,false,false) || _wrap_popCallStack(urm.can_redo()))) {
+      var redo = (_wrap_setLastFunctionCall("htmlbox.full.js",392,18423,18433,urm.redo,false,false) || _wrap_popCallStack(urm.redo()));
+(_wrap_setLastFunctionCall("htmlbox.full.js",393,18441,18460,this.set_text,false,false) || _wrap_popCallStack(      this.set_text(redo)));
       return true;
     }
   } else if (cmd === 'about') {
@@ -446,138 +446,138 @@ _wrap_addFunctionToMap('htmlbox.full.js', 386, 20810,28283, (typeof arguments ==
     html += '</table>';
     var w = 300;
     var h = 200;
-    var top = ((_wrap_setLastFunctionCall("htmlbox.full.js",498,27151,27169) || (_wrap_setLastFunctionCall("htmlbox.full.js",498,27151,27160) || $(window)).height()) - 200) / 2 + (_wrap_setLastFunctionCall("htmlbox.full.js",498,27183,27206) || (_wrap_setLastFunctionCall("htmlbox.full.js",498,27183,27194) || $(document)).scrollTop());
-    var left = ((_wrap_setLastFunctionCall("htmlbox.full.js",499,27236,27253) || (_wrap_setLastFunctionCall("htmlbox.full.js",499,27236,27245) || $(window)).width()) - 300) / 2;
-    if ((_wrap_setLastFunctionCall("htmlbox.full.js",500,27286,27310) || $('#' + d.id + '_about')).length === 0) {
-(_wrap_setLastFunctionCall("htmlbox.full.js",501,27347,27541) ||       (_wrap_setLastFunctionCall("htmlbox.full.js",501,27347,27356) || $('body')).append('<div id=\'' + d.id + '_about\' style=\'display:none;position:absolute;background:red;width:' + w + 'px;height:' + h + 'px;top:' + top + 'px;left:' + left + 'px;\'>about</div>'));
-(_wrap_setLastFunctionCall("htmlbox.full.js",502,27563,27598) ||       (_wrap_setLastFunctionCall("htmlbox.full.js",502,27563,27587) || $('#' + d.id + '_about')).html(html));
+    var top = ((_wrap_setLastFunctionCall("htmlbox.full.js",411,20214,20232,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",411,20214,20223,$,false,false) || _wrap_popCallStack($(window))).height())) - 200) / 2 + (_wrap_setLastFunctionCall("htmlbox.full.js",411,20246,20269,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",411,20246,20257,$,false,false) || _wrap_popCallStack($(document))).scrollTop()));
+    var left = ((_wrap_setLastFunctionCall("htmlbox.full.js",412,20287,20304,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",412,20287,20296,$,false,false) || _wrap_popCallStack($(window))).width())) - 300) / 2;
+    if ((_wrap_setLastFunctionCall("htmlbox.full.js",413,20325,20349,$,false,false) || _wrap_popCallStack($('#' + d.id + '_about'))).length === 0) {
+(_wrap_setLastFunctionCall("htmlbox.full.js",414,20372,20566,null,false,false) || _wrap_popCallStack(      (_wrap_setLastFunctionCall("htmlbox.full.js",414,20372,20381,$,false,false) || _wrap_popCallStack($('body'))).append('<div id=\'' + d.id + '_about\' style=\'display:none;position:absolute;background:red;width:' + w + 'px;height:' + h + 'px;top:' + top + 'px;left:' + left + 'px;\'>about</div>')));
+(_wrap_setLastFunctionCall("htmlbox.full.js",415,20574,20609,null,false,false) || _wrap_popCallStack(      (_wrap_setLastFunctionCall("htmlbox.full.js",415,20574,20598,$,false,false) || _wrap_popCallStack($('#' + d.id + '_about'))).html(html)));
     } else {
-(_wrap_setLastFunctionCall("htmlbox.full.js",504,27645,27685) ||       (_wrap_setLastFunctionCall("htmlbox.full.js",504,27645,27669) || $('#' + d.id + '_about')).css('top', top));
-(_wrap_setLastFunctionCall("htmlbox.full.js",505,27707,27749) ||       (_wrap_setLastFunctionCall("htmlbox.full.js",505,27707,27731) || $('#' + d.id + '_about')).css('left', left));
+(_wrap_setLastFunctionCall("htmlbox.full.js",417,20630,20670,null,false,false) || _wrap_popCallStack(      (_wrap_setLastFunctionCall("htmlbox.full.js",417,20630,20654,$,false,false) || _wrap_popCallStack($('#' + d.id + '_about'))).css('top', top)));
+(_wrap_setLastFunctionCall("htmlbox.full.js",418,20678,20720,null,false,false) || _wrap_popCallStack(      (_wrap_setLastFunctionCall("htmlbox.full.js",418,20678,20702,$,false,false) || _wrap_popCallStack($('#' + d.id + '_about'))).css('left', left)));
     }
-(_wrap_setLastFunctionCall("htmlbox.full.js",507,27785,27817) ||     (_wrap_setLastFunctionCall("htmlbox.full.js",507,27785,27809) || $('#' + d.id + '_about')).focus());
-(_wrap_setLastFunctionCall("htmlbox.full.js",508,27835,27872) ||     (_wrap_setLastFunctionCall("htmlbox.full.js",508,27835,27859) || $('#' + d.id + '_about')).fadeIn(1000));
+(_wrap_setLastFunctionCall("htmlbox.full.js",420,20732,20764,null,false,false) || _wrap_popCallStack(    (_wrap_setLastFunctionCall("htmlbox.full.js",420,20732,20756,$,false,false) || _wrap_popCallStack($('#' + d.id + '_about'))).focus()));
+(_wrap_setLastFunctionCall("htmlbox.full.js",421,20770,20807,null,false,false) || _wrap_popCallStack(    (_wrap_setLastFunctionCall("htmlbox.full.js",421,20770,20794,$,false,false) || _wrap_popCallStack($('#' + d.id + '_about'))).fadeIn(1000)));
   } else {
-(_wrap_setLastFunctionCall("htmlbox.full.js",510,27911,27947) ||     d.idoc.execCommand(cmd, false, null));
+(_wrap_setLastFunctionCall("htmlbox.full.js",423,20824,20860,d.idoc.execCommand,false,false) || _wrap_popCallStack(    d.idoc.execCommand(cmd, false, null)));
   }
-  if ((_wrap_setLastFunctionCall("htmlbox.full.js",512,27979,28007) || (_wrap_setLastFunctionCall("htmlbox.full.js",512,27979,27992) || $('#' + d.id)).is(':visible')) === false) {
-(_wrap_setLastFunctionCall("htmlbox.full.js",513,28037,28071) ||     (_wrap_setLastFunctionCall("htmlbox.full.js",513,28037,28050) || $('#' + d.id)).val((_wrap_setLastFunctionCall("htmlbox.full.js",513,28055,28070) || this.get_html())));
+  if ((_wrap_setLastFunctionCall("htmlbox.full.js",425,20872,20900,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",425,20872,20885,$,false,false) || _wrap_popCallStack($('#' + d.id))).is(':visible'))) === false) {
+(_wrap_setLastFunctionCall("htmlbox.full.js",426,20918,20952,null,false,false) || _wrap_popCallStack(    (_wrap_setLastFunctionCall("htmlbox.full.js",426,20918,20931,$,false,false) || _wrap_popCallStack($('#' + d.id))).val((_wrap_setLastFunctionCall("htmlbox.full.js",426,20936,20951,this.get_html,false,false) || _wrap_popCallStack(this.get_html())))));
     if (urm) {
-(_wrap_setLastFunctionCall("htmlbox.full.js",515,28120,28144) ||       urm.add((_wrap_setLastFunctionCall("htmlbox.full.js",515,28128,28143) || this.get_html())));
+(_wrap_setLastFunctionCall("htmlbox.full.js",428,20975,20999,urm.add,false,false) || _wrap_popCallStack(      urm.add((_wrap_setLastFunctionCall("htmlbox.full.js",428,20983,20998,this.get_html,false,false) || _wrap_popCallStack(this.get_html())))));
     }
     if (undefined !== d.change) {
-(_wrap_setLastFunctionCall("htmlbox.full.js",518,28230,28240) ||       d.change());
+(_wrap_setLastFunctionCall("htmlbox.full.js",431,21047,21057,d.change,false,false) || _wrap_popCallStack(      d.change()));
     }
   }
 };
   this.get_text = function() {
-_wrap_addFunctionToMap('htmlbox.full.js', 522, 28309,28826, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('htmlbox.full.js', 435, 21090,21468, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  if ((_wrap_setLastFunctionCall("htmlbox.full.js",523,28339,28367) || (_wrap_setLastFunctionCall("htmlbox.full.js",523,28339,28352) || $('#' + d.id)).is(':visible'))) {
-    return (_wrap_setLastFunctionCall("htmlbox.full.js",524,28394,28413) || (_wrap_setLastFunctionCall("htmlbox.full.js",524,28394,28407) || $('#' + d.id)).val());
+  if ((_wrap_setLastFunctionCall("htmlbox.full.js",436,21109,21137,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",436,21109,21122,$,false,false) || _wrap_popCallStack($('#' + d.id))).is(':visible')))) {
+    return (_wrap_setLastFunctionCall("htmlbox.full.js",437,21152,21171,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",437,21152,21165,$,false,false) || _wrap_popCallStack($('#' + d.id))).val()));
   }
   var text;
   if ($.browser.msie) {
     text = d.iframe.contentWindow.document.body.innerText;
   } else {
-    var html = (_wrap_setLastFunctionCall("htmlbox.full.js",530,28604,28668) || d.iframe.contentWindow.document.body.ownerDocument.createRange());
-(_wrap_setLastFunctionCall("htmlbox.full.js",531,28686,28747) ||     html.selectNodeContents(d.iframe.contentWindow.document.body));
+    var html = (_wrap_setLastFunctionCall("htmlbox.full.js",443,21298,21362,d.iframe.contentWindow.document.body.ownerDocument.createRange,false,false) || _wrap_popCallStack(d.iframe.contentWindow.document.body.ownerDocument.createRange()));
+(_wrap_setLastFunctionCall("htmlbox.full.js",444,21368,21429,html.selectNodeContents,false,false) || _wrap_popCallStack(    html.selectNodeContents(d.iframe.contentWindow.document.body)));
     text = html;
   }
   return text;
 };
   this.set_text = function(txt) {
-_wrap_addFunctionToMap('htmlbox.full.js', 536, 28852,29808, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('htmlbox.full.js', 449, 21488,22117, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var text = undefined === txt ? '' : txt;
   if (text === '' && $.browser.safari) {
     text = '&nbsp;';
   }
-  if ((_wrap_setLastFunctionCall("htmlbox.full.js",541,29036,29064) || (_wrap_setLastFunctionCall("htmlbox.full.js",541,29036,29049) || $('#' + d.id)).is(':visible'))) {
-(_wrap_setLastFunctionCall("htmlbox.full.js",542,29084,29107) ||     (_wrap_setLastFunctionCall("htmlbox.full.js",542,29084,29097) || $('#' + d.id)).val(text));
+  if ((_wrap_setLastFunctionCall("htmlbox.full.js",454,21619,21647,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",454,21619,21632,$,false,false) || _wrap_popCallStack($('#' + d.id))).is(':visible')))) {
+(_wrap_setLastFunctionCall("htmlbox.full.js",455,21655,21678,null,false,false) || _wrap_popCallStack(    (_wrap_setLastFunctionCall("htmlbox.full.js",455,21655,21668,$,false,false) || _wrap_popCallStack($('#' + d.id))).val(text)));
   } else {
     if ($.browser.mozilla || $.browser.safari) {
-(_wrap_setLastFunctionCall("htmlbox.full.js",545,29211,29246) ||       d.idoc.open('text/html', 'replace'));
-(_wrap_setLastFunctionCall("htmlbox.full.js",546,29268,29286) ||       d.idoc.write(text));
-(_wrap_setLastFunctionCall("htmlbox.full.js",547,29308,29322) ||       d.idoc.close());
+(_wrap_setLastFunctionCall("htmlbox.full.js",458,21746,21781,d.idoc.open,false,false) || _wrap_popCallStack(      d.idoc.open('text/html', 'replace')));
+(_wrap_setLastFunctionCall("htmlbox.full.js",459,21789,21807,d.idoc.write,false,false) || _wrap_popCallStack(      d.idoc.write(text)));
+(_wrap_setLastFunctionCall("htmlbox.full.js",460,21815,21829,d.idoc.close,false,false) || _wrap_popCallStack(      d.idoc.close()));
     } else {
       d.idoc.body.innerHTML = '';
       if (text !== '') {
-(_wrap_setLastFunctionCall("htmlbox.full.js",551,29460,29478) ||         d.idoc.write(text));
+(_wrap_setLastFunctionCall("htmlbox.full.js",464,21911,21929,d.idoc.write,false,false) || _wrap_popCallStack(        d.idoc.write(text)));
       }
     }
-(_wrap_setLastFunctionCall("htmlbox.full.js",554,29536,29543) ||     style());
+(_wrap_setLastFunctionCall("htmlbox.full.js",467,21949,21956,style,false,false) || _wrap_popCallStack(    style()));
     d.idoc.body.contentEditable = true;
   }
   if (urm) {
-(_wrap_setLastFunctionCall("htmlbox.full.js",558,29650,29674) ||     urm.add((_wrap_setLastFunctionCall("htmlbox.full.js",558,29658,29673) || this.get_html())));
+(_wrap_setLastFunctionCall("htmlbox.full.js",471,22019,22043,urm.add,false,false) || _wrap_popCallStack(    urm.add((_wrap_setLastFunctionCall("htmlbox.full.js",471,22027,22042,this.get_html,false,false) || _wrap_popCallStack(this.get_html())))));
   }
   if (undefined !== d.change) {
-(_wrap_setLastFunctionCall("htmlbox.full.js",561,29748,29758) ||     d.change());
+(_wrap_setLastFunctionCall("htmlbox.full.js",474,22085,22095,d.change,false,false) || _wrap_popCallStack(    d.change()));
   }
   return this;
 };
   this.get_html = function() {
-_wrap_addFunctionToMap('htmlbox.full.js', 565, 29834,30230, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('htmlbox.full.js', 478, 22137,22406, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var html;
-  if ((_wrap_setLastFunctionCall("htmlbox.full.js",567,29886,29914) || (_wrap_setLastFunctionCall("htmlbox.full.js",567,29886,29899) || $('#' + d.id)).is(':visible'))) {
-    html = (_wrap_setLastFunctionCall("htmlbox.full.js",568,29941,29960) || (_wrap_setLastFunctionCall("htmlbox.full.js",568,29941,29954) || $('#' + d.id)).val());
+  if ((_wrap_setLastFunctionCall("htmlbox.full.js",480,22168,22196,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",480,22168,22181,$,false,false) || _wrap_popCallStack($('#' + d.id))).is(':visible')))) {
+    html = (_wrap_setLastFunctionCall("htmlbox.full.js",481,22211,22230,null,false,false) || _wrap_popCallStack((_wrap_setLastFunctionCall("htmlbox.full.js",481,22211,22224,$,false,false) || _wrap_popCallStack($('#' + d.id))).val()));
   } else {
     html = d.iframe.contentWindow.document.body.innerHTML;
   }
   if (typeof getXHTML === 'function') {
-    return (_wrap_setLastFunctionCall("htmlbox.full.js",573,30141,30155) || getXHTML(html));
+    return (_wrap_setLastFunctionCall("htmlbox.full.js",486,22357,22371,getXHTML,false,false) || _wrap_popCallStack(getXHTML(html)));
   } else {
     return html;
   }
 };
   this.change = function(fn) {
-_wrap_addFunctionToMap('htmlbox.full.js', 578, 30254,30331, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('htmlbox.full.js', 491, 22424,22472, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   d.change = fn;
   return this;
 };
   this.remove = function() {
-_wrap_addFunctionToMap('htmlbox.full.js', 582, 30355,30587, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('htmlbox.full.js', 495, 22490,22661, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   global_hb[d.id] = undefined;
-(_wrap_setLastFunctionCall("htmlbox.full.js",584,30422,30454) ||   (_wrap_setLastFunctionCall("htmlbox.full.js",584,30422,30445) || $('#' + d.id + '_wrap')).remove());
-  if ((_wrap_setLastFunctionCall("htmlbox.full.js",585,30472,30496) || $('#' + d.id + '_about')).length === 0) {
-(_wrap_setLastFunctionCall("htmlbox.full.js",586,30529,30562) ||     (_wrap_setLastFunctionCall("htmlbox.full.js",586,30529,30553) || $('#' + d.id + '_about')).remove());
+(_wrap_setLastFunctionCall("htmlbox.full.js",497,22536,22568,null,false,false) || _wrap_popCallStack(  (_wrap_setLastFunctionCall("htmlbox.full.js",497,22536,22559,$,false,false) || _wrap_popCallStack($('#' + d.id + '_wrap'))).remove()));
+  if ((_wrap_setLastFunctionCall("htmlbox.full.js",498,22576,22600,$,false,false) || _wrap_popCallStack($('#' + d.id + '_about'))).length === 0) {
+(_wrap_setLastFunctionCall("htmlbox.full.js",499,22621,22654,null,false,false) || _wrap_popCallStack(    (_wrap_setLastFunctionCall("htmlbox.full.js",499,22621,22645,$,false,false) || _wrap_popCallStack($('#' + d.id + '_about'))).remove()));
   }
 };
   this.post = function(url, data) {
-_wrap_addFunctionToMap('htmlbox.full.js', 589, 30609,30993, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('htmlbox.full.js', 502, 22677,22890, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (undefined === data) {
-    data = (_wrap_setLastFunctionCall("htmlbox.full.js",591,30693,30708) || this.get_html());
+    data = (_wrap_setLastFunctionCall("htmlbox.full.js",504,22738,22753,this.get_html,false,false) || _wrap_popCallStack(this.get_html()));
   }
   data = d.id + '=' + data;
-(_wrap_setLastFunctionCall("htmlbox.full.js",594,30774,30982) ||   $.ajax({type: 'POST', data: data, url: url, dataType: 'html', error: d.error, success: d.success}));
+(_wrap_setLastFunctionCall("htmlbox.full.js",507,22789,22887,$.ajax,false,false) || _wrap_popCallStack(  $.ajax({type: 'POST', data: data, url: url, dataType: 'html', error: d.error, success: d.success})));
 };
   this.get = function(url, data) {
-_wrap_addFunctionToMap('htmlbox.full.js', 603, 31014,31397, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('htmlbox.full.js', 509, 22905,23117, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (undefined === data) {
-    data = (_wrap_setLastFunctionCall("htmlbox.full.js",605,31098,31113) || this.get_html());
+    data = (_wrap_setLastFunctionCall("htmlbox.full.js",511,22966,22981,this.get_html,false,false) || _wrap_popCallStack(this.get_html()));
   }
   data = d.id + '=' + data;
-(_wrap_setLastFunctionCall("htmlbox.full.js",608,31179,31386) ||   $.ajax({type: 'GET', data: data, url: url, dataType: 'html', error: d.error, success: d.success}));
+(_wrap_setLastFunctionCall("htmlbox.full.js",514,23017,23114,$.ajax,false,false) || _wrap_popCallStack(  $.ajax({type: 'GET', data: data, url: url, dataType: 'html', error: d.error, success: d.success})));
 };
   this.success = function(fn) {
-_wrap_addFunctionToMap('htmlbox.full.js', 617, 31422,31500, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('htmlbox.full.js', 516, 23136,23185, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   d.success = fn;
   return this;
 };
   this.error = function(fn) {
-_wrap_addFunctionToMap('htmlbox.full.js', 621, 31523,31599, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('htmlbox.full.js', 520, 23202,23249, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   d.error = fn;
   return this;
 };
-(_wrap_setLastFunctionCall("htmlbox.full.js",625,31609,31626) ||   this._init(false));
+(_wrap_setLastFunctionCall("htmlbox.full.js",524,23253,23270,this._init,false,false) || _wrap_popCallStack(  this._init(false)));
   return this;
 };
-}(jQuery)));
+}(jQuery))));

@@ -4,15 +4,29 @@ var _wrap_staticMeasuredFunctions = {};
 var _wrap_staticMeasuredCalls = {};
 var _wrap_lastCall = null;
 var _wrap_lastCallWasGlobalScope = false;
-var _wrap_lastCallWasNative = false;
+var _wrap_nonLoggedFunctions = [];
+var _wrap_lastCallStack = [];
+var _wrap_lastCallWasProxy = false;
+var _wrap_preventNextFromLogging = [];
 
 function _wrap_getNonNativeFunctions() {
     var r = [];
     for (var k in _wrap_callMap) {
         if (!_wrap_callMap.hasOwnProperty(k) || k === "native") continue;
-        r.push(k)
+        r.push(k);
     }
     return r;
+}
+
+function _wrap_popCallStack(retval) {
+	// maybe add an extra argument so if we know its not in the list then its a native
+	/*var preventLog = _wrap_preventNextFromLogging[_wrap_preventNextFromLogging.length - 1];
+  if (preventLog) _wrap_preventNextFromLogging[_wrap_preventNextFromLogging.length - 1].pop();
+  */
+  _wrap_lastCallWasGlobalScope = false;
+	_wrap_lastCallStack.pop();
+  _wrap_preventNextFromLogging.pop();
+	return retval;
 }
 
 function _wrap_getCalls() {
@@ -25,7 +39,7 @@ function _wrap_getCalls() {
           calls.push(_wrap_callMap[k][call]);
         }
     }
-    return calls; 
+    return calls;
 }
 
 function _wrap_calculateFunctionCoverage() {
@@ -54,7 +68,13 @@ function _wrap_calculateFunctionCoverageWithScriptExclude(script) {
 		});
 	}
 
-	return (nonNativeFunctions.length / total) * 100;
+  // Remove functions that have actually been logged afterwards
+  _wrap_nonLoggedFunctions = _wrap_nonLoggedFunctions.filter(function(el) {
+    // Only functions that are not logged in the non native functions may pass this
+    return (nonNativeFunctions.indexOf(el) < 0);
+  })  
+
+	return ((nonNativeFunctions.length + _wrap_nonLoggedFunctions.length) / total) * 100;
 }
 
 function _wrap_calculateFunctionCoverageWithScriptsExclude(scripts) {
@@ -83,7 +103,13 @@ function _wrap_calculateFunctionCoverageWithScriptsExclude(scripts) {
 		}
 	}
 
-	return (nonNativeFunctions.length / total) * 100;
+  // Remove functions that have actually been logged afterwards
+  _wrap_nonLoggedFunctions = _wrap_nonLoggedFunctions.filter(function(el) {
+    // Only functions that are not logged in the non native functions may pass this
+    return (nonNativeFunctions.indexOf(el) < 0);
+  })
+
+	return ((nonNativeFunctions.length + _wrap_nonLoggedFunctions.length) / total) * 100;
 }
 
 function _wrap_isNativeFunction(f) {
@@ -103,35 +129,58 @@ function _wrap_calculateCallCoverage() {
   return (_wrap_getCalls().length / total) * 100;
 }
 
-function _wrap_addFunctionToMap(file, line, startPosition, endPosition, caller) {
-  if (_wrap_lastCallWasNative) {
-	  _wrap_lastCall = null;
-	  _wrap_lastCallWasGlobalScope = false;
-	  _wrap_lastCallWasNative = false;
-	  return;
-  }
-  if (caller == null && !_wrap_lastCallWasGlobalScope) {
-	  // native invocation or top level
-	  _wrap_lastCall = null;
-	  _wrap_lastCallWasGlobalScope = false;
-	  _wrap_lastCallWasNative = false;
-	  return;
-  }
-  if (_wrap_lastCall == null) return;
+function _wrap_isFunctionLogged(file, line, startPosition, endPosition) {
+  // it is normally invoked before
   var thisFunction = file + "@" + line + ":" + startPosition + "-" + endPosition;
   var currentArray = _wrap_callMap[thisFunction];
-  if (currentArray == null) {
-    currentArray = [];
+  if (currentArray != null) return true;
+
+  // it is already in the nonlogged functions (native callback functions)
+  return (_wrap_nonLoggedFunctions.indexOf(thisFunction) > -1);
+}
+
+
+function _wrap_setLastFunctionCall(file, line, startPosition, endPosition, functionProp, globalScope, proxyFunction) {
+	if (proxyFunction || (functionProp != null && _wrap_isNativeFunction(functionProp))) _wrap_preventNextFromLogging.push(true);
+  else _wrap_preventNextFromLogging.push(false);
+	var newCall = file + "@" + line + ":" + startPosition + "-" + endPosition;
+	_wrap_lastCallStack.push(newCall); // always add to the call stack
+	if (!_wrap_doesArrayContain(_wrap_allCalls, newCall))
+		_wrap_allCalls.push(newCall);
+	return false;
+}
+
+function _wrap_addFunctionToMap(file, line, startPosition, endPosition, caller) {
+  if (!_wrap_lastCallWasGlobalScope && arguments.callee.caller == null) {
+    // we know this is a call back
+    _wrap_lastCallStack = [];
+    _wrap_preventNextFromLogging = [];
   }
-  if (!_wrap_doesArrayContain(currentArray, _wrap_lastCall))
-    currentArray.push(_wrap_lastCall);
+
+  var preventLog = _wrap_preventNextFromLogging[_wrap_preventNextFromLogging.length - 1];
+	var lastCall = _wrap_lastCallStack[_wrap_lastCallStack.length - 1];
+  // Nothings on the call stack... so dont act upon it
+  if (_wrap_lastCallStack.length == 0) {
+    // console.log("weird??? maybe this is a native callback!: " + arguments.callee.caller.name + " last call: " + lastCall);
+    return;
+  }
+
+	if (preventLog) {
+		// console.log("prevented: " + lastCall);
+		return;
+	}
+  var thisFunction = file + "@" + line + ":" + startPosition + "-" + endPosition;
+  var currentArray = _wrap_callMap[thisFunction];
+  if (currentArray == null) currentArray = [];
+
+  if (!_wrap_doesArrayContain(currentArray, lastCall))
+    currentArray.push(lastCall);
 
   _wrap_callMap[thisFunction] = currentArray;
-  var index = _wrap_allCalls.indexOf(_wrap_lastCall);
+  var index = _wrap_allCalls.indexOf(lastCall);
   if (index > -1) {
     _wrap_allCalls.splice(index, 1);
   }
-  _wrap_lastCall = null; // reset
 }
 
 function _wrap_doesArrayContain(array, call) {
@@ -177,26 +226,6 @@ function _wrap_printCallMap() {
       console.log(_wrap_allCalls[c] + " -> native");
     }
   }
-}
-
-function _wrap_setLastFunctionCall(file, line, startPosition, endPosition, functionProp, globalScope) {
-	_wrap_lastCallWasGlobalScope = globalScope;
-	if (functionProp != null && _wrap_isNativeFunction(functionProp)) {
-		// Encountered a native function.... prevent this from creating a vertex
-		// Add native call
-		var newCall = file + "@" + line + ":" + startPosition + "-" + endPosition;
-		if (!_wrap_doesArrayContain(_wrap_allCalls, newCall))
-			_wrap_allCalls.push(newCall);
-		_wrap_lastCallWasGlobalScope = false;
-		_wrap_lastCallWasNative = true;
-		return false;
-	}
-	var newCall = file + "@" + line + ":" + startPosition + "-" + endPosition;
-	_wrap_lastCall = newCall;
-	if (!_wrap_doesArrayContain(_wrap_allCalls, newCall))
-		_wrap_allCalls.push(newCall);
-	_wrap_lastCallWasNative = false;
-	return false;
 }
 
 function _wrap_STRINGIFY(obj) {

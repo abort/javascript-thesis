@@ -22,7 +22,7 @@ import org.mozilla.javascript.ast.ParenthesizedExpression;
 import org.mozilla.javascript.ast.ToSourceConfig;
 
 public class Rewriter {
-    private static final String INSTRUMENTATION_SCRIPT_TAG = "<script src=\"mapping.js\"></script>\n<script src=\"instrumentation.js\"></script>";
+    private static final String INSTRUMENTATION_SCRIPT_TAG = "<script src=\"instrumentation.js\"></script>";
 
     private static final String[] JS_FILES = { "js" };
 

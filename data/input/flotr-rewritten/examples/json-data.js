@@ -1,16 +1,16 @@
 window.parent._wrap_staticMeasuredFunctions['json-data.js'] = 2;
 window.parent._wrap_staticMeasuredCalls['json-data.js'] =8;
 var f = null;
-(window.parent._wrap_setLastFunctionCall("json-data.js",2,19,813,(window.parent._wrap_setLastFunctionCall("json-data.js",2,19,32,$,true) || $('json-btn')).observe,true) || (window.parent._wrap_setLastFunctionCall("json-data.js",2,19,32,$,true) || $('json-btn')).observe('click', function() {
-window.parent._wrap_addFunctionToMap('json-data.js', 2, 50,812, (typeof arguments === 'object' ? arguments.callee.caller : null));
+(window.parent._wrap_setLastFunctionCall("json-data.js",2,14,348,null,true,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("json-data.js",2,14,27,$,true,false) || window.parent._wrap_popCallStack($('json-btn'))).observe('click', function() {
+window.parent._wrap_addFunctionToMap('json-data.js', 2, 45,347, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-(window.parent._wrap_setLastFunctionCall("json-data.js",7,200,806,Ajax.Request,false) ||   new Ajax.Request('json.txt', {method: 'get', onSuccess: function(transport) {
-window.parent._wrap_addFunctionToMap('json-data.js', 9, 266,799, (typeof arguments === 'object' ? arguments.callee.caller : null));
+(window.parent._wrap_setLastFunctionCall("json-data.js",3,60,344,Ajax.Request,false,false) || window.parent._wrap_popCallStack(  new Ajax.Request('json.txt', {method: 'get', onSuccess: function(transport) {
+window.parent._wrap_addFunctionToMap('json-data.js', 3, 116,342, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  var json = (window.parent._wrap_setLastFunctionCall("json-data.js",13,372,405,transport.responseText.evalJSON,false) || transport.responseText.evalJSON());
+  var json = (window.parent._wrap_setLastFunctionCall("json-data.js",4,151,184,transport.responseText.evalJSON,false,false) || window.parent._wrap_popCallStack(transport.responseText.evalJSON()));
   if (json.series && json.options) {
-(window.parent._wrap_setLastFunctionCall("json-data.js",19,541,585,(window.parent._wrap_setLastFunctionCall("json-data.js",19,541,555,$,false) || $('container')).setStyle,false) ||     (window.parent._wrap_setLastFunctionCall("json-data.js",19,541,555,$,false) || $('container')).setStyle({'display': 'block'}));
-    f = (window.parent._wrap_setLastFunctionCall("json-data.js",25,723,776,Flotr.draw,false) || Flotr.draw((window.parent._wrap_setLastFunctionCall("json-data.js",25,734,748,$,false) || $('container')), json.series, json.options));
+(window.parent._wrap_setLastFunctionCall("json-data.js",6,227,272,null,false,false) || window.parent._wrap_popCallStack(    (window.parent._wrap_setLastFunctionCall("json-data.js",6,227,241,$,false,false) || window.parent._wrap_popCallStack($('container'))).setStyle({'display': 'block'})));
+    f = (window.parent._wrap_setLastFunctionCall("json-data.js",7,282,335,Flotr.draw,false,false) || window.parent._wrap_popCallStack(Flotr.draw((window.parent._wrap_setLastFunctionCall("json-data.js",7,293,307,$,false,false) || window.parent._wrap_popCallStack($('container'))), json.series, json.options)));
   }
-}}));
-}));
+}})));
+})));

@@ -31,7 +31,7 @@ public CallGraphResult createPessimisticCallGraph(Source source) {
 	rel[Vertex, Vertex] callGraph = { <y, x> | <x,y> <- optimisticTransitiveClosure(flowGraph), (Fun(Position _) := x || Builtin(str _) := x), Callee(Position _) := y };
 	println("producing non optimistic transitive closure");
 
-	printAlphabeticalFlowGraph(flowGraph);
+	//printAlphabeticalFlowGraph(flowGraph);
 	println("");
 
 	// Commented out due to performance issues
@@ -58,7 +58,7 @@ public CallGraphResult createPessimisticCallGraphWithoutNatives(Source source) {
 	println("done with adding interprocedural flow");
 	rel[Vertex, Vertex] callGraph = { <y, x> | <x,y> <- optimisticTransitiveClosure(flowGraph), (Fun(Position _) := x || Builtin(str _) := x), Callee(Position _) := y };
 	println("producing non optimistic transitive closure");
-	printAlphabeticalFlowGraph(flowGraph);
+	//printAlphabeticalFlowGraph(flowGraph);
 	println("");
 	return CallGraphResult(callGraph, {}, {});
 }
@@ -72,7 +72,7 @@ public CallGraphResult createPessimisticCallGraphWithoutNatives(list[Source] sou
 	flowGraph += createFlowGraphFromMultipleFiles(files); 
 	rel[Vertex, Vertex] callGraph = { <y, x> | <x,y> <- optimisticTransitiveClosure(flowGraph), (Fun(Position _) := x || Builtin(str _) := x), Callee(Position _) := y };
 
-	printAlphabeticalFlowGraph(flowGraph);
+	//printAlphabeticalFlowGraph(flowGraph);
 	println("");
 
 

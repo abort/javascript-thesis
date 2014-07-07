@@ -33,7 +33,8 @@ public set[OneShotCall] getOneShotCalls(Source source) {
 					oneShotCalls += OneShotCall(getPosition(e), getPosition(f), expressions);
 				}
 			}
-			elseif (nestedExpression(f:functionParams(Expression expressionToCall, { Expression!comma ","}+ _)) := e
+			/*
+			 elseif (nestedExpression(f:functionParams(Expression expressionToCall, { Expression!comma ","}+ _)) := e
 					|| nestedExpression(f:functionNoParams(Expression expressionToCall)) := e) {
 					if (functionAnonymous({Id ","}* parameters, Block _) := expressionToCall
 						|| function(Id name, {Id ","}* parameters, Block _) := expressionToCall) {
@@ -51,7 +52,8 @@ public set[OneShotCall] getOneShotCalls(Source source) {
 					oneShotCalls += OneShotCall(getPosition(f), getPosition(expressionToCall), expressions);
 				}
 			}
-		}
+			*/
+		} 
 	}
 	
 	return oneShotCalls;

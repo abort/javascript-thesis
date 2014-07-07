@@ -1,38 +1,38 @@
 window.parent._wrap_staticMeasuredFunctions['canvas2image.js'] = 14;
 window.parent._wrap_staticMeasuredCalls['canvas2image.js'] =90;
-var Canvas2Image = (window.parent._wrap_setLastFunctionCall("canvas2image.js",1,19,7002,null,true) || (function() {
-window.parent._wrap_addFunctionToMap('canvas2image.js', 1, 20,6999, (typeof arguments === 'object' ? arguments.callee.caller : null));
+var Canvas2Image = (window.parent._wrap_setLastFunctionCall("canvas2image.js",1,19,5781,null,true,false) || window.parent._wrap_popCallStack((function() {
+window.parent._wrap_addFunctionToMap('canvas2image.js', 1, 20,5778, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var bHasCanvas = false;
-  var oCanvas = (window.parent._wrap_setLastFunctionCall("canvas2image.js",4,80,112,document.createElement,false) || document.createElement("canvas"));
-  if ((window.parent._wrap_setLastFunctionCall("canvas2image.js",5,122,146,oCanvas.getContext,false) || oCanvas.getContext("2d"))) {
+  var oCanvas = (window.parent._wrap_setLastFunctionCall("canvas2image.js",3,75,107,document.createElement,false,false) || window.parent._wrap_popCallStack(document.createElement("canvas")));
+  if ((window.parent._wrap_setLastFunctionCall("canvas2image.js",4,115,139,oCanvas.getContext,false,false) || window.parent._wrap_popCallStack(oCanvas.getContext("2d")))) {
     bHasCanvas = true;
   }
   if (!bHasCanvas) {
     return {saveAsBMP: function() {
-window.parent._wrap_addFunctionToMap('canvas2image.js', 11, 248,260, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('canvas2image.js', 8, 214,228, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 }, saveAsPNG: function() {
-window.parent._wrap_addFunctionToMap('canvas2image.js', 12, 286,298, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('canvas2image.js', 9, 241,255, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 }, saveAsJPEG: function() {
-window.parent._wrap_addFunctionToMap('canvas2image.js', 13, 325,337, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('canvas2image.js', 10, 269,283, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
 }};
   }
-  var bHasImageData = !!((window.parent._wrap_setLastFunctionCall("canvas2image.js",17,382,406,oCanvas.getContext,false) || oCanvas.getContext("2d")).getImageData);
+  var bHasImageData = !!((window.parent._wrap_setLastFunctionCall("canvas2image.js",13,315,339,oCanvas.getContext,false,false) || window.parent._wrap_popCallStack(oCanvas.getContext("2d"))).getImageData);
   var bHasDataURL = !!(oCanvas.toDataURL);
   var bHasBase64 = !!(window.btoa);
   var strDownloadMime = "image/octet-stream";
   var readCanvasData = function(oCanvas) {
-window.parent._wrap_addFunctionToMap('canvas2image.js', 23, 580,773, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('canvas2image.js', 17, 503,677, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  var iWidth = (window.parent._wrap_setLastFunctionCall("canvas2image.js",24,621,644,parseInt,false) || parseInt(oCanvas.width));
-  var iHeight = (window.parent._wrap_setLastFunctionCall("canvas2image.js",25,668,692,parseInt,false) || parseInt(oCanvas.height));
-  return (window.parent._wrap_setLastFunctionCall("canvas2image.js",26,709,766,(window.parent._wrap_setLastFunctionCall("canvas2image.js",26,709,733,oCanvas.getContext,false) || oCanvas.getContext("2d")).getImageData,false) || (window.parent._wrap_setLastFunctionCall("canvas2image.js",26,709,733,oCanvas.getContext,false) || oCanvas.getContext("2d")).getImageData(0, 0, iWidth, iHeight));
+  var iWidth = (window.parent._wrap_setLastFunctionCall("canvas2image.js",18,538,561,parseInt,false,false) || window.parent._wrap_popCallStack(parseInt(oCanvas.width)));
+  var iHeight = (window.parent._wrap_setLastFunctionCall("canvas2image.js",19,579,603,parseInt,false,false) || window.parent._wrap_popCallStack(parseInt(oCanvas.height)));
+  return (window.parent._wrap_setLastFunctionCall("canvas2image.js",20,614,674,null,false,false) || window.parent._wrap_popCallStack((window.parent._wrap_setLastFunctionCall("canvas2image.js",20,614,638,oCanvas.getContext,false,false) || window.parent._wrap_popCallStack(oCanvas.getContext("2d"))).getImageData(0, 0, iWidth, iHeight)));
 };
   var encodeData = function(data) {
-window.parent._wrap_addFunctionToMap('canvas2image.js', 29, 796,1117, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('canvas2image.js', 22, 698,949, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var strData = "";
   if (typeof data == "string") {
@@ -40,74 +40,74 @@ window.parent._wrap_addFunctionToMap('canvas2image.js', 29, 796,1117, (typeof ar
   } else {
     var aData = data;
     for (var i = 0; i < aData.length; i++) {
-      strData += (window.parent._wrap_setLastFunctionCall("canvas2image.js",36,1027,1056,String.fromCharCode,false) || String.fromCharCode(aData[i]));
+      strData += (window.parent._wrap_setLastFunctionCall("canvas2image.js",29,883,912,String.fromCharCode,false,false) || window.parent._wrap_popCallStack(String.fromCharCode(aData[i])));
     }
   }
-  return (window.parent._wrap_setLastFunctionCall("canvas2image.js",39,1097,1110,btoa,false) || btoa(strData));
+  return (window.parent._wrap_setLastFunctionCall("canvas2image.js",32,933,946,btoa,false,false) || window.parent._wrap_popCallStack(btoa(strData)));
 };
   var createBMP = function(oData) {
-window.parent._wrap_addFunctionToMap('canvas2image.js', 42, 1139,4271, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('canvas2image.js', 34, 969,3656, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   var aHeader = [];
   var iWidth = oData.width;
   var iHeight = oData.height;
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",48,1267,1285,aHeader.push,false) ||   aHeader.push(0x42));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",49,1295,1313,aHeader.push,false) ||   aHeader.push(0x4D));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",38,1067,1085,aHeader.push,false,false) || window.parent._wrap_popCallStack(  aHeader.push(0x42)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",39,1089,1107,aHeader.push,false,false) || window.parent._wrap_popCallStack(  aHeader.push(0x4D)));
   var iFileSize = iWidth * iHeight * 3 + 54;
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",52,1377,1406,aHeader.push,false) ||   aHeader.push(iFileSize % 256));
-  iFileSize = (window.parent._wrap_setLastFunctionCall("canvas2image.js",52,1420,1447,Math.floor,false) || Math.floor(iFileSize / 256));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",53,1457,1486,aHeader.push,false) ||   aHeader.push(iFileSize % 256));
-  iFileSize = (window.parent._wrap_setLastFunctionCall("canvas2image.js",53,1500,1527,Math.floor,false) || Math.floor(iFileSize / 256));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",54,1537,1566,aHeader.push,false) ||   aHeader.push(iFileSize % 256));
-  iFileSize = (window.parent._wrap_setLastFunctionCall("canvas2image.js",54,1580,1607,Math.floor,false) || Math.floor(iFileSize / 256));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",55,1617,1646,aHeader.push,false) ||   aHeader.push(iFileSize % 256));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",57,1657,1672,aHeader.push,false) ||   aHeader.push(0));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",58,1682,1697,aHeader.push,false) ||   aHeader.push(0));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",59,1707,1722,aHeader.push,false) ||   aHeader.push(0));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",60,1732,1747,aHeader.push,false) ||   aHeader.push(0));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",62,1758,1774,aHeader.push,false) ||   aHeader.push(54));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",63,1784,1799,aHeader.push,false) ||   aHeader.push(0));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",64,1809,1824,aHeader.push,false) ||   aHeader.push(0));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",65,1834,1849,aHeader.push,false) ||   aHeader.push(0));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",41,1156,1185,aHeader.push,false,false) || window.parent._wrap_popCallStack(  aHeader.push(iFileSize % 256)));
+  iFileSize = (window.parent._wrap_setLastFunctionCall("canvas2image.js",42,1201,1228,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor(iFileSize / 256)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",43,1232,1261,aHeader.push,false,false) || window.parent._wrap_popCallStack(  aHeader.push(iFileSize % 256)));
+  iFileSize = (window.parent._wrap_setLastFunctionCall("canvas2image.js",44,1277,1304,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor(iFileSize / 256)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",45,1308,1337,aHeader.push,false,false) || window.parent._wrap_popCallStack(  aHeader.push(iFileSize % 256)));
+  iFileSize = (window.parent._wrap_setLastFunctionCall("canvas2image.js",46,1353,1380,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor(iFileSize / 256)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",47,1384,1413,aHeader.push,false,false) || window.parent._wrap_popCallStack(  aHeader.push(iFileSize % 256)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",48,1417,1432,aHeader.push,false,false) || window.parent._wrap_popCallStack(  aHeader.push(0)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",49,1436,1451,aHeader.push,false,false) || window.parent._wrap_popCallStack(  aHeader.push(0)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",50,1455,1470,aHeader.push,false,false) || window.parent._wrap_popCallStack(  aHeader.push(0)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",51,1474,1489,aHeader.push,false,false) || window.parent._wrap_popCallStack(  aHeader.push(0)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",52,1493,1509,aHeader.push,false,false) || window.parent._wrap_popCallStack(  aHeader.push(54)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",53,1513,1528,aHeader.push,false,false) || window.parent._wrap_popCallStack(  aHeader.push(0)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",54,1532,1547,aHeader.push,false,false) || window.parent._wrap_popCallStack(  aHeader.push(0)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",55,1551,1566,aHeader.push,false,false) || window.parent._wrap_popCallStack(  aHeader.push(0)));
   var aInfoHeader = [];
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",68,1890,1910,aInfoHeader.push,false) ||   aInfoHeader.push(40));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",69,1920,1939,aInfoHeader.push,false) ||   aInfoHeader.push(0));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",70,1949,1968,aInfoHeader.push,false) ||   aInfoHeader.push(0));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",71,1978,1997,aInfoHeader.push,false) ||   aInfoHeader.push(0));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",57,1594,1614,aInfoHeader.push,false,false) || window.parent._wrap_popCallStack(  aInfoHeader.push(40)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",58,1618,1637,aInfoHeader.push,false,false) || window.parent._wrap_popCallStack(  aInfoHeader.push(0)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",59,1641,1660,aInfoHeader.push,false,false) || window.parent._wrap_popCallStack(  aInfoHeader.push(0)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",60,1664,1683,aInfoHeader.push,false,false) || window.parent._wrap_popCallStack(  aInfoHeader.push(0)));
   var iImageWidth = iWidth;
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",74,2042,2077,aInfoHeader.push,false) ||   aInfoHeader.push(iImageWidth % 256));
-  iImageWidth = (window.parent._wrap_setLastFunctionCall("canvas2image.js",74,2093,2122,Math.floor,false) || Math.floor(iImageWidth / 256));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",75,2132,2167,aInfoHeader.push,false) ||   aInfoHeader.push(iImageWidth % 256));
-  iImageWidth = (window.parent._wrap_setLastFunctionCall("canvas2image.js",75,2183,2212,Math.floor,false) || Math.floor(iImageWidth / 256));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",76,2222,2257,aInfoHeader.push,false) ||   aInfoHeader.push(iImageWidth % 256));
-  iImageWidth = (window.parent._wrap_setLastFunctionCall("canvas2image.js",76,2273,2302,Math.floor,false) || Math.floor(iImageWidth / 256));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",77,2312,2347,aInfoHeader.push,false) ||   aInfoHeader.push(iImageWidth % 256));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",62,1715,1750,aInfoHeader.push,false,false) || window.parent._wrap_popCallStack(  aInfoHeader.push(iImageWidth % 256)));
+  iImageWidth = (window.parent._wrap_setLastFunctionCall("canvas2image.js",63,1768,1797,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor(iImageWidth / 256)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",64,1801,1836,aInfoHeader.push,false,false) || window.parent._wrap_popCallStack(  aInfoHeader.push(iImageWidth % 256)));
+  iImageWidth = (window.parent._wrap_setLastFunctionCall("canvas2image.js",65,1854,1883,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor(iImageWidth / 256)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",66,1887,1922,aInfoHeader.push,false,false) || window.parent._wrap_popCallStack(  aInfoHeader.push(iImageWidth % 256)));
+  iImageWidth = (window.parent._wrap_setLastFunctionCall("canvas2image.js",67,1940,1969,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor(iImageWidth / 256)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",68,1973,2008,aInfoHeader.push,false,false) || window.parent._wrap_popCallStack(  aInfoHeader.push(iImageWidth % 256)));
   var iImageHeight = iHeight;
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",80,2398,2434,aInfoHeader.push,false) ||   aInfoHeader.push(iImageHeight % 256));
-  iImageHeight = (window.parent._wrap_setLastFunctionCall("canvas2image.js",80,2451,2481,Math.floor,false) || Math.floor(iImageHeight / 256));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",81,2491,2527,aInfoHeader.push,false) ||   aInfoHeader.push(iImageHeight % 256));
-  iImageHeight = (window.parent._wrap_setLastFunctionCall("canvas2image.js",81,2544,2574,Math.floor,false) || Math.floor(iImageHeight / 256));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",82,2584,2620,aInfoHeader.push,false) ||   aInfoHeader.push(iImageHeight % 256));
-  iImageHeight = (window.parent._wrap_setLastFunctionCall("canvas2image.js",82,2637,2667,Math.floor,false) || Math.floor(iImageHeight / 256));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",83,2677,2713,aInfoHeader.push,false) ||   aInfoHeader.push(iImageHeight % 256));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",85,2728,2747,aInfoHeader.push,false) ||   aInfoHeader.push(1));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",86,2757,2776,aInfoHeader.push,false) ||   aInfoHeader.push(0));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",88,2791,2811,aInfoHeader.push,false) ||   aInfoHeader.push(24));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",89,2821,2840,aInfoHeader.push,false) ||   aInfoHeader.push(0));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",91,2855,2874,aInfoHeader.push,false) ||   aInfoHeader.push(0));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",92,2884,2903,aInfoHeader.push,false) ||   aInfoHeader.push(0));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",93,2913,2932,aInfoHeader.push,false) ||   aInfoHeader.push(0));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",94,2942,2961,aInfoHeader.push,false) ||   aInfoHeader.push(0));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",70,2042,2078,aInfoHeader.push,false,false) || window.parent._wrap_popCallStack(  aInfoHeader.push(iImageHeight % 256)));
+  iImageHeight = (window.parent._wrap_setLastFunctionCall("canvas2image.js",71,2097,2127,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor(iImageHeight / 256)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",72,2131,2167,aInfoHeader.push,false,false) || window.parent._wrap_popCallStack(  aInfoHeader.push(iImageHeight % 256)));
+  iImageHeight = (window.parent._wrap_setLastFunctionCall("canvas2image.js",73,2186,2216,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor(iImageHeight / 256)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",74,2220,2256,aInfoHeader.push,false,false) || window.parent._wrap_popCallStack(  aInfoHeader.push(iImageHeight % 256)));
+  iImageHeight = (window.parent._wrap_setLastFunctionCall("canvas2image.js",75,2275,2305,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor(iImageHeight / 256)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",76,2309,2345,aInfoHeader.push,false,false) || window.parent._wrap_popCallStack(  aInfoHeader.push(iImageHeight % 256)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",77,2349,2368,aInfoHeader.push,false,false) || window.parent._wrap_popCallStack(  aInfoHeader.push(1)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",78,2372,2391,aInfoHeader.push,false,false) || window.parent._wrap_popCallStack(  aInfoHeader.push(0)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",79,2395,2415,aInfoHeader.push,false,false) || window.parent._wrap_popCallStack(  aInfoHeader.push(24)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",80,2419,2438,aInfoHeader.push,false,false) || window.parent._wrap_popCallStack(  aInfoHeader.push(0)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",81,2442,2461,aInfoHeader.push,false,false) || window.parent._wrap_popCallStack(  aInfoHeader.push(0)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",82,2465,2484,aInfoHeader.push,false,false) || window.parent._wrap_popCallStack(  aInfoHeader.push(0)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",83,2488,2507,aInfoHeader.push,false,false) || window.parent._wrap_popCallStack(  aInfoHeader.push(0)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",84,2511,2530,aInfoHeader.push,false,false) || window.parent._wrap_popCallStack(  aInfoHeader.push(0)));
   var iDataSize = iWidth * iHeight * 3;
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",97,3019,3052,aInfoHeader.push,false) ||   aInfoHeader.push(iDataSize % 256));
-  iDataSize = (window.parent._wrap_setLastFunctionCall("canvas2image.js",97,3066,3093,Math.floor,false) || Math.floor(iDataSize / 256));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",98,3103,3136,aInfoHeader.push,false) ||   aInfoHeader.push(iDataSize % 256));
-  iDataSize = (window.parent._wrap_setLastFunctionCall("canvas2image.js",98,3150,3177,Math.floor,false) || Math.floor(iDataSize / 256));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",99,3187,3220,aInfoHeader.push,false) ||   aInfoHeader.push(iDataSize % 256));
-  iDataSize = (window.parent._wrap_setLastFunctionCall("canvas2image.js",99,3234,3261,Math.floor,false) || Math.floor(iDataSize / 256));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",100,3271,3304,aInfoHeader.push,false) ||   aInfoHeader.push(iDataSize % 256));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",86,2574,2607,aInfoHeader.push,false,false) || window.parent._wrap_popCallStack(  aInfoHeader.push(iDataSize % 256)));
+  iDataSize = (window.parent._wrap_setLastFunctionCall("canvas2image.js",87,2623,2650,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor(iDataSize / 256)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",88,2654,2687,aInfoHeader.push,false,false) || window.parent._wrap_popCallStack(  aInfoHeader.push(iDataSize % 256)));
+  iDataSize = (window.parent._wrap_setLastFunctionCall("canvas2image.js",89,2703,2730,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor(iDataSize / 256)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",90,2734,2767,aInfoHeader.push,false,false) || window.parent._wrap_popCallStack(  aInfoHeader.push(iDataSize % 256)));
+  iDataSize = (window.parent._wrap_setLastFunctionCall("canvas2image.js",91,2783,2810,Math.floor,false,false) || window.parent._wrap_popCallStack(Math.floor(iDataSize / 256)));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",92,2814,2847,aInfoHeader.push,false,false) || window.parent._wrap_popCallStack(  aInfoHeader.push(iDataSize % 256)));
   for (var i = 0; i < 16; i++) {
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",103,3357,3376,aInfoHeader.push,false) ||     aInfoHeader.push(0));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",94,2886,2905,aInfoHeader.push,false,false) || window.parent._wrap_popCallStack(    aInfoHeader.push(0)));
   }
   var iPadding = (4 - ((iWidth * 3) % 4)) % 4;
   var aImgData = oData.data;
@@ -118,97 +118,97 @@ window.parent._wrap_addFunctionToMap('canvas2image.js', 42, 1139,4271, (typeof a
     var strPixelRow = "";
     for (var x = 0; x < iWidth; x++) {
       var iOffsetX = 4 * x;
-      strPixelRow += (window.parent._wrap_setLastFunctionCall("canvas2image.js",118,3738,3788,String.fromCharCode,false) || String.fromCharCode(aImgData[iOffsetY + iOffsetX + 2]));
-      strPixelRow += (window.parent._wrap_setLastFunctionCall("canvas2image.js",119,3821,3871,String.fromCharCode,false) || String.fromCharCode(aImgData[iOffsetY + iOffsetX + 1]));
-      strPixelRow += (window.parent._wrap_setLastFunctionCall("canvas2image.js",120,3904,3952,String.fromCharCode,false) || String.fromCharCode(aImgData[iOffsetY + iOffsetX]));
+      strPixelRow += (window.parent._wrap_setLastFunctionCall("canvas2image.js",105,3193,3247,String.fromCharCode,false,false) || window.parent._wrap_popCallStack(String.fromCharCode(aImgData[iOffsetY + iOffsetX + 2])));
+      strPixelRow += (window.parent._wrap_setLastFunctionCall("canvas2image.js",106,3270,3324,String.fromCharCode,false,false) || window.parent._wrap_popCallStack(String.fromCharCode(aImgData[iOffsetY + iOffsetX + 1])));
+      strPixelRow += (window.parent._wrap_setLastFunctionCall("canvas2image.js",107,3347,3397,String.fromCharCode,false,false) || window.parent._wrap_popCallStack(String.fromCharCode(aImgData[iOffsetY + iOffsetX])));
     }
     for (var c = 0; c < iPadding; c++) {
-      strPixelRow += (window.parent._wrap_setLastFunctionCall("canvas2image.js",123,4042,4064,String.fromCharCode,false) || String.fromCharCode(0));
+      strPixelRow += (window.parent._wrap_setLastFunctionCall("canvas2image.js",110,3467,3489,String.fromCharCode,false,false) || window.parent._wrap_popCallStack(String.fromCharCode(0)));
     }
     strPixelData += strPixelRow;
   } while (--y);
-  var strEncoded = (window.parent._wrap_setLastFunctionCall("canvas2image.js",128,4170,4209,encodeData,false) || encodeData((window.parent._wrap_setLastFunctionCall("canvas2image.js",128,4181,4208,aHeader.concat,false) || aHeader.concat(aInfoHeader)))) + (window.parent._wrap_setLastFunctionCall("canvas2image.js",128,4212,4236,encodeData,false) || encodeData(strPixelData));
+  var strEncoded = (window.parent._wrap_setLastFunctionCall("canvas2image.js",114,3566,3605,encodeData,false,false) || window.parent._wrap_popCallStack(encodeData((window.parent._wrap_setLastFunctionCall("canvas2image.js",114,3577,3604,aHeader.concat,false,false) || window.parent._wrap_popCallStack(aHeader.concat(aInfoHeader)))))) + (window.parent._wrap_setLastFunctionCall("canvas2image.js",114,3608,3632,encodeData,false,false) || window.parent._wrap_popCallStack(encodeData(strPixelData)));
   return strEncoded;
 };
   var saveFile = function(strData) {
-window.parent._wrap_addFunctionToMap('canvas2image.js', 134, 4293,4360, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('canvas2image.js', 117, 3675,3732, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   document.location.href = strData;
 };
   var makeDataURI = function(strData, strMime) {
-window.parent._wrap_addFunctionToMap('canvas2image.js', 138, 4384,4475, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('canvas2image.js', 120, 3754,3835, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   return "data:" + strMime + ";base64," + strData;
 };
   var makeImageObject = function(strSource) {
-window.parent._wrap_addFunctionToMap('canvas2image.js', 142, 4503,4652, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('canvas2image.js', 123, 3861,3988, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  var oImgElement = (window.parent._wrap_setLastFunctionCall("canvas2image.js",143,4551,4580,document.createElement,false) || document.createElement("img"));
+  var oImgElement = (window.parent._wrap_setLastFunctionCall("canvas2image.js",124,3903,3932,document.createElement,false,false) || window.parent._wrap_popCallStack(document.createElement("img")));
   oImgElement.src = strSource;
   return oImgElement;
 };
   var scaleCanvas = function(oCanvas, iWidth, iHeight) {
-window.parent._wrap_addFunctionToMap('canvas2image.js', 148, 4676,5227, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('canvas2image.js', 128, 4010,4477, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (iWidth && iHeight) {
-    var oSaveCanvas = (window.parent._wrap_setLastFunctionCall("canvas2image.js",150,4776,4808,document.createElement,false) || document.createElement("canvas"));
+    var oSaveCanvas = (window.parent._wrap_setLastFunctionCall("canvas2image.js",130,4096,4128,document.createElement,false,false) || window.parent._wrap_popCallStack(document.createElement("canvas")));
     oSaveCanvas.width = iWidth;
     oSaveCanvas.height = iHeight;
     oSaveCanvas.style.width = iWidth + "px";
     oSaveCanvas.style.height = iHeight + "px";
-    var oSaveCtx = (window.parent._wrap_setLastFunctionCall("canvas2image.js",156,5024,5052,oSaveCanvas.getContext,false) || oSaveCanvas.getContext("2d"));
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",158,5067,5154,oSaveCtx.drawImage,false) ||     oSaveCtx.drawImage(oCanvas, 0, 0, oCanvas.width, oCanvas.height, 0, 0, iWidth, iHeight));
+    var oSaveCtx = (window.parent._wrap_setLastFunctionCall("canvas2image.js",135,4307,4335,oSaveCanvas.getContext,false,false) || window.parent._wrap_popCallStack(oSaveCanvas.getContext("2d")));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",136,4341,4428,oSaveCtx.drawImage,false,false) || window.parent._wrap_popCallStack(    oSaveCtx.drawImage(oCanvas, 0, 0, oCanvas.width, oCanvas.height, 0, 0, iWidth, iHeight)));
     return oSaveCanvas;
   }
   return oCanvas;
 };
   var retval = {saveAsPNG: function(oCanvas, bReturnImg, iWidth, iHeight) {
-window.parent._wrap_addFunctionToMap('canvas2image.js', 166, 5268,5749, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('canvas2image.js', 141, 4506,4863, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (!bHasDataURL) {
     return false;
   }
-  var oScaledCanvas = (window.parent._wrap_setLastFunctionCall("canvas2image.js",170,5425,5462,scaleCanvas,false) || scaleCanvas(oCanvas, iWidth, iHeight));
-  var strData = (window.parent._wrap_setLastFunctionCall("canvas2image.js",171,5490,5526,oScaledCanvas.toDataURL,false) || oScaledCanvas.toDataURL("image/png"));
+  var oScaledCanvas = (window.parent._wrap_setLastFunctionCall("canvas2image.js",145,4621,4658,scaleCanvas,false,false) || window.parent._wrap_popCallStack(scaleCanvas(oCanvas, iWidth, iHeight)));
+  var strData = (window.parent._wrap_setLastFunctionCall("canvas2image.js",146,4676,4712,oScaledCanvas.toDataURL,false,false) || window.parent._wrap_popCallStack(oScaledCanvas.toDataURL("image/png")));
   if (bReturnImg) {
-    return (window.parent._wrap_setLastFunctionCall("canvas2image.js",173,5581,5605,makeImageObject,false) || makeImageObject(strData));
+    return (window.parent._wrap_setLastFunctionCall("canvas2image.js",148,4745,4769,makeImageObject,false,false) || window.parent._wrap_popCallStack(makeImageObject(strData)));
   } else {
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",175,5644,5699,saveFile,false) ||     saveFile((window.parent._wrap_setLastFunctionCall("canvas2image.js",175,5653,5698,strData.replace,false) || strData.replace("image/png", strDownloadMime))));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",150,4786,4841,saveFile,false,false) || window.parent._wrap_popCallStack(    saveFile((window.parent._wrap_setLastFunctionCall("canvas2image.js",150,4795,4840,strData.replace,false,false) || window.parent._wrap_popCallStack(strData.replace("image/png", strDownloadMime))))));
   }
   return true;
 }, saveAsJPEG: function(oCanvas, bReturnImg, iWidth, iHeight) {
-window.parent._wrap_addFunctionToMap('canvas2image.js', 180, 5772,6385, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('canvas2image.js', 153, 4877,5317, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (!bHasDataURL) {
     return false;
   }
-  var oScaledCanvas = (window.parent._wrap_setLastFunctionCall("canvas2image.js",185,5930,5967,scaleCanvas,false) || scaleCanvas(oCanvas, iWidth, iHeight));
+  var oScaledCanvas = (window.parent._wrap_setLastFunctionCall("canvas2image.js",157,4992,5029,scaleCanvas,false,false) || window.parent._wrap_popCallStack(scaleCanvas(oCanvas, iWidth, iHeight)));
   var strMime = "image/jpeg";
-  var strData = (window.parent._wrap_setLastFunctionCall("canvas2image.js",187,6035,6067,oScaledCanvas.toDataURL,false) || oScaledCanvas.toDataURL(strMime));
-  if ((window.parent._wrap_setLastFunctionCall("canvas2image.js",189,6090,6114,strData.indexOf,false) || strData.indexOf(strMime)) != 5) {
+  var strData = (window.parent._wrap_setLastFunctionCall("canvas2image.js",159,5077,5109,oScaledCanvas.toDataURL,false,false) || window.parent._wrap_popCallStack(oScaledCanvas.toDataURL(strMime)));
+  if ((window.parent._wrap_setLastFunctionCall("canvas2image.js",160,5117,5141,strData.indexOf,false,false) || window.parent._wrap_popCallStack(strData.indexOf(strMime))) != 5) {
     return false;
   }
   if (bReturnImg) {
-    return (window.parent._wrap_setLastFunctionCall("canvas2image.js",194,6221,6245,makeImageObject,false) || makeImageObject(strData));
+    return (window.parent._wrap_setLastFunctionCall("canvas2image.js",164,5203,5227,makeImageObject,false,false) || window.parent._wrap_popCallStack(makeImageObject(strData)));
   } else {
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",196,6284,6335,saveFile,false) ||     saveFile((window.parent._wrap_setLastFunctionCall("canvas2image.js",196,6293,6334,strData.replace,false) || strData.replace(strMime, strDownloadMime))));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",166,5244,5295,saveFile,false,false) || window.parent._wrap_popCallStack(    saveFile((window.parent._wrap_setLastFunctionCall("canvas2image.js",166,5253,5294,strData.replace,false,false) || window.parent._wrap_popCallStack(strData.replace(strMime, strDownloadMime))))));
   }
   return true;
 }, saveAsBMP: function(oCanvas, bReturnImg, iWidth, iHeight) {
-window.parent._wrap_addFunctionToMap('canvas2image.js', 201, 6407,6970, (typeof arguments === 'object' ? arguments.callee.caller : null));
+window.parent._wrap_addFunctionToMap('canvas2image.js', 169, 5330,5757, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   if (!(bHasImageData && bHasBase64)) {
     return false;
   }
-  var oScaledCanvas = (window.parent._wrap_setLastFunctionCall("canvas2image.js",206,6583,6620,scaleCanvas,false) || scaleCanvas(oCanvas, iWidth, iHeight));
-  var oData = (window.parent._wrap_setLastFunctionCall("canvas2image.js",208,6647,6676,readCanvasData,false) || readCanvasData(oScaledCanvas));
-  var strImgData = (window.parent._wrap_setLastFunctionCall("canvas2image.js",209,6707,6723,createBMP,false) || createBMP(oData));
+  var oScaledCanvas = (window.parent._wrap_setLastFunctionCall("canvas2image.js",173,5463,5500,scaleCanvas,false,false) || window.parent._wrap_popCallStack(scaleCanvas(oCanvas, iWidth, iHeight)));
+  var oData = (window.parent._wrap_setLastFunctionCall("canvas2image.js",174,5516,5545,readCanvasData,false,false) || window.parent._wrap_popCallStack(readCanvasData(oScaledCanvas)));
+  var strImgData = (window.parent._wrap_setLastFunctionCall("canvas2image.js",175,5566,5582,createBMP,false,false) || window.parent._wrap_popCallStack(createBMP(oData)));
   if (bReturnImg) {
-    return (window.parent._wrap_setLastFunctionCall("canvas2image.js",211,6778,6831,makeImageObject,false) || makeImageObject((window.parent._wrap_setLastFunctionCall("canvas2image.js",211,6794,6830,makeDataURI,false) || makeDataURI(strImgData, "image/bmp"))));
+    return (window.parent._wrap_setLastFunctionCall("canvas2image.js",177,5615,5668,makeImageObject,false,false) || window.parent._wrap_popCallStack(makeImageObject((window.parent._wrap_setLastFunctionCall("canvas2image.js",177,5631,5667,makeDataURI,false,false) || window.parent._wrap_popCallStack(makeDataURI(strImgData, "image/bmp"))))));
   } else {
-(window.parent._wrap_setLastFunctionCall("canvas2image.js",213,6870,6920,saveFile,false) ||     saveFile((window.parent._wrap_setLastFunctionCall("canvas2image.js",213,6879,6919,makeDataURI,false) || makeDataURI(strImgData, strDownloadMime))));
+(window.parent._wrap_setLastFunctionCall("canvas2image.js",179,5685,5735,saveFile,false,false) || window.parent._wrap_popCallStack(    saveFile((window.parent._wrap_setLastFunctionCall("canvas2image.js",179,5694,5734,makeDataURI,false,false) || window.parent._wrap_popCallStack(makeDataURI(strImgData, strDownloadMime))))));
   }
   return true;
 }};
   return retval;
-})());
+})()));

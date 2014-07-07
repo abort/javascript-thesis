@@ -6,58 +6,58 @@ google.pacManSound = true;
 google.browser = {};
 google.browser.engine = {};
 google.dom.remove = function(a) {
-_wrap_addFunctionToMap('main.js', 7, 156,236, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('main.js', 6, 133,207, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  return a && a.parentNode && (_wrap_setLastFunctionCall("main.js",8,203,230) || a.parentNode.removeChild(a));
+  return a && a.parentNode && (_wrap_setLastFunctionCall("main.js",7,177,204,a.parentNode.removeChild,false,false) || _wrap_popCallStack(a.parentNode.removeChild(a)));
 };
 google.dom.append = function(a) {
-_wrap_addFunctionToMap('main.js', 11, 263,323, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('main.js', 9, 229,283, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  return (_wrap_setLastFunctionCall("main.js",12,289,317) || document.body.appendChild(a));
+  return (_wrap_setLastFunctionCall("main.js",10,252,280,document.body.appendChild,false,false) || _wrap_popCallStack(document.body.appendChild(a)));
 };
 google.browser.engine.IE = false;
 google.pml = function() {
-_wrap_addFunctionToMap('main.js', 16, 380,1369, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('main.js', 13, 332,1169, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
   function d(a) {
-_wrap_addFunctionToMap('main.js', 17, 400,951, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('main.js', 14, 347,821, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     if (!google.pml_installed) {
       google.pml_installed = true;
       if (!a) {
-        (_wrap_setLastFunctionCall("main.js",21,524,555) || document.getElementById("logo")).style.background = "black";
-(_wrap_setLastFunctionCall("main.js",22,596,751) ||         window.setTimeout(function() {
-_wrap_addFunctionToMap('main.js', 22, 614,745, (typeof arguments === 'object' ? arguments.callee.caller : null));
+        (_wrap_setLastFunctionCall("main.js",18,455,486,document.getElementById,false,false) || _wrap_popCallStack(document.getElementById("logo"))).style.background = "black";
+(_wrap_setLastFunctionCall("main.js",19,523,647,window.setTimeout,false,false) || _wrap_popCallStack(        window.setTimeout(function() {
+_wrap_addFunctionToMap('main.js', 19, 541,641, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  var b = (_wrap_setLastFunctionCall("main.js",23,650,683) || document.getElementById("logo-l"));
+  var b = (_wrap_setLastFunctionCall("main.js",20,564,597,document.getElementById,false,false) || _wrap_popCallStack(document.getElementById("logo-l")));
   if (b) 
     b.style.display = "block";
-}, 400));
+}, 400)));
       }
-      a = (_wrap_setLastFunctionCall("main.js",27,778,810) || document.createElement("script"));
+      a = (_wrap_setLastFunctionCall("main.js",25,667,699,document.createElement,false,false) || _wrap_popCallStack(document.createElement("script")));
       a.type = "text/javascript";
       a.src = "src/js/pacman10-hp.3.js";
-(_wrap_setLastFunctionCall("main.js",30,905,933) ||       document.body.appendChild(a));
+(_wrap_setLastFunctionCall("main.js",28,782,810,document.body.appendChild,false,false) || _wrap_popCallStack(      document.body.appendChild(a)));
     }
   }
   function e() {
-_wrap_addFunctionToMap('main.js', 33, 958,1187, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('main.js', 31, 824,1027, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
     if (document.f && document.f.btnI) 
       document.f.btnI.onclick = function() {
-_wrap_addFunctionToMap('main.js', 34, 1042,1179, (typeof arguments === 'object' ? arguments.callee.caller : null));
+_wrap_addFunctionToMap('main.js', 33, 911,1022, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-    typeof google.pacman != "undefined" ? (_wrap_setLastFunctionCall("main.js",35,1106,1132) || google.pacman.insertCoin()) : (_wrap_setLastFunctionCall("main.js",35,1135,1143) || d(false));
+    typeof google.pacman != "undefined" ? (_wrap_setLastFunctionCall("main.js",34,966,992,google.pacman.insertCoin,false,false) || _wrap_popCallStack(google.pacman.insertCoin())) : (_wrap_setLastFunctionCall("main.js",34,995,1003,d,false,false) || _wrap_popCallStack(d(false)));
   return false;
 };
   }
   if (!google.pml_loaded) {
     google.pml_loaded = true;
-(_wrap_setLastFunctionCall("main.js",41,1262,1341) ||     window.setTimeout(function() {
-_wrap_addFunctionToMap('main.js', 41, 1280,1335, (typeof arguments === 'object' ? arguments.callee.caller : null));
+(_wrap_setLastFunctionCall("main.js",40,1090,1153,window.setTimeout,false,false) || _wrap_popCallStack(    window.setTimeout(function() {
+_wrap_addFunctionToMap('main.js', 40, 1108,1147, (typeof arguments === 'object' ? arguments.callee.caller : null));
 
-  document.f && (_wrap_setLastFunctionCall("main.js",42,1318,1325) || d(true));
-}, 1E4));
-(_wrap_setLastFunctionCall("main.js",44,1351,1354) ||     e());
+  document.f && (_wrap_setLastFunctionCall("main.js",41,1137,1144,d,false,false) || _wrap_popCallStack(d(true)));
+}, 1E4)));
+(_wrap_setLastFunctionCall("main.js",43,1159,1162,e,false,false) || _wrap_popCallStack(    e()));
   }
 };

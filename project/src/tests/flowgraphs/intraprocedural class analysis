@@ -1,0 +1,7 @@
+intraprocedural class analysis
+methods, funcitons, procedures
+replication challenges -> flow graph vs call graph?
+replication process -> bullets, sequence list etc
+intraproedural flow, interprocedural flow -> chapter 6 moven naar chapter 2
+symbol map..... @ [r7:]
+example of escaping functions, unreoslved call sites etc

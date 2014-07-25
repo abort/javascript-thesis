@@ -58,6 +58,15 @@ public void printAlphabeticalOptimisticCallGraph(loc location) {
 	printAlphabeticalFlowGraph(result.unresolvedCallSites);
 }
 
+public void printAlphabeticalOptimisticCallGraphWithoutNatives(loc location) {
+	CallGraphResult result = createOptimisticCallGraphWithoutNatives(location);
+	println("Optimistic Call graph:");
+	printAlphabeticalFlowGraph(result.graph);
+	println("\nUncertainties:");
+	printAlphabeticalFlowGraph(result.escapingFunctions);
+	printAlphabeticalFlowGraph(result.unresolvedCallSites);
+}
+
 public void storeOptimisticCallGraph(loc location) {
 	str outputFile = substring(location.file, 0, findLast(location.file, "."));
 	loc output = location.parent + outputFile + "1.txt";

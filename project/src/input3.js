@@ -1,1 +1,0 @@
-dynamicCallGraphWrap("jquerysubset.js", "jQuery.fn.extend({ each: function(cb) { dynamicCallGraphAppend(\"jquerysubset.js\", 19, 359, 434);	for(var i=0;i<this.length;++i) dynamicCallGraphWrap(\"jquerysubset.js\", \"cb(this[i], i)\", 21, 414, 428); } })", 18, 331, 438)

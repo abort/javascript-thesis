@@ -57,15 +57,23 @@ private bool compareCallGraphsWithExpectancy(loc input, CallGraphResult optimist
 	
 	bool expectedResult = false;
 	expectedResult = compareFlowGraph(getExtensiveFlowGraph(pessimisticResult.graph), importCallGraph(expectedPessimistic));
-	if (!expectedResult) return false;
+	if (!expectedResult) {
+		println("fuck this");
+		return false;
+	}
 
 	expectedResult = compareFlowGraph(getExtensiveFlowGraph(optimisticResult.graph), importCallGraph(expectedOptimistic));
-
+	if (!expectedResult) {
+		println("fuck this2");
+		return false;
+	}
 	
 	// Optimistic has more detail
 	if (optimisticResultLarger) {
 		expectedResult = expectedResult && (size(optimisticResult.graph) > size(pessimisticResult.graph));
-		expectedResult = expectedResult && (size(pessimisticResult.escapingFunctions + pessimisticResult.unresolvedCallSites) > 0);
+		
+		// commented out due to optimizations that do store escaping functions and unresolved call sites
+		// expectedResult = expectedResult && (size(pessimisticResult.escapingFunctions + pessimisticResult.unresolvedCallSites) > 0);
 	}
 	
 	return expectedResult;

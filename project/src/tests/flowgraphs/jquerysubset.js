@@ -30,7 +30,7 @@
 		for(var i=1;i<elt.children.length;i+=2)
     		elt.children[i].style.backgroundColor = c;
   		});
-	};
+	}
 
 	window.highlightAltRows = function() {
 		$('tbody').highlightAlt('#A9D0F5');

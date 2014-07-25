@@ -71,11 +71,6 @@ public CallGraphResult createPessimisticCallGraphWithoutNatives(list[Source] sou
 	rel[Vertex, Vertex] flowGraph = addInterproceduralEdges(oneShotCalls, escapingFunctions, unresolvedCallSites);
 	flowGraph += createFlowGraphFromMultipleFiles(files); 
 	rel[Vertex, Vertex] callGraph = { <y, x> | <x,y> <- optimisticTransitiveClosure(flowGraph), (Fun(Position _) := x || Builtin(str _) := x), Callee(Position _) := y };
-
-	//printAlphabeticalFlowGraph(flowGraph);
-	println("");
-
-
 	return CallGraphResult(callGraph, {}, {});
 }
 

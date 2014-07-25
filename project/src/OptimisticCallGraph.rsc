@@ -21,6 +21,7 @@ import Location;
 import analysis::graphs::Graph;
 
 public CallGraphResult createOptimisticCallGraph(loc location) = createOptimisticCallGraph(parse(location));
+public CallGraphResult createOptimisticCallGraphWithoutNatives(loc location) = createOptimisticCallGraphWithoutNatives(parse(location));
 public CallGraphResult createOptimisticCallGraph2(loc location) = createOptimisticCallGraph2(parse(location));
 
 public CallGraphResult createOptimisticCallGraphWithoutNatives(list[Source] sources, list[loc] files) {
@@ -46,7 +47,6 @@ public CallGraphResult createOptimisticCallGraphWithoutNatives(list[Source] sour
 		//escapedOutput = { <x, y> | <x, y> <- flowGraphTransitiveClosure, Fun(Position _) := x, Unknown() := y };
 		//unresolvedCallSitesOutput = { <x, y> | <x, y> <- flowGraphTransitiveClosure, Unknown() := x, Callee(Position _) := y };
 		iterations += 1;
-
 		// Check whether something has changed or not to conclude
 		if (oldCallGraph == callGraph && oldFlowGraph == flowGraph)
 			fixpoint = true;
@@ -136,7 +136,8 @@ public CallGraphResult createOptimisticCallGraph(rel[Vertex, Vertex] flowGraph, 
 		escapedOutput = { <x, y> | <x, y> <- flowGraphTransitiveClosure, Fun(Position _) := x, Unknown() := y };
 		unresolvedCallSitesOutput = { <x, y> | <x, y> <- flowGraphTransitiveClosure, Unknown() := x, Callee(Position _) := y };
 		iterations += 1;
-
+		println("\nFlow Graph iteration <iterations>:");
+		printAlphabeticalFlowGraph(flowGraph);
 		// Check whether something has changed or not to conclude
 		if (oldCallGraph == callGraph && oldEscapingFunctions == escapingFunctions && oldUnresolvedCallSites == unresolvedCallSites && oldFlowGraph == flowGraph)
 			fixpoint = true;
@@ -149,6 +150,11 @@ public CallGraphResult createOptimisticCallGraph(rel[Vertex, Vertex] flowGraph, 
 
 public CallGraphResult createOptimisticCallGraph(Source source) {
 	rel[Vertex, Vertex] flowGraph = createFlowGraphWithNativeFunctions(|project://thesis/src/native-functions.txt|, source);
+	return createOptimisticCallGraph(flowGraph, source);
+}
+
+public CallGraphResult createOptimisticCallGraphWithoutNatives(Source source) {
+	rel[Vertex, Vertex] flowGraph = createFlowGraph(source);
 	return createOptimisticCallGraph(flowGraph, source);
 }
 

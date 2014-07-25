@@ -156,7 +156,6 @@ public rel[Vertex, Vertex] addInterproceduralEdges(set[OneShotCall] initialCallG
 	for (OneShotCall call <- initialCallGraph) {
 		int i = 1;
 		for (Expression arg <- call.args) {
-			// debug("<getPosition(callRel.oneShotCall)> to <getPosition(callRel.oneShotClosure)>");
 			flowGraph += <Arg(call.oneShotCall, i), Parm(call.expressionToCall, i)>;
 			i += 1;	
 		}
@@ -165,13 +164,10 @@ public rel[Vertex, Vertex] addInterproceduralEdges(set[OneShotCall] initialCallG
 		flowGraph += <Ret(call.expressionToCall), Res(call.oneShotCall)>;		
 	}
 	
-	println("added one shot calls");
-	
 	// Algo 2 line #4-6
 	for (UnresolvedCallSite unresolvedSite <- unresolvedCallSites) {
 		int i = 1;
 		while (i <= unresolvedSite.args) {
-			// println("arg to unknown");
 			flowGraph += <Arg(unresolvedSite.position, i), Unknown()>;
  			i += 1;
 		}
@@ -179,7 +175,6 @@ public rel[Vertex, Vertex] addInterproceduralEdges(set[OneShotCall] initialCallG
 		flowGraph += <Unknown(), Res(unresolvedSite.position)>;	
 	}
 	
-	println("added unresolved call sites");
 	// Algo 2 line #7-9
 	for (EscapingFunction escapingFunction <- escapingFunctions) {
 		int i = 1;

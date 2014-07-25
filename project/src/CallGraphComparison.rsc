@@ -284,7 +284,7 @@ public rel[Vertex, Vertex] createOptimisticCallGraphByPathWithoutNatives(loc pat
 	list[loc] files = getJavaScripts(path);
 	list[Source] sources = [ parse(source) | source <- files ];
 	println("starting ocg creation for <files>");
-	return createOptimisticCallGraphWithoutNativesOptimized(sources, files).graph;
+	return createOptimisticCallGraphWithoutNatives(sources, files).graph;
 }
 
 private list[loc] getJavaScripts(loc path) {

@@ -22,25 +22,27 @@ public set[OneShotCall] getOneShotCalls(Source source) {
 	bottom-up visit (source) {
 		case Expression e:{
 			if (functionNoParams(Expression expressionToCall) := e || functionParams(Expression expressionToCall, { Expression!comma ","}+ _) := e) {
+				// (function {})() and (function x{})()
 				if (nestedExpression(f:functionAnonymous({Id ","}* parameters, Block _)) := expressionToCall
-					|| nestedExpression(f:function(Id name, {Id ","}* parameters, Block _)) := expressionToCall) {
+					|| nestedExpression(f:function(Id name, {Id ","}* parameters, Block _)) := expressionToCall
+					|| f:functionAnonymous({Id ","}* parameters, Block _) := expressionToCall
+					|| f:function(Id name, {Id ","}* parameters, Block _) := expressionToCall) {
 					set[Expression] expressions = {};
 					// Add params
 					if (functionParams(Expression _, { Expression!comma ","}+ args) := e) {
 						for (Expression arg <- args) 
 							expressions += arg;
 					}
-					oneShotCalls += OneShotCall(getPosition(e), getPosition(f), expressions);
+					oneShotCalls += OneShotCall(getPosition(e), getPosition(f), expressions);				
 				}
 			}
-			/*
 			 elseif (nestedExpression(f:functionParams(Expression expressionToCall, { Expression!comma ","}+ _)) := e
 					|| nestedExpression(f:functionNoParams(Expression expressionToCall)) := e) {
 					if (functionAnonymous({Id ","}* parameters, Block _) := expressionToCall
 						|| function(Id name, {Id ","}* parameters, Block _) := expressionToCall) {
 					set[Expression] expressions = {};
 					
-					println("new one shot closure :) params: <f is functionParams>");
+//					println("new one shot closure :) params: <f is functionParams>");
 					// Add params
 					if (functionParams(Expression _, { Expression!comma ","}+ args) := f) {
 						for (Expression arg <- args) {
@@ -52,7 +54,6 @@ public set[OneShotCall] getOneShotCalls(Source source) {
 					oneShotCalls += OneShotCall(getPosition(f), getPosition(expressionToCall), expressions);
 				}
 			}
-			*/
 		} 
 	}
 	

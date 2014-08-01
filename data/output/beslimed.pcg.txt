@@ -568,7 +568,7 @@ mootools-beta-1.js@3397:116995-117049 -> mootools-beta-1.js@2412:81908-82094
 game.js@195:9379-9413 -> mootools-beta-1.js@1270:41905-41954
 game.js@166:8362-8393 -> mootools-beta-1.js@1270:41905-41954
 mootools-beta-1.js@1105:35351-35379 -> mootools-beta-1.js@1272:41961-42004
-mootools-beta-1.js@2321:78573-78589 -> mootools-beta-1.js@108:3328-3435
+mootools-beta-1.js@2321:78573-78587 -> mootools-beta-1.js@108:3328-3435
 mootools-beta-1.js@603:19016-19042 -> mootools-beta-1.js@3575:124932-125225
 mootools-beta-1.js@516:15937-15998 -> mootools-beta-1.js@481:14580-15175
 game.js@118:6143-6170 -> mootools-beta-1.js@2878:98418-98684

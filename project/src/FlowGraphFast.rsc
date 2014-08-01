@@ -98,7 +98,6 @@ public rel[Vertex, Vertex] createFlowGraph(rel[Vertex, Vertex] flowGraph, Tree s
 			Vertex v;
 			if (scope is scoped) v = Var("<f.name>", functionPosition);
 			else v = Prop("<f.name>");
-
 			flowGraph += <Fun(functionPosition), v>;
 			flowGraph += createFlowGraph(f.implementation, scoped(inFunctionSymbolMap));
 		}
@@ -264,7 +263,7 @@ public ScopedResult createFlowGraphFromExpression(Expression e, Scope scope) {
 				// TODO: changed 29 april... to be checked 
 				flowGraph += <createVertex(lhs, symbolMap), Arg(expressionPosition, 0)>;		
 //				flowGraph += <createVertex(lhs, symbolMap), Arg(getPosition(expression), 0)>;
-			}			
+			}
 		}
 	}
 	elseif (functionParams(Expression funcExpression, _) := e || functionNoParams(Expression funcExpression) := e) {

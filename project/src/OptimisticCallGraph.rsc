@@ -51,7 +51,6 @@ public CallGraphResult createOptimisticCallGraphWithoutNatives(list[Source] sour
 		if (oldCallGraph == callGraph && oldFlowGraph == flowGraph)
 			fixpoint = true;
 	}
-
 	println("Fixpoint reached after <iterations> iterations");
 	
 	return CallGraphResult(callGraph, getEscapingFunctionsAsRelation(flowGraph), getUnresolvedCallSitesAsRelation(flowGraph));
@@ -136,12 +135,13 @@ public CallGraphResult createOptimisticCallGraph(rel[Vertex, Vertex] flowGraph, 
 		escapedOutput = { <x, y> | <x, y> <- flowGraphTransitiveClosure, Fun(Position _) := x, Unknown() := y };
 		unresolvedCallSitesOutput = { <x, y> | <x, y> <- flowGraphTransitiveClosure, Unknown() := x, Callee(Position _) := y };
 		iterations += 1;
-		println("\nFlow Graph iteration <iterations>:");
-		printAlphabeticalFlowGraph(flowGraph);
+		//println("\nFlow Graph iteration <iterations>:");
+		//printAlphabeticalFlowGraph(flowGraph);
 		// Check whether something has changed or not to conclude
 		if (oldCallGraph == callGraph && oldEscapingFunctions == escapingFunctions && oldUnresolvedCallSites == unresolvedCallSites && oldFlowGraph == flowGraph)
 			fixpoint = true;
 	}
+	//printAlphabeticalFlowGraph(flowGraph);
 
 	println("Fixpoint reached after <iterations> iterations");
 	

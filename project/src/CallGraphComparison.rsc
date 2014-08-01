@@ -6,6 +6,7 @@ import lang::json::IO;
 import lang::json::ast::JSON;
 import lang::json::ast::Implode;
 import lang::json::\syntax::JSON;
+import util::Math;
 
 
 import FlowGraphDataTypes;
@@ -78,6 +79,26 @@ public set[str] importReversedCallGraphCallTargets(loc fileLocation, bool ignore
 	return retval;
 }
 
+public set[str] importReversedCallGraph(loc fileLocation) = importReversedCallGraph(fileLocation, true);
+public set[str] importReversedCallGraph(loc fileLocation, bool ignoreNatives) {
+	JSONText val = parse(#JSONText, fileLocation);
+	Value ast = buildAST(val);
+	set[str] retval = {};
+	if (object(map[str memberName, Value memberValue] members) := ast) {
+		// members are callsites
+		for (str memberName <- members) {
+			if (ignoreNatives && !contains(memberName, "@")) continue;
+			if (array(list[Value] arrayValues) := members[memberName]) {
+				for (string(str func) <- arrayValues) {
+					if (ignoreNatives && !contains(func, "@")) continue;
+					retval += "<memberName> -\> <func>";
+				}
+			}
+		} 
+	}
+	return retval;
+}
+
 private str stripFilenameFromString(str callString) {
 	list[str] splitted = split("@", callString);
 	return splitted[0];
@@ -138,9 +159,21 @@ public set[str] importCallGraphFromPlainText(loc fileLocation, bool ignoreNative
 	for (line <- readFileLines(fileLocation)) {
 		splitted = split(" -\> ", line);
 		if (ignoreNatives && !contains(splitted[1], "@")) continue;
-		retval += trim(line);
+		// fix for bad line numbers in dcg
+		newLine = removeLineNumber(splitted[0]) + " -\> " + removeLineNumber(splitted[1]);
+		retval += newLine;
+		//retval += trim(line);
 	}
 	return retval;
+}
+
+private str removeLineNumber(str vertex) {
+	if (!contains(vertex, "@")) return vertex;
+	splitted = split("@", vertex);
+	str output = splitted[0];
+	behindLineNumber = split(":", splitted[1])[1];
+	output = output + "@" + behindLineNumber;
+	return output;
 }
 
 public set[str] importCallGraphFromPlainTextWithoutInnerCalls(loc fileLocation, str frameworkFilename) = importCallGraphFromPlainTextWithoutInnerCalls(fileLocation, true, frameworkFilename); 
@@ -229,9 +262,112 @@ public rel[Vertex, Vertex] createOptimisticCallGraphByPath(loc path) {
 	list[Source] sources = [ parse(source) | source <- files ];
 	return createOptimisticCallGraph(sources, files).graph;
 }
+public test bool testSubSet(loc outputFolder) {
+	assert(isDirectory(outputFolder));
+	list[loc] files = outputFolder.ls;
+	str currentProjectName = "";
+	list[str] projectNames = [];
+	for (file <- files) {
+		str fileName = file.file;
+		list[str] splittedFileName = split(".", fileName);  
+		currentProjectName = splittedFileName[0];
+		if (!isEmpty(currentProjectName) && !(currentProjectName in projectNames)) projectNames += splittedFileName[0];
+	}
 
+	sort(projectNames);
+	for (project <- projectNames) {
+		str projectPath = outputFolder.uri + "/" + project;
+		//println("projectpath <projectPath>");
+		
+		loc pcgPath = toLocation(projectPath + ".pcg.txt");
+		loc ocgPath = toLocation(projectPath + ".ocg.txt");
+		if (!exists(ocgPath)) continue; // some ocgs do not exist :)
+		if (!(importCallGraphFromPlainText(pcgPath) <= importCallGraphFromPlainText(ocgPath))) return false;
+	}
+	return true;
+}
+public void calculateStatisticsForOutputFolder(loc outputFolder) {
+	assert(isDirectory(outputFolder));
+	list[loc] files = outputFolder.ls;
+	str currentProjectName = "";
+	list[str] projectNames = [];
+	for (file <- files) {
+		str fileName = file.file;
+		list[str] splittedFileName = split(".", fileName);  
+		currentProjectName = splittedFileName[0];
+		if (!isEmpty(currentProjectName) && !(currentProjectName in projectNames)) projectNames += splittedFileName[0];
+	}
+
+	sort(projectNames);
+	// print edge statistics
+	println("Call Edges Statistics:");
+	for (project <- projectNames) {
+		str projectPath = outputFolder.uri + "/" + project;
+		//println("projectpath <projectPath>");
+		
+		loc dcgPath = toLocation(projectPath + ".dcg-post.txt");
+		loc pcgPath = toLocation(projectPath + ".pcg.txt");
+		loc ocgPath = toLocation(projectPath + ".ocg.txt");
+		println("<project>:\tpcg: <calculateStatistics(dcgPath, pcgPath)> ocg: <!exists(ocgPath) ? "inexistent ocg" : calculateStatistics(dcgPath, ocgPath)>");
+	}
+
+	println("\nCall Target Averages:");
+	// print call target averages
+	for (project <- projectNames) {
+		str projectPath = outputFolder.uri + "/" + project;
+		//println("projectpath <projectPath>");
+		
+		loc dcgPath = toLocation(projectPath + ".dcg-post.txt");
+		loc pcgPath = toLocation(projectPath + ".pcg.txt");
+		loc ocgPath = toLocation(projectPath + ".ocg.txt");
+		println("<project>:\tpcg: <calcPerCallSite(dcgPath, pcgPath)> ocg: <!exists(ocgPath) ? "inexistent ocg" : calcPerCallSite(dcgPath, ocgPath)>");
+	}	
+}
 public num calculatePrecision(set[str] dynamicCallGraph, set[str] staticCallGraph) = ((size(dynamicCallGraph & staticCallGraph)) * 1.0) / size(staticCallGraph);
 public num calculateRecall(set[str] dynamicCallGraph, set[str] staticCallGraph) = ((size(dynamicCallGraph & staticCallGraph)) * 1.0) / size(dynamicCallGraph);
+public tuple[num,num] calcPerCallSite(loc dcg, loc scg) = calcPerCallSite(importCallGraphFromPlainText(dcg), importCallGraphFromPlainText(scg));
+public tuple[num,num] calcPerCallSite(set[str] dynamicCallGraph, set[str] staticCallGraph) {
+	set[str] callsitesToMeasure = getCallSites(dynamicCallGraph);
+	//println("Edges in static: <size(staticCallGraph)> edges in dynamic: <size(dynamicCallGraph)>, dynamic call sites: <size(callsitesToMeasure)>");
+
+	real precision = 0.0;
+	real recall = 0.0;
+	int amountOfStaticCallSitesCovered = 0;
+	for (callSite <- callsitesToMeasure) {
+		staticCallGraphTargetsForSite = { trim(split("-\>", e)[1]) | e <- staticCallGraph, trim(split("-\>", e)[0]) == callSite };
+		dynamicCallGraphTargetsForSite = { trim(split("-\>", e)[1]) | e <- dynamicCallGraph, trim(split("-\>", e)[0]) == callSite };
+		real intersection = (size(staticCallGraphTargetsForSite) == 0 && size(dynamicCallGraphTargetsForSite) == 0) ? 0.0 : toReal(size(staticCallGraphTargetsForSite & dynamicCallGraphTargetsForSite));
+		precision += (size(staticCallGraphTargetsForSite) == 0) ? 0.0 : (intersection / size(staticCallGraphTargetsForSite));
+		recall += (intersection / size(dynamicCallGraphTargetsForSite));
+
+		/*
+		usefull for finding out inaccuracies
+		if (size(staticCallGraphTargetsForSite) != 0) {
+			amountOfStaticCallSitesCovered += 1;
+			
+			if (intersection != toReal(size(staticCallGraphTargetsForSite))) {
+				set[str] invalidComputationsForSite = staticCallGraphTargetsForSite - dynamicCallGraphTargetsForSite;
+				if (intersection == 0) println("no intersection for <callSite>");
+				for (c <- invalidComputationsForSite) {
+					println("\t<callSite> -\> <c>");
+				}
+			}
+			
+		}
+		else println("missing callsite in static cg: <callSite>");
+		*/
+		
+		/*set[str] diffTargets = dynamicCallGraphTargetsForSite - staticCallGraphTargetsForSite;
+		for (delta <- diffTargets) {
+			println("<callSite> -\> <delta>");
+		}*/
+	}
+	
+	precision = (precision / size(callsitesToMeasure)) * 100.0;
+	recall = (recall / size(callsitesToMeasure)) * 100.0;
+
+	return <precision, recall>;
+}
 
 public set[str] showRecallInfluence(set[str] dynamicCallGraph, set[str] staticCallGraph) {
 	set[str] dynamicCallSites = getCallSites(dynamicCallGraph);
@@ -255,6 +391,7 @@ public tuple[num, num] calculateCallTargetStatistics(set[str] dynamicCallGraph, 
 	num recall = calculateRecall(dynamicCallGraph, staticCallGraph) * 100.0;
 	return <precision, recall>;
 }
+public tuple[num,num] calculateStatistics(loc dcg, loc scg) = calculateStatistics(importCallGraphFromPlainText(dcg), importCallGraphFromPlainText(scg));
 public tuple[num, num] calculateStatistics(set[str] dynamicCallGraph, set[str] staticCallGraph) {
 	set[str] dynamicCallSites = getCallSites(dynamicCallGraph);
 	staticCallGraph = { g | g <- staticCallGraph, trim(split("-\>", g)[0]) in dynamicCallSites };
@@ -263,6 +400,16 @@ public tuple[num, num] calculateStatistics(set[str] dynamicCallGraph, set[str] s
 	return <precision, recall>;
 }
 public set[str] getCallSites(set[str] callGraph) = { trim(split("-\>", g)[0]) | g <- callGraph };
+public set[str] getCallSitesWithoutNativeTargets(set[str] callGraph) {
+	set[str] output = {};
+ 	for (str edge <- callGraph) {
+ 		list[str] splitted = split("-\>", edge);
+ 		str callSite = trim(splitted[0]);
+ 		str target = trim(splitted[1]);
+ 		if (contains(target, "@")) output += callSite;
+ 	}
+ 	return output;
+}
 
 public rel[Vertex, Vertex] createPessimisticCallGraphByPath(loc path) {
 	assert(isDirectory(path));

@@ -79,8 +79,8 @@ public set[str] importReversedCallGraphCallTargets(loc fileLocation, bool ignore
 	return retval;
 }
 
-public set[str] importReversedCallGraph(loc fileLocation) = importReversedCallGraph(fileLocation, true);
-public set[str] importReversedCallGraph(loc fileLocation, bool ignoreNatives) {
+public set[str] importReversedCallGraphFromJSON(loc fileLocation) = importReversedCallGraphFromJSON(fileLocation, true);
+public set[str] importReversedCallGraphFromJSON(loc fileLocation, bool ignoreNatives) {
 	JSONText val = parse(#JSONText, fileLocation);
 	Value ast = buildAST(val);
 	set[str] retval = {};
@@ -104,8 +104,8 @@ private str stripFilenameFromString(str callString) {
 	return splitted[0];
 }
 
-public set[str] importCallGraphFull(loc fileLocation) = importCallGraphFull(fileLocation, true);
-public set[str] importCallGraphFull(loc fileLocation, bool ignoreNatives) {
+public set[str] importCallGraphFromJSON(loc fileLocation) = importCallGraphFromJSON(fileLocation, true);
+public set[str] importCallGraphFromJSON(loc fileLocation, bool ignoreNatives) {
 	JSONText val = parse(#JSONText, fileLocation);
 	Value ast = buildAST(val);
 	set[str] retval = {};
@@ -162,6 +162,7 @@ public set[str] importCallGraphFromPlainText(loc fileLocation, bool ignoreNative
 		// fix for bad line numbers in dcg
 		newLine = removeLineNumber(splitted[0]) + " -\> " + removeLineNumber(splitted[1]);
 		retval += newLine;
+		// TODO: fix line numbers in dcg and then uncomment this line
 		//retval += trim(line);
 	}
 	return retval;
@@ -320,19 +321,20 @@ public void calculateStatisticsForOutputFolder(loc outputFolder) {
 		loc dcgPath = toLocation(projectPath + ".dcg-post.txt");
 		loc pcgPath = toLocation(projectPath + ".pcg.txt");
 		loc ocgPath = toLocation(projectPath + ".ocg.txt");
-		println("<project>:\tpcg: <calcPerCallSite(dcgPath, pcgPath)> ocg: <!exists(ocgPath) ? "inexistent ocg" : calcPerCallSite(dcgPath, ocgPath)>");
+		println("<project>:\tpcg: <calculatePerCallSite(dcgPath, pcgPath)> ocg: <!exists(ocgPath) ? "inexistent ocg" : calculatePerCallSite(dcgPath, ocgPath)>");
 	}	
 }
 public num calculatePrecision(set[str] dynamicCallGraph, set[str] staticCallGraph) = ((size(dynamicCallGraph & staticCallGraph)) * 1.0) / size(staticCallGraph);
 public num calculateRecall(set[str] dynamicCallGraph, set[str] staticCallGraph) = ((size(dynamicCallGraph & staticCallGraph)) * 1.0) / size(dynamicCallGraph);
-public tuple[num,num] calcPerCallSite(loc dcg, loc scg) = calcPerCallSite(importCallGraphFromPlainText(dcg), importCallGraphFromPlainText(scg));
-public tuple[num,num] calcPerCallSite(set[str] dynamicCallGraph, set[str] staticCallGraph) {
+public tuple[num,num] calculatePerCallSite(loc dcg, loc scg) = calculatePerCallSite(importCallGraphFromPlainText(dcg), importCallGraphFromPlainText(scg));
+public tuple[num,num] calculatePerCallSite(set[str] dynamicCallGraph, set[str] staticCallGraph) {
 	set[str] callsitesToMeasure = getCallSites(dynamicCallGraph);
 	//println("Edges in static: <size(staticCallGraph)> edges in dynamic: <size(dynamicCallGraph)>, dynamic call sites: <size(callsitesToMeasure)>");
 
 	real precision = 0.0;
 	real recall = 0.0;
 	int amountOfStaticCallSitesCovered = 0;
+	int missingCallSites = 0;
 	for (callSite <- callsitesToMeasure) {
 		staticCallGraphTargetsForSite = { trim(split("-\>", e)[1]) | e <- staticCallGraph, trim(split("-\>", e)[0]) == callSite };
 		dynamicCallGraphTargetsForSite = { trim(split("-\>", e)[1]) | e <- dynamicCallGraph, trim(split("-\>", e)[0]) == callSite };
@@ -340,8 +342,8 @@ public tuple[num,num] calcPerCallSite(set[str] dynamicCallGraph, set[str] static
 		precision += (size(staticCallGraphTargetsForSite) == 0) ? 0.0 : (intersection / size(staticCallGraphTargetsForSite));
 		recall += (intersection / size(dynamicCallGraphTargetsForSite));
 
+		// useful for finding out about inaccuracies
 		/*
-		usefull for finding out inaccuracies
 		if (size(staticCallGraphTargetsForSite) != 0) {
 			amountOfStaticCallSitesCovered += 1;
 			
@@ -354,18 +356,16 @@ public tuple[num,num] calcPerCallSite(set[str] dynamicCallGraph, set[str] static
 			}
 			
 		}
-		else println("missing callsite in static cg: <callSite>");
-		*/
-		
-		/*set[str] diffTargets = dynamicCallGraphTargetsForSite - staticCallGraphTargetsForSite;
-		for (delta <- diffTargets) {
-			println("<callSite> -\> <delta>");
+		else {
+			missingCallSites = missingCallSites + 1;
+			println("missing callsite in static cg: <callSite>");
 		}*/
 	}
 	
 	precision = (precision / size(callsitesToMeasure)) * 100.0;
 	recall = (recall / size(callsitesToMeasure)) * 100.0;
 
+	//println("Total missing call sites <missingCallSites>");
 	return <precision, recall>;
 }
 
